@@ -1,0 +1,9 @@
+[submodule "Reshuffled_Mechanik"]
+	path = Reshuffled_Mechanik
+	url = https://github.com/volalm15/Reshuffled_Mechanik
+[submodule "Reshuffled_Informatik"]
+	path = Reshuffled_Informatik
+	url = https://github.com/volalm15/Reshuffled_Informatik
+[submodule "Reshuffled_Elektronik"]
+	path = Reshuffled_Elektronik
+	url = https://github.com/volalm15/Reshuffled_Elektronik
