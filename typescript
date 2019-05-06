@@ -1,0 +1,41 @@
+Script started on 2019-05-06 14:11:58+0200
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[00m$ cd Reshuffled_Informaatik/
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik [00m$ git add .
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik [00m$ git add .[C[Ccd Reshuffled_Informatik/[C[C[5Pgit submodule statusupdate add https://github.com/volalm15/Elektronik[C[C[C[C[C[C[33Ppush origin master [C[C[C[C[C[C[C[Cll[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csh[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csubmodule add https://github.com/volalm15/Elektronik[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cupdate [K[1Pstatus[C[Ccd Reshuffled_Informatik/[C[C[16Pgit add .[C[C[Kgit add .[C[Ccd Reshuffled_Informatik/[C[C[5Pgit submodule statusupdate add https://github.com/volalm15/Elektronik[C[C[C[C[C[C[33Ppush origin master [C[C[C[C[C[C[C[Cll[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3Pcommit -m "Test"[C[C[C[C[C[Cadd .[Kstatuscommit -m "Test"[C[C[C[C[C[C[10Pstatus[1Padd .[C[Ccd Diplomarbeit/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgit push --recurse-submodules=on-demand
+Username for 'https://github.com': volalm15
+Password for 'https://volalm15@github.com': 
+Everything up-to-date
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik [00m$ git commit -m ""U"p"d"a"t"i"n"g" "S"u"b"M"o"d"u"l"e"s"
+Auf Branch master
+Ihr Branch ist auf demselben Stand wie 'origin/master'.
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Informatik [00m$ cd ..
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[00m$ cd E[KReshuffled_Elektroonik/
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik [00m$ cd Reshuffled_Elektronik/[C[C[C[C[C..[K[C[Cgit commit -m "Updating SubModules"[C[C[C[C[C[Cpush --recurse-submodules=on-demand[C[C[C[C[C[Cadd .[K[C[Ccd Reshuffled_Informatik/[C[C[16Pgit add .
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik [00m$ git add .[C[Ccd Reshuffled_Elektronik/[C[C[C[C[C..[K[C[Cgit commit -m "Updating SubModules"[C[C[C[C[C[Cpush --recurse-submodules=on-demand[C[C[C[C[C[Cadd .[Kpush --recurse-submodules=on-demand[C[C[C[C[C[Cadd .[K[C[Ccd Reshuffled_Informatik/[C[C[5Pgit submodule status[C[Ccd Reshuffled_Informatik/[C[C[16Pgit add .push --recurse-submodules=on-demand[C[C[C[C[C[C[4Pcommit -m "Updating SubModules"
+[master c9ed2a8] Updating SubModules
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 "Hardware\303\274bersicht.png"
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik [00m$ git commit -m "Updating SubModules"[C[C[C[C[C[Cadd .[K[C[Ccd Reshuffled_Elektronik/[C[C[C[C[C..[K[C[Cgit commit -m "Updating SubModules"[C[C[C[C[C[Cpush --recurse-submodules=on-demand
+Zähle Objekte: 3, Fertig.
+Delta compression using up to 4 threads.
+Komprimiere Objekte:  33% (1/3)   Komprimiere Objekte:  66% (2/3)   Komprimiere Objekte: 100% (3/3)   Komprimiere Objekte: 100% (3/3), Fertig.
+Schreibe Objekte:  33% (1/3)   Schreibe Objekte:  66% (2/3)   Schreibe Objekte: 100% (3/3)   Schreibe Objekte: 100% (3/3), 81.81 KiB | 16.36 MiB/s, Fertig.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/volalm15/Reshuffled_Elektronik
+   8f16f26..c9ed2a8  master -> master
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Elektronik [00m$ git push --recurse-submodules=on-demand[C[C[C[C[C[C[4Pcommit -m "Updating SubModules"[C[C[C[C[C[Cadd .[K[C[Ccd Reshuffled_Elektronik/[C[C[C[C[C..[K
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[00m$ cd ..[K[KReshuffled_Mechaniik/
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[00m$  cd Reshuffled_Mechanik/[C[C[C..[Kgit push --recurse-submodules=on-demand[C[C[C[C[4Pcommit -m "Updating SubModules"[C[C[C[Cadd .[Kcd Reshuffled_Elektronik/[16Pgit add .
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[00m$  git add .cd Reshuffled_Mechanik/[C[C[C..[Kgit push --recurse-submodules=on-demand[C[C[C[C[4Pcommit -m "Updating SubModules"
+Auf Branch master
+Ihr Branch ist auf demselben Stand wie 'origin/master'.
+
+nichts zu committen, Arbeitsverzeichnis unverändert
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[00m$  git commit -m "Updating SubModules"[C[C[C[Cadd .[Kcd Reshuffled_Mechanik/[C[C[C..[Kgit push --recurse-submodules=on-demand
+Everything up-to-date
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Mechanik[00m$  git push --recurse-submodules=on-demand[C[C[C[C[4Pcommit -m "Updating SubModules"[C[C[C[Cadd .[Kcd Reshuffled_Mechanik/[C[C[C..[K
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv[00m$ cd Reshuffled_Dokumenntation/
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Dokumentation[01;32malois@alois-Aspire-VN7-592G[00m:[01;34m~/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/Reshuffled_Dokumentatiion[00m$ cd Reshuffled_Dokumentation/[C[C[C[C[C[C[C[C..[Kgit push --recurse-submodules=on-demand[C[C[C[C[C[C[C[C[C[4Pcommit -m "Updating SubModules"[C[C[C[C[C[C[C[C[Cadd .[K
+]0;alois@alois-Aspire-VN7-592G: ~/Schreibtisch/Drive/Reshuffl
