@@ -7,3 +7,6 @@
 [submodule "Reshuffled_Elektronik"]
 	path = Reshuffled_Elektronik
 	url = https://github.com/volalm15/Reshuffled_Elektronik
+[submodule "Reshuffled_Dokumentation"]
+	path = Reshuffled_Dokumentation
+	url = https://github.com/volalm15/Reshuffled_Dokumentation
