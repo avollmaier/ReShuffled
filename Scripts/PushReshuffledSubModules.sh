@@ -46,6 +46,7 @@ git add .
 git commit -m "general commit of master module"
 git push origin master
 
+clear
 echo "Done"
 
 
