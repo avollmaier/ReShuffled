@@ -1,8 +1,3 @@
----
-
-
----
-
 <hr>
 <hr>
 <h1 id="protokoll-nr.-03--">Diplomarbeit  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/HTL_Kaindorf_Logo.svg/300px-HTL_Kaindorf_Logo.svg.png" alt=""></h1>
