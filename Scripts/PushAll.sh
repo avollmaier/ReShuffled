@@ -1,4 +1,24 @@
 #!/bin/bash
+
+progress-bar() {
+  local duration=${1}
+
+
+    already_done() { for ((done=0; done<$elapsed; done++)); do printf "▇"; done }
+    remaining() { for ((remain=$elapsed; remain<$duration; remain++)); do printf " "; done }
+    percentage() { printf "| %s%%" $(( (($elapsed)*100)/($duration)*100/100 )); }
+    clean_line() { printf "\r"; }
+
+  for (( elapsed=1; elapsed<=$duration; elapsed++ )); do
+      already_done; remaining; percentage
+      sleep 1
+      clean_line
+  done
+  clean_line
+}
+
+clear
+progress-bar 12
 echo "Updating..."
 cd ..
 cd Reshuffled_Dokumentation/
@@ -37,22 +57,4 @@ git push origin master
 clear
 echo "Done"
 
-progress-bar() {
-  local duration=${1}
-
-
-    already_done() { for ((done=0; done<$elapsed; done++)); do printf "▇"; done }
-    remaining() { for ((remain=$elapsed; remain<$duration; remain++)); do printf " "; done }
-    percentage() { printf "| %s%%" $(( (($elapsed)*100)/($duration)*100/100 )); }
-    clean_line() { printf "\r"; }
-
-  for (( elapsed=1; elapsed<=$duration; elapsed++ )); do
-      already_done; remaining; percentage
-      sleep 1
-      clean_line
-  done
-  clean_line
-}
-
-progress-bar 100
 
