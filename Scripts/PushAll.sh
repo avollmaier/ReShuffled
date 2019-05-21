@@ -2,7 +2,7 @@
 echo "Updating..."
 
 cd /
-cd home/alois/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/
+cd home/alois/Schreibtisch/Drive/Reshuffled-Diplomarbeitsarchiv/
 cd Reshuffled_Dokumentation/
 git checkout master
 git pull origin master
@@ -11,7 +11,7 @@ git commit -m "general commit of submodule dokumentation"
 git push origin master
 
 cd /
-cd home/alois/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/
+cd home/alois/Schreibtisch/Drive/Reshuffled-Diplomarbeitsarchiv/
 cd Reshuffled_Elektronik/
 git checkout master
 git pull origin master
@@ -20,7 +20,7 @@ git commit -m "general commit of submodule elektronik"
 git push origin master
 
 cd /
-cd home/alois/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/
+cd home/alois/Schreibtisch/Drive/Reshuffled-Diplomarbeitsarchiv/
 cd Reshuffled_Informatik/
 git checkout master
 git pull origin master
@@ -29,7 +29,7 @@ git commit -m "general commit of submodule informatik"
 git push origin master
 
 cd /
-cd home/alois/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/
+cd home/alois/Schreibtisch/Drive/Reshuffled-Diplomarbeitsarchiv/
 cd Reshuffled_Mechanik/
 git checkout master
 git pull origin master
@@ -38,7 +38,7 @@ git commit -m "general commit of submodule mechanik"
 git push origin master
 
 cd /
-cd home/alois/Schreibtisch/Drive/Reshuffled_Diplomarbeitsarchiv/
+cd home/alois/Schreibtisch/Drive/Reshuffled-Diplomarbeitsarchiv/
 
 git checkout master
 git pull origin master
