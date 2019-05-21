@@ -2,7 +2,7 @@
 echo "Updating..."
 cd /
 cd home/alois/Schreibtisch/Drive/
-cd Reshuffled-Diplomarbeitsarchiv/
+cd Reshuffled_Diplomarbeitsarchiv/
 git pull --recurse-submodules
 git submodule update --remote
 
