@@ -18,7 +18,7 @@ git commit -m "script commit | RSelectro"
 git push origin master
 
 cd ..
-cd RSinfo/
+cd RSainf/
 git checkout master
 git pull origin master
 git add .
