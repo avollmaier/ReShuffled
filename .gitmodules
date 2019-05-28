@@ -1,12 +1,12 @@
-[submodule "Reshuffled_Mechanik"]
-	path = Reshuffled_Mechanik
-	url = https://github.com/volalm15/Reshuffled_Mechanik
-[submodule "Reshuffled_Informatik"]
-	path = Reshuffled_Informatik
-	url = https://github.com/volalm15/Reshuffled_Informatik
-[submodule "Reshuffled_Elektronik"]
-	path = Reshuffled_Elektronik
-	url = https://github.com/volalm15/Reshuffled_Elektronik
-[submodule "Reshuffled_Dokumentation"]
-	path = Reshuffled_Dokumentation
-	url = https://github.com/volalm15/Reshuffled_Dokumentation
+[submodule "RSmech"]
+	path = RSmech
+	url = https://github.com/volalm15/RSmech
+[submodule "RSinfo"]
+	path = RSinfo
+	url = https://github.com/volalm15/RSinfo
+[submodule "RSelectro"]
+	path = RSelectro
+	url = https://github.com/volalm15/RSelectro
+[submodule "RSdoc"]
+	path = RSdoc
+	url = https://github.com/volalm15/RSdoc
