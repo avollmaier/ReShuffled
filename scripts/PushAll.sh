@@ -2,42 +2,42 @@
 echo "Updating..."
 
 cd ..
-cd Reshuffled_Dokumentation/
+cd RSdocs/
 git checkout master
 git pull origin master
 git add .
-git commit -m "general commit of submodule dokumentation"
+git commit -m "script commit | RSdocs"
 git push origin master
 
 cd ..
-cd Reshuffled_Elektronik/
+cd RSelectro/
 git checkout master
 git pull origin master
 git add .
-git commit -m "general commit of submodule elektronik"
+git commit -m "script commit | RSelectro"
 git push origin master
 
 cd ..
-cd Reshuffled_Informatik/
+cd RSinfo/
 git checkout master
 git pull origin master
 git add .
-git commit -m "general commit of submodule informatik"
+git commit -m "script commit | RSinfo"
 git push origin master
 
 cd ..
-cd Reshuffled_Mechanik/
+cd RSmech/
 git checkout master
 git pull origin master
 git add .
-git commit -m "general commit of submodule mechanik"
+git commit -m "script commit | RSmech"
 git push origin master
 
 cd ..
 git checkout master
 git pull origin master
 git add .
-git commit -m "general commit of master module"
+git commit -m "script commit | RSmaster"
 git push origin master
 
 clear
