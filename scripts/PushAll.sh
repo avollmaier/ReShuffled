@@ -22,7 +22,7 @@ cd RSinfo/
 git checkout master
 git pull origin master
 git add .
-git commit -m "script commit | RSinfo"
+git commit -m "script commit | RSainf"
 git push origin master
 
 cd ..
