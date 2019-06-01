@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Updating.."
 
 cd ..
 cd RSdocs/
