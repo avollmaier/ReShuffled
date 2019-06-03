@@ -66,9 +66,10 @@ Die Hardwarekomponenten setzten sich aus einem Raspberry Pi 3B+ und einem 7" LCD
 Andererseits besteht dieser Teilbereich der Arbeit auch aus der hardwarenahen Programmierung der Hauptplatine. Mithilfe der Programmiersprache C sollte der verbaute 8Bit Mikrocontroller der AVR-Familie namens ATmega 324P programmiert werden.
 Dieser steuert den gesamten Ablauf der Maschiene. \\
 
-Der Datenaustausch zwischen Hauptplatine und Raspberry PI erfolgt über die serielle Schnittstelle namens UART
+Der Datenaustausch zwischen Hauptplatine und Raspberry PI erfolgt über die serielle Schnittstelle namens UART.
+Im Hintergrund wird gleichzeitig eine Json Logdatei
 {\itshape (Universal Asynchronous Receiver Transmitter)}
-Hierfür wird die Open-Source-Bibliothek JSSC
+
 {\itshape (Java Simple Serial Connector)}  verwendet.
 %============================================
 \chapter{Projektplanung}

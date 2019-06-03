@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inhalt.tex" beforeDir="false" afterPath="$PROJECT_DIR$/inhalt.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.synctex.gz" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,12 +21,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="885">
               <caret line="59" selection-start-line="59" selection-end-line="59" />
-              <folding>
-                <element signature="e#940#1003#2" expanded="true" />
-                <element signature="e#1056#1078#2" expanded="true" />
-                <element signature="e#1929#1953#2" expanded="true" />
-                <element signature="e#4239#4271#2" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inhalt.tex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+            <state relative-caret-position="-255">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -111,8 +102,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,15 +109,12 @@
               <item name="overviewDocumentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="overviewDocumentation" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="overviewDocumentation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="overviewDocumentation" type="462c0819:PsiDirectoryNode" />
-              <item name="fig" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -136,7 +122,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mainDocumentation" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -214,11 +200,13 @@
       <workItem from="1559477180406" duration="2593000" />
       <workItem from="1559499858021" duration="3081000" />
       <workItem from="1559547869124" duration="841000" />
+      <workItem from="1559559041112" duration="1583000" />
+      <workItem from="1559564184126" duration="47000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40932000" />
+    <option name="totallyTimeSpent" value="42562000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -232,7 +220,7 @@
   <component name="ToolWindowManager">
     <frame x="993" y="27" width="927" height="1053" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33938706" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3552781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -316,12 +304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="e#940#1003#2" expanded="true" />
-            <element signature="e#1056#1078#2" expanded="true" />
-            <element signature="e#1929#1953#2" expanded="true" />
-            <element signature="e#4239#4271#2" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -347,8 +329,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inhalt.tex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="-255">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>
