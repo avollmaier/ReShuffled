@@ -1,10 +1,10 @@
 ﻿# Protokoll Nr. 7 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/HTL_Kaindorf_Logo.svg/300px-HTL_Kaindorf_Logo.svg.png)
 
 Übungsdatum: **02.04.2019**  
-Name: Vollmaier Alois  
-KNr.: 15 
-Klasse: 4AHME  
-Gruppe: 3
+Name: Vollmaier Alois    
+KNr.: 15   
+Klasse: 4AHME    
+Gruppe:   
 
 Anwesenheit:
 
