@@ -1,0 +1,35 @@
+\renewcommand\appendixname{Anhang}
+\renewcommand\appendixpagename{Anhang}
+\renewcommand\appendixtocname{Anhang}
+
+\lohead{}
+
+% Anhang Seite ohne Kopf- & Fußzeile
+\appendix
+\begingroup
+\makeatletter
+\let\ps@plain\ps@empty
+\appendixpage
+\makeatother
+\endgroup
+
+% Anhänge
+\chapter{Zeitaufzeichnung}
+\chapter{Persönlicher Anhang 1}
+
+\markboth{}{}	%end chapter
+
+\printbibliography
+\nocite{*}
+
+\chapter{Abkürzungsverzeichnis}
+\begin{acronym}
+	%Abkürzung hinzufügen: \acro{Kürzel}{Ausgeschrieben}
+	\acro{WLAN}{Wireless Local Area Network}
+	\acro{WWW}{World Wide Web}
+	\acro{uC}[µC]{Mikrocontroller}
+\end{acronym}
+
+\listoffigures
+\listoftables
+\lstlistoflistings
