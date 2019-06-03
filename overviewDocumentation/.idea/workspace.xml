@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inhalt.tex" beforeDir="false" afterPath="$PROJECT_DIR$/inhalt.tex" afterDir="false" />
     </list>
+=======
+    <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="" />
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="993" />
     <option name="y" value="27" />
     <option name="width" value="927" />
@@ -102,6 +106,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -114,7 +122,10 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -128,7 +139,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -200,13 +211,21 @@
       <workItem from="1559477180406" duration="2593000" />
       <workItem from="1559499858021" duration="3081000" />
       <workItem from="1559547869124" duration="841000" />
+<<<<<<< HEAD
       <workItem from="1559559041112" duration="1583000" />
       <workItem from="1559564184126" duration="47000" />
+=======
+      <workItem from="1559561494822" duration="46000" />
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="42562000" />
+=======
+    <option name="totallyTimeSpent" value="40978000" />
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -218,9 +237,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="993" y="27" width="927" height="1053" extended-state="4" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3552781" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16934144" />
+>>>>>>> 4077983cf31910dd19d5ef0ac6954cef9020f651
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -237,7 +261,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50397277" side_tool="true" visible="true" weight="0.17025863" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50397277" side_tool="true" visible="true" weight="0.16954644" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.4994664" weight="0.32984293" />

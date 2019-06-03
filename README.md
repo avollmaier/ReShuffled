@@ -26,20 +26,4 @@
 <td>Gerhard Pretterhofer</td>
 </tr>
 </tbody>
-</table><hr>
-<h3 id="themen-übersicht">Themen-Übersicht</h3>
-<ul>
-<li><strong>[1]</strong> - Konzept
-<ul>
-<li>[1.1] -</li>
-</ul>
-</li>
-<li><strong>[2]</strong>  - <em>Meilensteinplanung</em>
-<ul>
-<li>[2.1] -</li>
-</ul>
-</li>
-<li><strong>[3]</strong>  - Links und Sonstiges</li>
-</ul>
-<hr>
 
