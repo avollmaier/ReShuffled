@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="" />
+    <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/inhalt.tex" beforeDir="false" afterPath="$PROJECT_DIR$/inhalt.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.synctex.gz" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.tex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
+            <state relative-caret-position="885">
               <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="e#940#1003#2" expanded="true" />
@@ -46,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inhalt.tex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="193" selection-start-line="193" selection-end-line="201" />
+            <state relative-caret-position="15">
+              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -91,10 +97,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="width" value="960" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="993" />
+    <option name="y" value="27" />
+    <option name="width" value="927" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -206,11 +213,12 @@
       <workItem from="1559475866045" duration="1147000" />
       <workItem from="1559477180406" duration="2593000" />
       <workItem from="1559499858021" duration="3081000" />
+      <workItem from="1559547869124" duration="841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40091000" />
+    <option name="totallyTimeSpent" value="40932000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -222,9 +230,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="993" y="27" width="927" height="1053" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1638207" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33938706" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -234,14 +242,14 @@
       <window_info id="Learn" order="7" weight="0.32977587" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4994664" weight="0.32984293" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967983" weight="0.17068063" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49602723" weight="0.17025863" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5032017" side_tool="true" visible="true" weight="0.17068063" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50397277" side_tool="true" visible="true" weight="0.17025863" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.4994664" weight="0.32984293" />
@@ -304,6 +312,19 @@
     <entry file="file://$PROJECT_DIR$/informatik.tex" />
     <entry file="file://$PROJECT_DIR$/elektronik.tex" />
     <entry file="file://$PROJECT_DIR$/fds.tex" />
+    <entry file="file://$PROJECT_DIR$/main.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="e#940#1003#2" expanded="true" />
+            <element signature="e#1056#1078#2" expanded="true" />
+            <element signature="e#1929#1953#2" expanded="true" />
+            <element signature="e#4239#4271#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -318,29 +339,16 @@
     <entry file="file://$PROJECT_DIR$/out/mecahnik.aux">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.url">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.tex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="e#940#1003#2" expanded="true" />
-            <element signature="e#1056#1078#2" expanded="true" />
-            <element signature="e#1929#1953#2" expanded="true" />
-            <element signature="e#4239#4271#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/inhalt.tex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="193" selection-start-line="193" selection-end-line="201" />
+        <state relative-caret-position="15">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
         </state>
       </provider>
     </entry>
