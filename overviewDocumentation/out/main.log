@@ -1,26 +1,26 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000) (preloaded format=pdflatex 2019.6.3)  3 JUN 2019 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000) (preloaded format=pdflatex 2019.5.21)  3 JUN 2019 17:44
 entering extended mode
 **./main.tex
 (main.tex
 LaTeX2e <2018-12-01>
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrbook.cls
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrbook.cls
 Document Class: scrbook 2019/02/01 v3.26b KOMA-Script document class (book)
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrkbase.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-dependent 
 basics and keyval usage)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrbase.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-independent
  basics and keyval usage)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrlfile.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
 )))
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/tocbasic.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/tocbasic.sty
 Package: tocbasic 2019/02/01 v3.26b KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip41
 \scr@dte@tocline@numbox=\box27
@@ -49,11 +49,11 @@ Class scrbook Info: You've used standard option `openright'.
 Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
 ne 2376.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrsize12pt.clo
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrsize12pt.clo
 File: scrsize12pt.clo 2019/02/01 v3.26b KOMA-Script font size class option (12p
 t)
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/typearea.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/typearea.sty
 Package: typearea 2019/02/01 v3.26b KOMA-Script package (type area)
 \ta@bcor=\skip42
 \ta@div=\count80
@@ -145,17 +145,17 @@ Package tocbasic Info: omitting babel extension for `lot'
 Class scrbook Info: Redefining `\numberline' on input line 6811.
 \bibindent=\dimen102
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/geometry/geometry.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/ifpdf.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/ifvtex.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/ifxetex/ifxetex.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count90
@@ -171,7 +171,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/geometry/geometry.cfg))
+(/home/alois/.miktex/texmfs/install/tex/latex/geometry/geometry.cfg))
 
 Class scrbook Warning: Usage of package `emptypage' together
 (scrbook)              with a KOMA-Script class is not recommended.
@@ -181,14 +181,15 @@ Class scrbook Warning: Usage of package `emptypage' together
 (scrbook)              Nevertheless, using requested
 (scrbook)              package `emptypage' on input line 19.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/emptypage/emptypage.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/emptypage/emptypage.sty
 Package: emptypage 2010/05/30 v1.2 Suppress page numbers and headings on empty 
 pages
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrlayer-scrpage.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrlayer-scrpage.sty
 Package: scrlayer-scrpage 2019/02/01 v3.26b KOMA-Script package (end user inter
 face for scrlayer)
-(/home/stefan/.miktex/texmfs/install/tex/latex/koma-script/scrlayer.sty
+
+(/home/alois/.miktex/texmfs/install/tex/latex/koma-script/scrlayer.sty
 Package: scrlayer 2019/02/01 v3.26b KOMA-Script package (defining layers and pa
 ge styles)
 Package scrlayer Info: Using already defined \footheight
@@ -204,14 +205,14 @@ Package scrlayer-scrpage Info: deactivating warning for font element
 )
 Package scrlayer-scrpage Info: auto-selection of `pagestyleset=KOMA-Script'.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/fontenc.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/t1enc.def
+(/home/alois/.miktex/texmfs/install/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/lm/lmodern.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/lm/lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -246,17 +247,17 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/inputenc.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/newtxtext.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/newtxtext.sty
 Package: newtxtext 2018/03/27 v1.531
 
 `newtxtext' v1.531, 2018/03/27 Text macros taking advantage of TeX-Gyre Termes 
 fonts (msharpe)
-(/home/stefan/.miktex/texmfs/install/tex/latex/fontaxes/fontaxes.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2014/03/23 v1.0d Font selection axes
 LaTeX Info: Redefining \upshape on input line 29.
 LaTeX Info: Redefining \itshape on input line 31.
@@ -265,29 +266,29 @@ LaTeX Info: Redefining \scshape on input line 37.
 )
 \ntx@fs=\dimen111
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/xkeyval/xkeyval.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/xkeyval/xkeyval.tex
-(/home/stefan/.miktex/texmfs/install/tex/generic/xkeyval/xkvutils.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/xkeyval/xkeyval.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks18
 \XKV@tempa@toks=\toks19
 )
 \XKV@depth=\count93
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/etoolbox/etoolbox.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count94
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/fontenc.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/t1enc.def
+(/home/alois/.miktex/texmfs/install/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/textcomp.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/base/textcomp.sty
 Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -303,12 +304,12 @@ Package textcomp Info: Sub-encoding information:
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 Package textcomp Info: Changing ? sub-encoding to TS1/0 on input line 80.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/ts1enc.def
+(/home/alois/.miktex/texmfs/install/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/ts1enc.dfu
+(/home/alois/.miktex/texmfs/install/tex/latex/base/ts1enc.dfu
 File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -445,28 +446,28 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/newtxmath.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/newtxmath.sty
 Package: newtxmath 2018/05/15 v1.553
 
 `newtxmath' v1.553, 2018/05/15 Math macros based originally on txfonts (msharpe
-) (/home/stefan/.miktex/texmfs/install/tex/latex/amsmath/amsmath.sty
+) (/home/alois/.miktex/texmfs/install/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip58
 
 For additional information on amsmath, use the `?' option.
-(/home/stefan/.miktex/texmfs/install/tex/latex/amsmath/amstext.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/amsmath/amsgen.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen112
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/amsmath/amsbsy.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen113
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/amsmath/amsopn.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count95
@@ -507,16 +508,16 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/ifluatex.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/centernot.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
 \tx@cntz=\count107
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/binhex/binhex.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/binhex/binhex.tex)
 \tx@Isdigit=\count108
 \tx@IsAlNum=\count109
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 171.
@@ -633,33 +634,33 @@ LaTeX Font Info:    Redeclaring math symbol \m@thbbch@rA on input line 1929.
 \ntx@jmath=\count115
 LaTeX Info: Redefining \not on input line 2322.
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/babel/babel.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/babel/babel.sty
 Package: babel 2019/05/04 3.31 The Babel package
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/babel/switch.def
+(/home/alois/.miktex/texmfs/install/tex/generic/babel/switch.def
 File: switch.def 2019/05/04 3.31 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-(/home/stefan/.miktex/texmfs/install/tex/latex/arabi/bblopts.cfg
+(/home/alois/.miktex/texmfs/install/tex/latex/arabi/bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/babel-german/ngerman.ldf
+(/home/alois/.miktex/texmfs/install/tex/latex/babel-german/ngerman.ldf
 Language: ngerman 2018/12/08 v2.11 German support for babel (post-1996 orthogra
 phy)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/babel-german/ngermanb.ldf
+(/home/alois/.miktex/texmfs/install/tex/latex/babel-german/ngermanb.ldf
 Language: ngermanb 2018/12/08 v2.11 German support for babel (post-1996 orthogr
 aphy)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/babel/babel.def
+(/home/alois/.miktex/texmfs/install/tex/generic/babel/babel.def
 File: babel.def 2019/05/04 3.31 Babel common definitions
 \babel@savecnt=\count116
 \U@D=\dimen121
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/babel/txtbabel.def)
+(/home/alois/.miktex/texmfs/install/tex/generic/babel/txtbabel.def)
 \bbl@dirlevel=\count117
 )
 
@@ -672,10 +673,10 @@ Package babel Warning: No hyphenation patterns were preloaded for
 
 \l@ngerman = a dialect from \language0
 Package babel Info: Making " an active character on input line 121.
-))) (/home/stefan/.miktex/texmfs/install/tex/latex/caption/caption.sty
+))) (/home/alois/.miktex/texmfs/install/tex/latex/caption/caption.sty
 Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/caption/caption3.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/caption/caption3.sty
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
 \captionmargin=\dimen122
@@ -690,31 +691,31 @@ Package caption Info: KOMA-Script document class.
 \c@caption@flags=\count118
 \c@ContinuedFloat=\count119
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/url/url.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics/trig.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen129
 \Gin@req@width=\dimen130
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/float/float.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count120
 \float@exts=\toks25
@@ -722,7 +723,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks26
 \@floatcapt=\box32
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/wrapfig/wrapfig.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen131
 \WF@size=\dimen132
 \c@WF@wrappedlines=\count121
@@ -730,10 +731,10 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \WF@everypar=\toks27
 Package: wrapfig 2003/01/31  v 3.6
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/setspace/setspace.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/listings/listings.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/listings/listings.sty
 \lst@mode=\count122
 \lst@gtempboxa=\box34
 \lst@token=\toks28
@@ -747,24 +748,24 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 \lst@lineno=\count127
 \lst@maxwidth=\dimen136
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/listings/lstmisc.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
 \c@lstnumber=\count128
 \lst@skipnumbers=\count129
 \lst@framebox=\box35
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/listings/listings.cfg
+(/home/alois/.miktex/texmfs/install/tex/latex/listings/listings.cfg
 File: listings.cfg 2019/02/27 1.8b listings configuration
 ))
 Package: listings 2019/02/27 1.8b (Carsten Heinz)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/psnfss/times.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/psnfss/times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/psnfss/courier.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/psnfss/courier.sty
 Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/tools/array.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/tools/array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \col@sep=\dimen137
 \ar@mcellbox=\box36
@@ -774,14 +775,14 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \backup@length=\skip62
 \ar@cellbox=\box37
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/multirow/multirow.sty
-Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+(/home/alois/.miktex/texmfs/install/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
 \multirow@colwidth=\skip63
 \multirow@cntb=\count130
 \multirow@dima=\skip64
 \bigstrutjot=\dimen139
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/tools/tabularx.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
 \TX@col@width=\dimen140
 \TX@old@table=\dimen141
@@ -791,20 +792,20 @@ Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
 \TX@cols=\count131
 \TX@ftn=\toks30
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/appendix/appendix.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@pps=\count132
 \c@@ppsavesec=\count133
 \c@@ppsaveapp=\count134
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/acronym/acronym.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/acronym/acronym.sty
 Package: acronym 2015/03/21 v1.41 Support for acronyms (Tobias Oetiker)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/bigfoot/suffix.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/xstring/xstring.sty
-(/home/stefan/.miktex/texmfs/install/tex/generic/xstring/xstring.tex
+(/home/alois/.miktex/texmfs/install/tex/latex/xstring/xstring.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/xstring/xstring.tex
 \integerpart=\count135
 \decimalpart=\count136
 )
@@ -812,15 +813,15 @@ Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
 \AC@clearlist=\toks31
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/graphics-cfg/color.cfg
+(/home/alois/.miktex/texmfs/install/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/colortbl/colortbl.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
 \everycr=\toks32
 \minrowclearance=\skip65
@@ -836,7 +837,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/ulem/ulem.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/ulem/ulem.sty
 \UL@box=\box38
 \UL@hyphenbox=\box39
 \UL@skip=\skip66
@@ -848,41 +849,38 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 Package: ulem 2012/05/18
 \ULdepth=\dimen147
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/frontendlayer/tikz.sty
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/basiclayer/pgf.sty
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/utilities/pgfrcs.sty
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-common.t
-ex
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/frontendlayer/tikz.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/basiclayer/pgf.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/utilities/pgfrcs.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-common.te
+x
 \pgfutil@everybye=\toks34
 \pgfutil@tempdima=\dimen148
 \pgfutil@tempdimb=\dimen149
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-common-l
-ists.tex))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-latex.de
-f
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box41
- (/home/stefan/.miktex/texmfs/install/tex/latex/ms/everyshi.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/pgf.revision.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2019/05/09 v3.1.3 (3.1.3)
 ))
 Package: pgf 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/basiclayer/pgfcore.sty
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/systemlayer/pgfsys.sty
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.te
-x
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/basiclayer/pgfcore.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/systemlayer/pgfsys.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2019/05/09 v3.1.3 (3.1.3)
-
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks35
 \pgfkeys@temptoks=\toks36
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeysfiltered.
-code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
 \pgfkeys@tmptoks=\toks37
 ))
 \pgf@x=\dimen150
@@ -906,38 +904,35 @@ code.tex
 \t@pgf@tokc=\toks40
 \pgf@sys@id@count=\count143
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgf.cfg
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2019/05/09 v3.1.3 (3.1.3)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-pdftex.
-def
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
 File: pgfsys-pdftex.def 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-common-
-pdf.def
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
 File: pgfsys-common-pdf.def 2019/05/09 v3.1.3 (3.1.3)
 )))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpath
-.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
 File: pgfsyssoftpath.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfsyssoftpath@smallbuffer@items=\count144
 \pgfsyssoftpath@bigbuffer@items=\count145
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotocol
-.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
 File: pgfsysprotocol.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.te
-x
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2019/05/09 v3.1.3 (3.1.3)
- (/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathutil.code.tex)
-
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathparser.code.te
-x
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen160
 \pgfmath@count=\count146
 \pgfmath@box=\box42
@@ -945,29 +940,29 @@ x
 \pgfmath@stack@operand=\toks42
 \pgfmath@stack@operation=\toks43
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.code
-.tex
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.basi
-c.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.trig
-onometric.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.rand
-om.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.comp
-arison.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.base
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.basic
 .code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.roun
-d.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.misc
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.round
 .code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.inte
-gerarithmetics.code.tex)))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfloat.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count147
-)) (/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfint.code.tex)
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepoints.c
-ode.tex
+)) (/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfint.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
 File: pgfcorepoints.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@picminx=\dimen161
 \pgf@picmaxx=\dimen162
@@ -984,126 +979,126 @@ File: pgfcorepoints.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@zx=\dimen173
 \pgf@zy=\dimen174
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathcons
-truct.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@path@lastx=\dimen175
 \pgf@path@lasty=\dimen176
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathusag
-e.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
 File: pgfcorepathusage.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@shorten@end@additional=\dimen177
 \pgf@shorten@start@additional=\dimen178
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorescopes.c
-ode.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
 File: pgfcorescopes.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfpic=\box43
 \pgf@hbox=\box44
 \pgf@layerbox@main=\box45
 \pgf@picture@serial@count=\count148
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoregraphics
-tate.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
 File: pgfcoregraphicstate.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgflinewidth=\dimen179
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransfor
-mations.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
 File: pgfcoretransformations.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@pt@x=\dimen180
 \pgf@pt@y=\dimen181
 \pgf@pt@temp=\dimen182
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorequick.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
 File: pgfcorequick.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreobjects.
-code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
 File: pgfcoreobjects.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathproc
-essing.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
 File: pgfcorepathprocessing.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorearrows.c
-ode.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
 File: pgfcorearrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfarrowsep=\dimen183
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreshade.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
 File: pgfcoreshade.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@max=\dimen184
 \pgf@sys@shading@range@num=\count149
 \pgf@shadingcount=\count150
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreimage.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
 File: pgfcoreimage.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreexternal
-.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
 File: pgfcoreexternal.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfexternal@startupbox=\box46
 ))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorelayers.c
-ode.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
 File: pgfcorelayers.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretranspar
-ency.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
 File: pgfcoretransparency.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepatterns
-.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
 File: pgfcorepatterns.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorerdf.code
-.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex
 File: pgfcorerdf.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmoduleshapes.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
 File: pgfmoduleshapes.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfnodeparttextbox=\box47
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmoduleplot.code
-.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
 File: pgfmoduleplot.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-versio
-n-0-65.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
 Package: pgfcomp-version-0-65 2019/05/09 v3.1.3 (3.1.3)
 \pgf@nodesepstart=\dimen185
 \pgf@nodesepend=\dimen186
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-versio
-n-1-18.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
 Package: pgfcomp-version-1-18 2019/05/09 v3.1.3 (3.1.3)
 ))
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/utilities/pgffor.sty
-(/home/stefan/.miktex/texmfs/install/tex/latex/pgf/utilities/pgfkeys.sty
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
-)) (/home/stefan/.miktex/texmfs/install/tex/latex/pgf/math/pgfmath.sty
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/utilities/pgffor.code.tex
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/utilities/pgffor.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/pgf/utilities/pgfkeys.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/home/alois/.miktex/texmfs/install/tex/latex/pgf/math/pgfmath.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex))
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex)
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen187
 \pgffor@skip=\dimen188
 \pgffor@stack=\toks44
 \pgffor@toks=\toks45
 ))
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
 Package: tikz 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/libraries/pgflibraryplotha
-ndlers.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgf@plot@mark@count=\count151
 \pgfplotmarksize=\dimen189
@@ -1123,8 +1118,8 @@ File: pgflibraryplothandlers.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \tikznumberofcurrentchild=\count154
 \tikz@fig@count=\count155
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmodulematrix.co
-de.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
 File: pgfmodulematrix.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \pgfmatrixcurrentrow=\count156
 \pgfmatrixcurrentcolumn=\count157
@@ -1132,39 +1127,37 @@ File: pgfmodulematrix.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
 \tikz@expandcount=\count159
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librari
-es/tikzlibrarytopaths.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )))
-(/home/stefan/.miktex/texmfs/install/tex/latex/tikz-3dplot/tikz-3dplot.sty
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/ifthen.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/tikz-3dplot/tikz-3dplot.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librari
-es/tikzlibrarycalc.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librari
-es/tikzlibrary3d.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrary3d.code.tex
 File: tikzlibrary3d.code.tex 2019/05/09 v3.1.3 (3.1.3)
 )
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librari
-es/tikzlibraryarrows.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/pgf/libraries/pgflibraryarrows
-.code.tex
+(/home/alois/.miktex/texmfs/install/tex/generic/pgf/libraries/pgflibraryarrows.
+code.tex
 File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \arrowsize=\dimen196
-)))
-(/home/stefan/.miktex/texmfs/install/tex/latex/hyperref/hyperref.sty
+))) (/home/alois/.miktex/texmfs/install/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
-
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/hobsub-hyperref.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/hobsub-generic.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -1197,24 +1190,24 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/auxhook.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/kvoptions.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen197
 \Hy@linkcounter=\count160
 \Hy@pagecounter=\count161
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/hyperref/pd1enc.def
+(/home/alois/.miktex/texmfs/install/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count162
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/00miktex/hyperref.cfg
+(/home/alois/.miktex/texmfs/install/tex/latex/00miktex/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Option `bookmarks' set `true' on input line 4393.
@@ -1246,39 +1239,38 @@ LaTeX Info: Redefining \pageref on input line 6454.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/hyperref/hpdftex.def
+(/home/alois/.miktex/texmfs/install/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
 \Fld@listcount=\count168
 \c@bookmark@seq@number=\count169
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/rerunfilecheck.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip67
 )
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/hypcap.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/hypcap.sty
 Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
 )
 LaTeX Font Info:    Try loading font information for T1+ntxtlf on input line 76
 .
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/t1ntxtlf.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 76.
 
-(/home/stefan/Schreibtisch/GitHub/RSmaster/overviewDocumentation/out/main.aux
-(/home/stefan/Schreibtisch/GitHub/RSmaster/overviewDocumentation/out/inhalt.aux
-))
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/main.aux
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/inhalt.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 76.
 LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 76
 .
- (/home/stefan/.miktex/texmfs/install/tex/latex/newtx/omlntxmi.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -1294,14 +1286,14 @@ LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 76.
 LaTeX Font Info:    Try loading font information for U+ntxexa on input line 76.
 
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/untxexa.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/base/ts1cmr.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -1309,7 +1301,7 @@ LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 76.
 LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 76
 .
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/lmsntxsy.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -1317,7 +1309,7 @@ LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 76.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 7
 6.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/lmxntxexx.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -1367,7 +1359,7 @@ Package caption Info: hypcap package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-(/home/stefan/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+(/home/alois/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count172
 \scratchdimen=\dimen257
@@ -1380,10 +1372,10 @@ Package caption Info: End \AtBeginDocument code.
 \MPnumerator=\count176
 \makeMPintoPDFobject=\count177
 \everyMPtoPDFconversion=\toks47
-) (/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/epstopdf-base.sty
+) (/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/grfext.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1399,10 +1391,10 @@ ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box53
 Package hyperref Info: Link coloring OFF on input line 76.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/hyperref/nameref.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(/home/stefan/.miktex/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
+(/home/alois/.miktex/texmfs/install/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count179
@@ -1411,8 +1403,8 @@ LaTeX Info: Redefining \ref on input line 76.
 LaTeX Info: Redefining \pageref on input line 76.
 LaTeX Info: Redefining \nameref on input line 76.
 
-(/home/stefan/Schreibtisch/GitHub/RSmaster/overviewDocumentation/out/main.out)
-(/home/stefan/Schreibtisch/GitHub/RSmaster/overviewDocumentation/out/main.out)
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/main.out)
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -1424,10 +1416,10 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           you can avoid this message with `\usepackage{bookmark}'
 (scrbook)           before \begin{document} on input line 76.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/bookmark.sty
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/bookmark.sty
 Package: bookmark 2016/05/17 v1.26 PDF bookmarks (HO)
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/oberdiek/bkm-pdftex.def
+(/home/alois/.miktex/texmfs/install/tex/latex/oberdiek/bkm-pdftex.def
 File: bkm-pdftex.def 2016/05/17 v1.26 bookmark driver for pdfTeX (HO)
 Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input lin
@@ -1449,7 +1441,7 @@ Package pdftex.def Info: fig/logoMecha.png  used on input line 79.
 (pdftex.def)             Requested size: 198.13889pt x 98.3668pt.
 LaTeX Font Info:    Try loading font information for T1+phv on input line 79.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/psnfss/t1phv.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
@@ -1463,7 +1455,7 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 7
 9.
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/ot1ntxtlf.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
@@ -1475,37 +1467,38 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 LaTeX Font Info:    Try loading font information for U+ntxmia on input line 79.
 
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/untxmia.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsym on input line 79.
 
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/untxsym.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 79.
 
 
-(/home/stefan/.miktex/texmfs/install/tex/latex/newtx/untxsyc.fd
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 ) [1
 
 
-{/home/stefan/.miktex/texmfs/data/pdftex/config/pdftex.map} <./fig/logoMecha.pn
-g>]
-(/home/stefan/Schreibtisch/GitHub/RSmaster/overviewDocumentation/out/main.toc)
+{/home/alois/.miktex/texmfs/data/pdftex/config/pdftex.map} <./fig/logoMecha.png
+>]
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/main.toc
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 3.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.8pt on input line 3.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.6pt on input line 3.
+)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sl' will be
 (Font)              scaled to size 12.0pt on input line 80.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 80.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 80.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 80.
 
 [2
 
@@ -1531,7 +1524,7 @@ Class scrbook Warning: \float@addtolists detected!
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 6.
-<fig/Hierachie_Reshuffled.pdf, id=21, 739.26187pt x 401.70827pt>
+<fig/Hierachie_Reshuffled.pdf, id=47, 739.26187pt x 401.70827pt>
 File: fig/Hierachie_Reshuffled.pdf Graphic file (type pdf)
 <use fig/Hierachie_Reshuffled.pdf>
 Package pdftex.def Info: fig/Hierachie_Reshuffled.pdf  used on input line 11.
@@ -1541,7 +1534,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-<fig/Reshuffled_Version_3_prinzip.pdf, id=22, 166.37157pt x 135.50626pt>
+<fig/Reshuffled_Version_3_prinzip.pdf, id=48, 166.37157pt x 135.50626pt>
 File: fig/Reshuffled_Version_3_prinzip.pdf Graphic file (type pdf)
 <use fig/Reshuffled_Version_3_prinzip.pdf>
 Package pdftex.def Info: fig/Reshuffled_Version_3_prinzip.pdf  used on input li
@@ -1566,78 +1559,108 @@ pdfTeX warning: pdflatex (file ./fig/Reshuffled_Version_3_prinzip.pdf): PDF inc
 lusion: multiple pdfs with page group included in a single page
 >]
 chapter 2.
-inhalt.tex:46: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
 
-inhalt.tex:46: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
 
+ []
+
+<fig/Reshuffled_Version_3_0_prinzip.pdf, id=63, 501.37312pt x 472.76625pt>
+File: fig/Reshuffled_Version_3_0_prinzip.pdf Graphic file (type pdf)
+<use fig/Reshuffled_Version_3_0_prinzip.pdf>
+Package pdftex.def Info: fig/Reshuffled_Version_3_0_prinzip.pdf  used on input 
+line 49.
+(pdftex.def)             Requested size: 234.16618pt x 220.80789pt.
+
+Underfull \hbox (badness 5274) in paragraph at lines 56--64
+\T1/ntxtlf/m/n/12 erfolgte über diverse Berechnungen die
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--64
+
+ []
+
+[4
+
+ <./fig/Reshuffled_Version_3_0_prinzip.pdf>]
+chapter 3.
+[5
+
+]
+chapter 4.
+
+Overfull \hbox (3.27756pt too wide) in paragraph at lines 82--85
+\T1/ntxtlf/m/n/12 Die Hardwarekomponenten setzten sich aus einem Raspberry Pi 3
+B+ und einem 7"LCD Touchscreen
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--85
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+[6
+
+]
+chapter 5.
+LaTeX Font Info:    Try loading font information for TS1+ntxtlf on input line 1
+15.
+(/home/alois/.miktex/texmfs/install/tex/latex/newtx/ts1ntxtlf.fd
+File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
-main.tex:80: Incomplete \iffalse; all text was ignored after line 46
-The file ended while I was skipping conditional text.
-This kind of error happens when you say `\if...' and forget
-the matching `\fi'. I've inserted a `\fi'; this might work.
+LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 115.
+ [7
 
-main.tex:82: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
+]
+chapter 6.
+) [8
 
-main.tex:82: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
 
-main.tex:82: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/main.aux
+(/home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation/out/inhalt.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ )
+(\end occurred inside a group at level 1)
 
-main.tex:82: Argument of \renew@command has an extra }
-I've run across a `}' that doesn't seem to match anything.
-For example, `\def\a#1{...}' and `\a}' would produce
-this error. If you simply proceed now, the `\par' that
-I've just inserted will cause me to report a runaway
-argument that might be the root of the problem. But if
-your `}' was spurious, just type `2' and it will go away.
-
-Runaway argument?
-main.tex:82: Paragraph ended before \renew@command was complete
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-main.tex:82: Use of \WF@wr doesn't match its definition
-If you say, e.g., `\def\a1{...}', then you must always
-put `1' after `\a', since control sequence names are
-made up of letters only. The macro here has not been
-followed by the required stuff, so I'm ignoring it.
-
-)
-! Incomplete \iffalse; all text was ignored after line 82
-The file ended while I was skipping conditional text.
-This kind of error happens when you say `\if...' and forget
-the matching `\fi'. I've inserted a `\fi'; this might work.
-
-! Emergency stop
-*** (job aborted, no legal \end found)
-
- 
+### semi simple group (level 1) entered at line 77 (\begingroup)
+### bottom level 
 Here is how much of TeX's memory you used:
- 27890 strings out of 494857
- 529439 string characters out of 3178173
- 742772 words of memory out of 3000000
- 31020 multiletter control sequences out of 15000+200000
- 52345 words of font info for 78 fonts, out of 3000000 for 9000
+ 27965 strings out of 494857
+ 530507 string characters out of 3178232
+ 743772 words of memory out of 3000000
+ 31069 multiletter control sequences out of 15000+200000
+ 53818 words of font info for 80 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 64i,20n,100p,9085b,632s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 64i,19n,100p,9085b,638s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/home/alois/.miktex/texmfs/install/fonts/enc/dvips/tex-gyre/q-
+ts1.enc}{/home/alois/.miktex/texmfs/install/fonts/enc/dvips/newtx/ntx-ec-tlf.en
+c}{/home/alois/.miktex/texmfs/install/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}{/
+home/alois/.miktex/texmfs/install/fonts/enc/dvips/base/8r.enc}</home/alois/.mik
+tex/texmfs/install/fonts/type1/public/newtx/ntxtmri.pfb></home/alois/.miktex/te
+xmfs/install/fonts/type1/public/tex-gyre/qtmb.pfb></home/alois/.miktex/texmfs/i
+nstall/fonts/type1/public/tex-gyre/qtmr.pfb></home/alois/.miktex/texmfs/install
+/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on /home/alois/Schreibtisch/Drive/RSmaster/overviewDocumentation
+/out/main.pdf (8 pages, 880835 bytes).
+PDF statistics:
+ 160 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+

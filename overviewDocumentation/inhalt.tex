@@ -41,15 +41,18 @@ Der Benutzer steuert diese Maschiene auf einer GUI welche auf einem 7" LCD Displ
 \section{Beschreibung}
 
 Der mechanische Teil begann mit dem Variantenvergleich, dabei wurden verschiedene Varianten der Maschine basierent auf deren Kosten, deren Schnelligkeit und deren Realisierbarkeit verglichen.
-Auch muss daruf geachtet werden, dass die benötigten Bauteile weitestgehend in der Schule oder Privat gefertigt werden können.
-\begin{wrapfigure}[H]
-    \vspace{-30pt}
-    \includegraphics[width=0.80\textwidth]{fig/Reshuffled_Version_3_0_prinzip.pdf}
+Auch muss daruf geachtet werden, dass die benötigten Bauteile weitestgehend in der Schule oder Privat gefertigt werden können.\\
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \vspace{-50pt}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{fig/Reshuffled_Version_3_0_prinzip}
+    \end{center}
     \caption{Variantenvergleich Version 3}
     \label{Variantenvergleich}
+    \vspace{-15pt}
 \end{wrapfigure}
 
-\\\\
 Danach wurde der Motor ausgewählt, dies erfolgte über diverse Berechnungen die die einwirkenden Kräfte auf das Lagerrad sowie dei benötigten Beschleunigungskräfte berücksichtigten.
 Wurde dies erledigt, wird der Hubmagnet ausgewählt. Dabei wurde auf die Bauform, auf die Art des Aufbaus und den Preis geachtet.
 \\\\
@@ -85,9 +88,6 @@ Dieser steuert den gesamten Ablauf der Maschiene. \\
 
 Der Datenaustausch zwischen Hauptplatine und Raspberry PI erfolgt über die serielle Schnittstelle namens UART.
 Im Hintergrund wird gleichzeitig eine Json Logdatei
-{\itshape (Universal Asynchronous Receiver Transmitter)}
-
-{\itshape (Java Simple Serial Connector)}  verwendet.
 %============================================
 \chapter{Projektplanung}
 \lohead{ReShuffled Projektplanung}
