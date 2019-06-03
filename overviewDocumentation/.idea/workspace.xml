@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="120086c5-0f9e-4f6a-8058-2c2de7af7433" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inhalt.tex" beforeDir="false" afterPath="$PROJECT_DIR$/inhalt.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/out/main.synctex.gz" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inhalt.tex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="267">
+              <caret line="55" column="45" lean-forward="true" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -89,10 +92,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="993" />
-    <option name="y" value="27" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
     <option name="width" value="927" />
-    <option name="height" value="1053" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -109,6 +112,11 @@
               <item name="overviewDocumentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="overviewDocumentation" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="overviewDocumentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="overviewDocumentation" type="462c0819:PsiDirectoryNode" />
+              <item name="fig" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -122,7 +130,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mainDocumentation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -202,11 +210,12 @@
       <workItem from="1559547869124" duration="841000" />
       <workItem from="1559559041112" duration="1583000" />
       <workItem from="1559564184126" duration="47000" />
+      <workItem from="1559571766637" duration="2142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42562000" />
+    <option name="totallyTimeSpent" value="44704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -218,9 +227,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="993" y="27" width="927" height="1053" extended-state="4" />
+    <frame x="67" y="25" width="927" height="1055" extended-state="4" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3552781" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15209989" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -230,14 +240,14 @@
       <window_info id="Learn" order="7" weight="0.32977587" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4994664" weight="0.32984293" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49602723" weight="0.17025863" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49489218" visible="true" weight="0.16954644" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.32984293" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50397277" side_tool="true" visible="true" weight="0.17025863" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5051078" side_tool="true" visible="true" weight="0.16954644" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.4994664" weight="0.32984293" />
@@ -329,8 +339,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inhalt.tex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="267">
+          <caret line="55" column="45" lean-forward="true" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
         </state>
       </provider>
     </entry>
