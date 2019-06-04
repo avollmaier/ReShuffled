@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000) (preloaded format=pdflatex 2019.5.21)  3 JUN 2019 17:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000) (preloaded format=pdflatex 2019.5.21)  4 JUN 2019 07:36
 entering extended mode
 **./main.tex
 (main.tex
@@ -1644,7 +1644,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  27965 strings out of 494857
  530507 string characters out of 3178232
- 743772 words of memory out of 3000000
+ 743771 words of memory out of 3000000
  31069 multiletter control sequences out of 15000+200000
  53818 words of font info for 80 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
