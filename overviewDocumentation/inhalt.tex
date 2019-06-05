@@ -40,8 +40,8 @@ Der Benutzer steuert diese Maschiene auf einer GUI welche auf einem 7" LCD Displ
 \label{sec:Mechanik}
 \section{Beschreibung}
 
-Der mechanische Teil begann mit dem Variantenvergleich, dabei wurden verschiedene Varianten der Maschine basierent auf deren Kosten, deren Schnelligkeit und deren Realisierbarkeit verglichen.
-Auch muss daruf geachtet werden, dass die benötigten Bauteile weitestgehend in der Schule oder Privat gefertigt werden können.\\
+Der mechanische Teil begann mit dem Variantenvergleich. Dabei wurden verschiedene Varianten der Maschine basierend auf deren Kosten, deren Schnelligkeit und deren Realisierbarkeit verglichen.
+Hier muss zusätzlich darauf geachtet werden, dass die benötigten Bauteile weitestgehend in der Lehranstalt oder privat gefertigt werden können.\\
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \vspace{-50pt}
@@ -53,14 +53,14 @@ Auch muss daruf geachtet werden, dass die benötigten Bauteile weitestgehend in 
     \vspace{-15pt}
 \end{wrapfigure}
 
-Danach wurde der Motor ausgewählt, dies erfolgte über diverse Berechnungen die die einwirkenden Kräfte auf das Lagerrad sowie dei benötigten Beschleunigungskräfte berücksichtigten.
-Wurde dies erledigt, wird der Hubmagnet ausgewählt. Dabei wurde auf die Bauform, auf die Art des Aufbaus und den Preis geachtet.
+Danach wurde der Motor ausgewählt. Dies erfolgte über diverse Berechnungen, welche die einwirkenden Kräfte auf das Lagerrad sowie dei benötigten Beschleunigungskräfte berücksichtigten.
+Als solches erledigt wurde, ist der Hubmagnet ausgewählt worden. Dabei wurde auf die Bauform, auf die Art des Aufbaus und den Preis geachtet.
 \\\\
-Die CAD-Zeichnungen des Lagerrads sollten vor den Ferien fertiggestellt werden und für die Werstatt freigegeben werden, sodass diese noch vor den Ferien für Testdurchläufe des Motors zur Verfügung stehen.
-Auch die 3D-Druck Teile sollten vor den Ferien gedruckt sein.
+Die CAD-Zeichnungen des Lagerrads sollten vor den Ferien fertiggestellt werden und für die Werkstatt freigegeben werden, sodass diese noch vor den Ferien für Testdurchläufe des Motors zur Verfügung stehen.
+Die 3D-Druck Teile sollten vor den Ferien ebenfalls fertig gedruckt sein.
 \\\\
-Der größte Teil der Arbeit besteht in der Konstruktion der gestamten Maschine, da die Teile hauptsächlich gedruckt werden, muss darauf geachtet werden, dass alle Teile so konstruiert werden das dies ohne Probleme funktioniert.
-Für die CAD-Konstruktion wird das bereits in der Schule gelernte Programm Inventor benutzt, auch alle im nachhinein benötigten Belastungsanalysen sowie Simulationen werden mit diesem Programm erledigt.
+Der größte Teil der Arbeit besteht in der Konstruktion der gesamten Maschine, da die Teile hauptsächlich 3D-gedruckt werden, muss darauf geachtet werden, dass alle Teile so konstruiert werden, dass dies ohne Probleme funktioniert.
+Für die CAD-Konstruktion wird das bereits in der Schule gelernte Programm Inventor benutzt. Alle im Nachhinein benötigten Belastungsanalysen sowie Simulationen werden mit diesem Programm erledigt.
 
 
 %============================================
@@ -69,7 +69,16 @@ Für die CAD-Konstruktion wird das bereits in der Schule gelernte Programm Inven
 \label{sec:Elektronik}
 \section{Beschreibung}
 
-TODO
+Der elektrische Teil dieser Diplomarbeit umfasst das Designen eines Schaltplans einer Platine, das darauffolgende Layouten sowie dem Bestücken der Platine. Darauf folgen Tests und Verbesserungen.\\
+
+Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe 3 kapazitive Sensoren einzulesen, 2 Hubmagneten anzusteuern und eine Schrittmotorsteuerung anzusteuern.
+Zusätzlich soll der Mikroprozessor im Stande dazu sein, Befehle vom Raspberry Pi 3B+ über UART zu erhalten. Debugging über eine zweite UART - Schnitte via Mini USB soll ebenfalls möglich sein. \\
+
+Ein weiterer großer Teil der Elektronik besteht aus der Spannungsversorgung. Über eine Steuerspannung von 12V, welche wir über ein Notebook-Netzteil bekommen, ist die gesamte Hardware zu versorgen.
+Die 12V Steuerspannung dient zur Versorgung vom Schrittmotor, von den 3 kapazitiven Sensoren und von den 2 Hubmagneten. Über einen DC/DC Wandler sollen 5V erzeugt und mit diesen der Raspberry Pi versorgt werden.
+Über den 3.3V Ausgang des RPI wird folgend der Atmega324P versorgt.
+
+
 
 
 
@@ -79,14 +88,14 @@ TODO
 \label{sec:Informatik}
 \section{Beschreibung}
 
-Den Informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Einerseits soll eine einfache grafische Benutzeroberfläche gestaltet werden, auf welcher man den Mischvorgang steuern sowie grundlegende Einstellungen des Spieles vornehmen kann.
+Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll eine einfache grafische Benutzeroberfläche gestaltet werden, auf welcher man den Mischvorgang steuern sowie grundlegende Einstellungen des Spieles vornehmen kann.
 Aus programmtechnischen Gründen wird hierfür die Programmiersprache Java und das GUI-Toolkit Swing verwendet. \\
-Die Hardwarekomponenten setzten sich aus einem Raspberry Pi 3B+ und einem 7" LCD Touchscreen der Firma Elecrow zusammen. \\
+Die Hardwarekomponenten setzen sich aus einem Raspberry Pi 3B+ und einem 7" LCD Touchscreen der Firma Elecrow zusammen. \\
 
-Andererseits besteht dieser Teilbereich der Arbeit auch aus der hardwarenahen Programmierung der Hauptplatine. Mithilfe der Programmiersprache C sollte der verbaute 8Bit Mikrocontroller der AVR-Familie namens ATmega 324P programmiert werden.
+Zusätzlich besteht dieser Teilbereich der Arbeit auch aus der hardwarenahen Programmierung der Hauptplatine. Mithilfe der Programmiersprache C sollte der verbaute 8-Bit Mikrocontroller der AVR-Familie namens ATmega324P programmiert werden.
 Dieser steuert den gesamten Ablauf der Maschiene. \\
 
-Der Datenaustausch zwischen Hauptplatine und Raspberry PI erfolgt über die serielle Schnittstelle namens UART.
+Der Datenaustausch zwischen der Hauptplatine und dem Raspberry PI erfolgt über die serielle Schnittstelle namens UART.
 Im Hintergrund wird gleichzeitig eine Json Logdatei
 %============================================
 \chapter{Projektplanung}
