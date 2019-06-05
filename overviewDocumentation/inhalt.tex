@@ -32,7 +32,7 @@ Grundsätzlich basiert das Mischprinzip auf einer Art "Fächersystem".
 Eingelegte Karten gelangen mithilfe eines ausgeklügelten Systems, welches aus einem Hubmagneten mit integriertem Saugnapf besteht, aus dem Einlegefach.
 Erfolgt die Kartenentnahme, rutscht die Karte in ein zufälliges Fach des Lagerrads. Anschließend wird dieses Lagerrad in Drehbewegung versetzt um die gelagerten Karten auszugeben.
 
-Der Benutzer steuert diese Maschiene auf einer GUI welche auf einem 7" LCD Display angezeigt wird. Systemintern steuert ein 8Bit Mikrocontroller der AVR-Familie den Ablauf.
+Der Benutzer steuert diese Maschiene mithilfe einer GUI welche auf einem 7" LCD Display angezeigt wird. Systemintern steuert ein 8-Bit Mikrocontroller der AVR-Familie den Ablauf.
 
 %============================================
 \chapter{Mechanik}
@@ -50,7 +50,7 @@ Hier muss zusätzlich darauf geachtet werden, dass die benötigten Bauteile weit
     \end{center}
     \caption{Variantenvergleich Version 3}
     \label{Variantenvergleich}
-    \vspace{-15pt}
+    \vspace{0pt}
 \end{wrapfigure}
 
 Danach wurde der Motor ausgewählt. Dies erfolgte über diverse Berechnungen, welche die einwirkenden Kräfte auf das Lagerrad sowie dei benötigten Beschleunigungskräfte berücksichtigten.
@@ -77,9 +77,6 @@ Zusätzlich soll der Mikroprozessor im Stande dazu sein, Befehle vom Raspberry P
 Ein weiterer großer Teil der Elektronik besteht aus der Spannungsversorgung. Über eine Steuerspannung von 12V, welche wir über ein Notebook-Netzteil bekommen, ist die gesamte Hardware zu versorgen.
 Die 12V Steuerspannung dient zur Versorgung vom Schrittmotor, von den 3 kapazitiven Sensoren und von den 2 Hubmagneten. Über einen DC/DC Wandler sollen 5V erzeugt und mit diesen der Raspberry Pi versorgt werden.
 Über den 3.3V Ausgang des RPI wird folgend der Atmega324P versorgt.
-
-
-
 
 
 %============================================
@@ -119,31 +116,52 @@ Im Hintergrund wird gleichzeitig eine Json Logdatei
 
 \section{Aufgabenplanung bis September}
 
-Ziele des Herrn Hörmann:
+Ziele(Stefan Hörmann):
 \begin{itemize}
-    \item Standartmäßig ist ein schwarzer Punkt davor.
-    \item Die Länge ist nicht von Bedeutung, Zeilen werden automatisch umgebrochen.
+    \item Fertigstellen der CAD-Zeichnung.
+    \item Beginn der Fertigung der Maschine
 \end{itemize}
 
 \noindent\hrulefill
 
-Ziele des Herrn Pearl:
+Ziele(Nicolas Perl):
 \begin{itemize}
-    \item Standartmäßig ist ein schwarzer Punkt davor.
-    \item Die Länge ist nicht von Bedeutung, Zeilen werden automatisch umgebrochen.
+    \item Fertigstellen des Schaltplans und der Platine.
+    \item Beginn der Bestückung der Platine.
 \end{itemize}
 
 \noindent\hrulefill
 
-Ziele des Herrn Vollmaier:
+Ziele(Alois Vollmaier):
 \begin{itemize}
-    \item Standartmäßig ist ein schwarzer Punkt davor.
-    \item Die Länge ist nicht von Bedeutung, Zeilen werden automatisch umgebrochen.
+    \item Fertigstellung der GUI und des Datenkommunikationssystems.
+    \item Konzeptentwurf zur hardwarenahen Programmierung.
 \end{itemize}
 
 %============================================
-\chapter{Anhang}
+\begin{landscape}
+    \begin{figure}
+        \centering
+        \noindent\includegraphics[width=\linewidth,height=.9\textheight,keepaspectratio]{fig/Hardware-Ubersicht-05062019.pdf}
+        \caption[Beispielbild]{Hardware-Übersicht}
+        \label{Hardware-Übersicht}
+    \end{figure}
+\end{landscape}
 
+\begin{figure}[H]
+    \vspace{40pt}
+    \centering
+    \includegraphics[width=1\textwidth]{fig/Reshuffled_Version_3_0_prinzip}
+    \caption{Hardware-Übersicht}
+    \label{Mechanik}
+\end{figure}
 
-
+\begin{landscape}
+    \begin{figure}
+        \centering
+        \noindent\includegraphics[width=\linewidth,height=.9\textheight,keepaspectratio]{fig/SPOILER_Schnapsen_Spielubersicht.pdf}
+        \caption[Beispielbild]{Schnapsen_Spielubersicht}
+        \label{Schnapsen_Spielubersicht}
+    \end{figure}
+\end{landscape}
 
