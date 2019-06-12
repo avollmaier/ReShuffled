@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package RSClient.serial;
+
 
 /**
  *
  * @author alois
  */
-public class clientMain {
+public class Serial
+{
     
-    public static void main (String[] args) {
-        System.out.println("Hif3");
-    }
 }
