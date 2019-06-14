@@ -58,7 +58,7 @@ Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientier
 | AUTODEAL | `A<Anzahl der karten>` | setzt State "AutoDeal" (standartmäßig 4x5) | `:ERROR#CRC;` |
 | SHUTDOWN | `XX` | setzt State "Shutdown" | `:#CRC;` |
   
-## CommLog-Files
+# CommLog-Files
   Im Entwicklunsmodus die gesamte Kommunikation als .json-Datei in das Verzeichnis `/home/pi/RSLog/COMM` gespeichert.
   
   Diese Datei ist so zu lesen:  
