@@ -39,9 +39,9 @@ TODO
 Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientiert. Die Datenübertragung erfolgt textuell, die CRC32-Prüfsumme wird mit einer im Raspberry gespeicherte Tabelle realisiert und nur über die Daten berechnet. 
 
 ### Aufbau:
-| Doppelpunkt `:` | Daten (ASCII)| Trennzeichen `#` | CRC32-Prüfsumme | Semicolon `;` |
+| Doppelpunkt `:` | Daten (ASCII)| Trennzeichen `#` | CRC32-Prüfsumme | Semicolon `\n` |
 | --------------- | ------------------------------------------------ | ----------- | --------------- | ------------- |
-| 8-Bit | 16-Bit | 8-Bit | 32-Bit | 8-Bit
+| 8-Bit | 16-Bit | 8-Bit | 16-Bit | 8-Bit
 
 
 ### Requests (mit Response-Beispielen)

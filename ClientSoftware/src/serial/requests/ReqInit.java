@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RSClient.serial;
+package serial.requests;
 
 
 /**
  *
  * @author alois
  */
-public class Serial
+public class ReqInit
 {
+    
+    
+    
     
 }
