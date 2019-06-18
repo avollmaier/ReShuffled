@@ -15,11 +15,10 @@ Anwesenheit:
 
 ### Themen-Übersicht
 
--   **[1]** - Grundlagen
-    -   [1.1] -  _Erklärung des Programmcodes
+-   **[1]** - Erklärung des Programmcodes
 ## \[1\] Erklärung des Programmcodes
 
-### Modbus Request Handler
+### 1. Modbus Request Handler
  
 
  **Fehler Handling**
