@@ -1,6 +1,6 @@
 ﻿# Protokoll Nr. 8 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/HTL_Kaindorf_Logo.svg/300px-HTL_Kaindorf_Logo.svg.png)
 
-Übungsdatum: **11.05.2019**  
+Übungsdatum: **04.06.2019**  
 Name: Vollmaier Alois    
 KNr.: 14
 Klasse: 4AHME    
