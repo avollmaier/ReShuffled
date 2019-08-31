@@ -1,3 +1,4 @@
-[0;42mINFO    08:35:48.301:[0;49m start of programm with V0.1 [at main.Main.main(Main.java:35)]
-[0;42mINFO    08:35:48.934:[0;49m created config file [at main.Main.main(Main.java:40)]
-[0;42mINFO    08:35:48.973:[0;49m Start of GUI [at gui.ShuffleGUI.<init>(ShuffleGUI.java:28)]
+[0;42mINFO    12:45:16.446:[0;49m start of programm with V0.1 [at main.Main.main(Main.java:37)]
+[0;42mINFO    12:45:17.082:[0;49m started ReShuffledGUI successfully [at gui.ReShuffledGUI.main(ReShuffledGUI.java:42)]
+[0;42mINFO    12:45:17.083:[0;49m reading File at /home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/config/config.json [at config.ConfigService.deserializeService(ConfigService.java:29)]
+[0;42mINFO    12:45:17.083:[0;49m readed 12 lines successfully [at config.ConfigService.deserializeService(ConfigService.java:34)]

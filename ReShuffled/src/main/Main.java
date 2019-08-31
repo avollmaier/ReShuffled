@@ -1,9 +1,11 @@
 package main;
-
-import config.ConfigLoader;
-import logging.LogBackgroundHandler;
+//other imports
+//logger imports
+import config.ConfigService;
+        import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
+//exception imports
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -11,9 +13,8 @@ import java.io.FileOutputStream;
 
 public class Main
 {
-    public static String logPath="/home/alois/Schreibtisch/Drive/RSmaster/ReShuffled/log/reshuffled.log";   ///var/lib/reshuffled/reshuffled.log
+    public static String logPath="/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log";   ///var/lib/reshuffled/reshuffled.log
     public static String VERSION = "0.1";
-    ConfigLoader config;
     private static final Logger LOGP = Logger.getParentLogger();
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
     
@@ -28,6 +29,7 @@ public class Main
     
     public static void main (String[] args) throws FileNotFoundException
     {
+
         LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
         LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
         
@@ -35,12 +37,7 @@ public class Main
         LOG.info("start of programm with V%s", VERSION);
 
 
-        //gui.ShuffleGUI.main(args);
-
-        LOG.info("created config file");
-        
-        
-        
+        ConfigService.deserializeService();
     }
     
 }
