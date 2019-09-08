@@ -1,4 +1,4 @@
-[0;42mINFO    12:45:16.446:[0;49m start of programm with V0.1 [at main.Main.main(Main.java:37)]
-[0;42mINFO    12:45:17.082:[0;49m started ReShuffledGUI successfully [at gui.ReShuffledGUI.main(ReShuffledGUI.java:42)]
-[0;42mINFO    12:45:17.083:[0;49m reading File at /home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/config/config.json [at config.ConfigService.deserializeService(ConfigService.java:29)]
-[0;42mINFO    12:45:17.083:[0;49m readed 12 lines successfully [at config.ConfigService.deserializeService(ConfigService.java:34)]
+[0;42mINFO    10:57:00.317:[0;49m reading File at /home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/config/config.json [at config.ConfigService.deserializeService(ConfigService.java:30)]
+[0;42mINFO    10:57:00.318:[0;49m readed 15 lines successfully [at config.ConfigService.deserializeService(ConfigService.java:35)]
+[0;42mINFO    10:57:00.427:[0;49m start of programm with V0.1 [at main.Main.main(Main.java:48)]
+[0;42mINFO    10:57:01.089:[0;49m gui started successfully [at gui.ReshuffledGUI.main(ReshuffledGUI.java:34)]

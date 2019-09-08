@@ -2,68 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af7a9d05-4a00-4ecf-9001-0790bf4d9e28" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/config/Models/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/.dep.inc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/Makefile-Release.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/Makefile-impl.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/Makefile-variables.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/Package-Release.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/configurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/Makefile-variables.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/c_standard_headers_indexer.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/configurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/cpp_standard_headers_indexer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/launcher.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/private/private.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/nbproject/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/app.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/app.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/global.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/mon.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/mon.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/sys.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/BoardSoftware/src/sys.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BoardSoftware/docs/Ablaufplan.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/docs/Ablaufplan.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/manifest.mf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/build-impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/configs/pi.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/genfiles.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/remote-platform-impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/prj/nbproject/remote-platform-impl_backup.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/gui/ShuffleGUI.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/gui/ShuffleGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/ExtendedLogRecord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogBackgroundHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogOutputStreamHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogRecordData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogRecordDataFormattedText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogRecordDataHexDump.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/LogRecordDataString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/logging/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/serial/CRC32/CRC32.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientSoftware/src/serial/requests/ReqInit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReShuffled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReShuffled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/reshuffled.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/reshuffled.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/ConfigLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ShuffleGUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ShuffleGUI$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ShuffleGUI$GuiException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ShuffleGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReShuffled/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ConfigLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/ShuffleGUI.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/ShuffleGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/META-INF/ReShuffled.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReShuffled/META-INF/ReShuffled.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/ConfigService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/Models/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/Models/Gamemode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ReShuffledGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/ExtendedLogRecord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogBackgroundHandler$HandlerThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogBackgroundHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogOutputStreamHandler$LogOutputPrintStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogOutputStreamHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText$Terminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataHexDump.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataString.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/Logger$SpecialLevel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/serial/CRC32/CRC32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/serial/requests/ReqInit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/Models/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Models/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/Models/Gamemode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Models/Gamemode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logging/LogRecordDataHexDump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logging/LogRecordDataHexDump.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,8 +48,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaFXApplication" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -96,12 +64,6 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="27" />
-    <option name="width" value="927" />
-    <option name="height" value="1053" />
-  </component>
   <component name="ProjectId" id="1QBgRcMMOXNMv1qrVknf1u3vw2i" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -113,9 +75,10 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="408" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="529" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -124,13 +87,17 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/gui" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main" />
@@ -151,19 +118,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="ConfigService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="config.ConfigService" />
-      <module name="ReShuffled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="config.Models.Config" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="ReShuffled" />
@@ -190,11 +144,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReshuffledGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.ReshuffledGUI" />
+      <module name="ReShuffled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gui (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.gui" />
+      <module name="ReShuffled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sample.gui" />
+      <module name="ReShuffled" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.gui" />
+      <item itemvalue="Application.gui (1)" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ReShuffledGUI" />
+      <item itemvalue="Application.ReshuffledGUI" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.gui (1)" />
+        <item itemvalue="Application.gui" />
+        <item itemvalue="Application.ReshuffledGUI" />
         <item itemvalue="Application.ReShuffledGUI" />
-        <item itemvalue="Application.ConfigService" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +218,12 @@
       <workItem from="1563113048415" duration="773000" />
       <workItem from="1566812127246" duration="19548000" />
       <workItem from="1567249405248" duration="1956000" />
+      <workItem from="1567253801658" duration="3728000" />
+      <workItem from="1567260164926" duration="8948000" />
+      <workItem from="1567325252830" duration="348000" />
+      <workItem from="1567327535215" duration="2548000" />
+      <workItem from="1567959128687" duration="81000" />
+      <workItem from="1567959240134" duration="100000" />
     </task>
     <servers />
   </component>
@@ -227,7 +235,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -1,12 +1,15 @@
 {
   "version": "0.1",
+  "logPath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log",
+  "guiHeight": 600,
+  "guiWidth": 1024,
   "gamemodes": [
     {
       "id": 1,
-      "name": null,
+      "name": "hi",
       "autoDeal": false,
-      "autoDealValue": null,
-      "cardQuantity": ""
+      "autoDealValue": 1,
+      "cardQuantity": 1
     }
   ]
 }

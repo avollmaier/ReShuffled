@@ -1,7 +1,7 @@
 package main;
 //other imports
 //logger imports
-import ConfigService;
+import config.ConfigService;
 import config.Models.Config;
 import config.Models.Gamemode;
 import logging.LogBackgroundHandler;
@@ -46,7 +46,7 @@ public class Main
         VERSION=ConfigService.config.getVersion();
         LOGPATH=ConfigService.config.getLogPath();
         LOG.info("start of programm with V%s", VERSION);
-        gui.hi();
+
 
     }
     
