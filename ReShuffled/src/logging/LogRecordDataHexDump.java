@@ -162,7 +162,7 @@ public class LogRecordDataHexDump implements LogRecordData
       if ((i%4) ==0 ) out.append(' ');
       if ((start%16)>0 && i<start)
       {
-        out.append(" ..");
+        out.append("");
         ascii[i%16] = '.';
       }
       else
