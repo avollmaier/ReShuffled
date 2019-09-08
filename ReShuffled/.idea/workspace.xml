@@ -3,35 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="af7a9d05-4a00-4ecf-9001-0790bf4d9e28" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReShuffled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReShuffled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/reshuffled.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/reshuffled.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/META-INF/ReShuffled.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ReShuffled/META-INF/ReShuffled.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/ConfigService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/Models/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/config/Models/Gamemode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/ReShuffledGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/ExtendedLogRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogBackgroundHandler$HandlerThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogBackgroundHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogOutputStreamHandler$LogOutputPrintStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogOutputStreamHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText$Terminal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataFormattedText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataHexDump.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/LogRecordDataString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/Logger$SpecialLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/logging/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/serial/CRC32/CRC32.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/serial/requests/ReqInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ConfigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/Models/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Models/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/Models/Gamemode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Models/Gamemode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logging/LogRecordDataHexDump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logging/LogRecordDataHexDump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/META-INF/ReShuffled.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/gui/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ReShuffled/sample.fxml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +66,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="529" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -87,7 +75,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -117,25 +105,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="ReshuffledGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="ReShuffled" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReShuffledGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.ReShuffledGUI" />
-      <module name="ReShuffled" />
-      <extension name="coverage">
-        <pattern>
           <option name="PATTERN" value="gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
@@ -144,59 +121,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReshuffledGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.ReshuffledGUI" />
-      <module name="ReShuffled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gui (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gui.gui" />
-      <module name="ReShuffled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="gui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.gui" />
-      <module name="ReShuffled" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.gui" />
-      <item itemvalue="Application.gui (1)" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.ReShuffledGUI" />
-      <item itemvalue="Application.ReshuffledGUI" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.gui (1)" />
-        <item itemvalue="Application.gui" />
         <item itemvalue="Application.ReshuffledGUI" />
-        <item itemvalue="Application.ReShuffledGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -224,6 +151,9 @@
       <workItem from="1567327535215" duration="2548000" />
       <workItem from="1567959128687" duration="81000" />
       <workItem from="1567959240134" duration="100000" />
+      <workItem from="1567960477557" duration="860000" />
+      <workItem from="1567961355945" duration="2425000" />
+      <workItem from="1567965264455" duration="3000" />
     </task>
     <servers />
   </component>
