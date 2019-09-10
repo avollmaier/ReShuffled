@@ -3,7 +3,6 @@ package logging;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-
 /**
  * ExtendedLogRecord objects are used to pass logging requests between
  * the logging framework and individual log Handlers.<br>
