@@ -57,5 +57,6 @@ public class ConfigService
         {
             LOG.severe("error while writing config file");
         }
+        LOG.info("serialized new config successfully");
     }
 }

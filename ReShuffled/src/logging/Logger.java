@@ -96,13 +96,13 @@ import java.util.logging.LogRecord;
  * </pre></blockquote>
  * <p>
  * Instead of level names (SEVERITY, WARNING, ...) numbers can be used and will be automatically translated to
- * the matching predefined level or a new instance of the class {@link java.util.logging.Level}.</p>
+ * the matching predefined level or a new instance of the class {@link Level}.</p>
  * <p>
  * The log level can also be dynamically changed by calls on the
- * {@link #setLevel(Level)} method. The {@link java.util.logging.Level} class supports
- * a number of predefined Levels ({@link java.util.logging.Level#SEVERE}, {@link java.util.logging.Level#WARNING}, ... ,
- * {@link java.util.logging.Level#FINEST}). 
- * These predefined values could be enlarged by extending the class {@link java.util.logging.Level}.</p>
+ * {@link #setLevel(Level)} method. The {@link Level} class supports
+ * a number of predefined Levels ({@link Level#SEVERE}, {@link Level#WARNING}, ... ,
+ * {@link Level#FINEST}).
+ * These predefined values could be enlarged by extending the class {@link Level}.</p>
  * <p>
  * <br>
  * <h3>Logging methods</h3>
@@ -186,7 +186,7 @@ import java.util.logging.LogRecord;
  * <p>
  * If the {@code showLocation} attribute of the Logger object is {@code true}, the call location
  * is automatically stored in the LogRecord object by using the {@link logging.ExtendedLogRecord} class instead of
- * the normal {@link java.util.logging.LogRecord} class. In this case the location is printed out by the Handler.<br>
+ * the normal {@link LogRecord} class. In this case the location is printed out by the Handler.<br>
  * This feature is very useful inside the IDE, because locations are shown as hyperlink and can be selected easily.<br>
  * The {@code showLocation} attribute is true by default, but can be dynamically changed by calls on the
  * {@link #setShowLocation(boolean)} method.</p>
@@ -1936,7 +1936,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Log empty record with {@link java.util.logging.Level#ALL}
+   * Log empty record with {@link Level#ALL}
    */
   public void all ()
   {
@@ -1944,7 +1944,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#ALL}.
+   * Log message string with {@link Level#ALL}.
    * @param msg the message string
    */
   public void all (String msg)
@@ -1953,7 +1953,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#ALL}.
+   * Log message string with {@link Level#ALL}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -1966,7 +1966,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#ALL}.
+   * Log a Throwable object with {@link Level#ALL}.
    * @param th the Throwable object
    */
   public void all (Throwable th)
@@ -1975,7 +1975,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#ALL}.
+   * Log a Throwable object and message string with {@link Level#ALL}.
    * @param th the Throwable object
    * @param msg the message string
    */  
@@ -1985,7 +1985,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#ALL}.
+   * Log a Throwable object and message string with {@link Level#ALL}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -1999,7 +1999,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#ALL}
+   * Log LogRecordData with {@link Level#ALL}
    * @param data the LogRecordData object
    */
   public void all (LogRecordData data)
@@ -2008,7 +2008,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log LogRecordData and message string with {@link Level#ALL}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -2018,7 +2018,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log LogRecordData and message string with {@link Level#ALL}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2032,7 +2032,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#ALL}
+   * Log byte array with {@link Level#ALL}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void all (byte [] data)
@@ -2041,7 +2041,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#ALL}
+   * Log byte array and message string with {@link Level#ALL}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -2051,7 +2051,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#ALL}
+   * Log byte array and message string with {@link Level#ALL}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2064,7 +2064,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#ALL}
+   * Log Throwable and LogRecordData object  with {@link Level#ALL}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -2074,7 +2074,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log Throwable, LogRecordData and message string with {@link Level#ALL}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -2085,7 +2085,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log Throwable, LogRecordData and message string with {@link Level#ALL}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2099,7 +2099,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth and {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void all (int stackTraceDepth)
@@ -2108,7 +2108,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -2118,7 +2118,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2131,7 +2131,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth and Throwable with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */  
@@ -2141,7 +2141,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -2152,7 +2152,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2166,7 +2166,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -2176,7 +2176,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -2187,7 +2187,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2201,7 +2201,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2212,7 +2212,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2224,7 +2224,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#ALL}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#ALL}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2241,7 +2241,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#FINEST} 
+   * Check if a message with {@link Level#FINEST}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -2253,7 +2253,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#FINEST}
+   * Log empty record with {@link Level#FINEST}
    */
   public void finest ()
   {
@@ -2261,7 +2261,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINEST}.
+   * Log message string with {@link Level#FINEST}.
    * @param msg the message string
    */
   public void finest (String msg)
@@ -2270,7 +2270,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINEST}.
+   * Log message string with {@link Level#FINEST}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2283,7 +2283,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#FINEST}.
+   * Log a Throwable object with {@link Level#FINEST}.
    * @param th the Throwable object
    */
   public void finest (Throwable th)
@@ -2292,7 +2292,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINEST}.
+   * Log a Throwable object and message string with {@link Level#FINEST}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -2302,7 +2302,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINEST}.
+   * Log a Throwable object and message string with {@link Level#FINEST}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2316,7 +2316,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#FINEST}
+   * Log LogRecordData with {@link Level#FINEST}
    * @param data the LogRecordData object
    */
   public void finest (LogRecordData data)
@@ -2325,7 +2325,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log LogRecordData and message string with {@link Level#FINEST}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -2335,7 +2335,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log LogRecordData and message string with {@link Level#FINEST}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2349,7 +2349,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#FINEST}
+   * Log byte array with {@link Level#FINEST}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void finest (byte [] data)
@@ -2358,7 +2358,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINEST}
+   * Log byte array and message string with {@link Level#FINEST}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -2368,7 +2368,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINEST}
+   * Log byte array and message string with {@link Level#FINEST}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2382,7 +2382,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#FINEST}
+   * Log Throwable and LogRecordData object  with {@link Level#FINEST}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -2392,7 +2392,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINEST}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -2403,7 +2403,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINEST}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2417,7 +2417,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth and {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */  
   public void finest (int stackTraceDepth)
@@ -2426,7 +2426,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -2436,7 +2436,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2449,7 +2449,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth and Throwable with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */  
@@ -2459,7 +2459,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -2470,7 +2470,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2484,7 +2484,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -2494,7 +2494,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -2505,7 +2505,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2519,7 +2519,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2530,7 +2530,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2542,7 +2542,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINEST}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINEST}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2559,7 +2559,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#FINER} 
+   * Check if a message with {@link Level#FINER}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -2571,7 +2571,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#FINER}
+   * Log empty record with {@link Level#FINER}
    */
   public void finer ()
   {
@@ -2579,7 +2579,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINER}.
+   * Log message string with {@link Level#FINER}.
    * @param msg the message string
    */
   public void finer (String msg)
@@ -2588,7 +2588,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINER}.
+   * Log message string with {@link Level#FINER}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2601,7 +2601,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#FINER}.
+   * Log a Throwable object with {@link Level#FINER}.
    * @param th the Throwable object
    */  
   public void finer (Throwable th)
@@ -2610,7 +2610,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINER}.
+   * Log a Throwable object and message string with {@link Level#FINER}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -2620,7 +2620,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINER}.
+   * Log a Throwable object and message string with {@link Level#FINER}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2634,7 +2634,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#FINER}
+   * Log LogRecordData with {@link Level#FINER}
    * @param data the LogRecordData object
    */
   public void finer (LogRecordData data)
@@ -2643,7 +2643,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log LogRecordData and message string with {@link Level#FINER}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -2653,7 +2653,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log LogRecordData and message string with {@link Level#FINER}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2667,7 +2667,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#FINER}
+   * Log byte array with {@link Level#FINER}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void finer (byte [] data)
@@ -2676,7 +2676,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINER}
+   * Log byte array and message string with {@link Level#FINER}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -2686,7 +2686,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINER}
+   * Log byte array and message string with {@link Level#FINER}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2700,7 +2700,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#FINER}
+   * Log Throwable and LogRecordData object  with {@link Level#FINER}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -2710,7 +2710,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINER}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -2721,7 +2721,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINER}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2735,7 +2735,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth and {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void finer (int stackTraceDepth)
@@ -2744,7 +2744,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -2754,7 +2754,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2767,7 +2767,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth and Throwable with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -2777,7 +2777,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -2788,7 +2788,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2802,7 +2802,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -2812,7 +2812,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -2823,7 +2823,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -2837,7 +2837,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2848,7 +2848,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2860,7 +2860,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINER}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINER}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -2877,7 +2877,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#FINE} 
+   * Check if a message with {@link Level#FINE}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -2889,7 +2889,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#FINE}
+   * Log empty record with {@link Level#FINE}
    */
   public void fine ()
   {
@@ -2897,7 +2897,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINE}.
+   * Log message string with {@link Level#FINE}.
    * @param msg the message string
    */
   public void fine (String msg)
@@ -2906,7 +2906,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#FINE}.
+   * Log message string with {@link Level#FINE}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -2919,7 +2919,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#FINE}.
+   * Log a Throwable object with {@link Level#FINE}.
    * @param th the Throwable object
    */
   public void fine (Throwable th)
@@ -2928,7 +2928,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINE}.
+   * Log a Throwable object and message string with {@link Level#FINE}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -2938,7 +2938,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#FINE}.
+   * Log a Throwable object and message string with {@link Level#FINE}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2952,7 +2952,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#FINE}
+   * Log LogRecordData with {@link Level#FINE}
    * @param data the LogRecordData object
    */
   public void fine (LogRecordData data)
@@ -2961,7 +2961,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log LogRecordData and message string with {@link Level#FINE}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -2971,7 +2971,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log LogRecordData and message string with {@link Level#FINE}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -2985,7 +2985,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#FINE}
+   * Log byte array with {@link Level#FINE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void fine (byte [] data)
@@ -2994,7 +2994,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINE}
+   * Log byte array and message string with {@link Level#FINE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -3004,7 +3004,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#FINE}
+   * Log byte array and message string with {@link Level#FINE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3018,7 +3018,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#FINE}
+   * Log Throwable and LogRecordData object  with {@link Level#FINE}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -3028,7 +3028,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINE}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -3039,7 +3039,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log Throwable, LogRecordData and message string with {@link Level#FINE}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3053,7 +3053,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth and {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void fine (int stackTraceDepth)
@@ -3062,7 +3062,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -3072,7 +3072,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3085,7 +3085,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth and Throwable with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -3095,7 +3095,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -3106,7 +3106,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3120,7 +3120,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -3130,7 +3130,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -3141,7 +3141,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3155,7 +3155,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3166,7 +3166,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3178,7 +3178,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#FINE}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#FINE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3195,7 +3195,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#CONFIG} 
+   * Check if a message with {@link Level#CONFIG}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -3207,7 +3207,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#CONFIG}
+   * Log empty record with {@link Level#CONFIG}
    */
   public void config ()
   {
@@ -3215,7 +3215,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#CONFIG}.
+   * Log message string with {@link Level#CONFIG}.
    * @param msg the message string
    */
   public void config (String msg)
@@ -3224,7 +3224,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#CONFIG}.
+   * Log message string with {@link Level#CONFIG}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3237,7 +3237,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#CONFIG}.
+   * Log a Throwable object with {@link Level#CONFIG}.
    * @param th the Throwable object
    */
   public void config (Throwable th)
@@ -3246,7 +3246,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#CONFIG}.
+   * Log a Throwable object and message string with {@link Level#CONFIG}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -3256,7 +3256,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#CONFIG}.
+   * Log a Throwable object and message string with {@link Level#CONFIG}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3270,7 +3270,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#CONFIG}
+   * Log LogRecordData with {@link Level#CONFIG}
    * @param data the LogRecordData object
    */
   public void config (LogRecordData data)
@@ -3279,7 +3279,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log LogRecordData and message string with {@link Level#CONFIG}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -3289,7 +3289,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log LogRecordData and message string with {@link Level#CONFIG}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3303,7 +3303,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#CONFIG}
+   * Log byte array with {@link Level#CONFIG}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void config (byte [] data)
@@ -3312,7 +3312,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#CONFIG}
+   * Log byte array and message string with {@link Level#CONFIG}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -3322,7 +3322,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#CONFIG}
+   * Log byte array and message string with {@link Level#CONFIG}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3336,7 +3336,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#CONFIG}
+   * Log Throwable and LogRecordData object  with {@link Level#CONFIG}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -3346,7 +3346,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log Throwable, LogRecordData and message string with {@link Level#CONFIG}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -3357,7 +3357,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log Throwable, LogRecordData and message string with {@link Level#CONFIG}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3371,7 +3371,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth and {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void config (int stackTraceDepth)
@@ -3380,7 +3380,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -3390,7 +3390,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3403,7 +3403,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth and Throwable with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -3413,7 +3413,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -3424,7 +3424,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3438,7 +3438,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -3448,7 +3448,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -3459,7 +3459,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3473,7 +3473,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3484,7 +3484,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3496,7 +3496,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#CONFIG}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#CONFIG}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3513,7 +3513,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#INFO} 
+   * Check if a message with {@link Level#INFO}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -3525,7 +3525,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#INFO}
+   * Log empty record with {@link Level#INFO}
    */
   public void info ()
   {
@@ -3533,7 +3533,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#INFO}.
+   * Log message string with {@link Level#INFO}.
    * @param msg the message string
    */
   public void info (String msg)
@@ -3542,7 +3542,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#INFO}.
+   * Log message string with {@link Level#INFO}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3555,7 +3555,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#INFO}.
+   * Log a Throwable object with {@link Level#INFO}.
    * @param th the Throwable object
    */
   public void info (Throwable th)
@@ -3564,7 +3564,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#INFO}.
+   * Log a Throwable object and message string with {@link Level#INFO}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -3574,7 +3574,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#INFO}.
+   * Log a Throwable object and message string with {@link Level#INFO}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3588,7 +3588,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#INFO}
+   * Log LogRecordData with {@link Level#INFO}
    * @param data the LogRecordData object
    */
   public void info (LogRecordData data)
@@ -3597,7 +3597,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log LogRecordData and message string with {@link Level#INFO}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -3607,7 +3607,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log LogRecordData and message string with {@link Level#INFO}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3621,7 +3621,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#INFO}
+   * Log byte array with {@link Level#INFO}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */  
   public void info (byte [] data)
@@ -3630,7 +3630,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#INFO}
+   * Log byte array and message string with {@link Level#INFO}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -3640,7 +3640,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#INFO}
+   * Log byte array and message string with {@link Level#INFO}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3654,7 +3654,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#INFO}
+   * Log Throwable and LogRecordData object  with {@link Level#INFO}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -3664,7 +3664,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log Throwable, LogRecordData and message string with {@link Level#INFO}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -3675,7 +3675,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log Throwable, LogRecordData and message string with {@link Level#INFO}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3689,7 +3689,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth and {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void info (int stackTraceDepth)
@@ -3698,7 +3698,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -3708,7 +3708,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3721,7 +3721,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth and Throwable with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -3731,7 +3731,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -3742,7 +3742,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3756,7 +3756,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -3766,7 +3766,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -3777,7 +3777,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -3791,7 +3791,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3802,7 +3802,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3814,7 +3814,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#INFO}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#INFO}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -3831,7 +3831,7 @@ public class Logger
   // *************************************************************************
 
   /**
-   * Check if a message with {@link java.util.logging.Level#WARNING} 
+   * Check if a message with {@link Level#WARNING}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -3843,7 +3843,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#WARNING}
+   * Log empty record with {@link Level#WARNING}
    */
   public void warning ()
   {
@@ -3851,7 +3851,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#WARNING}.
+   * Log message string with {@link Level#WARNING}.
    * @param msg the message string
    */
   public void warning (String msg)
@@ -3860,7 +3860,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#WARNING}.
+   * Log message string with {@link Level#WARNING}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -3873,7 +3873,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#WARNING}.
+   * Log a Throwable object with {@link Level#WARNING}.
    * @param th the Throwable object
    */
   public void warning (Throwable th)
@@ -3882,7 +3882,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#WARNING}.
+   * Log a Throwable object and message string with {@link Level#WARNING}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -3892,7 +3892,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#WARNING}.
+   * Log a Throwable object and message string with {@link Level#WARNING}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3906,7 +3906,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#WARNING}
+   * Log LogRecordData with {@link Level#WARNING}
    * @param data the LogRecordData object
    */
   public void warning (LogRecordData data)
@@ -3915,7 +3915,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log LogRecordData and message string with {@link Level#WARNING}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -3925,7 +3925,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log LogRecordData and message string with {@link Level#WARNING}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3939,7 +3939,7 @@ public class Logger
   }
 
   /**
-   * Log byte array with {@link java.util.logging.Level#WARNING}
+   * Log byte array with {@link Level#WARNING}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void warning (byte [] data)
@@ -3948,7 +3948,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#WARNING}
+   * Log byte array and message string with {@link Level#WARNING}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -3958,7 +3958,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#WARNING}
+   * Log byte array and message string with {@link Level#WARNING}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -3972,7 +3972,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#WARNING}
+   * Log Throwable and LogRecordData object  with {@link Level#WARNING}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -3982,7 +3982,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log Throwable, LogRecordData and message string with {@link Level#WARNING}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -3993,7 +3993,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log Throwable, LogRecordData and message string with {@link Level#WARNING}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4007,7 +4007,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth and {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void warning (int stackTraceDepth)
@@ -4016,7 +4016,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -4026,7 +4026,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -4039,7 +4039,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth and Throwable with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -4049,7 +4049,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -4060,7 +4060,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4074,7 +4074,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */  
@@ -4084,7 +4084,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -4095,7 +4095,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4109,7 +4109,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4120,7 +4120,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4132,7 +4132,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#WARNING}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#WARNING}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4149,7 +4149,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * Check if a message with {@link java.util.logging.Level#SEVERE} 
+   * Check if a message with {@link Level#SEVERE}
    * would actually be logged by this logger.
    * This check is based on the Loggers effective level, which may
    * be inherited from its parent.
@@ -4161,7 +4161,7 @@ public class Logger
   }
   
   /**
-   * Log empty record with {@link java.util.logging.Level#SEVERE}
+   * Log empty record with {@link Level#SEVERE}
    */
   public void severe ()
   {
@@ -4169,7 +4169,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#SEVERE}.
+   * Log message string with {@link Level#SEVERE}.
    * @param msg the message string
    */
   public void severe (String msg)
@@ -4178,7 +4178,7 @@ public class Logger
   }
 
   /**
-   * Log message string with {@link java.util.logging.Level#SEVERE}.
+   * Log message string with {@link Level#SEVERE}.
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -4191,7 +4191,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object with {@link java.util.logging.Level#SEVERE}.
+   * Log a Throwable object with {@link Level#SEVERE}.
    * @param th the Throwable object
    */
   public void severe (Throwable th)
@@ -4200,7 +4200,7 @@ public class Logger
   }
   
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#SEVERE}.
+   * Log a Throwable object and message string with {@link Level#SEVERE}.
    * @param th the Throwable object
    * @param msg the message string
    */
@@ -4210,7 +4210,7 @@ public class Logger
   }
 
   /**
-   * Log a Throwable object and message string with {@link java.util.logging.Level#SEVERE}.
+   * Log a Throwable object and message string with {@link Level#SEVERE}.
    * @param th the Throwable object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -4224,7 +4224,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData with {@link java.util.logging.Level#SEVERE}
+   * Log LogRecordData with {@link Level#SEVERE}
    * @param data the LogRecordData object
    */
   public void severe (LogRecordData data)
@@ -4233,7 +4233,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log LogRecordData and message string with {@link Level#SEVERE}
    * @param data the LogRecordData object
    * @param msg the message string
    */
@@ -4243,7 +4243,7 @@ public class Logger
   }
 
   /**
-   * Log LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log LogRecordData and message string with {@link Level#SEVERE}
    * @param data the LogRecordData object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -4256,8 +4256,8 @@ public class Logger
     Logger.this.fireLogRecord(Level.SEVERE, data, msgFormat, args);
   }
 
-  /**  
-   * Log byte array with {@link java.util.logging.Level#SEVERE}
+  /**
+   * Log byte array with {@link Level#SEVERE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    */
   public void severe (byte [] data)
@@ -4266,7 +4266,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#SEVERE}
+   * Log byte array and message string with {@link Level#SEVERE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msg the message string
    */
@@ -4276,7 +4276,7 @@ public class Logger
   }
 
   /**
-   * Log byte array and message string with {@link java.util.logging.Level#SEVERE}
+   * Log byte array and message string with {@link Level#SEVERE}
    * @param data byte array which is transferred to an {@link logging.LogRecordDataHexDump} object
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * <!-- <a href="../util/Formatter.html#syntax">format string</a> not working -->
@@ -4290,7 +4290,7 @@ public class Logger
   }
   
   /**
-   * Log Throwable and LogRecordData object  with {@link java.util.logging.Level#ALL}
+   * Log Throwable and LogRecordData object  with {@link Level#ALL}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    */
@@ -4300,7 +4300,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log Throwable, LogRecordData and message string with {@link Level#SEVERE}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msg the message string  
@@ -4311,7 +4311,7 @@ public class Logger
   }
 
   /**
-   * Log Throwable, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log Throwable, LogRecordData and message string with {@link Level#SEVERE}
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4325,7 +4325,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth and {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    */
   public void severe (int stackTraceDepth)
@@ -4334,7 +4334,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msg the message string
    */
@@ -4344,7 +4344,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
    * @param args Arguments referenced by the format specifiers in the msgFormat string.
@@ -4357,7 +4357,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth and Throwable with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth and Throwable with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    */
@@ -4367,7 +4367,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msg the message string
@@ -4378,7 +4378,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, Throwable and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4392,7 +4392,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, and LogRecordData with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, and LogRecordData with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    */
@@ -4402,7 +4402,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msg the message string
@@ -4413,7 +4413,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, LogRecordData and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param data the LogRecordData associated with this
    * @param msgFormat The message format string for a {@link java.util.Formatter} object.
@@ -4427,7 +4427,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable and LogRecordData with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, Throwable and LogRecordData with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4438,7 +4438,7 @@ public class Logger
   }
   
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4450,7 +4450,7 @@ public class Logger
   }
 
   /**
-   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link java.util.logging.Level#SEVERE}
+   * Log call stack with limited depth, Throwable, LogRecordData and message string with {@link Level#SEVERE}
    * @param stackTraceDepth the depth of call stack trace which should be published
    * @param th the Throwable associated with this
    * @param data the LogRecordData associated with this
@@ -4467,7 +4467,7 @@ public class Logger
   // *************************************************************************
   
   /**
-   * This class extends {@link java.util.logging.Level} and is used for Level {@link #DEBUG}
+   * This class extends {@link Level} and is used for Level {@link #DEBUG}
    */
   public static class SpecialLevel extends Level
   {

@@ -13,7 +13,7 @@ import java.util.logging.LogRecord;
  * prints them to an output stream.<br>
  * This Handler supports {@link ExtendedLogRecord} objects. It marks debugging
  * records, prints location and call stack trace (if available),
- * {@link java.lang.Throwable} and {@link LogRecordData} objects if available.
+ * {@link Throwable} and {@link LogRecordData} objects if available.
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)
  */
 public class LogOutputStreamHandler extends Handler
@@ -202,7 +202,7 @@ public class LogOutputStreamHandler extends Handler
   /**
    * Close this handler.<br>
    * Also the underlying output stream is closed, except it is the
-   * {@link java.lang.System#out} or {@link java.lang.System#err} object.
+   * {@link System#out} or {@link System#err} object.
    * @throws SecurityException if a security manager exists and if
    *         the caller does not have <tt>LoggingPermission("control")</tt>.
    */

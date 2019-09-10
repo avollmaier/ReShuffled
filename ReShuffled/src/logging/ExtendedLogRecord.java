@@ -7,7 +7,7 @@ import java.util.logging.LogRecord;
 /**
  * ExtendedLogRecord objects are used to pass logging requests between
  * the logging framework and individual log Handlers.<br>
- * ExtendedLogRecord extends {@link java.util.logging.LogRecord} to
+ * ExtendedLogRecord extends {@link LogRecord} to
  * preserve location, additional data, desired stack trace depth and 
  * the information if this record is only used for debugging purposes
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)

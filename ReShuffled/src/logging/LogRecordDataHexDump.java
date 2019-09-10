@@ -58,7 +58,7 @@ public class LogRecordDataHexDump implements LogRecordData
    * Constructor which takes object reference of data array.<br>
    * Data array must not change in future!
    * If data could change, make a copy of the array<br>
-   * For example by using {@link java.util.Arrays#copyOfRange(boolean[], int, int) }
+   * For example by using {@link Arrays#copyOfRange(boolean[], int, int) }
    * @param data data array from which bytes are taken.
    */
   public LogRecordDataHexDump (byte[] data)
@@ -76,7 +76,7 @@ public class LogRecordDataHexDump implements LogRecordData
    * Constructor which takes only a part of the data array.<br>
    * Data array must not change in future!
    * If data could change, make a copy of the array<br>
-   * For example by using {@link java.util.Arrays#copyOfRange(boolean[], int, int) }
+   * For example by using {@link Arrays#copyOfRange(boolean[], int, int) }
    * @param data data array from which bytes are taken.
    * @param from index of first byte printed
    * @param to index of last byte printed
@@ -96,7 +96,7 @@ public class LogRecordDataHexDump implements LogRecordData
    * Constructor which takes only a part of the data array with preserving the start offset in output.<br>
    * Data array must not change in future!
    * If data could change, make a copy of the array<br>
-   * For example by using {@link java.util.Arrays#copyOfRange(boolean[], int, int) }
+   * For example by using {@link Arrays#copyOfRange(boolean[], int, int) }
    * @param data data array from which bytes are taken.
    * @param from index of first byte printed
    * @param to index of last byte printed

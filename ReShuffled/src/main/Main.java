@@ -1,9 +1,10 @@
 package main;
 //other imports
-//logger imports
 import config.ConfigService;
 import config.Models.Config;
 import config.Models.Gamemode;
+//logger imports
+import gui.Gui;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
@@ -40,13 +41,19 @@ public class Main
 
         List<Gamemode> gamemodes =new ArrayList<>();
         gamemodes.add(new Gamemode(1,"hi",false,1,1));
-        Config config =new Config("0.1","/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log",600,1024,gamemodes);
+        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
+        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
+        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
+        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
+        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
 
+        Config config = new Config("0.1.1", "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log", 600, 1024, gamemodes);
+//TODO Wenn keine config vorhanden FEHLER
         ConfigService.serializeService(config);
         VERSION=ConfigService.config.getVersion();
         LOGPATH=ConfigService.config.getLogPath();
         LOG.info("start of programm with V%s", VERSION);
-
+        Gui.main();
 
     }
     
