@@ -43,4 +43,24 @@ public class Config {
   public List<Gamemode> getGamemodes() {
     return gamemodes;
   }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  public void setLogPath(String logPath) {
+    this.logPath = logPath;
+  }
+
+  public void setGuiHeight(Integer guiHeight) {
+    this.guiHeight = guiHeight;
+  }
+
+  public void setGuiWidth(Integer guiWidth) {
+    this.guiWidth = guiWidth;
+  }
+
+  public void setGamemodes(List<Gamemode> gamemodes) {
+    this.gamemodes = gamemodes;
+  }
 }

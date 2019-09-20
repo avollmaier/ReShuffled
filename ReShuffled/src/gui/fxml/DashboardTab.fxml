@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="dashboardTab" prefHeight="550.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.DashboardTabController">
+    <children>
+        <JFXButton buttonType="RAISED" layoutX="676.0" layoutY="486.0" onMouseClicked="#test" prefHeight="50.0"
+                   prefWidth="84.0" ripplerFill="#323540" style="-fx-background-color: #FFFF;" text="OFF">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </JFXButton>
+    </children>
+</AnchorPane>

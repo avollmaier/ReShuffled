@@ -1,18 +1,17 @@
 package main;
 //other imports
+
 import config.ConfigService;
-import config.Models.Config;
-import config.Models.Gamemode;
-//logger imports
 import gui.Gui;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
-//exception imports
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
+
+//logger imports
+//exception imports
 
 
 public class Main
@@ -21,6 +20,7 @@ public class Main
     public static String VERSION = "0.1";
     private static final Logger LOGP = Logger.getParentLogger();
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
 
     static {
         System.setProperty("logging.LogOutputStreamHandler.showRecordHashcode", "false");
@@ -39,17 +39,7 @@ public class Main
 
         ConfigService.deserializeService();
 
-        List<Gamemode> gamemodes =new ArrayList<>();
-        gamemodes.add(new Gamemode(1,"hi",false,1,1));
-        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
-        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
-        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
-        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
-        gamemodes.add(new Gamemode(1, "hi", false, 1, 1));
-
-        Config config = new Config("0.1.1", "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log", 600, 1024, gamemodes);
-//TODO Wenn keine config vorhanden FEHLER
-        ConfigService.serializeService(config);
+        //ConfigService.serializeService(config);
         VERSION=ConfigService.config.getVersion();
         LOGPATH=ConfigService.config.getLogPath();
         LOG.info("start of programm with V%s", VERSION);

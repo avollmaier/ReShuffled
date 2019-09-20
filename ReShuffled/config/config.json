@@ -5,46 +5,32 @@
   "guiWidth": 1024,
   "gamemodes": [
     {
-      "id": 1,
-      "name": "hi",
+      "name": "Hallo",
       "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
+      "autoDealValue": 5,
+      "cardQuantity": 4,
+      "playerQuantity": 4
     },
     {
-      "id": 1,
-      "name": "hi",
-      "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
+      "name": "fdsa",
+      "autoDeal": true,
+      "autoDealValue": 4,
+      "cardQuantity": 4,
+      "playerQuantity": 5
     },
     {
-      "id": 1,
-      "name": "hi",
+      "name": "fdsa",
       "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
+      "autoDealValue": 0,
+      "cardQuantity": 3,
+      "playerQuantity": 0
     },
     {
-      "id": 1,
       "name": "hi",
-      "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
-    },
-    {
-      "id": 1,
-      "name": "hi",
-      "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
-    },
-    {
-      "id": 1,
-      "name": "hi",
-      "autoDeal": false,
-      "autoDealValue": 1,
-      "cardQuantity": 1
+      "autoDeal": true,
+      "autoDealValue": 4,
+      "cardQuantity": 6,
+      "playerQuantity": 6
     }
   ]
 }

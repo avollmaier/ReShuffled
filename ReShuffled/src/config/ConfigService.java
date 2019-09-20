@@ -1,16 +1,12 @@
 package config;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import config.Models.Config;
 import logging.Logger;
 
-import java.io.IOException;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ConfigService
 {
@@ -20,21 +16,20 @@ public class ConfigService
 
     public static void deserializeService()
     {
-
-        try (BufferedReader bufferedReader  = new BufferedReader(new FileReader(configPath)))
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configPath), StandardCharsets.UTF_8)))
         {
             int length=0;
-            StringBuffer stringBuffer =new StringBuffer();
+            StringBuilder stringBuilder = new StringBuilder();
             String line=null;
 
             LOG.info("reading File at %s", configPath);
             while ((line =bufferedReader.readLine()) != null){
-                stringBuffer.append(line);
+                stringBuilder.append(line);
                 length++;
             }
             LOG.info("readed %d lines successfully", length);
             Gson gson =new Gson();
-            config = gson.fromJson(stringBuffer.toString(),Config.class);
+            config = gson.fromJson(stringBuilder.toString(), Config.class);
         }
         catch(IOException ex)
         {
@@ -48,8 +43,7 @@ public class ConfigService
         Gson gson =new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         config=receivedConfig;
         String json = gson.toJson(receivedConfig);
-
-        try (FileWriter writer = new FileWriter(configPath);)
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(configPath), StandardCharsets.UTF_8)))
         {
             writer.write(json);
         }
@@ -59,4 +53,5 @@ public class ConfigService
         }
         LOG.info("serialized new config successfully");
     }
+
 }
