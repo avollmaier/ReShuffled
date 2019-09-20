@@ -13,17 +13,17 @@
     },
     {
       "name": "fdsa",
-      "autoDeal": true,
-      "autoDealValue": 4,
-      "cardQuantity": 4,
-      "playerQuantity": 5
+      "autoDeal": false,
+      "autoDealValue": null,
+      "cardQuantity": 3,
+      "playerQuantity": 3
     },
     {
       "name": "fdsa",
       "autoDeal": false,
-      "autoDealValue": 0,
+      "autoDealValue": null,
       "cardQuantity": 3,
-      "playerQuantity": 0
+      "playerQuantity": 3
     },
     {
       "name": "hi",
