@@ -36,10 +36,5 @@ public class ChecksumService {
         }
         if (calcCRC(checkData[0]) == Long.parseLong(checkData[1])) return true;
         else return false;
-
-    }
-
-    public static void main(String[] args) {
-        System.out.println(checkCRC(":XX#1443568741/n"));
     }
 }

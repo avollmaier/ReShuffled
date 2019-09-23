@@ -5,28 +5,28 @@
   "guiWidth": 1024,
   "gamemodes": [
     {
-      "name": "Hallo",
+      "name": "fdsgfds",
       "autoDeal": false,
-      "autoDealValue": 5,
+      "autoDealValue": null,
       "cardQuantity": 4,
       "playerQuantity": 4
     },
     {
-      "name": "fdsa",
-      "autoDeal": false,
-      "autoDealValue": null,
+      "name": "xcy\u003c",
+      "autoDeal": true,
+      "autoDealValue": 4,
       "cardQuantity": 3,
       "playerQuantity": 3
     },
     {
-      "name": "fdsa",
-      "autoDeal": false,
-      "autoDealValue": null,
+      "name": "xcy\u003c",
+      "autoDeal": true,
+      "autoDealValue": 4,
       "cardQuantity": 3,
       "playerQuantity": 3
     },
     {
-      "name": "hi",
+      "name": "fdsgfds",
       "autoDeal": true,
       "autoDealValue": 4,
       "cardQuantity": 6,

@@ -3,9 +3,11 @@ package main;
 
 import config.ConfigService;
 import gui.Gui;
+import jssc.SerialPortException;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
+import serial.requests.ReqInit;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,6 +45,14 @@ public class Main
         VERSION=ConfigService.config.getVersion();
         LOGPATH=ConfigService.config.getLogPath();
         LOG.info("start of programm with V%s", VERSION);
+
+        try {
+            ReqInit.buildRequest();
+        } catch (SerialPortException ex) {
+            LOG.severe(ex);
+        } catch (InterruptedException ex) {
+            LOG.severe(ex);
+        }
         Gui.main();
 
     }
