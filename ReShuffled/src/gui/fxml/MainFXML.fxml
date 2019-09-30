@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXRippler?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
@@ -27,6 +26,7 @@
                         </Pane>
                         <VBox prefHeight="554.0" prefWidth="250.0" style="-fx-background-color: #323540;">
                             <children>
+                                <Pane prefHeight="0.0" prefWidth="250.0"/>
                                 <Label alignment="CENTER" prefHeight="40.0" prefWidth="367.0" text="Game Info"
                                        textAlignment="CENTER" textFill="WHITE">
                                     <font>
@@ -43,25 +43,26 @@
                                 </HBox>
                                 <Label fx:id="tfPlayerQuantity" alignment="CENTER" prefHeight="40.0" prefWidth="367.0"
                                        text="lbPlayerQuantity" textFill="WHITE"/>
-                                <Pane prefHeight="352.0" prefWidth="250.0"/>
-                                <JFXRippler prefHeight="50.0" prefWidth="301.0">
-                                    <children>
-                                        <JFXButton fx:id="btStartGame" alignment="CENTER" buttonType="RAISED"
-                                                   contentDisplay="CENTER" onMouseClicked="#onStartGame"
-                                                   prefHeight="50.0" prefWidth="240.0" ripplerFill="WHITE"
-                                                   style="-fx-background-color: #FFFF;" text="Start Game">
-                                            <font>
-                                                <Font name="System Bold" size="13.0"/>
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </JFXRippler>
+                                <Pane prefHeight="363.0" prefWidth="250.0"/>
+                                <JFXButton fx:id="btOnStartGame" buttonType="RAISED" onMouseClicked="#onStartGame"
+                                           prefHeight="49.0" prefWidth="255.0" ripplerFill="#323540"
+                                           style="-fx-background-color: #FFFF;" text="Start Game">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </JFXButton>
                             </children>
                         </VBox>
                         <Pane prefHeight="65.0" prefWidth="250.0">
                             <children>
-                                <Label fx:id="lbVersion" layoutX="-1.0" layoutY="-1.0" prefHeight="36.0"
-                                       prefWidth="250.0" text="lbVersion" textFill="WHITE"/>
+                                <HBox layoutX="-1.0" layoutY="-1.0" prefHeight="36.0" prefWidth="247.0">
+                                    <children>
+                                        <Label fx:id="lbVersion" prefHeight="36.0" prefWidth="124.0" text="lbVersion"
+                                               textFill="WHITE"/>
+                                        <Label fx:id="lbVersion1" alignment="CENTER_RIGHT" prefHeight="36.0"
+                                               prefWidth="125.0" text="lbRunTime" textFill="WHITE"/>
+                                    </children>
+                                </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets left="3.0"/>
@@ -71,7 +72,7 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <JFXTabPane prefHeight="600.0" prefWidth="781.0" stylesheets="@../stylesheet.css">
+        <JFXTabPane fx:id="tabPane" prefHeight="600.0" prefWidth="781.0" stylesheets="@../stylesheet.css">
             <tabs>
                 <Tab text="Dashboard">
                     <content>

@@ -28,8 +28,7 @@ public class ChecksumService {
     public static boolean checkCRC(String receivedChecksumString) {
         String[] checkData = null;
         try {
-            receivedChecksumString = receivedChecksumString.replaceAll("^.", "");
-            receivedChecksumString = receivedChecksumString.replaceAll("..$", "");
+            receivedChecksumString = receivedChecksumString.substring(1, 14);
             checkData = receivedChecksumString.split("#");
         } catch (ArrayIndexOutOfBoundsException ex) {
             LOG.severe(ex);

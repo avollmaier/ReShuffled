@@ -1,83 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ReShuffled" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Add CRC check and calculation">
+      <change afterPath="$PROJECT_DIR$/lib/ikonli-core-11.3.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ikonli-fontawesome-pack-11.3.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ikonli-javafx-11.3.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JavaFXApp.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReShuffled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ReShuffled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/reshuffled.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/reshuffled.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GUIMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controllers/HelpTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controllers/HelpTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/controllers/SettingsTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/controllers/SettingsTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/fxml/DashboardTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/fxml/DashboardTab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/fxml/HelpTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/fxml/HelpTab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/fxml/MainFXML.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/fxml/MainFXML.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/fxml/SettingsTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/fxml/SettingsTab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serial/SerialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/serial/SerialService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serial/checksum/ChecksumService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/serial/checksum/ChecksumService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serial/requests/ReqInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/serial/requests/ReqInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/artifacts/JavaFXApp.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/libraries/gson_2_8_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/libraries/jssc_2_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/libraries/org_openjfx_javafx_fxml_11_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/Test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/config/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/gson-2.8.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-base-11.0.1-linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-base-11.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-controls-11.0.1-linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-controls-11.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-fxml-11.0.1-linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-fxml-11.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-graphics-11.0.1-linux.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/javafx-graphics-11.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/lib/jssc-2.8.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/log/reshuffled.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/META-INF/Test.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/ReShuffled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/config/ConfigService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/config/Models/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/config/Models/Gamemode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/gui/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/gui/gui.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/gui/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/ExtendedLogRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogBackgroundHandler$HandlerThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogBackgroundHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogOutputStreamHandler$LogOutputPrintStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogOutputStreamHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordDataFormattedText$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordDataFormattedText$Terminal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordDataFormattedText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordDataHexDump.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/LogRecordDataString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/Logger$SpecialLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/logging/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/serial/CRC32/CRC32.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/out/production/Test/serial/requests/ReqInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/ReShuffled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/config/ConfigService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/config/Models/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/config/Models/Gamemode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/gui/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/gui/gui.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/gui/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/ExtendedLogRecord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogBackgroundHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogOutputStreamHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogRecordData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogRecordDataFormattedText.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogRecordDataHexDump.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/LogRecordDataString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/logging/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/serial/CRC32/CRC32.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test/src/serial/requests/ReqInit.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,6 +41,11 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="309577" />
+    <option name="idleThresholdMs" value="30000" />
+    <option name="ideTimePattern" value="Insgesamt {{h}} {{m}} {{s}}  für Dipl " />
   </component>
   <component name="DebuggerManager">
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
@@ -146,6 +105,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
+          <option name="moduleName" value="ReShuffled" />
+          <option name="title" value="ReShuffled (Bundled Groovy 2.4.17)" />
+        </Entry>
+      </list>
+    </option>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1QZ3TxEWmim4Yri68AmU1HwJt7l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -156,6 +126,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="reshuffled" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -170,7 +144,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Schule/HTL/5AHME/FIV/ue01" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/ReShuffled" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -179,21 +153,21 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.36623377" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/gui/fxml" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/gui/fxml" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -242,7 +216,7 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="gui.Gui" />
+      <option name="MAIN_CLASS_NAME" value="gui.GUIMain" />
       <module name="ReShuffled" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Dokumente/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
@@ -278,6 +252,8 @@
       </method>
     </configuration>
     <configuration name="gui" type="Application" factoryName="Application" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="ReShuffled" />
       <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Dokumente/javafx-sdk-11.0.2/lib --add-modules=javafx.base,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web,javafx.controls --add-opens javafx.base/com.sun.javafx.runtime=ALL-UNNAMED --add-opens javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED --add-opens javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.binding=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.event=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED" />
@@ -363,6 +339,21 @@
       <workItem from="1568619857605" duration="29319000" />
       <workItem from="1568886474155" duration="30638000" />
       <workItem from="1568998714882" duration="16198000" />
+      <workItem from="1569244287863" duration="811000" />
+      <workItem from="1569245153966" duration="124000" />
+      <workItem from="1569250786012" duration="213000" />
+      <workItem from="1569251099269" duration="302000" />
+      <workItem from="1569251430078" duration="564000" />
+      <workItem from="1569252035093" duration="12832000" />
+      <workItem from="1569390998576" duration="1354000" />
+      <workItem from="1569394028514" duration="704000" />
+      <workItem from="1569394799469" duration="11219000" />
+      <workItem from="1569491642718" duration="3457000" />
+      <workItem from="1569509203246" duration="4249000" />
+      <workItem from="1569565177741" duration="18703000" />
+      <workItem from="1569606164455" duration="2225000" />
+      <workItem from="1569829932360" duration="713000" />
+      <workItem from="1569840039078" duration="6597000" />
     </task>
     <task id="LOCAL-00001" summary="changes on gui and serial comm">
       <created>1568988957426</created>

@@ -37,6 +37,7 @@ public class SettingsTabController implements Initializable {
     @FXML
     private JFXCheckBox chbAutoDeal;
 
+
     private static final Logger LOG = Logger.getLogger(ConfigService.class.getName());
     private Gamemode editGamemode, actualGamemode, selectedGamemode;
     private boolean editMode = false;
@@ -89,6 +90,8 @@ public class SettingsTabController implements Initializable {
 
     public void onSetGM() {
         actualGamemode = selectedGamemode;
+        MainController controller = new MainController();
+        controller.onChangeActualGamemode(actualGamemode);
         btEditGM.setDisable(true);
         btSetGM.setDisable(true);
 
@@ -151,7 +154,7 @@ public class SettingsTabController implements Initializable {
             btSaveGM.setDisable(false);
             btEditGM.setDisable(true);
 
-            if (selectedGamemode.isAutoDeal() == true) {
+            if (selectedGamemode.isAutoDeal()) {
                 chbAutoDeal.setSelected(true);
                 cbAutoDealValue.setDisable(false);
             } else {

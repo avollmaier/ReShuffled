@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 public class ConfigService
 {
     private static final Logger LOG = Logger.getLogger(ConfigService.class.getName());
-    public static final String configPath="/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/config/config.json";
+    public static final String configPath = "/home/pi/config/config.json";
     public static Config config;
 
     public static void deserializeService()

@@ -25,31 +25,23 @@
                         <Pane prefHeight="30.0" prefWidth="300.0"/>
                         <HBox prefWidth="300.0">
                             <children>
-                                <JFXRippler prefWidth="220.0">
-                                    <children>
-                                        <JFXButton fx:id="btSetGM" alignment="CENTER" buttonType="RAISED"
-                                                   contentDisplay="CENTER" disable="true" onMouseClicked="#onSetGM"
-                                                   prefHeight="20.0" prefWidth="220.0" ripplerFill="WHITE"
-                                                   style="-fx-background-color: #323540;" text="SET" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="13.0"/>
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </JFXRippler>
+                                <JFXButton fx:id="btSetGM" alignment="CENTER" buttonType="RAISED"
+                                           contentDisplay="CENTER" disable="true" onMouseClicked="#onSetGM"
+                                           prefHeight="20.0" prefWidth="220.0" ripplerFill="WHITE"
+                                           style="-fx-background-color: #323540;" text="SET" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </JFXButton>
                                 <Pane prefHeight="26.0" prefWidth="100.0"/>
-                                <JFXRippler prefWidth="220.0">
-                                    <children>
-                                        <JFXButton fx:id="btEditGM" alignment="CENTER" buttonType="RAISED"
-                                                   contentDisplay="CENTER" disable="true" onMouseClicked="#onEditGM"
-                                                   prefHeight="20.0" prefWidth="220.0" ripplerFill="WHITE"
-                                                   style="-fx-background-color: #323540;" text="EDIT" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="13.0"/>
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </JFXRippler>
+                                <JFXButton fx:id="btEditGM" alignment="CENTER" buttonType="RAISED"
+                                           contentDisplay="CENTER" disable="true" onMouseClicked="#onEditGM"
+                                           prefHeight="20.0" prefWidth="220.0" ripplerFill="WHITE"
+                                           style="-fx-background-color: #323540;" text="EDIT" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </JFXButton>
                             </children>
                         </HBox>
                         <Pane prefHeight="30.0" prefWidth="275.0"/>
@@ -87,31 +79,23 @@
                         <Pane prefHeight="30.0" prefWidth="367.0"/>
                         <HBox>
                             <children>
-                                <JFXRippler prefHeight="26.0" prefWidth="301.0">
-                                    <children>
-                                        <JFXButton fx:id="btSaveGM" alignment="CENTER" buttonType="RAISED"
-                                                   contentDisplay="CENTER" disable="true" onMouseClicked="#onSaveGM"
-                                                   prefHeight="20.0" prefWidth="240.0" ripplerFill="WHITE"
-                                                   style="-fx-background-color: #323540;" text="SAVE" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="13.0"/>
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </JFXRippler>
+                                <JFXButton fx:id="btSaveGM" alignment="CENTER" buttonType="RAISED"
+                                           contentDisplay="CENTER" disable="true" onMouseClicked="#onSaveGM"
+                                           prefHeight="20.0" prefWidth="240.0" ripplerFill="BLACK"
+                                           style="-fx-background-color: #323540;" text="SAVE" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </JFXButton>
                                 <Pane prefHeight="30.0" prefWidth="220.0"/>
-                                <JFXRippler prefHeight="26.0" prefWidth="301.0">
-                                    <children>
-                                        <JFXButton fx:id="btAddGM" alignment="CENTER" buttonType="RAISED"
-                                                   contentDisplay="CENTER" onMouseClicked="#onAddGM" prefHeight="20.0"
-                                                   prefWidth="240.0" ripplerFill="WHITE"
-                                                   style="-fx-background-color: #323540;" text="ADD" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="13.0"/>
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </JFXRippler>
+                                <JFXButton fx:id="btAddGM" alignment="CENTER" buttonType="RAISED"
+                                           contentDisplay="CENTER" onMouseClicked="#onAddGM" prefHeight="20.0"
+                                           prefWidth="240.0" ripplerFill="WHITE" style="-fx-background-color: #323540;"
+                                           text="ADD" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0"/>
+                                    </font>
+                                </JFXButton>
                             </children>
                         </HBox>
                         <Pane prefHeight="30.0" prefWidth="367.0"/>

@@ -1,15 +1,15 @@
 {
-  "version": "0.1.1",
+  "version": "0.1",
   "logPath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled/log/reshuffled.log",
   "guiHeight": 600,
   "guiWidth": 1024,
   "gamemodes": [
     {
       "name": "fdsgfds",
-      "autoDeal": false,
-      "autoDealValue": null,
-      "cardQuantity": 4,
-      "playerQuantity": 4
+      "autoDeal": true,
+      "autoDealValue": 4,
+      "cardQuantity": 6,
+      "playerQuantity": 6
     },
     {
       "name": "xcy\u003c",
@@ -31,6 +31,13 @@
       "autoDealValue": 4,
       "cardQuantity": 6,
       "playerQuantity": 6
+    },
+    {
+      "name": "vsa",
+      "autoDeal": true,
+      "autoDealValue": 3,
+      "cardQuantity": 3,
+      "playerQuantity": 3
     }
   ]
 }

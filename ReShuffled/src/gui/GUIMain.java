@@ -13,14 +13,13 @@ import logging.Logger;
 
 //logger imports
 
-public class Gui extends Application {
-
-    private static final Logger LOG = Logger.getLogger(main.Main.class.getName());
+public class GUIMain extends Application {
+    private static final Logger LOG = Logger.getLogger(GUIMain.class.getName());
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/MainFXML.fxml"));
-        primaryStage.setTitle("Reshuffled V" + main.Main.VERSION);
+
 
         //create scene and set size from config data
         Scene scene = new Scene(root, ConfigService.config.getGuiWidth(), ConfigService.config.getGuiHeight());
@@ -29,9 +28,11 @@ public class Gui extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         LOG.info("gui started successfully");
         primaryStage.show();
+
     }
 
     public static void main() {
         launch();
+
     }
 }

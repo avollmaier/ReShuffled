@@ -9,6 +9,7 @@ package serial.requests;
 import jssc.SerialPortException;
 import logging.Logger;
 import serial.SerialService;
+import serial.checksum.ChecksumService;
 
 /**
  *
@@ -19,7 +20,7 @@ public class ReqInit
     private static String reqString, reqName = "IN";
     private static final Logger LOG = Logger.getLogger(ReqInit.class.getName());
 
-    public static void buildRequest() throws SerialPortException, InterruptedException {
+    public static void parseRequest() throws SerialPortException, InterruptedException {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(":")
                 .append(reqName)
@@ -27,22 +28,19 @@ public class ReqInit
                 .append(serial.checksum.ChecksumService.calcCRC(reqName))
                 .append("\n");
         reqString = stringBuilder.toString();
-        jssc.SerialPort serialPort = SerialService.OpenPortService();
+        SerialService serialService = new SerialService();
+        jssc.SerialPort serialPort = serialService.OpenPortService();
         serialPort.writeString(reqString);
         LOG.info("Send Request %s as %s", reqName, reqString);
+        serialPort.closePort();
+        LOG.info("Closed Port %s", serialPort.getPortName());
     }
 
-    public static void checkResponse() {
+    public static void checkResponse(String resString) {
+        if (resString.length() != 1 || !ChecksumService.checkCRC(resString)) {
+            LOG.warning("Command: " + resString + " was wrong transmitted");
+        }
 
-
-    }
-
-    public static String getReqString() {
-        return reqString;
-    }
-
-    public static String getReqName() {
-        return reqName;
     }
 
 }
