@@ -1,0 +1,9 @@
+ReShuffled_PI_old
+
+# IntelliJ
+**/target
+
+# Netbeans
+**/nbproject/private/
+**/build/
+**/dist/

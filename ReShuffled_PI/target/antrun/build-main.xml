@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <scp trust="true" password="123" localFile="/home/alois/Bilder/ReShuffled_PI/target/ReShuffled-0.1-jar-with-dependencies.jar" remoteToFile="pi@10.200.212.61:/home/pi/ReShuffled" verbose="true"></scp>
-</target>
-</project>
