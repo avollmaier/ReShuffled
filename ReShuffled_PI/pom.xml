@@ -12,7 +12,7 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <pi.host>10.200.212.61</pi.host>
+        <pi.host>10.200.111.60</pi.host>
         <pi.destination>/home/pi/ReShuffled</pi.destination>
         <pi.pw>123</pi.pw>
         <project.targetFile>ReShuffled-0.1-jar-with-dependencies.jar</project.targetFile>
