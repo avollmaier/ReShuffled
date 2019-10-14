@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MainController">
+    <children>
+        <AnchorPane fx:id="mainPanel" prefHeight="200.0" prefWidth="250.0">
+            <children>
+                <VBox prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #2d2f38;">
+                    <children>
+                        <Pane prefHeight="80.0" prefWidth="250.0">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" prefHeight="47.0" prefWidth="257.0" text="ReShuffled" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="31.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <VBox prefHeight="554.0" prefWidth="250.0" style="-fx-background-color: #323540;">
+                            <children>
+                                <Pane prefHeight="0.0" prefWidth="250.0" />
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="367.0" text="Game Info" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <HBox prefHeight="65.0" prefWidth="250.0" />
+                                <Pane prefHeight="363.0" prefWidth="250.0" />
+                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="250.0">
+                           <children>
+                                      <JFXButton fx:id="btOnStartGame" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onMouseClicked="#onStartGame" prefHeight="47.0" prefWidth="237.0" ripplerFill="#323540" style="-fx-background-color: #FFFF;" text="Start Game">
+                                          <font>
+                                              <Font name="System Bold" size="18.0" />
+                                          </font>
+                                      </JFXButton>
+                           </children>
+                        </HBox>
+                            </children>
+                        </VBox>
+                        <Pane prefHeight="65.0" prefWidth="250.0">
+                            <children>
+                                <HBox layoutX="-1.0" layoutY="-1.0" prefHeight="36.0" prefWidth="247.0">
+                                    <children>
+                                        <Label fx:id="lbVersion" prefHeight="36.0" prefWidth="257.0" text="lbVersion" textFill="WHITE" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="3.0" />
+                            </VBox.margin>
+                        </Pane>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+        <JFXTabPane fx:id="tabPane" prefHeight="600.0" prefWidth="781.0" stylesheets="@stylesheet.css">
+            <tabs>
+                <Tab text="Dashboard">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <fx:include fx:id="dashboardTab" source="DashboardTab.fxml" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Settings">
+                    <content>
+                        <AnchorPane prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <fx:include fx:id="settingsTab" source="SettingsTab.fxml" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Help">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <fx:include fx:id="helpTab" source="HelpTab.fxml" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
+    </children>
+</HBox>

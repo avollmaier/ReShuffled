@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="helpTab" prefHeight="550.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.HelpTabController">
+   <children>
+      <HBox layoutX="-5.0" layoutY="-1.0">
+         <children>
+            <JFXButton fx:id="btMahnungToGo" buttonType="RAISED" onMouseClicked="#onGetMahnung" prefHeight="49.0"
+                       prefWidth="255.0" ripplerFill="#323540" style="-fx-background-color: #323540;" text="Get Mahnung"
+                       textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0"/>
+               </font>
+            </JFXButton>
+            <Pane prefHeight="49.0" prefWidth="20.0"/>
+            <JFXComboBox fx:id="cbFaecher" prefHeight="47.0" prefWidth="367.0" promptText="Fach"/>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
