@@ -144,7 +144,7 @@
         <sshsession host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" keyfile="${remote.platform.keyfile}" passphrase="${remote.platform.passphrase}" trust="true">
             <remotetunnel lport="${jpda.port}" lhost="localhost" rport="${jpda.port}"/>
             <sequential>
-                <remote:runwithkey additionaljvmargs="-Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
+                <remote:runwithkey additionaljvmargs="${debug-args-line} -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
             </sequential>
         </sshsession>
     </target>
