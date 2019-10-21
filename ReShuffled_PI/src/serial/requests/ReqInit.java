@@ -22,6 +22,7 @@ public class ReqInit extends Request{
                 .append(CRC32.calcCRC(reqName))
                 .append("\n");
         reqString = stringBuilder.toString();
+        //TODO SEND
         LOG.info("Send Request %s as %s", reqName, reqString);
     }
 
@@ -51,11 +52,4 @@ public class ReqInit extends Request{
         serialStatus=serialStatus.DONE;
         }
     }
-    
-    
-
-    
-   
-    }
-
 }
