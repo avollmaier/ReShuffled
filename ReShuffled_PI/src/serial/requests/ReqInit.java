@@ -1,36 +1,61 @@
 package serial.requests;
 
 
+import javax.naming.CommunicationException;
 import jssc.SerialPortException;
 import logging.Logger;
-import serial.SerialService;
-import serial.checksum.ChecksumService;
+import serial.checksum.CRC32;
 
 /**
  * @author alois
  */
 public class ReqInit extends Request{
-    private static String reqString, reqName = "IN";
+    private static String resString, reqString, reqName = "IN";
     private static final Logger LOG = Logger.getLogger(ReqInit.class.getName());
 
-    public void parseRequest() throws SerialPortException, InterruptedException { // kein static
+    @Override
+    public void sendRequest(Object port) throws SerialPortException {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(":")
                 .append(reqName)
                 .append("#")
-                .append(SerialService.calcCRC(reqName))
+                .append(CRC32.calcCRC(reqName))
                 .append("\n");
         reqString = stringBuilder.toString();
-       
         LOG.info("Send Request %s as %s", reqName, reqString);
-        //serialPort.closePort();// am ende des programms
     }
 
-    public void checkResponse(String resString) {
-        if (resString.length() != 1 || !SerialService.checkCRC(resString)) {
-            LOG.warning("Command: " + resString + " was wrong transmitted");
-        }
+    @Override
+    public String getReqMessage() {
+        return reqString;
+    }
 
+    @Override
+    public String getReqName() {
+        return reqName;
+    }
+
+    @Override
+    public String getResponse() {
+        return resString;
+    }
+
+    @Override
+    public void handleResponse(String res) {
+        res=resString;
+        if (resString.length() != 1 || !CRC32.checkCRC(resString)) {
+            LOG.warning("Command: " + resString + " was wrong transmitted");
+            serialStatus=serialStatus.ERROR;
+        }
+        else{
+        serialStatus=serialStatus.DONE;
+        }
+    }
+    
+    
+
+    
+   
     }
 
 }
