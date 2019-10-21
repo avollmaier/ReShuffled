@@ -109,7 +109,7 @@ public class SettingsTabController implements Initializable {
         Config.getInstance().getGamemodes().add(new GamemodeModel(tfName.getText(), chbAutoDeal.isSelected(), cbAutoDealValue.getValue(), cbCardQuantity.getValue(), cbPlayerQuantity.getValue()));
         refreshListView();
         btAddGM.setDisable(true);
-        Config.updateInstace(Main.CONFIGPATH);
+        Config.getInstance().save();
     }
 
     public void onEditGM() {
@@ -142,7 +142,7 @@ public class SettingsTabController implements Initializable {
             });
         }
         editMode = false;
-        Config.updateInstace(Main.CONFIGPATH);
+        Config.getInstance().save();
         refreshListView();
     }
 

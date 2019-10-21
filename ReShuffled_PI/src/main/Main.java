@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
+import serial.Serial;
 
 
 public class Main {
@@ -35,8 +37,9 @@ public class Main {
                 try {
                    f.createNewFile();
                 }
-                catch (IOException ex) {
-                    System.out.println("cant log file - Programm stopped");
+                catch (Exception ex) {
+                    ex.printStackTrace(System.out);
+                    System.out.println("cant create log file " + f.getAbsolutePath() + " - Programm stopped");
                     System.exit(0);
                 }
                  System.out.println("created log file successfully at " + f.getPath());
@@ -63,7 +66,7 @@ public class Main {
                 try {
                     f.createNewFile();
                 }
-                catch (IOException ex) {
+                catch (Exception ex) {
                     System.out.println("cant create config automatically - please create it manually");
                     System.exit(0);
                 }
@@ -98,12 +101,29 @@ public class Main {
         }
         LOG.info("start of programm with V%s", VERSION);
         
-        main.checkConfigExistence();
-        Config.createInstance(CONFIGPATH);
-        Config.getInstance().setLogPath(logPath);
-        Config.updateInstace(CONFIGPATH);
-        GuiMain.main();
-        
+        try {
+            main.checkConfigExistence();
+            final Config cfg = Config.createInstance(CONFIGPATH);
+            cfg.setLogPath(logPath);
+            cfg.save();
+            Serial.createInstance(cfg.getConfigSerial());
+            // GuiMain.main();
+            Serial.getInstance().getOutputStream().write(65);
+            Serial.getInstance().getOutputStream().write(66);
+            Serial.getInstance().getOutputStream().write(67);
+            Serial.getInstance().getOutputStream().write(10);
+
+            InputStream is = Serial.getInstance().getInputStream(); 
+            Thread.sleep(100);
+            while (is.available() > 0) {
+                LOG.debug("Response from serial: " + is.read());
+            }
+            
+            
+            
+        } catch (Exception ex) {
+            LOG.severe(ex, "startup fails - config error");
+        }
 
     }
 }

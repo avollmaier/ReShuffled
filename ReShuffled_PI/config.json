@@ -2,5 +2,10 @@
   "logPath": "/var/lib/reshuffled/reshuffled.log",
   "guiHeight": 600,
   "guiWidth": 1024,
-  "gamemodes": []
+  "gamemodes": [],
+  "serial": {
+    "disabled": false,
+    "device": "sim",
+    "baudrate": 57600
+  }
 }

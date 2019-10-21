@@ -14,12 +14,15 @@ public class ConfigModel {
     private Integer guiWidth;
     @SerializedName("gamemodes")
     private List <GamemodeModel> gamemodes;
+    @SerializedName("serial")
+    private ConfigSerial serial;
 
-    public ConfigModel(String logPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes) {
+    public ConfigModel(String logPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerial serial) {
         this.logPath = logPath;
         this.guiHeight = guiHeight;
         this.guiWidth = guiWidth;
         this.gamemodes = gamemodes;
+        this.serial = serial;
     }
 
     public String getLogPath() {
@@ -53,6 +56,12 @@ public class ConfigModel {
     public void setGamemodes(List<GamemodeModel> gamemodes) {
         this.gamemodes = gamemodes;
     }
+
+    public ConfigSerial getSerial () {
+        return serial;
+    }
+    
+    
 
     
 }
