@@ -100,6 +100,13 @@ public class Serial {
             throw new SerialException("initSerialDevice() fails", ex);
         }
     }
+
+
+    public void writeString (String s) throws IOException {
+        final byte [] bytes = s.getBytes("UTF-8");
+        getOutputStream().write(bytes);
+        getOutputStream().flush();
+    }
     
 
     private class SerialSimInputStream extends InputStream {

@@ -1,4 +1,4 @@
-package serial.requests;
+package serial.requestsOld;
 
 
 import javax.naming.CommunicationException;
@@ -19,7 +19,7 @@ public class ReqInit extends Request{
         stringBuilder.append(":")
                 .append(reqName)
                 .append("#")
-                .append(CRC32.calcCRC(reqName))
+                // .append(CRC32.calcCRC(reqName))
                 .append("\n");
         reqString = stringBuilder.toString();
         //TODO SEND
@@ -41,15 +41,21 @@ public class ReqInit extends Request{
         return resString;
     }
 
+//    @Override
+//    public void handleResponse(String res) {
+//        res=resString;
+//        if (resString.length() != 1 || !CRC32.checkCRC(resString)) {
+//            LOG.warning("Command: " + resString + " was wrong transmitted");
+//            serialStatus=serialStatus.ERROR;
+//        }
+//        else{
+//        serialStatus=serialStatus.DONE;
+//        }
+//    }
+
+
     @Override
-    public void handleResponse(String res) {
-        res=resString;
-        if (resString.length() != 1 || !CRC32.checkCRC(resString)) {
-            LOG.warning("Command: " + resString + " was wrong transmitted");
-            serialStatus=serialStatus.ERROR;
-        }
-        else{
-        serialStatus=serialStatus.DONE;
-        }
+    public void handleResponse (String res) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

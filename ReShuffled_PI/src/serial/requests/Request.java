@@ -1,36 +1,101 @@
 package serial.requests;
 
-import javax.naming.CommunicationException;
-import jssc.SerialPortException;
-import serial.checksum.CRC32;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+
+
+/**
+ *
+ * @author volalm15
+ */
 public abstract class Request {
-    public static enum SerialStatus{
-        WAITFORSEND, WAITFORERESPONE, DONE, ERROR
-    };
+    
+    private static final java.util.zip.CRC32 CRC32 = new java.util.zip.CRC32();
+    private static final DateFormat DATAFORMATTER = new SimpleDateFormat("mm:ss.S");
+    
+    private String mreqFrame;              // frame bytes sent to µC (only text)
+    private byte [] mresFrame;             // frame bytes received from µC
+    private final long mtimeMillisCreatedAt;     // epoch time when this object is created
+    private long mtimeMillisFrameSent;     // epoch time when frame is sent to µC
+    private long mtimeMillisFrameReceived; // epoch time ehne frame from µC is received 
 
-    protected SerialStatus serialStatus;
-
-    public Request() {
-        serialStatus = SerialStatus.WAITFORSEND;
+    public Request () {
+        mtimeMillisCreatedAt = System.currentTimeMillis();
+    }
+    
+    
+    public void handleRequestSent () {
+        mtimeMillisFrameSent = System.currentTimeMillis();
+    }
+    
+    public void handleResponse () {
     }
 
-    public abstract void sendRequest(Object port) throws SerialPortException;
+    protected void createRequestFrame (String content) {
+        if (content == null || content.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        CRC32.reset();
+        CRC32.update(content.getBytes());
+        final String crc32 = String.format("%08X", CRC32.getValue());
 
-    public abstract String getReqMessage();
-
-    public abstract String getReqName();
-
-    public abstract void handleResponse(String res);
-
-    public abstract String getResponse();
-
-    public SerialStatus getStatus() {
-        return serialStatus;
+        final StringBuilder sb = new StringBuilder(128);
+        sb.append(':').append(content).append('#').append(crc32).append('\n');
+        mreqFrame = sb.toString();
     }
 
-    public void setStatus(SerialStatus status) {
-        this.serialStatus = status;
+
+    public String getMreqFrame () {
+        return mreqFrame;
     }
 
+    
+   
+    @Override
+    public String toString () {
+        final StringBuilder sb = new StringBuilder(128);
+        sb.append("Request").append('{');
+        sb.append("created=").append(DATAFORMATTER.format(mtimeMillisCreatedAt));
+        
+        sb.append(", mreqFrame='");
+        for (int i = 0; i < mreqFrame.length(); i++) {
+            final char c = mreqFrame.charAt(i);
+            if (c >= ' ' && c <= '~') {
+                sb.append(c);
+            } else if (c == '\n') {
+                sb.append("\\n");
+            } else {
+                sb.append("\\").append(Character.getNumericValue(c));
+            }
+        }
+        sb.append("'");
+        if (mtimeMillisFrameSent > 0) {
+            sb.append(", sentTime=+").append((mtimeMillisFrameSent - mtimeMillisCreatedAt)).append("ms");
+        }
+        if (mtimeMillisFrameReceived > 0) {
+            sb.append(", sentTime=+").append((mtimeMillisFrameReceived - mtimeMillisCreatedAt)).append("ms");
+        }
+        
+        if (mresFrame != null) {
+            sb.append(", mresFrame='");
+            for (byte b : mresFrame) {
+                if (b >= 32 && b < 127) {
+                    sb.append((char)b);
+                } else if (b == '\n') {
+                    sb.append("\\n");
+                } else {
+                    sb.append("\\").append(b < 0 ? (int)b + 256 : (int)b);
+                }
+            }
+        }
+        sb.append('}');
+        
+        return sb.toString();
+    }
+    
+    
+
+    
 }
