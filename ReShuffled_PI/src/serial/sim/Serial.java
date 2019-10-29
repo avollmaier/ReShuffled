@@ -1,5 +1,7 @@
-package serial;
+package serial.sim;
 
+import serial.sim.SimOutputStreamBuffer;
+import serial.sim.SimInputStreamBuffer;
 import data.config.data.ConfigSerial;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +12,7 @@ import java.util.logging.Level;
 import jssc.SerialPort;
 import jssc.SerialPortTimeoutException;
 import logging.Logger;
+import serial.SerialException;
 
 
 /**

@@ -1,4 +1,4 @@
-package serial;
+package serial.sim;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

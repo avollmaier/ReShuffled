@@ -3,11 +3,11 @@ package serial.requests;
  *
  * @author volalm15
  */
-public class RequestInit extends Request {
+public class RequestAutoDeal extends Request {
 
-    public RequestInit () {
+    public RequestAutoDeal (int value) {
         super();
-        createRequestFrame("IN");
+        createRequestFrame("A" + value);
     }
     
     @Override

@@ -3,11 +3,11 @@ package serial.requests;
  *
  * @author volalm15
  */
-public class RequestInit extends Request {
+public class RequestShuffle extends Request {
 
-    public RequestInit () {
+    public RequestShuffle () {
         super();
-        createRequestFrame("IN");
+        createRequestFrame("SH");
     }
     
     @Override

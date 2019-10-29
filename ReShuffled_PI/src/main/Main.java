@@ -13,7 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
-import serial.Serial;
+import serial.requests.RequestDeal;
+import serial.sim.Serial;
 import serial.requests.RequestInit;
 import serial.requestsOld.ReqInit;
 
@@ -111,13 +112,10 @@ public class Main {
             Serial.createInstance(cfg.getConfigSerial());
             // GuiMain.main();
             
-            RequestInit r = new RequestInit();
+            RequestDeal r =new RequestDeal(2);
             System.out.println(r);
             
-            Serial.getInstance().getOutputStream().write(65);
-            Serial.getInstance().getOutputStream().write(66);
-            Serial.getInstance().getOutputStream().write(67);
-            Serial.getInstance().getOutputStream().write(10);
+            Serial.getInstance().getOutputStream().write(1);
 
             InputStream is = Serial.getInstance().getInputStream(); 
             Thread.sleep(100);

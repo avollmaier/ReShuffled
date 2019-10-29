@@ -1,8 +1,10 @@
 package serial;
 
+import serial.sim.Serial;
 import java.util.LinkedList;
 import logging.Logger;
 import serial.requests.Request;
+import serial.requests.RequestInit;
 
 
 /**
@@ -67,7 +69,7 @@ public class Communication {
                         }
                         
                     } catch (Exception ex) {
-                        LOG.warning(ex, "Communication Thread excaption");
+                        LOG.warning(ex, "Communication Thread exception");
                     }
                 }
 
