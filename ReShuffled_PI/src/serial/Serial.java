@@ -1,4 +1,4 @@
-package serial.sim;
+package serial;
 
 import serial.sim.SimOutputStreamBuffer;
 import serial.sim.SimInputStreamBuffer;
@@ -13,6 +13,9 @@ import jssc.SerialPort;
 import jssc.SerialPortTimeoutException;
 import logging.Logger;
 import serial.SerialException;
+import serial.sim.ReshuffledMainboardSimulator;
+import serial.sim.SimInputStreamBuffer;
+import serial.sim.SimOutputStreamBuffer;
 
 
 /**

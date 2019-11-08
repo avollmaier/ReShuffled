@@ -5,9 +5,9 @@ package serial.requests;
  */
 public class RequestShutdown extends Request {
 
-    public RequestShutdown (int value) {
+    public RequestShutdown () {
         super();
-        createRequestFrame("D" + value);
+        createRequestFrame("XX");
     }
     
     @Override

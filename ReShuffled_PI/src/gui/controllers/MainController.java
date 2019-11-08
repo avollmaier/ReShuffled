@@ -1,5 +1,8 @@
 package gui.controllers;
 
+import data.config.data.ConfigModel;
+import data.config.data.GamemodeModel;
+import data.config.service.Config;
 import main.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +30,7 @@ public class MainController implements Initializable {
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lbVersion.setText("Reshuffled V" + Main.VERSION);
+        lbVersion.setText("Reshuffled V" + Main.VERSION);   
     }
 
     public void onStartGame() {

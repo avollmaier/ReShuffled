@@ -6,6 +6,7 @@
   "serial": {
     "disabled": false,
     "device": "sim",
-    "baudrate": 57600
+    "baudrate": 57600,
+    "timeoutMillis": 1000
   }
 }

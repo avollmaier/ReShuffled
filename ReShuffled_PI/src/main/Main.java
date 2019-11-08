@@ -13,8 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
+import javax.naming.CommunicationException;
+import serial.Communication;
 import serial.requests.RequestDeal;
-import serial.sim.Serial;
+import serial.Serial;
 import serial.requests.RequestInit;
 import serial.requestsOld.ReqInit;
 
@@ -110,19 +112,15 @@ public class Main {
             cfg.setLogPath(logPath);
             cfg.save();
             Serial.createInstance(cfg.getConfigSerial());
-            // GuiMain.main();
-            
-            RequestDeal r =new RequestDeal(2);
-            System.out.println(r);
-            
-            Serial.getInstance().getOutputStream().write(1);
-
-            InputStream is = Serial.getInstance().getInputStream(); 
+            Communication.createInstance(Serial.getInstance());
+            //GuiMain.main();
+                        
             Thread.sleep(100);
-            while (is.available() > 0) {
-                LOG.debug("Response from serial: " + is.read());
-            }
-            
+            RequestDeal r =new RequestDeal(2);
+            Communication.getInstance().sentRequest(r);
+            LOG.debug(r.toString());
+
+          
             
             
         } catch (Exception ex) {
