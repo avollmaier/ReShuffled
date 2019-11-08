@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/fig/modules/elektro.tex" description="\label{sec:beispiel2}" line="4" />
   </component>
@@ -9,6 +10,11 @@
       <change beforePath="$PROJECT_DIR$/ainf.tex" beforeDir="false" afterPath="$PROJECT_DIR$/fig/modules/ainf.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elektro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/fig/modules/elektro.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mech.tex" beforeDir="false" afterPath="$PROJECT_DIR$/fig/modules/mech.tex" afterDir="false" />
+=======
+  <component name="ChangeListManager">
+    <list default="true" id="dd949983-072e-4c3c-8506-ba4981799f03" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/fig/modules/ainf.tex" beforeDir="false" afterPath="$PROJECT_DIR$/fig/modules/ainf.tex" afterDir="false" />
+>>>>>>> e69503cbde7184348c657da1e006c7825b2feb6f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,9 +22,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="37" />
+    <option name="idleThresholdMs" value="30000" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -74,6 +85,8 @@
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> e69503cbde7184348c657da1e006c7825b2feb6f
   <component name="FindInProjectRecents">
     <findStrings>
       <find>error</find>
@@ -82,6 +95,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -133,6 +147,10 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
+=======
+  <component name="ProjectId" id="1TKtXaRyLJSMFl4I9P8O3y3PTzB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> e69503cbde7184348c657da1e006c7825b2feb6f
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -167,6 +185,8 @@
       <texify>
         <compiler>PDFLATEX</compiler>
         <compiler-path>/usr/local/bin/pdflatex</compiler-path>
+        <sumatra-path />
+        <viewer-command />
         <compiler-arguments />
         <main-file>$PROJECT_DIR$/main.tex</main-file>
         <aux-dir>false</aux-dir>
@@ -193,6 +213,7 @@
       <workItem from="1559658430593" duration="5714000" />
       <workItem from="1559667920220" duration="619000" />
       <workItem from="1559681503355" duration="10000" />
+<<<<<<< HEAD
       <workItem from="1573220309243" duration="86000" />
     </task>
     <servers />
@@ -235,13 +256,31 @@
       <window_info anchor="right" id="Database" order="8" />
     </layout>
   </component>
+=======
+      <workItem from="1573220656293" duration="136000" />
+    </task>
+    <servers />
+  </component>
+>>>>>>> e69503cbde7184348c657da1e006c7825b2feb6f
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
+<<<<<<< HEAD
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/out/main.bcf" />
     <entry file="file://$PROJECT_DIR$/out/main.aux" />
@@ -298,4 +337,6 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> e69503cbde7184348c657da1e006c7825b2feb6f
 </project>
