@@ -2,44 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd949983-072e-4c3c-8506-ba4981799f03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/built-jar.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/data/PlayerCounter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/data/config/data/ConfigModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/data/config/data/GamemodeModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/data/config/service/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/GuiMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/controllers/DashboardTabController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/controllers/HelpTabController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/controllers/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/controllers/SettingsTabController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/fxml/DashboardTab.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/fxml/HelpTab.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/fxml/MainFXML.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/fxml/SettingsTab.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/gui/fxml/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/ExtendedLogRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogBackgroundHandler$HandlerThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogBackgroundHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogOutputStreamHandler$LogOutputPrintStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogOutputStreamHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordDataFormattedText$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordDataFormattedText$Terminal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordDataFormattedText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordDataHexDump.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/LogRecordDataString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/Logger$SpecialLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/logging/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/serial/SerialService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/serial/checksum/ChecksumService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/serial/requests/ReqInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/serial/requests/Request$SerialStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/build/classes/serial/requests/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/dist/ReShuffled_PI.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/nbproject/private/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/nbproject/private/private.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ReShuffled_PI/nbproject/private/private.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/fig/modules/ainf.tex" beforeDir="false" afterPath="$PROJECT_DIR$/fig/modules/ainf.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="2" />
+    <option name="totalTimeSeconds" value="37" />
     <option name="idleThresholdMs" value="30000" />
   </component>
   <component name="DefaultGradleProjectSettings">
@@ -124,7 +86,7 @@
       <workItem from="1559658430593" duration="5714000" />
       <workItem from="1559667920220" duration="619000" />
       <workItem from="1559681503355" duration="10000" />
-      <workItem from="1573220656293" duration="35000" />
+      <workItem from="1573220656293" duration="136000" />
     </task>
     <servers />
   </component>
