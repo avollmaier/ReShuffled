@@ -10,12 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import logging.Logger;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 public class SettingsTabController implements Initializable {
+
     @FXML
     private JFXListView<String> listView;
     @FXML
@@ -44,7 +43,6 @@ public class SettingsTabController implements Initializable {
     private GamemodeModel editGamemode, actualGamemode, selectedGamemode;
     private boolean editMode = false;
 
-
     ObservableList<String> listViewData = FXCollections.observableArrayList();
 
     @Override
@@ -70,8 +68,9 @@ public class SettingsTabController implements Initializable {
     public void onListSelectionChange() {
         if (!Config.getInstance().getGamemodes().isEmpty()) {
             Config.getInstance().getGamemodes().forEach(gamemode -> {
-                if (gamemode.getName().equals(listView.getSelectionModel().getSelectedItem()))
+                if (gamemode.getName().equals(listView.getSelectionModel().getSelectedItem())) {
                     selectedGamemode = gamemode;
+                }
             });
         }
         if (actualGamemode != null) {
@@ -147,8 +146,11 @@ public class SettingsTabController implements Initializable {
     }
 
     public void onAutoDealChanged() {
-        if (chbAutoDeal.isSelected()) cbAutoDealValue.setDisable(false);
-        else cbAutoDealValue.setDisable(true);
+        if (chbAutoDeal.isSelected()) {
+            cbAutoDealValue.setDisable(false);
+        } else {
+            cbAutoDealValue.setDisable(true);
+        }
 
     }
 

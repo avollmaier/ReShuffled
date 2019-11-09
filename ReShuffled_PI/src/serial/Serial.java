@@ -17,7 +17,6 @@ import serial.sim.ReshuffledMainboardSimulator;
 import serial.sim.SimInputStreamBuffer;
 import serial.sim.SimOutputStreamBuffer;
 
-
 /**
  *
  * @author alois
@@ -26,16 +25,16 @@ public class Serial {
 
     private static final Logger LOG = Logger.getLogger(Serial.class.getName());
     private static Serial instance;
-    
-    public static Serial createInstance (ConfigSerial config) throws SerialException, IOException {
+
+    public static Serial createInstance(ConfigSerial config) throws SerialException, IOException {
         if (instance != null) {
             throw new IllegalStateException("instance already created");
         }
-        instance = new Serial (config);
+        instance = new Serial(config);
         return instance;
     }
 
-    public static Serial getInstance () {
+    public static Serial getInstance() {
         if (instance == null) {
             throw new IllegalStateException("instance not created yet");
         }
@@ -43,15 +42,13 @@ public class Serial {
     }
 
     // *********************************************************************************
-
     private final ConfigSerial config;
     private InputStream inputStream;
     private OutputStream outputStream;
     private SimInputStreamBuffer toSim;
     private SimOutputStreamBuffer fromSim;
-    
 
-    private Serial (ConfigSerial config) throws SerialException, IOException {
+    private Serial(ConfigSerial config) throws SerialException, IOException {
         this.config = config;
         if (config.isDisabled()) {
             return;
@@ -63,35 +60,35 @@ public class Serial {
         }
     }
 
-    public InputStream getInputStream () {
+    public InputStream getInputStream() {
         return inputStream;
     }
-    
-    public OutputStream getOutputStream () {
+
+    public OutputStream getOutputStream() {
         return outputStream;
     }
-    
-    private void initSimulation () throws IOException {
+
+    private void initSimulation() throws IOException {
         toSim = new SimInputStreamBuffer();
         fromSim = new SimOutputStreamBuffer();
-        inputStream = new InputStream () {
+        inputStream = new InputStream() {
             @Override
-            public int read () throws IOException {
+            public int read() throws IOException {
                 return fromSim.read();
             }
 
             @Override
-            public int available () throws IOException {
+            public int available() throws IOException {
                 return fromSim.available();
             }
-            
+
         };
         outputStream = new SerialSimOutputStream();
         new ReshuffledMainboardSimulator(toSim, fromSim);
         LOG.info("serial simulation activated");
     }
 
-    private void initSerialDevice () throws SerialException {
+    private void initSerialDevice() throws SerialException {
         try {
             final int baudrate = config.getBaudrate();
             final String device = config.getDevice();
@@ -101,77 +98,69 @@ public class Serial {
             inputStream = new SerialJsscInputStream(serialPort);
             outputStream = new SerialJsscOutputStream(serialPort);
             LOG.info("serial device port %s (baudrate %d) opened", device, baudrate);
-            
+
         } catch (Exception ex) {
             throw new SerialException("initSerialDevice() fails", ex);
         }
     }
 
-
-    public void writeString (String s) throws IOException {
-        final byte [] bytes = s.getBytes("UTF-8");
+    public void writeString(String s) throws IOException {
+        final byte[] bytes = s.getBytes("UTF-8");
         getOutputStream().write(bytes);
         getOutputStream().flush();
+
     }
-    
 
     private class SerialSimInputStream extends InputStream {
 
         @Override
-        public int read () throws IOException {
+        public int read() throws IOException {
             return -1;
         }
-        
-    }
 
+    }
 
     private class SerialSimOutputStream extends OutputStream {
 
         @Override
-        public void write (int b) throws IOException {
+        public void write(int b) throws IOException {
             toSim.write(b);
         }
-        
+
     }
-    
+
     // *************************************************************************
-    
     private class SerialJsscInputStream extends InputStream {
+
         private final jssc.SerialPort serialPort;
 
-        public SerialJsscInputStream (SerialPort serialPort) {
+        public SerialJsscInputStream(SerialPort serialPort) {
             this.serialPort = serialPort;
         }
-        
+
         @Override
-        public int read () throws IOException {
+        public int read() throws IOException {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
-    }
 
-    
-    
+    }
 
     private class SerialJsscOutputStream extends OutputStream {
+
         private final jssc.SerialPort serialPort;
 
-        public SerialJsscOutputStream (SerialPort serialPort) {
+        public SerialJsscOutputStream(SerialPort serialPort) {
             this.serialPort = serialPort;
         }
 
         @Override
-        public void write (int b) throws IOException {
+        public void write(int b) throws IOException {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
-    }
-    
-    
-    
-    
-}
 
+    }
+
+}
 
 //    
 //    

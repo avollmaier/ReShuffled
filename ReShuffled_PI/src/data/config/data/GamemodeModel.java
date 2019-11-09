@@ -3,6 +3,7 @@ package data.config.data;
 import com.google.gson.annotations.SerializedName;
 
 public class GamemodeModel {
+
     @SerializedName("name")
     private String name;
     @SerializedName("autoDeal")
@@ -61,5 +62,5 @@ public class GamemodeModel {
     public void setPlayerQuantity(Integer playerQuantity) {
         this.playerQuantity = playerQuantity;
     }
-    
+
 }

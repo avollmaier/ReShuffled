@@ -1,6 +1,7 @@
 package data;
 
 public class PlayerCounter {
+
     private int playerId, value;
 
     public int currentValue() {

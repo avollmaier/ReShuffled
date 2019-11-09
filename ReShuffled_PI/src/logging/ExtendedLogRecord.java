@@ -4,15 +4,16 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 /**
- * ExtendedLogRecord objects are used to pass logging requests between
- * the logging framework and individual log Handlers.<br>
- * ExtendedLogRecord extends {@link LogRecord} to
- * preserve location, additional data, desired stack trace depth and
- * the information if this record is only used for debugging purposes
+ * ExtendedLogRecord objects are used to pass logging requests between the
+ * logging framework and individual log Handlers.<br>
+ * ExtendedLogRecord extends {@link LogRecord} to preserve location, additional
+ * data, desired stack trace depth and the information if this record is only
+ * used for debugging purposes
  *
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)
  */
 public class ExtendedLogRecord extends LogRecord {
+
     protected LogRecordData data;
     private final StackTraceElement location;
     private final StackTraceElement[] stackTrace;
@@ -99,7 +100,6 @@ public class ExtendedLogRecord extends LogRecord {
         setThrown(th);
     }
 
-
     public ExtendedLogRecord(Level level, int locationStackTraceIndex, int locationStackTraceDepth, String msg) {
         super(level, msg);
         StackTraceElement[] st = locationStackTraceIndex >= 0 || locationStackTraceDepth > 0 ? Thread.currentThread().getStackTrace() : null;
@@ -108,64 +108,58 @@ public class ExtendedLogRecord extends LogRecord {
 //      System.out.println(String.format("at %s.%s(%s:%d)",
 //                         e.getClassName(), e.getMethodName(),
 //                         e.getFileName(), e.getLineNumber()));
-
-        if (st == null || locationStackTraceIndex < 0 || locationStackTraceIndex >= st.length)
+        if (st == null || locationStackTraceIndex < 0 || locationStackTraceIndex >= st.length) {
             location = null;
-        else
+        } else {
             location = st[locationStackTraceIndex];
+        }
 
         int locationIndex = Math.abs(locationStackTraceIndex);
         locationDepth = st != null ? st.length - locationIndex : -1;
 
-        if (st == null || locationStackTraceDepth < 1)
+        if (st == null || locationStackTraceDepth < 1) {
             stackTrace = null;
-        else {
+        } else {
             int size = Math.min(locationStackTraceDepth, Math.max(0, st.length - locationIndex - 1));
-            if (locationStackTraceIndex < 0)
+            if (locationStackTraceIndex < 0) {
                 size++;
+            }
             stackTrace = new StackTraceElement[size];
-            for (int i = 0; i < stackTrace.length; i++)
+            for (int i = 0; i < stackTrace.length; i++) {
                 stackTrace[i] = st[locationIndex + i + (locationStackTraceIndex < 0 ? 0 : 1)];
+            }
         }
     }
-
 
     public int getStackTraceSize() {
         return stackTrace == null ? 0 : stackTrace.length;
     }
 
-
     public StackTraceElement getStackTraceElement(int index) {
         return index >= 0 && index < stackTrace.length ? stackTrace[index] : null;
     }
-
 
     public boolean isStackTraceEmpty() {
         return stackTrace == null || stackTrace.length == 0;
     }
 
-
     public LogRecordData getData() {
         return data;
     }
-
 
     public int getLocationDepth() {
         return locationDepth;
     }
 
-
     public boolean isLocationAvailable() {
         return location != null;
     }
-
 
     public String getLocationAsString() {
         return String.format("at %s.%s(%s:%d)",
                 location.getClassName(), location.getMethodName(),
                 location.getFileName(), location.getLineNumber());
     }
-
 
     public String getStackTraceElementAsString(int index) {
         StackTraceElement e = stackTrace[index];
@@ -174,15 +168,12 @@ public class ExtendedLogRecord extends LogRecord {
                 e.getFileName(), e.getLineNumber());
     }
 
-
     public boolean isDebugRecord() {
         return debugRecord;
     }
 
-
     public void setDebugRecord(boolean debugRecord) {
         this.debugRecord = debugRecord;
     }
-
 
 }

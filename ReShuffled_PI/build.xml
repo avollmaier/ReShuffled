@@ -72,17 +72,17 @@
     -->
     
     <target name="-post-jar">
-    <jar jarfile="dist/ReShuffled_PI-withLibs.jar">
-      <zipfileset src="${dist.jar}" excludes="META-INF/*" />
-      <zipfileset src="lib/jssc-2.8.0.jar" excludes="META-INF/*" />
-      <zipfileset src="lib/gson-2.8.6.jar" excludes="META-INF/*" />
-      <zipfileset src="lib/jfoenix-9.0.8.jar" excludes="META-INF/*" />
-      <zipfileset src="lib/javafx-sdk-11.0.2.jar" excludes="META-INF/*" />
-      <manifest>
-        <attribute name="Main-Class" value="main.Main"/>
-      </manifest>
-    </jar>
-    <move file="dist/ReShuffled_PI-withLibs.jar" tofile="dist/ReShuffled_PI.jar" />
-  </target>
+        <jar jarfile="dist/ReShuffled_PI-withLibs.jar">
+            <zipfileset src="${dist.jar}" excludes="META-INF/*" />
+            <zipfileset src="lib/jssc-2.8.0.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/gson-2.8.6.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/jfoenix-9.0.8.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/javafx-sdk-11.0.2.jar" excludes="META-INF/*" />
+            <manifest>
+                <attribute name="Main-Class" value="main.Main"/>
+            </manifest>
+        </jar>
+        <move file="dist/ReShuffled_PI-withLibs.jar" tofile="dist/ReShuffled_PI.jar" />
+    </target>
     
 </project>

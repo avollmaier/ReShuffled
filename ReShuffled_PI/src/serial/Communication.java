@@ -57,10 +57,11 @@ public class Communication {
         public void run() {
 
             LOG.info("Communication Thread started");
-            
+
             boolean isListening = false;
-            byte[] resFrame = null; 
-            
+            byte[] resFrame = new byte[Config.getInstance().getConfigSerial().getResponseByteLength()];
+            InputStream is = Serial.getInstance().getInputStream();
+
             try {
                 while (true) {
                     try {
@@ -71,22 +72,40 @@ public class Communication {
                                 pendingRequest = toSentList.removeFirst();
                                 serial.writeString(pendingRequest.getMreqFrame());
                                 pendingRequest.handleRequestSent();
-                                
+                                isListening = true;
                             }
                         }
-                        
-                        
-                        synchronized (resFrame) {
-                         do {
-                        resFrame.wait(100);
-                        LOG.debug("Waiting for response: " + (System.currentTimeMillis() - pendingRequest.getTimeMillisFrameSent()) + "ms/" + timeoutMillis + "ms");
-                        } while (pendingRequest.getTimeMillisFrameSent() + timeoutMillis > System.currentTimeMillis() && pendingRequest.getTimeMillisFrameReceived() == 0);
-                        
-                            System.out.println("hi");
-                        
-                        
-                        }
 
+                        if (isListening == true) {
+                            do {
+                                Thread.sleep(100);
+                                LOG.debug("Waiting for response: " + (System.currentTimeMillis() - pendingRequest.getTimeMillisFrameSent()) + "ms/" + timeoutMillis + "ms");
+
+                                if (is.available() > 0) {
+                                    break;
+                                }
+
+                            } while (pendingRequest.getTimeMillisFrameSent() + timeoutMillis > System.currentTimeMillis() && pendingRequest.getTimeMillisFrameReceived() == 0);
+
+                            if (pendingRequest.getTimeMillisFrameSent() + timeoutMillis < System.currentTimeMillis()) {
+                                LOG.debug("Timeout of response from request " + pendingRequest.getMreqFrame());
+                                if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
+                                    sentRequest(pendingRequest);
+                                } else {
+                                    LOG.debug("Skipping request due timeout");
+                                }
+                            } else {
+                                while (is.available() > 0) {
+                                    
+                                    System.out.println(is.read());
+                                    //is.readNBytes(resFrame, 0, Config.getInstance().getConfigSerial().getResponseByteLength());
+                                    
+                                }
+                                pendingRequest.handleResponse(resFrame);
+                            }
+                            resFrame=null;
+                            isListening = false;
+                        }
                     } catch (Exception ex) {
                         LOG.warning(ex, "Communication Thread exception");
                         ex.printStackTrace();

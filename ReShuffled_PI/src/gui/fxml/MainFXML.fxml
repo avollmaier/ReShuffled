@@ -36,15 +36,15 @@
                                 </Label>
                                 <HBox prefHeight="65.0" prefWidth="250.0" />
                                 <Pane prefHeight="363.0" prefWidth="250.0" />
-                        <HBox alignment="CENTER" prefHeight="65.0" prefWidth="250.0">
-                           <children>
-                                      <JFXButton fx:id="btOnStartGame" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onMouseClicked="#onStartGame" prefHeight="47.0" prefWidth="237.0" ripplerFill="#323540" style="-fx-background-color: #FFFF;" text="Start Game">
-                                          <font>
-                                              <Font name="System Bold" size="18.0" />
-                                          </font>
-                                      </JFXButton>
-                           </children>
-                        </HBox>
+                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="250.0">
+                                    <children>
+                                        <JFXButton fx:id="btOnStartGame" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onMouseClicked="#onStartGame" prefHeight="47.0" prefWidth="237.0" ripplerFill="#323540" style="-fx-background-color: #FFFF;" text="Start Game">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                </HBox>
                             </children>
                         </VBox>
                         <Pane prefHeight="65.0" prefWidth="250.0">

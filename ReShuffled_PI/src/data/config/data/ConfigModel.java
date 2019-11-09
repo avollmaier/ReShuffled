@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ConfigModel {
+
     @SerializedName("logPath")
     private String logPath;
     @SerializedName("guiHeight")
@@ -13,7 +14,7 @@ public class ConfigModel {
     @SerializedName("guiWidth")
     private Integer guiWidth;
     @SerializedName("gamemodes")
-    private List <GamemodeModel> gamemodes;
+    private List<GamemodeModel> gamemodes;
     @SerializedName("serial")
     private ConfigSerial serial;
 
@@ -57,11 +58,8 @@ public class ConfigModel {
         this.gamemodes = gamemodes;
     }
 
-    public ConfigSerial getSerial () {
+    public ConfigSerial getSerial() {
         return serial;
     }
-    
-    
 
-    
 }

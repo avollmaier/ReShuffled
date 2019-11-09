@@ -8,6 +8,7 @@ import java.io.PrintStream;
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)
  */
 public interface LogRecordData {
+
     /**
      * Write formatted data to PrintStream.
      *

@@ -1,16 +1,10 @@
 package serial.requests;
 
-import data.config.data.ConfigModel;
-import data.config.service.Config;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import jssc.SerialPort;
-import serial.Serial;
+import java.util.Arrays;
 import logging.Logger;
-import main.Main;
 
 /**
  *
@@ -24,11 +18,10 @@ public abstract class Request {
     private static final DateFormat DATAFORMATTER = new SimpleDateFormat("mm:ss.S");
 
     private String reqFrame;              // frame bytes sent to µC (only text)
-    private byte[] resFrame;             // frame bytes received from µC
     private final long timeMillisCreatedAt;     // epoch time when this object is created
     private long timeMillisFrameSent;     // epoch time when frame is sent to µC
-    private long timeMillisFrameReceived; // epoch time ehne frame from µC is received 
-
+    private byte[] resFrame;             // frame bytes received from µC
+    private long timeMillisFrameReceived; // epoch time ehne frame from µC is received  
 
     public Request() {
         timeMillisCreatedAt = System.currentTimeMillis();
@@ -39,8 +32,10 @@ public abstract class Request {
 
     }
 
-    public void handleResponse(byte[] receivedResponse) throws IOException {
-      timeMillisFrameReceived = System.currentTimeMillis();
+    public void handleResponse(byte[] receivedResFrame) {
+        timeMillisFrameReceived = System.currentTimeMillis();
+        resFrame = receivedResFrame;
+        LOG.debug("Received response " + Arrays.toString(resFrame) +  " in "  + (timeMillisFrameReceived - timeMillisFrameSent) +" ms" );
     }
 
     protected void createRequestFrame(String content) {
@@ -113,6 +108,5 @@ public abstract class Request {
     public long getTimeMillisFrameReceived() {
         return timeMillisFrameReceived;
     }
-    
 
 }

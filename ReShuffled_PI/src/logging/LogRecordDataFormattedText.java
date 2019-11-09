@@ -2,14 +2,15 @@ package logging;
 
 import java.io.PrintStream;
 
-
 /**
  * For printing formatted text with {@link Logger}.<br>
- * <p>This class is using ANSI escape codes for text formatting.</p>
- * <p>Note that result depends on type of terminal. Therefore
- * you can select terminal type in constructor or by defining the System Property
- * <i>logging.LogRecordDataFormattedText.Terminal</i> (which can be set to any enum constants of
- * {@link Terminal}.
+ * <p>
+ * This class is using ANSI escape codes for text formatting.</p>
+ * <p>
+ * Note that result depends on type of terminal. Therefore you can select
+ * terminal type in constructor or by defining the System Property
+ * <i>logging.LogRecordDataFormattedText.Terminal</i> (which can be set to any
+ * enum constants of {@link Terminal}.
  * <p>
  * <u>Example:</u>
  * <blockquote><pre>
@@ -25,19 +26,24 @@ import java.io.PrintStream;
  * </pre></blockquote>
  *
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)
- * @see <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="blank">https://en.wikipedia.org/wiki/ANSI_escape_code</a>
- * @see <a href="http://wiki.netbeans.org/TerminalEmulatorHyperlinking" target="blank">http://wiki.netbeans.org/TerminalEmulatorHyperlinking</a>
+ * @see
+ * <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="blank">https://en.wikipedia.org/wiki/ANSI_escape_code</a>
+ * @see
+ * <a href="http://wiki.netbeans.org/TerminalEmulatorHyperlinking" target="blank">http://wiki.netbeans.org/TerminalEmulatorHyperlinking</a>
  */
 public class LogRecordDataFormattedText implements LogRecordData {
-    public enum Terminal {LINUX, NETBEANS}
+
+    public enum Terminal {
+        LINUX, NETBEANS
+    }
 
     String s;
     private final StringBuilder text;
     private final Terminal terminal;
 
     /**
-     * Constructor.
-     * The value of the system property <b>logging.LogRecordDataFormattedText.Terminal</b>
+     * Constructor. The value of the system property
+     * <b>logging.LogRecordDataFormattedText.Terminal</b>
      * is taken to select the proper link format.
      */
     public LogRecordDataFormattedText() {
@@ -123,9 +129,9 @@ public class LogRecordDataFormattedText implements LogRecordData {
     }
 
     /**
-     * Append link.
-     * The format of the link can be configured with the constructor {@link #LogRecordDataFormattedText(Terminal)}
-     * or by the system property {@code logging.LogRecordDataFormattedText.Terminal}
+     * Append link. The format of the link can be configured with the
+     * constructor {@link #LogRecordDataFormattedText(Terminal)} or by the
+     * system property {@code logging.LogRecordDataFormattedText.Terminal}
      *
      * @param target the link
      * @return this object

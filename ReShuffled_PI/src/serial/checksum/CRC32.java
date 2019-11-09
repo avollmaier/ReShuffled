@@ -5,16 +5,16 @@
  */
 package serial.checksum;
 
-
 import logging.Logger;
 
 /**
  * @author alois
  */
 public class CRC32 {
+
     private static final Logger LOG = Logger.getLogger(CRC32.class.getName());
 
-     public static long calcCRC(byte [] data) {
+    public static long calcCRC(byte[] data) {
         java.util.zip.Checksum checksum = new java.util.zip.CRC32();
         checksum.update(data, 0, data.length);
         return checksum.getValue();

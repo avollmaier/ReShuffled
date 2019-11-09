@@ -70,21 +70,21 @@
                         <Pane prefHeight="30.0" prefWidth="367.0" />
                         <JFXComboBox fx:id="cbPlayerQuantity" prefHeight="47.0" prefWidth="367.0" promptText="Player Quantity" />
                         <Pane prefHeight="30.0" prefWidth="367.0" />
-                  <HBox prefWidth="300.0">
-                     <children>
-                        <JFXButton fx:id="btSaveGM" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" disable="true" onMouseClicked="#onSaveGM" prefHeight="40.0" prefWidth="220.0" ripplerFill="WHITE" style="-fx-background-color: #323540;" text="SAVE" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </JFXButton>
-                        <Pane prefWidth="100.0" />
-                        <JFXButton fx:id="btAddGM" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" disable="true" onMouseClicked="#onAddGM" prefHeight="40.0" prefWidth="220.0" ripplerFill="WHITE" style="-fx-background-color: #323540;" text="ADD" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
+                        <HBox prefWidth="300.0">
+                            <children>
+                                <JFXButton fx:id="btSaveGM" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" disable="true" onMouseClicked="#onSaveGM" prefHeight="40.0" prefWidth="220.0" ripplerFill="WHITE" style="-fx-background-color: #323540;" text="SAVE" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </JFXButton>
+                                <Pane prefWidth="100.0" />
+                                <JFXButton fx:id="btAddGM" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" disable="true" onMouseClicked="#onAddGM" prefHeight="40.0" prefWidth="220.0" ripplerFill="WHITE" style="-fx-background-color: #323540;" text="ADD" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </HBox>
                     </children>
                     <opaqueInsets>
                         <Insets />

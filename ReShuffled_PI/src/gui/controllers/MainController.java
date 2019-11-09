@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
     @FXML
     private Label lbVersion;
     @FXML
@@ -30,7 +31,7 @@ public class MainController implements Initializable {
     @Override
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lbVersion.setText("Reshuffled V" + Main.VERSION);   
+        lbVersion.setText("Reshuffled V" + Main.VERSION);
     }
 
     public void onStartGame() {
