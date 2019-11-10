@@ -54,7 +54,7 @@ public class ReshuffledMainboardSimulator implements Runnable {
                         }
 
                     }
-                    out.write("response for " + frame);
+                    out.write(frame);
                     out.newLine();
                     out.flush();
                 }

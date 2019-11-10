@@ -2,6 +2,7 @@ package serial;
 
 import data.config.service.Config;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import logging.Logger;
 import serial.requests.Request;
@@ -90,21 +91,29 @@ public class Communication {
                             if (pendingRequest.getTimeMillisFrameSent() + timeoutMillis < System.currentTimeMillis()) {
                                 LOG.debug("Timeout of response from request " + pendingRequest.getMreqFrame());
                                 if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
+                                    
                                     sentRequest(pendingRequest);
                                 } else {
-                                    LOG.debug("Skipping request due timeout");
+                                    throw new SerialException("Serial error due timeout");
                                 }
                             } else {
+                                int i = 0;
                                 while (is.available() > 0) {
-                                    
-                                    System.out.println(is.read());
-                                    //is.readNBytes(resFrame, 0, Config.getInstance().getConfigSerial().getResponseByteLength());
-                                    
+                                    resFrame[i] = (byte) is.read();
+                                    i++;
                                 }
-                                pendingRequest.handleResponse(resFrame);
+                                if (resFrame[0] == 58 && resFrame[12] == 10) {
+                                    pendingRequest.handleResponse(resFrame);
+                                } else if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
+                                    
+                                    sentRequest(pendingRequest);
+                                }else{
+                                    throw new SerialException("Serial error due wrong transmission");
+                                }
+
+                                resFrame = null;
+                                isListening = false;
                             }
-                            resFrame=null;
-                            isListening = false;
                         }
                     } catch (Exception ex) {
                         LOG.warning(ex, "Communication Thread exception");

@@ -9,6 +9,6 @@
     "baudrate": 57600,
     "timeoutMillis": 1000,
     "secondTryAllowed": false,
-    "responseByteLength": 8
+    "responseByteLength": 13
   }
 }
