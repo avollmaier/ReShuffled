@@ -12,15 +12,6 @@ public class RequestDeal extends Request {
         super();
         createRequestFrame("D" + value);
     }
-
-    @Override
-    public void handleResponse(byte[] receivedResFrame) {
-        super.handleResponse(receivedResFrame); //To change body of generated methods, choose Tools | Templates.
-        
-     
-    }
-
-    
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder(128);

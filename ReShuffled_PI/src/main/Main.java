@@ -1,8 +1,6 @@
 package main;
 
-import data.config.data.ConfigModel;
 import data.config.service.Config;
-import gui.GuiMain;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
@@ -10,14 +8,11 @@ import logging.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
-import javax.naming.CommunicationException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import serial.Communication;
 import serial.requests.RequestDeal;
 import serial.Serial;
-import serial.requests.RequestInit;
 
 public class Main {
 
@@ -99,11 +94,13 @@ public class Main {
             cfg.save();
             Serial.createInstance(cfg.getConfigSerial());
             Communication.createInstance(Serial.getInstance());
-            //GuiMain.main();
+            
+            
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
 
             Thread.sleep(100);
             RequestDeal r = new RequestDeal(2);
-            Communication.getInstance().sentRequest(r);
+            Communication.getInstance().sentRequestExecutor(r);
             LOG.debug(r.toString());
           
 

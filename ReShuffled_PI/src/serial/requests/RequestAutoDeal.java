@@ -10,14 +10,6 @@ public class RequestAutoDeal extends Request {
         super();
         createRequestFrame("A" + value);
     }
-
-    @Override
-    public void handleResponse(byte[] receivedFrame) {
-        super.handleResponse(receivedFrame);
-        
-        System.out.println(receivedFrame);
-    }
-
     
     @Override
     public String toString() {

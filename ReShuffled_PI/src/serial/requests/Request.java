@@ -1,10 +1,12 @@
 package serial.requests;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import logging.Logger;
+import serial.SerialException;
 
 /**
  *
@@ -32,10 +34,35 @@ public abstract class Request {
 
     }
 
-    public void handleResponse(byte[] receivedResFrame) {
+    public void handleResponse(byte[] receivedResFrame) throws SerialException {
         timeMillisFrameReceived = System.currentTimeMillis();
+        
+        byte[] receivedContentCRC = new byte[2];
+        String receivedCRC = "";
         resFrame = receivedResFrame;
-        LOG.debug("Received response " + Arrays.toString(resFrame) +  " in "  + (timeMillisFrameReceived - timeMillisFrameSent) +" ms" );
+
+        //received response
+        LOG.debug("Received response " + Arrays.toString(resFrame) + " in " + (timeMillisFrameReceived - timeMillisFrameSent) + " ms");
+
+        //check checksum
+        CRC32.reset();
+        receivedContentCRC[0] = resFrame[1];
+        receivedContentCRC[1] = resFrame[2];
+        CRC32.update(receivedContentCRC);
+
+        for (int i = 4; i <= 11; i++) {
+            receivedCRC = receivedCRC + (char) resFrame[i];
+        }
+
+        if (receivedCRC.equals(String.format("%08X", CRC32.getValue()))) {
+            LOG.debug("Correct CRC");
+        } else {
+            LOG.debug("Wrong CRC");
+            throw new SerialException("Wrong CRC");
+        }
+        
+        //TODO 
+
     }
 
     protected void createRequestFrame(String content) {
@@ -45,7 +72,7 @@ public abstract class Request {
         CRC32.reset();
         CRC32.update(content.getBytes());
         final String crc32 = String.format("%08X", CRC32.getValue());
-
+        System.out.println(CRC32.getValue());
         final StringBuilder sb = new StringBuilder(128);
         sb.append(':').append(content).append('#').append(crc32).append('\n');
         reqFrame = sb.toString();

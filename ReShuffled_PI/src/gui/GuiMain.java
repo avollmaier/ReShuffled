@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 import logging.Logger;
 
 //logger imports
-public class GuiMain extends Application {
+public class GuiMain extends Application  implements Runnable{
 
     private static final Logger LOG = Logger.getLogger(GuiMain.class.getName());
 
@@ -25,7 +25,8 @@ public class GuiMain extends Application {
         primaryStage.show();
     }
 
-    public static void main() {
+    @Override
+    public void run() {
         launch();
     }
 }
