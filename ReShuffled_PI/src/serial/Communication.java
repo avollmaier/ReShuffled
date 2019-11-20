@@ -2,9 +2,11 @@ package serial;
 
 import data.config.service.Config;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.LinkedList;
 import logging.Logger;
 import serial.requests.Request;
+import serial.requests.Response;
 
 /**
  *
@@ -12,6 +14,8 @@ import serial.requests.Request;
  */
 public class Communication {
 
+    private static final int MAX_RECEIVE_FRAME_LENGTH = 32;
+    
     private static final Logger LOG = Logger.getLogger(Communication.class.getName());
     private static Communication instance;
 
@@ -32,88 +36,133 @@ public class Communication {
 
     // *********************************************************
     private final Serial serial;
-    private final Thread communicationThread;
+    private final Thread communicationSendThread;
+    private final Thread communicationReceiveThread;
     private final LinkedList<Request> toSentList = new LinkedList<>();
+    private final LinkedList<Response> responseList = new LinkedList<>();
     private Request pendingRequest;
-    private long timeoutMillis = Config.getInstance().getConfigSerial().getTimeoutMillis();
-    private int responseSize=Config.getInstance().getConfigSerial().getResponseByteLength();
 
+    private final long timeoutMillis = Config.getInstance().getConfigSerial().getTimeoutMillis();
+    private final int responseSize = Config.getInstance().getConfigSerial().getResponseByteLength();
+
+    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
     private Communication(Serial serial) {
         this.serial = serial;
-        communicationThread = new Thread(new CommThread());
-        communicationThread.start();
+        communicationReceiveThread = new Thread(new CommReceiveThread());
+        communicationSendThread = new Thread(new CommSendThread());
+        communicationReceiveThread.start();
+        communicationSendThread.start();
+    }
+    
+    public void shutdown () {
+        communicationSendThread.interrupt();
+        communicationReceiveThread.interrupt();
     }
 
-    public void sentRequestExecutor(Request req) {
+    public void sendRequestExecutor(Request req) {
         synchronized (toSentList) {
             toSentList.add(req);
             toSentList.notifyAll();
         }
     }
 
-    private void waitForItemsAvailable(final LinkedList<Request> items) throws InterruptedException {
-        while (items.isEmpty()) {
-            items.wait();
-        }
-    }
 
-    private class CommThread implements Runnable {
+    private class CommReceiveThread implements Runnable {
+
+        @Override
+        public void run () {
+            Thread.currentThread().setName("Communication Receive Thread");
+            LOG.info(Thread.currentThread().getName() + " started");
+            
+            try {
+                final InputStream is = Serial.getInstance().getInputStream();
+                final byte buffer [] = new byte [MAX_RECEIVE_FRAME_LENGTH];
+                int bufferIndex = 0;
+                while (!Thread.currentThread().isInterrupted()) {
+                    int b = is.read();
+                    if (b >= 0 && b < 255) {
+                        if (bufferIndex == 0) {
+                            if (b == ':') {
+                                buffer[bufferIndex++] = (byte)b;
+                            } else {
+                                LOG.warning("receiving unexpected byte (':' expected, get " + b);
+                            }
+                        
+                        } else if (bufferIndex < buffer.length) {
+                            buffer[bufferIndex++] = (byte)b;
+                            if (b == '\n') {
+                                synchronized(responseList) {
+                                    byte [] resBuffer = Arrays.copyOf(buffer, bufferIndex);
+                                    bufferIndex = 0;
+                                    responseList.add(new Response(resBuffer));
+                                    responseList.notifyAll();
+                                }
+                            }
+                        
+                        } else {
+                            LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                LOG.warning(ex, Thread.currentThread().getName() + " exception");
+                ex.printStackTrace(System.err);
+            } finally {
+                LOG.info(Thread.currentThread().getName() + " ended");
+            }
+        }
+
+    }
+    
+    private class CommSendThread implements Runnable {
 
         @Override
         public void run() {
-
-            LOG.info("Communication Thread started");
+            Thread.currentThread().setName("Communication Send Thread");
+            LOG.info(Thread.currentThread().getName() + " started");
 
             InputStream is = Serial.getInstance().getInputStream();
-            byte[] resFrame = new byte[Config.getInstance().getConfigSerial().getResponseByteLength()];
 
             try {
-                while (!Thread.currentThread().isInterrupted()) {
+                mainLoop: while (!Thread.currentThread().isInterrupted()) {
                     synchronized (toSentList) {
                         LOG.debug("Thread waiting for items ...");
-                        waitForItemsAvailable(toSentList);
-
-                        pendingRequest = toSentList.removeFirst();
-                        LOG.debug("Thread is consuming " + pendingRequest.getMreqFrame());
-                        serial.writeString(pendingRequest.getMreqFrame());
-                        pendingRequest.handleRequestSent();
-                    }
-
-                    do {//waiting for response
-                        Thread.sleep(20);
-                        LOG.debug("Waiting for response: " + (System.currentTimeMillis() - pendingRequest.getTimeMillisFrameSent()) + "ms/" + timeoutMillis + "ms");
-                    } while (pendingRequest.getTimeMillisFrameSent() + timeoutMillis > System.currentTimeMillis() && is.available() == 0);
-
-                    if (pendingRequest.getTimeMillisFrameSent() + timeoutMillis < System.currentTimeMillis()) { //timeout
-                        LOG.severe("Timeout of response from request " + pendingRequest.getMreqFrame());
-
-                        if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) { //check if second send try is allowed
-                            sentRequestExecutor(pendingRequest);//send second response
-                        } else {
-                            throw new SerialException("Serial error due timeout"); //if second try isnt allowed throw serial exception
-                        }
-
-                    } else {
-
-                        int readedLength = is.read(resFrame, 0, responseSize);
+                        toSentList.wait();
+                        if (!toSentList.isEmpty()) {
+                            pendingRequest = toSentList.removeFirst();
+                            LOG.debug("sending request...");
+                            serial.writeString(pendingRequest.getMreqFrame());
+                            pendingRequest.handleRequestSent();
                             
-                        if (resFrame[0] == 58 && resFrame[12] == 10 && readedLength == responseSize) {//check if the frame begins with " : " and ends with a " \n " and has n bytes length
-                            pendingRequest.handleResponse(resFrame); //handle response 
-                        } else if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) { //try to send second response because request was wrong transmitted
-                            sentRequestExecutor(pendingRequest);
-                        } else {
-                            throw new SerialException("Serial error because of a wrong transmission of " + pendingRequest.getMreqFrame()); //if second try isnt allowed throw serial exception
+                            final long waitingTimeoutMillis = pendingRequest.getTimeMillisFrameSent() + timeoutMillis;
+                            Response res = null;
+                            synchronized(responseList) {
+                                responseList.wait(timeoutMillis);
+                                if (responseList.isEmpty()) {
+                                    if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
+                                        sendRequestExecutor(pendingRequest);//send second response
+                                        continue mainLoop;
+                                    }
+                                    throw new SerialException("request timeout, mssing response"); // if second try isnt allowed throw serial exception
+                                }
+                                res = responseList.removeFirst();
+                                if (!responseList.isEmpty()) {
+                                    LOG.warning("response list should be empty, but " + responseList.size() + " items in list");
+                                    responseList.clear();
+                                }
+                            }
+                            pendingRequest.handleResponse(res);
                         }
-
                     }
                 }
 
             } catch (Exception ex) {
-                LOG.warning(ex, "Communication Thread exception");
-                ex.printStackTrace();
+                LOG.warning(ex, Thread.currentThread().getName() + " exception");
+                ex.printStackTrace(System.err);
             } finally {
-                LOG.info("Communication Thread ended");
+                LOG.info(Thread.currentThread().getName() + " ended");
             }
+
         }
 
     }

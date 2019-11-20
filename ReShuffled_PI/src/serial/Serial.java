@@ -8,8 +8,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
+import javax.imageio.IIOException;
 import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 import jssc.SerialPortTimeoutException;
 import logging.Logger;
@@ -134,14 +139,46 @@ public class Serial {
     private class SerialJsscInputStream extends InputStream {
 
         private final jssc.SerialPort serialPort;
+        private final List<Byte> receivedByteList = new ArrayList<Byte>();
 
         public SerialJsscInputStream(SerialPort serialPort) {
             this.serialPort = serialPort;
+            try {
+                this.serialPort.addEventListener(new SerialPortEventListener() {
+                    @Override
+                    public void serialEvent (SerialPortEvent arg0) {
+                        try {
+                            final byte [] received = serialPort.readBytes(1);
+                            if (received != null && received.length == 1) {
+                                synchronized(receivedByteList) {
+                                    receivedByteList.add(received[0]);
+                                    receivedByteList.notifyAll();
+                                }
+                            }
+                        } catch (Exception ex) {
+                           LOG.warning(ex);
+                        }
+                    }
+                });
+            } catch (Exception ex) {
+                LOG.warning(ex);
+            }
         }
 
         @Override
         public int read() throws IOException {
-           throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           synchronized (receivedByteList) {
+               try {
+                    while (receivedByteList.isEmpty()) {
+                        receivedByteList.wait();
+                    }
+                    Byte b = receivedByteList.remove(0);
+                    return b < 0 ? b + 256 : b;
+               
+               } catch (Exception ex) {
+                   throw new IOException(ex);
+               }
+           }
         }
         
 

@@ -34,12 +34,12 @@ public abstract class Request {
 
     }
 
-    public void handleResponse(byte[] receivedResFrame) throws SerialException {
-        timeMillisFrameReceived = System.currentTimeMillis();
+    public void handleResponse(Response res) throws SerialException {
+        timeMillisFrameReceived = res.getTimeMillisCreatedAt();
         
         byte[] receivedContentCRC = new byte[2];
         String receivedCRC = "";
-        resFrame = receivedResFrame;
+        resFrame = res.getResFrame();
 
         //received response
         LOG.debug("Received response " + Arrays.toString(resFrame) + " in " + (timeMillisFrameReceived - timeMillisFrameSent) + " ms");

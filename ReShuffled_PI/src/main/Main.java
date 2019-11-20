@@ -98,7 +98,7 @@ public class Main {
 
             Thread.sleep(100);
             RequestDeal r = new RequestDeal(2);
-            Communication.getInstance().sentRequestExecutor(r);
+            Communication.getInstance().sendRequestExecutor(r);
             
             
             LOG.debug(r.toString());
