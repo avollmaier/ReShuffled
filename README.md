@@ -1,3 +1,4 @@
+﻿
 ﻿# ReShuffled
 
 ## Informatik-Konzept
@@ -36,35 +37,40 @@ TODO
  * 3x Kapazitiver Sensor (DIGITAL)
 
 ## Protokoll
-Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientiert. Die Datenübertragung erfolgt textuell, die CRC32-Prüfsumme wird mit einer im Raspberry gespeicherte Tabelle realisiert und nur über die Daten berechnet. 
+Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientiert. Die Datenübertragung erfolgt textuell wobei nur Großbuchstaben verwendet werden dürfen, die CRC32-Prüfsumme wird mit einer im Raspberry gespeicherte Tabelle realisiert und nur über die Daten berechnet. 
 
 ### Aufbau:
 | Doppelpunkt `:` | Daten (ASCII)| Trennzeichen `#` | CRC32-Prüfsumme | Semicolon `\n` |
 | --------------- | ------------------------------------------------ | ----------- | --------------- | ------------- |
-| 8-Bit | 16-Bit | 8-Bit | 16-Bit | 8-Bit
+| 8-Bit | 16-Bit | 8-Bit | 32-Bit | 8-Bit
 
 
 ### Requests (mit Response-Beispielen)
 | Request | Request-String Rx | Response | Response-String Tx |
 | ------- | ------------- | -------- | ------------------ |
-| INIT | `IN` | Initialisierungs-Zustand | `:Version#CRC;` |
-| SHUFFLE | `SH` | setzt State "Shuffle" | `:#CRC;` oder`:ERROR#CRC;` |
-| DEAL5 | `D5` | setzt State "Deal5" | `:ERROR#CRC;` |
-| DEAL4 | `D4` | setzt State "Deal4" | `:ERROR#CRC;` |
-| DEAL3 | `D3` | setzt State "Deal3" | `:ERROR#CRC;` |
-| DEAL2 | `D2` | setzt State "Deal2" | `:ERROR#CRC;` |
-| DEAL1 | `D1` | setzt State "Deal1" | `:ERROR#CRC;` |
-| DEALALL | `DA` | setzt State "DealAll" | `:ERROR#CRC;` |
-| AUTODEAL | `A<Anzahl der karten>` | setzt State "AutoDeal" (standartmäßig 4x5) | `:ERROR#CRC;` |
-| SHUTDOWN | `XX` | setzt State "Shutdown" | `:#CRC;` |
+| INIT | `IN` | Initialisierungs-Zustand | `:OK#CRC;` oder`:E<code>#CRC;` |
+| SHUFFLE | `SH` | setzt State "Shuffle" | `:OK#CRC;` oder`:E<code>#CRC;` |
+| DEAL | `D<Anzahl der karten>` | setzt State "Deal" | `:OK#CRC;` oder`:E<code>#CRC;` 
+| AUTODEAL | `A<Anzahl der karten>` | setzt State "AutoDeal" (standartmäßig 4x5) | `:OK#CRC;` oder`:E<code>#CRC;` |
+| SHUTDOWN | `XX` | setzt State "Shutdown" | `:OK#CRC;` oder`:E<code>#CRC;` |
   
+
+### Requests (mit Response-Beispielen)
+Als Response kann entweder `:OK#CRC;` als Zeichen für ein gültiges Verarbeiten des Befehls am Mainboard oder ein `:E<code>#CRC;` zurückgegeben werden.  Dieser Errorcode sagt folgendes aus:
+
+
+ - `:E<1>#CRC;` -->  TODO
+ - `:E<2>#CRC;` -->  TODO
+ - `:E<3>#CRC;` -->  TODO
+
 # CommLog-Files
-  Im Entwicklunsmodus die gesamte Kommunikation als .json-Datei in das Verzeichnis `/home/pi/RSLog/COMM` gespeichert.
+  Im Entwicklunsmodus die gesamte Kommunikation als .json-Datei in das Verzeichnis `/home/pi/ReShuffled_PI/reshuffled.log` gespeichert.
   
   Diese Datei ist so zu lesen:  
 ### REQUESTS
 `Zeitstempel : Name des Requests`
 ### RESPONSES
 `Zeitstempel : Response CRC: *empfangener CRC* <-> *berechneter CRC*`
+
 
 
