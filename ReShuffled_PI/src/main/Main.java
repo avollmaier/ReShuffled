@@ -94,13 +94,13 @@ public class Main {
             cfg.save();
             Serial.createInstance(cfg.getConfigSerial());
             Communication.createInstance(Serial.getInstance());
-            
-            
-            ExecutorService executorService = Executors.newSingleThreadExecutor();
+             
 
             Thread.sleep(100);
             RequestDeal r = new RequestDeal(2);
             Communication.getInstance().sentRequestExecutor(r);
+            
+            
             LOG.debug(r.toString());
           
 

@@ -46,8 +46,7 @@ public abstract class Request {
 
         //check checksum
         CRC32.reset();
-        receivedContentCRC[0] = resFrame[1];
-        receivedContentCRC[1] = resFrame[2];
+        System.arraycopy(resFrame, 1, receivedContentCRC, 0, 2);
         CRC32.update(receivedContentCRC);
 
         for (int i = 4; i <= 11; i++) {
@@ -60,8 +59,6 @@ public abstract class Request {
             LOG.debug("Wrong CRC");
             throw new SerialException("Wrong CRC");
         }
-        
-        //TODO 
 
     }
 
@@ -72,7 +69,6 @@ public abstract class Request {
         CRC32.reset();
         CRC32.update(content.getBytes());
         final String crc32 = String.format("%08X", CRC32.getValue());
-        System.out.println(CRC32.getValue());
         final StringBuilder sb = new StringBuilder(128);
         sb.append(':').append(content).append('#').append(crc32).append('\n');
         reqFrame = sb.toString();

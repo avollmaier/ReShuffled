@@ -36,6 +36,7 @@ public class Communication {
     private final LinkedList<Request> toSentList = new LinkedList<>();
     private Request pendingRequest;
     private long timeoutMillis = Config.getInstance().getConfigSerial().getTimeoutMillis();
+    private int responseSize=Config.getInstance().getConfigSerial().getResponseByteLength();
 
     private Communication(Serial serial) {
         this.serial = serial;
@@ -94,14 +95,14 @@ public class Communication {
 
                     } else {
 
-                        is.read(resFrame, 0, Config.getInstance().getConfigSerial().getResponseByteLength());
-
-                        if (resFrame[0] == 58 && resFrame[12] == 10) {//check if the frame begins with " : " and ends with a " \n "
+                        int readedLength = is.read(resFrame, 0, responseSize);
+                            
+                        if (resFrame[0] == 58 && resFrame[12] == 10 && readedLength == responseSize) {//check if the frame begins with " : " and ends with a " \n " and has n bytes length
                             pendingRequest.handleResponse(resFrame); //handle response 
                         } else if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) { //try to send second response because request was wrong transmitted
                             sentRequestExecutor(pendingRequest);
                         } else {
-                            throw new SerialException("Serial error because of a wrong transmission"); //if second try isnt allowed throw serial exception
+                            throw new SerialException("Serial error because of a wrong transmission of " + pendingRequest.getMreqFrame()); //if second try isnt allowed throw serial exception
                         }
 
                     }

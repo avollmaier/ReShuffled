@@ -10,6 +10,7 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.logging.Level;
 import jssc.SerialPort;
+import jssc.SerialPortException;
 import jssc.SerialPortTimeoutException;
 import logging.Logger;
 import serial.SerialException;
@@ -140,8 +141,9 @@ public class Serial {
 
         @Override
         public int read() throws IOException {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
+        
 
     }
 
@@ -156,6 +158,7 @@ public class Serial {
         @Override
         public void write(int b) throws IOException {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
         }
 
     }

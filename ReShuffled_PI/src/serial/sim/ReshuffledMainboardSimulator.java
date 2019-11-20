@@ -32,16 +32,9 @@ public class ReshuffledMainboardSimulator implements Runnable {
         LOG.info("ReshuffledMainboardSimulator started");
         while (!Thread.interrupted()) {
             try {
-//                while (true) {
-//                    int b = in.read();
-//                    if (b < 0) {
-//                        return;
-//                    }
-//                    LOG.debug("Byte received...");
-//                    out.write(b);
-//                }
                 while (true) {
-                    String frame = "";
+                    String reqFrame = "";
+
                     while (true) {
                         int c = in.read();
                         if (c < 0) {
@@ -50,11 +43,21 @@ public class ReshuffledMainboardSimulator implements Runnable {
                         if (c == 10) {
                             break;
                         } else {
-                            frame = frame + (char) c;
+                            reqFrame = reqFrame + (char) c;
                         }
 
                     }
-                    out.write(frame);
+
+                    LOG.info("[ Simulator ] received " + reqFrame);
+
+                    //build sim response
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.append(":").append("#").append("D736D92D").append("\n");
+
+                    LOG.info("[ Simulator ] sending response " + sb.toString());
+
+                    out.write(reqFrame);
                     out.newLine();
                     out.flush();
                 }
