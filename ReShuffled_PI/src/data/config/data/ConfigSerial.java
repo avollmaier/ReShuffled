@@ -1,7 +1,6 @@
 package data.config.data;
 
 import com.google.gson.annotations.SerializedName;
-import java.util.List;
 
 /**
  *
@@ -20,16 +19,18 @@ public class ConfigSerial {
     @SerializedName("secondTryAllowed")
     private boolean secondTryAllowed;
     @SerializedName("responseByteLength")
-    private int responseByteLength;
+    private int maxReceiveFrameLength;
 
-    public ConfigSerial(boolean disabled, String device, int baudrate, long timeoutMillis, boolean secondTryAllowed, int responseByteLength) {
+    public ConfigSerial(boolean disabled, String device, int baudrate, long timeoutMillis, boolean secondTryAllowed, int maxReceiveFrameLength) {
         this.disabled = disabled;
         this.device = device;
         this.baudrate = baudrate;
         this.timeoutMillis = timeoutMillis;
         this.secondTryAllowed = secondTryAllowed;
-        this.responseByteLength = responseByteLength;
+        this.maxReceiveFrameLength = maxReceiveFrameLength;
     }
+
+   
 
     public boolean isDisabled() {
         return disabled;
@@ -51,10 +52,11 @@ public class ConfigSerial {
         return secondTryAllowed;
     }
 
-    public int getResponseByteLength() {
-        return responseByteLength;
+    public int getMaxReceiveFrameLength() {
+        return maxReceiveFrameLength;
     }
 
+   
     
     
 }

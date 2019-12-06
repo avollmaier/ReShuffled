@@ -1,11 +1,7 @@
 package serial.sim;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -53,11 +49,11 @@ public class ReshuffledMainboardSimulator implements Runnable {
                     //build sim response
                     StringBuilder sb = new StringBuilder();
 
-                    sb.append(":").append("#").append("D736D92D").append("\n");
+                    sb.append(":").append("OK").append("#").append("D736D92D");
 
                     LOG.info("[ Simulator ] sending response " + sb.toString());
 
-                    out.write(reqFrame);
+                    out.write(sb.toString());
                     out.newLine();
                     out.flush();
                 }

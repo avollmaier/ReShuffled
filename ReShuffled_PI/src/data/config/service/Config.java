@@ -44,7 +44,7 @@ public class Config {
     }
 
     private void readConfig() {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configFile), StandardCharsets.UTF_8))) {
+        try ( BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configFile), StandardCharsets.UTF_8))) {
             int length = 0;
             StringBuilder stringBuilder = new StringBuilder();
             String line;
@@ -76,12 +76,16 @@ public class Config {
     private void writeConfig() {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         String json = gson.toJson(configModel);
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(configFile), StandardCharsets.UTF_8))) {
+        try ( BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(configFile), StandardCharsets.UTF_8))) {
             writer.write(json);
             LOG.info("serialized new config successfully");
         } catch (IOException ex) {
             LOG.severe(ex, "error while writing config file");
         }
+    }
+
+    public String getLogLevel() {
+        return configModel.getLogLevel();
     }
 
     public void setLogPath(String logPath) {

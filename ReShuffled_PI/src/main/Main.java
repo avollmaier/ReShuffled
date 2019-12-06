@@ -1,6 +1,7 @@
 package main;
 
 import data.config.service.Config;
+import gui.GuiMain;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
@@ -8,22 +9,25 @@ import logging.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import serial.Communication;
-import serial.requests.RequestDeal;
 import serial.Serial;
+import serial.request.RequestInit;
 
 public class Main {
 
     public static String CONFIGPATH;
     public static String VERSION = "0.1";
 
+    private static final Logger LOGP = Logger.getParentLogger();
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
+    
+
     public File checkLogExistence() {
         File f = null;
         f = new File(System.getProperty("user.home") + File.separator + "ReShuffled_PI" + File.separator + "reshuffled.log");
         if (f.exists()) {
-            System.out.println("log file found atc" + f.getPath());
+            System.out.println("log file found at " + f.getPath());
         } else {
             f = new File(File.separator + "var" + File.separator + "lib" + File.separator + "reshuffled" + File.separator + "reshuffled.log");
             if (f.exists()) {
@@ -67,16 +71,14 @@ public class Main {
             }
         }
     }
-
-    private static final Logger LOGP = Logger.getParentLogger();
-    private static final Logger LOG = Logger.getLogger(Main.class.getName());
-
-    static {
+        static {
         System.setProperty("logging.LogOutputStreamHandler.showRecordHashcode", "false");
         System.setProperty("logging.Logger.Level", "ALL");
     }
+    
 
     public static void main(String[] args) {
+
         Main main = new Main();
         final String logPath = main.checkLogExistence().getPath();
 
@@ -93,16 +95,12 @@ public class Main {
             cfg.setLogPath(logPath);
             cfg.save();
             Serial.createInstance(cfg.getConfigSerial());
-            Communication.createInstance(Serial.getInstance());
-             
 
-            Thread.sleep(100);
-            RequestDeal r = new RequestDeal(2);
-            Communication.getInstance().sendRequestExecutor(r);
-            
-            
-            LOG.debug(r.toString());
-          
+            Communication.createInstance(Serial.getInstance());
+            GuiMain.createInstance();
+
+            RequestInit init = new RequestInit();
+            Communication.getInstance().sendRequestExecutor(init);
 
         } catch (Exception ex) {
             LOG.severe(ex, "startup fails - config error");

@@ -5,16 +5,14 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.LinkedList;
 import logging.Logger;
-import serial.requests.Request;
-import serial.requests.Response;
+import serial.request.Request;
+import serial.request.Response;
 
 /**
  *
  * @author volalm15
  */
 public class Communication {
-
-    private static final int MAX_RECEIVE_FRAME_LENGTH = 32;
     
     private static final Logger LOG = Logger.getLogger(Communication.class.getName());
     private static Communication instance;
@@ -43,7 +41,7 @@ public class Communication {
     private Request pendingRequest;
 
     private final long timeoutMillis = Config.getInstance().getConfigSerial().getTimeoutMillis();
-    private final int responseSize = Config.getInstance().getConfigSerial().getResponseByteLength();
+    private final int maxReceiveFrameLength = Config.getInstance().getConfigSerial().getMaxReceiveFrameLength();
 
     @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
     private Communication(Serial serial) {
@@ -76,7 +74,7 @@ public class Communication {
             
             try {
                 final InputStream is = Serial.getInstance().getInputStream();
-                final byte buffer [] = new byte [MAX_RECEIVE_FRAME_LENGTH];
+                final byte buffer [] = new byte [maxReceiveFrameLength];
                 int bufferIndex = 0;
                 while (!Thread.currentThread().isInterrupted()) {
                     int b = is.read();
@@ -126,15 +124,14 @@ public class Communication {
             try {
                 mainLoop: while (!Thread.currentThread().isInterrupted()) {
                     synchronized (toSentList) {
-                        LOG.debug("Thread waiting for items ...");
+                        LOG.fine("Thread waiting for items ...");
                         toSentList.wait();
                         if (!toSentList.isEmpty()) {
                             pendingRequest = toSentList.removeFirst();
-                            LOG.debug("sending request...");
+                            LOG.fine("sending request " + pendingRequest.getMreqFrame());
                             serial.writeString(pendingRequest.getMreqFrame());
                             pendingRequest.handleRequestSent();
                             
-                            final long waitingTimeoutMillis = pendingRequest.getTimeMillisFrameSent() + timeoutMillis;
                             Response res = null;
                             synchronized(responseList) {
                                 responseList.wait(timeoutMillis);

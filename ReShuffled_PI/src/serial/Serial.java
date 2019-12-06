@@ -1,24 +1,16 @@
 package serial;
 
-import serial.sim.SimOutputStreamBuffer;
-import serial.sim.SimInputStreamBuffer;
 import data.config.data.ConfigSerial;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import javax.imageio.IIOException;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
-import jssc.SerialPortTimeoutException;
 import logging.Logger;
-import serial.SerialException;
 import serial.sim.ReshuffledMainboardSimulator;
 import serial.sim.SimInputStreamBuffer;
 import serial.sim.SimOutputStreamBuffer;
@@ -194,7 +186,11 @@ public class Serial {
 
         @Override
         public void write(int b) throws IOException {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            try {
+                serialPort.writeByte((byte) b);
+            } catch (SerialPortException ex) {
+               LOG.warning("Execption while writing byte");
+            }
 
         }
 

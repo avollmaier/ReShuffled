@@ -37,7 +37,7 @@ TODO
  * 3x Kapazitiver Sensor (DIGITAL)
 
 ## Protokoll
-Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientiert. Die Datenübertragung erfolgt textuell wobei nur Großbuchstaben verwendet werden dürfen, die CRC32-Prüfsumme wird mit einer im Raspberry gespeicherte Tabelle realisiert und nur über die Daten berechnet. 
+Das Protokoll ist verbindungslos und Request-Response- (Master-Slave) -orientiert. Die Datenübertragung erfolgt textuell wobei nur Großbuchstaben verwendet werden dürfen, die CRC32-Prüfsumme wird mit einer im Raspberry gespeicherte Tabelle realisiert und nur über die Daten und dem Trennzeichen `#` berechnet. 
 
 ### Aufbau:
 | Doppelpunkt `:` | Daten (ASCII)| Trennzeichen `#` | CRC32-Prüfsumme | Semicolon `\n` |

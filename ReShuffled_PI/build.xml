@@ -77,7 +77,9 @@
             <zipfileset src="lib/jssc-2.8.0.jar" excludes="META-INF/*" />
             <zipfileset src="lib/gson-2.8.6.jar" excludes="META-INF/*" />
             <zipfileset src="lib/jfoenix-9.0.8.jar" excludes="META-INF/*" />
-            <zipfileset src="lib/javafx-sdk-11.0.2.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/javafx.base.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/javafx.controls.jar" excludes="META-INF/*" />
+            <zipfileset src="lib/javafx.fxml.jar" excludes="META-INF/*" />
             <manifest>
                 <attribute name="Main-Class" value="main.Main"/>
             </manifest>

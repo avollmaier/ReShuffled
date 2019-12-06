@@ -1,4 +1,5 @@
 {
+  "logLevel": null,
   "logPath": "/var/lib/reshuffled/reshuffled.log",
   "guiHeight": 600,
   "guiWidth": 1024,
@@ -9,6 +10,6 @@
     "baudrate": 57600,
     "timeoutMillis": 1000,
     "secondTryAllowed": false,
-    "responseByteLength": 13
+    "responseByteLength": 32
   }
 }
