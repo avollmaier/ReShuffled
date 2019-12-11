@@ -3,7 +3,22 @@
   "logPath": "/var/lib/reshuffled/reshuffled.log",
   "guiHeight": 600,
   "guiWidth": 1024,
-  "gamemodes": [],
+  "gamemodes": [
+    {
+      "name": "Test1",
+      "autoDeal": false,
+      "autoDealValue": 0,
+      "cardQuantity": 1,
+      "playerQuantity": 10
+    },
+    {
+      "name": "Test2",
+      "autoDeal": false,
+      "autoDealValue": 0,
+      "cardQuantity": 0,
+      "playerQuantity": 10
+    }
+  ],
   "serial": {
     "disabled": false,
     "device": "sim",

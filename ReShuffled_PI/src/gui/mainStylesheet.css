@@ -4,23 +4,22 @@
 }
 
 .tab-header-background {
-    -fx-background-color: #FFFFFF;
-}
-
-
-
-.jfx-tab-pane {
-    -jfx-disable-animation: true;
+    -fx-background-color: #2A2E37;
 }
 
 .jfx-tab-pane .tab-selected-line {
-    -fx-background-color: gray;
+    -fx-background-color: grey;
 }
 
 .jfx-tab-pane .tab-label {
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-rotate: 90;
     -fx-font-size: 14;
+}
+
+.chart-bar{
+    -fx-bar-fill: #373E48;
+    
 }
 
 

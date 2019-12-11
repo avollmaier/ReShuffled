@@ -2,7 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -11,12 +15,13 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane id="homeRootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeController">
+<StackPane id="homeRootPane" fx:id="rootStackPane" prefHeight="563.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HomeController">
    <children>
       <BorderPane prefHeight="464.0" prefWidth="795.0">
          <right>
@@ -25,7 +30,7 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <VBox prefHeight="464.0" prefWidth="161.0">
                      <children>
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="Shutdown" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="btShutdown" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="Shutdown" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -40,7 +45,7 @@
                               <Insets left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onMouseClicked="#onShuffle" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="Shuffle / Start" VBox.vgrow="ALWAYS">
+                        <JFXButton fx:id="btShuffle" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onMouseClicked="#onShuffle" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="Shuffle / Start" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -70,7 +75,31 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" ripplerFill="WHITE" text="Deal 1">
+                              <JFXButton fx:id="btDeal1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../res/poker.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btDeal2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../res/poker.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btDeal4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -82,31 +111,7 @@
                                     </ImageView>
                                  </graphic>
                               </JFXButton>
-                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" ripplerFill="WHITE" text="Deal 2" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../res/poker.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" ripplerFill="WHITE" text="Deal 4" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../res/poker.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" ripplerFill="WHITE" text="Deal 3" GridPane.rowIndex="1">
+                              <JFXButton fx:id="btDeal3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -120,13 +125,13 @@
                               </JFXButton>
                            </children>
                         </GridPane>
-                        <Separator prefWidth="200.0" />
-                        <JFXSlider>
+                        <Separator disable="true" prefWidth="200.0" />
+                        <JFXSlider fx:id="slDealQuantity" disable="true">
                            <VBox.margin>
                               <Insets left="8.0" right="8.0" />
                            </VBox.margin>
                         </JFXSlider>
-                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="tfDeal">
+                        <JFXButton fx:id="btDealX" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="btDealX">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -134,13 +139,19 @@
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
                         </JFXButton>
+                        <Separator prefWidth="200.0" />
+                        <HBox prefHeight="50.0" prefWidth="264.0">
+                           <children>
+                              <JFXToggleButton contentDisplay="TOP" prefHeight="60.0" prefWidth="166.0" text="Finished" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
             </HBox>
          </right>
          <bottom>
-            <HBox prefHeight="17.0" prefWidth="795.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="32.0" prefWidth="805.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="tfVersion" text="tfVersion">
                      <HBox.margin>
@@ -158,11 +169,76 @@
                         <Insets top="8.0" />
                      </HBox.margin>
                   </Label>
+                  <Pane prefHeight="60.0" prefWidth="376.0" />
                </children>
             </HBox>
          </bottom>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BarChart fx:id="bcPlayerInfo" disable="true" prefHeight="388.0" prefWidth="628.0" title="Player Points" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+                  <Separator prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets right="3.0" />
+                     </padding>
+                  </Separator>
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="btDeal11" buttonType="RAISED" disable="true" ripplerFill="WHITE" text="Previous Player">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView disable="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../res/left-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <VBox alignment="CENTER" prefHeight="139.0" prefWidth="170.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="lbPlayerName" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="8.0" top="8.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXButton alignment="CENTER" buttonType="RAISED" disable="true" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #373E48;" text="ADD" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <JFXButton fx:id="btDeal12" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" disable="true" ripplerFill="WHITE" text="Next Player">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView disable="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../res/right-arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="8.0" right="8.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </center>
       </BorderPane>
    </children>

@@ -15,6 +15,14 @@ public class GuiMain {
     private static final Logger LOG = Logger.getLogger(GuiMain.class.getName());
     private static GuiMain instance;
 
+     public static GuiMain resetInstace() {
+         if (instance == null) {
+            throw new IllegalStateException("instance not created yet");
+        }
+        instance = null;
+        return instance;
+    }
+     
     public static GuiMain createInstance() {
         if (instance != null) {
             throw new IllegalStateException("instance already created");

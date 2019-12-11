@@ -1,0 +1,33 @@
+/*.jfx-combo-box {
+-fx-prompt-text-fill: white;
+-fx-text-fill: white;
+
+}
+.jfx-text-field {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+}
+
+.combo-box {
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell 
+{
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em; 
+}
+
+
+
+.list-cell,
+.tree-cell {
+    -fx-background: -fx-control-inner-background;
+    -fx-background-color: -neutral-white;
+    -fx-text-fill: white;
+}
+*/
+
