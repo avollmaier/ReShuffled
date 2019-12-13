@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Atmega324P-Diplomarbeit-Perl-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -31,9 +32,11 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:RPI-Diplomarbeit
 LIBS:Interface_USB
 LIBS:2019-08-12_15-38-42
 LIBS:TPS62143RGTR
+LIBS:Atmega324P-Diplomarbeit-Perl-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -55,7 +58,7 @@ Text HLabel 5800 4550 2    60   Input ~ 0
 Text HLabel 5800 4650 2    60   Output ~ 0
 µC_TxD
 $Comp
-L ATMEGA324P-20AU U1
+L ATMEGA324P-20AU-RESCUE-Atmega324P-Diplomarbeit-Perl U1
 U 1 1 5CFAD84A
 P 2950 3350
 F 0 "U1" H 2100 5230 50  0000 L BNN
@@ -242,7 +245,7 @@ F 3 "" H 1700 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L USB_OTG J17
+L USB_OTG-RESCUE-Atmega324P-Diplomarbeit-Perl J17
 U 1 1 5CFAE674
 P 8200 5250
 F 0 "J17" H 8000 5700 50  0000 L CNN
@@ -898,7 +901,7 @@ F 3 "" H 4600 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +12V #PWR042
+L +12V-RESCUE-Atmega324P-Diplomarbeit-Perl #PWR042
 U 1 1 5DA0A526
 P 5050 1350
 F 0 "#PWR042" H 5050 1200 50  0001 C CNN
