@@ -1,4 +1,4 @@
-package data.config.service;
+package exception;
 
 import java.io.File;
 

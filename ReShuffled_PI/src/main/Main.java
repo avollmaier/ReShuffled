@@ -1,7 +1,7 @@
 package main;
 
-import data.config.service.Config;
-import gui.GuiMain;
+import data.config.Config;
+import data.statistics.Statistics;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
@@ -16,88 +16,108 @@ import serial.request.RequestInit;
 public class Main {
 
     public static String CONFIGPATH;
-    public static String VERSION = "0.1";
+    public static String VERSION = "0.2";
 
     private static final Logger LOGP = Logger.getParentLogger();
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
-    
+    public File checkStatisticsExistence() {
+        File f;
+        f = new File(System.getProperty("user.dir") + File.separator + "statistics.json");
+        if (f.exists()) {
+            System.out.println("Statistics file found at " + f.getPath());
+       } else {
+                System.out.println("No statistics file found");
+                try {
+                    f.createNewFile();
+                } catch (Exception ex) {
+                    System.out.println("Cant create config automatically - please create it manually " +ex);
+                    System.exit(0);
+                }
+                System.out.println("Created empty statistics file successfully at " + f.getPath() + " - change the data to the pattern");
+                System.exit(0);
+            }
+        return f;
+    }
 
     public File checkLogExistence() {
-        File f = null;
-        f = new File(System.getProperty("user.home") + File.separator + "ReShuffled_PI" + File.separator + "reshuffled.log");
+        File f;
+        f = new File(System.getProperty("user.dir") + File.separator + "reshuffled.log");
         if (f.exists()) {
-            System.out.println("log file found at " + f.getPath());
+            System.out.println("Log file found at " + f.getPath());
         } else {
             f = new File(File.separator + "var" + File.separator + "lib" + File.separator + "reshuffled" + File.separator + "reshuffled.log");
             if (f.exists()) {
-                System.out.println("log file found at" + f.getPath());
+                System.out.println("Log file found at" + f.getPath());
             } else {
-                System.out.println("no config file found");
+                System.out.println("No config file found");
                 try {
                     f.createNewFile();
                 } catch (Exception ex) {
                     ex.printStackTrace(System.out);
-                    System.out.println("cant create log file " + f.getAbsolutePath() + " - Programm stopped");
+                    System.out.println("Cant create log file " + f.getAbsolutePath() + " - Programm stopped " +ex);
                     System.exit(0);
                 }
-                System.out.println("created log file successfully at " + f.getPath());
+                System.out.println("Created log file successfully at " + f.getPath());
             }
         }
         return f;
     }
 
     public void checkConfigExistence() {
-        File f = null;
+        File f;
         f = new File(System.getProperty("user.dir") + File.separator + "config.json");
         if (f.exists()) {
             CONFIGPATH = f.getPath();
-            System.out.println("config file found at " + f.getPath());
+            System.out.println("Config file found at " + f.getPath());
         } else {
             f = new File(System.getProperty("user.dir") + File.separator + "config.json");//TODO
             if (f.exists()) {
                 CONFIGPATH = f.getPath();
-                System.out.println("config file found at " + f.getPath());
+                System.out.println("Config file found at " + f.getPath());
             } else {
-                System.out.println("no config file found");
+                System.out.println("No config file found");
                 try {
                     f.createNewFile();
                 } catch (Exception ex) {
-                    System.out.println("cant create config automatically - please create it manually");
+                    System.out.println("Cant create config automatically - please create it manually" +ex);
                     System.exit(0);
                 }
-                System.out.println("created empty config file successfully at " + f.getPath() + " - change the data to the pattern");
+                System.out.println("Created empty config file successfully at " + f.getPath() + " - change the data to the pattern");
                 System.exit(0);
             }
         }
     }
-        static {
+
+    static {
         System.setProperty("logging.LogOutputStreamHandler.showRecordHashcode", "false");
         System.setProperty("logging.Logger.Level", "ALL");
     }
-    
 
     public static void main(String[] args) {
 
         Main main = new Main();
         final String logPath = main.checkLogExistence().getPath();
+        final String statisticsPath = main.checkStatisticsExistence().getPath();
 
         LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
         try {
             LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
         } catch (FileNotFoundException ex) {
         }
-        LOG.info("start of programm with V%s", VERSION);
+        LOG.info("Start of programm with V%s", VERSION);
 
         try {
+            Statistics.createInstance(statisticsPath);
             main.checkConfigExistence();
             final Config cfg = Config.createInstance(CONFIGPATH);
             cfg.setLogPath(logPath);
+            cfg.setStatisticsPath(statisticsPath);
             cfg.save();
             Serial.createInstance(cfg.getConfigSerial());
 
             Communication.createInstance(Serial.getInstance());
-            GuiMain.createInstance();
+            gui.guiMain.GuiMain.createInstance();
 
             RequestInit init = new RequestInit();
             Communication.getInstance().sendRequestExecutor(init);

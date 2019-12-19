@@ -1,4 +1,4 @@
-package data.config.data;
+package data.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,13 +9,13 @@ public class GamemodeModel {
     @SerializedName("autoDeal")
     private boolean autoDeal;
     @SerializedName("autoDealValue")
-    private int autoDealValue;
+    private Integer autoDealValue;
     @SerializedName("cardQuantity")
-    private int cardQuantity;
+    private Integer cardQuantity;
     @SerializedName("playerQuantity")
-    private int playerQuantity;
+    private Integer playerQuantity;
 
-    public GamemodeModel(String name, boolean autoDeal, int autoDealValue, int cardQuantity, int playerQuantity) {
+    public GamemodeModel(String name, boolean autoDeal, Integer autoDealValue, Integer cardQuantity, Integer playerQuantity) {
         this.name = name;
         this.autoDeal = autoDeal;
         this.autoDealValue = autoDealValue;
@@ -39,30 +39,31 @@ public class GamemodeModel {
         this.autoDeal = autoDeal;
     }
 
-    public int getAutoDealValue() {
+    public Integer getAutoDealValue() {
         return autoDealValue;
     }
 
-    public void setAutoDealValue(int autoDealValue) {
+    public void setAutoDealValue(Integer autoDealValue) {
         this.autoDealValue = autoDealValue;
     }
 
-    public int getCardQuantity() {
+    public Integer getCardQuantity() {
         return cardQuantity;
     }
 
-    public void setCardQuantity(int cardQuantity) {
+    public void setCardQuantity(Integer cardQuantity) {
         this.cardQuantity = cardQuantity;
     }
 
-    public int getPlayerQuantity() {
+    public Integer getPlayerQuantity() {
         return playerQuantity;
     }
 
-    public void setPlayerQuantity(int playerQuantity) {
+    public void setPlayerQuantity(Integer playerQuantity) {
         this.playerQuantity = playerQuantity;
     }
 
+   
   
 
     

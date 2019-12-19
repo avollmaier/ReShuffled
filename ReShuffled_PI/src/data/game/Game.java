@@ -5,26 +5,27 @@
  */
 package data.game;
 
-import data.config.data.GamemodeModel;
+import data.model.PlayerModel;
+import data.model.GamemodeModel;
+import data.model.GameModel;
 import java.util.List;
 
 /**
  *
  * @author alois
  */
-public class GameModel {
+public class Game {
+    private static Game instance;
 
-    private static GameModel instance;
-
-    public static GameModel createInstance(List<PlayerModel> players, boolean gameFinished, GamemodeModel gamemode) {
+    public static Game createInstance(List<PlayerModel> players, boolean gameFinished, data.model.GamemodeModel gamemode) {
         if (instance != null) {
             throw new IllegalStateException("instance already created");
         }
-        instance = new GameModel(players, gameFinished, gamemode);
+        instance = new Game(players, gameFinished, gamemode);
         return instance;
     }
 
-    public static GameModel getInstance() {
+    public static Game getInstance() {
         if (instance == null) {
             throw new IllegalStateException("instance not created yet");
         }
@@ -33,35 +34,31 @@ public class GameModel {
     public static void clearInstance(){
     instance=null;
     }
-
     // *********************************************************
-    private List<PlayerModel> players;
-    private boolean gameFinished;
-    private GamemodeModel gamemode;
-
-    public GameModel(List<PlayerModel> players, boolean gameFinished, GamemodeModel gamemode) {
-        this.players = players;
-        this.gameFinished = gameFinished;
-        this.gamemode = gamemode;
+    
+    private final GameModel gameModel;
+    
+    private Game(List<PlayerModel> players, boolean gameFinished, GamemodeModel gamemode) {
+        gameModel = new GameModel(players, gameFinished, gamemode);
+    }
+    
+     public List<PlayerModel> getPlayers() {
+        return gameModel.getPlayers();
     }
 
-    public List<PlayerModel> getPlayers() {
-        return players;
-    }
     public boolean isGameFinished() {
-        return gameFinished;
+        return gameModel.isGameFinished();
     }
 
     public GamemodeModel getGamemode() {
-        return gamemode;
+        return gameModel.getGamemode();
     }
 
     public void setGameFinished(boolean gameFinished) {
-        this.gameFinished = gameFinished;
+        this.gameModel.setGameFinished(gameFinished);
     }
 
     public void setGamemode(GamemodeModel gamemode) {
-        this.gamemode = gamemode;
-    }
-
+        this.gameModel.setGamemode(gamemode);
+    }   
 }

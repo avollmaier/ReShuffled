@@ -21,6 +21,9 @@
     -fx-bar-fill: #373E48;
     
 }
+.jfx-button .jfx-rippler{
+    -jfx-rippler-disabled: true;
+}
 
 
 

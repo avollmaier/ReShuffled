@@ -1,4 +1,4 @@
-package data.config.data;
+package data.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,22 +6,22 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author volalm15
  */
-public class ConfigSerial {
+public class ConfigSerialModel {
 
     @SerializedName("disabled")
-    private boolean disabled;
+    private final boolean disabled;
     @SerializedName("device")
-    private String device;
+    private final String device;
     @SerializedName("baudrate")
-    private int baudrate;
+    private final int baudrate;
     @SerializedName("timeoutMillis")
-    private long timeoutMillis;
+    private final long timeoutMillis;
     @SerializedName("secondTryAllowed")
-    private boolean secondTryAllowed;
+    private final boolean secondTryAllowed;
     @SerializedName("responseByteLength")
-    private int maxReceiveFrameLength;
+    private final int maxReceiveFrameLength;
 
-    public ConfigSerial(boolean disabled, String device, int baudrate, long timeoutMillis, boolean secondTryAllowed, int maxReceiveFrameLength) {
+    public ConfigSerialModel(boolean disabled, String device, int baudrate, long timeoutMillis, boolean secondTryAllowed, int maxReceiveFrameLength) {
         this.disabled = disabled;
         this.device = device;
         this.baudrate = baudrate;

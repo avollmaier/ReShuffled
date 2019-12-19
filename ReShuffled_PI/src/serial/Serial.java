@@ -1,6 +1,7 @@
 package serial;
 
-import data.config.data.ConfigSerial;
+import exception.SerialException;
+import data.model.ConfigSerialModel;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,7 +25,7 @@ public class Serial {
     private static final Logger LOG = Logger.getLogger(Serial.class.getName());
     private static Serial instance;
 
-    public static Serial createInstance(ConfigSerial config) throws SerialException, IOException {
+    public static Serial createInstance(ConfigSerialModel config) throws SerialException, IOException {
         if (instance != null) {
             throw new IllegalStateException("instance already created");
         }
@@ -40,13 +41,13 @@ public class Serial {
     }
 
     // *********************************************************************************
-    private final ConfigSerial config;
+    private final ConfigSerialModel config;
     private InputStream inputStream;
     private OutputStream outputStream;
     private SimInputStreamBuffer toSim;
     private SimOutputStreamBuffer fromSim;
 
-    private Serial(ConfigSerial config) throws SerialException, IOException {
+    private Serial(ConfigSerialModel config) throws SerialException, IOException {
         this.config = config;
         if (config.isDisabled()) {
             return;

@@ -1,13 +1,17 @@
-package data.config.data;
+package data.model;
 
 import com.google.gson.annotations.SerializedName;
+import data.model.ConfigSerialModel;
+import data.model.GamemodeModel;
 import java.util.List;
 
 public class ConfigModel {
     @SerializedName("logLevel")
     private final String logLevel;
     @SerializedName("logPath")
-    private String logPath;
+    private  String logPath;
+    @SerializedName("statisticsPath")
+    private  String statisticsPath;
     @SerializedName("guiHeight")
     private final Integer guiHeight;
     @SerializedName("guiWidth")
@@ -15,11 +19,12 @@ public class ConfigModel {
     @SerializedName("gamemodes")
     private final List<GamemodeModel> gamemodes;
     @SerializedName("serial")
-    private final ConfigSerial serial;
+    private final ConfigSerialModel serial;
 
-    public ConfigModel(String logLevel, String logPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerial serial) {
+    public ConfigModel(String logLevel, String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial) {
         this.logLevel = logLevel;
         this.logPath = logPath;
+        this.statisticsPath = statisticsPath;
         this.guiHeight = guiHeight;
         this.guiWidth = guiWidth;
         this.gamemodes = gamemodes;
@@ -34,6 +39,10 @@ public class ConfigModel {
         return logPath;
     }
 
+    public String getStatisticsPath() {
+        return statisticsPath;
+    }
+
     public Integer getGuiHeight() {
         return guiHeight;
     }
@@ -46,7 +55,7 @@ public class ConfigModel {
         return gamemodes;
     }
 
-    public ConfigSerial getSerial() {
+    public ConfigSerialModel getSerial() {
         return serial;
     }
 
@@ -54,6 +63,7 @@ public class ConfigModel {
         this.logPath = logPath;
     }
 
-    
-   
+    public void setStatisticsPath(String statisticsPath) {
+        this.statisticsPath = statisticsPath;
+    } 
 }

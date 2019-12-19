@@ -1,6 +1,7 @@
 package serial;
 
-import data.config.service.Config;
+import exception.SerialException;
+import data.config.Config;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.LinkedList;
