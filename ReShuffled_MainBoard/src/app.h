@@ -7,6 +7,7 @@
 struct App {
   uint8_t flags_u8;
   char modbusBuffer[32];
+  char toSend[64];
   uint16_t bufferIndex;
   uint16_t errorCount;
   int16_t mbInputRegister1;

@@ -30,7 +30,7 @@ public class ConfigSerialModel {
         this.maxReceiveFrameLength = maxReceiveFrameLength;
     }
 
-   
+
 
     public boolean isDisabled() {
         return disabled;

@@ -70,6 +70,7 @@ public class MainController implements Initializable {
             HomeController.getInstance().contentInvisibility(false);
             RequestShuffle shuffle = new RequestShuffle();
             Communication.getInstance().sendRequestExecutor(shuffle);
+            HomeController.getInstance().handleCardChanged();
         });
 
         AlertService.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), "General Info Message", "Make sure that game cards were inserted!");

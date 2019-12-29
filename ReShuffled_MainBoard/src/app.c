@@ -9,7 +9,7 @@
 #include "avr/eeprom.h"
 #include "app.h"
 #include "sys.h"
-
+#include <inttypes.h>
 
 volatile struct App app;
 
@@ -26,23 +26,44 @@ void app_init (void)
 //--------------------------------------------------------
 
 
-unsigned int crc32b (unsigned char *message)
+uint32_t
+rc_crc32 (uint32_t crc, const char *buf, size_t len)
 {
+  static uint32_t table[256];
+  static int have_table = 0;
+  uint32_t rem;
+  uint8_t octet;
   int i, j;
-  unsigned int byte, crc, mask;
+  const char *p, *q;
 
-  i = 0;
-  crc = 0xFFFFFFFF;
-  while (message[i] != 0)
+  /* This check is not thread safe; there is no mutex. */
+  if (have_table == 0)
   {
-    byte = message[i]; // Get next byte.
-    crc = crc ^ byte;
-    for (j = 7; j >= 0; j--)
-    { // Do eight times.
-      mask = -(crc & 1);
-      crc = (crc >> 1) ^ (0xEDB88320 & mask);
+    /* Calculate CRC table. */
+    for (i = 0; i < 256; i++)
+    {
+      rem = i; /* remainder from polynomial division */
+      for (j = 0; j < 8; j++)
+      {
+        if (rem & 1)
+        {
+          rem >>= 1;
+          rem ^= 0xedb88320;
+        }
+        else
+          rem >>= 1;
+      }
+      table[i] = rem;
     }
-    i = i + 1;
+    have_table = 1;
+  }
+
+  crc = ~crc;
+  q = buf + len;
+  for (p = buf; p < q; p++)
+  {
+    octet = *p; /* Cast to unsigned octet. */
+    crc = (crc >> 8) ^ table[(crc & 0xff) ^ octet];
   }
   return ~crc;
 }
@@ -72,38 +93,50 @@ uint8_t hex2int (char h)
 
 uint8_t app_handleModbusRequest ()
 {
-  printf("Received a request: %s", app.modbusBuffer);
-  char *b = app.modbusBuffer;
-  char *c = app.modbusBuffer;
+  //printf("Received a request: %s", app.modbusBuffer);
+  char *buffer = app.modbusBuffer;
   uint8_t size = app.bufferIndex;
 
   if (size != 13)
   {
     return 1;
   }
-  if (b[0] != ':')
+  if (buffer[0] != ':')
   {
     return 2;
   }
-  if (b[size - 1] != '\n')
+  if (buffer[size - 1] != '\n')
   {
     return 3;
   }
 
-  for (uint8_t i = 1; i < (size - 1); i++)
+  for (uint8_t i = 0; i < (size - 1); i++)
   {
-    char c = b[i];
+    char c = buffer[i];
     if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c = '#'))) return 4;
   }
 
-  crc32b(strcat(b[1], b[2]));
+  //CHECK CRC
+  //char delimiter[] = ":#\n";
+  //char *ptr;
 
- 
+  // initialisieren und ersten Abschnitt erstellen
+  //ptr = strtok(buffer, delimiter);
 
-  printf("request check ok\n");
+  //printf("Abschnitt gefunden: %s\n", ptr);
+  // naechsten Abschnitt erstellen
 
+  app_sendUartResponse("OK");
 
   return 0;
+}
+
+
+void app_sendUartResponse ()
+{
+  char c[2];
+  strncpy(c, "OK",2);
+  printf(":%s#%" PRIX32 "\n", c, rc_crc32(0, c, strlen(c)));
 }
 
 
@@ -152,6 +185,9 @@ void app_main (void)
   {
     app_handleUartByte((char) c);
   }
+
+
+
 }
 
 //--------------------------------------------------------

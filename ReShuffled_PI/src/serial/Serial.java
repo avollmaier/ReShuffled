@@ -133,7 +133,7 @@ public class Serial {
 
         private final jssc.SerialPort serialPort;
         private final List<Byte> receivedByteList = new ArrayList<Byte>();
-
+//TODO 
         public SerialJsscInputStream(SerialPort serialPort) {
             this.serialPort = serialPort;
             try {

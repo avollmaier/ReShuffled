@@ -34,7 +34,7 @@ public class AlertService {
         BoxBlur boxBlur = new BoxBlur(2, 2, 2);
 
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
+        JFXDialog dialog = new JFXDialog(root, dialogLayout,JFXDialog.DialogTransition.NONE);
 
         controls.forEach(control -> {
             control.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {

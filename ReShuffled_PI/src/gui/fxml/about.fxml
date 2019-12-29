@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="686.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.SettingsController">
+   <children>
+      <VBox>
+         <children>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="687.0" prefWidth="988.0" text="ReShuffled" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="83.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="0.0" prefWidth="1076.0" text="by Alois Vollmaier, Nicolas Perl and Stefan Hörmann" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

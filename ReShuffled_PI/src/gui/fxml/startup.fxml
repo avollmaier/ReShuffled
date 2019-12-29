@@ -131,7 +131,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXButton fx:id="btStartGame" buttonType="RAISED" prefHeight="33.0" prefWidth="270.0" style="-fx-background-color: #373E48;" text="Start Game" textFill="WHITE" VBox.vgrow="NEVER">
+                  <JFXButton fx:id="btStartGame" buttonType="RAISED" prefHeight="33.0" prefWidth="270.0" style="-fx-background-color: #FFFF;" text="Start Game" VBox.vgrow="NEVER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -141,7 +141,7 @@
                   </JFXButton>
                </children>
                <BorderPane.margin>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="16.0" />
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                </BorderPane.margin>
             </VBox>
          </right>

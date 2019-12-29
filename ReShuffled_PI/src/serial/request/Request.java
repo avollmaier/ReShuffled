@@ -39,7 +39,6 @@ public abstract class Request {
         String receivedCRC = "", receivedContent ="";
         CRC32.reset();
         resFrame = res.getResFrame();
-
         LOG.fine("Received response " + Arrays.toString(resFrame));
 
         System.arraycopy(resFrame, 1, receivedContentCRC, 0, 2);
@@ -82,9 +81,6 @@ public abstract class Request {
                 LOG.warning("Received unmatchable response data");
             }
         }
-        
-                
-        
 
     }
 

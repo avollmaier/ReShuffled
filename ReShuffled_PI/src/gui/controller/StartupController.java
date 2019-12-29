@@ -61,6 +61,8 @@ public class StartupController implements Initializable {
     @FXML
     JFXTextField tfGamemodeName;
     @FXML
+    JFXTextField tfPlayerName;
+    @FXML
     JFXComboBox cbCardQuantity;
     @FXML
     JFXComboBox cbPlayerQuantity;
@@ -70,6 +72,9 @@ public class StartupController implements Initializable {
     JFXButton btDelete;
     @FXML
     JFXButton btStartGame;
+    @FXML
+    JFXButton btSaveName;
+
 
     GamemodeModel selectedGamemode = null;
     
@@ -79,12 +84,26 @@ public class StartupController implements Initializable {
         handleGamemodeChange();
     };
     
+    final ChangeListener<String> seleltionListener = (observableValue, oldValue, newValue) -> {
+        tfPlayerName.setText(newValue);
+    };
+    
+    final ChangeListener<String> nameChangeListener = (observableValue, oldValue, newValue) -> {
+        notifyList(newValue);
+    };
+    
+  
+    
+
+    
  
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         
         //DEFINE ACTIONS
+        tfPlayerName.textProperty().addListener(nameChangeListener);
+        playerNameList.getSelectionModel().selectedItemProperty().addListener(seleltionListener);
         cbGamemodes.valueProperty().addListener(gamemodeListener);
         chbAutoDeal.setOnAction(this::handleAutoDealChange);
         btDelete.setOnAction(this::handleDelete);
@@ -100,6 +119,16 @@ public class StartupController implements Initializable {
         //*********************************************************************
         
     }
+    private void notifyList(String newValue){
+        int index=playerNameList.getSelectionModel().getSelectedIndex();
+        System.out.println(index);
+        if(index>=0)
+        {
+          playerNameList.getItems().set(index, newValue);
+        }
+        
+    }
+  
      private void handleAutoDealChange(final ActionEvent event) {
         if (chbAutoDeal.isSelected()) {
             cbAutoDealValue.setDisable(false);
@@ -133,8 +162,10 @@ public class StartupController implements Initializable {
             Integer cardQuantity = (cbCardQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbCardQuantity.getValue().toString());
 
             if (gamemodeName.isEmpty() || playerQuantity == null || cardQuantity == null) {
-                throw new Exception("Gamemode is empty or required valued are null");
+               throw new Exception("Gamemode is empty or required valued are null");
             }
+            if (cardQuantity<playerQuantity)
+                throw new Exception("Card quantity cant be bigger than player quantity");
 
             boolean existing = false;
             GamemodeModel existingGamemode = null;
@@ -298,6 +329,7 @@ public class StartupController implements Initializable {
 
             LOG.info(stage.getTitle() + " started successfully");
         } catch (IOException ex) {
+            ex.printStackTrace();
             LOG.severe("Exception while running GUI" + ex);
         }
     }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootStackPane" prefHeight="670.0" prefWidth="1108.0" stylesheets="@../mainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="rootStackPane" prefHeight="765.0" prefWidth="1218.0" stylesheets="@../mainStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXTabPane fx:id="rootTabPane" side="LEFT">
          <tabs>
@@ -39,22 +39,6 @@
                   </ImageView>
                </graphic>
             </Tab>
-            <Tab text="Settings">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <fx:include source="settings.fxml" />
-                     </children>
-                  </AnchorPane>
-               </content>
-               <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../util/icons/settings.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Tab>
             <Tab text="Help">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -70,6 +54,22 @@
                      </image>
                   </ImageView>
                </graphic>
+            </Tab>
+            <Tab text="About">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../util/icons/about.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <fx:include source="about.fxml" />
+                     </children>
+                  </AnchorPane>
+               </content>
             </Tab>
          </tabs>
       </JFXTabPane>

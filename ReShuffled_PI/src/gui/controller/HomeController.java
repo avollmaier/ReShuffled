@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import data.game.Game;
 import data.model.PlayerModel;
+import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
@@ -75,6 +76,8 @@ public class HomeController implements Initializable {
     @FXML
     JFXSlider slDealQuantity;
     @FXML
+    JFXSlider slAddPoints;
+    @FXML
     BarChart bcPlayerInfo;
     @FXML
     StackPane rootStackPane;
@@ -100,13 +103,20 @@ public class HomeController implements Initializable {
     private int cardQuantity = Game.getInstance().getGamemode().getCardQuantity();
 
     //LISTENERS
-    final ChangeListener<Number> changeListener = (observableValue, oldValue, newValue) -> {
+    final ChangeListener<Number> cardListener = (observableValue, oldValue, newValue) -> {
         if (newValue.intValue() == 1) {
             btDealX.setText("Deal " + newValue.intValue() + " card");
         }
         else {
             btDealX.setText("Deal " + newValue.intValue() + " cards");
         }
+    };
+
+    final ChangeListener<Number> cardSliderListener = (observableValue, oldValue, newValue) -> {
+
+    };
+    final ChangeListener<Number> pointSliderListener = (observableValue, oldValue, newValue) -> {
+
     };
 
     // *************************************************************************
@@ -116,7 +126,7 @@ public class HomeController implements Initializable {
     ) {
 
         //DEFINE ACTIONS
-        slDealQuantity.valueProperty().addListener(changeListener);
+        slDealQuantity.valueProperty().addListener(cardListener);
         btShutdown.setOnAction(this::handleShutdown);
         btShuffle.setOnAction(this::handleShuffle);
         btGameFinished.setOnAction(this::handleGameFinished);
@@ -134,8 +144,11 @@ public class HomeController implements Initializable {
         tfVersion.setText("ReShuffled Version " + main.Main.VERSION);
         tfGamemode.setText("Gamemode: " + Game.getInstance().getGamemode().getName());
         tfPlayerQuantity.setText("Players: " + Game.getInstance().getGamemode().getPlayerQuantity().toString());
-        slDealQuantity.setMin(0);
-        slDealQuantity.setMax(cardQuantity);
+
+        initSliderSettings(slAddPoints, 1, 20, 1);
+        initSliderSettings(slDealQuantity, 0, cardQuantity, 1);
+
+
         btDealX.setText("Deal 0 cards");
         initBarChart();
         lbPlayerName.setText(getIdPlayer().getName());
@@ -152,7 +165,7 @@ public class HomeController implements Initializable {
             playerId++;
         }
 
-        lbPlayerName.setText(getIdPlayer().getName());
+        lbPlayerName.setText("Player: " + getIdPlayer().getName());
     }
 
 
@@ -164,7 +177,7 @@ public class HomeController implements Initializable {
             playerId--;
         }
 
-        lbPlayerName.setText(getIdPlayer().getName());
+        lbPlayerName.setText("Player: " + getIdPlayer().getName());
     }
 
 
@@ -174,7 +187,7 @@ public class HomeController implements Initializable {
 
 
     private void handleAddPoint (final ActionEvent event) {
-        getIdPlayer().increment(1);
+        getIdPlayer().increment((int) slAddPoints.getValue());
         updateBarChart();
     }
 
@@ -189,13 +202,20 @@ public class HomeController implements Initializable {
 
     private void handleShutdown (final ActionEvent event) {
         MainController.getInstance().loadShutdownDialog();
-        //TODO
+        String shutdownCmd = "shutdown -h now";
+        try {
+            Process child = Runtime.getRuntime().exec(shutdownCmd);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     private void handleShuffle (final ActionEvent event) {
         MainController.getInstance().loadShuffleDialog();
         cardQuantity = Game.getInstance().getGamemode().getCardQuantity();
+
     }
 
 
@@ -243,11 +263,23 @@ public class HomeController implements Initializable {
         handleCardChanged();
     }
 
+
     //****************************
     //HELPER METHODS
     //****************************
+    private void initSliderSettings (JFXSlider slider, int minValue, int maxValue, int presetValue) {
+        slider.setMin(minValue);
+        slider.setMax(maxValue);
+        slider.setValue(presetValue);
+        slider.setBlockIncrement(1);
+        slider.setMajorTickUnit(3);
+        slider.setMinorTickCount(0);
+        slider.setShowTickLabels(true);
+        slider.setSnapToTicks(true);
+    }
 
-    private void handleCardChanged () {
+
+    public void handleCardChanged () {
         System.out.println(cardQuantity);
         if (cardQuantity < 1) {
             btDeal1.setDisable(true);
@@ -279,7 +311,7 @@ public class HomeController implements Initializable {
 
 
     private void initBarChart () {
-      
+
         dataSeries.getData().clear();
         yAxis.setLabel("Player Name");
         bcPlayerInfo.setLegendVisible(false);
@@ -289,8 +321,10 @@ public class HomeController implements Initializable {
 
         bcPlayerInfo.getData().add(dataSeries);
     }
-     private void updateBarChart () {
-      
+
+
+    private void updateBarChart () {
+
         dataSeries.getData().clear();
         Game.getInstance().getPlayers().forEach((player) -> {
             dataSeries.getData().add(new XYChart.Data<>(player.getName(), player.getPoints()));

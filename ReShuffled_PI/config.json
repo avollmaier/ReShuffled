@@ -9,15 +9,22 @@
       "name": "UNO",
       "autoDeal": true,
       "autoDealValue": 2,
-      "cardQuantity": 30,
-      "playerQuantity": 30
+      "cardQuantity": 18,
+      "playerQuantity": 3
     },
     {
       "name": "UNO1",
       "autoDeal": false,
       "autoDealValue": null,
-      "cardQuantity": 25,
+      "cardQuantity": 3,
       "playerQuantity": 12
+    },
+    {
+      "name": "UNOf",
+      "autoDeal": true,
+      "autoDealValue": 4,
+      "cardQuantity": 19,
+      "playerQuantity": 4
     }
   ],
   "serial": {
