@@ -161,11 +161,11 @@ Ein Begründung, warum die Wahl auf das DRV8825 Modul und nicht das A4988 Modul 
 \subsubsection{Kapazitive Sensoren}
 Kapazitive Sensoren funktionieren wie in offener Kondensator. Zwischen der Messelektrode und der GND - Elektrode wird ein elektrisches Feld aufgebaut.
 Dringt ein Material mit einer Dielektrizitätszahl ɛr größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
-Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden:
-Sensoren mit GND-Elektrode
+Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\\\
+\textbf{Sensoren mit GND-Elektrode} \\
 Diese Sensoren können bündig in ein Material eingebaut werden, da sich ihr Messwelt von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
-Diese Art eignet sich gut zur Detektion von nicht leitenden Materialien.
-Sensoren ohne GND-Elektrode
+Diese Art eignet sich gut zur Detektion von nicht leitenden Materialien. \\\\
+\textbf{Sensoren ohne GND-Elektrode} \\
 Ein bündiges Einbauen dieser Art ist nicht vorteilhaft. Eine integrierte GND-Elektrode ist nicht vorhanden. Diese wird vom zu detektierenden Objekt dargestellt.
 Diese Art weist eine geringe Empfindlichkeit gegen Verschmutzung auf. Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 
@@ -178,14 +178,36 @@ Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ih
 
 \subsubsection{Optische Sensoren}
 Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus. Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
-Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden.
-Lichtsender und Empfänger sind baulich getrennt.
-Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
+
+\begin{itemize}
+    \item Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden. Lichtsender und Empfänger sind baulich getrennt.
+
+    \item Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
+\end{itemize}
+
 Optische Sensoren besitzen eine fast wartungsfreie, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
 Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden. Es sind große Erkennungsabstände möglich.
 
 \subsubsection{Sensoren-Auswahl}
-Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+    \hline
+    & \textbf{Kapazitive Sensoren} & \textbf{Ultraschall-Sensoren} & \textbf{Optische Sensoren} \\ \hline
+    Preis               & gering    & hoch     & mittel    \\ \hline
+    Platzbedarf      & gering     & gering      & mittel   \\ \hline
+    Genauigkeit   & hoch        & mittel         & hoch        \\ \hline
+\end{tabular}
+\caption{Vergleich der Sensorattribute}
+\end{table}
+
+Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf. \\\\
 Unsere Wahl fiel auf den Sensor LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1-10mm erfassen kann.
 Dieser Sensor konnte mit einem sehr geringen Preis in unserem Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er seiner Aufgabe gewachsen war.
 
@@ -195,6 +217,24 @@ Diese Realisierung umfasst einen Endschalter, welcher als Referenzpunkt vor jede
 
 \subsubsection{Lichtschranke}
 Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und so ebenfalls als Referenzpunkt fungieren.
+
+\subsubsection{Variantenvergleich}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+        & \textbf{Endschalter} & \textbf{Licntschranke} \\ \hline
+        Preis                & sehr gering     & mittel  \\ \hline
+        Platzbedarf          & sehr gering     & mittel     \\ \hline
+        Genauigkeit          & mittel          & hoch     \\ \hline
+    \end{tabular}
+    \caption{Vergleich der Sensorattribute}
+\end{table}
 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
@@ -209,13 +249,42 @@ Bei dieser Art der Realisierung wird mit einem Schaltnetzteil mit 230V AC Spannu
 Durch jene 3.3V Versorgung des µC arbeitet dieser auch mit 3.3V Logikpegel. Somit kann auf einen Pegelwandler verzichtet werden.
 
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler zu 5V}
+Bei dieser Alternative wird ein Schaltnetzteil mit 230V AC versorgt, welches ein 12V DC Signal am Ausgang bereitstellt.
+Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen DC/DC Wandler, welcher 12V zu 5V umwandelt. Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
+Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet. Ein Pegelwandler ist so nicht von Nöten.
+
+\newpage
 \subsubsection{Auswahl der Spannungsversorgung}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+        & \textbf{Variante 1} & \textbf{Variante 2} & \textbf{Variante 3} \\ \hline
+        Preis               & hoch    & mittel     & gering    \\ \hline
+        \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Platzbedarf\\ und Gewicht\end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{mittel} & \multicolumn{1}{l|}{mittel} \\ \hline
+        Bauteilbedarf   & mittel        & hoch         & gering        \\ \hline
+    \end{tabular}
+    \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
+\end{table}
+
+Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit einem monotonen DC / DC Wandler – Ausgang, da diese für einen geringen Preis erhältlich ist und einen kleinen Bedarf an Platz und Bauteilen mit sich bringt.
 
 \subsection{Blockschaltbild der gesamten Elektronik}
+// TODO
+\newpage
 
 \section{Detaillierte Baugruppenbeschreibung}
 
 \subsection{DRV8825-Treiber}
+Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern. Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
+Um die Motorwindungen anzusteuern, sind die Ausgangsblöcke des Treibers als volle N-Kanal Leistung-MOSFET H-Brücken realisiert.
+Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
+
 \subsubsection{Datenblattwerte}
 \subsubsection{Beschaltung}
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
