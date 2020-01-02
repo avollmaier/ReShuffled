@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootStackPane" prefHeight="688.0" prefWidth="978.0" stylesheets="@../startupStylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="rootBorderPane" prefHeight="595.0" prefWidth="869.0">
+         <right>
+            <VBox prefHeight="302.0" prefWidth="245.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Selected Gamemode" VBox.vgrow="NEVER">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="cbGamemodes" focusColor="#4360b5" prefWidth="260.0" unFocusColor="BLACK" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets bottom="16.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <Label text="Gamemode Name">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="tfGamemodeName" prefWidth="246.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets bottom="16.0" top="8.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label text="Automatic Deal Value">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="229.0" VBox.vgrow="NEVER">
+                     <children>
+                        <JFXCheckBox fx:id="chbAutoDeal" selected="true" text="Auto Deal" HBox.hgrow="ALWAYS" />
+                        <JFXComboBox fx:id="cbAutoDealValue" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </JFXComboBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="16.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="Card Quantity">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="cbCardQuantity" prefWidth="338.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets bottom="16.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <Label text="Player Quantity">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="cbPlayerQuantity" prefWidth="434.0" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <HBox alignment="CENTER" VBox.vgrow="NEVER">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                     <children>
+                        <JFXButton fx:id="btSaveChanges" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="48.0" prefWidth="87.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="Save" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/icons/save.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="8.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="btDelete" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="48.0" prefWidth="87.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="Delete" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../util/icons/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <JFXButton fx:id="btStartGame" buttonType="RAISED" prefHeight="33.0" prefWidth="270.0" style="-fx-background-color: #FFFF;" text="Start Game" VBox.vgrow="NEVER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </BorderPane.margin>
+            </VBox>
+         </right>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="78.0" text="Player List" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="tfPlayerName" prefHeight="26.0" prefWidth="196.0" promptText="Name of Player" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <JFXListView fx:id="playerNameList" prefHeight="293.0" prefWidth="208.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </VBox.margin>
+                  </JFXListView>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <top>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="1112.0" text="Gamemode Selection Window" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>
