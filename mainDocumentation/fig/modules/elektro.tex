@@ -1,10 +1,16 @@
 \lohead{Perl Nicolas}
 \chapter{Elektronik}
 
-\section{Variantenvergleiche und Konzeptionierungen}
+\section{Anforderungen}
 
+Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
+Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten anzusteuern, einen Endschalter einzulesen und einen Schrittmotor anzusteuern. Zudem hat sie die Aufgabe, jegliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
+Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten. Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
+
+\subsection{Zeitplan}
+
+\section{Variantenvergleiche und Konzeptionierungen}
 \subsection{Mikrocontroller-Auswahl}
-\label{subsec:mikrocontroller-auswahl}
 \subsubsection{ATmega162}
 \subsubsection{ATmega324P}
 \subsubsection{ATmega128}
@@ -35,8 +41,6 @@
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler mit zwei verschiedenen Ausgangsspannungspegeln}
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler zu 5V}
 \subsubsection{Auswahl der Spannungsversorgung}
-
-\newpage
 
 \subsection{Blockschaltbild der gesamten Elektronik}
 
