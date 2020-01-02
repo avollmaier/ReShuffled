@@ -1,0 +1,79 @@
+\lohead{Hörmann Stefan}
+\chapter{Mechanik}
+
+\section{Anforderung}
+\label{sec:Anforderung}
+Die Arbeit des mechanischen Teiles besteht darin, eine Maschine,
+die Spielkarten mischen und ausgeben kann zu entwerfen, zu konstruieren
+und einen Teilaufbau durchzuführen. Die Maschine sollte in der Lage
+sein 20 Spielkarten zu Mischen und diese nach einem Spielmodus der
+zuvor am LCD gewählt wurde auszugeben. Das Ziel ist es, die Spielkarten
+optimal zu mischen, aber die Maschine dennoch kompakt und optisch
+ansprechen zu entwerfen. Im weiteren sollte der Mischvorgang und dies
+Ausgabe der Karten nicht zu lange dauern. Die Teile der Maschine
+sollten so konstruiert werden, dass sie kostengünstig produziert
+werden können. Zum Schluss sollte noch ein Teilaufbau der Maschine
+geschehen, um die Funktionalität der einzelnen Bereiche zu testen
+und gegeben falls zu verbessern.
+
+\section{Problemstellungen}
+Ein Problem ist das begrenzte Budget unseres Teams, somit sind
+wir auf gewisse Produktionsarten unserer Bauteile beschränkt.
+Dies hat zur folge, dass die Bauteile oft sehr simpel sind um
+sie leichter zu konstruieren. Die Oberfläche der Karten ist ein
+weiteres Problem, da diese nicht immer separieren lassen, dies
+verursacht, dass oft zwei oder mehrere Karten auf einmal Genommen
+werden und das Konzept des optimalen Mischens zerstört.
+
+\section{Variantenvergleich}
+
+\subsection{Anforderungen}
+
+\begin{enumerate}
+    \item Kosten  \\
+    Der Automat sollte möglichst kostengünstig Produziert werden,
+    da das vorhandene Budget gering ist. Dies hat zur Folge das keine teuren Motoren
+    oder ähnliche Bauteile zum Einsatz kommen können und  keine teuren Bauteile produziert
+    werden können.
+    \item Schnelligkeit \\
+    Um ein gutes Spielerlebnis zu garantieren sollte der Automat keine
+    lange Mischzeit besitzen. Die Dauer in der man die Karten einführt und auf den
+    Mischen-Button klickt bis hin zur Ausgabe der ersten Karte sollte möglichst gering sein.
+    \item Mischgenauigkeit \\
+    Die Mischgenauigkeit ist die am schwersten gewichtete Anforderung,
+    da es das Ziel ist ein optimales Mischen der Spielkarten zu erreichen, sollte
+    diese Anforderung mit größter Wichtigkeit erfüllt werden.
+    \item Optik und Größe \\
+    Die Optik des Automaten soll schlicht gehalten werden, jedoch sollte
+    sie dennoch auf Messen und andere Ausstellungen präsentierbar sein. Der Automat
+    sollte jedoch auch stabil konstruiert werden, muss aber dennoch mobil bleiben und
+    darf eine gewisse Größe nicht Überschreiten.
+\end{enumerate}
+
+\subsection{Variantenvergleich}
+Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte entworfen und diese verglichen.
+\subsubsection{Variante 1 - Linearachsen}
+
+Das erste Konzept würde mit zwei Linearachsen realisiert werden, diese wären im rechten Winkel zueinander
+angeordnet. Die Senkrechte Linearachse ist mit einer Halterung versehen, diese Halterung ist in der Lage
+ein Kartendeck aufzunehmen und die unterste Karte mithilfe eines Ausgaberades weiterzubefördern. Die zweite
+Linearachse besitzt 4 Fächer in der die Karten von der ersten Linearachsenausgabe zufällig befördert werden.
+Dies wird realisiert indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
+hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
+fährt die zweite Linearachse impulsiv nach links, um die Karten aus dem Lager zu befördern. Diese fallen
+Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereit liegen.
+
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \vspace{10pt}
+    \begin{center}
+        \includegraphics[width=0.55\textwidth]{Dateiname_Ohne_Endung}
+    \end{center}
+    \caption{Name des Bildes}
+    \label{fig:verweis}
+    \vspace{-10pt}
+\end{wrapfigure}
+\section{Konstruktion}
+
+\section{Berechnungen, Festigkeitsanalyse und Dimensionierungen}
+
+\section{Teilaufbau}
