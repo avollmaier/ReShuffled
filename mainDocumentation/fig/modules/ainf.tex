@@ -4,18 +4,18 @@
 
 \section{Visualisierte Benutzeroberfläche}
 \label{sec:gui}
-    \subsection{Konzept}
+\subsection{Konzept}
 
-    \subsection{Auswahl des GUI-Toolkits}
-        \subsubsection{Swing}
-        \subsubsection{JavaFX}
-        \subsubsection{Qt}
+\subsection{Auswahl des GUI-Toolkits}
+\subsubsection{Swing}
+\subsubsection{JavaFX}
+\subsubsection{Qt}
 
-    \subsection{Das MVC-Design Pattern}
-        \subsubsection{Grundlagen}
-        \subsubsection{Integration des Patterns in die GUI}
+\subsection{Das MVC-Design Pattern}
+\subsubsection{Grundlagen}
+\subsubsection{Integration des Patterns in die GUI}
 
-    \subsection{Auswahl der IDE}
+\subsection{Auswahl der IDE}
 
 \section{Kommunikation}
 \label{sec:communication}
@@ -47,18 +47,15 @@ Der Startvorgang des Simulators soll mit einer einfachen modifizierung der Konfi
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
         \textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
-        8-Bit                  & 16-Bit                 & 8-Bit                    & 32-Bit                   & 8-Bit                                \\ \hline
+        8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
     \end{tabular}
     \caption{Visualisierung des Datenakets}
 \end{table}
 
 Das verbindugslose Protokoll ist wie in der Konzeptbeschreibung Master-Slave orientiert. Die Datenübertragung erfolgt textuell wobei nur Großbuchstaben verwendet werden dürfen. \newline
-
-Wie aus der oben dargestellten Tabelle zu entnehmen, ist der Aufbau eines Frames klar definiert. Der eindeutige Start des Datenpakets, welcher mit einem Doppelpunkt (:) eingeleitet wird, sowie das ebenfalls eindeutige Ende, umgesetzt mit einem Line Feed Character (\n),
+Wie aus der oben dargestellten Tabelle zu entnehmen, ist der Aufbau eines Frames klar definiert. Der eindeutige Start des Datenpakets, welcher mit einem Doppelpunkt (:) eingeleitet wird, sowie das ebenfalls eindeutige Ende, umgesetzt mit einem Line Feed Character (),
 bringt eindeutige Vorteile mit sich. Im Gegensatz zu anderen Protokollen wie z.B. Modbus RTU, muss hier nicht auf das Ende des Pakets "gewartet" werden. Dies führ oft zu Einbußen im Bereich der Performance und ist für uns nicht zielführend.\newline
-
-Gefolgt von dem Startzeichen folgen nun die Daten. Diese beinhalten eindeutig definierte Zecichenfolgen, welche verwendet werden um verschiedenste Zustände der Ansteuerplatine auszuführen. Diese  Um auch hier zu wissen, wo sich das der Nutzdaten befindet, schließt das Trennzeichen (#) diese ab. \newline
-
+Gefolgt von dem Startzeichen folgen nun die Daten. Diese beinhalten eindeutig definierte Zecichenfolgen, welche verwendet werden um verschiedenste Zustände der Ansteuerplatine auszuführen. Diese Um auch hier zu wissen, wo sich das der Nutzdaten befindet, schließt das Trennzeichen () diese ab.\newline
 Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im nächsten Schritt eine Prüfsumme verwendet. Ziel dieser ist es, anhand der Nutzdaten einen Wert zu bilden, welcher danach vom Sender im Frame gespeichert bzw übertragen wird.
 Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der Übertragenen Prüfsumme des Senders. Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
 Stimmen diese nicht überein liegt ein Fehler vor. Die wichtigsten Arten von Übertragungsfehlern sind:
