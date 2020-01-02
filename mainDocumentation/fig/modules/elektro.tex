@@ -11,34 +11,203 @@ Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspber
 
 \section{Variantenvergleiche und Konzeptionierungen}
 \subsection{Mikrocontroller-Auswahl}
+Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
+Wir stellten die Anforderungen einer doppelt vorhandenen  UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
+Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 \subsubsection{ATmega162}
+Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen E²PROM-Speicher von 512 Bytes.
+Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 I/O Register und zwei Timer.
+Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.
 \subsubsection{ATmega324P}
+Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an E²PROM-Speicher sowie 1kiB an SRAM mit sich bringt.
+Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen sowie drei flexible Timer.
+Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben.
 \subsubsection{ATmega128}
+Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB.
+Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
+Zusätzlich bietet er vier Timer und 53 I/O Pins. Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden.
 \subsubsection{Mikrocontroller-Auswahl}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|
+        >{\columncolor[HTML]{FFFFFF}}l |
+        >{\columncolor[HTML]{FFFFFF}}l |
+        >{\columncolor[HTML]{FFFFFF}}l |
+        >{\columncolor[HTML]{FFFFFF}}l |
+        >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+            & \textbf{ATmega162} & \textbf{ATmega324P} & \textbf{ATmega128} \\ \hline
+            Preis               & gering    & gering     & mittel    \\ \hline
+            Flash-Speicher      & 16kiB     & 32kiB      & 128kiB    \\ \hline
+            EEPROM-Speicher     & 512B      & 1kiB       & 4kiB      \\ \hline
+            I/O-Pins            & 35        & 32         & 53        \\ \hline
+            UART-Schnittstellen & 2         & 2          & 2         \\ \hline
+            SPI-Schnittstelle   & ja        & ja         & ja        \\ \hline
+            Versorgungsspannung & 2,7V-5V   & 1,8V-5V    & 4,5V-5V  \\ \hline
+    \end{tabular}
+    \caption{Vergleich der Mikrocontrollerattribute}
+\end{table}
+Unsere Entscheidung fiel auf den ATmega324P, da dieser die nötigen Parameter, wie eine Versorgungsmöglichkeit mit 3,3V und einen ausreichend großen, programmierbaren Speicher, mit sich bringt.
 
 \subsection{Schrittmotor-Ansteuerung}
+Um jenen, im Automaten verbauten, Schrittmotor ansteuern zu können, ist eine Baugruppe von Nöten. Für das Ansteuern von Schrittmotoren gibt es verschiedenste Möglichkeiten.
+In den folgenden Unterkapiteln werden einzelne genannt, ein Variantenvergleich durchgeführt und sich für eine Variante entschieden.
+
+\newpage
 \subsubsection{DIY-H-Brücke}
+Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren mitunter der Verwendung eines Mikrocontrollers anzusteuern. Der von uns ausgewählte Schrittmotor
+12HS19-2004S1 ist bipolarer Art und weißt 2 Spulen auf, weshalb er sich von zwei H-Brücke steuern lässt. Für das Ansteuern einer H-Brücke werden drei Steuersignale benötigt: zwei digitale Signale sowie ein PWM-Signal.
+\\\\ Abbildung - TODO \\\\
+Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
+Ein konkreter Aufbau einer H-Brücke kann der Abbildung X entnommen werden. Bei dieser  Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
+Wie in Abbildung X zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
+Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode. Diese haben folgende Aufgabe: \\\\
+Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie. Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
+Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, um dem Strom einen Pfad zu bieten, der die Energie freisetzt. \\\\
+In der obigen Abbildung Y wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt. Da sich die Ansteuerung der beiden H-Brücken gleich gestaltet, wird zur vereinfachten Funktionserklärung nur die untere behandelt. \\
+Mithilfe des Timer 0 wird am Ausgang Y des Mikrocontrollers ein PWM-Signal erzeugt, mithilfe dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
+Dadurch befindet sich am Eingang des UND-Gatters mit der Bezeichnung X und am UND-Gatter mit der Bezeichnung Y ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung). \\\\
+Je nach gewollter Drehrichtung, muss der Motor über die Transistoren anders angesteuert werden: \\
+Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang X ein HIGH-Signal erzeugt werden. Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
+Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH-Signal am Eingang Y des UND-Gatters.
+Wenn nun ein HIGH-Pegel ausgehend vom Ausgang Y kommt, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt. \\\\
+Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang X ein HIGH-Signal gesetzt. Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
+Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH-Signal am Eingang Y des UND-Gatters.
+Wenn nun ein HIGH-Pegel vom Ausgang Y bereit gestellt wird, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt. \\
+
+\begin{itemize}
+    \item Vorteile
+    \begin{itemize}
+        \item günstig
+    \end{itemize}
+    \item Nachteile
+    \begin{itemize}
+        \item viele Bauteile
+        \item Bauteile müssen erst dimensioniert werden
+        \item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
+    \end{itemize}
+\end{itemize}
+
 \subsubsection{Schrittmotor-Treibermodule}
+Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der Lage sind, Schrittmotoren steuern zu können.
+
+\begin{itemize}
+    \item Vorteile
+    \begin{itemize}
+        \item platzsparend
+        \item leicht austauschbar
+        \item leicht verwendbar
+    \end{itemize}
+    \item Nachteile
+    \begin{itemize}
+        \item Kosten könnten sich, aufgrund eines Kühlkörpers erhöhen
+    \end{itemize}
+\end{itemize}
+
 \subsubsection{A4988}
+Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
+Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
+Es besteht kein Bedarf daran Phasenfolgetabellen, Hochfrequenz-Steuerleitungen oder komplexe Schnittstellen zu programmieren.
+Das A4988 Treiber-Modul von Allegro bietet viele Möglichkeiten. Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer.
+Dadurch können Spannungen über der Nennspannung des Schrittmotors verwendet werden, um höhere Schrittgeschwindigkeiten zu erreichen.
+Zusätzlich wird die Gewährleistung eines Überstromschutz und Übertemperaturschutzes sowie eine Überspannungsabschaltung versichert.
+Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben. Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
+
 \subsubsection{DRV8825}
+Diesem Treiber-Board von Texas Instruments ist es Möglich mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
+Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern. Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welche mit zugeführter Kühlung auch getrieben werden können.
+Der DRV8825 arbeitet mit einem Logikpegel von 3,3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
+Das Modul besitzt ebenfalls die Eigenschaften eines Überstrom- und Übertemperaturschutzes sowie sechs Mikroschrittauflösungen, welche bis zu einer Zweiunddreißigstel-Auflösung reichen.
+Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebauten Unterspannungsschutzes sind zusätzlich gegeben.
+Der DRV8825-Treiber verfügt über eine Schnittstelle und eine Pinbelegung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind, sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
+
 \subsubsection{TB6600}
+Dieser Ein-Achsen-Schrittmotortreiber ist für Hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
+Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0,7A bis 4A ausgelegt.
+Das Modul bringt die Eigenschaften eines Übersitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
+Der Ausgangsstrom ist mittels DIP-Schalter in acht Schritten wählbar.
+Sechs verschieden wählbare Mikroschrittauflösungen, welche bis zu einer Auflösung von Zweiunddreißigstel reichen, werden zur Verfügung gestellt.
+Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
+200dag und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.
+
 \subsubsection{Treiber-Auswahl}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+        & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
+        Preis               & gering    & gering     & mittel    \\ \hline
+        Max. Strom      & 2A     & 2.2A      & 4A    \\ \hline
+        Spannungsbereich     & 8V-35V      & 8.2V-35V       & 9V-40V      \\ \hline
+        Logik-Pegel            & 3.3V-5V        & 3.3V-5V         & 5V        \\ \hline
+        Max. Schrittauflösung & 16         & 32          & 32         \\ \hline
+        Größe   & klein        & klein         & groß        \\ \hline
+    \end{tabular}
+    \caption{Vergleich der Treibermodule}
+\end{table}
+
+Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
+Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3,3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
+Ein Begründung, warum die Wahl auf das DRV8825 Modul und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
 
 \subsection{Detektion der Kartenposition}
 \subsubsection{Kapazitive Sensoren}
+Kapazitive Sensoren funktionieren wie in offener Kondensator. Zwischen der Messelektrode und der GND - Elektrode wird ein elektrisches Feld aufgebaut.
+Dringt ein Material mit einer Dielektrizitätszahl ɛr größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
+Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden:
+Sensoren mit GND-Elektrode
+Diese Sensoren können bündig in ein Material eingebaut werden, da sich ihr Messwelt von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
+Diese Art eignet sich gut zur Detektion von nicht leitenden Materialien.
+Sensoren ohne GND-Elektrode
+Ein bündiges Einbauen dieser Art ist nicht vorteilhaft. Eine integrierte GND-Elektrode ist nicht vorhanden. Diese wird vom zu detektierenden Objekt dargestellt.
+Diese Art weist eine geringe Empfindlichkeit gegen Verschmutzung auf. Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
+
 \subsubsection{Ultraschall-Sensoren}
+Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
+Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
+Das Echo wird vom Sensor wieder aufgenommen und aus der Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wir der Abstand vom Sensor berechnet.
+So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen. Lediglich schalldämpfende Materialien können nur schwer erfasst werden.
+Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen. Ein fast wartungsfreier Betrieb ist möglich.
+
 \subsubsection{Optische Sensoren}
+Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus. Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
+Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden.
+Lichtsender und Empfänger sind baulich getrennt.
+Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
+Optische Sensoren besitzen eine fast wartungsfreie, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
+Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden. Es sind große Erkennungsabstände möglich.
+
 \subsubsection{Sensoren-Auswahl}
+Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
+Unsere Wahl fiel auf den Sensor LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1-10mm erfassen kann.
+Dieser Sensor konnte mit einem sehr geringen Preis in unserem Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er seiner Aufgabe gewachsen war.
 
 \subsection{Erfassung der Position des Motors}
 \subsubsection{Endschalter}
+Diese Realisierung umfasst einen Endschalter, welcher als Referenzpunkt vor jedem Mischvorgang angefahren wird, von dem aus die benötigten Schritte aufgetragen werden.
+
 \subsubsection{Lichtschranke}
+Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und so ebenfalls als Referenzpunkt fungieren.
+
+Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
 \subsection{Spannungsversorgung}
 \subsubsection{Doppel-Schaltnetzteil mit 12V und 5V Ausgangsspannung}
+Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V AC in Verbindung gebracht werden müsste,
+um die Versorgung der Peripherie zu gewährleisten. Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden, die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
+Es müsste lediglich ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
+
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler mit zwei verschiedenen Ausgangsspannungspegeln}
+Bei dieser Art der Realisierung wird mit einem Schaltnetzteil mit 230V AC Spannungseingang und 12V DC Spannungsausgang gearbeitet, welches die Versorgung der Sensoren, des Motors und der Hubmagnete sowie die eines DC/DC Wandlers übernimmt. Dieser hat die Aufgabe über zwei Ausgänge 12V zu 5V, sowie 12V zu 3.3V umzuwandeln, um die Versorgung des Raspberry Pi‘s und des Mikrocontrollers zu gewährleisten.
+Durch jene 3.3V Versorgung des µC arbeitet dieser auch mit 3.3V Logikpegel. Somit kann auf einen Pegelwandler verzichtet werden.
+
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler zu 5V}
 \subsubsection{Auswahl der Spannungsversorgung}
 
