@@ -1,5 +1,3 @@
-
-
 \lohead{Perl Nicolas}
 \chapter{Elektronik}
 
@@ -12,7 +10,7 @@ Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspber
 Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
 
 \subsection{Zeitplan}
-s
+
 \section{Variantenvergleiche und Konzeptionierungen}
 \subsection{Mikrocontroller-Auswahl}
 Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
@@ -262,7 +260,7 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
 
 \newpage
 \subsubsection{Auswahl der Spannungsversorgung}
-\begin{table}[h]
+\begin{table}[htbp]
     \centering
     \begin{tabular}{|
     >{\columncolor[HTML]{FFFFFF}}l |
@@ -282,11 +280,17 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
 \end{table}
 
 Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit einem monotonen DC / DC Wandler – Ausgang, da diese für einen geringen Preis erhältlich ist und einen kleinen Bedarf an Platz und Bauteilen mit sich bringt.
-
-\subsection{Blockschaltbild der gesamten Elektronik}
-// TODO
 \newpage
 
+\subsection{Blockschaltbild der gesamten Elektronik}
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[scale=0.8,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
+    \caption{Blockschaltbild der gesamten Elektronik}
+\end{figure}
+
+\newpage
 \section{Detaillierte Baugruppenbeschreibung}
 
 \subsection{DRV8825-Treiber}
@@ -307,7 +311,12 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 * nur bei ausreichender Kühlung möglich
 
 \subsubsection{Beschaltung}
-%image file to insert
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5,page=1]{fig/elektro/StepperMotorDriver.pdf}
+    \caption{Gewöhnliche Beschaltung eines DRV8825}
+\end{figure}
+
 
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
 Der DRV8825 besitzt 16 Anschlüsse. Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\\\
@@ -427,10 +436,15 @@ Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüs
 einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird.
 
 \textbf{Datenblattwerte:} \\
-• Schaltabstand 1-10mm, einstellbar durch Stellschraube \\
-• Betriebsspannung 6V-36V \\
-• Maximale Last 300mA \\
-• Ausgang realisiert durch einen NPN-Schließer \\
+
+\begin{itemize}
+    \item Schaltabstand 1-10mm, einstellbar durch Stellschraube
+    \item Betriebsspannung 6V-36V
+    \item Maximale Last 300mA
+    \item Ausgang realisiert durch einen NPN-Schließer
+\end{itemize}
+
+
 
 In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt. Der Signalausgang des Sensors liefert im Grundzustand ein HIGH-Signal.
 Sobald ein Objekt in das Messumfeld des Sensors gelangt, liefert dieser ein Signal von 0.62V, welches als LOW-Signal gilt.
