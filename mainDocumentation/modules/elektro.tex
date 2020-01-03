@@ -375,7 +375,7 @@ Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden folgende Formeln b
 \begin{equation}
     P_V = R_{DSon} \cdot I_{max}^2
 \end{equation}
-Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} ist ein Kühlkörper von Nöten. \\\\
+Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} ist ein Kühlkörper von Nöten. \\
 
 \textbf{Datenblattwerte}\\
 • T\textsubscript{jmax} = 150°C \\
@@ -391,29 +391,57 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
         &= 0.8192W
 \end{flalign*}
 
-\begin{equation*}
-    P_D = \frac{(T_jmax - T_{ha} - Sicherheit)}{R_{thja}}
-\end{equation*}
+\begin{flalign*}
+    P_D &= \frac{(T_jmax - T_{ha} - Sicherheit)}{R_{thja}} &\\
+        &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
+        &= 3.1646W
+\end{flalign*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
-Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.\\\\
+Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.\\
 
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
-\begin{equation}
-    R_{thK} = \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc})
-\end{equation}
-
-\begin{equation*}
-    R_{thK} = \frac{150$^{\circ}$C - 25$^{\circ}$C - 25$^{\circ}$C}{0,8192W} - (0.1$^{\circ}$C/W + 15.9$^{\circ}$C/W$^{\circ}$)
-\end{equation*}
-
-
+\begin{flalign*}
+    R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
+    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) &\\
+    &= 106.07\frac{{}^{\circ}C}{W}
+\end{flalign*}
 
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
 
 \subsection{Kapazitive Sensoren}
+Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
+einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird.
+
+\textbf{Datenblattwerte:} \\
+• Schaltabstand 1-10mm, einstellbar durch Stellschraube \\
+• Betriebsspannung 6V-36V \\
+• Maximale Last 300mA \\
+• Ausgang realisiert durch einen NPN-Schließer \\
+
+In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt. Der Signalausgang des Sensors liefert im Grundzustand ein HIGH-Signal.
+Sobald ein Objekt in das Messumfeld des Sensors gelangt, liefert dieser ein Signal von 0.62V, welches als LOW-Signal gilt.
+Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannungsteiler am Signalausgang des Sensors zu dimensionieren. Hierzu verwenden wir folgende Formel:
+
+\begin{equation}
+    U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
+\end{equation}
+
+% hier Bild von Spannunsgteiler einfügen
+
+Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
+Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
+
+\begin{equation*}
+    R_1 = 5.1k\Omega, R_2 = 2k\Omega
+\end{equation*}
+
+Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V.
+Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V zu messen.
+
+%Bild des Versuchsaufbaus einfügen
 
 \subsection{Netzteil}
 
