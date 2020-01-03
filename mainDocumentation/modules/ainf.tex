@@ -35,6 +35,13 @@ Basierend auf dem Master - Slave Prinzip, wobei der Rasperry PI den Master und d
 Zusätzlich soll, um die Anforderung des einfachen Fehlerhandlings zu erfüllen, ein Simulator ausprogrammiert werden, welcher auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
 Der Startvorgang des Simulators soll mit einer einfachen modifizierung der Konfigurationsdatei vonstatten gehen.
 
+\begin{figure}[htbp]
+    \centering
+    \includesvg{fig/ainf/DeviceSelection}
+    \caption{svg image}
+\end{figure}
+
+
 \subsection{Kommunikation - serielle Schnittstelle}
 \subsubsection{Das Übertragungsprotokoll}
 \begin{table}[h]
@@ -78,8 +85,8 @@ Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänge
 
 \subsubsection{Die Klasse ReShuffledMainboardSimulator}
 \subsubsection{Konzept zum Datenaustausch zwischen Programm und Simulator}
-\subsubsection{Die Klassen SimInput- und SimOutputStreamBuffer}
 
+\subsubsection{Die Klassen SimInput- und SimOutputStreamBuffer}
 \section{Konfigurationsdatei}
 \label{sec:config}
 \subsection{Konzept}
