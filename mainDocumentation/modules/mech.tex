@@ -30,20 +30,20 @@ werden und das Konzept des optimalen Mischens zerstört.
 \subsection{Anforderungen}
 
 \begin{enumerate}
-    \item Kosten  \\
+    \item \textbf{Kosten}  \\
     Der Automat sollte möglichst kostengünstig Produziert werden,
     da das vorhandene Budget gering ist. Dies hat zur Folge das keine teuren Motoren
     oder ähnliche Bauteile zum Einsatz kommen können und  keine teuren Bauteile produziert
     werden können.
-    \item Schnelligkeit \\
+    \item \textbf{Schnelligkeit} \\
     Um ein gutes Spielerlebnis zu garantieren sollte der Automat keine
     lange Mischzeit besitzen. Die Dauer in der man die Karten einführt und auf den
     Mischen-Button klickt bis hin zur Ausgabe der ersten Karte sollte möglichst gering sein.
-    \item Mischgenauigkeit \\
+    \item \textbf{Mischgenauigkeit} \\
     Die Mischgenauigkeit ist die am schwersten gewichtete Anforderung,
     da es das Ziel ist ein optimales Mischen der Spielkarten zu erreichen, sollte
     diese Anforderung mit größter Wichtigkeit erfüllt werden.
-    \item Optik und Größe \\
+    \item \textbf{Optik und Größe} \\
     Die Optik des Automaten soll schlicht gehalten werden, jedoch sollte
     sie dennoch auf Messen und andere Ausstellungen präsentierbar sein. Der Automat
     sollte jedoch auch stabil konstruiert werden, muss aber dennoch mobil bleiben und
@@ -52,6 +52,7 @@ werden und das Konzept des optimalen Mischens zerstört.
 
 \subsection{Variantenvergleich}
 Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte entworfen und diese verglichen.
+
 \subsubsection{Variante 1 - Linearachsen}
 
 Das erste Konzept würde mit zwei Linearachsen realisiert werden, diese wären im rechten Winkel zueinander
@@ -61,17 +62,73 @@ Linearachse besitzt 4 Fächer in der die Karten von der ersten Linearachsenausga
 Dies wird realisiert indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
 hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
 fährt die zweite Linearachse impulsiv nach links, um die Karten aus dem Lager zu befördern. Diese fallen
-Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereit liegen.
+Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereit liegen. \\
 
-\begin{wrapfigure}{r}{0.6\textwidth}
-    \vspace{10pt}
-    \begin{center}
-        \includegraphics[width=0.55\textwidth]{Dateiname_Ohne_Endung}
-    \end{center}
-    \caption{Name des Bildes}
-    \label{fig:verweis}
-    \vspace{-10pt}
-\end{wrapfigure}
+Durch die schnelle Bewegung der Linearachsen ist es möglich einen schnell Mischprozess zu erreichen,
+auch die Tatsache das es nur ein rotierendes Rad gibt und zwei Bewegliche Linearachsen führt dazu, das
+Fehler bei Bewegungen nur selten Auftreten. Jedoch besteht durch den hohen Aufbau der Maschine und durch die hohe
+Position der zweiten Linearachse die sich horizontal bewegt die Gefahr des umkippens der Maschine, und somit ist
+keine stabilität mehr gegeben. Der Preis der Linearachsen ist ein weiterer Nachteil dises Konzeptes, eine Linearachse
+die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für unser Buudget. \\
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item schnelles Mischen
+    \item wenige Fehlerquellen
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item teuer
+    \item großer Aufbau %Genaueres Beschreiben der Vor und Nachteile?
+    \item instabil
+\end{itemize}
+
+\subsubsection{Variante 2 - Lagerrad mit Asugaberäder}
+
+Beim zweiten Konzept wird als Lager ein virtel eines Zylinders benutzt. In diesem befinden
+sich verschidene Fächer in der die Karten eingelagert werden. Dieser wird mit einem Motor betrieben
+und dreht sich somit in die vorgegebenen Positionen um das Einlagern und das Ausgeben der Karten zu ermöglichen.
+Die KArteneingabe erfolgt über einen Schlitz in der Frontplatte der Maschine, dort befindet sich ein Hubmagnet der die Karten
+zum weiterbefördern nach oben drückt. Ein Kamazitiver Sensor sorgt dafür, das scihergestellt werden kann, dass sich Karten auf dem Hubmagnet befinden.
+Um eine Karte in das Lager zu befördern wird der Hubmagnet eingeschaltet und drückt das Kartendeck auf das erste Ausgaberad, um die Kraft des Hubmagnetes zu minimieren sind Zugfedern angebracht.
+Das Ausgaberad befördert eine Karte weiter vor zum zweiten Ausgabrad welches weiderum sicherstellt das nur eine Karten in das Lagerrad transportiert wird.
+Danach dreht das Lagerrad auf eine andere zufällig ausgewählte Position. Dieser Prozess wird solange wiederholt bis alle Karten des Kartendecks sich im Lagerrad befinden.
+Befinden sich alle Karten im Lagerrad, so dreht sich dieses mit einer hochen Geschwindigkeit und wirft somit die Karten auf der Hinterseite der Maschine in eine Auffangführung. %Ist Geschwindigkeit der richtige Begriff? Eher Moment oder Drehzahl?
+Diese Auffangsführung befördert die Karten in einen gleichen Mechanismus wie bei der Vorderseite der Maschine, in der sie von einem Hubmagenten nach oben gedrückt werden und von zwei Ausgaberädern zur
+Kartenentnahme geschoben werden. Da die Karten zum Schluss nach einem Spielmodus und somit in einer bestimmten Anzahl Ausgegeben werden, befindet sich ein Kapazitiver Sensor auch bei der Ausgabe der Karten,
+dieser soll überprüfen ob die Karten von dem Spiler berreits genommen wurden oder nicht.\\
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item stabil
+    \item niedriger Aufbau
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item lange Gesamtgröße
+    \item viele bewegliche Bauteile / Fehlerquellen
+\end{itemize}
+
+\subsubsection{Variante 3 - Lagerrad mit Saugnäpfe}
+
+Das dritte Konzept besitzt ein identes Lagersystem wie das zweite Konzept, ein Lagerrad das in Fächer unterteilt ist und über einen Moter diverse Positionen einnehmen kann.
+Das Kartendeck wird in den oberen / vorderen Anfang der Maschine eingeführt. Dort liegt es schräg in einem Winkel von ca. 60°. Um sicherzustellen das sich Karten in dieser Halterung befinden
+ist ein Kapazitiver Sensor an der Unterseite angebracht. Ein Hubmagnet der im rechten Winkel zu den Karten über der Halterng angebracht ist, saugt jede Karte einzeln an indem ein Saugnapf der an einem Hubmagneten
+befestigt ist heruntergedrückt wird. Ist die Karte angesaugt, so wird der Hubmagnet von einer Feder in seine Ausgangsstellung zurückgebracht, dabei wird die Spielkarte durch eine Platte abgestreift und fliegt somit in das Lager des
+Lagerrades hinein. Dieser Prozess wird solange wiederholt bis sich alle Spilkarten des Kartendecks im Lagerrad befinden. Sind alle Karten im Lagerrad so dreht sich dieses und wirft die Karten auf der Rückseite der Maschine in ein Führung
+die die Karten in eine zweite Halterung befördern. Diese zweite Halterung ist ident Aufgebaut wie die erste. Die Karten werden nun wieder einzeln vom Saugnapf angesaugt und in ein Ausgabefach am Ende der Maschine befördert. Im Ausgabefach befindet sich
+ein Kapazitiver Sensor, dieser überprüft ob die Karten vom Spiler berreits genommen wurden oder nicht.\\
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item billig
+    \item wenig bewegliche Bauteile
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item hocher Aufbau
+\end{itemize}
+
 \section{Konstruktion}
 
 \section{Berechnungen, Festigkeitsanalyse und Dimensionierungen}
