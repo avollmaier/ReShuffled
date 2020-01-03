@@ -6,15 +6,17 @@
 \section{Anforderungen}
 
 Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
-Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten anzusteuern, einen Endschalter einzulesen und einen Schrittmotor anzusteuern. Zudem hat sie die Aufgabe, jegliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
-Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten. Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
+Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten anzusteuern, einen Endschalter einzulesen und einen Schrittmotor anzusteuern.
+Zudem hat sie die Aufgabe, jegliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
+Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten.
+Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
 
 \subsection{Zeitplan}
 
 \section{Variantenvergleiche und Konzeptionierungen}
 \subsection{Mikrocontroller-Auswahl}
 Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
-Wir stellten die Anforderungen einer doppelt vorhandenen  UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
+Wir stellten die Anforderungen einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 \subsubsection{ATmega162}
 Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen E²PROM-Speicher von 512 Bytes.
@@ -33,20 +35,20 @@ Zusätzlich bietet er vier Timer und 53 I/O Pins. Er kann mit einer Gleichspannu
 \begin{table}[h]
     \centering
     \begin{tabular}{|
-        >{\columncolor[HTML]{FFFFFF}}l |
-        >{\columncolor[HTML]{FFFFFF}}l |
-        >{\columncolor[HTML]{FFFFFF}}l |
-        >{\columncolor[HTML]{FFFFFF}}l |
-        >{\columncolor[HTML]{FFFFFF}}l |}
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-            & \textbf{ATmega162} & \textbf{ATmega324P} & \textbf{ATmega128} \\ \hline
-            Preis               & gering    & gering     & mittel    \\ \hline
-            Flash-Speicher      & 16kiB     & 32kiB      & 128kiB    \\ \hline
-            EEPROM-Speicher     & 512B      & 1kiB       & 4kiB      \\ \hline
-            I/O-Pins            & 35        & 32         & 53        \\ \hline
-            UART-Schnittstellen & 2         & 2          & 2         \\ \hline
-            SPI-Schnittstelle   & ja        & ja         & ja        \\ \hline
-            Versorgungsspannung & 2,7V-5V   & 1,8V-5V    & 4,5V-5V  \\ \hline
+        & \textbf{ATmega162} & \textbf{ATmega324P} & \textbf{ATmega128} \\ \hline
+        Preis & gering & gering & mittel    \\ \hline
+        Flash-Speicher & 16kiB & 32kiB & 128kiB    \\ \hline
+        EEPROM-Speicher & 512B & 1kiB & 4kiB      \\ \hline
+        I/O-Pins & 35 & 32 & 53        \\ \hline
+        UART-Schnittstellen & 2 & 2 & 2         \\ \hline
+        SPI-Schnittstelle & ja & ja & ja        \\ \hline
+        Versorgungsspannung & 2,7V-5V & 1,8V-5V & 4,5V-5V  \\ \hline
     \end{tabular}
     \caption{Vergleich der Mikrocontrollerattribute}
 \end{table}
@@ -62,12 +64,13 @@ Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren mitunter de
 12HS19-2004S1 ist bipolarer Art und weißt 2 Spulen auf, weshalb er sich von zwei H-Brücke steuern lässt. Für das Ansteuern einer H-Brücke werden drei Steuersignale benötigt: zwei digitale Signale sowie ein PWM-Signal.
 \\\\ Abbildung - TODO \\\\
 Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
-Ein konkreter Aufbau einer H-Brücke kann der Abbildung X entnommen werden. Bei dieser  Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
+Ein konkreter Aufbau einer H-Brücke kann der Abbildung X entnommen werden. Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
 Wie in Abbildung X zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
 Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode. Diese haben folgende Aufgabe: \\\\
 Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie. Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
 Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, um dem Strom einen Pfad zu bieten, der die Energie freisetzt. \\\\
-In der obigen Abbildung Y wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt. Da sich die Ansteuerung der beiden H-Brücken gleich gestaltet, wird zur vereinfachten Funktionserklärung nur die untere behandelt. \\
+In der obigen Abbildung Y wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt.
+Da sich die Ansteuerung der beiden H-Brücken gleich gestaltet, wird zur vereinfachten Funktionserklärung nur die untere behandelt. \\
 Mithilfe des Timer 0 wird am Ausgang Y des Mikrocontrollers ein PWM-Signal erzeugt, mithilfe dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
 Dadurch befindet sich am Eingang des UND-Gatters mit der Bezeichnung X und am UND-Gatter mit der Bezeichnung Y ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung). \\\\
 Je nach gewollter Drehrichtung, muss der Motor über die Transistoren anders angesteuert werden: \\
@@ -76,14 +79,14 @@ Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH
 Wenn nun ein HIGH-Pegel ausgehend vom Ausgang Y kommt, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt. \\\\
 Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang X ein HIGH-Signal gesetzt. Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH-Signal am Eingang Y des UND-Gatters.
-Wenn nun ein HIGH-Pegel vom Ausgang Y bereit gestellt wird, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt. \\
+Wenn nun ein HIGH-Pegel vom Ausgang Y bereit gestellt wird, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt.
 
 \begin{itemize}
-    \item Vorteile
+    \item \textbf{Vorteile}
     \begin{itemize}
         \item günstig
     \end{itemize}
-    \item Nachteile
+    \item \textbf{Nachteile}
     \begin{itemize}
         \item viele Bauteile
         \item Bauteile müssen erst dimensioniert werden
@@ -95,13 +98,13 @@ Wenn nun ein HIGH-Pegel vom Ausgang Y bereit gestellt wird, liefert das UND-Gatt
 Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der Lage sind, Schrittmotoren steuern zu können.
 
 \begin{itemize}
-    \item Vorteile
+    \item \textbf{Vorteile}
     \begin{itemize}
         \item platzsparend
         \item leicht austauschbar
         \item leicht verwendbar
     \end{itemize}
-    \item Nachteile
+    \item \textbf{Nachteile}
     \begin{itemize}
         \item Kosten könnten sich, aufgrund eines Kühlkörpers erhöhen
     \end{itemize}
@@ -145,12 +148,12 @@ Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
         & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
-        Preis               & gering    & gering     & mittel    \\ \hline
-        Max. Strom      & 2A     & 2.2A      & 4A    \\ \hline
-        Spannungsbereich     & 8V-35V      & 8.2V-35V       & 9V-40V      \\ \hline
-        Logik-Pegel            & 3.3V-5V        & 3.3V-5V         & 5V        \\ \hline
-        Max. Schrittauflösung & 16         & 32          & 32         \\ \hline
-        Größe   & klein        & klein         & groß        \\ \hline
+        Preis & gering & gering & mittel    \\ \hline
+        Max. Strom & 2A & 2.2A & 4A    \\ \hline
+        Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
+        Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
+        Max. Schrittauflösung & 16 & 32 & 32         \\ \hline
+        Größe & klein & klein & groß        \\ \hline
     \end{tabular}
     \caption{Vergleich der Treibermodule}
 \end{table}
@@ -193,20 +196,20 @@ Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werd
 \subsubsection{Sensoren-Auswahl}
 
 \begin{table}[h]
-\centering
-\begin{tabular}{|
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |}
-    \hline
-    & \textbf{Kapazitive Sensoren} & \textbf{Ultraschall-Sensoren} & \textbf{Optische Sensoren} \\ \hline
-    Preis               & gering    & hoch     & mittel    \\ \hline
-    Platzbedarf      & gering     & gering      & mittel   \\ \hline
-    Genauigkeit   & hoch        & mittel         & hoch        \\ \hline
-\end{tabular}
-\caption{Vergleich der Sensorattribute}
+    \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+        & \textbf{Kapazitive Sensoren} & \textbf{Ultraschall-Sensoren} & \textbf{Optische Sensoren} \\ \hline
+        Preis & gering & hoch & mittel    \\ \hline
+        Platzbedarf & gering & gering & mittel   \\ \hline
+        Genauigkeit & hoch & mittel & hoch        \\ \hline
+    \end{tabular}
+    \caption{Vergleich der Sensorattribute}
 \end{table}
 
 Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf. \\\\
@@ -231,9 +234,9 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
         & \textbf{Endschalter} & \textbf{Licntschranke} \\ \hline
-        Preis                & sehr gering     & mittel  \\ \hline
-        Platzbedarf          & sehr gering     & mittel     \\ \hline
-        Genauigkeit          & mittel          & hoch     \\ \hline
+        Preis & sehr gering & mittel  \\ \hline
+        Platzbedarf & sehr gering & mittel     \\ \hline
+        Genauigkeit & mittel & hoch     \\ \hline
     \end{tabular}
     \caption{Vergleich der Sensorattribute}
 \end{table}
@@ -243,11 +246,13 @@ Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu ein
 \subsection{Spannungsversorgung}
 \subsubsection{Doppel-Schaltnetzteil mit 12V und 5V Ausgangsspannung}
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V AC in Verbindung gebracht werden müsste,
-um die Versorgung der Peripherie zu gewährleisten. Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden, die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
+um die Versorgung der Peripherie zu gewährleisten.
+Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden, die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
 Es müsste lediglich ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
 
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler mit zwei verschiedenen Ausgangsspannungspegeln}
-Bei dieser Art der Realisierung wird mit einem Schaltnetzteil mit 230V AC Spannungseingang und 12V DC Spannungsausgang gearbeitet, welches die Versorgung der Sensoren, des Motors und der Hubmagnete sowie die eines DC/DC Wandlers übernimmt. Dieser hat die Aufgabe über zwei Ausgänge 12V zu 5V, sowie 12V zu 3.3V umzuwandeln, um die Versorgung des Raspberry Pi‘s und des Mikrocontrollers zu gewährleisten.
+Bei dieser Art der Realisierung wird mit einem Schaltnetzteil mit 230V AC Spannungseingang und 12V DC Spannungsausgang gearbeitet, welches die Versorgung der Sensoren, des Motors und der Hubmagnete sowie die eines DC/DC Wandlers übernimmt.
+Dieser hat die Aufgabe über zwei Ausgänge 12V zu 5V, sowie 12V zu 3.3V umzuwandeln, um die Versorgung des Raspberry Pi‘s und des Mikrocontrollers zu gewährleisten.
 Durch jene 3.3V Versorgung des µC arbeitet dieser auch mit 3.3V Logikpegel. Somit kann auf einen Pegelwandler verzichtet werden.
 
 \subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler zu 5V}
@@ -267,9 +272,11 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
         & \textbf{Variante 1} & \textbf{Variante 2} & \textbf{Variante 3} \\ \hline
-        Preis               & hoch    & mittel     & gering    \\ \hline
-        \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Platzbedarf\\ und Gewicht\end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{mittel} & \multicolumn{1}{l|}{mittel} \\ \hline
-        Bauteilbedarf   & mittel        & hoch         & gering        \\ \hline
+        Preis & hoch & mittel & gering    \\ \hline
+        \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
+                                 Platzbedarf\\ und Gewicht
+        \end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{mittel} & \multicolumn{1}{l|}{mittel} \\ \hline
+        Bauteilbedarf & mittel & hoch & gering        \\ \hline
     \end{tabular}
     \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
 \end{table}
@@ -305,15 +312,19 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
 Der DRV8825 besitzt 16 Anschlüsse. Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\\\
 Über den Anschluss VMOT werden in unserem Fall 12V eingespeist. Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\\\
-„Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen. Insbesondere wenn längere Stromkabel verwendet werden. Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
+„Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen. Insbesondere wenn längere Stromkabel verwendet werden.
+Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
 Selbst, wenn die Versorgungsspannung des Motors nur 12 V, können diese Art von Spannungsspitzen auftreten.
 Eine Möglichkeit diese Gefahr zu negieren, ist einen, mindestens 47µF großen Elektrolytkondensator zwischen dem Pin VMOT und Ground in der Nähe des Treibers zu schalten.“ \\\\
-An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden. Hierbei ist auf die richtige Zusammengehörigkeit zu achten: Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\\\
+An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden. Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
+Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\\\
 Der invertierte FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden. Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\\\
 Der DRV8825 Treiber verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in Abbildung X zu finden sind: \\\\
-Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird. Bei einem eingehenden LOW-Signal ist der Treiber aktiviert. Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
+Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird. Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
+Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
 Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\\\
-Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen. Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden. Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel X. \\\\
+Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen. Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
+Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel X. \\\\
 Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\\\
 Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\\\
 Um den Treiber in voller Funktion verwendet zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\\\
@@ -328,14 +339,14 @@ In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Ansc
     \begin{tabular}{|c|c|c|c|}
         \hline
         \textbf{M2} & \textbf{M1} & \textbf{M0} & \textbf{Schrittauflösung}    \\ \hline
-        0           & 0           & 0           & Vollschritt                  \\ \hline
-        0           & 0           & 1           & ½ Schritt                    \\ \hline
-        0           & 1           & 0           & ¼ Schritt                    \\ \hline
-        0           & 1           & 1           & 8 Mikroschritte pro Schritt  \\ \hline
-        1           & 0           & 0           & 16 Mikroschritte pro Schritt \\ \hline
-        1           & 0           & 1           & 32 Mikroschritte pro Schritt \\ \hline
-        1           & 1           & 0           & 32 Mikroschritte pro Schritt \\ \hline
-        1           & 1           & 1           & 32 Mikroschritte pro Schritt \\ \hline
+        0 & 0 & 0 & Vollschritt                  \\ \hline
+        0 & 0 & 1 & ½ Schritt                    \\ \hline
+        0 & 1 & 0 & ¼ Schritt                    \\ \hline
+        0 & 1 & 1 & 8 Mikroschritte pro Schritt  \\ \hline
+        1 & 0 & 0 & 16 Mikroschritte pro Schritt \\ \hline
+        1 & 0 & 1 & 32 Mikroschritte pro Schritt \\ \hline
+        1 & 1 & 0 & 32 Mikroschritte pro Schritt \\ \hline
+        1 & 1 & 1 & 32 Mikroschritte pro Schritt \\ \hline
     \end{tabular}
     \caption{1 signalisiert ein HIGH-Signal, 0 sein LOW-Signal}
 \end{table}
@@ -359,7 +370,7 @@ Der R\textsubscript{sense} kann dem Datenblatt entnommen werden. Beim DRV8825 be
 
 \begin{align*}
     V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
-            &= 0.8V
+    &= 0.8V
 \end{align*}
 
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
@@ -387,14 +398,14 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 \textbf{Berechnung}
 \begin{flalign*}
     P_V &= R_{DSon} \cdot I_{max}^2 &\\
-        &= 0,32\Omega \cdot 1.6A^2 &\\
-        &= 0.8192W
+    &= 0,32\Omega \cdot 1.6A^2 &\\
+    &= 0.8192W
 \end{flalign*}
 
 \begin{flalign*}
     P_D &= \frac{(T_jmax - T_{ha} - Sicherheit)}{R_{thja}} &\\
-        &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
-        &= 3.1646W
+    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
+    &= 3.1646W
 \end{flalign*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
@@ -402,11 +413,11 @@ Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwend
 
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
-\begin{flalign*}
+\begin{flalign}
     R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
-    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) &\\
-    &= 106.07\frac{{}^{\circ}C}{W}
-\end{flalign*}
+    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag &\\
+    &= 106.07\frac{{}^{\circ}C}{W}  \notag
+\end{flalign}
 
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
