@@ -3,19 +3,57 @@
 \chapter{Informatik}
 
 \section{Visualisierte Benutzeroberfläche}
-\label{sec:gui}
-\subsection{Konzept}
-
+\subsection{Anforderungen und Ziele}
+Grundsätzlich besteht das Ziel darin, eine für Benutzer freundliche GUI, zu bauen, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt wird. Auf dieser Grafischen Oberfläche soll es Möglich sein, die Steuerung der Maschiene zu übernehmen.
+Dies bedeutet im engsten Sinne, dass Befehle zwischen den 2 Systemen, also dem Rasperry PI 3B+ und der Ansteuerplatine ausgetauscht werden müssen.\\
+Die Möglichkeiten des Benutzers, die Maschiene zu bedienen soll folgende Kernpunkte beinhalten:
+\begin{enumerate}
+    \item Ausgabe von einzelnen Spielkarten
+    \item Konfigurierung von Spielmodi, welche Einstellungen zum Spiel beinhalten
+    \item Das Zählen von Punkten und dessen Visualisierung am Display
+    \item Ausschalten der Maschiene
+    \item Übersicht aller vergangenen Spiele
+\end{enumerate}
+Zusätzlich soll im Hintergrund eine sogenannte Log-Datei automatisch vom Programm geschrieben werden. Diese bringt dem Entwicker einen enormen Mehrwert im Bereich des Fehler-Handlings.
 \subsection{Auswahl des GUI-Toolkits}
+Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen. Diese Toolkits stellen meist alle Elemte zur Erstellung einer GUI bereit. Diese sind z.B. Knöpfe, Listen und Textfelder mit denen der Benutzer ineragieren kann.
+
 \subsubsection{Swing}
+Das bereits in der Standart Java Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen. Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
+Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen. Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nähmlich Java FX, zu verwenden.
 \subsubsection{JavaFX}
-\subsubsection{Qt}
+Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
+Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format. Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind. Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
+und dem dahinter stehenden Code ist dadurch möglich.\\\\
+Auch bieter Java FX die Möglichkeit, seperate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 
 \subsection{Das MVC-Design Pattern}
 \subsubsection{Grundlagen}
+Das MVC-Design Pattern, auch Model-View-Controller Design Pattern ist eines der weit verbreiteste Design Patterns. Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt von einander getrennt sind.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{fig/ainf/ModelViewController.pdf}
+    \caption{Model-View-Controller Design Pattern}
+\end{figure}
+
+Mithilfe dieser Strukturierung fällt es dem Programmieren wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
+
+
 \subsubsection{Integration des Patterns in die GUI}
 
 \subsection{Auswahl der IDE}
+Bevor mit dem Programmierprozess gestartet werden kann, ist es notwendig, eine für IDE auszuwählen, welche alle Anforderungen erfüllt. In unserem Fall sind diese im Speziellen:
+\begin{enumerate}
+    \item Möglichkeiten der Remote-Programmierung sowie dem Debuggen
+    \item Einfacher Workflow
+\end{enumerate}
+\subsubsection{Netbeans IDE}
+Die Netbeans IDE ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist. Primär wurde sie Entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
+Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich. Die Möglichkeit, eine Remote-Plattform einzurichten wurde einfach gelöst und das Arbeiten verläuft meist ohne Probleme.
+
+\subsubsection{Intellij IDE}
+Eine kostenpflichtige Alternative zu Netbeans ist Intellij. Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet. Darum fiel unsere Wahl auch auf diese IDE.
 
 \section{Kommunikation}
 \label{sec:communication}
@@ -36,8 +74,9 @@ Zusätzlich soll, um die Anforderung des einfachen Fehlerhandlings zu erfüllen,
 Der Startvorgang des Simulators soll mit einer einfachen modifizierung der Konfigurationsdatei vonstatten gehen.
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=1\textwidth]{fig/ainf/DeviceSelection}
-    \caption{Schematische darstellung der Geräteauswahl}
+    \caption{Schematische Darstellung der Geräteauswahl}
 \end{figure}
 
 \subsection{Kommunikation - serielle Schnittstelle}
