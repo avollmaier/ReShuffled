@@ -34,8 +34,8 @@ Arnfels, am 5. April 2018\\
 
 \vskip 1cm
 
-\doublesignature{Florian Greistorfer}{Marian Korošec}
-\doublesignature{Thomas Test}{Peter Platzhalter}
+\doublesignature{Stefan Hörmann}{Nicolas Perl}
+\doublesignature{Alois Vollmaier}{Mr. Mösensaft}
 
 \vskip 5cm
 
@@ -66,7 +66,22 @@ TODO
 TODO
 
 \section*{Zusammenfassung}
-TODO
+Wir setzten uns als Ziel eine Maschine zu entwickeln, welche das Mischen, sowie das Ausgeben von Spielkarten übernimmt.
+Die Idee ist es, diese Verfahren möglichst platzsparend, zeiteffizient und detailliert durchdacht und optimiert zu realisieren.\\
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fig/Reshuffled_Version_3_0_prinzip.pdf}
+  \caption{Name des Bildes}
+  \label{fig:verweis}
+\end{figure}
+
+Grundsätzlich basiert das Mischprinzip auf einer Art "Fächersystem".
+Eingelegte Karten gelangen mithilfe eines ausgeklügelten Systems, welches aus einem Hubmagneten mit integriertem Saugnapf besteht, aus dem Einlegefach.
+Erfolgt die Kartenentnahme, rutscht die Karte in ein zufälliges Fach des Lagerrads. Anschließend wird dieses Lagerrad in Drehbewegung versetzt um die gelagerten Karten auszugeben.
+
+Der Benutzer steuert diese Maschiene mithilfe einer GUI welche auf einem 7" LCD Display angezeigt wird. Systemintern steuert ein 8-Bit Mikrocontroller der AVR-Familie den Ablauf.
 
 \clearpage
 
@@ -95,7 +110,7 @@ Diese Arbeit wurde in \LaTeX{} verfasst. Diese Art der Dokumentation bietet gege
 \section*{Projektteam}
 \label{sec:projektteam}
 
-\subsection*{Florian Greistorfer}
+\subsection*{Stefan Hörmann}
 \begin{wrapfigure}[10]{l}{0.5\textwidth}
 \begin{center}
   \includegraphics[width=0.35\textwidth]{fig/logoMecha}
@@ -104,9 +119,9 @@ Diese Arbeit wurde in \LaTeX{} verfasst. Diese Art der Dokumentation bietet gege
 \mbox{}\\
 \mbox{}\\
 \textbf{Aufgabenbereich}:\\
-\LaTeX{}\\
+Mechanik\\
 \textbf{Betreuer}:\\
-Marian Korošec
+Dr. Dipl-Ing. Gerhard Pretterhofer
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
@@ -114,7 +129,7 @@ Marian Korošec
 \mbox{}\\
 \mbox{}\\
 
-\subsection*{Marian Korošec}
+\subsection*{Nicolas Perl}
 \begin{wrapfigure}[10]{l}{0.5\textwidth}
 \begin{center}
   \includegraphics[width=0.35\textwidth]{fig/logoMecha}
@@ -123,36 +138,16 @@ Marian Korošec
 \mbox{}\\
 \mbox{}\\
 \textbf{Aufgabenbereich}:\\
-\LaTeX{}\\
+Elektronik\\
 \textbf{Betreuer}:\\
-Florian Greistorfer
-\mbox{}\\
-\mbox{}\\
-\mbox{}\\
-\mbox{}\\
-\mbox{}\\
-\newpage
-
-\subsection*{Thomas Test}
-\begin{wrapfigure}[10]{l}{0.5\textwidth}
-\begin{center}
-  \includegraphics[width=0.35\textwidth]{fig/logoMecha}
-\end{center}
-\end{wrapfigure}
-\mbox{}\\
-\mbox{}\\
-\textbf{Aufgabenbereich}:\\
-Testen\\
-\textbf{Betreuer}:\\
-Professor Oak
-\mbox{}\\
+Dipl-Ing. Manfred Steiner
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
 
-\subsection*{Peter Platzhalter}
+\subsection*{Alois Vollmaier}
 \begin{wrapfigure}[10]{l}{0.5\textwidth}
 \begin{center}
   \includegraphics[width=0.35\textwidth]{fig/logoMecha}
@@ -161,12 +156,12 @@ Professor Oak
 \mbox{}\\
 \mbox{}\\
 \textbf{Aufgabenbereich}:\\
-Platz halten\\
+Informatik\\
 \textbf{Betreuer}:\\
-Professor Oak
+Dipl-Ing. Manfred Steiner
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
-\newpage
+\mbox{}\\

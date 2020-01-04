@@ -1,16 +1,16 @@
 \documentclass
 [
-a4paper,                                                            % Papierformat
-12pt,                                                                % Schriftgröße
-oneside,                                                       % Zweiseitig
-openright,                                                            % Neues Kapitel immer auf der rechten Seite
-titlepage,                                                            % Titelseite
-headinclude,                                                        % Seitengröße auch bei Kopfzeile
-numbers=noenddot,                                                    % Bei Kapiteln keine abschließenden Punkte
-listof=numbered,                                                    % Listingsverzeichnis
-bibliography=totocnumbered,                                            % Literaturverzeichnis
+a4paper,															% Papierformat
+12pt,																% Schriftgröße
+twoside=true,														% Zweiseitig
+openright,															% Neues Kapitel immer auf der rechten Seite
+titlepage,															% Titelseite
+headinclude,														% Seitengröße auch bei Kopfzeile
+numbers=noenddot,													% Bei Kapiteln keine abschließenden Punkte
+listof=numbered,													% Listingsverzeichnis
+bibliography=totocnumbered,											% Literaturverzeichnis
 ]
-{scrbook}                                                            % Dokumenttyp
+{scrbook}	                                                        % Dokumenttyp
 
 \usepackage[bottom=1in,inner=1in,outer=20mm,top=20mm]{geometry}        % Ganze Seite verwenden
 
@@ -55,10 +55,10 @@ bibliography=totocnumbered,                                            % Literat
 \setlength{\parindent}{0em}                                            % Einrücken
 \setcounter{tocdepth}{5}                                               % Tiefe der Überschriften
 \setcounter{secnumdepth}{5}                                            % Nummerierungstiefe der Überschriften
-
+\usepackage{biblatex}
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}                                        % Bild referenzieren
-
+\input{listings.tex}
 
 
 \subject{\includegraphics[scale=0.7]{fig/logoMecha}}
@@ -79,13 +79,12 @@ Dipl-Ing. Manfred Steiner}
 \begin{document}
     \onehalfspace
     \maketitle
+    \input{opening}
     \tableofcontents
-
-
-
-    \include{modules/introduction}
+    \mainmatter
     \include{modules/mech}
     \include{modules/elektro}
     \include{modules/ainf}
 
+    \include{appendix}
 \end{document}
