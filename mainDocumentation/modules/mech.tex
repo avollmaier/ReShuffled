@@ -55,6 +55,11 @@ Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte ent
 
 \subsubsection{Variante 1 - Linearachsen}
 
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \includegraphics[width=0.6\textwidth]{fig/mech/Version1.pdf}
+    \caption{Konzept 1}
+\end{wrapfigure}
+
 Das erste Konzept würde mit zwei Linearachsen realisiert werden, diese wären im rechten Winkel zueinander
 angeordnet. Die Senkrechte Linearachse ist mit einer Halterung versehen, diese Halterung ist in der Lage
 ein Kartendeck aufzunehmen und die unterste Karte mithilfe eines Ausgaberades weiterzubefördern. Die zweite
@@ -64,11 +69,7 @@ hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Li
 fährt die zweite Linearachse impulsiv nach links, um die Karten aus dem Lager zu befördern. Diese fallen
 Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereit liegen. \\
 
-\begin{figure}{R}
-    \centering
-    \includegraphics[scale=0.70,page=1]{fig/mech/Version_1_New}
-    \caption{Konzept 1}
-\end{figure}
+
 
 Durch die schnelle Bewegung der Linearachsen ist es möglich einen schnellen Mischprozess zu erreichen,
 auch die Tatsache das es nur ein rotierendes Rad gibt und zwei Bewegliche Linearachsen führt dazu, das
@@ -90,6 +91,11 @@ die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für
 \end{itemize}
 
 \subsubsection{Variante 2 - Lagerrad mit Asugaberäder}
+
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \includegraphics[width=0.6\textwidth]{fig/mech/Version2}
+    \caption{Konzept 1}
+\end{wrapfigure}
 
 Beim zweiten Konzept wird als Lager ein virtel eines Zylinders benutzt. In diesem befinden
 sich verschidene Fächer in der die Karten eingelagert werden. Dieser wird mit einem Motor betrieben
@@ -121,6 +127,11 @@ dass nur eine Karte in das Lagerrad befördert wird, dies würd das Konzept des 
 
 \subsubsection{Variante 3 - Lagerrad mit Saugnäpfe}
 
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \includegraphics[width=0.6\textwidth]{fig/mech/Version3.pdf}
+    \caption{Konzept 1}
+\end{wrapfigure}
+
 Das dritte Konzept besitzt ein identes Lagersystem wie das zweite Konzept, ein Lagerrad das in Fächer unterteilt ist und über einen Moter diverse Positionen einnehmen kann.
 Das Kartendeck wird in den oberen / vorderen Anfang der Maschine eingeführt. Dort liegt es schräg in einem Winkel von ca. 60°. Um sicherzustellen das sich Karten in dieser Halterung befinden
 ist ein Kapazitiver Sensor an der Unterseite angebracht. Ein Hubmagnet der im rechten Winkel zu den Karten über der Halterng angebracht ist, saugt jede Karte einzeln an indem ein Saugnapf der an einem Hubmagneten
@@ -143,6 +154,64 @@ jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend stabili
     \item hocher Aufbau
 \end{itemize}
 
+\subsubsection{Weitere Variantenvergleiche}
+Da bei den ersten beiden Konzepten Ausgaberäder vorkommen, gibt es für diese auch verschiedene Konzepte.
+Außerdem wird für diese Konzepte ein Klemmmechanissmus für das Kartenpack benötigt, da das Ausgaberad sonst mehr als eine Karten mitziehen würde. \\
+
+\textbf{\large Ausgaberad}\\
+Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte von einem Kartendeck weiterbefördert wird.
+\begin{itemize}
+    \item \textbf{Rundes Ausgaberad}
+\end{itemize}
+    \begin{wrapfigure}{r}{0.6\textwidth}
+              \includegraphics[width=0.6\textwidth]{fig/mech/RundesAusgaberad-Page-1}
+              \caption{Konzept 1}
+    \end{wrapfigure}
+
+    Die einfachste Möglichkeit dieses Rad zu entwerfen, wäre ein einfaches rundes Ausgaberad. Dieses Rad wäre mit einer Schicht umhüllt, welche die Reibung
+        dem Rad und der Karte erhöht. Das runde Rad wäre einfach zu fertigen und würde somit wenig kosten und nur einen geringen Zeitaufwand haben. Jedoch
+        ist das Rad in der Lage mehr als nur eine Karte mit sich mitzuziehen, da es durchgehen Kontakt mit der Spielkartenoberfläche hat, dies hätte zur
+        Folge, das mehrere Spielkarten zugleich weiterbefördert werden.
+\begin{itemize}
+    \item \textbf{Eliptisches Ausgaberad}
+\end{itemize}
+    \begin{wrapfigure}{r}{0.6\textwidth}
+        \includegraphics[width=0.6\textwidth]{fig/mech/ElliptischesAusgaberad}
+        \caption{Konzept 1}
+    \end{wrapfigure}
+
+        Ein elliptisches Ausgaberad wäre das nächste Konzept, dieses Rad wird auch wie beim ersten Rad mit einem Motor verbunden um somit Karten zu befördern.
+        Durch die elliptische Form des Rades herrscht kein durchgehender Kontakt mit der Oberfläche der Spilkarte, aus diesem Grund ist die Chance das mehrere
+        Karten zugleich befördert werden minimiert. Jedoch setzt dies auch einen Motor vorraus der in kurzer Zeit ein hohes Drehmoment entwickelt, da die
+        Karten schlagartig befördert werden. Das elliptische Rad würde in der Produktion auch mehr Kosten verursachen und wäre Zeitintesiver in der Hertellung. \\
+
+\textbf{\large Klemmmechanissmus}\\
+Um beim Ausgeben und beim Weiterbefördern der Karten die Chance zu minimieren das mehrere Karten auf einmal weiterbefördert werden, wird ein
+Klemmmechanissmus benutzt, dieser sorgt dafür das die Karten von außen Geklemmt werden, und somit nur die unterste Karte durch das Drehen des
+Ausgaberades weiterbefördert wird.
+
+\begin{itemize}
+    \item \textbf{primitiver Klemmmechanissmus}
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \includegraphics[width=0.6\textwidth]{fig/mech/Klemmmechanissmus1.pdf}
+    \caption{Konzept 1}
+\end{wrapfigure}
+
+Dieser Klemmmechanismus ist der primitivste und einfachste, dadurch aber auch der billigste. Die Karten werden auf der einen Seite an eine feste Wand gedrückt
+auf der anderen Seite werden sie durch ein bewegliches Gelenk fixiert. Dieses Gelenk wrid durch das einschalten des Hubmagneten in die geschlossene Position bewegt,
+soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschalten und ein Zugfeder zieht das Gelenk wieder in seine Ausgangsposition zurück.
+
+\begin{itemize}
+    \item \textbf{... Klemmmechanissmus}
+\end{itemize}
+\begin{wrapfigure}{r}{0.6\textwidth}
+    \includegraphics[width=0.6\textwidth]{fig/mech/Klemmmechanissmus2.pdf}
+    \caption{Konzept 1}
+\end{wrapfigure}
+
+DOTO
 \section{Konstruktion}
 
 \section{Berechnungen, Festigkeitsanalyse und Dimensionierungen}
