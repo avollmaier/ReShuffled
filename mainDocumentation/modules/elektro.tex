@@ -454,6 +454,10 @@ Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannung
     U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
 \end{equation}
 
+\begin{circuitikz}[european, voltage shift=0.5]
+    \draw (0,0) to[vsource, v=$V_0$] (0,3)to[short, -*, f=$I_0$] (2,3)to[R=$R_1$, f>_=$i_1$] (2,0) -- (0,0);
+    \draw (2,3) -- (4,3)to[R=$R_2$, f>_=$i_2$](4,0) to[short, -*] (2,0);
+\end{circuitikz}
 
 Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
