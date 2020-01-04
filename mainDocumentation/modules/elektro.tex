@@ -286,7 +286,7 @@ Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit einem monotonen DC
 
 \begin{figure}[hb]
     \centering
-    \includegraphics[scale=0.8,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
+    \includegraphics[scale=0.85,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
     \caption{Blockschaltbild der gesamten Elektronik}
 \end{figure}
 
@@ -433,9 +433,9 @@ Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests se
 
 \subsection{Kapazitive Sensoren}
 Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
-einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird.
+einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird. \\
 
-\textbf{Datenblattwerte:} \\
+\textbf{Datenblattwerte:}
 
 \begin{itemize}
     \item Schaltabstand 1-10mm, einstellbar durch Stellschraube
@@ -454,7 +454,6 @@ Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannung
     U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
 \end{equation}
 
-% hier Bild von Spannunsgteiler einfügen
 
 Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
@@ -477,7 +476,3 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 \subsection{Varianten des Ein-/Ausschaltens}
 
 \subsection{DC/DC-Wandler}
-
-
-
-
