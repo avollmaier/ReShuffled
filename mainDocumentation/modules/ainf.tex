@@ -42,12 +42,12 @@ Das MVC-Design Pattern, auch Model-View-Controller Design Pattern ist eines der 
 Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
 \newpage
 \begin{wrapfigure}{r}{0.5\textwidth}
-    \vspace{-320pt}
+    \vspace{-310pt}
     \begin{center}
         \includegraphics[width=0.17\textwidth]{fig/ainf/ModelViewController.pdf}
     \end{center}
     \caption{MVC-Design Pattern}
-    \vspace{40pt}
+    \vspace{20pt}
 \end{wrapfigure}
 
 
@@ -63,6 +63,7 @@ Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, 
               Ist von der Benutzerschnittstelle komplett abgeschirmt
     \end{enumerate}
 \vspace{20pt}
+
 \subsubsection{Integration innerhalb eines Programms}
 Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im folgenden ein Beispiel dargestellt. Ziel des Programms ist es, einen Wert mithilfe eines Buttons hochzuzählen und auf einem Label im View anzeigen zu lassen.
 Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht werden.
@@ -82,22 +83,22 @@ Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht wer
 
 
 \begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Model]
-    public class Model extends Observable{
-    private int counter;
-    public Model() {
-    }
-    public int getCounter() {
-    return countDown;
-    }
-    public void increment() {
-    if (counter > 0) {
-    counter++;
-    }
+public class Model extends Observable{
+private int counter;
+public Model() {
+}
+public int getCounter() {
+return countDown;
+}
+public void increment() {
+if (counter > 0) {
+counter++;
+}
 notifyObservers();
-    }
+}
 \end{lstlisting}
 
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=View]
+\begin{lstlisting}[style=java,caption=Die Klasse View,label=View]
 public class View implements Observer {
 private Model model;
 private Stage stage;
@@ -115,6 +116,7 @@ model.addObserver(this);
 public void update(Observable o, Object arg) {
 label.setText("Counter: " + model.getCounter());
 \end{lstlisting}
+
 
 \subsection{Auswahl der IDE}
 Bevor mit dem Programmierprozess gestartet werden kann, ist es notwendig, eine für IDE auszuwählen, welche alle Anforderungen erfüllt. In unserem Fall sind diese im Speziellen:
