@@ -1,5 +1,5 @@
 {
-  "overallGamesPlayed": 6,
+  "overallGamesPlayed": 8,
   "games": [
     {
       "gameModel": {
@@ -7,142 +7,226 @@
           {
             "name": "Player 1",
             "points": 0,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3",
             "points": 0,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 4",
             "points": 0,
-            "id": 3
+            "id": 3,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 5",
             "points": 0,
-            "id": 4
+            "id": 4,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 6",
             "points": 0,
-            "id": 5
+            "id": 5,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 7",
             "points": 0,
-            "id": 6
+            "id": 6,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 8",
             "points": 0,
-            "id": 7
+            "id": 7,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 9",
             "points": 0,
-            "id": 8
+            "id": 8,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 10",
             "points": 0,
-            "id": 9
+            "id": 9,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 11",
             "points": 0,
-            "id": 10
+            "id": 10,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 12",
             "points": 0,
-            "id": 11
+            "id": 11,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 13",
             "points": 0,
-            "id": 12
+            "id": 12,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 14",
             "points": 0,
-            "id": 13
+            "id": 13,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 15",
             "points": 0,
-            "id": 14
+            "id": 14,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 16",
             "points": 0,
-            "id": 15
+            "id": 15,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 17",
             "points": 0,
-            "id": 16
+            "id": 16,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 18",
             "points": 0,
-            "id": 17
+            "id": 17,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 19",
             "points": 0,
-            "id": 18
+            "id": 18,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 20",
             "points": 0,
-            "id": 19
+            "id": 19,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 21",
             "points": 0,
-            "id": 20
+            "id": 20,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 22",
             "points": 0,
-            "id": 21
+            "id": 21,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 23",
             "points": 0,
-            "id": 22
+            "id": 22,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 24",
             "points": 0,
-            "id": 23
+            "id": 23,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 25",
             "points": 0,
-            "id": 24
+            "id": 24,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 26",
             "points": 0,
-            "id": 25
+            "id": 25,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 27",
             "points": 0,
-            "id": 26
+            "id": 26,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 28",
             "points": 0,
-            "id": 27
+            "id": 27,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -161,142 +245,226 @@
           {
             "name": "Player 1",
             "points": 4,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3",
             "points": 0,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 4",
             "points": 0,
-            "id": 3
+            "id": 3,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 5",
             "points": 0,
-            "id": 4
+            "id": 4,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 6",
             "points": 0,
-            "id": 5
+            "id": 5,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 7",
             "points": 0,
-            "id": 6
+            "id": 6,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 8",
             "points": 0,
-            "id": 7
+            "id": 7,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 9",
             "points": 0,
-            "id": 8
+            "id": 8,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 10",
             "points": 0,
-            "id": 9
+            "id": 9,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 11",
             "points": 0,
-            "id": 10
+            "id": 10,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 12",
             "points": 0,
-            "id": 11
+            "id": 11,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 13",
             "points": 14,
-            "id": 12
+            "id": 12,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 14",
             "points": 0,
-            "id": 13
+            "id": 13,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 15",
             "points": 0,
-            "id": 14
+            "id": 14,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 16",
             "points": 0,
-            "id": 15
+            "id": 15,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 17",
             "points": 0,
-            "id": 16
+            "id": 16,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 18",
             "points": 0,
-            "id": 17
+            "id": 17,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 19",
             "points": 0,
-            "id": 18
+            "id": 18,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 20",
             "points": 0,
-            "id": 19
+            "id": 19,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 21",
             "points": 0,
-            "id": 20
+            "id": 20,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 22",
             "points": 0,
-            "id": 21
+            "id": 21,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 23",
             "points": 0,
-            "id": 22
+            "id": 22,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 24",
             "points": 0,
-            "id": 23
+            "id": 23,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 25",
             "points": 0,
-            "id": 24
+            "id": 24,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 26",
             "points": 0,
-            "id": 25
+            "id": 25,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 27",
             "points": 0,
-            "id": 26
+            "id": 26,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 28",
             "points": 0,
-            "id": 27
+            "id": 27,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -315,152 +483,242 @@
           {
             "name": "Player 1",
             "points": 0,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3",
             "points": 0,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 4",
             "points": 0,
-            "id": 3
+            "id": 3,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 5",
             "points": 0,
-            "id": 4
+            "id": 4,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 6",
             "points": 0,
-            "id": 5
+            "id": 5,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 7",
             "points": 0,
-            "id": 6
+            "id": 6,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 8",
             "points": 0,
-            "id": 7
+            "id": 7,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 9",
             "points": 0,
-            "id": 8
+            "id": 8,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 10",
             "points": 0,
-            "id": 9
+            "id": 9,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 11",
             "points": 0,
-            "id": 10
+            "id": 10,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 12",
             "points": 0,
-            "id": 11
+            "id": 11,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 13",
             "points": 0,
-            "id": 12
+            "id": 12,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 14",
             "points": 0,
-            "id": 13
+            "id": 13,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 15",
             "points": 0,
-            "id": 14
+            "id": 14,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 16",
             "points": 0,
-            "id": 15
+            "id": 15,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 17",
             "points": 0,
-            "id": 16
+            "id": 16,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 18",
             "points": 0,
-            "id": 17
+            "id": 17,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 19",
             "points": 0,
-            "id": 18
+            "id": 18,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 20",
             "points": 0,
-            "id": 19
+            "id": 19,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 21",
             "points": 0,
-            "id": 20
+            "id": 20,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 22",
             "points": 0,
-            "id": 21
+            "id": 21,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 23",
             "points": 0,
-            "id": 22
+            "id": 22,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 24",
             "points": 0,
-            "id": 23
+            "id": 23,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 25",
             "points": 0,
-            "id": 24
+            "id": 24,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 26",
             "points": 0,
-            "id": 25
+            "id": 25,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 27",
             "points": 0,
-            "id": 26
+            "id": 26,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 28",
             "points": 0,
-            "id": 27
+            "id": 27,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 29",
             "points": 0,
-            "id": 28
+            "id": 28,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 30",
             "points": 0,
-            "id": 29
+            "id": 29,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -479,62 +737,98 @@
           {
             "name": "Player 1",
             "points": 0,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3",
             "points": 0,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 4",
             "points": 0,
-            "id": 3
+            "id": 3,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 5",
             "points": 0,
-            "id": 4
+            "id": 4,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 6",
             "points": 0,
-            "id": 5
+            "id": 5,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 7",
             "points": 0,
-            "id": 6
+            "id": 6,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 8",
             "points": 0,
-            "id": 7
+            "id": 7,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 9",
             "points": 0,
-            "id": 8
+            "id": 8,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 10",
             "points": 0,
-            "id": 9
+            "id": 9,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 11",
             "points": 0,
-            "id": 10
+            "id": 10,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 12",
             "points": 0,
-            "id": 11
+            "id": 11,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -553,62 +847,98 @@
           {
             "name": "Player 1",
             "points": 0,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3",
             "points": 0,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 4",
             "points": 0,
-            "id": 3
+            "id": 3,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 5",
             "points": 0,
-            "id": 4
+            "id": 4,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 6",
             "points": 0,
-            "id": 5
+            "id": 5,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 7",
             "points": 0,
-            "id": 6
+            "id": 6,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 8",
             "points": 0,
-            "id": 7
+            "id": 7,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 9",
             "points": 0,
-            "id": 8
+            "id": 8,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 10",
             "points": 0,
-            "id": 9
+            "id": 9,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 11",
             "points": 0,
-            "id": 10
+            "id": 10,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 12",
             "points": 0,
-            "id": 11
+            "id": 11,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -627,17 +957,26 @@
           {
             "name": "SFDSGFSFDS",
             "points": 4,
-            "id": 0
+            "id": 0,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 2FSTFDSTFDS",
             "points": 0,
-            "id": 1
+            "id": 1,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           },
           {
             "name": "Player 3DSTFDSTFDST",
             "points": 4,
-            "id": 2
+            "id": 2,
+            "children": null,
+            "groupedColumn": null,
+            "groupedValue": null
           }
         ],
         "gameFinished": true,
@@ -646,6 +985,82 @@
           "autoDeal": true,
           "autoDealValue": 2,
           "cardQuantity": 18,
+          "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Player 1",
+            "points": 10,
+            "id": 0,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          },
+          {
+            "name": "Player 2",
+            "points": 0,
+            "id": 1,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          },
+          {
+            "name": "Player 3",
+            "points": 0,
+            "id": 2,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "UNO",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 18,
+          "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Nicolas Leon",
+            "points": 1102,
+            "id": 0,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          },
+          {
+            "name": "Luisi Buisi",
+            "points": 4,
+            "id": 1,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          },
+          {
+            "name": "Hörmi",
+            "points": 9,
+            "id": 2,
+            "children": [],
+            "groupedColumn": {},
+            "groupedValue": {}
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "Schnapsen mit Mösensaft",
+          "autoDeal": true,
+          "autoDealValue": 6,
+          "cardQuantity": 20,
           "playerQuantity": 3
         }
       }

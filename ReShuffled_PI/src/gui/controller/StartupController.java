@@ -222,7 +222,7 @@ public class StartupController implements Initializable {
             }
             Game.createInstance(players, false, selectedGamemode);
 
-            LOG.info("Starting game with gamemode " + Game.getInstance().getGamemode().getName() + "and " + Game.getInstance().getGamemode().getPlayerQuantity() + "Players");
+            LOG.info("Starting game with gamemode " + Game.getInstance().getGamemode().getName() + " and " + Game.getInstance().getGamemode().getPlayerQuantity() + " Players");
             
             closeStage();
             loadMainStage();

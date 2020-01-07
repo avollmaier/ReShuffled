@@ -90,7 +90,7 @@ public class MainController implements Initializable {
             RequestShutdown shutdown = new RequestShutdown();
             Communication.getInstance().sendRequestExecutor(shutdown);
         });
-        AlertService.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), "General Info Message", "Make sure that game cards were inserted!");
+        AlertService.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), "Attention", "Do you really want to shutdown?");
     }
     
      public void loadGameFinishedDialog() {

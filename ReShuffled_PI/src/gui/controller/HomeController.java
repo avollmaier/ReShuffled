@@ -203,6 +203,9 @@ public class HomeController implements Initializable {
     private void handleShutdown (final ActionEvent event) {
         MainController.getInstance().loadShutdownDialog();
         String shutdownCmd = "shutdown -h now";
+//        if(Runtime.getRuntime().availableProcessors() >= 4) {
+//            System.exit(0);
+//        }
         try {
             Process child = Runtime.getRuntime().exec(shutdownCmd);
         }

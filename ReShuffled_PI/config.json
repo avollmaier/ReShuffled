@@ -25,6 +25,13 @@
       "autoDealValue": 4,
       "cardQuantity": 19,
       "playerQuantity": 4
+    },
+    {
+      "name": "Schnapsen mit Mösensaft",
+      "autoDeal": true,
+      "autoDealValue": 6,
+      "cardQuantity": 20,
+      "playerQuantity": 3
     }
   ],
   "serial": {

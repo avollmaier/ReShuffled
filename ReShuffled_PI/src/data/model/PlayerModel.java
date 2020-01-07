@@ -1,6 +1,9 @@
 package data.model;
 
-public class PlayerModel {
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class PlayerModel extends RecursiveTreeObject<PlayerModel>{
 
     private String name;
     private int points, id;
