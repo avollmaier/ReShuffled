@@ -2,6 +2,7 @@ package data.config;
 
 import exception.ConfigException;
 import com.google.gson.*;
+import data.model.ConfigInternationalizationModel;
 import data.model.ConfigModel;
 import data.model.ConfigSerialModel;
 import data.model.GamemodeModel;
@@ -75,6 +76,11 @@ public class Config {
                 throw new ConfigException(configFile, "Missing attribute serial");
             }
 
+            if (configModel.getInternationalization() == null) {
+                throw new ConfigException(configFile, "Missing attribute language");
+            }
+
+
             LOG.info("Config file %s successfully read (%d lines)", configFile.getAbsolutePath(), length);
 
         }
@@ -130,4 +136,11 @@ public class Config {
     public ConfigSerialModel getConfigSerial () {
         return configModel.getSerial();
     }
+
+
+    public ConfigInternationalizationModel getInternationalization () {
+        return configModel.getInternationalization();
+    }
+
+
 }

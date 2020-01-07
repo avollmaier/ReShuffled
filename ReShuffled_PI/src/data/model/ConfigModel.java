@@ -20,8 +20,11 @@ public class ConfigModel {
     private final List<GamemodeModel> gamemodes;
     @SerializedName("serial")
     private final ConfigSerialModel serial;
+    @SerializedName("internationalization")
+    private final ConfigInternationalizationModel internationalization;
 
-    public ConfigModel(String logLevel, String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial) {
+
+    public ConfigModel (String logLevel, String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial, ConfigInternationalizationModel language) {
         this.logLevel = logLevel;
         this.logPath = logPath;
         this.statisticsPath = statisticsPath;
@@ -29,8 +32,14 @@ public class ConfigModel {
         this.guiWidth = guiWidth;
         this.gamemodes = gamemodes;
         this.serial = serial;
+        this.internationalization = language;
     }
 
+
+    public ConfigInternationalizationModel getInternationalization () {
+        return internationalization;
+    }
+    
     public String getLogLevel() {
         return logLevel;
     }
@@ -65,5 +74,7 @@ public class ConfigModel {
 
     public void setStatisticsPath(String statisticsPath) {
         this.statisticsPath = statisticsPath;
-    } 
+    }
+    
+    
 }

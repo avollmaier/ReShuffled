@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.util;
+package util;
 
 import data.config.Config;
 import java.io.IOException;

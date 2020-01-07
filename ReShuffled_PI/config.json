@@ -41,5 +41,6 @@
     "timeoutMillis": 1000,
     "secondTryAllowed": false,
     "responseByteLength": 32
-  }
+  },
+  "internationalization": null
 }

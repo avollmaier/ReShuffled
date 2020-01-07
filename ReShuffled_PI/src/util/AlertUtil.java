@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.util;
+package util;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -27,7 +27,7 @@ import javafx.scene.text.Text;
  *
  * @author alois
  */
-public class AlertService {
+public class AlertUtil {
 
     public static void showContentDialog(StackPane root, Node noteToBeBlur, List<JFXButton> controls, String header, String body) {
 

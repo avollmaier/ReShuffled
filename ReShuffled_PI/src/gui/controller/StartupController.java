@@ -13,7 +13,7 @@ import com.jfoenix.controls.JFXTextField;
 import data.model.GamemodeModel;
 import data.config.Config;
 import data.model.PlayerModel;
-import gui.util.AlertService;
+import util.AlertUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -149,7 +149,7 @@ public class StartupController implements Initializable {
             updateGameComboBox();
             selectedGamemode = null;
         });
-        AlertService.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btCancel, btDelete), "General Info Message", "Do you really want to delete the selected gamemode " + selectedGamemode.getName());
+        AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btCancel, btDelete), "General Info Message", "Do you really want to delete the selected gamemode " + selectedGamemode.getName());
 
     }
 
@@ -202,7 +202,7 @@ public class StartupController implements Initializable {
             }
 
         } catch (Exception ex) {
-            AlertService.showErrorMessage("Error", "Error " + ex);
+            AlertUtil.showErrorMessage("Error", "Error " + ex);
             ex.printStackTrace();
         }
     }
@@ -227,7 +227,7 @@ public class StartupController implements Initializable {
             closeStage();
             loadMainStage();
         } else {
-            AlertService.showSimpleAlert("INFO", "Make sure that a gamemode is selected");
+            AlertUtil.showSimpleAlert("INFO", "Make sure that a gamemode is selected");
         }
 
     }
