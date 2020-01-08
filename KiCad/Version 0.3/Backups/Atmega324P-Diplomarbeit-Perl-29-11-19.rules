@@ -1,0 +1,102 @@
+
+(rules PCB Atmega324P-Diplomarbeit-Perl-29-11-19
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 18)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_600:400_um"
+    (shape
+      (circle F.Cu 600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_600:400_um" "Via[0-1]_600:400_um" default
+  )
+  (via 
+    "Via[0-1]_600:400_um-kicad_default" "Via[0-1]_600:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_600:400_um-5V" "Via[0-1]_600:400_um" 5V
+  )
+  (via_rule
+    default "Via[0-1]_600:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_600:400_um-kicad_default"
+  )
+  (via_rule
+    5V "Via[0-1]_600:400_um-5V"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND "Net-(C6-Pad1)" +3V3 "Net-(C12-Pad1)" MISO SCK MOSI "Net-(D3-Pad2)"
+    "Net-(D4-Pad2)" S1 S2 S3 EN SLEEP STEP DIR
+    "Net-(J7-Pad2)" "Net-(J7-Pad3)" "Net-(Q1-Pad2)" M1 M2 "Net-(U2-Pad7)" "TxD_USB" "RxD_USB"
+    M0 "Net-(U3-Pad7)" "Net-(U3-Pad8)" "DTR_USB" HM1 HM2 "Net-(J12-Pad2)" "Net-(J12-Pad1)"
+    RST "RESET_M" "Net-(C13-Pad1)" "Net-(Q2-Pad2)" "Net-(C2-Pad1)" "Net-(C16-Pad1)" "Net-(IC1-Pad1)" "Net-(IC1-Pad4)"
+    UNLATCH "Net-(D9-Pad2)" "Net-(D10-Pad2)" "Net-(D11-Pad2)" "Net-(D12-Pad2)" "Net-(D13-Pad2)" "Net-(J15-Pad2)" "Net-(R12-Pad2)"
+    "Net-(R13-Pad2)" "Net-(R15-Pad2)" "Net-(C1-Pad1)" "/Peripherie/5V-USB" "Net-(D19-Pad2)" "Net-(D7-Pad2)" "Net-(D8-Pad2)" "Net-(D14-Pad2)"
+    "Net-(D15-Pad1)" "Net-(D16-Pad2)" "Net-(D17-Pad2)" "Net-(D18-Pad2)" "Net-(D19-Pad1)" /Peripherie/WATCHDOG "/Peripherie/µC_TxD" "/Peripherie/µC_RxD"
+    "Net-(J5-Pad2)" "Net-(J5-Pad1)" "Net-(J9-Pad2)" "Net-(J10-Pad2)" "Net-(J11-Pad2)" "Net-(J17-Pad2)" "Net-(J18-Pad1)" "Net-(J20-Pad1)"
+    "Net-(J20-Pad2)" "Net-(J20-Pad3)" "Net-(J21-Pad1)" "Net-(J21-Pad2)" "12V_IN" "Net-(Q3-Pad1)" "Net-(Q3-Pad2)" "Net-(Q4-Pad1)"
+    "Net-(J22-Pad1)" "Net-(J22-Pad2)" "Net-(C18-Pad1)" "Net-(C18-Pad2)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class 5V
+    (clearance_class 5V)
+    (via_rule 5V)
+    (rule
+      (width 400.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
