@@ -14,13 +14,16 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import logging.Logger;
 import java.util.ResourceBundle;
+import javafx.scene.input.KeyCode;
 import util.FileUtil;
 
 
@@ -32,7 +35,7 @@ public class ResourceManager {
 
     private static final Logger LOG = Logger.getLogger(ResourceManager.class.getName());
 
-    private static final String BUNDLE_PATH = "bundle";
+    private static final String BUNDLE_PREFIX = Config.getInstance().getInternationalization().getBundlePrefix();
     private final Map<Locale, ResourceBundle> availableRecourceBundles = new HashMap<>();
 
     private ResourceBundle currentRecourceBundle = null;
@@ -61,41 +64,40 @@ public class ResourceManager {
 
     public ResourceManager () {
         init();
+        
     }
 
 
     private void init () {
-            final FileFilter fileFilter = ResourceBundleUtils.createResourceBundleFileFilter("bundle");
-            final File[] propertyFiles = FileUtil.getMatchingFiles(new File(Config.getInstance().getInternationalization().getBundlePath()), fileFilter);
+        
+        
+        final FileFilter fileFilter = ResourceBundleUtils.createResourceBundleFileFilter(BUNDLE_PREFIX);
+
+        final File[] propertyFiles = FileUtil.getMatchingFiles(new File(Config.getInstance().getInternationalization().getBundlePath()), fileFilter);
 
 
-            for (final File propertyFile : propertyFiles) {
-                try (final InputStream is = new BufferedInputStream(new FileInputStream(propertyFile))) {
-                    final PropertyResourceBundle resourceBundle = new PropertyResourceBundle(is);
+        for (final File propertyFile : propertyFiles) {
+            try (final InputStream is = new BufferedInputStream(new FileInputStream(propertyFile))) {
+                final PropertyResourceBundle resourceBundle = new PropertyResourceBundle(is);
 
-                    final Locale locale = ResourceBundleUtils.createLocaleFromBundleName(propertyFile.getName());
-                    
-
-                }
-                catch (IOException ex) {
-                    LOG.warning("Failed to language bundle frome file " + propertyFile.getAbsolutePath());
-
-                }
+                final Locale locale = ResourceBundleUtils.createLocaleFromBundleName(propertyFile.getName());
+                addResourceBundle(locale, resourceBundle);
 
             }
-        }
+            catch (IOException ex) {
+                LOG.warning("Failed to language bundle frome file " + propertyFile.getAbsolutePath());
 
-    private void loadAndAddResourceBundle (final Locale locale) {
-        try {
-            final ResourceBundle resourceBundle = PropertyResourceBundle.getBundle(BUNDLE_PATH, locale);
-            availableRecourceBundles.put(locale, resourceBundle);
+            }
+
+        }
+        
+    }
+
+
+    private void addResourceBundle (final Locale locale, ResourceBundle bundle) {
+            availableRecourceBundles.put(locale, bundle);
 
             LOG.info("Loaded language bundle for locale: " + locale);
-        }
-        catch (final MissingResourceException ex) {
-            LOG.warning("Missing resource " + BUNDLE_PATH + " for locale: " + locale + ex);
-
-        }
     }
 
 
@@ -106,6 +108,7 @@ public class ResourceManager {
 
     public boolean activateLocale (final Locale locale) {
         if (supportsLocale(locale)) {
+            LOG.info("Activated language bundle for locale: " + locale);
             currentRecourceBundle = availableRecourceBundles.get(locale);
             currentLocale = locale;
             return true;
@@ -121,8 +124,31 @@ public class ResourceManager {
 
     public boolean supportsLocale (final Locale locale) {
         return availableRecourceBundles.containsKey(locale);
-
+        
     }
+
+
+    public List<Locale> getAvailableLocales(){
+    
+    return new ArrayList<>(availableRecourceBundles.keySet());
+    }
+
+
+    public Locale getCurrentLocale () {
+        return currentLocale;
+    }
+
+
+    public ResourceBundle getCurrentRecourceBundle () {
+        return currentRecourceBundle;
+    }
+    
+    
+    
+    
+    
+    
+    
 
 
 }

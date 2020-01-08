@@ -42,5 +42,10 @@
     "secondTryAllowed": false,
     "responseByteLength": 32
   },
-  "internationalization": null
+  "internationalization": {
+    "language": "en",
+    "country": "US",
+    "bundlePath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles",
+    "bundlePrefix": "bundle"
+  }
 }

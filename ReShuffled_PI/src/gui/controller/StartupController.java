@@ -35,7 +35,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logging.Logger;
 import data.game.Game;
+import gui.multilanguage.ResourceManager;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -315,7 +317,7 @@ public class StartupController implements Initializable {
     private void loadMainStage() {
         try {
             final URL fxmlUrl = getClass().getResource("/gui/fxml/main.fxml");
-                final FXMLLoader fxmlLoader= new FXMLLoader(fxmlUrl);
+                final FXMLLoader fxmlLoader= new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
                 fxmlLoader.setController(new MainController());
                 final Parent root = fxmlLoader.load();
                 final Stage stage = new Stage();

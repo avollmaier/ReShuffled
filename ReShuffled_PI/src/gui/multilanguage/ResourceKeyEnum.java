@@ -11,5 +11,5 @@ package gui.multilanguage;
  * @author alois
  */
 public enum ResourceKeyEnum {
-    txt_shutdown
+    txt_language
 }

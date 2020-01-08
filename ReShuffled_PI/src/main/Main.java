@@ -2,6 +2,7 @@ package main;
 
 import data.config.Config;
 import data.statistics.Statistics;
+import gui.multilanguage.ResourceManager;
 import logging.LogBackgroundHandler;
 import logging.LogOutputStreamHandler;
 import logging.Logger;
@@ -114,8 +115,8 @@ public class Main {
             cfg.setLogPath(logPath);
             cfg.setStatisticsPath(statisticsPath);
             cfg.save();
+            ResourceManager.createInstance();
             Serial.createInstance(cfg.getConfigSerial());
-
             Communication.createInstance(Serial.getInstance());
             gui.guiMain.GuiMain.createInstance();
 

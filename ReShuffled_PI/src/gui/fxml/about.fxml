@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="686.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.StatsController">
+<StackPane prefHeight="686.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.AboutController">
    <children>
       <VBox>
          <children>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="lbLanguage" prefHeight="16.0" prefWidth="988.0" text="%txt_language" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <JFXComboBox fx:id="cbLanguage" prefHeight="26.0" prefWidth="219.0" promptText="Select a Language" visibleRowCount="20" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets top="8.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXButton fx:id="btSaveChanges" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="47.0" prefWidth="87.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="Save" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
             <HBox VBox.vgrow="ALWAYS">
                <children>
                   <Label alignment="CENTER" prefHeight="687.0" prefWidth="988.0" text="ReShuffled" HBox.hgrow="ALWAYS">
@@ -29,6 +64,9 @@
                </children>
             </HBox>
          </children>
+         <StackPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </StackPane.margin>
       </VBox>
    </children>
 </StackPane>

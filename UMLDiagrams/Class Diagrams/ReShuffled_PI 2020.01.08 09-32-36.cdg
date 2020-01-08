@@ -1,0 +1,2714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ReShuffled_PI">
+  <ClassDiagramComponents>
+    <Class name="FileUtil" package="util" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getMatchingFiles" returnType="File[]" visibility="public" isStatic="true">
+          <Argument type="File" name="path"/>
+          <Argument type="FileFilter" name="fileFilter"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GuiUtil" package="util" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="loadWindow" returnType="void" visibility="public" isStatic="true">
+          <Argument type="URL" name="location"/>
+          <Argument type="String" name="title"/>
+          <Argument type="Object" name="controllerObject"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AlertUtil" package="util" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="showContentDialog" returnType="void" visibility="public" isStatic="true">
+          <Argument type="StackPane" name="root"/>
+          <Argument type="Node" name="noteToBeBlur"/>
+          <Argument type="List&lt;JFXButton&gt;" name="controls"/>
+          <Argument type="String" name="header"/>
+          <Argument type="String" name="body"/>
+        </Method>
+        <Method name="showSimpleAlert" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="content"/>
+        </Method>
+        <Method name="showErrorMessage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="title"/>
+          <Argument type="String" name="content"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ResourceBundleUtils" package="util" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="INDICATOR_MISSING_RESOURCE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="INDICATOR_MISSING_KEY" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getLangString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="ResourceBundle" name="resourceBundle"/>
+          <Argument type="ResourceKeyEnum" name="key"/>
+        </Method>
+        <Method name="createResourceBundleFileFilter" returnType="FileFilter" visibility="public" isStatic="true">
+          <Argument type="String" name="bundlename"/>
+        </Method>
+        <Method name="createLocaleFromBundleName" returnType="Locale" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HelpController" package="gui.controller" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HomeController" package="gui.controller" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="tfVersion" type="Label" visibility="package"/>
+        <Field name="tfGamemode" type="Label" visibility="package"/>
+        <Field name="tfPlayerQuantity" type="Label" visibility="package"/>
+        <Field name="lbPlayerName" type="Label" visibility="package"/>
+        <Field name="btShuffle" type="JFXButton" visibility="package"/>
+        <Field name="btShutdown" type="JFXButton" visibility="package"/>
+        <Field name="handleGameFinished" type="JFXButton" visibility="package"/>
+        <Field name="btDeal1" type="JFXButton" visibility="package"/>
+        <Field name="btDeal2" type="JFXButton" visibility="package"/>
+        <Field name="btDeal3" type="JFXButton" visibility="package"/>
+        <Field name="btDeal4" type="JFXButton" visibility="package"/>
+        <Field name="btDealX" type="JFXButton" visibility="package"/>
+        <Field name="btNextPlayer" type="JFXButton" visibility="package"/>
+        <Field name="btPreviousPlayer" type="JFXButton" visibility="package"/>
+        <Field name="btAddPoint" type="JFXButton" visibility="package"/>
+        <Field name="btRemovePoint" type="JFXButton" visibility="package"/>
+        <Field name="btGameFinished" type="JFXButton" visibility="package"/>
+        <Field name="slDealQuantity" type="JFXSlider" visibility="package"/>
+        <Field name="slAddPoints" type="JFXSlider" visibility="package"/>
+        <Field name="bcPlayerInfo" type="BarChart" visibility="package"/>
+        <Field name="rootStackPane" type="StackPane" visibility="package"/>
+        <Field name="instance" type="HomeController" visibility="private" isStatic="true"/>
+        <Field name="xAxis" type="CategoryAxis" visibility="private"/>
+        <Field name="yAxis" type="NumberAxis" visibility="private"/>
+        <Field name="dataSeries" type="XYChart.Series&lt;String, Number&gt;" visibility="private"/>
+        <Field name="playerId" type="int" visibility="private"/>
+        <Field name="cardQuantity" type="int" visibility="private"/>
+        <Field name="cardListener" type="ChangeListener&lt;Number&gt;" visibility="package" isFinal="true"/>
+        <Field name="cardSliderListener" type="ChangeListener&lt;Number&gt;" visibility="package" isFinal="true"/>
+        <Field name="pointSliderListener" type="ChangeListener&lt;Number&gt;" visibility="package" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="HomeController" visibility="public" isStatic="true"/>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="arg0"/>
+          <Argument type="ResourceBundle" name="arg1"/>
+        </Method>
+        <Method name="handleNextPlayer" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handlePreviousPlayer" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="getIdPlayer" returnType="PlayerModel" visibility="private"/>
+        <Method name="handleAddPoint" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDeletePoint" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleShutdown" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleShuffle" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleGameFinished" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDeal1" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDeal2" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDeal3" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDeal4" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDealX" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="initSliderSettings" returnType="void" visibility="private">
+          <Argument type="JFXSlider" name="slider"/>
+          <Argument type="int" name="minValue"/>
+          <Argument type="int" name="maxValue"/>
+          <Argument type="int" name="presetValue"/>
+        </Method>
+        <Method name="handleCardChanged" returnType="void" visibility="public"/>
+        <Method name="initBarChart" returnType="void" visibility="private"/>
+        <Method name="updateBarChart" returnType="void" visibility="private"/>
+        <Method name="contentInvisibility" returnType="void" visibility="public">
+          <Argument type="boolean" name="value"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainController" package="gui.controller" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="rootStackPane" type="StackPane" visibility="private"/>
+        <Field name="rootTabPane" type="JFXTabPane" visibility="private"/>
+        <Field name="instance" type="MainController" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="MainController" visibility="public" isStatic="true"/>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="arg0"/>
+          <Argument type="ResourceBundle" name="arg1"/>
+        </Method>
+        <Method name="getStage" returnType="Stage" visibility="private"/>
+        <Method name="loadShuffleDialog" returnType="void" visibility="public"/>
+        <Method name="loadShutdownDialog" returnType="void" visibility="public"/>
+        <Method name="loadGameFinishedDialog" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StartupController" package="gui.controller" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="rootStackPane" type="StackPane" visibility="package"/>
+        <Field name="rootBorderPane" type="BorderPane" visibility="package"/>
+        <Field name="playerNameList" type="JFXListView" visibility="package"/>
+        <Field name="cbAutoDealValue" type="JFXComboBox" visibility="package"/>
+        <Field name="chbAutoDeal" type="JFXCheckBox" visibility="package"/>
+        <Field name="cbGamemodes" type="JFXComboBox" visibility="package"/>
+        <Field name="tfGamemodeName" type="JFXTextField" visibility="package"/>
+        <Field name="tfPlayerName" type="JFXTextField" visibility="package"/>
+        <Field name="cbCardQuantity" type="JFXComboBox" visibility="package"/>
+        <Field name="cbPlayerQuantity" type="JFXComboBox" visibility="package"/>
+        <Field name="btSaveChanges" type="JFXButton" visibility="package"/>
+        <Field name="btDelete" type="JFXButton" visibility="package"/>
+        <Field name="btStartGame" type="JFXButton" visibility="package"/>
+        <Field name="btSaveName" type="JFXButton" visibility="package"/>
+        <Field name="selectedGamemode" type="GamemodeModel" visibility="package"/>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="gamemodeListener" type="ChangeListener&lt;String&gt;" visibility="package" isFinal="true"/>
+        <Field name="seleltionListener" type="ChangeListener&lt;String&gt;" visibility="package" isFinal="true"/>
+        <Field name="nameChangeListener" type="ChangeListener&lt;String&gt;" visibility="package" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="arg0"/>
+          <Argument type="ResourceBundle" name="arg1"/>
+        </Method>
+        <Method name="notifyList" returnType="void" visibility="private">
+          <Argument type="String" name="newValue"/>
+        </Method>
+        <Method name="handleAutoDealChange" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleDelete" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleSaveChanges" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleNameChange" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleStartGame" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="handleGamemodeChange" returnType="void" visibility="private"/>
+        <Method name="initControlComboBox" returnType="void" visibility="private"/>
+        <Method name="updateGameComboBox" returnType="void" visibility="private"/>
+        <Method name="updateControls" returnType="void" visibility="private">
+          <Argument type="GamemodeModel" name="selectedGamemode"/>
+        </Method>
+        <Method name="clearGamemodeCache" returnType="void" visibility="private"/>
+        <Method name="contentInvisibility" returnType="void" visibility="public">
+          <Argument type="boolean" name="value"/>
+        </Method>
+        <Method name="closeStage" returnType="void" visibility="private"/>
+        <Method name="loadMainStage" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="AboutController" package="gui.controller" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StatsController" package="gui.controller" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GuiMain" package="gui.guiMain" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="GuiMain" visibility="private" isStatic="true"/>
+        <Field name="guiThread" type="Thread" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="GuiMain" visibility="public" isStatic="true"/>
+        <Method name="getInstance" returnType="GuiMain" visibility="public" isStatic="true"/>
+        <Method name="shutdown" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="ResourceKeyEnum" package="gui.multilanguage" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Literals>
+        <Literal name="txt_shutdown"/>
+      </Literals>
+    </Enum>
+    <Class name="ResourceManager" package="gui.multilanguage" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="BUNDLE_PATH" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="availableRecourceBundles" type="Map&lt;Locale, ResourceBundle&gt;" visibility="private" isFinal="true"/>
+        <Field name="currentRecourceBundle" type="ResourceBundle" visibility="private"/>
+        <Field name="currentLocale" type="Locale" visibility="private"/>
+        <Field name="instance" type="ResourceManager" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="ResourceManager" visibility="public" isStatic="true"/>
+        <Method name="getInstance" returnType="ResourceManager" visibility="public" isStatic="true"/>
+        <Method name="init" returnType="void" visibility="private"/>
+        <Method name="loadAndAddResourceBundle" returnType="void" visibility="private">
+          <Argument type="Locale" name="locale"/>
+        </Method>
+        <Method name="getLangString" returnType="String" visibility="public">
+          <Argument type="ResourceKeyEnum" name="keys"/>
+        </Method>
+        <Method name="activateLocale" returnType="boolean" visibility="public">
+          <Argument type="Locale" name="locale"/>
+        </Method>
+        <Method name="supportsLocale" returnType="boolean" visibility="public">
+          <Argument type="Locale" name="locale"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ConfigException" package="exception" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="configFile" type="File" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="File" name="configFile"/>
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="File" name="configFile"/>
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="SerialException" package="exception" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+          <Argument type="Throwable" name="cause"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="LogRecordDataHexDump" package="logging" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="data" type="byte[]" visibility="private" isFinal="true"/>
+        <Field name="offset" type="int" visibility="private" isFinal="true"/>
+        <Field name="length" type="int" visibility="private" isFinal="true"/>
+        <Field name="start" type="int" visibility="private" isFinal="true"/>
+        <Field name="dataHashCode" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="int" name="from"/>
+          <Argument type="int" name="to"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="int" name="from"/>
+          <Argument type="int" name="to"/>
+          <Argument type="int" name="start"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getData" returnType="byte[]" visibility="public"/>
+        <Method name="getOffset" returnType="int" visibility="public"/>
+        <Method name="getLength" returnType="int" visibility="public"/>
+        <Method name="getStart" returnType="int" visibility="public"/>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Logger" package="logging" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="LOGGERMAP" type="HashMap&lt;String, Logger&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="parentLogger" type="Logger" visibility="private" isStatic="true"/>
+        <Field name="cachedSystemProperties" type="HashMap&lt;String, String&gt;" visibility="private" isStatic="true"/>
+        <Field name="shutdownExecuted" type="boolean" visibility="private" isStatic="true"/>
+        <Field name="shutdownNowExecuted" type="boolean" visibility="private" isStatic="true"/>
+        <Field name="PROPERTYPARENTLEVEL" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PROPERTYDEFAULTLEVEL" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DEBUG" type="Level" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="logger" type="java.util.logging.Logger" visibility="private" isFinal="true"/>
+        <Field name="showLocation" type="boolean" visibility="private"/>
+        <Field name="debugLevel" type="Level" visibility="private"/>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLogger" returnType="Logger" visibility="public" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getParentLogger" returnType="Logger" visibility="public" isStatic="true"/>
+        <Method name="getAllHandlers" returnType="Handler[]" visibility="public" isStatic="true"/>
+        <Method name="shutdown" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="shutdownNow" returnType="List&lt;Handler&gt;" visibility="public" isStatic="true"/>
+        <Method name="awaitTermination" returnType="List&lt;Handler&gt;" visibility="public" isStatic="true">
+          <Argument type="long" name="timeout"/>
+          <Argument type="TimeUnit" name="unit"/>
+        </Method>
+        <Method name="printConfiguration" returnType="void" visibility="private" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="printLevel" returnType="void" visibility="private" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="printFilter" returnType="void" visibility="private" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="printHandler" returnType="void" visibility="private" isStatic="true">
+          <Argument type="String" name="name"/>
+          <Argument type="Logger" name="logger"/>
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="getRegExp" returnType="String" visibility="private" isStatic="true">
+          <Argument type="String" name="wildcardExp"/>
+        </Method>
+        <Method name="getSystemProperty" returnType="String" visibility="private" isStatic="true">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="parseLevel" returnType="Level" visibility="private" isStatic="true">
+          <Argument type="String" name="level"/>
+        </Method>
+        <Method name="setParent" returnType="void" visibility="private">
+          <Argument type="Logger" name="parent"/>
+        </Method>
+        <Method name="setUseParentHandlers" returnType="void" visibility="private">
+          <Argument type="boolean" name="useParentHandlers"/>
+        </Method>
+        <Method name="addHandler" returnType="void" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+        <Method name="removeHandler" returnType="void" visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Method>
+        <Method name="getHandlers" returnType="Handler[]" visibility="public"/>
+        <Method name="setFilter" returnType="void" visibility="public">
+          <Argument type="Filter" name="filter"/>
+        </Method>
+        <Method name="getFilter" returnType="Filter" visibility="public"/>
+        <Method name="getShowLocation" returnType="boolean" visibility="public" isSynchronized="true"/>
+        <Method name="setShowLocation" returnType="void" visibility="public" isSynchronized="true">
+          <Argument type="boolean" name="showLocation"/>
+        </Method>
+        <Method name="getLevel" returnType="Level" visibility="public"/>
+        <Method name="setLevel" returnType="void" visibility="public">
+          <Argument type="Level" name="level"/>
+        </Method>
+        <Method name="setLevel" returnType="void" visibility="public">
+          <Argument type="String" name="level"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fireLogRecord" returnType="void" visibility="private">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="getDebugLevel" returnType="Level" visibility="public"/>
+        <Method name="setDebugLevel" returnType="void" visibility="public">
+          <Argument type="Level" name="debugLevel"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public"/>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="debug" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isLoggable" returnType="boolean" visibility="public">
+          <Argument type="Level" name="level"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="log" returnType="void" visibility="public">
+          <Argument type="Level" name="l"/>
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public"/>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="all" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isFinestLoggable" returnType="boolean" visibility="public"/>
+        <Method name="finest" returnType="void" visibility="public"/>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finest" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isFinerLoggable" returnType="boolean" visibility="public"/>
+        <Method name="finer" returnType="void" visibility="public"/>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="finer" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isFineLoggable" returnType="boolean" visibility="public"/>
+        <Method name="fine" returnType="void" visibility="public"/>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="fine" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isConfigLoggable" returnType="boolean" visibility="public"/>
+        <Method name="config" returnType="void" visibility="public"/>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="config" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isInfoLoggable" returnType="boolean" visibility="public"/>
+        <Method name="info" returnType="void" visibility="public"/>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="info" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isWarningLoggable" returnType="boolean" visibility="public"/>
+        <Method name="warning" returnType="void" visibility="public"/>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="warning" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="isSevereLoggable" returnType="boolean" visibility="public"/>
+        <Method name="severe" returnType="void" visibility="public"/>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="byte[]" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Method>
+        <Method name="severe" returnType="void" visibility="public">
+          <Argument type="int" name="stackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msgFormat"/>
+          <Argument type="Object" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LogRecordDataFormattedText" package="logging" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="s" type="String" visibility="package"/>
+        <Field name="text" type="StringBuilder" visibility="private" isFinal="true"/>
+        <Field name="terminal" type="Terminal" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Terminal" name="terminal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="append" returnType="LogRecordDataFormattedText" visibility="public">
+          <Argument type="CharSequence" name="s"/>
+        </Method>
+        <Method name="println" returnType="void" visibility="public"/>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="CharSequence" name="s"/>
+        </Method>
+        <Method name="println" returnType="void" visibility="public">
+          <Argument type="CharSequence" name="s"/>
+        </Method>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="linefeed" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="appendLink" returnType="LogRecordDataFormattedText" visibility="public">
+          <Argument type="String" name="target"/>
+        </Method>
+        <Method name="plain" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="underline" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bold" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="italic" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="inverse" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="striked" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgDefault" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgRed" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgGreen" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgYellow" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgBlue" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgMagenta" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgCyan" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="fgWhite" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgDefault" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgRed" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgGreen" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgYellow" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgBlue" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgMagenta" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgCyan" returnType="LogRecordDataFormattedText" visibility="public"/>
+        <Method name="bgWhite" returnType="LogRecordDataFormattedText" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogRecordDataString" package="logging" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="str" type="String" visibility="private" isFinal="true"/>
+        <Field name="offset" type="int" visibility="private" isFinal="true"/>
+        <Field name="length" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="str"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="str"/>
+          <Argument type="int" name="offset"/>
+          <Argument type="int" name="length"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getString" returnType="String" visibility="public"/>
+        <Method name="getOffset" returnType="int" visibility="public"/>
+        <Method name="getLength" returnType="int" visibility="public"/>
+        <Method name="print" returnType="void" visibility="public">
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogBackgroundHandler" package="logging" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="handler" type="Handler" visibility="private" isFinal="true"/>
+        <Field name="recordQueue" type="LinkedList&lt;LogRecord&gt;" visibility="private" isFinal="true"/>
+        <Field name="handlerThread" type="HandlerThread" visibility="private" isFinal="true"/>
+        <Field name="isTerminated" type="AtomicBoolean" visibility="private" isFinal="true"/>
+        <Field name="closed" type="boolean" visibility="private"/>
+        <Field name="shutdown" type="boolean" visibility="private"/>
+        <Field name="recordCount" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Handler" name="handler"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="publish" returnType="void" visibility="public">
+          <Argument type="LogRecord" name="record"/>
+        </Method>
+        <Method name="flush" returnType="void" visibility="public"/>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="shutdown" returnType="void" visibility="public"/>
+        <Method name="shutdownNow" returnType="boolean" visibility="public"/>
+        <Method name="awaitTermination" returnType="boolean" visibility="public">
+          <Argument type="long" name="timeout"/>
+          <Argument type="TimeUnit" name="unit"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ExtendedLogRecord" package="logging" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="data" type="LogRecordData" visibility="protected"/>
+        <Field name="location" type="StackTraceElement" visibility="private" isFinal="true"/>
+        <Field name="stackTrace" type="StackTraceElement[]" visibility="private" isFinal="true"/>
+        <Field name="locationDepth" type="int" visibility="private" isFinal="true"/>
+        <Field name="debugRecord" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="Throwable" name="th"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="Throwable" name="th"/>
+          <Argument type="LogRecordData" name="data"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Level" name="level"/>
+          <Argument type="int" name="locationStackTraceIndex"/>
+          <Argument type="int" name="locationStackTraceDepth"/>
+          <Argument type="String" name="msg"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getStackTraceSize" returnType="int" visibility="public"/>
+        <Method name="getStackTraceElement" returnType="StackTraceElement" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="isStackTraceEmpty" returnType="boolean" visibility="public"/>
+        <Method name="getData" returnType="LogRecordData" visibility="public"/>
+        <Method name="getLocationDepth" returnType="int" visibility="public"/>
+        <Method name="isLocationAvailable" returnType="boolean" visibility="public"/>
+        <Method name="getLocationAsString" returnType="String" visibility="public"/>
+        <Method name="getStackTraceElementAsString" returnType="String" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="isDebugRecord" returnType="boolean" visibility="public"/>
+        <Method name="setDebugRecord" returnType="void" visibility="public">
+          <Argument type="boolean" name="debugRecord"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LogOutputStreamHandler" package="logging" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="out" type="LogOutputPrintStream" visibility="private" isFinal="true"/>
+        <Field name="closed" type="boolean" visibility="private"/>
+        <Field name="showRecordHashcode" type="boolean" visibility="private"/>
+        <Field name="colorize" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="OutputStream" name="out"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="publish" returnType="void" visibility="public">
+          <Argument type="LogRecord" name="record"/>
+        </Method>
+        <Method name="isShowRecordHashcode" returnType="boolean" visibility="public"/>
+        <Method name="setShowRecordHashcode" returnType="void" visibility="public">
+          <Argument type="boolean" name="showRecordHashcode"/>
+        </Method>
+        <Method name="isColorize" returnType="boolean" visibility="public"/>
+        <Method name="setColorize" returnType="void" visibility="public">
+          <Argument type="boolean" name="colorize"/>
+        </Method>
+        <Method name="flush" returnType="void" visibility="public"/>
+        <Method name="close" returnType="void" visibility="public"/>
+        <Method name="checkError" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="LogRecordData" package="logging" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Methods>
+        <Method name="print" returnType="void" visibility="package">
+          <Argument type="PrintStream" name="out"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="SimInputStreamBuffer" package="serial.sim" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="blocking" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="pis" type="PipedInputStream" visibility="private" isFinal="true"/>
+        <Field name="pos" type="PipedOutputStream" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="read" returnType="int" visibility="public"/>
+        <Method name="write" returnType="void" visibility="public">
+          <Argument type="int" name="b"/>
+        </Method>
+        <Method name="available" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SimOutputStreamBuffer" package="serial.sim" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="pis" type="PipedInputStream" visibility="private" isFinal="true"/>
+        <Field name="pos" type="PipedOutputStream" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="read" returnType="int" visibility="public"/>
+        <Method name="write" returnType="void" visibility="public">
+          <Argument type="int" name="b"/>
+        </Method>
+        <Method name="available" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ReshuffledMainboardSimulator" package="serial.sim" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="in" type="InputStream" visibility="private" isFinal="true"/>
+        <Field name="out" type="BufferedWriter" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="InputStream" name="in"/>
+          <Argument type="OutputStream" name="out"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Communication" package="serial" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="Communication" visibility="private" isStatic="true"/>
+        <Field name="serial" type="Serial" visibility="private" isFinal="true"/>
+        <Field name="communicationSendThread" type="Thread" visibility="private" isFinal="true"/>
+        <Field name="communicationReceiveThread" type="Thread" visibility="private" isFinal="true"/>
+        <Field name="toSentList" type="LinkedList&lt;Request&gt;" visibility="private" isFinal="true"/>
+        <Field name="responseList" type="LinkedList&lt;Response&gt;" visibility="private" isFinal="true"/>
+        <Field name="pendingRequest" type="Request" visibility="private"/>
+        <Field name="timeoutMillis" type="long" visibility="private" isFinal="true"/>
+        <Field name="maxReceiveFrameLength" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="Serial" name="serial"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="Communication" visibility="public" isStatic="true">
+          <Argument type="Serial" name="serial"/>
+        </Method>
+        <Method name="getInstance" returnType="Communication" visibility="public" isStatic="true"/>
+        <Method name="shutdown" returnType="void" visibility="public"/>
+        <Method name="sendRequestExecutor" returnType="void" visibility="public">
+          <Argument type="Request" name="req"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Response" package="serial.request" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields>
+        <Field name="timeMillisCreatedAt" type="long" visibility="private" isFinal="true"/>
+        <Field name="resFrame" type="byte[]" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="byte[]" name="resFrame"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getResFrame" returnType="byte[]" visibility="public"/>
+        <Method name="getTimeMillisCreatedAt" returnType="long" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Request" package="serial.request" visibility="public" isAbstract="true" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="CRC32" type="java.util.zip.CRC32" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DATAFORMATTER" type="DateFormat" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="reqFrame" type="String" visibility="private"/>
+        <Field name="timeMillisCreatedAt" type="long" visibility="private" isFinal="true"/>
+        <Field name="timeMillisFrameSent" type="long" visibility="private"/>
+        <Field name="resFrame" type="byte[]" visibility="private"/>
+        <Field name="timeMillisFrameReceived" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="handleRequestSent" returnType="void" visibility="public"/>
+        <Method name="handleResponse" returnType="void" visibility="public">
+          <Argument type="Response" name="res"/>
+        </Method>
+        <Method name="createRequestFrame" returnType="void" visibility="protected">
+          <Argument type="String" name="content"/>
+        </Method>
+        <Method name="getMreqFrame" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getTimeMillisCreatedAt" returnType="long" visibility="public"/>
+        <Method name="getTimeMillisFrameSent" returnType="long" visibility="public"/>
+        <Method name="getTimeMillisFrameReceived" returnType="long" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RequestInit" package="serial.request" visibility="public" xPosition="1520.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RequestAutoDeal" package="serial.request" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="value"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RequestDeal" package="serial.request" visibility="public" xPosition="2120.0" yPosition="1220.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="value"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RequestShutdown" package="serial.request" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="RequestShuffle" package="serial.request" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Serial" package="serial" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="Serial" visibility="private" isStatic="true"/>
+        <Field name="config" type="ConfigSerialModel" visibility="private" isFinal="true"/>
+        <Field name="inputStream" type="InputStream" visibility="private"/>
+        <Field name="outputStream" type="OutputStream" visibility="private"/>
+        <Field name="toSim" type="SimInputStreamBuffer" visibility="private"/>
+        <Field name="fromSim" type="SimOutputStreamBuffer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="ConfigSerialModel" name="config"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="Serial" visibility="public" isStatic="true">
+          <Argument type="ConfigSerialModel" name="config"/>
+        </Method>
+        <Method name="getInstance" returnType="Serial" visibility="public" isStatic="true"/>
+        <Method name="getInputStream" returnType="InputStream" visibility="public"/>
+        <Method name="getOutputStream" returnType="OutputStream" visibility="public"/>
+        <Method name="initSimulation" returnType="void" visibility="private"/>
+        <Method name="initSerialDevice" returnType="void" visibility="private"/>
+        <Method name="writeString" returnType="void" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ConfigInternationalizationModel" package="data.model" visibility="public" xPosition="920.0" yPosition="1620.0">
+      <Fields>
+        <Field name="bundlePath" type="String" visibility="private" isFinal="true"/>
+        <Field name="bundlePrefix" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="bundlePath"/>
+          <Argument type="String" name="bundlePrefix"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBundlePath" returnType="String" visibility="public"/>
+        <Method name="getBundlePrefix" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ConfigSerialModel" package="data.model" visibility="public" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="disabled" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="device" type="String" visibility="private" isFinal="true"/>
+        <Field name="baudrate" type="int" visibility="private" isFinal="true"/>
+        <Field name="timeoutMillis" type="long" visibility="private" isFinal="true"/>
+        <Field name="secondTryAllowed" type="boolean" visibility="private" isFinal="true"/>
+        <Field name="maxReceiveFrameLength" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="disabled"/>
+          <Argument type="String" name="device"/>
+          <Argument type="int" name="baudrate"/>
+          <Argument type="long" name="timeoutMillis"/>
+          <Argument type="boolean" name="secondTryAllowed"/>
+          <Argument type="int" name="maxReceiveFrameLength"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isDisabled" returnType="boolean" visibility="public"/>
+        <Method name="getDevice" returnType="String" visibility="public"/>
+        <Method name="getBaudrate" returnType="int" visibility="public"/>
+        <Method name="getTimeoutMillis" returnType="long" visibility="public"/>
+        <Method name="isSecondTryAllowed" returnType="boolean" visibility="public"/>
+        <Method name="getMaxReceiveFrameLength" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PlayerModel" package="data.model" visibility="public" xPosition="1520.0" yPosition="1620.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="points" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="points"/>
+          <Argument type="int" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="increment" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="decrement" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="reset" returnType="void" visibility="public"/>
+        <Method name="getPoints" returnType="int" visibility="public"/>
+        <Method name="getId" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GameModel" package="data.model" visibility="public" xPosition="1820.0" yPosition="1620.0">
+      <Fields>
+        <Field name="players" type="List&lt;PlayerModel&gt;" visibility="private"/>
+        <Field name="gameFinished" type="boolean" visibility="private"/>
+        <Field name="gamemode" type="GamemodeModel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="List&lt;PlayerModel&gt;" name="players"/>
+          <Argument type="boolean" name="gameFinished"/>
+          <Argument type="GamemodeModel" name="gamemode"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getPlayers" returnType="List&lt;PlayerModel&gt;" visibility="public"/>
+        <Method name="isGameFinished" returnType="boolean" visibility="public"/>
+        <Method name="getGamemode" returnType="GamemodeModel" visibility="public"/>
+        <Method name="setGameFinished" returnType="void" visibility="public">
+          <Argument type="boolean" name="gameFinished"/>
+        </Method>
+        <Method name="setGamemode" returnType="void" visibility="public">
+          <Argument type="GamemodeModel" name="gamemode"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GamemodeModel" package="data.model" visibility="public" xPosition="2120.0" yPosition="1620.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="autoDeal" type="boolean" visibility="private"/>
+        <Field name="autoDealValue" type="Integer" visibility="private"/>
+        <Field name="cardQuantity" type="Integer" visibility="private"/>
+        <Field name="playerQuantity" type="Integer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="boolean" name="autoDeal"/>
+          <Argument type="Integer" name="autoDealValue"/>
+          <Argument type="Integer" name="cardQuantity"/>
+          <Argument type="Integer" name="playerQuantity"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="isAutoDeal" returnType="boolean" visibility="public"/>
+        <Method name="setAutoDeal" returnType="void" visibility="public">
+          <Argument type="boolean" name="autoDeal"/>
+        </Method>
+        <Method name="getAutoDealValue" returnType="Integer" visibility="public"/>
+        <Method name="setAutoDealValue" returnType="void" visibility="public">
+          <Argument type="Integer" name="autoDealValue"/>
+        </Method>
+        <Method name="getCardQuantity" returnType="Integer" visibility="public"/>
+        <Method name="setCardQuantity" returnType="void" visibility="public">
+          <Argument type="Integer" name="cardQuantity"/>
+        </Method>
+        <Method name="getPlayerQuantity" returnType="Integer" visibility="public"/>
+        <Method name="setPlayerQuantity" returnType="void" visibility="public">
+          <Argument type="Integer" name="playerQuantity"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="StatisticsModel" package="data.model" visibility="public" xPosition="20.0" yPosition="2020.0">
+      <Fields>
+        <Field name="overallGamesPlayed" type="int" visibility="private"/>
+        <Field name="games" type="List&lt;Game&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="overallGamesPlayed"/>
+          <Argument type="List&lt;Game&gt;" name="games"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getOverallGamesPlayed" returnType="int" visibility="public"/>
+        <Method name="getGames" returnType="List&lt;Game&gt;" visibility="public"/>
+        <Method name="setOverallGamesPlayed" returnType="void" visibility="public">
+          <Argument type="int" name="overallGamesPlayed"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ConfigModel" package="data.model" visibility="public" xPosition="320.0" yPosition="2020.0">
+      <Fields>
+        <Field name="logLevel" type="String" visibility="private" isFinal="true"/>
+        <Field name="logPath" type="String" visibility="private"/>
+        <Field name="statisticsPath" type="String" visibility="private"/>
+        <Field name="guiHeight" type="Integer" visibility="private" isFinal="true"/>
+        <Field name="guiWidth" type="Integer" visibility="private" isFinal="true"/>
+        <Field name="gamemodes" type="List&lt;GamemodeModel&gt;" visibility="private" isFinal="true"/>
+        <Field name="serial" type="ConfigSerialModel" visibility="private" isFinal="true"/>
+        <Field name="internationalization" type="ConfigInternationalizationModel" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="logLevel"/>
+          <Argument type="String" name="logPath"/>
+          <Argument type="String" name="statisticsPath"/>
+          <Argument type="Integer" name="guiHeight"/>
+          <Argument type="Integer" name="guiWidth"/>
+          <Argument type="List&lt;GamemodeModel&gt;" name="gamemodes"/>
+          <Argument type="ConfigSerialModel" name="serial"/>
+          <Argument type="ConfigInternationalizationModel" name="language"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getInternationalization" returnType="ConfigInternationalizationModel" visibility="public"/>
+        <Method name="getLogLevel" returnType="String" visibility="public"/>
+        <Method name="getLogPath" returnType="String" visibility="public"/>
+        <Method name="getStatisticsPath" returnType="String" visibility="public"/>
+        <Method name="getGuiHeight" returnType="Integer" visibility="public"/>
+        <Method name="getGuiWidth" returnType="Integer" visibility="public"/>
+        <Method name="getGamemodes" returnType="List&lt;GamemodeModel&gt;" visibility="public"/>
+        <Method name="getSerial" returnType="ConfigSerialModel" visibility="public"/>
+        <Method name="setLogPath" returnType="void" visibility="public">
+          <Argument type="String" name="logPath"/>
+        </Method>
+        <Method name="setStatisticsPath" returnType="void" visibility="public">
+          <Argument type="String" name="statisticsPath"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Game" package="data.game" visibility="public" xPosition="620.0" yPosition="2020.0">
+      <Fields>
+        <Field name="instance" type="Game" visibility="private" isStatic="true"/>
+        <Field name="gameModel" type="GameModel" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="List&lt;PlayerModel&gt;" name="players"/>
+          <Argument type="boolean" name="gameFinished"/>
+          <Argument type="GamemodeModel" name="gamemode"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="Game" visibility="public" isStatic="true">
+          <Argument type="List&lt;PlayerModel&gt;" name="players"/>
+          <Argument type="boolean" name="gameFinished"/>
+          <Argument type="data.model.GamemodeModel" name="gamemode"/>
+        </Method>
+        <Method name="getInstance" returnType="Game" visibility="public" isStatic="true"/>
+        <Method name="clearInstance" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="getPlayers" returnType="List&lt;PlayerModel&gt;" visibility="public"/>
+        <Method name="isGameFinished" returnType="boolean" visibility="public"/>
+        <Method name="getGamemode" returnType="GamemodeModel" visibility="public"/>
+        <Method name="setGameFinished" returnType="void" visibility="public">
+          <Argument type="boolean" name="gameFinished"/>
+        </Method>
+        <Method name="setGamemode" returnType="void" visibility="public">
+          <Argument type="GamemodeModel" name="gamemode"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Statistics" package="data.statistics" visibility="public" xPosition="920.0" yPosition="2020.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="Statistics" visibility="private" isStatic="true"/>
+        <Field name="statisticsFile" type="File" visibility="private" isFinal="true"/>
+        <Field name="statisticsModel" type="StatisticsModel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="String" name="configPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Statistics" visibility="public" isStatic="true"/>
+        <Method name="createInstance" returnType="Statistics" visibility="public" isStatic="true">
+          <Argument type="String" name="statsPath"/>
+        </Method>
+        <Method name="save" returnType="void" visibility="public"/>
+        <Method name="readStatistics" returnType="void" visibility="private"/>
+        <Method name="writeStatistics" returnType="void" visibility="private"/>
+        <Method name="getOverallGamesPlayed" returnType="int" visibility="public"/>
+        <Method name="incrementOverallGamesPlayed" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="getGames" returnType="List&lt;Game&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Config" package="data.config" visibility="public" xPosition="1220.0" yPosition="2020.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="Config" visibility="private" isStatic="true"/>
+        <Field name="configFile" type="File" visibility="private" isFinal="true"/>
+        <Field name="configModel" type="ConfigModel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="String" name="configPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Config" visibility="public" isStatic="true"/>
+        <Method name="createInstance" returnType="Config" visibility="public" isStatic="true">
+          <Argument type="String" name="configPath"/>
+        </Method>
+        <Method name="save" returnType="void" visibility="public"/>
+        <Method name="readConfig" returnType="void" visibility="private"/>
+        <Method name="writeConfig" returnType="void" visibility="private"/>
+        <Method name="getLogLevel" returnType="String" visibility="public"/>
+        <Method name="setLogPath" returnType="void" visibility="public">
+          <Argument type="String" name="logPath"/>
+        </Method>
+        <Method name="setStatisticsPath" returnType="void" visibility="public">
+          <Argument type="String" name="statisticsPath"/>
+        </Method>
+        <Method name="getGamemodes" returnType="List&lt;GamemodeModel&gt;" visibility="public"/>
+        <Method name="getGuiWidth" returnType="int" visibility="public"/>
+        <Method name="getGuiHeight" returnType="int" visibility="public"/>
+        <Method name="getConfigSerial" returnType="ConfigSerialModel" visibility="public"/>
+        <Method name="getInternationalization" returnType="ConfigInternationalizationModel" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="main" visibility="public" xPosition="1520.0" yPosition="2020.0">
+      <Fields>
+        <Field name="CONFIGPATH" type="String" visibility="public" isStatic="true"/>
+        <Field name="VERSION" type="String" visibility="public" isStatic="true"/>
+        <Field name="LOGP" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="checkStatisticsExistence" returnType="File" visibility="public"/>
+        <Method name="checkLogExistence" returnType="File" visibility="public"/>
+        <Method name="checkConfigExistence" returnType="void" visibility="public"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="data.model.ConfigModel" target="data.config.Config" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="serial.request.Request" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="logging.Logger" target="logging.LogRecordData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.controller.MainController" target="main.Main" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="logging.ExtendedLogRecord" target="logging.LogRecordData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="serial.Communication" target="serial.Communication" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.model.ConfigModel" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="serial" source="serial.Communication" target="serial.Serial" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="logging.LogRecordDataFormattedText" target="logging.LogRecordData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="games" source="data.model.StatisticsModel" target="data.game.Game" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Game&gt;"/>
+    <HasRelation name="gameModel" source="data.game.Game" target="data.model.GameModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOGP" source="main.Main" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="util.GuiUtil" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="toSentList" source="serial.Communication" target="serial.request.Request" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;Request&gt;"/>
+    <HasRelation name="instance" source="gui.controller.MainController" target="gui.controller.MainController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gamemodes" source="data.model.ConfigModel" target="data.model.GamemodeModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;GamemodeModel&gt;"/>
+    <UseRelation source="gui.multilanguage.ResourceManager" target="gui.multilanguage.ResourceKeyEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="players" source="data.model.GameModel" target="data.model.PlayerModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;PlayerModel&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="logging.LogRecordDataHexDump" target="logging.LogRecordData"/>
+    <HasRelation name="LOG" source="serial.Serial" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOGGERMAP" source="logging.Logger" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Logger&gt;"/>
+    <HasRelation name="instance" source="gui.controller.HomeController" target="gui.controller.HomeController" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="toSim" source="serial.Serial" target="serial.sim.SimInputStreamBuffer" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="gui.guiMain.GuiMain" target="gui.guiMain.GuiMain" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="serial.request.RequestAutoDeal" target="serial.request.Request"/>
+    <UseRelation source="serial.Communication" target="serial.Communication" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.multilanguage.ResourceManager" target="gui.multilanguage.ResourceManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gamemode" source="data.model.GameModel" target="data.model.GamemodeModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="data.statistics.Statistics" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.config.Config" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parentLogger" source="logging.Logger" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.request.Request" target="serial.request.Response" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="util.ResourceBundleUtils" target="gui.multilanguage.ResourceKeyEnum" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.Serial" target="data.config.Config" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="data.statistics.Statistics" target="data.statistics.Statistics" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selectedGamemode" source="gui.controller.StartupController" target="data.model.GamemodeModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="serial.Communication" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="gui.multilanguage.ResourceManager" target="gui.multilanguage.ResourceManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.guiMain.GuiMain" target="main.Main" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="serial.request.RequestShuffle" target="serial.request.Request"/>
+    <UseRelation source="data.model.GameModel" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="internationalization" source="data.model.ConfigModel" target="data.model.ConfigInternationalizationModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="logging.Logger" target="logging.Logger" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.Communication" target="serial.request.Request" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.statistics.Statistics" target="data.statistics.Statistics" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="gui.guiMain.GuiMain" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="data.config.Config" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="serial.sim.ReshuffledMainboardSimulator" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="serial.request.RequestInit" target="serial.request.Request"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="logging.LogRecordDataString" target="logging.LogRecordData"/>
+    <HasRelation name="config" source="serial.Serial" target="data.model.ConfigSerialModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.config.Config" target="data.config.Config" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="main.Main" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="statisticsModel" source="data.statistics.Statistics" target="data.model.StatisticsModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.controller.HomeController" target="gui.controller.HomeController" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.statistics.Statistics" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.Communication" target="serial.Serial" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configModel" source="data.config.Config" target="data.model.ConfigModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="responseList" source="serial.Communication" target="serial.request.Response" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="LinkedList&lt;Response&gt;"/>
+    <UseRelation source="gui.controller.HomeController" target="data.model.PlayerModel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="serial.request.RequestShutdown" target="serial.request.Request"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="logging.LogRecordDataFormattedText" target="logging.LogRecordData"/>
+    <HasRelation name="serial" source="data.model.ConfigModel" target="data.model.ConfigSerialModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="data.game.Game" target="data.game.Game" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pendingRequest" source="serial.Communication" target="serial.request.Request" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fromSim" source="serial.Serial" target="serial.sim.SimOutputStreamBuffer" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="serial.Serial" target="serial.Serial" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.model.StatisticsModel" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.Serial" target="serial.Serial" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.game.Game" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="LOG" source="gui.controller.StartupController" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="data.config.Config" target="data.config.Config" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.model.GameModel" target="data.model.PlayerModel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="data.game.Game" target="data.model.PlayerModel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="data" source="logging.ExtendedLogRecord" target="logging.LogRecordData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.controller.StartupController" target="data.game.Game" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="serial.request.RequestDeal" target="serial.request.Request"/>
+    <HasRelation name="LOG" source="gui.multilanguage.ResourceManager" target="logging.Logger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
