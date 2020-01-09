@@ -324,8 +324,12 @@ erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, welches b
     \caption{Variante mithilfe einer Diode}
 \end{figure}
 
-Diese Realisierung bringt die Verwundung einer Sicherung und einer Diode mit sich.
-Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
+\subsubsection{Verpolungsschutz mit einer Sicherung und einer Diode}
+
+Diese Realisierung bringt die Verwendung einer Sicherung und einer Diode mit sich.
+
+Bei verpolter anliegender Eingangsspannung brennt die Sicherung, bei ausreichendem,
+von der Spannungsversorgung zur Verfügung gestelltem Strom, durch. Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bis die Sicherung auslöst.
 
 \begin{figure}[ht]
     \centering
@@ -343,6 +347,16 @@ Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
     \end{circuitikz}
     \caption{Zerstörerische Variante mithilfe einer Sicherung und einer Diode}
 \end{figure}
+
+\subsubsection{Verpolungsschutz mithilfe eines P-Kanal MOSFET}
+
+Der P-Kanal MOSFET leitet, wenn das Gate um U_{GSth} negativer ist als der Spannungspegel anliegend am Source.
+Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass
+am Sourceeingang die Eingangsspannung ankommt. Weil die am Source anliegende Spannung weitaus psoitiver als
+U_{GSth}, leitet der MOSFET. Die Tatsache, dass der MOSFET quasi verkehrt herum leitet und der Drain somit
+positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt handelt.
+Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden
+Zustand.
 
 \begin{figure}[ht]
     \centering
