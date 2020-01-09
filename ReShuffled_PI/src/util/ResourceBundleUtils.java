@@ -21,7 +21,7 @@ public class ResourceBundleUtils {
     public static String getLangString (final ResourceBundle resourceBundle, final ResourceKeyEnum key) {
         if (resourceBundle != null) {
             try {
-
+                return resourceBundle.getString(key.name());
             }
             catch (final MissingResourceException ex) {
                 return INDICATOR_MISSING_KEY + key;

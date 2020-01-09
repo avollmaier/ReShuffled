@@ -53,23 +53,5 @@ public class AlertUtil {
 
         noteToBeBlur.setEffect(boxBlur);
     }
-    
-    
-     public static void showSimpleAlert(String title, String content) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 
-    public static void showErrorMessage(String title, String content) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(title);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 }
-
-

@@ -29,14 +29,14 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <VBox prefHeight="464.0" prefWidth="161.0">
                      <children>
-                        <JFXButton fx:id="btShutdown" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="Shutdown" VBox.vgrow="NEVER">
+                        <JFXButton fx:id="btShutdown" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="165.0" ripplerFill="WHITE" text="%txt_home_shutdown" VBox.vgrow="NEVER">
                            <font>
                               <Font size="15.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../util/icons/shutdown.png" />
+                                    <Image url="@../../util/icons/shutdown.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -44,14 +44,14 @@
                               <Insets left="8.0" right="8.0" top="8.0" />
                            </VBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="btShuffle" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="Shuffle / Start" VBox.vgrow="NEVER">
+                        <JFXButton fx:id="btShuffle" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="%txt_home_shuffle" VBox.vgrow="NEVER">
                            <font>
                               <Font size="15.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../util/icons/shuffle.png" />
+                                    <Image url="@../../util/icons/shuffle.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -74,14 +74,14 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXButton fx:id="btDeal1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                              <JFXButton fx:id="btDeal1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="74.0" prefWidth="88.0" ripplerFill="WHITE" text="%txt_home_deal" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                                  <graphic>
                                     <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/poker.png" />
+                                          <Image url="@../../util/icons/poker.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -89,14 +89,14 @@
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                  </padding>
                               </JFXButton>
-                              <JFXButton fx:id="btDeal2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                              <JFXButton fx:id="btDeal2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="74.0" prefWidth="139.0" ripplerFill="WHITE" text="%txt_home_deal" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                                  <graphic>
                                     <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/poker.png" />
+                                          <Image url="@../../util/icons/poker.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -104,14 +104,14 @@
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                  </padding>
                               </JFXButton>
-                              <JFXButton fx:id="btDeal4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 4" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                              <JFXButton fx:id="btDeal4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="62.0" prefWidth="81.0" ripplerFill="WHITE" text="%txt_home_deal" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/poker.png" />
+                                          <Image url="@../../util/icons/poker.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -119,14 +119,14 @@
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="16.0" />
                                  </padding>
                               </JFXButton>
-                              <JFXButton fx:id="btDeal3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Deal 3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                              <JFXButton fx:id="btDeal3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="54.0" prefWidth="80.0" ripplerFill="WHITE" text="%txt_home_deal" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                                  <graphic>
                                     <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/poker.png" />
+                                          <Image url="@../../util/icons/poker.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -158,20 +158,20 @@
                            <graphic>
                               <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../util/icons/poker.png" />
+                                    <Image url="@../../util/icons/poker.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </JFXButton>
                         <Separator prefWidth="200.0" VBox.vgrow="NEVER" />
-                        <JFXButton fx:id="btGameFinished" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="Finished Game" VBox.vgrow="NEVER">
+                        <JFXButton fx:id="btGameFinished" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" prefHeight="68.0" prefWidth="167.0" ripplerFill="WHITE" text="%txt_home_finishedGame" VBox.vgrow="NEVER">
                            <font>
                               <Font size="15.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../util/icons/finished.png" />
+                                    <Image url="@../../util/icons/finished.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -207,7 +207,7 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <BarChart fx:id="bcPlayerInfo" animated="false" barGap="10.0" disable="true" prefHeight="388.0" prefWidth="628.0" title="Player Points" VBox.vgrow="ALWAYS">
+                  <BarChart fx:id="bcPlayerInfo" animated="false" barGap="10.0" disable="true" prefHeight="388.0" prefWidth="628.0" title="%txt_home_playerPoints" VBox.vgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -224,14 +224,11 @@
                      <children>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <JFXButton fx:id="btPreviousPlayer" buttonType="RAISED" disable="true" ripplerFill="WHITE" text="Previous Player" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
+                              <JFXButton fx:id="btPreviousPlayer" buttonType="RAISED" disable="true" prefWidth="250.0" ripplerFill="WHITE" text="%txt_home_previousPlayer" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                                  <graphic>
                                     <ImageView disable="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/left-arrow.png" />
+                                          <Image url="@../../util/icons/left-arrow.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -248,11 +245,11 @@
                                     </Label>
                                     <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <JFXButton fx:id="btAddPoint" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Add Point" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" HBox.hgrow="ALWAYS">
+                                          <JFXButton fx:id="btAddPoint" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="%txt_home_addPoint" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" HBox.hgrow="ALWAYS">
                                              <graphic>
                                                 <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../util/icons/add.png" />
+                                                      <Image url="@../../util/icons/add.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
@@ -260,11 +257,11 @@
                                                 <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                              </padding>
                                           </JFXButton>
-                                          <JFXButton fx:id="btRemovePoint" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="Remove Point" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                                          <JFXButton fx:id="btRemovePoint" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" ripplerFill="WHITE" text="%txt_home_deletePoint" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
                                              <graphic>
                                                 <ImageView disable="true" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../util/icons/minus.png" />
+                                                      <Image url="@../../util/icons/minus.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
@@ -277,14 +274,11 @@
                                     <JFXSlider fx:id="slAddPoints" max="50.0" showTickLabels="true" showTickMarks="true" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <JFXButton fx:id="btNextPlayer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" disable="true" ripplerFill="WHITE" text="Next Player" HBox.hgrow="ALWAYS">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
+                              <JFXButton fx:id="btNextPlayer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" disable="true" prefWidth="250.0" ripplerFill="WHITE" text="%txt_home_nextPlayer" HBox.hgrow="ALWAYS">
                                  <graphic>
                                     <ImageView disable="true" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../util/icons/right-arrow.png" />
+                                          <Image url="@../../util/icons/right-arrow.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

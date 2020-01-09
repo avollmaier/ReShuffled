@@ -10,11 +10,11 @@
    <children>
       <JFXTabPane fx:id="rootTabPane" side="LEFT">
          <tabs>
-            <Tab text="Home">
+            <Tab text="%txt_main_dashboard">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../util/icons/home.png" />
+                        <Image url="@../../util/icons/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -22,11 +22,11 @@
                   <fx:include source="home.fxml" />
                </content>
             </Tab>
-            <Tab text="Stats">
+            <Tab text="%txt_main_statistics">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../util/icons/statistics.png" />
+                        <Image url="@../../util/icons/statistics.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -34,11 +34,11 @@
                   <fx:include source="stats.fxml" />
                </content>
             </Tab>
-            <Tab text="Help">
+            <Tab text="%txt_main_help">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../util/icons/book.png" />
+                        <Image url="@../../util/icons/book.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -46,11 +46,11 @@
                   <fx:include source="help.fxml" />
                </content>
             </Tab>
-            <Tab text="About">
+            <Tab text="%txt_main_about">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../util/icons/about.png" />
+                        <Image url="@../../util/icons/about.png" />
                      </image>
                   </ImageView>
                </graphic>

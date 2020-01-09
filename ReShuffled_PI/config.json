@@ -6,13 +6,6 @@
   "guiWidth": 1024,
   "gamemodes": [
     {
-      "name": "UNO",
-      "autoDeal": true,
-      "autoDealValue": 2,
-      "cardQuantity": 18,
-      "playerQuantity": 3
-    },
-    {
       "name": "UNO1",
       "autoDeal": false,
       "autoDealValue": null,
@@ -25,13 +18,6 @@
       "autoDealValue": 4,
       "cardQuantity": 19,
       "playerQuantity": 4
-    },
-    {
-      "name": "Schnapsen mit Mösensaft",
-      "autoDeal": true,
-      "autoDealValue": 6,
-      "cardQuantity": 20,
-      "playerQuantity": 3
     }
   ],
   "serial": {
@@ -43,8 +29,8 @@
     "responseByteLength": 32
   },
   "internationalization": {
-    "language": "en",
-    "country": "US",
+    "language": "de",
+    "country": "DE",
     "bundlePath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles",
     "bundlePrefix": "bundle"
   }

@@ -17,7 +17,7 @@ import serial.request.RequestInit;
 public class Main {
 
     public static String CONFIGPATH;
-    public static String VERSION = "0.2";
+    public static String VERSION = "0.3";
 
     private static final Logger LOGP = Logger.getParentLogger();
     private static final Logger LOG = Logger.getLogger(Main.class.getName());

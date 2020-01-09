@@ -19,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import data.game.Game;
 import data.model.PlayerModel;
+import gui.multilanguage.ResourceKeyEnum;
+import gui.multilanguage.ResourceManager;
 import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -96,35 +98,28 @@ public class HomeController implements Initializable {
         return instance;
     }
 
-    private CategoryAxis xAxis = new CategoryAxis();
-    private NumberAxis yAxis = new NumberAxis();
-    private XYChart.Series<String, Number> dataSeries = new XYChart.Series<String, Number>();
+    // *************************************************************************
+
+    //Define diagramm axis & diagramm
+    private final CategoryAxis xAxis = new CategoryAxis();
+    private final NumberAxis yAxis = new NumberAxis();
+    private final XYChart.Series<String, Number> dataSeries = new XYChart.Series<String, Number>();
+    
     private int playerId = 0;
     private int cardQuantity = Game.getInstance().getGamemode().getCardQuantity();
 
-    //LISTENERS
     final ChangeListener<Number> cardListener = (observableValue, oldValue, newValue) -> {
         if (newValue.intValue() == 1) {
-            btDealX.setText("Deal " + newValue.intValue() + " card");
+            btDealX.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_deal) + " " + newValue.intValue());
         }
         else {
-            btDealX.setText("Deal " + newValue.intValue() + " cards");
+            btDealX.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_deal) + " " + newValue.intValue());
         }
     };
 
-    final ChangeListener<Number> cardSliderListener = (observableValue, oldValue, newValue) -> {
-
-    };
-    final ChangeListener<Number> pointSliderListener = (observableValue, oldValue, newValue) -> {
-
-    };
-
-    // *************************************************************************
 
     @Override
-    public void initialize (URL arg0, ResourceBundle arg1
-    ) {
-
+    public void initialize (URL arg0, ResourceBundle bundle) {
         //DEFINE ACTIONS
         slDealQuantity.valueProperty().addListener(cardListener);
         btShutdown.setOnAction(this::handleShutdown);
@@ -139,19 +134,22 @@ public class HomeController implements Initializable {
         btPreviousPlayer.setOnAction(this::handlePreviousPlayer);
         btAddPoint.setOnAction(this::handleAddPoint);
         btRemovePoint.setOnAction(this::handleDeletePoint);
-        //*********************************************************************
-        //INIT ELEMENTS
-        tfVersion.setText("ReShuffled Version " + main.Main.VERSION);
-        tfGamemode.setText("Gamemode: " + Game.getInstance().getGamemode().getName());
-        tfPlayerQuantity.setText("Players: " + Game.getInstance().getGamemode().getPlayerQuantity().toString());
 
+        tfVersion.setText("ReShuffled Version " + main.Main.VERSION);
+        tfGamemode.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_gamemode) + ": " + Game.getInstance().getGamemode().getName());
+        tfPlayerQuantity.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player) + ": " + Game.getInstance().getGamemode().getPlayerQuantity().toString());
+        
+        btDeal1.setText(btDeal1.getText() + " " + 1);
+        btDeal2.setText(btDeal2.getText() + " " + 2);
+        btDeal3.setText(btDeal3.getText() + " " + 3);
+        btDeal4.setText(btDeal4.getText() + " " + 4);
+        
         initSliderSettings(slAddPoints, 1, 20, 1);
         initSliderSettings(slDealQuantity, 0, cardQuantity, 1);
 
-
-        btDealX.setText("Deal 0 cards");
+        btDealX.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_deal) +" 0");
         initBarChart();
-        lbPlayerName.setText(getIdPlayer().getName());
+        lbPlayerName.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player) + " " + getIdPlayer().getName());
 
         //*********************************************************************
     }
@@ -165,7 +163,7 @@ public class HomeController implements Initializable {
             playerId++;
         }
 
-        lbPlayerName.setText("Player: " + getIdPlayer().getName());
+        lbPlayerName.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player) + " " + getIdPlayer().getName());
     }
 
 
@@ -177,7 +175,7 @@ public class HomeController implements Initializable {
             playerId--;
         }
 
-        lbPlayerName.setText("Player: " + getIdPlayer().getName());
+        lbPlayerName.setText(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player) + " " + getIdPlayer().getName());
     }
 
 
@@ -266,10 +264,6 @@ public class HomeController implements Initializable {
         handleCardChanged();
     }
 
-
-    //****************************
-    //HELPER METHODS
-    //****************************
     private void initSliderSettings (JFXSlider slider, int minValue, int maxValue, int presetValue) {
         slider.setMin(minValue);
         slider.setMax(maxValue);
@@ -316,7 +310,7 @@ public class HomeController implements Initializable {
     private void initBarChart () {
 
         dataSeries.getData().clear();
-        yAxis.setLabel("Player Name");
+        yAxis.setLabel(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player));
         bcPlayerInfo.setLegendVisible(false);
         Game.getInstance().getPlayers().forEach((player) -> {
             dataSeries.getData().add(new XYChart.Data<>(player.getName(), player.getPoints()));

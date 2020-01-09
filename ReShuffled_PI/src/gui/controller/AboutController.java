@@ -18,8 +18,10 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 
 /**
  * FXML Controller class
@@ -32,39 +34,32 @@ public class AboutController implements Initializable {
     JFXComboBox cbLanguage;
     @FXML 
     JFXButton btSaveLanguage;
-     final ChangeListener<String> languageChangeListener = (observableValue, oldValue, newValue) -> {
-         handleLanguageChange();
-    };
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btSaveLanguage.setOnAction(this::handleLanguageSave);
         
-        fillLanguageComboBox();
-        
-        cbLanguage.valueProperty().addListener(languageChangeListener);
+        ObservableList<Locale> languageOptions = FXCollections.observableArrayList(ResourceManager.getInstance().getAvailableLocales());
+        cbLanguage.setItems(languageOptions);
+        cbLanguage.setCellFactory(list -> new LanguageCell());
+        cbLanguage.setButtonCell(new LanguageCell());
     }    
     
-    
-     private void fillLanguageComboBox() {
-         ObservableList<String> prepearedTexts = FXCollections.observableArrayList();
-        List<Locale> languageOptions = ResourceManager.getInstance().getAvailableLocales();
-        
-        languageOptions.forEach(locale ->{
-        prepearedTexts.add(buildItemText(locale));
-        });
-        
-        cbLanguage.setItems(prepearedTexts);
-        
-        
-     }
-     private void handleLanguageChange(){
-     
-     
-     }
-     private void handleLanguageSave(){
-     ResourceManager.getInstance().activateLocale()
-     
+    private class LanguageCell extends ListCell<Locale>{
+
+        @Override
+        protected void updateItem (Locale item, boolean empty) {
+            super.updateItem(item, empty); 
+            
+            if(item!=null){
+                setText(buildItemText(item));
+         }
+        }
+    }
+
+     private void handleLanguageSave(final ActionEvent event){
+     ResourceManager.getInstance().activateLocale((Locale) cbLanguage.getSelectionModel().getSelectedItem());
+     MainController.getInstance().loadLanguageChangeDialog();
      }
      
      private String buildItemText(final Object receivedData){
@@ -79,11 +74,8 @@ public class AboutController implements Initializable {
              final String language= menueLocal.getDisplayLanguage(currentLocale);
                 final String country= menueLocal.getDisplayCountry(currentLocale);  
              
-                itemText = language + " // " + country;
+                itemText = language + " / " + country;
          }
         return itemText;
-     
-     
-     }
-        
+     }    
 }

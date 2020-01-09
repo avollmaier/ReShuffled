@@ -13,7 +13,6 @@ import com.jfoenix.controls.JFXTextField;
 import data.model.GamemodeModel;
 import data.config.Config;
 import data.model.PlayerModel;
-import util.AlertUtil;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,12 +34,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logging.Logger;
 import data.game.Game;
+import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
-import java.awt.event.ActionListener;
-import java.util.Locale;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import util.AlertUtil;
 
 /**
  *
@@ -80,7 +78,7 @@ public class StartupController implements Initializable {
 
     GamemodeModel selectedGamemode = null;
     
-    //LISTENERS
+    //Listeners
     private static final Logger LOG = Logger.getLogger(StartupController.class.getName());     
     final ChangeListener<String> gamemodeListener = (observableValue, oldValue, newValue) -> {
         handleGamemodeChange();
@@ -94,16 +92,9 @@ public class StartupController implements Initializable {
         notifyList(newValue);
     };
     
-  
-    
-
-    
- 
-    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
-        //DEFINE ACTIONS
+       
         tfPlayerName.textProperty().addListener(nameChangeListener);
         playerNameList.getSelectionModel().selectedItemProperty().addListener(seleltionListener);
         cbGamemodes.valueProperty().addListener(gamemodeListener);
@@ -111,14 +102,10 @@ public class StartupController implements Initializable {
         btDelete.setOnAction(this::handleDelete);
         btSaveChanges.setOnAction(this::handleSaveChanges);
         btStartGame.setOnAction(this::handleStartGame);
-        //********************************************************************* 
-        //INIT ELEMENTS
+       
         Game.clearInstance();
         updateGameComboBox();
         initControlComboBox();
-        
-       
-        //*********************************************************************
         
     }
     private void notifyList(String newValue){
@@ -128,7 +115,6 @@ public class StartupController implements Initializable {
         {
           playerNameList.getItems().set(index, newValue);
         }
-        
     }
   
      private void handleAutoDealChange(final ActionEvent event) {
@@ -140,8 +126,8 @@ public class StartupController implements Initializable {
     }
 
     private void handleDelete(final ActionEvent event) {
-        JFXButton btCancel = new JFXButton("Cancel");
-        JFXButton btDelete = new JFXButton("Delete!");
+        JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
+        JFXButton btDelete = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_delete));
 
         btDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
             LOG.info("Deleted gamemode " + selectedGamemode.getName());
@@ -151,7 +137,7 @@ public class StartupController implements Initializable {
             updateGameComboBox();
             selectedGamemode = null;
         });
-        AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btCancel, btDelete), "General Info Message", "Do you really want to delete the selected gamemode " + selectedGamemode.getName());
+        AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btCancel, btDelete), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_deleteGamemode) + " " + selectedGamemode.getName());
 
     }
 
@@ -163,11 +149,15 @@ public class StartupController implements Initializable {
             Integer playerQuantity = (cbPlayerQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbPlayerQuantity.getValue().toString());
             Integer cardQuantity = (cbCardQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbCardQuantity.getValue().toString());
 
+            JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
+            
             if (gamemodeName.isEmpty() || playerQuantity == null || cardQuantity == null) {
-               throw new Exception("Gamemode is empty or required valued are null");
+               
+            AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_error), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_nullError));
             }
             if (cardQuantity<playerQuantity)
-                throw new Exception("Card quantity cant be bigger than player quantity");
+                
+            AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_error), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_cardQuantityError));
 
             boolean existing = false;
             GamemodeModel existingGamemode = null;
@@ -204,14 +194,8 @@ public class StartupController implements Initializable {
             }
 
         } catch (Exception ex) {
-            AlertUtil.showErrorMessage("Error", "Error " + ex);
-            ex.printStackTrace();
+            
         }
-    }
-
-    @FXML
-    private void handleNameChange(final ActionEvent event) {
-
     }
 
     @FXML
@@ -229,14 +213,11 @@ public class StartupController implements Initializable {
             closeStage();
             loadMainStage();
         } else {
-            AlertUtil.showSimpleAlert("INFO", "Make sure that a gamemode is selected");
+            JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
+            AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_gamemodeCheck));
         }
 
     }
-    
-    //****************************
-    //HELPER METHODS
-    //****************************
     
     private void handleGamemodeChange() {
         if (!cbGamemodes.getSelectionModel().isEmpty()) {
@@ -277,7 +258,7 @@ public class StartupController implements Initializable {
         final ObservableList<String> playerNames = FXCollections.observableArrayList();
 
         for (int i = 1; i <= selectedGamemode.getPlayerQuantity(); i++) {
-            playerNames.add("Player " + i);
+            playerNames.add(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player)+" " + i);
         }
 
         playerNameList.setItems(playerNames);

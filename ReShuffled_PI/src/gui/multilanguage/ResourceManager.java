@@ -6,6 +6,7 @@
 package gui.multilanguage;
 
 import data.config.Config;
+import gui.controller.MainController;
 import util.ResourceBundleUtils;
 import gui.guiMain.GuiMain;
 import java.io.BufferedInputStream;
@@ -111,6 +112,9 @@ public class ResourceManager {
             LOG.info("Activated language bundle for locale: " + locale);
             currentRecourceBundle = availableRecourceBundles.get(locale);
             currentLocale = locale;
+            Config.getInstance().getInternationalization().setLanguage(locale.getLanguage());
+            Config.getInstance().getInternationalization().setCountry(locale.getCountry());
+            Config.getInstance().save();
             return true;
 
         }

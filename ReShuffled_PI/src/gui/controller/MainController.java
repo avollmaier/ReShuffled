@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTabPane;
 import data.game.Game;
 import data.statistics.Statistics;
+import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
 import util.AlertUtil;
 import util.GuiUtil;
@@ -24,6 +25,7 @@ import javafx.stage.Stage;
 import serial.Communication;
 import serial.request.RequestShuffle;
 import serial.request.RequestShutdown;
+import util.ResourceBundleUtils;
 
 
 /**
@@ -54,19 +56,15 @@ public class MainController implements Initializable {
     // *************************************************************************
 
     @Override
-    public void initialize (URL arg0, ResourceBundle arg1) {
+    public void initialize (URL arg0, ResourceBundle bundle) {
     }
     private Stage getStage () {
         return (Stage) rootStackPane.getScene().getWindow();
     }
-
-    //*************************************************
-    //DIALOGS
-    //*************************************************
-
+    
     public void loadShuffleDialog () {
-        JFXButton btCancel = new JFXButton("Cancel");
-        JFXButton btOk = new JFXButton("Okay. Let's shuffle");
+        JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
+        JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shuffle));
 
         btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
                              HomeController.getInstance().contentInvisibility(false);
@@ -75,13 +73,12 @@ public class MainController implements Initializable {
                              HomeController.getInstance().handleCardChanged();
                          });
 
-        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), "General Info Message", "Make sure that game cards were inserted!");
+        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cardCheck));
     }
-
-
+    
     public void loadShutdownDialog () {
-        JFXButton btCancel = new JFXButton("Cancel");
-        JFXButton btOk = new JFXButton("Shutdown");
+        JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
+        JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdown));
 
         btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
                              HomeController.getInstance().contentInvisibility(true);
@@ -93,13 +90,14 @@ public class MainController implements Initializable {
                              RequestShutdown shutdown = new RequestShutdown();
                              Communication.getInstance().sendRequestExecutor(shutdown);
                          });
-        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), "Attention", "Do you really want to shutdown?");
+        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdownCheck));
     }
+    
 
 
     public void loadGameFinishedDialog () {
-        JFXButton btCancel = new JFXButton("Cancel");
-        JFXButton btFinished = new JFXButton("Finished");
+        JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
+        JFXButton btFinished = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_finished));
 
         btFinished.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
 
@@ -112,7 +110,21 @@ public class MainController implements Initializable {
                                    getStage().close();
 
                                });
-        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btFinished), "General Info Message", "Do you really want to finish the game?");
+        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btFinished), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_finishGame));
     }
 
+    
+    public void loadLanguageChangeDialog () {
+        JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
+
+        btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
+                             HomeController.getInstance().contentInvisibility(false);
+                             RequestShuffle shuffle = new RequestShuffle();
+                             Communication.getInstance().sendRequestExecutor(shuffle);
+                             HomeController.getInstance().handleCardChanged();
+                         });
+
+        AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_languageChanged));
+    }
+    
 }
