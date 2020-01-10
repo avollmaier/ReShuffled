@@ -1,4 +1,4 @@
-<a href="https://github.com/volalm15/ReShuffled/RSainf" alt="Activity">
+<a href="https://github.com/volalm15/ReShuffled/tree/RSainf" alt="Activity">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 
 ## Informatik-Konzept
