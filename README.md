@@ -1,4 +1,5 @@
-	/github/repo-size/:user/:repo
+<a href="https://github.com/badges/shields/pulse" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 
 ## Informatik-Konzept
 Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll
