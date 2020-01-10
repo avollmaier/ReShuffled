@@ -55,6 +55,7 @@ Zusätzlich bietet er vier Timer und 53 I/O Pins. Er kann mit einer Gleichspannu
     \end{tabular}
     \caption{Vergleich der Mikrocontrollerattribute}
 \end{table}
+
 Unsere Entscheidung fiel auf den ATmega324P, da dieser die nötigen Parameter, wie eine Versorgungsmöglichkeit mit 3,3V und einen ausreichend großen, programmierbaren Speicher, mit sich bringt.
 
 \subsection{Schrittmotor-Ansteuerung}
@@ -83,8 +84,8 @@ Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren mitunter de
         \draw (7,5)node[pnp, bodydiode,xscale = -1]{};
         \draw (0.5,5) to [R, l=$R_1$, o-](2,5) to (2.5,5);
         \draw (9.5,5) to [R, l_=$R_2$, o-](8,5) to (7.5,5);
-        \draw (0.5,2) to [R, l=$R_1$](2,2) to (2.5,2);
-        \draw (9.5,2) to [R, l_=$R_2$](8,2) to (7.5,2);
+        \draw (0.5,2) to [R, l=$R_3$](2,2) to (2.5,2);
+        \draw (9.5,2) to [R, l_=$R_4$](8,2) to (7.5,2);
         \draw (9.5,2)node[american and port, xscale = -1](){};
         \draw (0.5,2)node[american and port](){};
         \draw (-0.9,1.725) to [short, o-](-0.9,1.725);
@@ -101,26 +102,99 @@ Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren mitunter de
         \draw (3,1.5) to (3,0);
         \draw (7,1.5) to (7,0);
         \draw (3,0) to (5,0) node[rground]{};
-
     \end{circuitikz}
     \caption{Aufbau einer H-Brücke}
 \end{figure}
 
 Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
-Ein konkreter Aufbau einer H-Brücke kann der Abbildung X entnommen werden. Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
-Wie in Abbildung X zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
-Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode. Diese haben folgende Aufgabe: \\\\
-Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie. Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
+Ein konkreter Aufbau einer H-Brücke kann der Abbildung 2.1 entnommen werden.
+Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
+Wie in Abbildung 2.1 zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
+Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode.
+Diese haben folgende Aufgabe:\\\\
+Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie.
+Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
 Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, um dem Strom einen Pfad zu bieten, der die Energie freisetzt. \\\\
-In der obigen Abbildung Y wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt.
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 0.9]
+
+        % Mikrocontroller
+        \draw (-8,0) to (-8,12);
+
+        %1. Spuelanschluss
+        \draw (3,0) to [short, -*](5,0) to (7,0);
+        \draw (2,2) to (2.5,2);
+        \draw (3,2)node[npn, bodydiode]{};
+        \draw (3,5)node[pnp, bodydiode]{};
+        \draw (7,2.5) to (7,4.5);
+        \draw (3,2.5) to (3,4.5);
+        \draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
+        \draw (5,6)node[vcc]{Vcc};
+        \draw (3,3.5) to [short,*-o](4,3.5);
+        \draw (7,3.5) to [short,*-o](6,3.5);
+        \draw (7,2)node[npn, bodydiode, xscale = -1]{};
+        \draw (7,5)node[pnp, bodydiode,xscale = -1]{};
+        \draw (0.5,5) to [R, l=$R_1$, ](2,5) to (2.5,5);
+        \draw (9.5,5) to [R, l_=$R_2$, ](8,5) to (7.5,5);
+        \draw (0.5,2) to [R, l=$R_3$](2,2) to (2.5,2);
+        \draw (9.5,2) to [R, l_=$R_4$](8,2) to (7.5,2);
+        \draw (9.5,2)node[american and port, xscale = -1](){};
+        \draw (0.5,2)node[american and port](){};
+        \draw (-0.9,1.685) to (-2,1.685);
+        \draw (-0.9,2.315) to (-2,2.315) to (-2,5) to (0.5,5);
+        \draw (10.9,1.685) to (12,1.685);
+        \draw (10.9,2.315) to (12,2.315) to (12,5) to (9.5,5);
+        \draw (5,4.3)node[anchor=north]{Steppermotor};
+        \draw (3,1.5) to (3,0);
+        \draw (7,1.5) to (7,0);
+        \draw (3,0) to (5,0) node[rground]{};
+
+        % 2. Spulenanschluss
+        \draw (3,8) to [short, -*](5,8) to (7,8);
+        \draw (2,10) to (2.5,10);
+        \draw (3,10)node[npn, bodydiode]{};
+        \draw (3,13)node[pnp, bodydiode]{};
+        \draw (7,10.5) to (7,12.5);
+        \draw (3,10.5) to (3,12.5);
+        \draw (3,13.5) to (3,14) to [short, -*](5,14) to (7,14) to (7, 13.5);
+        \draw (5,14)node[vcc]{Vcc};
+        \draw (3,11.5) to [short,*-o](4,11.5);
+        \draw (7,11.5) to [short,*-o](6,11.5);
+        \draw (7,10)node[npn, bodydiode, xscale = -1]{};
+        \draw (7,13)node[pnp, bodydiode,xscale = -1]{};
+        \draw (0.5,13) to [R, l=$R_5$, ](2,13) to (2.5,13);
+        \draw (9.5,13) to [R, l_=$R_6$, ](8,13) to (7.5,13);
+        \draw (0.5,10) to [R, l=$R_7$](2,10) to (2.5,10);
+        \draw (9.5,10) to [R, l_=$R_8$](8,10) to (7.5,10);
+        \draw (9.5,10)node[american and port, xscale = -1](){};
+        \draw (0.5,10)node[american and port](){};
+        \draw (-0.9,9.685) to (-2,9.685);
+        \draw (-0.9,10.315) to (-2,10.315) to (-2,13) to (0.5,13);
+        \draw (10.9,9.685) to (12,9.685);
+        \draw (10.9,10.315) to (12,10.315) to (12,13) to (9.5,13);
+        \draw (5,12.3)node[anchor=north]{Steppermotor};
+
+        \draw (3,9.5) to (3,8);
+        \draw (7,9.5) to (7,8);
+        \draw (3,8) to (5,8) node[rground]{};
+    \end{circuitikz}
+    \caption{Anschluss einer H-Brücke an einen Mikrocontroller}
+\end{figure}
+
+In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt.
 Da sich die Ansteuerung der beiden H-Brücken gleich gestaltet, wird zur vereinfachten Funktionserklärung nur die untere behandelt. \\
 Mithilfe des Timer 0 wird am Ausgang Y des Mikrocontrollers ein PWM-Signal erzeugt, mithilfe dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
 Dadurch befindet sich am Eingang des UND-Gatters mit der Bezeichnung X und am UND-Gatter mit der Bezeichnung Y ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung). \\\\
 Je nach gewollter Drehrichtung, muss der Motor über die Transistoren anders angesteuert werden: \\
-Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang X ein HIGH-Signal erzeugt werden. Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
+Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang X ein HIGH-Signal erzeugt werden.
+Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH-Signal am Eingang Y des UND-Gatters.
 Wenn nun ein HIGH-Pegel ausgehend vom Ausgang Y kommt, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt. \\\\
-Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang X ein HIGH-Signal gesetzt. Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
+Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang X ein HIGH-Signal gesetzt.
+Am Ausgang Y muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang Y, befindet sich ebenfalls ein HIGH-Signal am Eingang Y des UND-Gatters.
 Wenn nun ein HIGH-Pegel vom Ausgang Y bereit gestellt wird, liefert das UND-Gatter Y ein HIGH-Signal weiter an den NPN-Transistor, welcher somit leitend wird und den Stromkreis schließt.
 
@@ -157,14 +231,17 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Es besteht kein Bedarf daran Phasenfolgetabellen, Hochfrequenz-Steuerleitungen oder komplexe Schnittstellen zu programmieren.
-Das A4988 Treiber-Modul von Allegro bietet viele Möglichkeiten. Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer.
+Das A4988 Treiber-Modul von Allegro bietet viele Möglichkeiten.
+Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer.
 Dadurch können Spannungen über der Nennspannung des Schrittmotors verwendet werden, um höhere Schrittgeschwindigkeiten zu erreichen.
 Zusätzlich wird die Gewährleistung eines Überstromschutz und Übertemperaturschutzes sowie eine Überspannungsabschaltung versichert.
-Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben. Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
+Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben.
+Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
 
 \subsubsection{DRV8825}
 Diesem Treiber-Board von Texas Instruments ist es Möglich mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
-Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern. Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welche mit zugeführter Kühlung auch getrieben werden können.
+Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern.
+Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welche mit zugeführter Kühlung auch getrieben werden können.
 Der DRV8825 arbeitet mit einem Logikpegel von 3,3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
 Das Modul besitzt ebenfalls die Eigenschaften eines Überstrom- und Übertemperaturschutzes sowie sechs Mikroschrittauflösungen, welche bis zu einer Zweiunddreißigstel-Auflösung reichen.
 Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebauten Unterspannungsschutzes sind zusätzlich gegeben.
@@ -207,7 +284,8 @@ Ein Begründung, warum die Wahl auf das DRV8825 Modul und nicht das A4988 Modul 
 
 \subsection{Detektion der Kartenposition}
 \subsubsection{Kapazitive Sensoren}
-Kapazitive Sensoren funktionieren wie in offener Kondensator. Zwischen der Messelektrode und der GND - Elektrode wird ein elektrisches Feld aufgebaut.
+Kapazitive Sensoren funktionieren wie in offener Kondensator.
+Zwischen der Messelektrode und der GND - Elektrode wird ein elektrisches Feld aufgebaut.
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\\\
 \textbf{Sensoren mit GND-Elektrode} \\
@@ -215,7 +293,8 @@ Diese Sensoren können bündig in ein Material eingebaut werden, da sich ihr Mes
 Diese Art eignet sich gut zur Detektion von nicht leitenden Materialien. \\\\
 \textbf{Sensoren ohne GND-Elektrode} \\
 Ein bündiges Einbauen dieser Art ist nicht vorteilhaft. Eine integrierte GND-Elektrode ist nicht vorhanden. Diese wird vom zu detektierenden Objekt dargestellt.
-Diese Art weist eine geringe Empfindlichkeit gegen Verschmutzung auf. Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
+Diese Art weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
+Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 
 \subsubsection{Ultraschall-Sensoren}
 Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
@@ -225,7 +304,8 @@ So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Met
 Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen. Ein fast wartungsfreier Betrieb ist möglich.
 
 \subsubsection{Optische Sensoren}
-Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus. Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
+Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus.
+Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
 
 \begin{itemize}
     \item Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden. Lichtsender und Empfänger sind baulich getrennt.
@@ -234,7 +314,8 @@ Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus
 \end{itemize}
 
 Optische Sensoren besitzen eine fast wartungsfreie, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
-Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden. Es sind große Erkennungsabstände möglich.
+Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden.
+Es sind große Erkennungsabstände möglich.
 
 \subsubsection{Sensoren-Auswahl}
 
@@ -305,7 +386,7 @@ Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Fest
 Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
 Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet.
 
-\newpage
+
 \subsubsection{Auswahl der Spannungsversorgung}
 \begin{table}[htbp]
     \centering
@@ -329,7 +410,7 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
 Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Festspannungsregler, da diese für einen geringen Preis erhältlich ist
 und einen sehr geringen Bedarf an Platz und Bauteilen mit sich bringt.
 
-
+\newpage
 
 \subsection{Blockschaltbild der gesamten Elektronik}
 
@@ -615,7 +696,8 @@ Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel X. \\\\
 Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\\\
 Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\\\
 Um den Treiber in voller Funktion verwendet zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\\\
-Der STEP Anschluss des DRV8825 liest ein Rechtecksignal ein. Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\\\
+Der STEP Anschluss des DRV8825 liest ein Rechtecksignal ein.
+Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\\\
 Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
 Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
@@ -654,7 +736,8 @@ Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung ada
     V_{ref} = I_{max} \cdot 5 \cdot R_{sense}
 \end{equation*}
 
-Der R\textsubscript{sense} kann dem Datenblatt entnommen werden. Beim DRV8825 beträgt der Wert 0.1 Ohm.
+Der R\textsubscript{sense} kann dem Datenblatt entnommen werden.
+Beim DRV8825 beträgt der Wert 0.1 Ohm.
 
 \begin{align*}
     V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
@@ -767,7 +850,46 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 
 \subsection{Beschaltung des Mini-USB}
 
-\subsection{Spannungsüberwachung}
+\subsection{Spannungspegelüberwachung}
+
+Grundsätzlich ist zu sagen, dass an den Spannungspegeln von 12V, 5V und 3.3V sowie an anderen signifikanten Stellen der Platine Messpunkte zur erleichterten Fehlersuche und Wartung realisiert wurden.
+
+Zusätzlich wurden, um jegliche Spannungspegel visuell darzustellen, bei manchen Spannungspegeln eine grüne Leuchtdioden als visuelle, schnelle Funktionsüberwachung integriert.
+
+Am 12V Spannungspegel realiserten wir eine Zenerdiode mit einer Zenerspannung von 8.2V.
+Diese ist in Serie mit einem Widerstand und einer Diode geschaltet.
+So vermag es der LED erst ab einer Spannung von cirka 10.4V zu leuchten.
+
+Ein Überwachen des 5V Pegels wurde folgend realisiert:
+Zwei Dioden würden seriell mit einem Widerstand und einer Leuchtdiode geschalten.
+Die benötigte Spannung, um ein Leuchten der LED zu geährleisten, steigt somit auf etwa 4V.
+
+An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie geschaltet, welche ab einer Spannung von 2.2V leuchtet.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1]
+        \draw (1,9)node[vcc]{+3.3V};
+        \draw (1,5) to [R, l_=$R_1$](1,3){};
+        \draw (1,3) to [led, l_=$D1$](1,1);
+        \draw (1,3) to (1,0) node[rground]{};
+        \draw (3,9)node[vcc]{+5V};
+        \draw (3,9) to [D, l_=$D_2$](3,7){};
+        \draw (3,7) to [D, l_=$D_3$](3,5){};
+        \draw (3,5) to [R, l_=$R_2$](3,3){};
+        \draw (3,3) to [led, l_=$D4$](3,1);
+        \draw (3,3) to (3,0) node[rground]{};
+        \draw (5,9)node[vcc]{+12V};
+        \draw (5,5) to [zDo, l=$D_5$](5,7);
+        \draw (5,5) to [R, l_=$R_3$](5,3){};
+        \draw (5,3) to [led, l_=$D6$](5,1);
+        \draw (5,3) to (5,0) node[rground]{};
+        \draw (3,5) to (3,9);
+        \draw (1,5) to (1,9);
+        \draw (5,5) to (5,9);
+    \end{circuitikz}
+    \caption{Realisierung der Leuchtdioden}
+\end{figure}
 
 \subsection{Netzteil}
 
