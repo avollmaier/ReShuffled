@@ -1,4 +1,4 @@
-<a href="https://github.com/badges/shields/pulse" alt="Activity">
+<a href="https://github.com/volalm15/ReShuffled" alt="Activity">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 
 ## Informatik-Konzept
