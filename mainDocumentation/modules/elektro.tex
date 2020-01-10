@@ -13,6 +13,9 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
 
 \subsection{Zeitplan}
 
+\newpage
+%/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
+
 \section{Variantenvergleiche und Konzeptionierungen}
 \subsection{Mikrocontroller-Auswahl}
 Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
@@ -58,11 +61,51 @@ Unsere Entscheidung fiel auf den ATmega324P, da dieser die nötigen Parameter, w
 Um jenen, im Automaten verbauten, Schrittmotor ansteuern zu können, ist eine Baugruppe von Nöten. Für das Ansteuern von Schrittmotoren gibt es verschiedenste Möglichkeiten.
 In den folgenden Unterkapiteln werden einzelne genannt, ein Variantenvergleich durchgeführt und sich für eine Variante entschieden.
 
-\newpage
 \subsubsection{DIY-H-Brücke}
+
 Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren mitunter der Verwendung eines Mikrocontrollers anzusteuern. Der von uns ausgewählte Schrittmotor
 12HS19-2004S1 ist bipolarer Art und weißt 2 Spulen auf, weshalb er sich von zwei H-Brücke steuern lässt. Für das Ansteuern einer H-Brücke werden drei Steuersignale benötigt: zwei digitale Signale sowie ein PWM-Signal.
-\\\\ Abbildung - TODO \\\\
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1]
+        \draw (3,0) to [short, -*](5,0) to (7,0);
+        \draw (2,2) to (2.5,2);
+        \draw (3,2)node[npn, bodydiode]{};
+        \draw (3,5)node[pnp, bodydiode]{};
+        \draw (7,2.5) to (7,4.5);
+        \draw (3,2.5) to (3,4.5);
+        \draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
+        \draw (5,6)node[vcc]{Vcc};
+        \draw (3,3.5) to [short,*-o](4,3.5);
+        \draw (7,3.5) to [short,*-o](6,3.5);
+        \draw (7,2)node[npn, bodydiode, xscale = -1]{};
+        \draw (7,5)node[pnp, bodydiode,xscale = -1]{};
+        \draw (0.5,5) to [R, l=$R_1$, o-](2,5) to (2.5,5);
+        \draw (9.5,5) to [R, l_=$R_2$, o-](8,5) to (7.5,5);
+        \draw (0.5,2) to [R, l=$R_1$](2,2) to (2.5,2);
+        \draw (9.5,2) to [R, l_=$R_2$](8,2) to (7.5,2);
+        \draw (9.5,2)node[american and port, xscale = -1](){};
+        \draw (0.5,2)node[american and port](){};
+        \draw (-0.9,1.725) to [short, o-](-0.9,1.725);
+        \draw (-0.9,2.275) to [short, o-](-0.9,2.275);
+        \draw (10.9,1.725) to [short, o-](10.9,1.725);
+        \draw (10.9,2.275) to [short, o-](10.9,2.275);
+        \draw (5,4.3)node[anchor=north]{Steppermotor};
+        \draw (-1,1.7)node[anchor=east]{PWM-Signal};
+        \draw (-1,2.3)node[anchor=east]{Steuersignal};
+        \draw (13.3,2.3)node[anchor=east]{Steuersignal};
+        \draw (13.5,1.7)node[anchor=east]{PWM-Signal};
+        \draw (0.5,5)node[anchor=east]{Steuersignal};
+        \draw (12,5)node[anchor=east]{Steuersignal};
+        \draw (3,1.5) to (3,0);
+        \draw (7,1.5) to (7,0);
+        \draw (3,0) to (5,0) node[rground]{};
+
+    \end{circuitikz}
+    \caption{Aufbau einer H-Brücke}
+\end{figure}
+
 Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
 Ein konkreter Aufbau einer H-Brücke kann der Abbildung X entnommen werden. Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
 Wie in Abbildung X zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
