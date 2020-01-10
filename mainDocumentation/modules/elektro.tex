@@ -248,17 +248,19 @@ Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu ein
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V AC in Verbindung gebracht werden müsste,
 um die Versorgung der Peripherie zu gewährleisten.
 Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden, die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
-Es müsste lediglich ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
+Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
 
-\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler mit zwei verschiedenen Ausgangsspannungspegeln}
-Bei dieser Art der Realisierung wird mit einem Schaltnetzteil mit 230V AC Spannungseingang und 12V DC Spannungsausgang gearbeitet, welches die Versorgung der Sensoren, des Motors und der Hubmagnete sowie die eines DC/DC Wandlers übernimmt.
-Dieser hat die Aufgabe über zwei Ausgänge 12V zu 5V, sowie 12V zu 3.3V umzuwandeln, um die Versorgung des Raspberry Pi‘s und des Mikrocontrollers zu gewährleisten.
-Durch jene 3.3V Versorgung des µC arbeitet dieser auch mit 3.3V Logikpegel. Somit kann auf einen Pegelwandler verzichtet werden.
+\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und Schaltregler zu 5V}
+Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal tranferiert.
+Jene 12V werden von jeglichen Aktoren und Sensoren genutzt.
+Außerdem wird mithilfe der 12V ein Schaltregler mit Spannung versorgt, welcher die 5V Spannungsversorgung des Raspberry Pi bereitstellt.
+Über die GPIO Pins des Raspberry Pi wird folgend der Mikrocontroller mit 3.3V versorgt.
 
-\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und DC/DC Wandler zu 5V}
+\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und Festspannungsregler zu 5V}
 Bei dieser Alternative wird ein Schaltnetzteil mit 230V AC versorgt, welches ein 12V DC Signal am Ausgang bereitstellt.
-Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen DC/DC Wandler, welcher 12V zu 5V umwandelt. Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
-Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet. Ein Pegelwandler ist so nicht von Nöten.
+Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Festspannungsregler, welcher 12V zu 5V umwandelt.
+Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
+Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet.
 
 \newpage
 \subsubsection{Auswahl der Spannungsversorgung}
@@ -271,18 +273,20 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-        & \textbf{Variante 1} & \textbf{Variante 2} & \textbf{Variante 3} \\ \hline
-        Preis & hoch & mittel & gering    \\ \hline
+        & \textbf{Doppel-Schaltnetzteil} & \textbf{SN und Schaltregler} & \textbf{SN und Festspannungsregler} \\ \hline
+        Preis & hoch & mittel & sehr gering    \\ \hline
         \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
                                  Platzbedarf\\ und Gewicht
-        \end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{mittel} & \multicolumn{1}{l|}{mittel} \\ \hline
-        Bauteilbedarf & mittel & hoch & gering        \\ \hline
+        \end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{gering} & \multicolumn{1}{l|}{gering} \\ \hline
+        Bauteilbedarf & gering & mittel & sehr gering        \\ \hline
     \end{tabular}
     \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
 \end{table}
 
-Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit einem monotonen DC / DC Wandler – Ausgang, da diese für einen geringen Preis erhältlich ist und einen kleinen Bedarf an Platz und Bauteilen mit sich bringt.
-\newpage
+Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Festspannungsregler, da diese für einen geringen Preis erhältlich ist
+und einen sehr geringen Bedarf an Platz und Bauteilen mit sich bringt.
+
+
 
 \subsection{Blockschaltbild der gesamten Elektronik}
 
@@ -324,8 +328,13 @@ erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, welches b
     \caption{Variante mithilfe einer Diode}
 \end{figure}
 
-Diese Realisierung bringt die Verwundung einer Sicherung und einer Diode mit sich.
-Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
+\subsubsection{Verpolungsschutz mit einer Sicherung und einer Diode}
+
+Diese Realisierung bringt die Verwendung einer Sicherung und einer Diode mit sich.
+
+Bei verpolter anliegender Eingangsspannung brennt die Sicherung, bei ausreichendem,
+von der Spannungsversorgung zur Verfügung gestelltem Strom, durch.
+Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bis die Sicherung auslöst.
 
 \begin{figure}[ht]
     \centering
@@ -344,14 +353,30 @@ Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
     \caption{Zerstörerische Variante mithilfe einer Sicherung und einer Diode}
 \end{figure}
 
+\subsubsection{Verpolungsschutz mithilfe eines P-Kanal MOSFET}
+
+Der P-Kanal MOSFET leitet, wenn das Gate um U\textsubscript{GSth} negativer ist als der Spannungspegel anliegend am Source.
+Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass
+am Sourceeingang die Eingangsspannung ankommt.
+Weil die am Source anliegende Spannung weitaus positiver als
+U\textsubscript{GSth} ist, leitet der MOSFET. Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährilichen Wert.
+Die Tatsache, dass der MOSFET quasi verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant,
+da es sich lediglich um einige Millivolt Unterschied handelt.
+Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden Zustand.
+Bei Spannungen, die kleiner als UIn unserem Fall handelt es sich lediglich um eine anliegende Spanung von 12V,
+weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betrieb möglich ist.
+
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.5cm,D](3.4,4.3) to [short,-*](3.4,4){};
+        \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.4,4.3) to [short,-*](3.4,4){};
         \draw (3,4)node[pfet, rotate = 90 ]{};
         \draw (3.55,4.3)node[anchor=south]{Q1};
         \draw (3,0) to [R, l=$R1$, *-](3,3.3){};
+        \draw (3,2.5) to [short, *-](4.2,2.5){};
+        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=0.8cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
+        \draw (3.225,4) to [short, -*](3.225,4);
         \draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
         \draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -359,14 +384,78 @@ Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
         \draw (0,3.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (6,3.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
-
     \caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
 \end{figure}
 
-\subsubsection{Netzteil}
+Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Betriebs entschieden wir uns für den Gebrauch der 3.Variante.
 
 \subsection{Der Soft-Latching-Circuit}
-\subsubsection{Varianten des Ein-/Ausschaltens}
+\subsubsection{Variante, welche im Laufe der Diplomarbeit aufkam}
+
+\subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
+
+
+12V, welche vom Netzteil zur Verfügung gestellt werden, werden durch eine Betätigung von T\textsubscript{1} durchgeschaltet.
+Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{1} und aktiviert somit den Bipolartransistor Q\textsubscript{1}.
+Dieser Transistor schaltet somit die am Kollektor anliegende Leitung auf Masse.
+Das dadurch auf Ground gezogene Gate lässt den P-Kanal MOSFET durchschalten.
+Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
+Das dadurch ebenfalls versorgte Gate von Q\textsubscript{4} zieht die davon am Drain liegende Leitung auf Masse.
+Die Spannungsversorgung von 12V wird somit auch nach dem Betätigen von T\textsubscript{1} bereitgestellt.
+Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „high“ von 3.3V, ausgehend von Pin XY des Mikrokontrollers.
+Das dadurch versorgte Gate von Q\textsubscript{5} lässt diesen auf Masse durchschalten und zieht somit die 12V Leitung auf Masse.
+Ein genaue Dimensionierung von Cx und Rx sorgen für ein längeres „High“ der Leitung, sodass ein zuverlässiges Abschalten bereitgestellt werden kann.
+Der dadurch deaktivierte Q\textsubscript{4} löst die Selbsthaltung und die Schaltung befindet sich wieder in ihrem Grundzustand.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+
+        \draw (1.7,7) to [R, l=$R1$, *-*](1.7,5.5) to (5.2,5.5){};
+        \draw (3.5,7) to [R, l=$R2$, *-](3.5,5.5) to (3.5,4.8) to (3.2,4.8);
+        \draw (3.2,4.2) to (3.5,4.2) to [short, -*](3.5,3);
+        \draw (3.2,4.5)node[pushbuttonshape, rotate = 90]{};
+        \draw (3,4.5) to (3,4.5)node[anchor=east]{S1};
+        \draw (6,7) to (6,5.5);
+        \draw (6,5.5)node[pfet, bodydiode]{};
+        \draw (6,4) to [short, *-](7,4) to (7,7) to (10,7);
+        \draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[ground]{};
+        \draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[ground]{};
+        \draw (6,4.9) to (6,3) to [R, l_=$R3$](4,3) to (2,3);
+        \draw (1.5,3)node[nfet, rotate=180]{};
+        \draw (1.5,2.6) to [short, *-](1.2,2.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](1.2,3.4) to [short,-*](1.5,3.4){};
+        \draw (1.5,0) to [short, *-](1.5,3);
+        \draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
+        \draw (2.6,0) to [R, l_=$R5$, *-*](2.6,3);
+        \draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
+        \draw (6,2) to (5,2) to [R, l=$R8$, *-*](5,0);
+        \draw (5,2) to (4.5,2);
+        \draw (4,2) to [short, -*](4,0);
+        \draw (4,2.5) to [short, -*](4,3);
+        \draw (4,2)node[nfet, solderdot, rotate=180]{};
+        \draw (4,1.6) to [short, *-](3.8,1.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.8,2.4) to [short,-*](4,2.4){};
+        \draw (4,1.6) to [short, -*](4,1.775);
+        \draw (1.5,2.775) to [short, -*](1.5,2.775);
+        \draw (7.1,2) to (6.1,2);
+        \draw (6,5.775) to [short, -*](6,5.725);
+        \draw (6,5.1) to [short, -*](6,5.1);
+        \draw (6,5.9) to [short, -*](6,5.9);
+        \draw (8.3,0) to [short, -*](8.3,0);
+        \draw (5.7,5.8) to (5.7,5.8)node[anchor=south]{Q1};
+        \draw (1.9,3.3) to (1.9,3.3)node[anchor=south]{Q2};
+        \draw (4.4,2.3) to (4.4,2.3)node[anchor=south]{Q3};
+        \draw (8.3,2) to (8.3,2)node[anchor=west]{+};
+        \draw (6,7) to [short, -o](0,7)node[anchor=east]{+};
+        \draw (9,7) to [short, -o](10,7)node[anchor=west]{+};
+        \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
+        \draw (3,0) to (2,0) node[ground]{};
+        \draw (0,6.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
+        \draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
+    \end{circuitikz}
+    \caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
+\end{figure}
 
 \subsection{Peripherie des DC/DC Wandlers}
 
@@ -378,7 +467,8 @@ Die Sicherung brennt durch, wenn die Eingangsspannung verpolt ist.
 
 \subsection{Der DRV8825-Schrittmotortreiber}
 
-Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern. Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
+Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern.
+Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
 Um die Motorwindungen anzusteuern, sind die Ausgangsblöcke des Treibers als volle N-Kanal Leistung-MOSFET H-Brücken realisiert.
 Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
 
@@ -403,26 +493,34 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 
 
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
-Der DRV8825 besitzt 16 Anschlüsse. Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\\\
-Über den Anschluss VMOT werden in unserem Fall 12V eingespeist. Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\\\
-„Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen. Insbesondere wenn längere Stromkabel verwendet werden.
+Der DRV8825 besitzt 16 Anschlüsse.
+Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\\\
+Über den Anschluss VMOT werden in unserem Fall 12V eingespeist.
+Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\\\
+„Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen.
+Insbesondere wenn längere Stromkabel verwendet werden.
 Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
 Selbst, wenn die Versorgungsspannung des Motors nur 12 V, können diese Art von Spannungsspitzen auftreten.
 Eine Möglichkeit diese Gefahr zu negieren, ist einen, mindestens 47µF großen Elektrolytkondensator zwischen dem Pin VMOT und Ground in der Nähe des Treibers zu schalten.“ \\\\
-An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden. Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
+An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden.
+Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
 Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\\\
-Der invertierte FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden. Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\\\
+Der invertierte FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden.
+Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\\\
 Der DRV8825 Treiber verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in Abbildung X zu finden sind: \\\\
-Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird. Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
+Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
+Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
 Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
 Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\\\
-Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen. Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
+Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen.
+Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
 Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel X. \\\\
 Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\\\
 Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\\\
 Um den Treiber in voller Funktion verwendet zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\\\
 Der STEP Anschluss des DRV8825 liest ein Rechtecksignal ein. Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\\\
-Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert. Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
+Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
+Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
 \subsubsection{Schrittauflösung}
 In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt, um die gewünschte Mikroschrittauflösung zu erreichen.
@@ -529,9 +627,11 @@ einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer 
     \item Ausgang realisiert durch einen NPN-Schließer
 \end{itemize}
 
-In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt. Der Signalausgang des Sensors liefert im Grundzustand ein HIGH-Signal.
+In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt.
+Der Signalausgang des Sensors liefert im Grundzustand ein HIGH-Signal.
 Sobald ein Objekt in das Messumfeld des Sensors gelangt, liefert dieser ein Signal von 0.62V, welches als LOW-Signal gilt.
-Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannungsteiler am Signalausgang des Sensors zu dimensionieren. Hierzu verwenden wir folgende Formel:
+Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannungsteiler am Signalausgang des Sensors zu dimensionieren.
+Hierzu verwenden wir folgende Formel:
 
 \begin{equation}
     U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
@@ -566,7 +666,7 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 
 \subsection{Ansteuerung der Hubmagneten}
 
-\subsection{DC/DC-Wandler}
+\subsection{Der Festspannungsregler}
 
 \subsection{Beschaltung des Mini-USB}
 
