@@ -389,8 +389,47 @@ weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betr
 
 Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Betriebs entschieden wir uns für den Gebrauch der 3.Variante.
 
+\newpage
 \subsection{Der Soft-Latching-Circuit}
-\subsubsection{Variante, welche im Laufe der Diplomarbeit aufkam}
+\subsubsection{Andere Varianten}
+
+Die folgenden Varianten kamen ebenfalls im Laufe der Diplomarbeit auf.
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+        \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
+        \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
+        \draw (2,4) to [short, *-](2,2.5);
+        \draw (2.5,6) to (5,6);
+        \draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
+        \draw (5,2) to (5,1.5) to (5.15,1.5);
+        \draw (5.5,1.5)node[pushbuttonshape]{};
+        \draw (5.5,2.5)node[pushbuttonshape]{};
+        \draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
+        \draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
+        \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
+        \draw (4,2) to (2.5,2);
+        \draw (2,1.5) to (2,0);
+        \draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
+        \draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
+        \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
+        \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
+        \draw (2,2)node[npn, xscale = -1]{};
+        \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
+        \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
+        \draw (5,4) to (5,4)node[anchor=west]{-};
+        \draw (3,0) to (2,0) node[ground]{};
+        \draw (5,4) to [short, o-o](5,4)to(5,3.9) node[ground]{};
+        \draw (0,5.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (5,5.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(5,4.2);
+    \end{circuitikz}
+    \caption{12V Soft-Latching Circuit}
+\end{figure}
+
+
 
 \subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
 
