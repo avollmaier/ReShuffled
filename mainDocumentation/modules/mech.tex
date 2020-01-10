@@ -131,7 +131,7 @@ dass nur eine Karte in das Lagerrad befördert wird, dies würd das Konzept des 
 
 \subsubsection{Variante 3 - Lagerrad mit Saugnäpfe}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Version3}
     \caption{Variante 3}
@@ -166,7 +166,7 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
     \item \textbf{Rundes Ausgaberad}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/RundesAusgaberad-Page-1}
     \caption{Rundes Ausgaberad}
@@ -180,7 +180,7 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
     \item \textbf{Eliptisches Ausgaberad}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/ElliptischesAusgaberad}
     \caption{Eliptisches Ausgaberad}
@@ -210,7 +210,7 @@ Ausgaberades weiterbefördert wird.
     \item \textbf{Primitiver Klemmmechanissmus}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus1}
     \caption{Primitiver Klemmmechanissmus}
@@ -224,7 +224,7 @@ soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschalten und ein Zugf
     \item \textbf{Komplexer Klemmmechanissmus}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus2}
     \caption{Komplexer Klemmmechanissmus}
@@ -240,7 +240,7 @@ dafür aber auch aufwendiger in der Produktion.
     \item \textbf{Gummi Klemmmechanissmus}
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus3}
     \caption{Gummi Klemmmechanissmus}
@@ -278,7 +278,7 @@ dauern würde und das Spielerlebniss somit beeinflussen würde.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
-\begin{table}[h]
+\begin{table}[H]
     \centering
 \scalebox{0.8}{
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
@@ -306,15 +306,16 @@ dauern würde und das Spielerlebniss somit beeinflussen würde.
         & 2  & 4.83         & 2.19         & 4.13         & 3.78         & 5.71                & 4.128            \\ \cline{2-8}
         &    &              &              &              &              & \multicolumn{2}{c|}{Mittelwert: 7.932} \\ \hline
     \end{tabular}}
-    \caption{}
+    \caption{Tabelle Haftzeit der Karten}
     \label{tab:my-table}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=1,page=1]{fig/mech/Haftzeit}
-    \caption{Primitiver Klemmmechanissmus}
+    \caption{Diagramm Haftzeit der Karten}
 \end{figure}
+
 
 Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 sekunden bis sich nur mehr die
 eigentlich angesaugte Karte in der Luft befindet. der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
@@ -326,18 +327,20 @@ eine Karte ansaugt die nur auf einer einzelnen anderen Karte liegt.
 
 \textbf{\large{Gegenüberstellung der Varianten}}
 
-\begin{table}[h]
+\begin{table}[H]
+\centering
+\scalebox{0.8}{
     \begin{tabular}{|c|c|c|ll}
         \cline{1-3}
         \textbf{Variante}             & \textbf{Vorteile}                                                                & \textbf{Nachteile}                                                                                    &  &  \\ \cline{1-3}
         1 - Linearachsen              & \begin{tabular}[c]{@{}c@{}}schnelles Mischen\\ wenige Fehlerquellen\end{tabular} & \begin{tabular}[c]{@{}c@{}}teuer\\ großer Aufbau\\ instabil\end{tabular}                              &  &  \\ \cline{1-3}
         2 - Lagerrad mit Ausgaberäder & \begin{tabular}[c]{@{}c@{}}stabil\\ niedriger Aufbau\end{tabular}                & \begin{tabular}[c]{@{}c@{}}lange Gesamtgröße\\ viele Bewegliche Bauteile / Fehlerquellen\end{tabular} &  &  \\ \cline{1-3}
         3 - Lagerrad mit Saugnäpfe    & \begin{tabular}[c]{@{}c@{}}billig\\ wenig bewegliche Bauteile\end{tabular}       & hoher Aufbau                                                                                          &  &  \\ \cline{1-3}
-    \end{tabular}
+    \end{tabular}}
     \caption{Vergleich der Varianten}
 \end{table}
 
-\textbf{\large{Begründung der Wahl}}
+\textbf{\large{Begründung der Wahl}}\\
 Alle drei Varianten wurden durchdacht und bieten ihre individuellen Vorteile. Durch den enormen Preis von
 Variante 1 ist diese aber nicht für unser Projekt geeignet. Das optimale Konzept des Mischens wird am besten durch
 Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten aufeinmal in das Lager zu befördern.
