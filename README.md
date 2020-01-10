@@ -1,6 +1,6 @@
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![MIT license](https://badgen.net/github/license/micromatch/micromatch.svg)](http://opensource.org/licenses/MIT)
 
-[![MIT license]https://badgen.net/lgtm/lines/g/apache/cloudstack/java.svg]
+[!https://badgen.net/lgtm/lines/g/apache/cloudstack/java.svg]
 
 ## Informatik-Konzept
 Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll
