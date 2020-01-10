@@ -395,17 +395,23 @@ Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Bet
 \subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
 
 
-12V, welche vom Netzteil zur Verfügung gestellt werden, werden durch eine Betätigung von T\textsubscript{1} durchgeschaltet.
-Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{1} und aktiviert somit den Bipolartransistor Q\textsubscript{1}.
-Dieser Transistor schaltet somit die am Kollektor anliegende Leitung auf Masse.
-Das dadurch auf Ground gezogene Gate lässt den P-Kanal MOSFET durchschalten.
+Die Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt werden, werden durch eine Betätigung von S\textsubscript{1} durchgeschaltet.
+
+Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
+Dieser Feldeffekttransistor schaltet somit die am Drain anliegende Leitung auf Masse.
+Das dadurch auf Ground gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} lässt diesen durchschalten.
 Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
-Das dadurch ebenfalls versorgte Gate von Q\textsubscript{4} zieht die davon am Drain liegende Leitung auf Masse.
-Die Spannungsversorgung von 12V wird somit auch nach dem Betätigen von T\textsubscript{1} bereitgestellt.
-Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „high“ von 3.3V, ausgehend von Pin XY des Mikrokontrollers.
-Das dadurch versorgte Gate von Q\textsubscript{5} lässt diesen auf Masse durchschalten und zieht somit die 12V Leitung auf Masse.
-Ein genaue Dimensionierung von Cx und Rx sorgen für ein längeres „High“ der Leitung, sodass ein zuverlässiges Abschalten bereitgestellt werden kann.
-Der dadurch deaktivierte Q\textsubscript{4} löst die Selbsthaltung und die Schaltung befindet sich wieder in ihrem Grundzustand.
+Das dadurch ebenfalls über R\textsubscript{3} versorgte Gate von Q\textsubscript{2} lässt die davon am Drain liegende Leitung auf Masse schalten,
+welches die Versorgung der 12V Komponenten auch nach der Betätigung des S\textsubscript{1} bereitstellt.
+
+Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „high“ von 3.3V am Eingang U\textsubscript{UNLATCH}, ausgehend von einem Pin des Mikrokontrollers.
+Die Schottkydiode D\textsubscript{1} sorgt für dafür, dass kein Strom zurück in den µC fließen kann und dafür, dass sich der aufgeladene
+Elektrolytkondensator nur über den Widerstand R\textsubscript{8} entlädt.
+Das dadurch versorgte Gate von Q\textsubscript{3} schaltet die am Drain anliegende Leitung auf Masse.
+Der dadurch deaktivierte Q\textsubscript{2} löst die Selbsthaltung und die Schaltung befindet sich wieder in ihrem Grundzustand.
+Ein genaue Dimensionierung von C\textsubscript{1} und R\textsubscript{8} sorgen für ein ausreichend langes „High“ der Leitung,
+sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt werden kann.
+
 
 \begin{figure}[ht]
     \centering
@@ -454,10 +460,10 @@ Der dadurch deaktivierte Q\textsubscript{4} löst die Selbsthaltung und die Scha
         \draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
         \draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
     \end{circuitikz}
-    \caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
+    \caption{12V Soft-Latching Circuit}
 \end{figure}
 
-\subsection{Peripherie des DC/DC Wandlers}
+\subsection{Peripherie des Festspannungreglers}
 
 \subsection{Raspberry Pi 3B+}
 \subsubsection{Watchdog}
