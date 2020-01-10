@@ -1,5 +1,4 @@
-﻿
-﻿# ReShuffled
+	/github/repo-size/:user/:repo
 
 ## Informatik-Konzept
 Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll
