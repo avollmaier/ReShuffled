@@ -392,9 +392,10 @@ Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Bet
 \newpage
 \subsection{Der Soft-Latching-Circuit}
 
-\subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
+Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt werden, sollen erst durch eine Betätigung von einem Taster durchgeschaltet werden und die Elektronik versorgen.
+Diese Versorgung soll auch nach der Betätigung zur Verfügung stehen.
 
-Die Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt werden, werden durch eine Betätigung von S\textsubscript{1} durchgeschaltet.
+\subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
 
 Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
 Dieser Feldeffekttransistor schaltet somit die am Drain anliegende Leitung auf Masse.
@@ -409,7 +410,7 @@ Elektrolytkondensator nur über den Widerstand R\textsubscript{8} entlädt.
 Das dadurch versorgte Gate von Q\textsubscript{3} schaltet die am Drain anliegende Leitung auf Masse.
 Der dadurch deaktivierte Q\textsubscript{2} löst die Selbsthaltung und die Schaltung befindet sich wieder in ihrem Grundzustand.
 Ein genaue Dimensionierung von C\textsubscript{1} und R\textsubscript{8} sorgen für ein ausreichend langes „High“ der Leitung,
-sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt werden kann.
+sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt werden kann. \\
 
 \begin{figure}[ht]
     \centering
@@ -461,8 +462,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
     \caption{12V Soft-Latching Circuit}
 \end{figure}
 
-\subsubsection{Andere Varianten}
-
+\subsubsection{Andere Variante}
 Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
 
 Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, durch der Bipolartransistor Q\textsubscript{2}
@@ -474,7 +474,6 @@ Ein Betätigen des Tasters S\textsubscript{2} hat die Folge, dass die Basis des 
 Dies hat die Folge eines positiven Pegels am Gate des MOSFETs, welches diesen sperren lässt.
 Somit kommt am Ausgang keine Spannung vorgefunden werden.
 Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\textsubscript{1} vom Drain auf das Gate geschaltet.
-
 
 \begin{figure}[ht]
     \centering
@@ -509,6 +508,8 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
     \caption{12V Soft-Latching Circuit}
 \end{figure}
 
+Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
+Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, welches diese Schaltung nicht gewährleistet.
 
 \subsection{Peripherie des Festspannungreglers}
 
