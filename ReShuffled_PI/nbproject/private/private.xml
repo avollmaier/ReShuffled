@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/config.json</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/util/FileUtil.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/sim/SimInputStreamBuffer.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/multilanguage/ResourceManager.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/GameModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/StatisticsModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/AboutController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/Communication.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/Serial.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/config/Config.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/StatsController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles/bundle_en_US.properties</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/HelpController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/mainStylesheet.css</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/multilanguage/ResourceKeyEnum.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/main/Main.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/request/Request.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/StartupController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/util/ResourceBundleUtils.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/sim/ReshuffledMainboardSimulator.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/request/RequestAutoDeal.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/fxml/about.fxml</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/MainController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/fxml/help.fxml</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/util/AlertUtil.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/ConfigModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/statistics/Statistics.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/ConfigSerialModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/controller/HomeController.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/request/Response.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/guiMain/GuiMain.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/GamemodeModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles/bundle_de_DE.properties</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/ConfigInternationalizationModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/game/Game.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/data/model/PlayerModel.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/fxml/startup.fxml</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/gui/startupStylesheet.css</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/util/GuiUtil.java</file>
+            <file>file:/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/serial/request/RequestShutdown.java</file>
+        </group>
+    </open-files>
+</project-private>
