@@ -1,5 +1,5 @@
-<a href="https://github.com/volalm15/ReShuffled" alt="Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
+<a href="https://github.com/volalm15/ReShuffled/RSainf" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/ReShuffled/RSainf" /></a>
 
 ## Informatik-Konzept
 Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll
