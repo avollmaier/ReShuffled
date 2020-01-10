@@ -1,5 +1,4 @@
-﻿
-﻿# ReShuffled
+[![MIT license](https://img.shields.io/github/languages/code-size/volalm15/ReShuffled?branch=RSainf)](http://opensource.org/licenses/MIT)
 
 ## Informatik-Konzept
 Den informatischen Teil der Arbeit kann man grundsätzlich in 2 Bereiche aufteilen. Es soll
