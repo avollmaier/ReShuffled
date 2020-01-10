@@ -321,7 +321,7 @@ erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, welches b
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (4,0) to (3,0) node[ground]{};
+        \draw (4,0) to (3,0) node[rground]{};
         \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
@@ -345,7 +345,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (4,0) to (3,0) node[ground]{};
+        \draw (4,0) to (3,0) node[rground]{};
         \draw (4,0) to (4,2);
         \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
@@ -380,7 +380,7 @@ weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betr
         \draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
         \draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[ground]{};
+        \draw (3,0) to (2,0) node[rground]{};
         \draw (0,3.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (6,3.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
@@ -391,48 +391,8 @@ Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Bet
 
 \newpage
 \subsection{Der Soft-Latching-Circuit}
-\subsubsection{Andere Varianten}
-
-Die folgenden Varianten kamen ebenfalls im Laufe der Diplomarbeit auf.
-
-
-\begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
-        \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
-        \draw (2,4) to [short, *-](2,2.5);
-        \draw (2.5,6) to (5,6);
-        \draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
-        \draw (5,2) to (5,1.5) to (5.15,1.5);
-        \draw (5.5,1.5)node[pushbuttonshape]{};
-        \draw (5.5,2.5)node[pushbuttonshape]{};
-        \draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
-        \draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
-        \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
-        \draw (4,2) to (2.5,2);
-        \draw (2,1.5) to (2,0);
-        \draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
-        \draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
-        \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
-        \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
-        \draw (2,2)node[npn, xscale = -1]{};
-        \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
-        \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
-        \draw (5,4) to (5,4)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[ground]{};
-        \draw (5,4) to [short, o-o](5,4)to(5,3.9) node[ground]{};
-        \draw (0,5.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (5,5.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(5,4.2);
-    \end{circuitikz}
-    \caption{12V Soft-Latching Circuit}
-\end{figure}
-
-
 
 \subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
-
 
 Die Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt werden, werden durch eine Betätigung von S\textsubscript{1} durchgeschaltet.
 
@@ -451,7 +411,6 @@ Der dadurch deaktivierte Q\textsubscript{2} löst die Selbsthaltung und die Scha
 Ein genaue Dimensionierung von C\textsubscript{1} und R\textsubscript{8} sorgen für ein ausreichend langes „High“ der Leitung,
 sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt werden kann.
 
-
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.2]
@@ -465,8 +424,8 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (6,7) to (6,5.5);
         \draw (6,5.5)node[pfet, bodydiode]{};
         \draw (6,4) to [short, *-](7,4) to (7,7) to (10,7);
-        \draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[ground]{};
-        \draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[ground]{};
+        \draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[rground]{};
+        \draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[rground]{};
         \draw (6,4.9) to (6,3) to [R, l_=$R3$](4,3) to (2,3);
         \draw (1.5,3)node[nfet, rotate=180]{};
         \draw (1.5,2.6) to [short, *-](1.2,2.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](1.2,3.4) to [short,-*](1.5,3.4){};
@@ -494,13 +453,62 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (6,7) to [short, -o](0,7)node[anchor=east]{+};
         \draw (9,7) to [short, -o](10,7)node[anchor=west]{+};
         \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[ground]{};
+        \draw (3,0) to (2,0) node[rground]{};
         \draw (0,6.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
         \draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
     \end{circuitikz}
     \caption{12V Soft-Latching Circuit}
 \end{figure}
+
+\subsubsection{Andere Varianten}
+
+Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
+
+Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, durch der Bipolartransistor Q\textsubscript{2}
+die am Collector anliegende Leitung auf Masse schaltet.
+Das dadurch auf Masse gezogene Gate des P-Kanal MOSFET lässt diesen durchschalten und eine Ausgangsspannung von 12V ist verfügbar.
+Der durch den Widerstand R\textsubscript{3} fließende Strom sorgt für ein Durchschalten des npn-Transistors, auch wenn der Taster S1 nicht mehr gedrückt ist.
+
+Ein Betätigen des Tasters S\textsubscript{2} hat die Folge, dass die Basis des Transistors Q\textsubscript{2} auf Masse gezogen wird.
+Dies hat die Folge eines positiven Pegels am Gate des MOSFETs, welches diesen sperren lässt.
+Somit kommt am Ausgang keine Spannung vorgefunden werden.
+Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\textsubscript{1} vom Drain auf das Gate geschaltet.
+
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+        \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
+        \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
+        \draw (2,4) to [short, *-](2,2.5);
+        \draw (2.5,6) to (5,6);
+        \draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
+        \draw (5,2) to (5,1.5) to (5.15,1.5);
+        \draw (5.5,1.5)node[pushbuttonshape]{};
+        \draw (5.5,2.5)node[pushbuttonshape]{};
+        \draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
+        \draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
+        \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
+        \draw (4,2) to (2.5,2);
+        \draw (2,1.5) to (2,0);
+        \draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
+        \draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
+        \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
+        \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
+        \draw (2,2)node[npn, xscale = -1]{};
+        \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
+        \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
+        \draw (5,4) to (5,4)node[anchor=west]{-};
+        \draw (3,0) to (2,0) node[rground]{};
+        \draw (5,4) to [short, o-o](5,4)to(5,3.9) node[rground]{};
+        \draw (0,5.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (5,5.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(5,4.2);
+    \end{circuitikz}
+    \caption{12V Soft-Latching Circuit}
+\end{figure}
+
 
 \subsection{Peripherie des Festspannungreglers}
 
@@ -690,7 +698,7 @@ Hierzu verwenden wir folgende Formel:
         \draw (4,3) to [R, l_=$R_2$, v^=$U_2$, *-] (4,0);
         \draw (1,3) to[R, l=$R_1$, v_>=$U_1$](4,3) to [short, -o](6,3)node[anchor=west]{C};
         \draw (4,0) to [short, *-o](6,0)node[anchor=west]{D};
-        \draw (4,0) to (4,0) node[ground]{};
+        \draw (4,0) to (4,0) node[rground]{};
         \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
