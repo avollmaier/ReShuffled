@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class GameModel {
 
-    private List<PlayerModel> players;
+    private final List<PlayerModel> players;
     private boolean gameFinished;
     private GamemodeModel gamemode;
 

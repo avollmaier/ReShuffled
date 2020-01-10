@@ -11,6 +11,7 @@ import data.game.Game;
 import data.statistics.Statistics;
 import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
+import java.io.IOException;
 import util.AlertUtil;
 import util.GuiUtil;
 import java.net.URL;
@@ -58,10 +59,13 @@ public class MainController implements Initializable {
     @Override
     public void initialize (URL arg0, ResourceBundle bundle) {
     }
+
+
     private Stage getStage () {
         return (Stage) rootStackPane.getScene().getWindow();
     }
-    
+
+
     public void loadShuffleDialog () {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shuffle));
@@ -75,7 +79,8 @@ public class MainController implements Initializable {
 
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cardCheck));
     }
-    
+
+
     public void loadShutdownDialog () {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdown));
@@ -89,10 +94,23 @@ public class MainController implements Initializable {
                              Statistics.getInstance().save();
                              RequestShutdown shutdown = new RequestShutdown();
                              Communication.getInstance().sendRequestExecutor(shutdown);
+
+
+                             String shutdownCmd = "shutdown -h now";
+                             if (Runtime.getRuntime().availableProcessors() >= 4) {
+                                 System.exit(0);
+                             }
+                             else {
+                                 try {
+                                     Process child = Runtime.getRuntime().exec(shutdownCmd);
+                                 }
+                                 catch (IOException e) {
+                                     e.printStackTrace();
+                                 }
+                             }
                          });
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdownCheck));
     }
-    
 
 
     public void loadGameFinishedDialog () {
@@ -113,7 +131,7 @@ public class MainController implements Initializable {
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btFinished), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_finishGame));
     }
 
-    
+
     public void loadLanguageChangeDialog () {
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
 
@@ -126,5 +144,5 @@ public class MainController implements Initializable {
 
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_languageChanged));
     }
-    
+
 }

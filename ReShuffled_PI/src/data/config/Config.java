@@ -114,7 +114,7 @@ public class Config {
 
 
     public void setStatisticsPath (String statisticsPath) {
-        configModel.setLogPath(statisticsPath);
+        configModel.setStatisticsPath(statisticsPath);
     }
 
 

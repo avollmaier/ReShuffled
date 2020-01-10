@@ -1,23 +1,37 @@
 {
   "logLevel": null,
-  "logPath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/statistics.json",
-  "statisticsPath": null,
+  "logPath": "/var/lib/reshuffled/reshuffled.log",
+  "statisticsPath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/statistics.json",
   "guiHeight": 600,
   "guiWidth": 1024,
   "gamemodes": [
     {
-      "name": "UNO1",
-      "autoDeal": false,
-      "autoDealValue": null,
-      "cardQuantity": 3,
-      "playerQuantity": 12
+      "name": "fdsaf",
+      "autoDeal": true,
+      "autoDealValue": 2,
+      "cardQuantity": 15,
+      "playerQuantity": 4
     },
     {
-      "name": "UNOf",
+      "name": "fdsafgfd",
       "autoDeal": true,
-      "autoDealValue": 4,
-      "cardQuantity": 19,
-      "playerQuantity": 4
+      "autoDealValue": 2,
+      "cardQuantity": 2,
+      "playerQuantity": 6
+    },
+    {
+      "name": "fdsaffhgf",
+      "autoDeal": true,
+      "autoDealValue": 2,
+      "cardQuantity": 15,
+      "playerQuantity": 8
+    },
+    {
+      "name": "InDerMöseLiegtDieSöße",
+      "autoDeal": true,
+      "autoDealValue": 2,
+      "cardQuantity": 20,
+      "playerQuantity": 3
     }
   ],
   "serial": {

@@ -1,16 +1,13 @@
 package data.model;
 
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 public class PlayerModel{
     private String name;
-    private int points, id;
+    private int points;
 
 
-    public PlayerModel (String name, int points, int id) {
+    public PlayerModel (String name, int points) {
         this.name = name;
         this.points = points;
-        this.id = id;
     }
 
     public String getName() {
@@ -37,13 +34,4 @@ public class PlayerModel{
     public int getPoints () {
         return points;
     }
-
-
-    public int getId () {
-        return id;
-    }
-
-
-  
-    
 }

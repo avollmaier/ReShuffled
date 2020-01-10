@@ -6,8 +6,8 @@
 package util;
 
 import data.config.Config;
+import gui.multilanguage.ResourceManager;
 import java.io.IOException;
-import java.lang.ModuleLayer.Controller;
 import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +27,7 @@ public class GuiUtil {
 
     public static void loadWindow(URL location, String title, Object controllerObject) {
         try {
-            FXMLLoader loader = new FXMLLoader(location);
+            FXMLLoader loader = new FXMLLoader(location, ResourceManager.getInstance().getCurrentRecourceBundle());
             loader.setController(controllerObject);
             Parent parent = loader.load();
             Stage stage = new Stage(StageStyle.UNDECORATED);

@@ -109,14 +109,17 @@ public class Main {
         LOG.info("Start of programm with V%s", VERSION);
 
         try {
-            Statistics.createInstance(statisticsPath);
+            
+            
             main.checkConfigExistence();
-            final Config cfg = Config.createInstance(CONFIGPATH);
-            cfg.setLogPath(logPath);
-            cfg.setStatisticsPath(statisticsPath);
-            cfg.save();
+            Statistics.createInstance(statisticsPath);
+            Config.createInstance(CONFIGPATH);
+            Config.getInstance().setLogPath(logPath);
+            Config.getInstance().setStatisticsPath(statisticsPath);
+            Config.getInstance().save();
+            
             ResourceManager.createInstance();
-            Serial.createInstance(cfg.getConfigSerial());
+            Serial.createInstance(Config.getInstance().getConfigSerial());
             Communication.createInstance(Serial.getInstance());
             gui.guiMain.GuiMain.createInstance();
 

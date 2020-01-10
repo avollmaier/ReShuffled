@@ -35,7 +35,7 @@
                         <Insets top="8.0" />
                      </padding>
                   </JFXComboBox>
-                  <JFXButton fx:id="btSaveLanguage" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="47.0" prefWidth="87.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="%txt_about_save" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="btSaveLanguage" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" prefHeight="47.0" ripplerFill="WHITE" style="-fx-background-color: #FFFF;" text="%txt_about_save" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="15.0" />
                      </font>

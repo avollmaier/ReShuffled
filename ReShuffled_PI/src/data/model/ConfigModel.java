@@ -1,8 +1,6 @@
 package data.model;
 
 import com.google.gson.annotations.SerializedName;
-import data.model.ConfigSerialModel;
-import data.model.GamemodeModel;
 import java.util.List;
 
 public class ConfigModel {

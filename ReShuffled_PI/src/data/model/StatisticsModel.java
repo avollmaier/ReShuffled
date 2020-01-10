@@ -40,6 +40,5 @@ public class StatisticsModel {
         this.overallGamesPlayed = overallGamesPlayed;
     }
 
-   
-
+  
 }

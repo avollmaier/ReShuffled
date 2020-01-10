@@ -38,7 +38,10 @@ import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import util.AlertUtil;
+
 
 /**
  *
@@ -75,166 +78,217 @@ public class StartupController implements Initializable {
     @FXML
     JFXButton btSaveName;
 
-
     GamemodeModel selectedGamemode = null;
-    
+
     //Listeners
-    private static final Logger LOG = Logger.getLogger(StartupController.class.getName());     
-    final ChangeListener<String> gamemodeListener = (observableValue, oldValue, newValue) -> {
-        handleGamemodeChange();
+    private static final Logger LOG = Logger.getLogger(StartupController.class.getName());
+    final ChangeListener<GamemodeModel> gamemodeListener = (observableValue, oldValue, newValue) -> {
+        handleGamemodeChange(newValue);
     };
-    
-    final ChangeListener<String> seleltionListener = (observableValue, oldValue, newValue) -> {
-        tfPlayerName.setText(newValue);
+
+    final ChangeListener<PlayerModel> playerListener = (observableValue, oldValue, newValue) -> {
+        tfPlayerName.setText(newValue.getName());
     };
-    
+
     final ChangeListener<String> nameChangeListener = (observableValue, oldValue, newValue) -> {
         notifyList(newValue);
     };
-    
+
+
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-       
+    public void initialize (URL arg0, ResourceBundle arg1) {
+
         tfPlayerName.textProperty().addListener(nameChangeListener);
-        playerNameList.getSelectionModel().selectedItemProperty().addListener(seleltionListener);
+        playerNameList.getSelectionModel().selectedItemProperty().addListener(playerListener);
         cbGamemodes.valueProperty().addListener(gamemodeListener);
         chbAutoDeal.setOnAction(this::handleAutoDealChange);
         btDelete.setOnAction(this::handleDelete);
         btSaveChanges.setOnAction(this::handleSaveChanges);
         btStartGame.setOnAction(this::handleStartGame);
-       
+
+        cbGamemodes.setCellFactory(list -> new GamemodeCell());
+        cbGamemodes.setButtonCell(new GamemodeCell());
+
+        playerNameList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        playerNameList.setCellFactory(list -> new PlayerCell());
         Game.clearInstance();
         updateGameComboBox();
         initControlComboBox();
-        
+
     }
-    private void notifyList(String newValue){
-        int index=playerNameList.getSelectionModel().getSelectedIndex();
-        System.out.println(index);
-        if(index>=0)
-        {
-          playerNameList.getItems().set(index, newValue);
+
+
+    //Player list service
+    private class PlayerCell extends ListCell<PlayerModel> {
+
+        @Override
+        protected void updateItem (PlayerModel item, boolean empty) {
+
+            super.updateItem(item, empty);
+
+            if (item != null || !empty) {
+                Label label = new Label(item.getName());
+                setGraphic(label);
+            }
+            else {
+                setGraphic(null);
+            }
         }
     }
-  
-     private void handleAutoDealChange(final ActionEvent event) {
+
+
+    private void updatePlayerList () {
+
+        final ObservableList<PlayerModel> players = FXCollections.observableArrayList();
+        players.clear();
+        for (int i = 1; i <= selectedGamemode.getPlayerQuantity(); i++) {
+            players.add(new PlayerModel(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player) + " " + i, 0));
+        }
+
+        playerNameList.setItems(players);
+
+
+    }
+
+
+    private void notifyList (String newValue) {
+        int index = playerNameList.getSelectionModel().getSelectedIndex();
+        if (index >= 0) {
+            playerNameList.getItems().set(index, new PlayerModel(newValue, 0));
+        }
+    }
+
+    //Gamemode combobox management
+
+    private class GamemodeCell extends ListCell<GamemodeModel> {
+
+        @Override
+        protected void updateItem (GamemodeModel item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item != null) {
+                setText(item.getName());
+            }
+        }
+    }
+
+
+    private void updateGameComboBox () {
+        ObservableList<GamemodeModel> gamemodes = FXCollections.observableArrayList(Config.getInstance().getGamemodes());
+        cbGamemodes.setItems(gamemodes);
+    }
+
+
+    private void handleGamemodeChange (GamemodeModel gamemodeModel) {
+        if (!cbGamemodes.getSelectionModel().isEmpty()) {
+            btDelete.setDisable(false);
+
+            selectedGamemode = gamemodeModel;
+            updateControls(selectedGamemode);
+        }
+    }
+
+
+    private void handleAutoDealChange (final ActionEvent event) {
         if (chbAutoDeal.isSelected()) {
             cbAutoDealValue.setDisable(false);
-        } else {
+        }
+        else {
             cbAutoDealValue.setDisable(true);
         }
     }
 
-    private void handleDelete(final ActionEvent event) {
+
+    private void handleDelete (final ActionEvent event) {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btDelete = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_delete));
 
         btDelete.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
-            LOG.info("Deleted gamemode " + selectedGamemode.getName());
-            Config.getInstance().getGamemodes().remove(selectedGamemode);
-            Config.getInstance().save();
-            clearGamemodeCache();
-            updateGameComboBox();
-            selectedGamemode = null;
-        });
+                                 LOG.info("Deleted gamemode " + selectedGamemode.getName());
+                                 Config.getInstance().getGamemodes().remove(selectedGamemode);
+                                 Config.getInstance().save();
+                                 clearGamemodeCache();
+                                 updateGameComboBox();
+                                 selectedGamemode = null;
+                             });
         AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btCancel, btDelete), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_deleteGamemode) + " " + selectedGamemode.getName());
 
     }
 
-    private void handleSaveChanges(final ActionEvent event) {
-        try {
-            String gamemodeName = tfGamemodeName.getText();
-            boolean isAutoDeal = chbAutoDeal.isSelected();
-            Integer autoDealValue = (isAutoDeal) ? Integer.parseInt(cbAutoDealValue.getValue().toString()) : null;
-            Integer playerQuantity = (cbPlayerQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbPlayerQuantity.getValue().toString());
-            Integer cardQuantity = (cbCardQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbCardQuantity.getValue().toString());
 
-            JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
-            
-            if (gamemodeName.isEmpty() || playerQuantity == null || cardQuantity == null) {
-               
+    private void handleSaveChanges (final ActionEvent event) {
+        String gamemodeName = tfGamemodeName.getText();
+        boolean isAutoDeal = chbAutoDeal.isSelected();
+        Integer autoDealValue = (isAutoDeal) ? Integer.parseInt(cbAutoDealValue.getValue().toString()) : null;
+        Integer playerQuantity = (cbPlayerQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbPlayerQuantity.getValue().toString());
+        Integer cardQuantity = (cbCardQuantity.getSelectionModel().isEmpty()) ? null : Integer.parseInt(cbCardQuantity.getValue().toString());
+
+        JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
+
+        if (gamemodeName.isEmpty() || playerQuantity == null || cardQuantity == null) {
+
             AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_error), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_nullError));
-            }
-            if (cardQuantity<playerQuantity)
-                
+        }
+        if (cardQuantity < playerQuantity) {
             AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_error), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_startup_cardQuantityError));
+        }
 
-            boolean existing = false;
-            GamemodeModel existingGamemode = null;
+        boolean existing = false;
+        GamemodeModel existingGamemode = null;
 
-            for (GamemodeModel gamemode : Config.getInstance().getGamemodes()) {
-                if (gamemodeName.equalsIgnoreCase(gamemode.getName())) {
-                    existing = true;
-                    existingGamemode = gamemode;
-                }
+        for (GamemodeModel gamemode : Config.getInstance().getGamemodes()) {
+            if (gamemodeName.equalsIgnoreCase(gamemode.getName())) {
+                existing = true;
+                existingGamemode = gamemode;
+            }
+        }
+
+        if (existing) {
+            existingGamemode.setName(gamemodeName);
+            existingGamemode.setAutoDeal(isAutoDeal);
+
+            if (isAutoDeal) {
+                existingGamemode.setAutoDealValue(autoDealValue);
             }
 
-            if (existing) {
-                existingGamemode.setName(gamemodeName);
-                existingGamemode.setAutoDeal(isAutoDeal);
+            existingGamemode.setCardQuantity(cardQuantity);
+            existingGamemode.setPlayerQuantity(playerQuantity);
 
-                if (isAutoDeal) {
-                    existingGamemode.setAutoDealValue(autoDealValue);
-                }
+            Config.getInstance().save();
+            updateGameComboBox();
+            System.out.println(Arrays.toString(playerNameList.getItems().toArray()));
+            LOG.info("Gamemode " + existingGamemode.getName() + " updated");
 
-                existingGamemode.setCardQuantity(cardQuantity);
-                existingGamemode.setPlayerQuantity(playerQuantity);
-
-                Config.getInstance().save();
-                updateGameComboBox();
-                LOG.info("Gamemode " + existingGamemode.getName() + "updated");
-
-            } else {
-                GamemodeModel addedGamemode = new GamemodeModel(gamemodeName, isAutoDeal, autoDealValue, cardQuantity, playerQuantity);
-                Config.getInstance().getGamemodes().add(addedGamemode);
-                Config.getInstance().save();
-                updateGameComboBox();
-                cbGamemodes.getSelectionModel().select(addedGamemode.getName());
-                LOG.info("Gamemode " + addedGamemode.getName() + "updated");
-            }
-
-        } catch (Exception ex) {
-            
+        }
+        else {
+            GamemodeModel addedGamemode = new GamemodeModel(gamemodeName, isAutoDeal, autoDealValue, cardQuantity, playerQuantity);
+            Config.getInstance().getGamemodes().add(addedGamemode);
+            Config.getInstance().save();
+            updateGameComboBox();
+            cbGamemodes.getSelectionModel().select(addedGamemode);
+            LOG.info("Gamemode " + addedGamemode.getName() + " created");
         }
     }
 
-    @FXML
-    private void handleStartGame(final ActionEvent event) {
-        if (selectedGamemode != null) {
 
-            List<PlayerModel> players = new ArrayList<>();
-            for (int i = 0; i <= selectedGamemode.getPlayerQuantity() - 1; i++) {
-                players.add(new PlayerModel(playerNameList.getItems().get(i).toString(), 0, players.size()));
-            }
-            Game.createInstance(players, false, selectedGamemode);
+    private void handleStartGame (final ActionEvent event) {
+        if (selectedGamemode != null) {
+            Game.createInstance(playerNameList.getItems(), false, selectedGamemode);
 
             LOG.info("Starting game with gamemode " + Game.getInstance().getGamemode().getName() + " and " + Game.getInstance().getGamemode().getPlayerQuantity() + " Players");
-            
+
             closeStage();
             loadMainStage();
-        } else {
+        }
+        else {
             JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
             AlertUtil.showContentDialog(rootStackPane, rootBorderPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_gamemodeCheck));
         }
 
     }
-    
-    private void handleGamemodeChange() {
-        if (!cbGamemodes.getSelectionModel().isEmpty()) {
-            btDelete.setDisable(false);
-            String selectedGamemodeName = cbGamemodes.getValue().toString();
 
-            //Find selectedGamemode
-            for (GamemodeModel gamemode : Config.getInstance().getGamemodes()) {
-                if (selectedGamemodeName.equalsIgnoreCase(gamemode.getName())) {
-                    selectedGamemode = gamemode;
-                }
-            }
-            updateControls(selectedGamemode);
-        }
-    }
 
-    private void initControlComboBox() {
+    private void initControlComboBox () {
         //FILL PLAYER, CARD AND AUTODEAL QUANTITY COMBO BOX
         ObservableList<Integer> intValues = FXCollections.observableArrayList();
         for (int i = 1; i <= 30; i++) {
@@ -245,25 +299,9 @@ public class StartupController implements Initializable {
         cbPlayerQuantity.setItems(intValues);
     }
 
-    private void updateGameComboBox() {
-        ObservableList<String> gamemodeNames = FXCollections.observableArrayList();
-        for (GamemodeModel gamemode : Config.getInstance().getGamemodes()) {
-            gamemodeNames.add(gamemode.getName());
-        }
-        cbGamemodes.setItems(gamemodeNames);
-    }
 
-    private void updateControls(GamemodeModel selectedGamemode) {
-        //Update Player List
-        final ObservableList<String> playerNames = FXCollections.observableArrayList();
-
-        for (int i = 1; i <= selectedGamemode.getPlayerQuantity(); i++) {
-            playerNames.add(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_home_player)+" " + i);
-        }
-
-        playerNameList.setItems(playerNames);
-        playerNameList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
+    private void updateControls (GamemodeModel selectedGamemode) {
+        updatePlayerList();
         //Update other Controls
         tfGamemodeName.setText(selectedGamemode.getName());
         chbAutoDeal.setSelected(selectedGamemode.isAutoDeal());
@@ -273,7 +311,8 @@ public class StartupController implements Initializable {
 
     }
 
-    private void clearGamemodeCache() {
+
+    private void clearGamemodeCache () {
         tfGamemodeName.setText("");
         chbAutoDeal.setSelected(false);
         cbAutoDealValue.getSelectionModel().clearSelection();
@@ -282,7 +321,8 @@ public class StartupController implements Initializable {
         playerNameList.getItems().clear();
     }
 
-    public void contentInvisibility(boolean value) {
+
+    public void contentInvisibility (boolean value) {
         tfGamemodeName.setDisable(value);
         chbAutoDeal.setDisable(value);
         cbAutoDealValue.setDisable(value);
@@ -291,27 +331,28 @@ public class StartupController implements Initializable {
         btSaveChanges.setDisable(value);
     }
 
-    private void closeStage() {
+
+    private void closeStage () {
         ((Stage) rootStackPane.getScene().getWindow()).close();
     }
 
-    private void loadMainStage() {
+
+    private void loadMainStage () {
         try {
             final URL fxmlUrl = getClass().getResource("/gui/fxml/main.fxml");
-                final FXMLLoader fxmlLoader= new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
-                fxmlLoader.setController(new MainController());
-                final Parent root = fxmlLoader.load();
-                final Stage stage = new Stage();
-                stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(), Config.getInstance().getGuiHeight()));
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setTitle("ReShuffled Main GUI");
-                stage.show();
-                
-                
-                
+            final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
+            fxmlLoader.setController(new MainController());
+            final Parent root = fxmlLoader.load();
+            final Stage stage = new Stage();
+            stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(), Config.getInstance().getGuiHeight()));
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("ReShuffled Main GUI");
+            stage.show();
+
 
             LOG.info(stage.getTitle() + " started successfully");
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
             LOG.severe("Exception while running GUI" + ex);
         }

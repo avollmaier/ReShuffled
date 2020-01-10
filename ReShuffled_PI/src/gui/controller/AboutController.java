@@ -38,7 +38,6 @@ public class AboutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btSaveLanguage.setOnAction(this::handleLanguageSave);
-        
         ObservableList<Locale> languageOptions = FXCollections.observableArrayList(ResourceManager.getInstance().getAvailableLocales());
         cbLanguage.setItems(languageOptions);
         cbLanguage.setCellFactory(list -> new LanguageCell());

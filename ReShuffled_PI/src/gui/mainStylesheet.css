@@ -1,6 +1,7 @@
 .tab {
     -fx-pref-height: 120;
     -fx-pref-width: 120;
+    -jfx-rippler-disabled: true;
 }
 
 .tab-header-background {
@@ -24,6 +25,9 @@
 .jfx-button .jfx-rippler{
     -jfx-rippler-disabled: true;
 }
+
+
+
 
 
 
