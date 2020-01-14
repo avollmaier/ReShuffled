@@ -54,7 +54,6 @@ public class StatsController implements Initializable {
 
         Statistics.getInstance().getGames().forEach(game -> {
             final TreeItem<PlayerModel> group1 = createGroupTreeItem(game.getGamemode().getName());
-            System.out.println(game.getGamemode().getName());
             
             game.getPlayers().forEach(player -> {
                 

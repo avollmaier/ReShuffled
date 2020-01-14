@@ -267,7 +267,6 @@ public class HomeController implements Initializable {
 
 
     public void handleCardChanged () {
-        System.out.println(cardQuantity);
         if (cardQuantity < 1) {
             btDeal1.setDisable(true);
         }

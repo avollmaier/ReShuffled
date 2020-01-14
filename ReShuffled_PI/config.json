@@ -6,32 +6,25 @@
   "guiWidth": 1024,
   "gamemodes": [
     {
-      "name": "fdsaf",
+      "name": "UNO",
       "autoDeal": true,
       "autoDealValue": 2,
-      "cardQuantity": 15,
-      "playerQuantity": 4
+      "cardQuantity": 4,
+      "playerQuantity": 3
     },
     {
-      "name": "fdsafgfd",
+      "name": "UNO1",
       "autoDeal": true,
-      "autoDealValue": 2,
-      "cardQuantity": 2,
-      "playerQuantity": 6
-    },
-    {
-      "name": "fdsaffhgf",
-      "autoDeal": true,
-      "autoDealValue": 2,
-      "cardQuantity": 15,
-      "playerQuantity": 8
-    },
-    {
-      "name": "InDerMöseLiegtDieSöße",
-      "autoDeal": true,
-      "autoDealValue": 2,
+      "autoDealValue": 5,
       "cardQuantity": 20,
       "playerQuantity": 3
+    },
+    {
+      "name": "OI",
+      "autoDeal": true,
+      "autoDealValue": 7,
+      "cardQuantity": 7,
+      "playerQuantity": 2
     }
   ],
   "serial": {
@@ -43,8 +36,8 @@
     "responseByteLength": 32
   },
   "internationalization": {
-    "language": "de",
-    "country": "DE",
+    "language": "en",
+    "country": "US",
     "bundlePath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles",
     "bundlePrefix": "bundle"
   }

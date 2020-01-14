@@ -1,5 +1,5 @@
 {
-  "overallGamesPlayed": 9,
+  "overallGamesPlayed": 17,
   "games": [
     {
       "gameModel": {
@@ -132,6 +132,302 @@
           "autoDealValue": 2,
           "cardQuantity": 20,
           "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Spieler 1",
+            "points": 0
+          },
+          {
+            "name": "Spieler 2",
+            "points": 2
+          },
+          {
+            "name": "Spieler 3",
+            "points": 0
+          },
+          {
+            "name": "Spieler 4",
+            "points": 26
+          }
+        ],
+        "gameFinished": false,
+        "gamemode": {
+          "name": "UNO",
+          "autoDeal": true,
+          "autoDealValue": 3,
+          "cardQuantity": 8,
+          "playerQuantity": 4
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Players 1",
+            "points": 0
+          },
+          {
+            "name": "Players 2",
+            "points": 0
+          },
+          {
+            "name": "Players 3",
+            "points": 0
+          },
+          {
+            "name": "Players 4gthth",
+            "points": 0
+          },
+          {
+            "name": "Players 5",
+            "points": 0
+          },
+          {
+            "name": "Players 6",
+            "points": 6
+          },
+          {
+            "name": "Players 7",
+            "points": 0
+          },
+          {
+            "name": "Players 8",
+            "points": 0
+          },
+          {
+            "name": "Players 9",
+            "points": 0
+          },
+          {
+            "name": "Players 10",
+            "points": 0
+          },
+          {
+            "name": "Players 11",
+            "points": 0
+          },
+          {
+            "name": "Players 12",
+            "points": 0
+          },
+          {
+            "name": "Players 13",
+            "points": 0
+          },
+          {
+            "name": "Players 14",
+            "points": 0
+          },
+          {
+            "name": "Players 15",
+            "points": 0
+          },
+          {
+            "name": "Players 16",
+            "points": 0
+          },
+          {
+            "name": "Players 17",
+            "points": 0
+          },
+          {
+            "name": "Players 18",
+            "points": 0
+          },
+          {
+            "name": "Players 19",
+            "points": 0
+          },
+          {
+            "name": "Players 20",
+            "points": 0
+          },
+          {
+            "name": "Players 21",
+            "points": 0
+          }
+        ],
+        "gameFinished": false,
+        "gamemode": {
+          "name": "fdsafgfd",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 11,
+          "playerQuantity": 21
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Spieler 1",
+            "points": 0
+          },
+          {
+            "name": "Spieler 2",
+            "points": 0
+          },
+          {
+            "name": "Spieler 3",
+            "points": 0
+          },
+          {
+            "name": "Spieler 4",
+            "points": 0
+          },
+          {
+            "name": "Spieler 5",
+            "points": 0
+          },
+          {
+            "name": "Spieler 6",
+            "points": 0
+          },
+          {
+            "name": "Spieler 7",
+            "points": 0
+          },
+          {
+            "name": "Spieler 8",
+            "points": 0
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "fdsaffhgffdsa",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 15,
+          "playerQuantity": 8
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Spieler 1",
+            "points": 0
+          },
+          {
+            "name": "Spieler 2",
+            "points": 0
+          },
+          {
+            "name": "Spieler 3",
+            "points": 0
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "UNO",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 4,
+          "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Spieler 1",
+            "points": 2
+          },
+          {
+            "name": "Spieler 2",
+            "points": 4
+          },
+          {
+            "name": "Spieler 3",
+            "points": 0
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "UNO",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 4,
+          "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Max",
+            "points": 0
+          },
+          {
+            "name": "öäü",
+            "points": 0
+          },
+          {
+            "name": "  ",
+            "points": 0
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "UNO",
+          "autoDeal": true,
+          "autoDealValue": 2,
+          "cardQuantity": 4,
+          "playerQuantity": 3
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "max",
+            "points": 10
+          },
+          {
+            "name": "\\???(()/",
+            "points": 16
+          }
+        ],
+        "gameFinished": false,
+        "gamemode": {
+          "name": "OI",
+          "autoDeal": true,
+          "autoDealValue": 7,
+          "cardQuantity": 7,
+          "playerQuantity": 2
+        }
+      }
+    },
+    {
+      "gameModel": {
+        "players": [
+          {
+            "name": "Players 1",
+            "points": 1
+          },
+          {
+            "name": "Players 2",
+            "points": 2
+          }
+        ],
+        "gameFinished": true,
+        "gamemode": {
+          "name": "OI",
+          "autoDeal": true,
+          "autoDealValue": 7,
+          "cardQuantity": 7,
+          "playerQuantity": 2
         }
       }
     }

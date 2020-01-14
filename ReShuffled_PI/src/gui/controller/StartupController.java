@@ -15,9 +15,7 @@ import data.config.Config;
 import data.model.PlayerModel;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,6 +34,7 @@ import logging.Logger;
 import data.game.Game;
 import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
+import java.awt.Color;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -127,6 +126,7 @@ public class StartupController implements Initializable {
             super.updateItem(item, empty);
 
             if (item != null || !empty) {
+
                 Label label = new Label(item.getName());
                 setGraphic(label);
             }
@@ -166,8 +166,12 @@ public class StartupController implements Initializable {
         protected void updateItem (GamemodeModel item, boolean empty) {
             super.updateItem(item, empty);
 
-            if (item != null) {
-                setText(item.getName());
+            if (item != null || !empty) {
+                Label label = new Label(item.getName());
+                setGraphic(label);
+            }
+            else {
+                setGraphic(null);
             }
         }
     }
@@ -175,6 +179,7 @@ public class StartupController implements Initializable {
 
     private void updateGameComboBox () {
         ObservableList<GamemodeModel> gamemodes = FXCollections.observableArrayList(Config.getInstance().getGamemodes());
+        cbGamemodes.getItems().clear();
         cbGamemodes.setItems(gamemodes);
     }
 
@@ -256,7 +261,6 @@ public class StartupController implements Initializable {
 
             Config.getInstance().save();
             updateGameComboBox();
-            System.out.println(Arrays.toString(playerNameList.getItems().toArray()));
             LOG.info("Gamemode " + existingGamemode.getName() + " updated");
 
         }
