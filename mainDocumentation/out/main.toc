@@ -1,0 +1,224 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {ngerman}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Mechanik}{1}{chapter.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Anforderung}{1}{section.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Problemstellungen}{1}{section.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Variantenvergleich}{1}{section.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.1}Anforderungen}{1}{subsection.1.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.2}Variantenvergleich}{2}{subsection.1.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.3.2.1}Variante 1 - Linearachsen}{2}{subsubsection.1.3.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.3.2.2}Variante 2 - Lagerrad mit Asugaber\IeC {\"a}der}{3}{subsubsection.1.3.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.3.2.3}Variante 3 - Lagerrad mit Saugn\IeC {\"a}pfe}{5}{subsubsection.1.3.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.3.2.4}Ausgaber\IeC {\"a}der}{6}{subsubsection.1.3.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.3}Klemmmechanissmen}{7}{subsection.1.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.4}Seperation der Karten}{9}{subsection.1.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.5}Endauswahl der Varianten}{11}{subsection.1.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.4}Konstruktion}{12}{section.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.5}Berechnungen, Festigkeitsanalyse und Dimensionierungen}{12}{section.1.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.6}Teilaufbau}{12}{section.1.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Elektronik}{13}{chapter.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Anforderungen}{13}{section.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Zeitplan}{13}{subsection.2.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Variantenvergleiche und Konzeptionierungen}{14}{section.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Mikrocontroller}{14}{subsection.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.1}ATmega162}{14}{subsubsection.2.2.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.2}ATmega324P}{14}{subsubsection.2.2.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.3}ATmega128}{14}{subsubsection.2.2.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.4}Mikrocontroller-Auswahl}{14}{subsubsection.2.2.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Schrittmotor-Ansteuerung}{15}{subsection.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.1}DIY-H-Br\IeC {\"u}cke}{15}{subsubsection.2.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.2}Schrittmotor-Treibermodule}{17}{subsubsection.2.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.3}A4988}{18}{subsubsection.2.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.4}DRV8825}{18}{subsubsection.2.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.5}TB6600}{18}{subsubsection.2.2.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.6}Treiber-Auswahl}{19}{subsubsection.2.2.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}Detektion der Kartenposition}{19}{subsection.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.1}Kapazitive Sensoren}{19}{subsubsection.2.2.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.2}Ultraschall-Sensoren}{20}{subsubsection.2.2.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.3}Optische Sensoren}{20}{subsubsection.2.2.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.4}Sensoren-Auswahl}{20}{subsubsection.2.2.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}Erfassung der Position des Motors}{21}{subsection.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.1}Endschalter}{21}{subsubsection.2.2.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.2}Lichtschranke}{21}{subsubsection.2.2.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.3}Varianten-Auswahl}{21}{subsubsection.2.2.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.5}Spannungsversorgung}{21}{subsection.2.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.1}Doppel-Schaltnetzteil mit 12V und 5V Ausgangsspannung}{21}{subsubsection.2.2.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.2}Schaltnetzteil mit 12V Ausgangsspannung und Schaltregler zu 5V}{22}{subsubsection.2.2.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.3}Schaltnetzteil mit 12V Ausgangsspannung und Festspannungsregler zu 5V}{22}{subsubsection.2.2.5.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.4}Auswahl der Spannungsversorgung}{22}{subsubsection.2.2.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.6}Blockschaltbild der gesamten Elektronik}{23}{subsection.2.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Schaltplan}{24}{section.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Verpolungsschutz}{24}{subsection.2.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.1}Verpolungsschutz mit Diode}{24}{subsubsection.2.3.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.2}Verpolungsschutz mit einer Sicherung und einer Diode}{24}{subsubsection.2.3.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.3}Verpolungsschutz mithilfe eines P-Kanal MOSFET}{25}{subsubsection.2.3.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Soft-Latching-Circuit}{26}{subsection.2.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.2.1}Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}{26}{subsubsection.2.3.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.2.2}Andere Variante}{27}{subsubsection.2.3.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}DC/DC Wandler}{28}{subsection.2.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.4}Raspberry Pi 3B+}{28}{subsection.2.3.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.4.1}Watchdog}{28}{subsubsection.2.3.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.5}Beschaltung des ATmega324P}{28}{subsection.2.3.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.6}DRV8825-Schrittmotortreiber}{28}{subsection.2.3.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.1}Datenblattwerte}{28}{subsubsection.2.3.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.2}Beschaltung}{28}{subsubsection.2.3.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.3}Beschaltungs- und Anschlussfunktionen}{28}{subsubsection.2.3.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.4}Schrittaufl\IeC {\"o}sung}{30}{subsubsection.2.3.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.5}Stromlimitierung}{30}{subsubsection.2.3.6.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.6}K\IeC {\"u}hlk\IeC {\"o}rperberechnung}{31}{subsubsection.2.3.6.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.7}Aktoren und Sensoren}{32}{subsection.2.3.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.7.1}Kapazitive Sensoren}{32}{subsubsection.2.3.7.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.8}Ansteuerung der Hubmagneten}{33}{subsection.2.3.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.9}Beschaltung des Mini-USB}{33}{subsection.2.3.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.10}Spannungspegel\IeC {\"u}berwachung}{33}{subsection.2.3.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.11}Netzteil}{34}{subsection.2.3.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Auswahl der Bauteile}{34}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Leiterplattendesign}{34}{section.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}Leiterplattenfertigung}{34}{subsection.2.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.1.1}Prototyping}{34}{subsubsection.2.5.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.6}Res\IeC {\"u}mee und Aussichten f\IeC {\"u}r die Zukunft}{34}{section.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Informatik}{35}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Visualisierte Benutzeroberfl\IeC {\"a}che}{35}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Anforderungen und Ziele}{35}{subsection.3.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Zeitplan}{36}{subsection.3.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.3}Auswahl des GUI-Toolkits}{36}{subsection.3.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.3.1}Swing}{36}{subsubsection.3.1.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.3.2}JavaFX}{36}{subsubsection.3.1.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.4}Das MVC-Design Pattern}{36}{subsection.3.1.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.4.1}Grundlagen}{36}{subsubsection.3.1.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.4.2}Integration innerhalb eines Programms}{37}{subsubsection.3.1.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.5}Auswahl der IDE}{38}{subsection.3.1.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.5.1}Netbeans IDE}{38}{subsubsection.3.1.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.5.2}Intellij IDE}{38}{subsubsection.3.1.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Kommunikation}{39}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Konzept}{39}{subsection.3.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Kommunikation - serielle Schnittstelle}{40}{subsection.3.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.1}Das \IeC {\"U}bertragungsprotokoll}{40}{subsubsection.3.2.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.2}Die Klasse Serial}{41}{subsubsection.3.2.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.3}Die Klasse Communication}{41}{subsubsection.3.2.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.4}Die abstrakte Klasse Request und deren abstammende Klassen}{41}{subsubsection.3.2.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.2.5}Die Klasse Response}{41}{subsubsection.3.2.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Kommunikation - Debugging Simulator}{41}{subsection.3.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.3.1}Die Klasse ReShuffledMainboardSimulator}{41}{subsubsection.3.2.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.3.2}Konzept zum Datenaustausch zwischen Programm und Simulator}{41}{subsubsection.3.2.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.3.3}Die Klassen SimInput- und SimOutputStreamBuffer}{41}{subsubsection.3.2.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Konfigurationsdatei}{41}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Konzept}{41}{subsection.3.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Umsetzung mithilfe der Klasse Config}{41}{subsection.3.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Zeitaufzeichnung}{45}{appendix.A}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Pers\IeC {\"o}nlicher Anhang 1}{47}{appendix.B}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Abk\IeC {\"u}rzungsverzeichnis}{49}{appendix.C}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Abbildungsverzeichnis}{51}{appendix.D}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {E}Tabellenverzeichnis}{53}{appendix.E}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {F}Listings}{55}{appendix.F}

@@ -1,0 +1,111 @@
+\BOOKMARK [0][-]{chapter.1}{Mechanik}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Anforderung}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Problemstellungen}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Variantenvergleich}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.3.1}{Anforderungen}{section.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.3.2}{Variantenvergleich}{section.1.3}% 6
+\BOOKMARK [3][-]{subsubsection.1.3.2.1}{Variante 1 - Linearachsen}{subsection.1.3.2}% 7
+\BOOKMARK [3][-]{subsubsection.1.3.2.2}{Variante 2 - Lagerrad mit Asugaber\344der}{subsection.1.3.2}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.2.3}{Variante 3 - Lagerrad mit Saugn\344pfe}{subsection.1.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.1.3.2.4}{Ausgaber\344der}{subsection.1.3.2}% 10
+\BOOKMARK [2][-]{subsection.1.3.3}{Klemmmechanissmen}{section.1.3}% 11
+\BOOKMARK [2][-]{subsection.1.3.4}{Seperation der Karten}{section.1.3}% 12
+\BOOKMARK [2][-]{subsection.1.3.5}{Endauswahl der Varianten}{section.1.3}% 13
+\BOOKMARK [1][-]{section.1.4}{Konstruktion}{chapter.1}% 14
+\BOOKMARK [1][-]{section.1.5}{Berechnungen, Festigkeitsanalyse und Dimensionierungen}{chapter.1}% 15
+\BOOKMARK [1][-]{section.1.6}{Teilaufbau}{chapter.1}% 16
+\BOOKMARK [0][-]{chapter.2}{Elektronik}{}% 17
+\BOOKMARK [1][-]{section.2.1}{Anforderungen}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.1.1}{Zeitplan}{section.2.1}% 19
+\BOOKMARK [1][-]{section.2.2}{Variantenvergleiche und Konzeptionierungen}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.1}{Mikrocontroller}{section.2.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.2.1.1}{ATmega162}{subsection.2.2.1}% 22
+\BOOKMARK [3][-]{subsubsection.2.2.1.2}{ATmega324P}{subsection.2.2.1}% 23
+\BOOKMARK [3][-]{subsubsection.2.2.1.3}{ATmega128}{subsection.2.2.1}% 24
+\BOOKMARK [3][-]{subsubsection.2.2.1.4}{Mikrocontroller-Auswahl}{subsection.2.2.1}% 25
+\BOOKMARK [2][-]{subsection.2.2.2}{Schrittmotor-Ansteuerung}{section.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.2.2.2.1}{DIY-H-Br\374cke}{subsection.2.2.2}% 27
+\BOOKMARK [3][-]{subsubsection.2.2.2.2}{Schrittmotor-Treibermodule}{subsection.2.2.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.2.2.3}{A4988}{subsection.2.2.2}% 29
+\BOOKMARK [3][-]{subsubsection.2.2.2.4}{DRV8825}{subsection.2.2.2}% 30
+\BOOKMARK [3][-]{subsubsection.2.2.2.5}{TB6600}{subsection.2.2.2}% 31
+\BOOKMARK [3][-]{subsubsection.2.2.2.6}{Treiber-Auswahl}{subsection.2.2.2}% 32
+\BOOKMARK [2][-]{subsection.2.2.3}{Detektion der Kartenposition}{section.2.2}% 33
+\BOOKMARK [3][-]{subsubsection.2.2.3.1}{Kapazitive Sensoren}{subsection.2.2.3}% 34
+\BOOKMARK [3][-]{subsubsection.2.2.3.2}{Ultraschall-Sensoren}{subsection.2.2.3}% 35
+\BOOKMARK [3][-]{subsubsection.2.2.3.3}{Optische Sensoren}{subsection.2.2.3}% 36
+\BOOKMARK [3][-]{subsubsection.2.2.3.4}{Sensoren-Auswahl}{subsection.2.2.3}% 37
+\BOOKMARK [2][-]{subsection.2.2.4}{Erfassung der Position des Motors}{section.2.2}% 38
+\BOOKMARK [3][-]{subsubsection.2.2.4.1}{Endschalter}{subsection.2.2.4}% 39
+\BOOKMARK [3][-]{subsubsection.2.2.4.2}{Lichtschranke}{subsection.2.2.4}% 40
+\BOOKMARK [3][-]{subsubsection.2.2.4.3}{Varianten-Auswahl}{subsection.2.2.4}% 41
+\BOOKMARK [2][-]{subsection.2.2.5}{Spannungsversorgung}{section.2.2}% 42
+\BOOKMARK [3][-]{subsubsection.2.2.5.1}{Doppel-Schaltnetzteil mit 12V und 5V Ausgangsspannung}{subsection.2.2.5}% 43
+\BOOKMARK [3][-]{subsubsection.2.2.5.2}{Schaltnetzteil mit 12V Ausgangsspannung und Schaltregler zu 5V}{subsection.2.2.5}% 44
+\BOOKMARK [3][-]{subsubsection.2.2.5.3}{Schaltnetzteil mit 12V Ausgangsspannung und Festspannungsregler zu 5V}{subsection.2.2.5}% 45
+\BOOKMARK [3][-]{subsubsection.2.2.5.4}{Auswahl der Spannungsversorgung}{subsection.2.2.5}% 46
+\BOOKMARK [2][-]{subsection.2.2.6}{Blockschaltbild der gesamten Elektronik}{section.2.2}% 47
+\BOOKMARK [1][-]{section.2.3}{Schaltplan}{chapter.2}% 48
+\BOOKMARK [2][-]{subsection.2.3.1}{Verpolungsschutz}{section.2.3}% 49
+\BOOKMARK [3][-]{subsubsection.2.3.1.1}{Verpolungsschutz mit Diode}{subsection.2.3.1}% 50
+\BOOKMARK [3][-]{subsubsection.2.3.1.2}{Verpolungsschutz mit einer Sicherung und einer Diode}{subsection.2.3.1}% 51
+\BOOKMARK [3][-]{subsubsection.2.3.1.3}{Verpolungsschutz mithilfe eines P-Kanal MOSFET}{subsection.2.3.1}% 52
+\BOOKMARK [2][-]{subsection.2.3.2}{Soft-Latching-Circuit}{section.2.3}% 53
+\BOOKMARK [3][-]{subsubsection.2.3.2.1}{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}{subsection.2.3.2}% 54
+\BOOKMARK [3][-]{subsubsection.2.3.2.2}{Andere Variante}{subsection.2.3.2}% 55
+\BOOKMARK [2][-]{subsection.2.3.3}{DC/DC Wandler}{section.2.3}% 56
+\BOOKMARK [2][-]{subsection.2.3.4}{Raspberry Pi 3B+}{section.2.3}% 57
+\BOOKMARK [3][-]{subsubsection.2.3.4.1}{Watchdog}{subsection.2.3.4}% 58
+\BOOKMARK [2][-]{subsection.2.3.5}{Beschaltung des ATmega324P}{section.2.3}% 59
+\BOOKMARK [2][-]{subsection.2.3.6}{DRV8825-Schrittmotortreiber}{section.2.3}% 60
+\BOOKMARK [3][-]{subsubsection.2.3.6.1}{Datenblattwerte}{subsection.2.3.6}% 61
+\BOOKMARK [3][-]{subsubsection.2.3.6.2}{Beschaltung}{subsection.2.3.6}% 62
+\BOOKMARK [3][-]{subsubsection.2.3.6.3}{Beschaltungs- und Anschlussfunktionen}{subsection.2.3.6}% 63
+\BOOKMARK [3][-]{subsubsection.2.3.6.4}{Schrittaufl\366sung}{subsection.2.3.6}% 64
+\BOOKMARK [3][-]{subsubsection.2.3.6.5}{Stromlimitierung}{subsection.2.3.6}% 65
+\BOOKMARK [3][-]{subsubsection.2.3.6.6}{K\374hlk\366rperberechnung}{subsection.2.3.6}% 66
+\BOOKMARK [2][-]{subsection.2.3.7}{Aktoren und Sensoren}{section.2.3}% 67
+\BOOKMARK [3][-]{subsubsection.2.3.7.1}{Kapazitive Sensoren}{subsection.2.3.7}% 68
+\BOOKMARK [2][-]{subsection.2.3.8}{Ansteuerung der Hubmagneten}{section.2.3}% 69
+\BOOKMARK [2][-]{subsection.2.3.9}{Beschaltung des Mini-USB}{section.2.3}% 70
+\BOOKMARK [2][-]{subsection.2.3.10}{Spannungspegel\374berwachung}{section.2.3}% 71
+\BOOKMARK [2][-]{subsection.2.3.11}{Netzteil}{section.2.3}% 72
+\BOOKMARK [1][-]{section.2.4}{Auswahl der Bauteile}{chapter.2}% 73
+\BOOKMARK [1][-]{section.2.5}{Leiterplattendesign}{chapter.2}% 74
+\BOOKMARK [2][-]{subsection.2.5.1}{Leiterplattenfertigung}{section.2.5}% 75
+\BOOKMARK [3][-]{subsubsection.2.5.1.1}{Prototyping}{subsection.2.5.1}% 76
+\BOOKMARK [1][-]{section.2.6}{Res\374mee und Aussichten f\374r die Zukunft}{chapter.2}% 77
+\BOOKMARK [0][-]{chapter.3}{Informatik}{}% 78
+\BOOKMARK [1][-]{section.3.1}{Visualisierte Benutzeroberfl\344che}{chapter.3}% 79
+\BOOKMARK [2][-]{subsection.3.1.1}{Anforderungen und Ziele}{section.3.1}% 80
+\BOOKMARK [2][-]{subsection.3.1.2}{Zeitplan}{section.3.1}% 81
+\BOOKMARK [2][-]{subsection.3.1.3}{Auswahl des GUI-Toolkits}{section.3.1}% 82
+\BOOKMARK [3][-]{subsubsection.3.1.3.1}{Swing}{subsection.3.1.3}% 83
+\BOOKMARK [3][-]{subsubsection.3.1.3.2}{JavaFX}{subsection.3.1.3}% 84
+\BOOKMARK [2][-]{subsection.3.1.4}{Das MVC-Design Pattern}{section.3.1}% 85
+\BOOKMARK [3][-]{subsubsection.3.1.4.1}{Grundlagen}{subsection.3.1.4}% 86
+\BOOKMARK [3][-]{subsubsection.3.1.4.2}{Integration innerhalb eines Programms}{subsection.3.1.4}% 87
+\BOOKMARK [2][-]{subsection.3.1.5}{Auswahl der IDE}{section.3.1}% 88
+\BOOKMARK [3][-]{subsubsection.3.1.5.1}{Netbeans IDE}{subsection.3.1.5}% 89
+\BOOKMARK [3][-]{subsubsection.3.1.5.2}{Intellij IDE}{subsection.3.1.5}% 90
+\BOOKMARK [1][-]{section.3.2}{Kommunikation}{chapter.3}% 91
+\BOOKMARK [2][-]{subsection.3.2.1}{Konzept}{section.3.2}% 92
+\BOOKMARK [2][-]{subsection.3.2.2}{Kommunikation - serielle Schnittstelle}{section.3.2}% 93
+\BOOKMARK [3][-]{subsubsection.3.2.2.1}{Das \334bertragungsprotokoll}{subsection.3.2.2}% 94
+\BOOKMARK [3][-]{subsubsection.3.2.2.2}{Die Klasse Serial}{subsection.3.2.2}% 95
+\BOOKMARK [3][-]{subsubsection.3.2.2.3}{Die Klasse Communication}{subsection.3.2.2}% 96
+\BOOKMARK [3][-]{subsubsection.3.2.2.4}{Die abstrakte Klasse Request und deren abstammende Klassen}{subsection.3.2.2}% 97
+\BOOKMARK [3][-]{subsubsection.3.2.2.5}{Die Klasse Response}{subsection.3.2.2}% 98
+\BOOKMARK [2][-]{subsection.3.2.3}{Kommunikation - Debugging Simulator}{section.3.2}% 99
+\BOOKMARK [3][-]{subsubsection.3.2.3.1}{Die Klasse ReShuffledMainboardSimulator}{subsection.3.2.3}% 100
+\BOOKMARK [3][-]{subsubsection.3.2.3.2}{Konzept zum Datenaustausch zwischen Programm und Simulator}{subsection.3.2.3}% 101
+\BOOKMARK [3][-]{subsubsection.3.2.3.3}{Die Klassen SimInput- und SimOutputStreamBuffer}{subsection.3.2.3}% 102
+\BOOKMARK [1][-]{section.3.3}{Konfigurationsdatei}{chapter.3}% 103
+\BOOKMARK [2][-]{subsection.3.3.1}{Konzept}{section.3.3}% 104
+\BOOKMARK [2][-]{subsection.3.3.2}{Umsetzung mithilfe der Klasse Config}{section.3.3}% 105
+\BOOKMARK [0][-]{appendix.A}{Zeitaufzeichnung}{}% 106
+\BOOKMARK [0][-]{appendix.B}{Pers\366nlicher Anhang 1}{}% 107
+\BOOKMARK [0][-]{appendix.C}{Abk\374rzungsverzeichnis}{}% 108
+\BOOKMARK [0][-]{appendix.D}{Abbildungsverzeichnis}{}% 109
+\BOOKMARK [0][-]{appendix.E}{Tabellenverzeichnis}{}% 110
+\BOOKMARK [0][-]{appendix.F}{Listings}{}% 111
