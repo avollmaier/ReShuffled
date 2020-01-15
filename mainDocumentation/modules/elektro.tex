@@ -900,7 +900,7 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 
 \subsection{Ansteuerung der Hubmagneten}
 
-\subsection{Beschaltung des Mini-USB}
+\subsection{Mini-USB Schnittstelle}
 
 \subsection{Spannungspegelüberwachung}
 
@@ -945,6 +945,10 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 
 \subsection{Netzteil}
 
+Als Netzteil wählten wir ein Schaltnetzteil mit Klatgerätestecker aus.
+Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
+Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
+
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \section{Auswahl der Bauteile}
@@ -953,8 +957,43 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 
 \section{Leiterplattendesign}
 
+Sogleich die Auswahl der Peripherie beendet war, war es an der Zeit ein Design für die geplante Platine in KiCad zu entwerfen.
+Als Anforderungen stellten wir uns
+Im Laufe der Diplomarbeit entstanden unzählig viele, verschiedene Layouts, welche die Gründe von ständig neu aufkommenden Ideen, Ausmerzung von Fehlerquellen und Simplifizierungen hatten.
+Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen Aufgabe.
+Eine falsche Dimensionierung von Bauteilen und Baugruppen, Denkfehler, die das Fertigen erschweren würden, und ungünstige Leiterbahn-Dimensionierung und Anordnung waren hierbei die Hauptfaktoren.
+
 \subsection{Leiterplattenfertigung}
 
 \subsubsection{Prototyping}
+
+Bevor wir den Auftrag einer Leiterplattenfertigung an ein professionielles Unternehmen aufgaben, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
+Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
+
+\textbf{Als Fertigungsschritte sind folgende zu nennen:} \\
+
+\begin{itemize}
+\item Zu allererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
+Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein muss.
+Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
+
+\item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine zu belichten. \\
+
+\item Die beleuchtete Leiterplatte ist anschließend für eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
+
+\item Folgend ist sie mit heißem Wasser abzuspülen und in ein Natriumpersulfat-Bad zu geben.
+Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
+In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
+
+\item Anschließend wird die Leiterplatte mit heißem Wasser abgespült und mit Azeton gereinigt. \\
+
+\item Als nächsten Schritt ist sie in ein Zinnbad für einige Minuten zu legen. \\
+
+\item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
+
+\item Zuletzt kann die Bestückung der Leiterplatte erfolgen.
+\end{itemize}
+
+\subsubsection{Professionelle Fertigung}
 
 \section{Resümee und Aussichten für die Zukunft}
