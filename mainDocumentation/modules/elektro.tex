@@ -692,7 +692,13 @@ Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein,
 \subsection{DC/DC Wandler}
 
 \subsection{Raspberry Pi 3B+}
+
+Als Basis für unsere Human Machine Interface wählten wir einen Raspberry Pi 3B+ aus.
+
 \subsubsection{Watchdog}
+
+Als Funktion der Ausfallerkennung implementierten wir eine Watchdog-Verbindung zwischen dem Raspberry Pi und dem Mikrocontroller.
+So kann bei einem Ausfall dennoch eine sicheres Herunterfahren beziehungsweise eine geeignete Fehlerbehebung gewähleistet werden.
 
 \subsection{Beschaltung des ATmega324P}
 
@@ -970,7 +976,7 @@ Eine falsche Dimensionierung von Bauteilen und Baugruppen, Denkfehler, die das F
 Bevor wir den Auftrag einer Leiterplattenfertigung an ein professionielles Unternehmen aufgaben, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
 Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
 
-\textbf{Als Fertigungsschritte sind folgende zu nennen:} \\
+\textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
 \begin{itemize}
 \item Zu allererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
