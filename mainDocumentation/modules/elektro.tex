@@ -463,6 +463,10 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
 Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Festspannungsregler, da diese für einen geringen Preis erhältlich ist
 und einen sehr geringen Bedarf an Platz und Bauteilen mit sich bringt.
 
+Den Mikrocontroller versorgen wir mit dem 3.3V Ausgang des Raspberry Pi 3B+.
+Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V auch mit einer Logik von +5V arbeiten würde und somit ein Pegelwandler zu 3.3V nötig wäre,
+verwarfen wir die Idee diesen mit 5V zu versorgen.
+
 \newpage
 
 \subsection{Blockschaltbild der gesamten Elektronik}
