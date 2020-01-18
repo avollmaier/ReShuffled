@@ -897,9 +897,7 @@ Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
 
-\subsection{Aktoren und Sensoren}
-
-\subsubsection{Kapazitive Sensoren}
+\subsection{Kapazitive Sensoren}
 Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
 einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird. \\
 
@@ -1055,7 +1053,6 @@ Neben der vorgeschriebenen Beschaltung wurde zusätzlich die Schottkydiode D1 un
 Die Schottkydiode hat die Aufgabe eine Rückspeisung von 5V zum eingesteckten Gerät zu verhindern.
 Der Pull-Up Widerstand fungiert als Prevention einer floatenden Leitung.
 
-
 \subsection{Spannungspegelüberwachung}
 
 Grundsätzlich ist zu sagen, dass an den Spannungspegeln von 12V, 5V und 3.3V sowie an anderen signifikanten Stellen der Platine Messpunkte zur erleichterten Fehlersuche und Wartung realisiert wurden.
@@ -1129,25 +1126,28 @@ Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
 \begin{itemize}
-    \item Zu allererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
-    Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein muss.
-    Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
+    \item Zuallererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
+          Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
+          Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
+          Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
 
-    \item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine zu belichten. \\
+    \item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine unter Vakuuum zu belichten. \\
 
-    \item Die beleuchtete Leiterplatte ist anschließend für eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
+    \item Die beleuchtete Leiterplatte ist anschließend eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
 
     \item Folgend ist sie mit heißem Wasser abzuspülen und in ein Natriumpersulfat-Bad zu geben.
-    Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
-    In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
+          Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
+          In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
-    \item Anschließend wird die Leiterplatte mit heißem Wasser abgespült und mit Azeton gereinigt. \\
+    \item Anschließend ist die Leiterplatte mit heißem Wasser abzuspülen und mit Azeton zu reinigen. \\
 
-    \item Als nächsten Schritt ist sie in ein Zinnbad für einige Minuten zu legen. \\
+    \item Als nächsten Schritt ist sie für einige Minuten in ein Zinnbad zu legen. \\
+
+    \item Nun kann die Leiterplatte ein letztes Mal mit heißem Wasser gereinigt und mit Fluxclean gereinigt werden.
 
     \item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
 
-    \item Zuletzt kann die Bestückung der Leiterplatte erfolgen.
+    \item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
 \subsubsection{Professionelle Fertigung}
