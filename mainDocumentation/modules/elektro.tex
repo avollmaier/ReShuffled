@@ -832,9 +832,9 @@ Um den durch die Motorwindungen fließenden Strom zu limitieren, kann dem Datenb
     I_{max} = \frac{V_{ref}} {5 \cdot R_{sense}}
 \end{equation}
 
-Der von uns ausgewählte Schrittmotor 17HS19-2004S1 braucht laut dessen Datenblatt einen Strom von 2A.
+Der von uns ausgewählte Schrittmotor 17HS19-2004S1 braucht laut dessen Datenblatt einen Strom von 2A .
 Durch einige Tests und Messungen fanden wir jedoch heraus, dass 1.6A bei gewöhnlichem Betrieb mehr als genug sind.
-Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung adaptiert werden:
+Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung adaptiert werden.
 
 \begin{equation*}
     V_{ref} = I_{max} \cdot 5 \cdot R_{sense}
@@ -847,7 +847,6 @@ Beim DRV8825 beträgt der Wert 0.1 Ohm.
     V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
     &= 0.8V
 \end{align*}
-
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
 Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet, eingestellt werden.
 
@@ -861,6 +860,7 @@ Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden folgende Formeln b
 \begin{equation}
     P_V = R_{DSon} \cdot I_{max}^2
 \end{equation}
+
 Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} ist ein Kühlkörper von Nöten. \\
 
 \textbf{Datenblattwerte}\\
@@ -868,7 +868,7 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 • T\textsubscript{ha} = 25°C \\
 • R\textsubscript{thjc} = 15.9°C/W \\
 • R\textsubscript{thja} = 31.6°C/W \\
-• R\textsubscript{DSon} = 0,32 Ohm \\\\
+• R\textsubscript{DSon} = 0,32 Ohm \\
 
 \textbf{Berechnung}
 \begin{flalign*}
@@ -884,7 +884,7 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 \end{flalign*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
-Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.\\
+Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.
 
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
@@ -897,7 +897,29 @@ Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
 
+\subsection{Erfassung der Motorposition}
+
+Zu Beginn wird der Schrittmotor in eine Richtung angesteuert, bis er seinen Referenzpunkt erreicht, welcher als Mikroschalter implementiert ist.
+Der vom Mikrocontroller auf "HIGH" gesetzte Ausgang, wird bei einer Betätigung des Mikroschalters gegen Masse geschalten.
+Der Zustand dieses Ausgangs wird über das zugehörige PIN-Register vom Mikrocontroller eingelesen.
+So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen aufgetragen werden.
+\begin{figure}[hpt]
+    \centering
+    \begin{circuitikz}[european, scale = 0.7]
+        \draw (-1,7) to (0,7) to (0,6) to [short, -o](1,6);
+        \draw (1,5) to [short, o-](0,5) to (0,4.5);
+        \draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](0,0);
+        \draw (0,4.5) to [R, l = $R1$](0,2.5) to (0,2);
+        \draw (1,5.5) to (1,5.5)node[anchor=west]{Mikroschalter};
+        \draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
+        \draw (0,2) to (0,0) node[rground]{};
+    \end{circuitikz}
+    \caption{Erfassung der Schrittmotorpsoition}
+\end{figure}
+
+
 \subsection{Kapazitive Sensoren}
+
 Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
 einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einem schwarzen über den das Signal vermittelt wird. \\
 
@@ -941,7 +963,7 @@ Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden fo
     R_1 = 5.1k\Omega, R_2 = 2k\Omega
 \end{equation*}
 
-Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V.
+Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
 Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V zu messen.
 
 %Bild des Versuchsaufbaus einfügen
@@ -961,7 +983,7 @@ Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderli
 Diese hat die Aufgabe, den MOSFET vor einer selbsterzeugenten, rückfließenden Spannung des Hubmagneten zu schützen.
 
 
-\begin{figure}[htp]
+\begin{figure}[hpt]
     \centering
     \begin{circuitikz}[european, scale = 0.8]
         \draw (5,8)node[vcc]{+12V};
