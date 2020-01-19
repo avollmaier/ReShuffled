@@ -948,7 +948,38 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 
 \subsection{Ansteuerung der Hubmagneten}
 
+Als Ansteuerung der beiden Hubmagneten wird jeweils die unten zu sehende Schaltung angewandt.
+Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre derartige Ströme ohne Überhitzung schalten zu können.
 
+\subsubsection{Funktion}
+
+Sobald die Gate-Source-Schwellenspannung des MOSFETs mithilfe eines 3.3V Signals ausgehend vom Mikrocontroller überschritten wird, schaltet der N-Kanal MOSFET durch.
+Dieser ermöglich das Fließen des Drainstromes durch den Hubmagneten zum Massepotential.
+Um den fließenden Gate-Source-Strom zu verringern wurde der Widerstand R1 implementiert.
+Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen
+Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine "Fly-Wheel-Diode" zu schalten.
+Diese hat die Aufgabe, den MOSFET vor einer selbsterzeugenten, rückfließenden Spannung des Hubmagneten zu schützen.
+
+
+\begin{figure}[htp]
+    \centering
+    \begin{circuitikz}[european, scale = 0.8]
+        \draw (5,8)node[vcc]{+12V};
+        \draw (5,8) to (5,6.5) to [short, -o](6,6.5);
+        \draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
+        \draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
+        \draw (4,5) to (4,7);
+        \draw (6,6) to (6,6)node[anchor=west]{Hubmagnet};
+        \draw (5,3) to (5,0);
+        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
+        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
+        \draw (5,3)node[nfet, solderdot, bodydiode]{};
+        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+        \draw (5,0) to (5,0) node[rground]{};
+
+    \end{circuitikz}
+    \caption{Ansteuerung der Hubmagneten}
+\end{figure}
 
 \subsection{Mini-USB Schnittstelle}
 
@@ -956,7 +987,7 @@ Um Debugging effektiv betreiben zu könnnen, ist eine Verbindung von Mini-USB zu
 So können Vorgänge leicht über einen Computer via Kabel überwacht werden oder etwa ein neues Programme herübergespielt werden.
 
 Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringe, einfache Beschaltung und Implementierung sprach.
-Dieser Traiberbaustein ist wie folgend zu beschalten:
+Dieser Treiberbaustein ist wie folgend zu beschalten:
 
 \begin{figure}[ht]
     \centering
@@ -1069,23 +1100,23 @@ Die benötigte Spannung, um ein Leuchten der LED zu geährleisten, steigt somit 
 
 An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie geschaltet, welche ab einer Spannung von 2.2V leuchtet.
 
-\begin{figure}[ht]
+\begin{figure}[htp]
     \centering
-    \begin{circuitikz}[european, scale = 1]
+    \begin{circuitikz}[european, scale = 0.8]
         \draw (1,9)node[vcc]{+3.3V};
         \draw (1,5) to [R, l_=$R_1$](1,3){};
-        \draw (1,3) to [led, l_=$D1$](1,1);
+        \draw (1,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D1$](1,1);
         \draw (1,3) to (1,0) node[rground]{};
         \draw (3,9)node[vcc]{+5V};
-        \draw (3,9) to [D, l_=$D_2$](3,7){};
-        \draw (3,7) to [D, l_=$D_3$](3,5){};
+        \draw (3,9) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_2$](3,7){};
+        \draw (3,7) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_3$](3,5){};
         \draw (3,5) to [R, l_=$R_2$](3,3){};
-        \draw (3,3) to [led, l_=$D4$](3,1);
+        \draw (3,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D4$](3,1);
         \draw (3,3) to (3,0) node[rground]{};
         \draw (5,9)node[vcc]{+12V};
-        \draw (5,5) to [zDo, l=$D_5$](5,7);
+        \draw (5,5) to [/tikz/circuitikz/bipoles/length=1.1cm, zDo, l=$D_5$](5,7);
         \draw (5,5) to [R, l_=$R_3$](5,3){};
-        \draw (5,3) to [led, l_=$D6$](5,1);
+        \draw (5,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D6$](5,1);
         \draw (5,3) to (5,0) node[rground]{};
         \draw (3,5) to (3,9);
         \draw (1,5) to (1,9);
@@ -1099,15 +1130,15 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 Als Netzteil wählten wir ein Schaltnetzteil mit Klatgerätestecker aus.
 Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
 Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
-\newpage
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
+\newpage
 \section{Auswahl der Bauteile}
-\newpage
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
+\newpage
 \section{Leiterplattendesign}
 
 Sogleich die Auswahl der Peripherie beendet war, war es an der Zeit ein Design für die geplante Platine in KiCad zu entwerfen.
