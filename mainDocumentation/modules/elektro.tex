@@ -699,9 +699,9 @@ Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein,
 
 Als Buck-Converter wählten wir den LM2576-5.0 aus.
 Mit diesem ist es möglich eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
-Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients. \\
+Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients. \\
 
-\textbf{Beschaltung:}
+\subsubsection{Beschaltung}
 
 \begin{figure}[ht]
     \centering
@@ -732,6 +732,47 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
     \caption{Beschaltung des LM2576-5.0}
 \end{figure}
 
+\subsubsection{Kühlkörperberechnung}
+
+Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenblätter zur Berechnung angewandt.
+
+Um die Verlustleistung des LM2576 zu berechnen, wird von folgender Formel Gebrauch gemacht.
+
+\begin{equation}
+    P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
+\end{equation}
+wobei
+\begin{itemize}
+    \item P\textsubscript{D} der auszurechnenden Verlustleistung,
+    \item V\textsubscript{IN} der Eingangsspannung,
+    \item I\textsubscript{Q} dem Ruhestrom,
+    \item V\textsubscript{OUT} der regulierten Ausgangsspannung,
+    \item I\textsubscript{LOAD} dem Laststrom und V\textsubscript{SAT} der Sättigungsspannung entspricht.
+\end{itemize}
+
+Setzen wir nun die bei unserer Anwendung maximal anfallenden Werte ein erhalten wir folgendes Ergebnis:
+\begin{flalign*}
+    P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V &\\
+    &= 1.906W
+\end{flalign*}
+
+Der Anstieg der Sperrschichtübergangstemperatur lässt sich somit folgend berechnen:
+\begin{flalign}
+    \Delta T_j &= P_D \cdot \Theta_{ja} &\\
+    &= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag &\\
+    &= 81,1946^{\circ}C \notag
+\end{flalign}
+
+Zu diesem Anstieg ist noch die gewöhnliche Umgebungstemperatur hinzuzurechnen.
+\begin{flalign}
+    T_j &= \Delta  T_j + T_A &\\
+    &= 81,1946^{\circ}C + 25^{\circ}C \notag &\\
+    &= 106,1956^{\circ}C \notag
+\end{flalign}
+
+Durch dieses Ergebnis lässt es sich, trotz eines Sicherheitsabschlages der maximalen Sperrschichttemperatur (T\textsubscript{jmax} = 125°C-15°C), auf einen zulässigen Betrieb schließen.\\\\
+Obgleich dieser Wert recht hoch erscheint, werden wir auf einen Kühlkörper verzichten, da wir dieses maximale Potential des Gleichspannungswandlers nicht voll ausnutzen werden.
+(Die Verlustleistung erreicht bei einem Laststrom von 1.5A einen Wert von 0.8435W. Der daraus zu schließende Wert der Sperrschichttemperatur beträgt somit gerade einmal 60,9331°C.)
 
 \subsection{Raspberry Pi 3B+}
 
@@ -908,8 +949,8 @@ So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen 
     \begin{circuitikz}[european, scale = 0.7]
         \draw (-1,7) to (0,7) to (0,6) to [short, -o](1,6);
         \draw (1,5) to [short, o-](0,5) to (0,4.5);
-        \draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](0,0);
-        \draw (0,4.5) to [R, l = $R1$](0,2.5) to (0,2);
+        \draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, led, l_=$D1$](0,0);
+        \draw (0,4.5) to [R, l_ = $R1$](0,2.5) to (0,2);
         \draw (1,5.5) to (1,5.5)node[anchor=west]{Mikroschalter};
         \draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
         \draw (0,2) to (0,0) node[rground]{};
