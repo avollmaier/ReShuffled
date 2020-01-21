@@ -127,7 +127,7 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, u
     \begin{circuitikz}[european, scale = 0.9]
 
         % Mikrocontroller
-        \draw [thick](-7,4) -- (-3,4) -- (-3,11) -- (-7,11) -- (-7,4);
+        \draw [line width=1.5pt](-7,4) -- (-3,4) -- (-3,11) -- (-7,11) -- (-7,4);
         \draw (-5,8)node[anchor=north]{ATmega324P};
         \draw (-5,4.6)node[anchor=north]{OC1A};
         \draw (-5,11)node[anchor=north]{OC1B};
@@ -710,7 +710,7 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
         \draw (1.5,5) to [eC, l=$C1$, *-*](1.5,0);
         \draw (8.5,5) to [eC, l=$C2$, *-*](8.5,0);
         \draw (6.5,0) to [sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
-        \draw (3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
+        \draw [line width=1.5pt](3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
         \draw (5.5,5.5) to (8.5,5.5) to (8.5,5);
         \draw (5.5,5) to (6.5,5);
         \draw (6.5,5) to [L, l_=$L1$](8.5,5);
@@ -808,31 +808,44 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 * nur bei ausreichender Kühlung möglich
 
 \subsubsection{Beschaltung}
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.5,page=1]{fig/elektro/StepperMotorDriver.pdf}
-    \caption{Gewöhnliche Beschaltung eines DRV8825}
-\end{figure}
 
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}{european, scale = 1}
-        \draw (5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
+        \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
 
 
         \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
         \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
-        \draw (5,1.5) to [short,-o](4,1.5)node[anchor=east]{SLEEP};
-        \draw (5,2) to [short,-o](4,2)node[anchor=east]{RESET};
+        \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
+        \draw (4.95,2) to [short,o-o](4,2)node[anchor=east]{RESET};
         \draw (5,2.5) to [short,-o](4,2.5)node[anchor=east]{M2};
         \draw (5,3) to [short,-o](4,3)node[anchor=east]{M1};
         \draw (5,3.5) to [short,-o](4,3.5)node[anchor=east]{M0};
-        \draw (5,4) to [short,-o](4,4)node[anchor=east]{EN};
+        \draw (4.95,4) to [short,o-o](4,4)node[anchor=east]{EN};
+
+        \draw (5,0.5) to (5,0.5)node[anchor=west]{DIR};
+        \draw (5,1) to (5,1)node[anchor=west]{STEP};
+        \draw (5,1.5) to (5,1.5)node[anchor=west]{/SLEEP};
+        \draw (5,2) to (5,2)node[anchor=west]{/RESET};
+        \draw (5,2.5) to (5,2.5)node[anchor=west]{M2};
+        \draw (5,3) to (5,3)node[anchor=west]{M1};
+        \draw (5,3.5) to (5,3.5)node[anchor=west]{M0};
+        \draw (5,4) to (5,4)node[anchor=west]{/EN};
+
+        \draw (8,0.5) to (8,0.5)node[anchor=east]{GND};
+        \draw (8,1) to (8,1)node[anchor=east]{/FLT};
+        \draw (8,1.5) to (8,1.5)node[anchor=east]{A2};
+        \draw (8,2) to (8,2)node[anchor=east]{A1};
+        \draw (8,2.5) to (8,2.5)node[anchor=east]{B1};
+        \draw (8,3) to (8,3)node[anchor=east]{B2};
+        \draw (8,3.5) to (8,3.5)node[anchor=east]{GND};
+        \draw (8,4) to (8,4)node[anchor=east]{VMOT};
 
         \draw (8,0.5) to (9, 0.5) to (9,0)node[rground]{};
-        \draw (8,1) to (8.5, 1);
-        \draw (8.4,1.1) to (8.6,0.9);
-        \draw (8.4,0.9) to (8.6,1.1);
+        \draw (8.05,1) to [short,o-](8.5, 1);
+        \draw [line width=1pt](8.4,1.1) to (8.6,0.9);
+        \draw [line width=1pt](8.4,0.9) to (8.6,1.1);
         \draw (8,1.5) to [short,-o](9, 1.5);
         \draw (8,2) to [short,-o](9, 2);
         \draw (8,2.5) to [short,-o](9, 2.5);
@@ -1103,7 +1116,7 @@ Dieser Treiberbaustein ist wie folgend zu beschalten:
     \begin{circuitikz}[european, scale = 1.15]
 
         %Mini-USB
-        \draw (-1,1) to (-1,3.5) to (1,3.5) to (1,1) to (-1,1);
+        \draw [line width=1.5pt](-1,1) to (-1,3.5) to (1,3.5) to (1,1) to (-1,1);
         \draw (1,3) to (1.5,3) to [sD, l=$D1$](1.5,6) to (1.5,3);
         \draw (1,2.5) to (1.5,2.5);
         \draw (1,2) to (1.5,2);
@@ -1150,7 +1163,7 @@ Dieser Treiberbaustein ist wie folgend zu beschalten:
 
 
         %USB to UART - Modul
-        \draw (5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
+        \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
         \draw (5, 0.5) to (4.5, 0.5) to (4.5,0) to (4,0) to [C](2.5,0);
         \draw (5, 1) to (4.5, 1) to (4.5, 1.5) to (4,1.5) to [C](2.5,1.5) to (2,1.5) to (2,0) to [short,-*](2,0.75) to (1.5,0.75) to (1.5,0.25)node[rground]{};
         \draw (4,1.5) to [PZ, l_=$Y1$, *-*](4,0);
