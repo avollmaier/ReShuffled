@@ -231,7 +231,7 @@ Da sich die Ansteuerung der beiden H-Brücken gleich gestaltet, wird zur vereinf
 Mithilfe des Timer 0 wird am Ausgang OC1B des Mikrocontrollers ein PWM-Signal erzeugt, mithilfe dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
 Dadurch befindet sich jeweils an einem Eingang des UND-Gatters mit der Bezeichnung IC1 und an einem Eingang des UND-Gatters mit der Bezeichnung IC2 ein Signal mit einem HIGH-Pegel (Spannung) oder
 LOW-Pegel (keine Spannung). \\\\
-Je nach gewollter Drehrichtung, muss der Motor über die Transistoren anders angesteuert werden: \\
+Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzusteuern: \\
 Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang PD0 ein HIGH-Signal erzeugt werden.
 Am Ausgang PD1 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang OC1B, befindet sich ein HIGH-Signal am unteren Eingang des UND-Gatters IC2.
@@ -317,7 +317,7 @@ Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
         Max. Strom & 2A & 2.2A & 4A    \\ \hline
         Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
         Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
-        Max. Schrittauflösung & 16 & 32 & 32         \\ \hline
+        Max. Schrittauflösung & 16 & 32 & 32        \\ \hline
         Größe & klein & klein & groß        \\ \hline
     \end{tabular}
     \caption{Vergleich der Treibermodule}
@@ -388,8 +388,8 @@ Es sind große Erkennungsabstände möglich.
     \caption{Vergleich der Sensorattribute}
 \end{table}
 
-Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf. \\\\
-Unsere Wahl fiel auf den Sensor LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1 bis 10mm erfassen kann.
+Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
+Somit fiel unsere Wahl auf den LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1 bis 10mm erfassen kann.
 Dieser Sensor konnte mit einem sehr geringen Preis in unserem Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er seiner Aufgabe gewachsen war.
 
 \subsection{Erfassung der Position des Motors}
@@ -814,35 +814,81 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
     \caption{Gewöhnliche Beschaltung eines DRV8825}
 \end{figure}
 
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}{european, scale = 1}
+        \draw (5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
+
+
+        \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
+        \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
+        \draw (5,1.5) to [short,-o](4,1.5)node[anchor=east]{SLEEP};
+        \draw (5,2) to [short,-o](4,2)node[anchor=east]{RESET};
+        \draw (5,2.5) to [short,-o](4,2.5)node[anchor=east]{M2};
+        \draw (5,3) to [short,-o](4,3)node[anchor=east]{M1};
+        \draw (5,3.5) to [short,-o](4,3.5)node[anchor=east]{M0};
+        \draw (5,4) to [short,-o](4,4)node[anchor=east]{EN};
+
+        \draw (8,0.5) to (9, 0.5) to (9,0)node[rground]{};
+        \draw (8,1) to (8.5, 1);
+        \draw (8.4,1.1) to (8.6,0.9);
+        \draw (8.4,0.9) to (8.6,1.1);
+        \draw (8,1.5) to [short,-o](9, 1.5);
+        \draw (8,2) to [short,-o](9, 2);
+        \draw (8,2.5) to [short,-o](9, 2.5);
+        \draw (8,3) to [short,-o](9, 3);
+        \draw (8,3.5) to (10.5, 3.5) to (11.5,3.5);
+        \draw (11,3.5) to [short,*-](11,3.5)node[rground]{};
+        \draw (8,4) to (10.5, 4) to (10.5,5) to (11.5,5) to [eC, l=$C1$](11.5,3.5);
+        \draw (11,5) to [short,*-](11,5)node[vcc]{12V};
+        \draw (9,2.75) to (9,2.75)node[anchor=west]{Coil 1};
+        \draw (9,1.75) to (9,1.75)node[anchor=west]{Coil 2};
+        \draw (5,5.1) to (5,5.1)node[anchor=north]{DRV8825};
+    \end{circuitikz}
+    \caption{Gewöhnliche Beschaltung eines DRV8825}
+\end{figure}
+
 
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
 Der DRV8825 besitzt 16 Anschlüsse.
-Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\\\
+Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\
+
 Über den Anschluss VMOT werden in unserem Fall 12V eingespeist.
-Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\\\
+Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\
+
 „Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen.
 Insbesondere wenn längere Stromkabel verwendet werden.
 Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
 Selbst, wenn die Versorgungsspannung des Motors nur 12 V, können diese Art von Spannungsspitzen auftreten.
-Eine Möglichkeit diese Gefahr zu negieren, ist einen, mindestens 47µF großen Elektrolytkondensator zwischen dem Pin VMOT und Ground in der Nähe des Treibers zu schalten.“ \\\\
+Eine Möglichkeit diese Gefahr zu negieren, ist einen, mindestens 47µF großen Elektrolytkondensator zwischen dem Pin VMOT und Ground in der Nähe des Treibers zu schalten.“ \\
+
 An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden.
 Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
-Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\\\
+Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\
+
 Der invertierte FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden.
-Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\\\
-Der DRV8825 Treiber verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in Abbildung X zu finden sind: \\\\
+Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\
+
+Der DRV8825 Treiber verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in Abbildung X zu finden sind: \\
+
 Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
 Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
 Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
-Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\\\
+Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\
+
 Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen.
 Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
-Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel X. \\\\
-Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\\\
-Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\\\
-Um den Treiber in voller Funktion verwendet zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\\\
+Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel 2.3.6.4 . \\
+
+Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\
+
+Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\
+
+Um den Treiber in voller Funktion verwendet zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\
+
 Der STEP Anschluss des DRV8825 liest ein Rechtecksignal ein.
-Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\\\
+Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\
+
 Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
 Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
@@ -955,7 +1001,7 @@ So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen 
         \draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
         \draw (0,2) to (0,0) node[rground]{};
     \end{circuitikz}
-    \caption{Erfassung der Schrittmotorpsoition}
+    \caption{Erfassung der Schrittmotorposition}
 \end{figure}
 
 
@@ -1221,17 +1267,17 @@ Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
 
 \begin{itemize}
     \item Zuallererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
-          Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
-          Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
-          Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
+    Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
+    Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
+    Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
 
     \item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine unter Vakuuum zu belichten. \\
 
     \item Die beleuchtete Leiterplatte ist anschließend eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
 
     \item Folgend ist sie mit heißem Wasser abzuspülen und in ein Natriumpersulfat-Bad zu geben.
-          Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
-          In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
+    Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
+    In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
     \item Anschließend ist die Leiterplatte mit heißem Wasser abzuspülen und mit Azeton zu reinigen. \\
 
