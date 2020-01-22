@@ -485,21 +485,19 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 
 \subsection{Verpolungsschutz}
 
-Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingespeist wird und eine Verwechslung
-der Anschlusspolaritäten nicht unwahrscheinlich ist, vermag es einen Verpolungsschutz zu verwerden um die
-dahinter gelegene Elektronik zu schützen.
+Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingespeist wird und eine Verwechslung der Anschlusspolaritäten nicht unwahrscheinlich ist,
+vermag es einen Verpolungsschutz zu verwerden um die dahinter gelegene Elektronik zu schützen.
 
-\subsubsection{Verpolungsschutz mit Diode}
+\subsubsection{Verpolungsschutz mit einer Diode}
 
 Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Diode.
-Jedoch bringt diese Methode einen
-erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, welches bei 12V immerhin 8.33% sind.
+Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, was bei 12V immerhin 8.33 Prozent entsprechen.
 
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
-        \draw (2,3) to[D, l=$D1$](4,3){};
+        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -523,7 +521,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
         \draw (1,3) to[R, l=$F1$](3,3){};
-        \draw (4,0) to[D, l=$D1$, *-*](4,3){};
+        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -538,15 +536,13 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
 \subsubsection{Verpolungsschutz mithilfe eines P-Kanal MOSFET}
 
 Der P-Kanal MOSFET leitet, wenn das Gate um U\textsubscript{GSth} negativer ist als der Spannungspegel anliegend am Source.
-Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass
-am Sourceeingang die Eingangsspannung ankommt.
-Weil die am Source anliegende Spannung weitaus positiver als
-U\textsubscript{GSth} ist, leitet der MOSFET. Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährilichen Wert.
-Die Tatsache, dass der MOSFET quasi verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant,
-da es sich lediglich um einige Millivolt Unterschied handelt.
+Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass am Sourceeingang die Eingangsspannung ankommt.
+Weil die am Source anliegende Spannung weitaus positiver als U\textsubscript{GSth} ist, leitet der MOSFET .
+Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährilichen Wert.
+Die Tatsache, dass der MOSFET quasi verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
 Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden Zustand.
-Bei Spannungen, die kleiner als UIn unserem Fall handelt es sich lediglich um eine anliegende Spanung von 12V,
-weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betrieb möglich ist.
+Bei Spannungen, die kleiner als UGSmax sind, kann die Z-Diode vernachlässigt werden.
+In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, weshalb die Diode vernachlässigt werden kann und ein beinahe verlustfreier Betrieb möglich ist.
 
 \begin{figure}[ht]
     \centering
@@ -557,7 +553,7 @@ weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betr
         \draw (3.55,4.3)node[anchor=south]{Q1};
         \draw (3,0) to [R, l=$R1$, *-](3,3.3){};
         \draw (3,2.5) to [short, *-](4.2,2.5){};
-        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=0.8cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
+        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=1cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
         \draw (3.225,4) to [short, -*](3.225,4);
         \draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
         \draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
@@ -569,13 +565,14 @@ weshalb die Z-Diode weggelassen werden kann und ein beinahe leistungsfreier Betr
     \caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
 \end{figure}
 
-Aufgrund der Vorteile des fast leistungsarmen Betriebs und des wartungsarmen Betriebs entschieden wir uns für den Gebrauch der 3.Variante.
+Aufgrund der Vorteile des fast verlustlosen und wartungsarmen Betriebs entschieden wir uns für den Gebrauch der 3.Variante.
 
 \newpage
 \subsection{Soft-Latching-Circuit}
 
-Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt werden, sollen erst durch eine Betätigung von einem Taster durchgeschaltet werden und die Elektronik versorgen.
+Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt wird, soll durch die Betätigung eines Tasters durchgeschaltet werden und die Elektronik versorgen.
 Diese Versorgung soll auch nach der Betätigung zur Verfügung stehen.
+Die Versorgung soll durch ein Signal des RPI gestoppt werden, wodurch ein sicheres Herunterfahren des RPI bereitgestellt werden soll.
 
 \subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
 
@@ -585,10 +582,9 @@ Das dadurch auf Ground gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} läss
 Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
 Das dadurch ebenfalls über R\textsubscript{3} versorgte Gate von Q\textsubscript{2} lässt die davon am Drain liegende Leitung auf Masse schalten,
 welches die Versorgung der 12V Komponenten auch nach der Betätigung des S\textsubscript{1} bereitstellt.
-
-Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „high“ von 3.3V am Eingang U\textsubscript{UNLATCH}, ausgehend von einem Pin des Mikrokontrollers.
-Die Schottkydiode D\textsubscript{1} sorgt für dafür, dass kein Strom zurück in den µC fließen kann und dafür, dass sich der aufgeladene
-Elektrolytkondensator nur über den Widerstand R\textsubscript{8} entlädt.
+Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „High“ von 3.3V am Eingang U\textsubscript{UNLATCH}, ausgehend von einem Pin des Mikrocontrollers.
+Die Schottkydiode D\textsubscript{1} sorgt für dafür, dass kein Strom zurück in den µC fließen kann und dafür,
+dass sich der aufgeladene Elektrolytkondensator nur über den Widerstand R\textsubscript{8} entlädt.
 Das dadurch versorgte Gate von Q\textsubscript{3} schaltet die am Drain anliegende Leitung auf Masse.
 Der dadurch deaktivierte Q\textsubscript{2} löst die Selbsthaltung und die Schaltung befindet sich wieder in ihrem Grundzustand.
 Ein genaue Dimensionierung von C\textsubscript{1} und R\textsubscript{8} sorgen für ein ausreichend langes „High“ der Leitung,
@@ -615,7 +611,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (1.5,0) to [short, *-](1.5,3);
         \draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
         \draw (2.6,0) to [R, l_=$R5$, *-*](2.6,3);
-        \draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
+        \draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
         \draw (6,2) to (5,2) to [R, l=$R8$, *-*](5,0);
         \draw (5,2) to (4.5,2);
         \draw (4,2) to [short, -*](4,0);
@@ -691,7 +687,7 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \end{figure}
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
-Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, welches diese Schaltung nicht gewährleistet.
+Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, zu welchem diese Schaltung nicht in der Lage ist.
 
 \newpage
 
@@ -709,7 +705,7 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (1,0);
         \draw (1.5,5) to [eC, l=$C1$, *-*](1.5,0);
         \draw (8.5,5) to [eC, l=$C2$, *-*](8.5,0);
-        \draw (6.5,0) to [sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
+        \draw (6.5,0) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
         \draw [line width=1.5pt](3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
         \draw (5.5,5.5) to (8.5,5.5) to (8.5,5);
         \draw (5.5,5) to (6.5,5);
