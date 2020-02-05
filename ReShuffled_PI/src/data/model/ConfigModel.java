@@ -4,8 +4,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ConfigModel {
-    @SerializedName("logLevel")
-    private final String logLevel;
     @SerializedName("logPath")
     private  String logPath;
     @SerializedName("statisticsPath")
@@ -22,8 +20,7 @@ public class ConfigModel {
     private final ConfigInternationalizationModel internationalization;
 
 
-    public ConfigModel (String logLevel, String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial, ConfigInternationalizationModel language) {
-        this.logLevel = logLevel;
+    public ConfigModel (String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial, ConfigInternationalizationModel language) {
         this.logPath = logPath;
         this.statisticsPath = statisticsPath;
         this.guiHeight = guiHeight;
@@ -36,10 +33,6 @@ public class ConfigModel {
 
     public ConfigInternationalizationModel getInternationalization () {
         return internationalization;
-    }
-    
-    public String getLogLevel() {
-        return logLevel;
     }
 
     public String getLogPath() {

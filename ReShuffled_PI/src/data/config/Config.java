@@ -103,11 +103,6 @@ public class Config {
     }
 
 
-    public String getLogLevel () {
-        return configModel.getLogLevel();
-    }
-
-
     public void setLogPath (String logPath) {
         configModel.setLogPath(logPath);
     }

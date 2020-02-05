@@ -10,11 +10,14 @@ import gui.controller.MainController;
 import util.ResourceBundleUtils;
 import gui.guiMain.GuiMain;
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -65,13 +68,13 @@ public class ResourceManager {
 
     public ResourceManager () {
         init();
-        
+
     }
 
 
     private void init () {
-        
-        
+
+
         final FileFilter fileFilter = ResourceBundleUtils.createResourceBundleFileFilter(BUNDLE_PREFIX);
 
         final File[] propertyFiles = FileUtil.getMatchingFiles(new File(Config.getInstance().getInternationalization().getBundlePath()), fileFilter);
@@ -79,10 +82,11 @@ public class ResourceManager {
 
         for (final File propertyFile : propertyFiles) {
             try (final InputStream is = new BufferedInputStream(new FileInputStream(propertyFile))) {
-                final PropertyResourceBundle resourceBundle = new PropertyResourceBundle(is);
+                final PropertyResourceBundle resourceBundle = new PropertyResourceBundle(new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)));
 
                 final Locale locale = ResourceBundleUtils.createLocaleFromBundleName(propertyFile.getName());
                 addResourceBundle(locale, resourceBundle);
+                
 
             }
             catch (IOException ex) {
@@ -91,14 +95,14 @@ public class ResourceManager {
             }
 
         }
-        
+
     }
 
 
     private void addResourceBundle (final Locale locale, ResourceBundle bundle) {
-            availableRecourceBundles.put(locale, bundle);
+        availableRecourceBundles.put(locale, bundle);
 
-            LOG.info("Loaded language bundle for locale: " + locale);
+        LOG.info("Loaded language bundle for locale: " + locale);
     }
 
 
@@ -128,13 +132,13 @@ public class ResourceManager {
 
     public boolean supportsLocale (final Locale locale) {
         return availableRecourceBundles.containsKey(locale);
-        
+
     }
 
 
-    public List<Locale> getAvailableLocales(){
-    
-    return new ArrayList<>(availableRecourceBundles.keySet());
+    public List<Locale> getAvailableLocales () {
+
+        return new ArrayList<>(availableRecourceBundles.keySet());
     }
 
 
@@ -146,13 +150,6 @@ public class ResourceManager {
     public ResourceBundle getCurrentRecourceBundle () {
         return currentRecourceBundle;
     }
-    
-    
-    
-    
-    
-    
-    
 
 
 }

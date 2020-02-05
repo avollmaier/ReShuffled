@@ -38,7 +38,7 @@
   "internationalization": {
     "language": "en",
     "country": "US",
-    "bundlePath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/src/languageBundles",
+    "bundlePath": "/home/alois/Schreibtisch/Drive/ReShuffled/ReShuffled_PI/languageBundles",
     "bundlePrefix": "bundle"
   }
 }

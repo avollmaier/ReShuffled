@@ -20,6 +20,7 @@ volatile struct App app;
 void app_init (void)
 {
   memset((void *) &app, 0, sizeof (app));
+
 }
 
 
@@ -217,6 +218,10 @@ void app_task_1ms (void)
 
 void app_task_2ms (void)
 {
+  
+  
+
+  
 }
 
 
@@ -247,4 +252,7 @@ void app_task_64ms (void)
 
 void app_task_128ms (void)
 {
+ PORTC ^= ( 1 << PC1); 
+
+ 
 }

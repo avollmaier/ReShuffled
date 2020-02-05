@@ -62,16 +62,16 @@
            var address = attributes.get("address");
            project.setProperty(attributes.get("property"), address.split(":")[1]);
          ]]>
-        </scriptdef>
-        <condition property="remote.platform.exec.prefix" value="'${remote.platform.exec.decorator}' " else="">
-            <not>
-                <equals arg1="${remote.platform.exec.decorator}" arg2="$${platforms.${platform.runtime}.platform.exec.decorator}"/>
-            </not>
-        </condition>
+      </scriptdef>
+      <condition property="remote.platform.exec.prefix" value="'${remote.platform.exec.decorator}' " else="">
+        <not>
+            <equals arg1="${remote.platform.exec.decorator}" arg2="$${platforms.${platform.runtime}.platform.exec.decorator}"/>
+        </not>
+      </condition>
     </target>
     
     <target name="-copy-to-remote-platform">
-        <macrodef name="runwithpasswd" uri="http://www.netbeans.org/ns/j2se-project/remote-platform/1">
+      <macrodef name="runwithpasswd" uri="http://www.netbeans.org/ns/j2se-project/remote-platform/1">
             <attribute name="additionaljvmargs" default=""/>
             <sequential>
                 <sshexec host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" password="${remote.platform.password}" trust="true" command="mkdir -p '${remote.dist.dir}'"/>
@@ -80,7 +80,7 @@
                 </scp>
                 <antcall target="profile-rp-calibrate-passwd"/>
                 <sshexec host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" password="${remote.platform.password}" trust="true" usepty="true"
-                         command="cd '${remote.project.dir}'; ${remote.platform.exec.prefix}'${remote.java.executable}' @{additionaljvmargs} -Dfile.encoding=${runtime.encoding} ${run.jvmargs} ${run.jvmargs.ide} -jar ${remote.dist.jar} ${application.args}"/>
+                    command="cd '${remote.project.dir}'; ${remote.platform.exec.prefix}'${remote.java.executable}' @{additionaljvmargs} -Dfile.encoding=${runtime.encoding} ${run.jvmargs} ${run.jvmargs.ide} -jar ${remote.dist.jar} ${application.args}"/>
             </sequential>
         </macrodef>
         <macrodef name="runwithkey" uri="http://www.netbeans.org/ns/j2se-project/remote-platform/1">
@@ -93,7 +93,7 @@
                 </scp>
                 <antcall target="profile-rp-calibrate-key"/>
                 <sshexec host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" keyfile="${remote.platform.keyfile}" passphrase="${remote.platform.passphrase}" trust="true" usepty="true"
-                         command="cd '${remote.project.dir}'; ${remote.platform.exec.prefix}'${remote.java.executable}' @{additionaljvmargs} -Dfile.encoding=${runtime.encoding} ${run.jvmargs} ${run.jvmargs.ide} -jar ${remote.dist.jar} ${application.args}"/>
+                    command="cd '${remote.project.dir}'; ${remote.platform.exec.prefix}'${remote.java.executable}' @{additionaljvmargs} -Dfile.encoding=${runtime.encoding} ${run.jvmargs} ${run.jvmargs.ide} -jar ${remote.dist.jar} ${application.args}"/>
             </sequential>
         </macrodef>
     </target>
@@ -130,7 +130,7 @@
         <sshsession host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" password="${remote.platform.password}" trust="true">
             <remotetunnel lport="${jpda.port}" lhost="localhost" rport="${jpda.port}"/>
             <sequential>
-                <remote:runwithpasswd additionaljvmargs="${debug-args-line} -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
+                <remote:runwithpasswd additionaljvmargs=" -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
             </sequential>
         </sshsession>
     </target>
@@ -144,7 +144,7 @@
         <sshsession host="${remote.platform.host}" port="${remote.platform.port}" username="${remote.platform.user}" keyfile="${remote.platform.keyfile}" passphrase="${remote.platform.passphrase}" trust="true">
             <remotetunnel lport="${jpda.port}" lhost="localhost" rport="${jpda.port}"/>
             <sequential>
-                <remote:runwithkey additionaljvmargs="${debug-args-line} -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
+                <remote:runwithkey additionaljvmargs=" -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
             </sequential>
         </sshsession>
     </target>
@@ -168,11 +168,11 @@
     </target>
     
     <target name="profile-rp-renew-local-calibration" depends="profile-rp-renew-local-check" if="profiler.calibration.local-remote.replace">
-        <move 
-            file="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}.new" 
-            tofile="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}"
-            force="true"
-            verbose="true"/>
+         <move 
+             file="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}.new" 
+             tofile="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}"
+             force="true"
+             verbose="true"/>
     </target>
     
     <target name="profile-rp-unzip" if="profiling.started" depends="profile-rp-create">        
@@ -192,9 +192,9 @@
     <target name="profile-rp-create" if="profiling.started">
         <property name="profile.cluster" value="${netbeans.home}/../profiler"/>
         <ant dir="${profile.cluster}/remote-pack-defs" target="profiler-server-${remote.platform.rp.target}" inheritall="false">
-            <property name="cluster" location="${profile.cluster}"/>
-            <property name="dest.dir" location="${java.io.tmpdir}"/>
-        </ant>
+           <property name="cluster" location="${profile.cluster}"/>
+           <property name="dest.dir" location="${java.io.tmpdir}"/>
+       </ant>
     </target>
         
     <target name="profile-toggle">
@@ -207,7 +207,7 @@
                  trust="true" usepty="true" 
                  command="export JAVA_HOME=${remote.platform.home.dir}; [ -f ~/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver} ] &amp;&amp; echo &quot;Calibration data exists: skipping calibration&quot; || /bin/sh ${remote.dist.dir}/remotepack/bin/calibrate.sh"/>
         <scp file="${remote.platform.user}:${remote.platform.password}@${remote.platform.host}:~/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}"
-             localTofile="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}.new" trust="true"/>
+            localTofile="${user.home}/.nbprofiler/machinedata.jdk${remote.platform.java.spec.ver}.${remote.platform.host}.new" trust="true"/>
         <antcall target="profile-clean-rp"/>
     </target>
     
