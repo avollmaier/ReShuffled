@@ -1,17 +1,110 @@
+
+\newganttchartelement{orangebar}{
+orangebar/.style={
+inner sep=0pt,
+draw=red!66!black,
+very thick,
+top color=white,
+bottom color=orange!80
+},
+orangebar label font=\slshape,
+orangebar left shift=.1,
+orangebar right shift=-.1
+}
+
+\newganttchartelement{bluebar}{
+bluebar/.style={
+inner sep=0pt,
+draw=purple!44!black,
+very thick,
+top color=white,
+bottom color=blue!80
+},
+bluebar label font=\slshape,
+bluebar left shift=.1,
+bluebar right shift=-.1
+}
+
+\newganttchartelement{greenbar}{
+greenbar/.style={
+inner sep=0pt,
+draw=green!50!black,
+very thick,
+top color=white,
+bottom color=green!80
+},
+greenbar label font=\slshape,
+greenbar left shift=.1,
+greenbar right shift=-.1
+}
 \lohead{Vollmaier Alois}
 
 \chapter{Informatik}\label{ch:informatik}
 
 
-
+%@COPYRIGHT VOLLMAIER ALOIS
 \section{Zeitplan}\label{subsec:zeitplan}
+\begin{landscape}
+
+
+\begin{figure}[]
+    \begin{center}
+        \begin{ganttchart}[
+        hgrid style/.style={black, dotted},
+        calendar week text={\currentweek},
+        vgrid={*6{white, dotted}, *1{black, dashed}},
+        x unit=1mm,
+        y unit chart=9mm,
+        y unit title=12mm,
+        time slot format=isodate,
+        time slot unit=year
+        link/.style={->, thick}
+        ]{2019-09-2}{2020-03-15}
+            \gantttitlecalendar{year, month=name, week}\\
+
+            \ganttgroup[
+            group/.append style={fill=orange}
+            ]{Backend-Programmierung}{2019-09-02}{2019-11-15}\\ [grid]
+            \ganttorangebar[
+            name=Konzeptplanung
+            ]{Konzeptplanung}{2019-09-02}{2019-09-25}\\ [grid]
+            \ganttorangebar[
+            name=Einrichtung - Arbeitsumgebung
+            ]{Einrichtung - Arbeitsumgebung}{2019-09-15}{2019-10-1}\\ [grid]
+            \ganttorangebar[
+            name=Start-Programmierung
+            ]{Programmierung}{2019-10-05}{2019-11-15}
+
+            \ganttnewline[thick, black]
+
+            \ganttgroup[
+            group/.append style={fill=blue}
+            ]{Frontend-Programmierung}{2019-11-15}{2019-12-22}\\ [grid]
+
+
+            \ganttnewline[thick, black]
+
+            \ganttgroup[
+            group/.append style={fill=green}
+            ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
+
+
+            \ganttlink[link mid=0.75]{Konzeptplanung}{Start-Programmierung}
+            \ganttlink{Einrichtung - Arbeitsumgebung}{Start-Programmierung}
+        \end{ganttchart}
+    \end{center}
+    \caption{Zeitplanung - Informatik}
+\end{figure}
+\end{landscape}
+%@COPYRIGHT VOLLMAIER ALOIS
+
 \section{Anforderungen und Ziele}\label{subsec:anforderungen-und-ziele}
 
-\subsection{Frontend-Programmierung}
+\subsection{Fronted-Programmierung}
 \subsection{Backend-Programmierung}
 \subsection{Hardwarenahe-Programmierung}
 
-Grundsätzlich besteht das Ziel darin, eine für Benutzer freundliche GUI, zu bauen, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt wird. Auf dieser Grafischen Oberfläche soll es Möglich sein, die Steuerung der Maschiene zu übernehmen.
+Im Allgemeinen besteht das Ziel darin, eine für Benutzer freundliche GUI, zu bauen, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt wird. Auf dieser Grafischen Oberfläche soll es Möglich sein, die Steuerung der Maschiene zu übernehmen.
 Dies bedeutet im engsten Sinne, dass Befehle zwischen den 2 Systemen, also dem Rasperry PI 3B+ und der Ansteuerplatine ausgetauscht werden müssen.\\\\
 Die Möglichkeiten des Benutzers, die Maschiene zu bedienen sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
