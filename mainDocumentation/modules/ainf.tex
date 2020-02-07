@@ -1,42 +1,4 @@
 
-\newganttchartelement{orangebar}{
-orangebar/.style={
-inner sep=0pt,
-draw=red!66!black,
-very thick,
-top color=white,
-bottom color=orange!80
-},
-orangebar label font=\slshape,
-orangebar left shift=.1,
-orangebar right shift=-.1
-}
-
-\newganttchartelement{bluebar}{
-bluebar/.style={
-inner sep=0pt,
-draw=purple!44!black,
-very thick,
-top color=white,
-bottom color=blue!80
-},
-bluebar label font=\slshape,
-bluebar left shift=.1,
-bluebar right shift=-.1
-}
-
-\newganttchartelement{greenbar}{
-greenbar/.style={
-inner sep=0pt,
-draw=green!50!black,
-very thick,
-top color=white,
-bottom color=green!80
-},
-greenbar label font=\slshape,
-greenbar left shift=.1,
-greenbar right shift=-.1
-}
 \lohead{Vollmaier Alois}
 
 \chapter{Informatik}\label{ch:informatik}
@@ -44,16 +6,16 @@ greenbar right shift=-.1
 
 %@COPYRIGHT VOLLMAIER ALOIS
 \section{Zeitplan}\label{subsec:zeitplan}
-\begin{landscape}
-
 
 \begin{figure}[]
     \begin{center}
+\scalebox{0.6}{
         \begin{ganttchart}[
         hgrid style/.style={black, dotted},
         calendar week text={\currentweek},
         vgrid={*6{white, dotted}, *1{black, dashed}},
         x unit=1mm,
+        group label font=\bfseries \Large,
         y unit chart=9mm,
         y unit title=12mm,
         time slot format=isodate,
@@ -63,15 +25,18 @@ greenbar right shift=-.1
             \gantttitlecalendar{year, month=name, week}\\
 
             \ganttgroup[
-            group/.append style={fill=orange}
+            group/.append style={fill=red}
             ]{Backend-Programmierung}{2019-09-02}{2019-11-15}\\ [grid]
-            \ganttorangebar[
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
             name=Konzeptplanung
             ]{Konzeptplanung}{2019-09-02}{2019-09-25}\\ [grid]
-            \ganttorangebar[
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
             name=Einrichtung - Arbeitsumgebung
             ]{Einrichtung - Arbeitsumgebung}{2019-09-15}{2019-10-1}\\ [grid]
-            \ganttorangebar[
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
             name=Start-Programmierung
             ]{Programmierung}{2019-10-05}{2019-11-15}
 
@@ -80,7 +45,15 @@ greenbar right shift=-.1
             \ganttgroup[
             group/.append style={fill=blue}
             ]{Frontend-Programmierung}{2019-11-15}{2019-12-22}\\ [grid]
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Konzeptplanung
+            ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
 
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Start-Programmierung
+            ]{Programmierung}{2019-11-31}{2019-12-22}
 
             \ganttnewline[thick, black]
 
@@ -92,10 +65,11 @@ greenbar right shift=-.1
             \ganttlink[link mid=0.75]{Konzeptplanung}{Start-Programmierung}
             \ganttlink{Einrichtung - Arbeitsumgebung}{Start-Programmierung}
         \end{ganttchart}
+}
     \end{center}
     \caption{Zeitplanung - Informatik}
 \end{figure}
-\end{landscape}
+
 %@COPYRIGHT VOLLMAIER ALOIS
 
 \section{Anforderungen und Ziele}\label{subsec:anforderungen-und-ziele}
