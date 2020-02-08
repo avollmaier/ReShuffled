@@ -2,11 +2,20 @@
 #define APP_H_INCLUDED
 
 // declarations
+struct PWMGen {
+  float f; // frequenz
+  float amp; // Amplitude
+  uint8_t running; // 1 = run 2 = stop
+
+  uint32_t t; //in ms
+};
+
 enum App_state {
   IDLE, INIT, PARSE
 };
 
 struct App {
+  int ledState; //0 = low //1=high
   uint8_t flags_u8;
   char modbusBuffer[32];
   char toSend[64];

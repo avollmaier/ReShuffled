@@ -74,7 +74,7 @@ void sys_init (void)
 #elif __AVR_ATmega324P__
   OCR0A  = (F_CPU+4)/8/10000-1;
   TCCR0A = (1 << WGM01);
-  TCCR0A = (1 << CS01);
+  TCCR0B = (1 << CS01);
   TIMSK0 = (1 << OCIE0A);
   TIFR0  = (1 << OCF0A);
   UBRR0L = (F_CPU/GLOBAL_UART_BITRATE + 4)/8 - 1;
