@@ -1,15 +1,17 @@
-
+%@COPYRIGHT VOLLMAIER ALOIS
 \lohead{Vollmaier Alois}
 
 \chapter{Informatik}\label{ch:informatik}
+\section{Allgemeines}\label{subsec:einleitung}
+Im Folgenden Projektteil wird der nähere Aufbau sowie die Kernbestandteile des informatischen Teils dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
+Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} dokumentiert.
 
-
-%@COPYRIGHT VOLLMAIER ALOIS
 \section{Zeitplan}\label{subsec:zeitplan}
 
-\begin{figure}[]
-    \begin{center}
-\scalebox{0.6}{
+\begin{figure}[hbt!]
+    \centering
+\scalebox{0.57}{
         \begin{ganttchart}[
         hgrid style/.style={black, dotted},
         calendar week text={\currentweek},
@@ -29,7 +31,7 @@
             ]{Backend-Programmierung}{2019-09-02}{2019-11-15}\\ [grid]
             \ganttbar[
             bar/.append style={pattern=north east lines},
-            name=Konzeptplanung
+            name=KonzeptplanungBack
             ]{Konzeptplanung}{2019-09-02}{2019-09-25}\\ [grid]
             \ganttbar[
             bar/.append style={pattern=north east lines},
@@ -37,23 +39,44 @@
             ]{Einrichtung - Arbeitsumgebung}{2019-09-15}{2019-10-1}\\ [grid]
             \ganttbar[
             bar/.append style={pattern=north east lines},
-            name=Start-Programmierung
+            name=Start-ProgrammierungBack
             ]{Programmierung}{2019-10-05}{2019-11-15}
 
             \ganttnewline[thick, black]
 
             \ganttgroup[
             group/.append style={fill=blue}
-            ]{Frontend-Programmierung}{2019-11-15}{2019-12-22}\\ [grid]
+            ]{Frontend-Programmierung}{2019-11-15}{2020-1-09}\\ [grid]
             \ganttbar[
             bar/.append style={pattern=north east lines},
-            name=Konzeptplanung
+            name=KonzeptplanungFront
             ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
 
             \ganttbar[
             bar/.append style={pattern=north east lines},
-            name=Start-Programmierung
-            ]{Programmierung}{2019-11-31}{2019-12-22}
+            name=KonzeptplanungFront
+            ]{Anfertigen von Mockup-Skizzen}{2019-11-25}{2019-11-31}\\ [grid]
+
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Start-ProgrammierungFront
+            ]{Programmierung}{2019-12-2}{2019-12-22}
+
+            \ganttnewline[thick, black]
+
+            \ganttgroup[
+            group/.append style={fill=green}
+            ]{Hardwarenahe-Programmierung}{2019-31-31}{2020-2-12}\\ [grid]
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=KonzeptplanungHard
+            ]{Konzeptplanung}{2019-12-31}{2020-1-10}\\ [grid]
+
+
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Start-ProgrammierungHard
+            ]{Programmierung}{2020-1-10}{2020-1-31}
 
             \ganttnewline[thick, black]
 
@@ -61,25 +84,46 @@
             group/.append style={fill=green}
             ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
 
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Teilaufbau
+            ]{Teilaufbau Anfertigung}{2019-12-22}{2020-1-09}\\
 
-            \ganttlink[link mid=0.75]{Konzeptplanung}{Start-Programmierung}
-            \ganttlink{Einrichtung - Arbeitsumgebung}{Start-Programmierung}
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Frontend-Testing-Phase
+            ]{Frontend-Testing-Phase}{2019-12-31}{2020-1-15}\\
+
+            \ganttbar[
+            bar/.append style={pattern=north east lines},
+            name=Serial-Testing-Phase
+            ]{Serial-Testing-Phase}{2020-1-31}{2020-2-15}
+
+
+
+
+
+
+            \ganttlink[link mid=0.75]{KonzeptplanungBack}{Start-ProgrammierungBack}
+            \ganttlink{Einrichtung - Arbeitsumgebung}{Start-ProgrammierungBack}
         \end{ganttchart}
 }
-    \end{center}
     \caption{Zeitplanung - Informatik}
+
+
 \end{figure}
+\newpage
+Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird. Um das Zeitfenster der Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
+\begin{enumerate}
+    \item xx.xx.xxxx - Aufgabe XX
+    \item xx.xx.xxxx - Aufgabe XX
+    \item xx.xx.xxxx - Aufgabe XX
+\end{enumerate}
 
-%@COPYRIGHT VOLLMAIER ALOIS
-
-\section{Anforderungen und Ziele}\label{subsec:anforderungen-und-ziele}
+\section{Anforderungen und Ziele}\label{subsec:gesamtanforderungen-und-ziele}
 
 \subsection{Fronted-Programmierung}
-\subsection{Backend-Programmierung}
-\subsection{Hardwarenahe-Programmierung}
-
-Im Allgemeinen besteht das Ziel darin, eine für Benutzer freundliche GUI, zu bauen, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt wird. Auf dieser Grafischen Oberfläche soll es Möglich sein, die Steuerung der Maschiene zu übernehmen.
-Dies bedeutet im engsten Sinne, dass Befehle zwischen den 2 Systemen, also dem Rasperry PI 3B+ und der Ansteuerplatine ausgetauscht werden müssen.\\\\
+Im Allgemeinen besteht das Ziel darin, eine benutzerfreundlich grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt werden soll. Auf diesem Interface soll es möglich sein, die Steuerung der Maschiene zu übernehmen.
 Die Möglichkeiten des Benutzers, die Maschiene zu bedienen sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
     \item Ausgabe von einzelnen Spielkarten
@@ -88,6 +132,14 @@ Die Möglichkeiten des Benutzers, die Maschiene zu bedienen sollen folgende Kern
     \item Ausschalten der Maschiene
     \item Übersicht aller vergangenen Spiele
 \end{enumerate}
+
+Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden. Grundsätzlich steht die User Experience sowie die Funktionalität bei der Programmierung im Vordergrund!
+\subsection{Backend-Programmierung}
+Dies bedeutet im engsten Sinne, dass Befehle zwischen den 2 Systemen, also dem Rasperry PI 3B+ und der Ansteuerplatine ausgetauscht werden müssen.\\\\
+\subsection{Hardwarenahe-Programmierung}
+
+
+
 Ziel ist es dieses Interface so übersichtlich wie möglich zu gestalten. Dies soll durch unterschiedliche Tabs realisiert werden.\\\\
 Zusätzlich soll im Hintergrund eine sogenannte Log-Datei automatisch vom Programm geschrieben werden. Diese bringt dem Entwicker einen enormen Mehrwert im Bereich des Fehler-Handlings. \\
 Um etwaiige Einstellungen der Seriellen Schnittstelle sowie die definition der Pfade für Log-Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird. Mit dieser Config-Datei wird auch die Möglichkeit geschafffen,
@@ -124,6 +176,8 @@ Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich. 
 Realisierung
 \textbf{Intellij IDE}
 Eine kostenpflichtige Alternative zu Netbeans ist Intellij. Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet. Darum fiel unsere Wahl auch auf diese IDE.
+
+
 
 \subsubsection{Fragestellung zur Verwendung eines Build-Tools}
 \section{Backend-Programmierung}
@@ -299,14 +353,15 @@ label.setText("Counter: " + model.getCounter());
 
 \subsection{Beschreibung der View-Elemente}
 \subsubsection{Grundlagen zu SceneBuilder}
-\subsubsection{Verwendung von Material Design Bibliotheken}
+\subsubsection{Material-Design-Bibliothek-JFoenix}
 
-\subsection{Utility Klassen zur GUI}
+\subsection{Utility Klassen}
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}
 
 
 \subsection{Implementierung von CSS}
+\subsubsection{Grundlagen}
 \subsubsection{StartupCSS}
 \subsubsection{HomeCSS}
 \subsection{Internationalisierung}
