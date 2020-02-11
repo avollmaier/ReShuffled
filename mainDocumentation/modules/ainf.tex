@@ -1,4 +1,6 @@
 %@COPYRIGHT VOLLMAIER ALOIS
+\definecolor{hellgrau}{RGB}{230, 230, 230}
+
 \lohead{Vollmaier Alois}
 
 \chapter{Informatik}\label{ch:informatik}
@@ -154,17 +156,17 @@ Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega 324
 Als Basis dafür dienen ankommenden Befehle über der seriellen Schnittstelle.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
 
-\subsection{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
+\section{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, einige Voruntersuchungen durchzuführen.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
-\subsubsection{Auswahl der IDE}
+\subsection{Auswahl der Arbeitsumgebung}
 Das Bearbeiten von Code spielt bei der Programmierung eine elementare Rolle.
 Dadurch muss, bevor mit dem Programmierprozess gestartet wird, eine passende IDE ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
 In unserem Fall sind diese im Speziellen:
 \begin{enumerate}
     \item Möglichkeiten der Programmierung sowie dem Debuggen eines Remote-Rechners
     \item Nötigsten Features beinhalten
-    \item Grafisch Ansprechen
+    \item Grafisch Ansprechend
 \end{enumerate}
 Einer der wichtigsten Punkte dieser Aufzählung ist dabei jedoch die Möglichkeit, Remote-Geräte zu debuggen.
 Debugging selbst hilft dem Entwickler bei der Fehlersuche.
@@ -172,17 +174,13 @@ Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch m
 Dadurch erspart dies enorme Zeit bei der Programmierung.
 In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry PI, welcher mit dem Netzwerk über Ethernet verbunden ist.
 Es erfordert aber nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
-\\\\
-\textbf{Apache-Netbeans}
-\\
+\subsubsection{Apache-Netbeans}
 Die Netbeans-IDE, bereitgestellt von der Firma Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
 Primär wurde sie entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
 Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich.
 Die Möglichkeit, eine Remote-Plattform einzurichten wurde einfach gelöst und das Arbeiten verläuft meist ohne Probleme.
 Auch das einfache Einbinden von Plugins und Bibliotheken zählt zu den Hauptvorteilen von Netbeans.
-\\\\
-\textbf{Intellij IDEA}
-\\
+\subsubsection{Intellij IDEA}
 Eine kostenpflichtige Alternative zu Netbeans ist Intellij.
 Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
 Jedoch bring Intellij auch einige Vorteile mit sich.
@@ -191,88 +189,175 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
     \item Wirkt durchdachter
     \item Zentralere Verwaltung von Plugins
 \end{enumerate}
-
-Trotz dieser Vorteile kristallisierte sich jedoch Netbeans heraus und wird im
-\subsubsection{Auswahl des GUI-Toolkits}
+\subsubsection{Fazit}
+Natürlich ist es meist Ansichtssache, für welche IDE man sich entscheidet doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
+\subsection{Auswahl des GUI-Toolkits}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
 Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
-\\\\
-\textbf{Swing}
-\\
+\subsubsection{Swing}
 Das bereits in der Standart Java Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
 Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
 Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen.
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
-\\\\
-\textbf{JavaFX}
-\\
+\subsubsection{JavaFX}
 Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
 und dem dahinter stehenden Code ist dadurch möglich.\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
+\subsubsection{Fazit}
 
-\subsubsection{Fragestellung zur Verwendung eines Build-Tools}
-\section{Projektstruktur}\label{sec:projektstruktur}
-Um die Übersichtlichkeit des Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
-Das bedeutet das jede Klasse, die neu erstellt wird, ein Teil der Struktur ist und innerhalb dieser platziert wird.
-Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden.
-
+\subsection{Projektorganisation}\label{sec:projektorganisation}
+Eine einheitliche Formatierung und Namensgebung ein Kernbestandteil einer gelungenen Projektplanung.
+Dies führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
+Um die Übersichtlichkeit eines Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
+Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden:
 \begin{figure}[htb!]
     \begin{center}
 
 
-\begin{forest}
-    for tree={
-    font=\ttfamily,
-    grow'=0,
-    child anchor=west,
-    parent anchor=south,
-    anchor=west,
-    calign=first,
-    edge path={
-    \noexpand\path [draw, \forestoption{edge}]
-    (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-    },
-    before typesetting nodes={
-    if n=1
-    {insert before={[,phantom]}}
-    {}
-    },
-    fit=band,
-    before computing xy={l=15pt},
-    }
-    [src
-    [data
-    ]
-    [exception
-    ]
-    [gui
-    ]
-    [logging
-    ]
-    [main
-    ]
-    [serial
-    ]
-    [util
-    ]
-    ]
-\end{forest}
+        \begin{forest}
+            for tree={
+            font=\ttfamily,
+            grow'=0,
+            child anchor=west,
+            parent anchor=south,
+            anchor=west,
+            calign=first,
+            edge path={
+            \noexpand\path [draw, \forestoption{edge}]
+            (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+            },
+            before typesetting nodes={
+            if n=1
+            {insert before={[,phantom]}}
+            {}
+            },
+            fit=band,
+            before computing xy={l=15pt},
+            }
+            [<project-root>
+            [src
+            [data
+            ]
+            [exception
+            ]
+            [gui
+            ]
+            [logging
+            ]
+            [main
+            ]
+            [serial
+            ]
+            [util
+            ]
+            ]
+            [lib]
+            [config]
+            ]
+        \end{forest}
     \end{center}
     \caption{Projektstruktur}
-\end{figure}
-Im Allgemeinen bringt diese Aufteilung 2 fundamentale Vorteile mit sich:
-\begin{enumerate}
-    \item \textbf{Bessere Übersichtlichkeit} \\
-    Um eine Erweiterung von außen ohne Probleme sicherzustellen, ist es wichtig, der Übersichtlichkeit des Projekts nicht zu schaden.
-    \item \textbf{Vermeidung von chaotischer Strukturierung}\\
-    Selbst wenn keine Person von außen eine Änderung am Programm vorsieht, hilft es dem Entwickler, eine klare Definition seiner Strukturierung zu haben.
-\end{enumerate}
+\end{figure}\\
+Der Kopf dieser Struktur ist der Ordner mit dem Namen des Projekts.
+Dieser wird auch \lstinline{root-directory} genannt, und ist selbst kein Package.
+Auch die Trennung von Sourcecode und externen Dateien spielt eine wesentliche Rolle.
+Dadurch erfolgt darunter die Aufteilung in die Ordner \lstinline{src}, \lstinline{lib}, \lstinline{config}.
+\\\\
+\textbf{Sourcecode}
+\\
+Im Ordner \lstinline{src} befindet sich der gesamte Sourcecode, wobei in diesem auch wieder eine Aufteilung in Packages erfolgt.
+Diese benennen sich in unserem Fall \lstinline{data}, \lstinline{exception}, \lstinline{gui}, \lstinline{logging}, \lstinline{main}, \lstinline{serial}, und \lstinline{util}.
+\\\\
+\textbf{Bibliotheken}
+\\
+Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammtelt werden.
+Dabei erleichtert diese Verzeichnishirachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
+\\\\
+\textbf{Konfigurationsdateien}
+\\
+In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen. Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
+\subsubsection{Fragestellung zur Verwendung eines Build-Tools}
+Das zuvor genannte Layout der Projekthrachie eignet sich gut für viele Projekte.
+Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.
+
+Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
+Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken.
+\\\\
+Trotz alledem wurde auf die althergebrachte Version gesetzt und das Projekt so erstellt.
+Grund dafür ist widerum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
+Natürlich wäre eine Umstellung in einem finalen Release denkbar.
+\newpage
+
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
+\subsubsection{Beschreibung}
+Singelton dient dazu, die Einzigartikeit eines Objekts sicherzustellen.
+Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
+
+Auch bietet es einen globalen Zugriffspunkt
+
+\subsubsection{Struktur}
+Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
+Dies bedeuted es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
+Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
+Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\\\
+Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
+Implementiert wird dies durch eine weitere statische Methode namens \lstinline{getInstance()}.
+Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
+\subsubsection{Beispiel}
+\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=C Code]
+
+public class Config {
+
+private static final Logger LOG = Logger.getLogger(Config.class.getName());
+private static Config instance;
+
+
+public static Config getInstance () {
+if (instance == null) {
+throw new IllegalStateException("Instance not created yet");
+}
+return instance;
+}
+
+
+public static Config createInstance (String configPath) {
+if (instance != null) {
+throw new IllegalStateException("Instance already created");
+}
+else {
+instance = new Config(configPath);
+}
+return instance;
+}
+
+// *************************************************************************
+private final File configFile;
+private ConfigModel configModel;
+
+
+private Config (String configPath) {
+configFile = new File(configPath);
+readConfig();
+}
+
+
+public void save () {
+writeConfig();
+}
+
+\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{fig/ainf/Singelton.pdf}
+    \caption{UML-Diagramm Singelton}
+\end{figure}
+
+
 \subsection{Kommunikation - serielle Schnittstelle}\label{subsec:kommunikation---serielle-schnittstelle}
 \subsubsection{Konzept}
 
