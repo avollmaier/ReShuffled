@@ -3,181 +3,197 @@
 
 \chapter{Informatik}\label{ch:informatik}
 \section{Allgemeines}\label{subsec:einleitung}
-Im Folgenden Projektteil wird der nähere Aufbau sowie die Kernbestandteile des informatischen Teils dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst. Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
-Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} dokumentiert.
+Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
 
 \section{Zeitplan}\label{subsec:zeitplan}
 
 \begin{figure}[hbt!]
     \centering
-\scalebox{0.57}{
-        \begin{ganttchart}[
-        hgrid style/.style={black, dotted},
-        calendar week text={\currentweek},
-        vgrid={*6{white, dotted}, *1{black, dashed}},
-        x unit=1mm,
-        group label font=\bfseries \Large,
-        y unit chart=9mm,
-        y unit title=12mm,
-        time slot format=isodate,
-        time slot unit=year
-        link/.style={->, thick}
-        ]{2019-09-2}{2020-03-15}
-            \gantttitlecalendar{year, month=name, week}\\
+    \scalebox{0.57}{
+    \begin{ganttchart}[
+    hgrid style/.style={black, dotted},
+    calendar week text={\currentweek},
+    vgrid={*6{white, dotted}, *1{black, dashed}},
+    x unit=1mm,
+    group label font=\bfseries \Large,
+    y unit chart=9mm,
+    y unit title=12mm,
+    time slot format=isodate,
+    time slot unit=year
+    link/.style={->, thick}
+    ]{2019-09-2}{2020-03-15}
+        \gantttitlecalendar{year, month=name, week}\\
 
-            \ganttgroup[
-            group/.append style={fill=red}
-            ]{Backend-Programmierung}{2019-09-02}{2019-11-15}\\ [grid]
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=KonzeptplanungBack
-            ]{Konzeptplanung}{2019-09-02}{2019-09-25}\\ [grid]
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Einrichtung - Arbeitsumgebung
-            ]{Einrichtung - Arbeitsumgebung}{2019-09-15}{2019-10-1}\\ [grid]
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Start-ProgrammierungBack
-            ]{Programmierung}{2019-10-05}{2019-11-15}
+        \ganttgroup[
+        group/.append style={fill=red}
+        ]{Backend-Programmierung}{2019-09-02}{2019-11-15}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=KonzeptplanungBack
+        ]{Konzeptplanung}{2019-09-02}{2019-09-25}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Einrichtung - Arbeitsumgebung
+        ]{Einrichtung - Arbeitsumgebung}{2019-09-15}{2019-10-1}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Start-ProgrammierungBack
+        ]{Programmierung}{2019-10-05}{2019-11-15}
 
-            \ganttnewline[thick, black]
+        \ganttnewline[thick, black]
 
-            \ganttgroup[
-            group/.append style={fill=blue}
-            ]{Frontend-Programmierung}{2019-11-15}{2020-1-09}\\ [grid]
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=KonzeptplanungFront
-            ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
+        \ganttgroup[
+        group/.append style={fill=blue}
+        ]{Frontend-Programmierung}{2019-11-15}{2020-1-09}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=KonzeptplanungFront
+        ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
 
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=KonzeptplanungFront
-            ]{Anfertigen von Mockup-Skizzen}{2019-11-25}{2019-11-31}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=KonzeptplanungFront
+        ]{Anfertigen von Mockup-Skizzen}{2019-11-25}{2019-11-31}\\ [grid]
 
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Start-ProgrammierungFront
-            ]{Programmierung}{2019-12-2}{2019-12-22}
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Start-ProgrammierungFront
+        ]{Programmierung}{2019-12-2}{2019-12-22}
 
-            \ganttnewline[thick, black]
+        \ganttnewline[thick, black]
 
-            \ganttgroup[
-            group/.append style={fill=green}
-            ]{Hardwarenahe-Programmierung}{2019-31-31}{2020-2-12}\\ [grid]
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=KonzeptplanungHard
-            ]{Konzeptplanung}{2019-12-31}{2020-1-10}\\ [grid]
-
-
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Start-ProgrammierungHard
-            ]{Programmierung}{2020-1-10}{2020-1-31}
-
-            \ganttnewline[thick, black]
-
-            \ganttgroup[
-            group/.append style={fill=green}
-            ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
-
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Teilaufbau
-            ]{Teilaufbau Anfertigung}{2019-12-22}{2020-1-09}\\
-
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Frontend-Testing-Phase
-            ]{Frontend-Testing-Phase}{2019-12-31}{2020-1-15}\\
-
-            \ganttbar[
-            bar/.append style={pattern=north east lines},
-            name=Serial-Testing-Phase
-            ]{Serial-Testing-Phase}{2020-1-31}{2020-2-15}
+        \ganttgroup[
+        group/.append style={fill=green}
+        ]{Hardwarenahe-Programmierung}{2019-31-31}{2020-2-12}\\ [grid]
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=KonzeptplanungHard
+        ]{Konzeptplanung}{2019-12-31}{2020-1-10}\\ [grid]
 
 
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Start-ProgrammierungHard
+        ]{Programmierung}{2020-1-10}{2020-1-31}
 
+        \ganttnewline[thick, black]
 
+        \ganttgroup[
+        group/.append style={fill=green}
+        ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
 
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Teilaufbau
+        ]{Teilaufbau Anfertigung}{2019-12-22}{2020-1-09}\\
 
-            \ganttlink[link mid=0.75]{KonzeptplanungBack}{Start-ProgrammierungBack}
-            \ganttlink{Einrichtung - Arbeitsumgebung}{Start-ProgrammierungBack}
-        \end{ganttchart}
-}
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Frontend-Testing-Phase
+        ]{Frontend-Testing-Phase}{2019-12-31}{2020-1-15}\\
+
+        \ganttbar[
+        bar/.append style={pattern=north east lines},
+        name=Serial-Testing-Phase
+        ]{Serial-Testing-Phase}{2020-1-31}{2020-2-15}
+
+    \end{ganttchart}
+    }
     \caption{Zeitplanung - Informatik}
 
 
 \end{figure}
 \newpage
-Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird. Um das Zeitfenster der Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
+Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
+Um das Zeitfenster der Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
 \begin{enumerate}
     \item xx.xx.xxxx - Aufgabe XX
     \item xx.xx.xxxx - Aufgabe XX
     \item xx.xx.xxxx - Aufgabe XX
 \end{enumerate}
 
-\section{Anforderungen und Ziele}\label{subsec:gesamtanforderungen-und-ziele}
+\section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
 
-\subsection{Fronted-Programmierung}
-Im Allgemeinen besteht das Ziel darin, eine benutzerfreundlich grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb der Maschiene auf einem 7" Display angezeigt werden soll. Auf diesem Interface soll es möglich sein, die Steuerung der Maschiene zu übernehmen.
-Die Möglichkeiten des Benutzers, die Maschiene zu bedienen sollen folgende Kernpunkte beinhalten:
+\subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
+Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb der Maschine auf einem 7" Display angezeigt werden soll.
+Auf diesem Interface soll es möglich sein, die Steuerung der Maschine zu übernehmen.
+Die Möglichkeiten des Benutzers, die Maschine zu bedienen sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
     \item Ausgabe von einzelnen Spielkarten
     \item Konfigurierung von Spielmodi, welche Einstellungen zum Spiel beinhalten
     \item Das Zählen von Punkten und dessen Visualisierung am Display
-    \item Ausschalten der Maschiene
+    \item Ausschalten der Maschine
     \item Übersicht aller vergangenen Spiele
 \end{enumerate}
 
-Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden. Grundsätzlich steht die User Experience sowie die Funktionalität bei der Programmierung im Vordergrund!
-\subsection{Backend-Programmierung}
-Dies bedeutet im engsten Sinne, dass Befehle zwischen den 2 Systemen, also dem Rasperry PI 3B+ und der Ansteuerplatine ausgetauscht werden müssen.\\\\
-\subsection{Hardwarenahe-Programmierung}
+Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden.
+Grundsätzlich steht die sogenannte \textbf{User Experience}, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt, sowie die \textbf{Funktionalität} bei der Programmierung im Vordergrund.
+Um dies zu gewährleisten sollte eine Voruntersuchung vollzogen werden.
+\subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
+Wie in der Einleitung bereits erwähnt besteht das Backend aus Aufgaben welche im Hintergrund abgearbeitet werden.
+Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.
 
+Auch wird im Hintergrund eine sogenannte LOG-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert.
+Diese Datei kann z.B. \ beim Debugging-Vorgang notwendig sein bzw. \ dem Entwickler dabei unterstützen, was eine enorme Zeitersparnis mit sich bringt.
 
+Um etwaige Einstellungen der Seriellen Schnittstelle sowie die Definition der Pfade für verschiedene Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird.
+Mit dieser sogenannten Config-Datei wird auch die Möglichkeit geschaffen, weitere Informationen der Anwendung auch nach einem Neustart der Maschine zu speichern.
 
-Ziel ist es dieses Interface so übersichtlich wie möglich zu gestalten. Dies soll durch unterschiedliche Tabs realisiert werden.\\\\
-Zusätzlich soll im Hintergrund eine sogenannte Log-Datei automatisch vom Programm geschrieben werden. Diese bringt dem Entwicker einen enormen Mehrwert im Bereich des Fehler-Handlings. \\
-Um etwaiige Einstellungen der Seriellen Schnittstelle sowie die definition der Pfade für Log-Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird. Mit dieser Config-Datei wird auch die Möglichkeit geschafffen,
-Spielmodi zu speichern und zu verändern.
+Diese hiermit geschaffene Datenpersistenz kommt dem Programm auch bei der zukünftigen Speicherung der Spielmodi oder etwaigen Statistik-Dateien zugute.
+Bei einer Realisierung einer Statistik-Datei sollte der Name des ausgewählten Spielmodis, dessen Hintergrundinformationen, Spielernamen und Punkteanzahl Kernbestandteil sein.
 
-Die Speicherung der vergangenen Spiele soll außerdem auch in einer eigenen Datei vonstatten gehen. Name des ausgewählten Spielmoduses, dessen Hintergrundinformationen, Spielernamen und Punkteanzahl sollen die Kernstücke jedes Eintrags in die Datei sein.\newpage
+Ein weiteres Ziel ist die Internationalisierung der gesamten Software.
+Soll eine Software in verschiedenen Ländern eingesetzt werden, ist eine Internationalisierung ein wichtiger Bestandteil der User Experience.
+In unserem Fall ist es lediglich notwendig, alle angezeigten Texte zu übersetzen, da keine weiteren Informationen vorhanden sind.
 
-\subsection{Voruntersuchung}\label{subsec:voruntersuchung}
+\subsection{Hardwarenahe-Programmierung}\label{subsec:hardwarenahe-programmierung}
+Ein weiterer Punkt des Projekts ist die Hardwarenahe-Programmierung.
+Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega 324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
+Als Basis dafür dienen ankommenden Befehle über der seriellen Schnittstelle.
+Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
+
+\subsection{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
+Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, einige Voruntersuchungen durchzuführen.
+Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
+\subsubsection{Auswahl der IDE}
+Das Bearbeiten von Code spielt bei der Programmierung eine elementare Rolle.
+Dadurch muss, bevor mit dem Programmierprozess gestartet wird, eine passende IDE ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
+In unserem Fall sind diese im Speziellen:
+\begin{enumerate}
+    \item Möglichkeiten der Programmierung sowie dem Debuggen eines Remote-Rechners
+    \item Nötigsten Features beinhalten
+    \item Grafisch Ansprechen
+\end{enumerate}
+Einer der wichtigsten Punkte ist dabei jedoch die Möglichkeit, Remote-Geräte zu debuggen.
+Debugging selbst hilft dem Entwickler bei der Fehlersuche.
+Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktelle Wertebelegung von Variablen zu überprüfen.
+Dadurch erspart dies enorme Zeit bei der Programmierung.
+
+Aufgrund dessen kristallisierten sich 2 IDE’s heraus.
+
 
 \subsubsection{Auswahl des GUI-Toolkits}
-Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen. Diese Toolkits stellen meist alle Elemte zur Erstellung einer GUI bereit. Diese sind z.B. Knöpfe, Listen und Textfelder mit denen der Benutzer ineragieren kann.
-
+Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
+Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
+Diese sind z.B. Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
+\\\\
 \textbf{Swing}
-Das bereits in der Standart Java Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen. Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
-Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen. Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nähmlich Java FX, zu verwenden.
-
+\\
+Das bereits in der Standart Java Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
+Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
+Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen.
+Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
+\\\\
 \textbf{JavaFX}
+\\
 Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
-Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format. Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind. Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
+Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
+Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
+Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
 und dem dahinter stehenden Code ist dadurch möglich.\\
-Auch bieter Java FX die Möglichkeit, seperate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
-
-
-\subsubsection{Auswahl der IDE}
-Bevor mit dem Programmierprozess gestartet werden kann, ist es notwendig, eine für IDE auszuwählen, welche alle Anforderungen erfüllt. In unserem Fall sind diese im Speziellen:
-\begin{enumerate}
-    \item Möglichkeiten der Remote-Programmierung sowie dem Debuggen
-    \item Einfacher Workflow
-\end{enumerate}
-
-\textbf{Netbeans IDE}
-Die Netbeans IDE ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist. Primär wurde sie Entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
-Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich. Die Möglichkeit, eine Remote-Plattform einzurichten wurde einfach gelöst und das Arbeiten verläuft meist ohne Probleme.
-Realisierung
-\textbf{Intellij IDE}
-Eine kostenpflichtige Alternative zu Netbeans ist Intellij. Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet. Darum fiel unsere Wahl auch auf diese IDE.
-
-
+Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 
 \subsubsection{Fragestellung zur Verwendung eines Build-Tools}
 \section{Backend-Programmierung}
@@ -186,7 +202,8 @@ Eine kostenpflichtige Alternative zu Netbeans ist Intellij. Aufgrund der kompliz
 \subsubsection{Konzept}
 
 Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
-Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft. Anforderungen an dieses Protokoll sollen sein:
+Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft.
+Anforderungen an dieses Protokoll sollen sein:
 \begin{enumerate}
     \item einfache Integration in die Zielsysteme
     \item erweiterbarkeit des Protokolls mit geringem Arbeitsaufwand
