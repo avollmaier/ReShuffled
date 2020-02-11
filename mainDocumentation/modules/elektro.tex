@@ -420,20 +420,20 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
 \subsection{Spannungsversorgung}
-\subsubsection{Doppel-Schaltnetzteil mit 12V und 5V Ausgangsspannung}
+\subsubsection{Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V AC in Verbindung gebracht werden müsste,
 um die Versorgung der Peripherie zu gewährleisten.
 Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden,
 die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
 Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
 
-\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und Schaltregler zu 5V}
+\subsubsection{Schaltnetzteil und Schaltregler}
 Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal tranferiert.
 Jene 12V werden von jeglichen Aktoren und Sensoren genutzt.
 Außerdem wird mithilfe der 12V ein Schaltregler mit Spannung versorgt, welcher die 5V Spannungsversorgung des Raspberry Pi bereitstellt.
 Über die GPIO Pins des Raspberry Pi wird folgend der Mikrocontroller mit 3.3V versorgt.
 
-\subsubsection{Schaltnetzteil mit 12V Ausgangsspannung und Festspannungsregler zu 5V}
+\subsubsection{Schaltnetzteil und Festspannungsregler}
 Bei dieser Alternative wird ein Schaltnetzteil mit 230V AC versorgt, welches ein 12V DC Signal am Ausgang bereitstellt.
 Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Festspannungsregler, welcher 12V zu 5V umwandelt.
 Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
@@ -574,7 +574,7 @@ Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt wird,
 Diese Versorgung soll auch nach der Betätigung zur Verfügung stehen.
 Die Versorgung soll durch ein Signal des RPI gestoppt werden, wodurch ein sicheres Herunterfahren des RPI bereitgestellt werden soll.
 
-\subsubsection{Realisierte Variante mit einzelnen Taster zum Ein- und Ausschalten}
+\subsubsection{Realisierte Variante mit einzelnem Taster zum Ein- und Ausschalten}
 
 Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
 Dieser Feldeffekttransistor schaltet dadurch die am Drain anliegende Leitung auf Masse.
@@ -783,6 +783,23 @@ So kann bei einem Ausfall dennoch eine sicheres Herunterfahren beziehungsweise e
 
 \subsection{Beschaltung des ATmega324P}
 
+Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbidnung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
+Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspins je ein Kondensator mit 100nF vorgesehen.
+An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
+
+Um die interne Referenzspannung zu glätten, wurde, wie im Datenblatt empfohlen, ein 100nF Kondensator am Pin AREF implementiert.
+
+Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Quarz mit einer Taktfrequenz von 0 bis 10MHz zu arbeiten.
+Aufgrund unserer Entscheidung, den Mikrocontroller mit einem 10MHz Quarz zu betreiben, waren zwei Kondensatoren mit einem Wert von 12 bis 22pF zu wählen.
+Diese haben den Nutzen, den Quarzoszillator gut anschwingen und stabil schwingen zu lassen.
+
+Der RESET-Pin setzt bei einem "LOW"-Pegel-Signal den µC zurück.
+Um dies im Grundzustand zu unterbinden, wird ein Pull-Up Widerstand von 10kOhm implementiert.
+Parallel zu diesem wurde eine externe Diode zum Schutz vor Überspannungen vorgesehen.
+Um den RESET-Pin gegen Masse schalten zu können, wurde ein Taster implementiert.
+Über den Data-Terminal-Ready Pin des USB-UART-Converters und dessen Jumper-Pad oder die SPI-Schnittstelle ist es jedoch ebenfalls möglich, den ATmega324P zu resetten.
+Parallel zum Taster wurde ein RC-Glied vorgesehn, welches einerseits als Entprellung der Tasterbetätigung dient
+andererseits auch als Prevention gegen Spikes und für ein längeres, definiertes Bestehen des µC im Reset-Zustand.
 
 \subsection{DRV8825-Schrittmotortreiber}
 
@@ -1067,7 +1084,7 @@ Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V 
 \subsection{Ansteuerung der Hubmagneten}
 
 Als Ansteuerung der beiden Hubmagneten wird jeweils die unten zu sehende Schaltung angewandt.
-Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre derartige Ströme ohne Überhitzung schalten zu können.
+Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre derartige Ströme ohne Überhitzung zu schalten.
 
 \subsubsection{Funktion}
 
@@ -1245,7 +1262,7 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 
 \subsection{Netzteil}
 
-Als Netzteil wählten wir ein Schaltnetzteil mit Klatgerätestecker aus.
+Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus.
 Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
 Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
 
@@ -1260,10 +1277,10 @@ Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu k�
 \section{Leiterplattendesign}
 
 Sogleich die Auswahl der Peripherie beendet war, war es an der Zeit ein Design für die geplante Platine in KiCad zu entwerfen.
-Als Anforderungen stellten wir uns
+Als Anforderungen stellten wir uns ein möglichst kompaktes, strukturiertes sowie übersichtliches Design zu erstellen.
 Im Laufe der Diplomarbeit entstanden unzählig viele, verschiedene Layouts, welche die Gründe von ständig neu aufkommenden Ideen, Ausmerzung von Fehlerquellen und Simplifizierungen hatten.
 Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen Aufgabe.
-Eine falsche Dimensionierung von Bauteilen und Baugruppen, Denkfehler, die das Fertigen erschweren würden, und ungünstige Leiterbahn-Dimensionierung und Anordnung waren hierbei die Hauptfaktoren.
+Eine falsche Dimensionierung von Bauteilen und Baugruppen, Denkfehler, die das Fertigen erschweren würden, und ungünstige Leiterbahnanordnungen waren hierbei die Hauptfaktoren.
 
 \subsection{Leiterplattenfertigung}
 
