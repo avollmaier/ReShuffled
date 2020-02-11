@@ -166,18 +166,37 @@ In unserem Fall sind diese im Speziellen:
     \item Nötigsten Features beinhalten
     \item Grafisch Ansprechen
 \end{enumerate}
-Einer der wichtigsten Punkte ist dabei jedoch die Möglichkeit, Remote-Geräte zu debuggen.
+Einer der wichtigsten Punkte dieser Aufzählung ist dabei jedoch die Möglichkeit, Remote-Geräte zu debuggen.
 Debugging selbst hilft dem Entwickler bei der Fehlersuche.
 Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktelle Wertebelegung von Variablen zu überprüfen.
 Dadurch erspart dies enorme Zeit bei der Programmierung.
+In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry PI, welcher mit dem Netzwerk über Ethernet verbunden ist.
+Es erfordert aber nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
+\\\\
+\textbf{Apache-Netbeans}
+\\
+Die Netbeans-IDE, bereitgestellt von der Firma Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
+Primär wurde sie entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
+Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich.
+Die Möglichkeit, eine Remote-Plattform einzurichten wurde einfach gelöst und das Arbeiten verläuft meist ohne Probleme.
+Auch das einfache Einbinden von Plugins und Bibliotheken zählt zu den Hauptvorteilen von Netbeans.
+\\\\
+\textbf{Intellij IDEA}
+\\
+Eine kostenpflichtige Alternative zu Netbeans ist Intellij.
+Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
+Jedoch bring Intellij auch einige Vorteile mit sich.
+\begin{enumerate}
+    \item Flüssigere Bedienung
+    \item Wirkt durchdachter
+    \item Zentralere Verwaltung von Plugins
+\end{enumerate}
 
-Aufgrund dessen kristallisierten sich 2 IDE’s heraus.
-
-
+Trotz dieser Vorteile kristallisierte sich jedoch Netbeans heraus und wird im
 \subsubsection{Auswahl des GUI-Toolkits}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
 Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
-Diese sind z.B. Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
+Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
 \\\\
 \textbf{Swing}
 \\
@@ -196,9 +215,65 @@ und dem dahinter stehenden Code ist dadurch möglich.\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 
 \subsubsection{Fragestellung zur Verwendung eines Build-Tools}
-\section{Backend-Programmierung}
-\subsection{Entwurdsmuster Singelton}
-\subsection{Kommunikation - serielle Schnittstelle}
+\section{Projektstruktur}\label{sec:projektstruktur}
+Um die Übersichtlichkeit des Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
+Das bedeutet das jede Klasse, die neu erstellt wird, ein Teil der Struktur ist und innerhalb dieser platziert wird.
+Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden.
+
+\begin{figure}[htb!]
+    \begin{center}
+
+
+\begin{forest}
+    for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+    \noexpand\path [draw, \forestoption{edge}]
+    (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+    if n=1
+    {insert before={[,phantom]}}
+    {}
+    },
+    fit=band,
+    before computing xy={l=15pt},
+    }
+    [src
+    [data
+    ]
+    [exception
+    ]
+    [gui
+    ]
+    [logging
+    ]
+    [main
+    ]
+    [serial
+    ]
+    [util
+    ]
+    ]
+\end{forest}
+    \end{center}
+    \caption{Projektstruktur}
+\end{figure}
+Im Allgemeinen bringt diese Aufteilung 2 fundamentale Vorteile mit sich:
+\begin{enumerate}
+    \item \textbf{Bessere Übersichtlichkeit} \\
+    Um eine Erweiterung von außen ohne Probleme sicherzustellen, ist es wichtig, der Übersichtlichkeit des Projekts nicht zu schaden.
+    \item \textbf{Vermeidung von chaotischer Strukturierung}\\
+    Selbst wenn keine Person von außen eine Änderung am Programm vorsieht, hilft es dem Entwickler, eine klare Definition seiner Strukturierung zu haben.
+\end{enumerate}
+\section{Backend-Programmierung}\label{sec:backend-programmierung}
+\subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
+\subsection{Kommunikation - serielle Schnittstelle}\label{subsec:kommunikation---serielle-schnittstelle}
 \subsubsection{Konzept}
 
 Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
@@ -409,7 +484,6 @@ label.setText("Counter: " + model.getCounter());
 \subsection{Probleme}
 \subsubsection{Probleme bei der Implementierung von JavaFX}
 \subsubsection{Kommunikation zwischen Controllern}
-\subsubsection{}
 \subsection{Verbesserungsmöglichkeiten}
 \subsubsection{Online Update-Möglichkeit der Software}
 \subsubsection{Smartphone-Interface zum Zählen der Punkte}
