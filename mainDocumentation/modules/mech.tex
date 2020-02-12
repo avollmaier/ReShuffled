@@ -198,7 +198,7 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
     \item \textbf{Vergleich der Ausgaberäder}
 \end{itemize}
 
-Da das primäre Zeil unserer Arbeit das perfekte mischen der Spielkarten ist, wäre es besser das elliptische Ausgaberad in betracht zu ziehen. Die Kosten
+Da das primäre Ziel unserer Arbeit das perfekte Mischen der Spielkarten ist, wäre es besser das elliptische Ausgaberad in betracht zu ziehen. Die Kosten
  die durch die aufwendigere Herstellung entstehen wären überschaulich und somit wäre es nur profitabel dieses Konzept zu wählen. Durch die Tatsache das das elliptische Rad
 das Kartendeck nur jede halbe umdrehung berrührt und nicht konstant, muss ein Motor für die Räder einegesetzt werden der sich schnell genug dreht um eine Karte mit einer berührung
 des Rades "herauszuschießen". Dies würde aber keine zusätzlichen Kosten verursachen. Aus diesen Gründen fällt die Wahl auf das \textbf{elliptisches Ausgaberad}. \\
@@ -258,7 +258,7 @@ eifnach zu realisieren und dadurch auch billig in der Herstellung.
     \item \textbf{Vergleich der Klemmmechanissmen}
 \end{itemize}
 
-Da alle Mechanissmen die gleiche Anzahl an Bateile erfordern, spielt der Pries bei dieser Auswahl keine große Rolle. Aus diesem Grund
+Da alle Mechanissmen die gleiche Anzahl an Bateile erfordern, spielt der Preis bei dieser Auswahl keine große Rolle. Aus diesem Grund
 sind die Kriterien Funktionalität und Aufwendigkeit in der Produktion. Der erst Mechanissmus wäre der einfachste in der Produktion, jedoch
 hat er durch sein nicht anpassungsfähiges Klemmgelenk Probleme mit verschiedenen Kartengrößen, aus diesem Grund fällt er bei diesem Auswahlverfahren durch.
 Der zweite Mechanissmus wäre der komplexe Klemmmechanissmus, dieser würde sich zwar verschiedenen Kartengrößen anpassen, wäre aber etwas aufwendiger in der
@@ -272,7 +272,7 @@ Um zu garantieren das nur eine Karten in das Lager befördert wir oder ausgegebe
 haftende Karten getrennt werden.
 
 \begin{itemize}
-    \item \textbf{Abwarten?????}
+    \item \textbf{Selbständiges Loslösen der Karten}
 \end{itemize}
 
 Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten bis alle Karten sich durch die Schwerkraft
@@ -432,7 +432,7 @@ erhöht oder vermindert.
 Alle drei Varianten wurden durchdacht und bieten ihre individuellen Vorteile. Durch den enormen Preis von
 Variante 1 ist diese aber nicht für unser Projekt geeignet. Das optimale Konzept des Mischens wird am besten durch
 Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten aufeinmal in das Lager zu befördern.
-Da Variante 3 im vergleich zur Variante 2 weniger Bauteile besitzt, ist diese Variante sowohl Preislich ansprechender für uns
+Da Variante 3 im Vergleich zur Variante 2 weniger Bauteile besitzt, ist diese Variante sowohl Preislich ansprechender für uns
  sowie auch die Tatsache das Fehlerquellen durch bewegliche Bauteile minimiert werden. \\
 Somit fällt die finale Wahl auf \textbf{Variante 3}.
 
@@ -441,6 +441,29 @@ Somit fällt die finale Wahl auf \textbf{Variante 3}.
 \pagebreak
 \section{Konstruktion}
 \subsection{Konstruktion des Lagerrades}
+Das Lagerrad soll durch das zufällige Rotieren das Mischen der Karten ermöglichen. Im Verlauf der Diplomarbeit wurde das Lagerrad mehrfach überarbeitet.
+Die grundsätzliche Form dieses Rades besitzt ein virtel eines Hohlzylinders der in mehreren Fächern unterteilt ist. Die erste Version dieses Rades besaß 20 Unterteilungen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5,page=1]{fig/mech/LagerRad20F}
+    \caption{Version 1: Lagerrad 20 Fächer (geöffnete Außenwand zur vereinfachten Ansicht)}
+\end{figure}
+
+In der oben angezeigen Grafik wurde die Außenwand entfernt um eine bessere Einsicht in das Bauteil zu bekommen.
+Durch die 20 #unterteilungen muss der Schrittmotor genauere Positionen anfahren, außerdem wäre der Aufwand beim produzieren groß. Aus diesem Grund
+entschieden wir uns die Unterteilungen zu minimieren, und kamen zu dem Entschluss, dass 4 Unterteilungen für ein optimales Mischen ausreichen. Diese Konstruktion
+wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstellen kann und diese dannach zusammenstecken und verkleben kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5,page=1]{fig/mech/LagerRad4F}
+    \caption{Version 2: Lagerrad 4 Fächer (geöffnete Außenwand zur vereinfachten Ansicht)}
+\end{figure}
+
+Auch in der oben gezeigten Grafik wurde die Außenwand entfernt um das Bauteil besser zu veranschaulichen. Das Baumodul besteht aus zwei Seitenplatten sowie zwei Außenplatten die
+mit einem Stecksystem verbunden sind. Im inneren befinden sich 3 Trennplatten die mit einem Stecksystem mit der Außenplatte verbunden sind. Diese zweite Version des Lagerrades wurde für die produktion durch einen 3D Drucker
+entworfen, das Stecksystem für die einzelnen Bauteile wurde aus dem Grund angewendet, da es eine stärkere Verbindung als kleben aufweist und das 3D drcuken des gesamten Lagerrades eine zu hohe Materialverschwendung aufweisen würde.
 
 \subsection{Konstruktion der Kartenhalterung}
 
@@ -450,7 +473,7 @@ Somit fällt die finale Wahl auf \textbf{Variante 3}.
 
 \subsection{Konstruktion des Gehäuses}
 
-\section{Berechnungen, Festigkeitsanalyse und Dimensionierungen}
+\section{Berechnungen und Dimensionierungen}
 
 \section{Teilaufbau}
 
