@@ -4,12 +4,14 @@
 \lohead{Vollmaier Alois}
 
 \chapter{Informatik}\label{ch:informatik}
-\section{Allgemeines}\label{subsec:einleitung}
-Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst. Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+\section{Allgemeines}\label{sec:einleitung}
+Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
+Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
+Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
 
-\section{Zeitplan}\label{subsec:zeitplan}
+\section{Zeitplan}\label{sec:zeitplan}
 
 \begin{figure}[hbt!]
     \centering
@@ -152,14 +154,14 @@ In unserem Fall ist es lediglich notwendig, alle angezeigten Texte zu übersetze
 
 \subsection{Hardwarenahe-Programmierung}\label{subsec:hardwarenahe-programmierung}
 Ein weiterer Punkt des Projekts ist die Hardwarenahe-Programmierung.
-Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega 324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
+Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega-324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
 Als Basis dafür dienen ankommenden Befehle über der seriellen Schnittstelle.
-Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
+Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller zu programmieren.
 
-\section{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
+\section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, einige Voruntersuchungen durchzuführen.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
-\subsection{Auswahl der Arbeitsumgebung}
+\subsection{Auswahl der Arbeitsumgebung}\label{subsec:auswahl-der-arbeitsumgebung}
 Das Bearbeiten von Code spielt bei der Programmierung eine elementare Rolle.
 Dadurch muss, bevor mit dem Programmierprozess gestartet wird, eine passende IDE ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
 In unserem Fall sind diese im Speziellen:
@@ -191,7 +193,7 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
 \end{enumerate}
 \subsubsection{Fazit}
 Natürlich ist es meist Ansichtssache, für welche IDE man sich entscheidet doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
-\subsection{Auswahl des GUI-Toolkits}
+\subsection{Auswahl des GUI-Toolkits}\label{subsec:auswahl-des-gui-toolkits}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
 Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
@@ -209,7 +211,7 @@ und dem dahinter stehenden Code ist dadurch möglich.\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 \subsubsection{Fazit}
 
-\subsection{Projektorganisation}\label{sec:projektorganisation}
+\subsection{Projektorganisation}\label{subsec:projektorganisation}
 Eine einheitliche Formatierung und Namensgebung ein Kernbestandteil einer gelungenen Projektplanung.
 Dies führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
 Um die Übersichtlichkeit eines Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
@@ -274,35 +276,35 @@ Diese benennen sich in unserem Fall \lstinline{data}, \lstinline{exception}, \ls
 \\\\
 \textbf{Bibliotheken}
 \\
-Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammtelt werden.
-Dabei erleichtert diese Verzeichnishirachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
+Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammelt werden.
+Dabei erleichtert diese Verzeichnishierachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
 \\\\
 \textbf{Konfigurationsdateien}
 \\
-In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen. Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
+In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen.
+Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
 \subsubsection{Fragestellung zur Verwendung eines Build-Tools}
-Das zuvor genannte Layout der Projekthrachie eignet sich gut für viele Projekte.
+Das zuvor genannte Layout der Projekthierachie eignet sich gut für viele Projekte.
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.
 
-Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
+Einerseits ist das aufwendige Erstellen dieser Hierachie ein Punkt, welcher nicht unerwähnt bleiben soll.
 Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken.
 \\\\
 Trotz alledem wurde auf die althergebrachte Version gesetzt und das Projekt so erstellt.
-Grund dafür ist widerum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
+Grund dafür ist wiederum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
 \newpage
 
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
-Singelton dient dazu, die Einzigartikeit eines Objekts sicherzustellen.
+Singelton dient dazu, die Einzigartigkeit eines Objekts sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
-
-Auch bietet es einen globalen Zugriffspunkt
+Auch wird ein zentraler Zugriffspunkt innerhalb des Programms geschaffen.
 
 \subsubsection{Struktur}
 Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
-Dies bedeuted es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
+Dies bedeutet es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
 Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
 Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\\\
 Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
@@ -351,11 +353,11 @@ writeConfig();
 }
 
 \end{lstlisting}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.25\textwidth]{fig/ainf/Singelton.pdf}
-    \caption{UML-Diagramm Singelton}
-\end{figure}
+%\begin{figure}[H]
+ %   \centering
+  %  \includegraphics[width=0.25\textwidth]{fig/ainf/Singelton.pdf}
+  %  \caption{UML-Diagramm Singelton}
+%\end{figure}
 
 
 \subsection{Kommunikation - serielle Schnittstelle}\label{subsec:kommunikation---serielle-schnittstelle}
