@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ReShuffledNew.iml" filepath="$PROJECT_DIR$/ReShuffledNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ReShuffled.iml" filepath="$PROJECT_DIR$/.idea/ReShuffled.iml" />
     </modules>
   </component>
 </project>
