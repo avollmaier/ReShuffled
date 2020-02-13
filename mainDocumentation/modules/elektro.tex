@@ -783,7 +783,7 @@ So kann bei einem Ausfall dennoch eine sicheres Herunterfahren beziehungsweise e
 
 \subsection{Beschaltung des ATmega324P}
 
-Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbidnung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
+Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbindung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
 Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspins je ein Kondensator mit 100nF vorgesehen.
 An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
 
@@ -793,13 +793,86 @@ Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Q
 Aufgrund unserer Entscheidung, den Mikrocontroller mit einem 10MHz Quarz zu betreiben, waren zwei Kondensatoren mit einem Wert von 12 bis 22pF zu wählen.
 Diese haben den Nutzen, den Quarzoszillator gut anschwingen und stabil schwingen zu lassen.
 
-Der RESET-Pin setzt bei einem "LOW"-Pegel-Signal den µC zurück.
+Der RESET-Pin setzt bei einem LOW-Pegel-Signal den µC zurück.
 Um dies im Grundzustand zu unterbinden, wird ein Pull-Up Widerstand von 10kOhm implementiert.
 Parallel zu diesem wurde eine externe Diode zum Schutz vor Überspannungen vorgesehen.
 Um den RESET-Pin gegen Masse schalten zu können, wurde ein Taster implementiert.
 Über den Data-Terminal-Ready Pin des USB-UART-Converters und dessen Jumper-Pad oder die SPI-Schnittstelle ist es jedoch ebenfalls möglich, den ATmega324P zu resetten.
 Parallel zum Taster wurde ein RC-Glied vorgesehn, welches einerseits als Entprellung der Tasterbetätigung dient
 andererseits auch als Prevention gegen Spikes und für ein längeres, definiertes Bestehen des µC im Reset-Zustand.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.1]
+        \draw [line width=1.5pt](5,0) to (8.5,0) to (8.5,5) to (5,5) to (5,0);
+
+        %AREF
+        \draw (7.9,2) to (7.9,2)node[anchor=north]{AREF};
+        \draw (8.5,1.75) to (9.5,1.75) to [C, l=$C9$](9.5,0) to (9.5,0) node[rground]{};
+
+        %Quarz
+        \draw (5.65,2.8) to (5.65,2.8)node[anchor=north]{XTAL2};
+        \draw (5.65,1.2) to (5.65,1.2)node[anchor=north]{XTAL1};
+        \draw (5,2.6) to (3,2.6);
+        \draw (5,1) to (3,1);
+        \draw (4,2.6) to [PZ, l_=$Y1$, *-*](4,1);
+        \draw (3,1) to [C, l=$C8$](1.5,1);
+        \draw (3,2.6) to [C, l=$C7$](1.5,2.6);
+        \draw (1.5,1) to (1.5,2.6);
+        \draw (1.5,1.8) to [short, *-](0.5,1.8) to (0.5,1)node[rground]{};
+
+        %RESET
+        \draw (5.65,4) to (5.65,4)node[anchor=north]{RESET};
+        \draw (5,3.7) to (3,3.7) to (3,6) to [R, l=$R1$](3,7.5) to (3,8)node[vcc]{+3.3V};
+        \draw (3,6) to [short, *-](4,6) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](4,7.5) to  [short,-*](3,7.5);
+        \draw (4,7.5) to (4,6);
+        \draw (3,5.5) to [short,*-o](3.5,5.5)node[anchor=west]{SPI-RST};
+        \draw (3,5) to [short, *-o](2,5);
+        \draw (1.5,5) to [short, o-](0.5,5) to [C, l=$C5$](0.5,6.5) to [short, -o](0,6.5)node[anchor=east]{DTR-USB};
+        \draw (3,4.5) to (-1,4.5) to [R, l=$R2$](-1,3) to [C, l=$C6$](-1,1.5) to (-1,1.5)node[rground]{};
+        \draw (3,4) to [short, *-](2.15,4);
+        \draw (1.8,4)node[pushbuttonshape]{};
+        \draw (1.48,4) to [short,o-](0.5,4) to (0.5,3.5)node[rground]{};
+        \draw (1.825,4) to (1.825,4)node[anchor=north]{S1};
+
+        \draw (1.825,5.7) to (1.825,5.7)node[anchor=north]{Jumper};
+
+        %VCC und GND
+        \draw (5.4,5) to (5.4,5)node[anchor=north]{VCC};
+        \draw (6.2,5) to (6.2,5)node[anchor=north]{VCC};
+        \draw (7,5) to (7,5)node[anchor=north]{VCC};
+        \draw (7.9,5) to (7.9,5)node[anchor=north]{AVCC};
+        \draw (5.45,0.5) to (5.45,0.5)node[anchor=north]{GND};
+        \draw (6.3,0.5) to (6.3,0.5)node[anchor=north]{GND};
+        \draw (7.15,0.5) to (7.15,0.5)node[anchor=north]{GND};
+        \draw (8,0.5) to (8,0.5)node[anchor=north]{GND};
+
+        \draw (5.4,7.5) to [short, *-*](6.2,7.5) to [short,-*](7.9,7.5) to [short,-*](9.6,7.5) to(11.2,7.5);
+        \draw (6.2,6) to [short,-*](7.9,6) to [short,-*](9.6,6) to [short,-*](11.2,6) to (11.2,5.5)node[rground]{};
+        \draw (6.2,7.5) to [C, l=$C1$](6.2,6);
+        \draw (7.9,7.5) to [C, l=$C2$](7.9,6);
+        \draw (9.6,7.5) to [C, l=$C3$](9.6,6);
+        \draw (11.2,7.5) to [C, l=$C4$](11.2,6);
+
+
+        \draw (5.4,8) to (5.4,5);
+        \draw (5.4,5.5) to [short, *-*] (6.2,5.5) to [short, *-*] (7,5.5) to (7.9,5.5);
+        \draw (6.2,5.5) to (6.2,5);
+        \draw (7,5.5) to (7,5);
+        \draw (7.9,5.5) to (7.9,5);
+
+        \draw (5.5,-0.4) to [short, *-*] (6.3,-0.4) to [short, *-*] (7.1,-0.4) to (8,-0.4);
+        \draw (6.3,-0.4) to (6.3,0);
+        \draw (7.1,-0.4) to (7.1,0);
+        \draw (8,-0.4) to (8,0);
+
+        %Beschriftungen
+        \draw (9.2,5.6) to (9.2,5.6)node[anchor=north]{ATmega324P};
+        \draw (5.4,8)node[vcc]{+3.3V};
+        \draw (5.5,0) to (5.5,-0.5) node[rground]{};
+    \end{circuitikz}
+    \caption{Beschaltung des ATmega324P}
+\end{figure}
 
 \subsection{DRV8825-Schrittmotortreiber}
 
@@ -874,6 +947,7 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
     \caption{Gewöhnliche Beschaltung eines DRV8825}
 \end{figure}
 
+\newpage
 
 \subsubsection{Beschaltungs- und Anschlussfunktionen}
 Der DRV8825 besitzt 16 Anschlüsse.
@@ -1107,13 +1181,58 @@ Diese hat die Aufgabe, den MOSFET vor einer selbsterzeugenten, rückfließenden 
         \draw (6,6) to (6,6)node[anchor=west]{Hubmagnet};
         \draw (5,3) to (5,0);
         \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
+        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
+        \draw (5,3)node[nfet, solderdot, bodydiode]{};
+        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+        \draw (5,-0.5) to (5,-0.5) node[rground]{};
+
+    \end{circuitikz}
+    \caption{Ansteuerung der Hubmagneten}
+\end{figure}
+
+\subsection{Ansteuerung der Pumpe und des Ventils}
+
+Um sowohl die Pumpe als auch das Ventil ansteuern zu können, wurde jeweils von der Schaltungsstruktur jener Schaltung, welche die Hubmagneten ansteuert, Gebrauch gemacht.
+
+\subsubsection{Funktion}
+
+Sogleich die Gate-Source-Schwellspannung des N-Kanal MOSFETs mithilfe des 3.3V Steuersignals überschritten wird, schaltet jener Halbleiterbaustein das am Drain liegende Potential auf Masse.
+Um den fließenden Gate-Source-Strom zu begrenzen wurde auf einen Widerstand, hier R1, zurückgegriffen.
+Um jene am MOSFET anfallende, parasitäre Kapazitäten zu negieren, wurde der Widerstand R2 vorgesehen.
+Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer "Fly-Wheel-Diode" erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
+
+\begin{figure}[hpt]
+    \centering
+    \begin{circuitikz}[european, scale = 0.8]
+        % Pumpe
+        \draw (5,8)node[vcc]{+5V};
+        \draw (5,8) to (5,6.5) to [short, -o](6,6.5);
+        \draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
+        \draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
+        \draw (4,5) to (4,7);
+        \draw (6,6) to (6,6)node[anchor=west]{Pumpe};
+        \draw (5,3) to (5,0);
+        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
         \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
         \draw (5,3)node[nfet, solderdot, bodydiode]{};
         \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
         \draw (5,0) to (5,0) node[rground]{};
 
+        % Ventil
+        \draw (15,8)node[vcc]{+5V};
+        \draw (15,8) to (15,6.5) to [short, -o](16,6.5);
+        \draw (16,5.5) to [short, o-](15,5.5) to (15,3.5);
+        \draw (15,5) to [short, *-](14,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](14,7) to [short, -*](15,7);
+        \draw (14,5) to (14,7);
+        \draw (16,6) to (16,6)node[anchor=west]{Ventil};
+        \draw (15,3) to (15,0);
+        \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
+        \draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,1) to [short,-*](15,1);
+        \draw (15,3)node[nfet, solderdot, bodydiode]{};
+        \draw (9,3) to (9,3)node[anchor=east]{SIG};
+        \draw (15,0) to (15,0) node[rground]{};
     \end{circuitikz}
-    \caption{Ansteuerung der Hubmagneten}
+    \caption{Ansteuerung der Pumpe und des Ventils}
 \end{figure}
 
 \subsection{Mini-USB Schnittstelle}
