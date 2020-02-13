@@ -5,9 +5,7 @@
 
 \chapter{Informatik}\label{ch:informatik}
 \section{Allgemeines}\label{sec:einleitung}
-Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
-Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
-Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst. Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
 
@@ -154,11 +152,11 @@ In unserem Fall ist es lediglich notwendig, alle angezeigten Texte zu übersetze
 
 \subsection{Hardwarenahe-Programmierung}\label{subsec:hardwarenahe-programmierung}
 Ein weiterer Punkt des Projekts ist die Hardwarenahe-Programmierung.
-Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega-324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
+Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega 324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
 Als Basis dafür dienen ankommenden Befehle über der seriellen Schnittstelle.
-Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller zu programmieren.
+Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
 
-\section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
+\section{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, einige Voruntersuchungen durchzuführen.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
 \subsection{Auswahl der Arbeitsumgebung}\label{subsec:auswahl-der-arbeitsumgebung}
@@ -204,7 +202,7 @@ Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle ID
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
 \subsubsection{JavaFX}
 Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
-Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
+Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format. \textbf{\textit{\autoref{subsec:datenformate-in-java-fx}}}
 Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
 und dem dahinter stehenden Code ist dadurch möglich.\\
@@ -212,6 +210,7 @@ Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in w
 \subsubsection{Fazit}
 
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
+\subsubsection{Projektstruktur in Netbeans}
 Eine einheitliche Formatierung und Namensgebung ein Kernbestandteil einer gelungenen Projektplanung.
 Dies führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
 Um die Übersichtlichkeit eines Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
@@ -276,158 +275,232 @@ Diese benennen sich in unserem Fall \lstinline{data}, \lstinline{exception}, \ls
 \\\\
 \textbf{Bibliotheken}
 \\
-Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammelt werden.
-Dabei erleichtert diese Verzeichnishierachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
+Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammtelt werden.
+Dabei erleichtert diese Verzeichnishirachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
 \\\\
 \textbf{Konfigurationsdateien}
 \\
-In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen.
-Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
-\subsubsection{Fragestellung zur Verwendung eines Build-Tools}
-Das zuvor genannte Layout der Projekthierachie eignet sich gut für viele Projekte.
+In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen. Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
+\subsubsection{Projektstruktur für Maven und Gradle}
+Das zuvor genannte Layout der Projekthrachie eignet sich gut für viele Projekte.
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.
 
-Einerseits ist das aufwendige Erstellen dieser Hierachie ein Punkt, welcher nicht unerwähnt bleiben soll.
+Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
 Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken.
 \\\\
 Trotz alledem wurde auf die althergebrachte Version gesetzt und das Projekt so erstellt.
-Grund dafür ist wiederum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
+Grund dafür ist widerum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
 \newpage
-
-\section{Backend-Programmierung}\label{sec:backend-programmierung}
+\section{Grundlagen}\label{sec:grundlagen}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
-Singelton dient dazu, die Einzigartigkeit eines Objekts sicherzustellen.
+Das Erzeugungsmuster namens Singelton dient dazu, die Einzigartikeit eines Objekts sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
-Auch wird ein zentraler Zugriffspunkt innerhalb des Programms geschaffen.
+Auch bietet eine Klasse, welche nach dem Singelton-Pattern erzeugt wurde, einen globalen Zugriffspunkt über das gesamte Programm.
 
 \subsubsection{Struktur}
 Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
-Dies bedeutet es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
+Dies bedeuted es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
 Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
-Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\\\
+Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{fig/ainf/Singelton.pdf}
+    \caption{UML-Diagramm Singelton}
+\end{figure}
 Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
 Implementiert wird dies durch eine weitere statische Methode namens \lstinline{getInstance()}.
 Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
+
+
+
 \subsubsection{Beispiel}
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=C Code]
+Der nachfolgende Code zeigt, wie Singelton angewendet werden kann.
 
-public class Config {
+\subsection{Verhaltensmuster Command}\label{subsec:verhaltensmuster-command}
+\subsubsection{Beschreibung}
+Ziel des Verhaltensmusters Command ist es, den jeweiligen Teilnehmen, welche einen Befehl erzeugt, von dem Teilnehmer der für die Ausführung zuständig ist, zu entkoppeln.
+Man kann auch sagen, dass der Teilnehmer, welcher den Befehlsaufruf erzeugt, nicht wissen muss, welcher Teilnehmen den Befehl empfängt oder wo bzw. wann dies geschieht.
+Auch kann das tatsächliche Ausführen eines Befehls, aus programmatischer Sicht in einem ganz anderen Thread geschehen, was eine elementare Rolle spielt.
+Dieses Verhalten führt zu einer Vereinfachung der Ausführung von komplexeren Tätigkeiten des Programms.
+\subsubsection{Struktur}
+Das Command-Pattern verfügt meist über verschieden starke Ausprägung.
+Im Kern herrscht jedoch immer das selbe Prinzip:
+\textbf{Kapselung von Befehlswunsch und Ausführung}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/ainf/Command.pdf}
+    \caption{UML-Diagramm Command}
+\end{figure}
+\subsubsection{Beispiel}
 
-private static final Logger LOG = Logger.getLogger(Config.class.getName());
-private static Config instance;
+% @formatter:on
+\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Java Code]
 
+    public class Config {
 
-public static Config getInstance () {
-if (instance == null) {
-throw new IllegalStateException("Instance not created yet");
-}
-return instance;
-}
-
-
-public static Config createInstance (String configPath) {
-if (instance != null) {
-throw new IllegalStateException("Instance already created");
-}
-else {
-instance = new Config(configPath);
-}
-return instance;
-}
-
-// *************************************************************************
-private final File configFile;
-private ConfigModel configModel;
+    private static final Logger LOG = Logger.getLogger(Config.class.getName());
+    private static Config instance;
 
 
-private Config (String configPath) {
-configFile = new File(configPath);
-readConfig();
-}
+    public static Config getInstance () {
+    if (instance == null) {
+    throw new IllegalStateException("Instance not created yet");
+    }
+    return instance;
+    }
 
 
-public void save () {
-writeConfig();
-}
+    public static Config createInstance (String configPath) {
+    if (instance != null) {
+    throw new IllegalStateException("Instance already created");
+    }
+    else {
+    instance = new Config(configPath);
+    }
+    return instance;
+    }
 
+    // *************************************************************************
+    private final File configFile;
+    private ConfigModel configModel;
+
+
+    private Config (String configPath) {
+    configFile = new File(configPath);
+    readConfig();
+    }
+
+    public void save () {
+    writeConfig();
+    }
+    }
 \end{lstlisting}
-%\begin{figure}[H]
- %   \centering
-  %  \includegraphics[width=0.25\textwidth]{fig/ainf/Singelton.pdf}
-  %  \caption{UML-Diagramm Singelton}
-%\end{figure}
+% @formatter:off
+\subsection{Entwurfsmuster MVC}\label{subsec:entwurfsmuster-mvc}
+\subsubsection{Beschreibung}
+Das MVC-Design Pattern, auch Model-View-Controller Design Pattern ist eines der weit verbreiteste Design Patterns. Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt von einander getrennt sind.
+Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
+\newpage
+\begin{wrapfigure}{r}{0.5\textwidth}
+\vspace{-310pt}
+\begin{center}
+\includegraphics[width=0.17\textwidth]{fig/ainf/ModelViewController.pdf}
+\end{center}
+\caption{MVC-Design Pattern}
+\vspace{20pt}
+\end{wrapfigure}
+\begin{enumerate}
+\item \textbf{View}  \\
+Datenrepräsentation\\
+Organisiert alle Kontrollelemente
+\item \textbf{Controller} \\
+Stellt die Verbindung zwischen View und Model her\\
+Verwaltet Benutzerinteraktion und enthält Steuerlogik
+\item \textbf{Model} \\
+Datenrepräsentation\\
+Ist von der Benutzerschnittstelle komplett abgeschirmt
+\end{enumerate}
+\vspace{20pt}
+\subsubsection{Beispiel}
+Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im folgenden ein Beispiel dargestellt. Ziel des Programms ist es, einen Wert mithilfe eines Buttons hochzuzählen und auf einem Label im View anzeigen zu lassen.
+Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht werden.
+\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Hauptprogramm]
+public class Main extends Application {
+@Override
+public void start(Stage stage) throws Exception {
+Model model = new Model();
+View view = new View(model, stage);
+Controller controller = new Controller(model, view);
+}
+public static void main(String[] args) {
+launch(args);
+}
+}
+\end{lstlisting}
+\subsection{SceneBuilder}\label{subsec:scenebuilder}
+\subsubsection{Beschreibung}
+\subsubsection{Bibliothek JFoenix}
+\subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
+\subsubsection{XML}
+\subsubsection{FXML}
+\subsubsection{CSS}
+\subsection{Datenformat JSON}\label{subsec:json}
+\subsubsection{Beschreibung}
+\subsubsection{Bibliothek GSON}
 
-
+\section{Backend-Programmierung}\label{sec:backend-programmierung}
 \subsection{Kommunikation - serielle Schnittstelle}\label{subsec:kommunikation---serielle-schnittstelle}
 \subsubsection{Konzept}
-
 Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
 Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft.
 Anforderungen an dieses Protokoll sollen sein:
 \begin{enumerate}
-    \item einfache Integration in die Zielsysteme
-    \item erweiterbarkeit des Protokolls mit geringem Arbeitsaufwand
-    \item hohe Sicherheit gegenüber Übertragungsfehler
-    \item schnelle Fehlererkennung sowie Fehlerbehebung
+\item einfache Integration in die Zielsysteme
+\item erweiterbarkeit des Protokolls mit geringem Arbeitsaufwand
+\item hohe Sicherheit gegenüber Übertragungsfehler
+\item schnelle Fehlererkennung sowie Fehlerbehebung
 \end{enumerate}
-Neben standartisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit selbst ein sogenanntes propretäres Übertragungsprotokoll zu kreieren. Dies ist in unserem Fall nötig, um alle Anforderungen abzudecken.
+Neben standartisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit selbst ein sogenanntes propretäres Übertragungsprotokoll zu kreieren.
+Dies ist in unserem Fall nötig, um alle Anforderungen abzudecken.
 Basierend auf dem Master - Slave Prinzip, wobei der Rasperry PI den Master und die Ansteuerplatine den Slave darstellt, soll ein abgewandeltes Modbus ASCII Protokoll umgesetzt werden.
 
-Zusätzlich soll, um die Anforderung des einfachen Fehlerhandlings zu erfüllen, ein Simulator ausprogrammiert werden, welcher auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
-Der Startvorgang des Simulators soll mit einer einfachen modifizierung der Konfigurationsdatei vonstatten gehen.
-
+Zusätzlich soll, um die Anforderung des einfachen Fehlerhandlings zu erfüllen, ein Simulator ausprogrammiert werden, welcher beim Start auf Softwarebebene, den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
+Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfigurationsdatei vonstatten gehen.
+Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
-    \caption{Schematische Darstellung der Geräteauswahl}
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
+\caption{Schematische Darstellung der Geräteauswahl}
 \end{figure}
-\subsubsection{Übertragungsprotokoll}
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        \textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
-        8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
-    \end{tabular}
-    \caption{Visualisierung des Datenakets}
-\end{table}
-
-Das verbindugslose ProtokollRealisierung ist wie in der Konzeptbeschreibung Master-Slave orientiert. Die Datenübertragung erfolgt textuell wobei nur Großbuchstaben verwendet werden dürfen.\newline\newline
-Wie aus der oben dargestellten Tabelle zu entnehmen, ist der Aufbau eines Frames klar definiert. Der eindeutige Start des Datenpakets, welcher mit einem Doppelpunkt (:) eingeleitet wird, sowie das ebenfalls eindeutige Ende, umgesetzt mit einem Line Feed Character (),
-bringt eindeutige Vorteile mit sich. Im Gegensatz zu anderen Protokollen wie z.B. Modbus RTU, muss hier nicht auf das Ende des Pakets "gewartet" werden. Dies führ oft zu Einbußen im Bereich der Performance und ist für uns nicht zielführend.\newline\newline
-Gefolgt von dem Startzeichen folgen nun die Daten. Diese beinhalten eindeutig definierte Zecichenfolgen, welche verwendet werden um verschiedenste Zustände der Ansteuerplatine auszuführen. Diese Um auch hier zu wissen, wo sich das der Nutzdaten befindet, schließt das Trennzeichen () diese ab.\newline\newline
-Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im nächsten Schritt eine Prüfsumme verwendet. Ziel dieser ist es, anhand der Nutzdaten einen Wert zu bilden, welcher danach vom Sender im Frame gespeichert bzw übertragen wird.
-Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der Übertragenen Prüfsumme des Senders. Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
-Stimmen diese nicht überein liegt ein Fehler vor. Die wichtigsten Arten von Übertragungsfehlern sind:
 \begin{enumerate}
-    \item Einzelbitfehler (1 Bit verändert)
-    \item Burstfehler (ganze Folge von Bits verändert)
+\item Einzelbitfehler (1 Bit verändert)
+\item Burstfehler (ganze Folge von Bits verändert)
 \end{enumerate}
-
-Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere. Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon. Sie ist realtiv einfach zu realisieren und dennoch wirkungsvoll.
+\subsubsection{Übertragungsprotokoll}
+\begin{table}[htb!]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+\textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
+8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
+\end{tabular}
+\caption{Visualisierung des Datenakets}
+\end{table}
+Das verbindugslose Protokoll basiert, wie in der Konzeptbeschreibung bereits erwähnt, auf dem Master-Slave Prinzip.
+Außerdem erfolgt die Datenübertragung rein textuell wobei nur Großbuchstaben verwendet werden dürfen.\\\\
+Wie aus der oben dargestellten Tabelle zu entnehmen, ist der Aufbau eines Frames klar definiert.
+Der eindeutige Start des Datenpakets, welcher mit einem Doppelpunkt (:) eingeleitet wird, sowie das ebenfalls eindeutige Ende, umgesetzt mit einem Line Feed Character (), bringt eindeutige Vorteile mit sich.
+Im Gegensatz zu anderen Protokollen wie z.B. Modbus RTU, muss hier nicht auf das Ende des Pakets "gewartet" werden. Dies führ oft zu Einbußen im Bereich der Performance und ist für uns nicht zielführend.\\\\
+Gefolgt von dem Startzeichen folgen nun die Daten.
+Diese beinhalten eindeutig definierte Zecichenfolgen, welche verwendet werden um verschiedenste Zustände der Ansteuerplatine auszuführen.
+Diese Um auch hier zu wissen, wo sich das der Nutzdaten befindet, schließt das Trennzeichen () diese ab.\\\\
+Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im nächsten Schritt eine Prüfsumme verwendet.
+Ziel dieser ist es, anhand der Nutzdaten einen Wert zu bilden, welcher danach vom Sender im Frame gespeichert bzw übertragen wird.
+Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der Übertragenen Prüfsumme des Senders.
+Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
+Stimmen diese nicht überein liegt ein Fehler vor.
+Die wichtigsten Arten von Übertragungsfehlern sind:
+Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere. Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
+Sie ist realtiv einfach zu realisieren und dennoch wirkungsvoll.
 Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänger, das selbe Generator-Polynom verwenden. Der Grad des Generatorpolyoms beträgt in unserem Fall 32 (CRC-32).
-
-\subsubsection{Entwurdsmuster Command}
 \subsubsection{Request- und Responsehandling}
 
-\subsection{Kommunikation - Debugging-Simulator}
-\subsubsection{Konzept und Gründe zur Erstellung}
+\subsection{Kommunikation - Debugging-Simulator}\label{subsec:kommunikation---debugging-simulator}
+\subsubsection{Konzept}
 \subsubsection{Datenaustausch}
 \subsubsection{Verarbeitung ankommender Daten}
-
-
 \subsection{Logging}
-\subsubsection{Grundlagen}
+\subsubsection{Konzept}
 \subsubsection{Integration in das Programm}
 \subsection{Konfiguration}
-\subsubsection{Grundlagen zu Gson}
+\subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
 
@@ -447,50 +520,7 @@ Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänge
 
 \section{Frontend-Programmierung}
 \subsection{Designkonzept}
-\subsection{Entwurfsmuster MVC}
-\subsubsection{Grundlagen}
-Das MVC-Design Pattern, auch Model-View-Controller Design Pattern ist eines der weit verbreiteste Design Patterns. Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt von einander getrennt sind.
-Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
-\newpage
-\begin{wrapfigure}{r}{0.5\textwidth}
-    \vspace{-310pt}
-    \begin{center}
-        \includegraphics[width=0.17\textwidth]{fig/ainf/ModelViewController.pdf}
-    \end{center}
-    \caption{MVC-Design Pattern}
-    \vspace{20pt}
-\end{wrapfigure}
 
-
-\begin{enumerate}
-    \item \textbf{View}  \\
-    Datenrepräsentation\\
-    Organisiert alle Kontrollelemente
-    \item \textbf{Controller} \\
-    Stellt die Verbindung zwischen View und Model her\\
-    Verwaltet Benutzerinteraktion und enthält Steuerlogik
-    \item \textbf{Model} \\
-    Datenrepräsentation\\
-    Ist von der Benutzerschnittstelle komplett abgeschirmt
-\end{enumerate}
-\vspace{20pt}
-
-\subsubsection{Integration anhand eines Programms}
-Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im folgenden ein Beispiel dargestellt. Ziel des Programms ist es, einen Wert mithilfe eines Buttons hochzuzählen und auf einem Label im View anzeigen zu lassen.
-Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht werden.
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Hauptprogramm]
-    public class Main extends Application {
-    @Override
-    public void start(Stage stage) throws Exception {
-    Model model = new Model();
-    View view = new View(model, stage);
-    Controller controller = new Controller(model, view);
-    }
-    public static void main(String[] args) {
-    launch(args);
-    }
-    }
-\end{lstlisting}
 
 
 \begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Model]
@@ -527,20 +557,10 @@ model.addObserver(this);
 public void update(Observable o, Object arg) {
 label.setText("Counter: " + model.getCounter());
 \end{lstlisting}
-
-
-
-\subsection{Beschreibung der View-Elemente}
-\subsubsection{Grundlagen zu SceneBuilder}
-\subsubsection{Material-Design-Bibliothek-JFoenix}
-
 \subsection{Utility Klassen}
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}
-
-
 \subsection{Implementierung von CSS}
-\subsubsection{Grundlagen}
 \subsubsection{StartupCSS}
 \subsubsection{HomeCSS}
 \subsection{Internationalisierung}
