@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.2)  14 FEB 2020 08:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.2)  14 FEB 2020 08:41
 entering extended mode
 **./main.tex
 (main.tex
@@ -2476,23 +2476,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--91
 
 [11
 
-] [12] (C:/Users\stefa\Desktop\ReShuffledNew\auxil\main.toc [13
-
-]
-Underfull \vbox (badness 1990) has occurred while \output is active []
-
- [14]
-Underfull \vbox (badness 3209) has occurred while \output is active []
-
- [15]
-[16] [17])
+] [12] (C:/Users\stefa\Desktop\ReShuffledNew\auxil\main.toc)
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
- [18]
+ [13
+
+] [14
+
+
+]
 \openout2 = `modules/mech.aux'.
 
- (modules/mech.tex
+
+(modules/mech.tex
 chapter 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -2517,10 +2514,8 @@ l.44     \item \textbf
                       {Mischgenauigkeit} \\ [1
 
 
-
-
 ]
-<fig/mech/Version1.pdf, id=561, page=1, 407.60278pt x 369.29968pt>
+<fig/mech/Version1.pdf, id=161, page=1, 407.60278pt x 369.29968pt>
 File: fig/mech/Version1.pdf Graphic file (type pdf)
 <use fig/mech/Version1.pdf, page 1>
 Package pdftex.def Info: fig/mech/Version1.pdf , page1 used on input line 63.
@@ -2552,7 +2547,7 @@ File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 88.
-<fig/mech/Version2.pdf, id=588, page=1, 542.025pt x 412.4208pt>
+<fig/mech/Version2.pdf, id=188, page=1, 542.025pt x 412.4208pt>
 File: fig/mech/Version2.pdf Graphic file (type pdf)
 <use fig/mech/Version2.pdf, page 1>
 Package pdftex.def Info: fig/mech/Version2.pdf , page1 used on input line 102.
@@ -2571,7 +2566,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--122
 
  []
 
-<fig/mech/Version3.pdf, id=604, page=1, 487.8225pt x 462.76888pt>
+<fig/mech/Version3.pdf, id=204, page=1, 487.8225pt x 462.76888pt>
 File: fig/mech/Version3.pdf Graphic file (type pdf)
 <use fig/mech/Version3.pdf, page 1>
 Package pdftex.def Info: fig/mech/Version3.pdf , page1 used on input line 138.
@@ -2594,14 +2589,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--153
 pdfTeX warning: pdflatex (file ./fig/mech/Version3.pdf): PDF inclusion: invalid
  other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/mech/RundesAusgaberad-Page-1.pdf, id=624, page=1, 478.66827pt x 117.3183pt
+<fig/mech/RundesAusgaberad-Page-1.pdf, id=225, page=1, 478.66827pt x 117.3183pt
 >
 File: fig/mech/RundesAusgaberad-Page-1.pdf Graphic file (type pdf)
 <use fig/mech/RundesAusgaberad-Page-1.pdf, page 1>
 Package pdftex.def Info: fig/mech/RundesAusgaberad-Page-1.pdf , page1 used on i
 nput line 173.
 (pdftex.def)             Requested size: 239.33354pt x 58.659pt.
-<fig/mech/ElliptischesAusgaberad.pdf, id=625, page=1, 478.66827pt x 119.4864pt>
+<fig/mech/ElliptischesAusgaberad.pdf, id=226, page=1, 478.66827pt x 119.4864pt>
 
 File: fig/mech/ElliptischesAusgaberad.pdf Graphic file (type pdf)
 <use fig/mech/ElliptischesAusgaberad.pdf, page 1>
@@ -2628,7 +2623,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 201--205
 
  []
 
-<fig/mech/Klemmmechanissmus1.pdf, id=665, page=1, 591.16856pt x 371.46779pt>
+<fig/mech/Klemmmechanissmus1.pdf, id=266, page=1, 591.16856pt x 371.46779pt>
 File: fig/mech/Klemmmechanissmus1.pdf Graphic file (type pdf)
 <use fig/mech/Klemmmechanissmus1.pdf, page 1>
 Package pdftex.def Info: fig/mech/Klemmmechanissmus1.pdf , page1 used on input 
@@ -2640,13 +2635,13 @@ pdfTeX warning: pdflatex (file ./fig/mech/Klemmmechanissmus1.pdf): PDF inclusio
 n: invalid other resource which is no dict (key 'ProcSets', type <array>); igno
 red.
 >]
-<fig/mech/Klemmmechanissmus2.pdf, id=681, page=1, 682.46968pt x 359.42279pt>
+<fig/mech/Klemmmechanissmus2.pdf, id=281, page=1, 682.46968pt x 359.42279pt>
 File: fig/mech/Klemmmechanissmus2.pdf Graphic file (type pdf)
 <use fig/mech/Klemmmechanissmus2.pdf, page 1>
 Package pdftex.def Info: fig/mech/Klemmmechanissmus2.pdf , page1 used on input 
 line 231.
 (pdftex.def)             Requested size: 341.234pt x 179.71095pt.
-<fig/mech/Klemmmechanissmus3.pdf, id=682, page=1, 682.46968pt x 349.305pt>
+<fig/mech/Klemmmechanissmus3.pdf, id=282, page=1, 682.46968pt x 349.305pt>
 File: fig/mech/Klemmmechanissmus3.pdf Graphic file (type pdf)
 <use fig/mech/Klemmmechanissmus3.pdf, page 1>
 Package pdftex.def Info: fig/mech/Klemmmechanissmus3.pdf , page1 used on input 
@@ -2666,7 +2661,7 @@ red.
 Underfull \vbox (badness 7522) has occurred while \output is active []
 
  [9]
-<fig/mech/Haftzeit.pdf, id=711, page=1, 432.17459pt x 240.65909pt>
+<fig/mech/Haftzeit.pdf, id=311, page=1, 432.17459pt x 240.65909pt>
 File: fig/mech/Haftzeit.pdf Graphic file (type pdf)
 <use fig/mech/Haftzeit.pdf, page 1>
 Package pdftex.def Info: fig/mech/Haftzeit.pdf , page1 used on input line 318.
@@ -2676,7 +2671,7 @@ Package pdftex.def Info: fig/mech/Haftzeit.pdf , page1 used on input line 318.
 
 pdfTeX warning: pdflatex (file ./fig/mech/AusgabeMitBuersten.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/mech/AusgabeMitBuersten.pdf, id=725, page=1, 846.0878pt x 475.92438pt>
+<fig/mech/AusgabeMitBuersten.pdf, id=325, page=1, 846.0878pt x 475.92438pt>
 File: fig/mech/AusgabeMitBuersten.pdf Graphic file (type pdf)
 <use fig/mech/AusgabeMitBuersten.pdf, page 1>
 Package pdftex.def Info: fig/mech/AusgabeMitBuersten.pdf , page1 used on input 
@@ -2686,7 +2681,7 @@ line 384.
 
 pdfTeX warning: pdflatex (file ./fig/mech/AusgabeMitGummiabstreifer.pdf): PDF i
 nclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/mech/AusgabeMitGummiabstreifer.pdf, id=730, page=1, 843.73758pt x 505.89pt
+<fig/mech/AusgabeMitGummiabstreifer.pdf, id=331, page=1, 843.73758pt x 505.89pt
 >
 File: fig/mech/AusgabeMitGummiabstreifer.pdf Graphic file (type pdf)
 <use fig/mech/AusgabeMitGummiabstreifer.pdf, page 1>
@@ -2708,7 +2703,7 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
-<fig/mech/LagerRad20F.pdf, id=753, page=1, 845.0471pt x 597.51233pt>
+<fig/mech/LagerRad20F.pdf, id=354, page=1, 845.0471pt x 597.51233pt>
 File: fig/mech/LagerRad20F.pdf Graphic file (type pdf)
 <use fig/mech/LagerRad20F.pdf, page 1>
 Package pdftex.def Info: fig/mech/LagerRad20F.pdf , page1 used on input line 49
@@ -2724,7 +2719,7 @@ I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-<fig/mech/LagerRad4F.pdf, id=754, page=1, 845.0471pt x 597.51233pt>
+<fig/mech/LagerRad4F.pdf, id=355, page=1, 845.0471pt x 597.51233pt>
 File: fig/mech/LagerRad4F.pdf Graphic file (type pdf)
 <use fig/mech/LagerRad4F.pdf, page 1>
 Package pdftex.def Info: fig/mech/LagerRad4F.pdf , page1 used on input line 509
@@ -2733,17 +2728,20 @@ Package pdftex.def Info: fig/mech/LagerRad4F.pdf , page1 used on input line 509
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16 <./fig/mech/LagerRad20F.pdf>] [17 <./fig/mech/LagerRad4F.pdf>]) [18]
+ [16 <./fig/mech/LagerRad20F.pdf>] [17 <./fig/mech/LagerRad4F.pdf>])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+[19]
 \openout2 = `modules/elektro.aux'.
 
+ (modules/elektro.tex [20
 
-(modules/elektro.tex
+
+
+]
 chapter 2.
-[19
-
-
-
-] [20]
+[21] [22]
 \realshift=\dimen322
 \realshift=\dimen323
 \realshift=\dimen324
@@ -2768,7 +2766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--122
 
  []
 
-[21]
+[23]
 \realshift=\dimen326
 \realshift=\dimen327
 \realshift=\dimen328
@@ -2792,7 +2790,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--244
 
  []
 
-[22] [23] [24]
+[24] [25] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 333--337
 
  []
@@ -2812,13 +2810,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 338--341
 
  []
 
-[25] [26] [27]
+[27] [28] [29]
 Overfull \hbox (7.91954pt too wide) in paragraph at lines 446--460
  [][] 
  []
 
-[28]
-<fig/elektro/ElectroBlockDiagram.pdf, id=827, page=1, 591.16856pt x 439.6425pt>
+[30]
+<fig/elektro/ElectroBlockDiagram.pdf, id=481, page=1, 591.16856pt x 439.6425pt>
 
 File: fig/elektro/ElectroBlockDiagram.pdf Graphic file (type pdf)
 <use fig/elektro/ElectroBlockDiagram.pdf, page 1>
@@ -2830,7 +2828,7 @@ Overfull \hbox (34.16327pt too wide) in paragraph at lines 476--477
  [][] 
  []
 
-[29 <./fig/elektro/ElectroBlockDiagram.pdf
+[31 <./fig/elektro/ElectroBlockDiagram.pdf
 
 pdfTeX warning: pdflatex (file ./fig/elektro/ElectroBlockDiagram.pdf): PDF incl
 usion: invalid other resource which is no dict (key 'ProcSets', type <array>); 
@@ -2839,10 +2837,10 @@ ignored.
 \realshift=\dimen334
 \realshift=\dimen335
 \realshift=\dimen336
- [30]
+ [32]
 \realshift=\dimen337
 \realshift=\dimen338
- [31]
+ [33]
 Underfull \hbox (badness 10000) in paragraph at lines 579--592
 
  []
@@ -2863,11 +2861,11 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 \realshift=\dimen346
 \realshift=\dimen347
 \realshift=\dimen348
-[32]
+[34]
 \realshift=\dimen349
 \realshift=\dimen350
 \realshift=\dimen351
- [33]
+ [35]
 Underfull \hbox (badness 10000) in paragraph at lines 696--699
 
  []
@@ -2876,7 +2874,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 696--699
 \realshift=\dimen353
 \realshift=\dimen354
 \realshift=\dimen355
-[34]
+[36]
 Underfull \hbox (badness 10000) in paragraph at lines 769--772
 
  []
@@ -2884,7 +2882,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 769--772
 
 Underfull \vbox (badness 1009) has occurred while \output is active []
 
- [35]
+ [37]
 \realshift=\dimen356
 \realshift=\dimen357
 \realshift=\dimen358
@@ -2899,7 +2897,7 @@ Underfull \vbox (badness 1009) has occurred while \output is active []
 \realshift=\dimen367
 \realshift=\dimen368
 
-[36]
+[38]
 Missing character: There is no e in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -2917,7 +2915,7 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no 1 in font nullfont!
 \realshift=\dimen369
- [37]
+ [39]
 Underfull \hbox (badness 10000) in paragraph at lines 953--955
 
  []
@@ -2962,7 +2960,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 983--984
 
  []
 
-[38]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 985--986
 
  []
@@ -2977,7 +2975,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 989--991
 
  []
 
-[39]
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 1051--1052
 
  []
@@ -2990,11 +2988,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1053--1059
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [40]
+ [42]
 \realshift=\dimen370
 \realshift=\dimen371
 
-[41]
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 1110--1112
 
  []
@@ -3005,11 +3003,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1110--1112
 \realshift=\dimen375
 \alshift=\dimen376
 \absvshift=\dimen377
-[42]
+[44]
 \realshift=\dimen378
 \realshift=\dimen379
 \realshift=\dimen380
- [43]
+ [45]
 \realshift=\dimen381
 \realshift=\dimen382
 \realshift=\dimen383
@@ -3025,7 +3023,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 \realshift=\dimen391
 Missing character: There is no ; in font nullfont!
- [44]
+ [46]
 \realshift=\dimen392
 \realshift=\dimen393
 \realshift=\dimen394
@@ -3035,7 +3033,7 @@ Missing character: There is no ; in font nullfont!
 \realshift=\dimen398
 \realshift=\dimen399
 \realshift=\dimen400
- [45] [46]
+ [47] [48]
 Underfull \hbox (badness 10000) in paragraph at lines 1408--1410
 
  []
@@ -3070,15 +3068,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 1429--1430
 
  []
 
-[47]
+[49]
 Underfull \hbox (badness 10000) in paragraph at lines 1433--1434
 
  []
 
-[48]) [49]
+[50]) [51]
 \openout2 = `modules/ainf.aux'.
 
- (modules/ainf.tex [50
+ (modules/ainf.tex [52
 
 
 
@@ -3087,15 +3085,19 @@ chapter 3.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.95pt on input line 111.
 Missing character: There is no , in font nullfont!
-[51] [52] [53] [54]
+[53] [54] [55] [56]
 LaTeX Font Info:    Font shape `T1/ntxtlf/bx/it' in size <12> not available
 (Font)              Font shape `T1/ntxtlf/b/it' tried instead on input line 212
 .
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/it' will be
 (Font)              scaled to size 12.0pt on input line 212.
+
+
+LaTeX Warning: Reference `subsec:datenformate-in-java-fx' on page 57 undefined 
+on input line 212.
+
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 26
 9.
-
 ("C:\Users\stefa\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\t1pcr.fd"
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -3116,13 +3118,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--292
 
  []
 
-[55]
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 297--303
 
  []
 
-[56]
-<fig/ainf/Singelton.pdf, id=1000, 124.54529pt x 165.7392pt>
+[58]
+<fig/ainf/Singelton.pdf, id=707, 124.54529pt x 165.7392pt>
 File: fig/ainf/Singelton.pdf Graphic file (type pdf)
 <use fig/ainf/Singelton.pdf>
 Package pdftex.def Info: fig/ainf/Singelton.pdf  used on input line 318.
@@ -3132,22 +3134,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--320
 
  []
 
-[57 <./fig/ainf/Singelton.pdf
+[59 <./fig/ainf/Singelton.pdf
 
 pdfTeX warning: pdflatex (file ./fig/ainf/Singelton.pdf): PDF inclusion: invali
 d other resource which is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<fig/ainf/Command.pdf, id=1019, 377.49028pt x 165.7392pt>
+<fig/ainf/Command.pdf, id=732, 377.49028pt x 165.7392pt>
 File: fig/ainf/Command.pdf Graphic file (type pdf)
 <use fig/ainf/Command.pdf>
 Package pdftex.def Info: fig/ainf/Command.pdf  used on input line 339.
 (pdftex.def)             Requested size: 468.33238pt x 205.63332pt.
- [58 <./fig/ainf/Command.pdf
+ [60 <./fig/ainf/Command.pdf
 
 pdfTeX warning: pdflatex (file ./fig/ainf/Command.pdf): PDF inclusion: invalid 
 other resource which is no dict (key 'ProcSets', type <array>); ignored.
->] [59]
-<fig/ainf/ModelViewController.pdf, id=1042, 88.41031pt x 225.7233pt>
+>] [61]
+<fig/ainf/ModelViewController.pdf, id=761, 88.41031pt x 225.7233pt>
 File: fig/ainf/ModelViewController.pdf Graphic file (type pdf)
 <use fig/ainf/ModelViewController.pdf>
 Package pdftex.def Info: fig/ainf/ModelViewController.pdf  used on input line 3
@@ -3177,18 +3179,18 @@ File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 Underfull \vbox (badness 1418) has occurred while \output is active []
 
- [60 <./fig/ainf/ModelViewController.pdf
+ [62 <./fig/ainf/ModelViewController.pdf
 
 pdfTeX warning: pdflatex (file ./fig/ainf/ModelViewController.pdf): PDF inclusi
 on: invalid other resource which is no dict (key 'ProcSets', type <array>); ign
 ored.
 >]
-<fig/ainf/DeviceSelection.pdf, id=1072, 352.43669pt x 225.7233pt>
+<fig/ainf/DeviceSelection.pdf, id=794, 352.43669pt x 225.7233pt>
 File: fig/ainf/DeviceSelection.pdf Graphic file (type pdf)
 <use fig/ainf/DeviceSelection.pdf>
 Package pdftex.def Info: fig/ainf/DeviceSelection.pdf  used on input line 431.
 (pdftex.def)             Requested size: 374.66733pt x 239.9785pt.
- [61]
+ [63]
 Underfull \hbox (badness 10000) in paragraph at lines 453--470
 
  []
@@ -3203,7 +3205,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 453--470
 
  []
 
-[62 <./fig/ainf/DeviceSelection.pdf
+[64 <./fig/ainf/DeviceSelection.pdf
 
 pdfTeX warning: pdflatex (file ./fig/ainf/DeviceSelection.pdf): PDF inclusion: 
 invalid other resource which is no dict (key 'ProcSets', type <array>); ignored
@@ -3211,30 +3213,30 @@ invalid other resource which is no dict (key 'ProcSets', type <array>); ignored
 >]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63]
-[64])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [65]
+[66])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [66]
+ [67]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [68]
 Overfull \vbox (337.84074pt too high) has occurred while \output is active []
 
 
-[67]
+[69]
 \openout2 = `modules/testing.aux'.
 
- (modules/testing.tex [68
+ (modules/testing.tex [70
 
 
 
 ]
 chapter 4.
-) [69]
+) [71]
 \openout2 = `appendix.aux'.
 
- (appendix.tex [70
+ (appendix.tex [72
 
 
 
@@ -3245,30 +3247,32 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/ntxtlf/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 24.88pt on input line 14.
- [71] [72]
+ [73] [74]
 chapter A.
-[73
+[75
 
-] [74
+] [76
 
 ]
 chapter B.
 
 LaTeX Warning: Empty bibliography on input line 24.
 
-[75] [76
-
-]
-chapter C.
 [77] [78
 
 ]
+chapter C.
+[79] [80
+
+]
 chapter D.
-(C:/Users\stefa\Desktop\ReShuffledNew\auxil\main.lof [79])
+(C:/Users\stefa\Desktop\ReShuffledNew\auxil\main.lof)
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
- [80]
+ [81] [82
+
+]
 chapter E.
 (C:/Users\stefa\Desktop\ReShuffledNew\auxil\main.lot)
 \tf@lot=\write9
@@ -3288,9 +3292,7 @@ Class scrbook Warning: \float@listhead detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@listhead interface  on input line 37.
 
-[81
-
-] [82
+[83] [84
 
 ]
 chapter F.
@@ -3298,7 +3300,7 @@ chapter F.
 \tf@lol=\write10
 \openout10 = `main.lol'.
 
-) [83]
+) [85]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
 
@@ -3317,6 +3319,9 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 LaTeX Warning: There were undefined references.
 
 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
 (biblatex)                and rerun LaTeX afterwards.
@@ -3330,34 +3335,33 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 ### semi simple group (level 1) entered at line 88 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 76639 strings out of 492483
- 1739541 string characters out of 3121590
- 2422069 words of memory out of 3000000
- 79614 multiletter control sequences out of 15000+200000
+ 76554 strings out of 492483
+ 1737524 string characters out of 3121590
+ 2418794 words of memory out of 3000000
+ 79527 multiletter control sequences out of 15000+200000
  621894 words of font info for 135 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  142i,20n,183p,10101b,4017s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvi
 ps/base/8r.enc}{C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
-s/newtx/ntx-ec-tlf.enc}{C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/
-enc/dvips/newtx/ntx-ot1-tlf.enc}{C:/Users/stefa/AppData/Local/Programs/MiKTeX 2
-.9/fonts/enc/dvips/tex-gyre/q-ts1.enc}{C:/Users/stefa/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}<C:/Users/stefa/AppData/Local/P
+s/newtx/ntx-ot1-tlf.enc}{C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts
+/enc/dvips/tex-gyre/q-ts1.enc}{C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9
+/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}{C:/Users/stefa/AppData/Local/Programs/
+MiKTeX 2.9/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}<C:/Users/stefa/AppData/Local/P
 rograms/MiKTeX 2.9/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/stefa/AppData
 /Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/ntxtmri.pfb><C:/Users/stefa
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmb.pfb><C:/Use
-rs/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmbi.pf
-b><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/tex-gyre
-/qtmr.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-newtx/txbsys.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
-public/newtx/txmiaX.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/newtx/txsys.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/stefa/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on C:/Users\stefa\Desktop\ReShuffledNew\out\main.pdf (101 pages,
- 2635574 bytes).
+rs/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmr.pfb
+><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/newtx/txb
+sys.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ne
+wtx/txmiaX.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/newtx/txsys.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/urw/courier/ucrr8a.pfb><C:/Users/stefa/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on C:/Users\stefa\Desktop\ReShuffledNew\out\main.pdf (99 pages, 
+2563962 bytes).
 PDF statistics:
- 2016 PDF objects out of 2073 (max. 8388607)
- 440 named destinations out of 1000 (max. 500000)
- 1757 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1791 PDF objects out of 2073 (max. 8388607)
+ 442 named destinations out of 1000 (max. 500000)
+ 1789 words of extra memory for PDF output out of 10000 (max. 10000000)
 

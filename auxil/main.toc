@@ -37,376 +37,384 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.5.2}Konstruktion der Motorhalterungsgruppe}{18}{subsection.1.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.3}Konstruktion der Kartenhalterung}{18}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.3}Konstruktion des Kartenhalterungsmodul}{18}{subsection.1.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.4}Konstruktion der Kartenentnahme}{18}{subsection.1.5.4}%
+\contentsline {subsubsection}{\numberline {1.5.3.1}Sensorhalterung}{19}{subsubsection.1.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.5}Konstruktion der Endschalterhalterung}{18}{subsection.1.5.5}%
+\contentsline {subsubsection}{\numberline {1.5.3.2}Kartenlager}{19}{subsubsection.1.5.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.6}Konstruktion des Gehäuses}{18}{subsection.1.5.6}%
+\contentsline {subsubsection}{\numberline {1.5.3.3}Abstreifer}{19}{subsubsection.1.5.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.6}Berechnungen und Dimensionierungen}{18}{section.1.6}%
+\contentsline {subsubsection}{\numberline {1.5.3.4}Hubmagnetaufhängung}{19}{subsubsection.1.5.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.7}Teilaufbau}{18}{section.1.7}%
+\contentsline {subsection}{\numberline {1.5.4}Konstruktion der Kartenentnahme}{19}{subsection.1.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.8}Analyse}{18}{section.1.8}%
+\contentsline {subsection}{\numberline {1.5.5}Konstruktion der Endschalterhalterung}{19}{subsection.1.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Elektronik}{19}{chapter.2}%
+\contentsline {subsection}{\numberline {1.5.6}Konstruktion des Gehäuses}{19}{subsection.1.5.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Anforderungen}{19}{section.2.1}%
+\contentsline {section}{\numberline {1.6}Berechnungen und Dimensionierungen}{19}{section.1.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.1}Zeitplan}{19}{subsection.2.1.1}%
+\contentsline {section}{\numberline {1.7}Teilaufbau}{19}{section.1.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Variantenvergleiche und Konzeptionierungen}{20}{section.2.2}%
+\contentsline {section}{\numberline {1.8}Analyse}{19}{section.1.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}Mikrocontroller}{20}{subsection.2.2.1}%
+\contentsline {chapter}{\numberline {2}Elektronik}{21}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1.1}ATmega162}{20}{subsubsection.2.2.1.1}%
+\contentsline {section}{\numberline {2.1}Anforderungen}{21}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1.2}ATmega324P}{20}{subsubsection.2.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.1}Zeitplan}{21}{subsection.2.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1.3}ATmega128}{20}{subsubsection.2.2.1.3}%
+\contentsline {section}{\numberline {2.2}Variantenvergleiche und Konzeptionierungen}{22}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.1.4}Mikrocontroller-Auswahl}{20}{subsubsection.2.2.1.4}%
+\contentsline {subsection}{\numberline {2.2.1}Mikrocontroller}{22}{subsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}Schrittmotor-Ansteuerung}{21}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1.1}ATmega162}{22}{subsubsection.2.2.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.1}DIY-H-Brücke}{21}{subsubsection.2.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.1.2}ATmega324P}{22}{subsubsection.2.2.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.2}Schrittmotor-Treibermodule}{23}{subsubsection.2.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1.3}ATmega128}{22}{subsubsection.2.2.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.3}A4988}{24}{subsubsection.2.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.1.4}Mikrocontroller-Auswahl}{22}{subsubsection.2.2.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.4}DRV8825}{24}{subsubsection.2.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.2}Schrittmotor-Ansteuerung}{23}{subsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.5}TB6600}{24}{subsubsection.2.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}DIY-H-Brücke}{23}{subsubsection.2.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.2.6}Treiber-Auswahl}{25}{subsubsection.2.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.2.2}Schrittmotor-Treibermodule}{25}{subsubsection.2.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}Detektion der Kartenposition}{25}{subsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.2.3}A4988}{26}{subsubsection.2.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3.1}Kapazitive Sensoren}{25}{subsubsection.2.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.2.2.4}DRV8825}{26}{subsubsection.2.2.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3.2}Ultraschall-Sensoren}{26}{subsubsection.2.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.5}TB6600}{26}{subsubsection.2.2.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3.3}Optische Sensoren}{26}{subsubsection.2.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.2.2.6}Treiber-Auswahl}{27}{subsubsection.2.2.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.3.4}Sensoren-Auswahl}{26}{subsubsection.2.2.3.4}%
+\contentsline {subsection}{\numberline {2.2.3}Detektion der Kartenposition}{27}{subsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Erfassung der Position des Motors}{27}{subsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.3.1}Kapazitive Sensoren}{27}{subsubsection.2.2.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4.1}Endschalter}{27}{subsubsection.2.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.2.3.2}Ultraschall-Sensoren}{28}{subsubsection.2.2.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4.2}Lichtschranke}{27}{subsubsection.2.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.2.3.3}Optische Sensoren}{28}{subsubsection.2.2.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.4.3}Varianten-Auswahl}{27}{subsubsection.2.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.2.3.4}Sensoren-Auswahl}{28}{subsubsection.2.2.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.5}Spannungsversorgung}{27}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.4}Erfassung der Position des Motors}{29}{subsection.2.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.5.1}Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}{27}{subsubsection.2.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.2.4.1}Endschalter}{29}{subsubsection.2.2.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.5.2}Schaltnetzteil und Schaltregler}{27}{subsubsection.2.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.2.4.2}Lichtschranke}{29}{subsubsection.2.2.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.5.3}Schaltnetzteil und Festspannungsregler}{28}{subsubsection.2.2.5.3}%
+\contentsline {subsubsection}{\numberline {2.2.4.3}Varianten-Auswahl}{29}{subsubsection.2.2.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.2.5.4}Auswahl der Spannungsversorgung}{28}{subsubsection.2.2.5.4}%
+\contentsline {subsection}{\numberline {2.2.5}Spannungsversorgung}{29}{subsection.2.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.6}Blockschaltbild der gesamten Elektronik}{29}{subsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.5.1}Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}{29}{subsubsection.2.2.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Schaltplan}{30}{section.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.5.2}Schaltnetzteil und Schaltregler}{29}{subsubsection.2.2.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Verpolungsschutz}{30}{subsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.2.5.3}Schaltnetzteil und Festspannungsregler}{30}{subsubsection.2.2.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1.1}Verpolungsschutz mit einer Diode}{30}{subsubsection.2.3.1.1}%
+\contentsline {subsubsection}{\numberline {2.2.5.4}Auswahl der Spannungsversorgung}{30}{subsubsection.2.2.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1.2}Verpolungsschutz mit einer Sicherung und einer Diode}{30}{subsubsection.2.3.1.2}%
+\contentsline {subsection}{\numberline {2.2.6}Blockschaltbild der gesamten Elektronik}{31}{subsection.2.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1.3}Verpolungsschutz mithilfe eines P-Kanal MOSFET}{31}{subsubsection.2.3.1.3}%
+\contentsline {section}{\numberline {2.3}Schaltplan}{32}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Soft-Latching-Circuit}{32}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.1}Verpolungsschutz}{32}{subsection.2.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.2.1}Realisierte Variante mit einzelnem Taster zum Ein- und Ausschalten}{32}{subsubsection.2.3.2.1}%
+\contentsline {subsubsection}{\numberline {2.3.1.1}Verpolungsschutz mit einer Diode}{32}{subsubsection.2.3.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.2.2}Andere Variante}{33}{subsubsection.2.3.2.2}%
+\contentsline {subsubsection}{\numberline {2.3.1.2}Verpolungsschutz mit einer Sicherung und einer Diode}{32}{subsubsection.2.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}DC/DC Wandler}{34}{subsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.1.3}Verpolungsschutz mithilfe eines P-Kanal MOSFET}{33}{subsubsection.2.3.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.3.1}Beschaltung}{34}{subsubsection.2.3.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Soft-Latching-Circuit}{34}{subsection.2.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.3.2}Kühlkörperberechnung}{34}{subsubsection.2.3.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2.1}Realisierte Variante mit einzelnem Taster zum Ein- und Ausschalten}{34}{subsubsection.2.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.4}Raspberry Pi 3B+}{35}{subsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.2.2}Andere Variante}{35}{subsubsection.2.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.4.1}Watchdog}{35}{subsubsection.2.3.4.1}%
+\contentsline {subsection}{\numberline {2.3.3}DC/DC Wandler}{36}{subsection.2.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.5}Beschaltung des ATmega324P}{36}{subsection.2.3.5}%
+\contentsline {subsubsection}{\numberline {2.3.3.1}Beschaltung}{36}{subsubsection.2.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.6}DRV8825-Schrittmotortreiber}{37}{subsection.2.3.6}%
+\contentsline {subsubsection}{\numberline {2.3.3.2}Kühlkörperberechnung}{36}{subsubsection.2.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.1}Datenblattwerte}{37}{subsubsection.2.3.6.1}%
+\contentsline {subsection}{\numberline {2.3.4}Raspberry Pi 3B+}{37}{subsection.2.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.2}Beschaltung}{37}{subsubsection.2.3.6.2}%
+\contentsline {subsubsection}{\numberline {2.3.4.1}Watchdog}{37}{subsubsection.2.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.3}Beschaltungs- und Anschlussfunktionen}{38}{subsubsection.2.3.6.3}%
+\contentsline {subsection}{\numberline {2.3.5}Beschaltung des ATmega324P}{38}{subsection.2.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.4}Schrittauflösung}{39}{subsubsection.2.3.6.4}%
+\contentsline {subsection}{\numberline {2.3.6}DRV8825-Schrittmotortreiber}{39}{subsection.2.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.5}Stromlimitierung}{39}{subsubsection.2.3.6.5}%
+\contentsline {subsubsection}{\numberline {2.3.6.1}Datenblattwerte}{39}{subsubsection.2.3.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.6.6}Kühlkörperberechnung}{40}{subsubsection.2.3.6.6}%
+\contentsline {subsubsection}{\numberline {2.3.6.2}Beschaltung}{39}{subsubsection.2.3.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.7}Erfassung der Motorposition}{41}{subsection.2.3.7}%
+\contentsline {subsubsection}{\numberline {2.3.6.3}Beschaltungs- und Anschlussfunktionen}{40}{subsubsection.2.3.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.8}Kapazitive Sensoren}{42}{subsection.2.3.8}%
+\contentsline {subsubsection}{\numberline {2.3.6.4}Schrittauflösung}{41}{subsubsection.2.3.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.9}Ansteuerung der Hubmagneten}{43}{subsection.2.3.9}%
+\contentsline {subsubsection}{\numberline {2.3.6.5}Stromlimitierung}{41}{subsubsection.2.3.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.9.1}Funktion}{43}{subsubsection.2.3.9.1}%
+\contentsline {subsubsection}{\numberline {2.3.6.6}Kühlkörperberechnung}{42}{subsubsection.2.3.6.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.10}Ansteuerung der Pumpe und des Ventils}{43}{subsection.2.3.10}%
+\contentsline {subsection}{\numberline {2.3.7}Erfassung der Motorposition}{43}{subsection.2.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.10.1}Funktion}{43}{subsubsection.2.3.10.1}%
+\contentsline {subsection}{\numberline {2.3.8}Kapazitive Sensoren}{44}{subsection.2.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.11}Mini-USB Schnittstelle}{44}{subsection.2.3.11}%
+\contentsline {subsection}{\numberline {2.3.9}Ansteuerung der Hubmagneten}{45}{subsection.2.3.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.12}Spannungspegelüberwachung}{44}{subsection.2.3.12}%
+\contentsline {subsubsection}{\numberline {2.3.9.1}Funktion}{45}{subsubsection.2.3.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.13}Netzteil}{45}{subsection.2.3.13}%
+\contentsline {subsection}{\numberline {2.3.10}Ansteuerung der Pumpe und des Ventils}{45}{subsection.2.3.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Auswahl der Bauteile}{46}{section.2.4}%
+\contentsline {subsubsection}{\numberline {2.3.10.1}Funktion}{45}{subsubsection.2.3.10.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Leiterplattendesign}{47}{section.2.5}%
+\contentsline {subsection}{\numberline {2.3.11}Mini-USB Schnittstelle}{46}{subsection.2.3.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Leiterplattenfertigung}{47}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.3.12}Spannungspegelüberwachung}{46}{subsection.2.3.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.5.1.1}Prototyping}{47}{subsubsection.2.5.1.1}%
+\contentsline {subsection}{\numberline {2.3.13}Netzteil}{47}{subsection.2.3.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.5.1.2}Professionelle Fertigung}{48}{subsubsection.2.5.1.2}%
+\contentsline {section}{\numberline {2.4}Auswahl der Bauteile}{48}{section.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.6}Resümee und Aussichten für die Zukunft}{49}{section.2.6}%
+\contentsline {section}{\numberline {2.5}Leiterplattendesign}{49}{section.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Informatik}{51}{chapter.3}%
+\contentsline {subsection}{\numberline {2.5.1}Leiterplattenfertigung}{49}{subsection.2.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Allgemeines}{51}{section.3.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.1}Prototyping}{49}{subsubsection.2.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Zeitplan}{51}{section.3.2}%
+\contentsline {subsubsection}{\numberline {2.5.1.2}Professionelle Fertigung}{50}{subsubsection.2.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Anforderungen und Ziele}{52}{section.3.3}%
+\contentsline {section}{\numberline {2.6}Resümee und Aussichten für die Zukunft}{51}{section.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Fronted-Programmierung}{52}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {3}Informatik}{53}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Backend-Programmierung}{52}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.1}Allgemeines}{53}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Hardwarenahe-Programmierung}{53}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.2}Zeitplan}{53}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Projektspezifische Voruntersuchung}{53}{section.3.4}%
+\contentsline {section}{\numberline {3.3}Anforderungen und Ziele}{54}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}Auswahl der Arbeitsumgebung}{53}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3.1}Fronted-Programmierung}{54}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1.1}Apache-Netbeans}{54}{subsubsection.3.4.1.1}%
+\contentsline {subsection}{\numberline {3.3.2}Backend-Programmierung}{54}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1.2}Intellij IDEA}{54}{subsubsection.3.4.1.2}%
+\contentsline {subsection}{\numberline {3.3.3}Hardwarenahe-Programmierung}{55}{subsection.3.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1.3}Fazit}{54}{subsubsection.3.4.1.3}%
+\contentsline {section}{\numberline {3.4}Projektspezifische Voruntersuchung}{55}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.2}Auswahl des GUI-Toolkits}{54}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.1}Auswahl der Arbeitsumgebung}{55}{subsection.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2.1}Swing}{54}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.1.1}Apache-Netbeans}{56}{subsubsection.3.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2.2}JavaFX}{55}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3.4.1.2}Intellij IDEA}{56}{subsubsection.3.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2.3}Fazit}{55}{subsubsection.3.4.2.3}%
+\contentsline {subsubsection}{\numberline {3.4.1.3}Fazit}{56}{subsubsection.3.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.3}Projektorganisation}{55}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.2}Auswahl des GUI-Toolkits}{56}{subsection.3.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.3.1}Projektstruktur in Netbeans}{55}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}Swing}{56}{subsubsection.3.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.3.2}Projektstruktur für Maven und Gradle}{56}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}JavaFX}{57}{subsubsection.3.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Grundlagen}{57}{section.3.5}%
+\contentsline {subsubsection}{\numberline {3.4.2.3}Fazit}{57}{subsubsection.3.4.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.1}Entwurfsmuster Singelton}{57}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.4.3}Projektorganisation}{57}{subsection.3.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.1.1}Beschreibung}{57}{subsubsection.3.5.1.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}Projektstruktur in Netbeans}{57}{subsubsection.3.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.1.2}Struktur}{57}{subsubsection.3.5.1.2}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}Projektstruktur für Maven und Gradle}{58}{subsubsection.3.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.1.3}Beispiel}{57}{subsubsection.3.5.1.3}%
+\contentsline {section}{\numberline {3.5}Grundlagen}{59}{section.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.2}Verhaltensmuster Command}{58}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.1}Entwurfsmuster Singelton}{59}{subsection.3.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.2.1}Beschreibung}{58}{subsubsection.3.5.2.1}%
+\contentsline {subsubsection}{\numberline {3.5.1.1}Beschreibung}{59}{subsubsection.3.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.2.2}Struktur}{58}{subsubsection.3.5.2.2}%
+\contentsline {subsubsection}{\numberline {3.5.1.2}Struktur}{59}{subsubsection.3.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.2.3}Beispiel}{58}{subsubsection.3.5.2.3}%
+\contentsline {subsubsection}{\numberline {3.5.1.3}Beispiel}{59}{subsubsection.3.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.3}Entwurfsmuster MVC}{58}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.2}Verhaltensmuster Command}{60}{subsection.3.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.3.1}Beschreibung}{58}{subsubsection.3.5.3.1}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}Beschreibung}{60}{subsubsection.3.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.3.2}Beispiel}{60}{subsubsection.3.5.3.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.2}Struktur}{60}{subsubsection.3.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.4}SceneBuilder}{60}{subsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.2.3}Beispiel}{60}{subsubsection.3.5.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.4.1}Beschreibung}{60}{subsubsection.3.5.4.1}%
+\contentsline {subsection}{\numberline {3.5.3}Entwurfsmuster MVC}{60}{subsection.3.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.4.2}Bibliothek JFoenix}{61}{subsubsection.3.5.4.2}%
+\contentsline {subsubsection}{\numberline {3.5.3.1}Beschreibung}{60}{subsubsection.3.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.5}Datenformate in Java-FX}{61}{subsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.3.2}Beispiel}{62}{subsubsection.3.5.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.5.1}XML}{61}{subsubsection.3.5.5.1}%
+\contentsline {subsection}{\numberline {3.5.4}SceneBuilder}{62}{subsection.3.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.5.2}FXML}{61}{subsubsection.3.5.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.4.1}Beschreibung}{62}{subsubsection.3.5.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.5.3}CSS}{61}{subsubsection.3.5.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4.2}Bibliothek JFoenix}{63}{subsubsection.3.5.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.6}Datenformat JSON}{61}{subsection.3.5.6}%
+\contentsline {subsection}{\numberline {3.5.5}Datenformate in Java-FX}{63}{subsection.3.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.6.1}Beschreibung}{61}{subsubsection.3.5.6.1}%
+\contentsline {subsubsection}{\numberline {3.5.5.1}XML}{63}{subsubsection.3.5.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.6.2}Bibliothek GSON}{61}{subsubsection.3.5.6.2}%
+\contentsline {subsubsection}{\numberline {3.5.5.2}FXML}{63}{subsubsection.3.5.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Backend-Programmierung}{61}{section.3.6}%
+\contentsline {subsubsection}{\numberline {3.5.5.3}CSS}{63}{subsubsection.3.5.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.1}Kommunikation - serielle Schnittstelle}{61}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.5.6}Datenformat JSON}{63}{subsection.3.5.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.1.1}Konzept}{61}{subsubsection.3.6.1.1}%
+\contentsline {subsubsection}{\numberline {3.5.6.1}Beschreibung}{63}{subsubsection.3.5.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.1.2}Übertragungsprotokoll}{62}{subsubsection.3.6.1.2}%
+\contentsline {subsubsection}{\numberline {3.5.6.2}Bibliothek GSON}{63}{subsubsection.3.5.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.1.3}Request- und Responsehandling}{64}{subsubsection.3.6.1.3}%
+\contentsline {section}{\numberline {3.6}Backend-Programmierung}{63}{section.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.2}Kommunikation - Debugging-Simulator}{64}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.1}Kommunikation - serielle Schnittstelle}{63}{subsection.3.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.2.1}Konzept}{64}{subsubsection.3.6.2.1}%
+\contentsline {subsubsection}{\numberline {3.6.1.1}Konzept}{63}{subsubsection.3.6.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.2.2}Datenaustausch}{64}{subsubsection.3.6.2.2}%
+\contentsline {subsubsection}{\numberline {3.6.1.2}Übertragungsprotokoll}{64}{subsubsection.3.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.2.3}Verarbeitung ankommender Daten}{64}{subsubsection.3.6.2.3}%
+\contentsline {subsubsection}{\numberline {3.6.1.3}Request- und Responsehandling}{66}{subsubsection.3.6.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.3}Logging}{64}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.2}Kommunikation - Debugging-Simulator}{66}{subsection.3.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.3.1}Konzept}{64}{subsubsection.3.6.3.1}%
+\contentsline {subsubsection}{\numberline {3.6.2.1}Konzept}{66}{subsubsection.3.6.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.3.2}Integration in das Programm}{64}{subsubsection.3.6.3.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.2}Datenaustausch}{66}{subsubsection.3.6.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.4}Konfiguration}{64}{subsection.3.6.4}%
+\contentsline {subsubsection}{\numberline {3.6.2.3}Verarbeitung ankommender Daten}{66}{subsubsection.3.6.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.4.1}Konzept}{64}{subsubsection.3.6.4.1}%
+\contentsline {subsection}{\numberline {3.6.3}Logging}{66}{subsection.3.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.4.2}Datenmodelle}{64}{subsubsection.3.6.4.2}%
+\contentsline {subsubsection}{\numberline {3.6.3.1}Konzept}{66}{subsubsection.3.6.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.4.3}Verwahrung am Zielsystem}{64}{subsubsection.3.6.4.3}%
+\contentsline {subsubsection}{\numberline {3.6.3.2}Integration in das Programm}{66}{subsubsection.3.6.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.5}Statistiken}{64}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.4}Konfiguration}{66}{subsection.3.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.5.1}Konzept}{64}{subsubsection.3.6.5.1}%
+\contentsline {subsubsection}{\numberline {3.6.4.1}Konzept}{66}{subsubsection.3.6.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.5.2}Datenmodelle}{64}{subsubsection.3.6.5.2}%
+\contentsline {subsubsection}{\numberline {3.6.4.2}Datenmodelle}{66}{subsubsection.3.6.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.5.3}Verwahrung am Zielsystem}{64}{subsubsection.3.6.5.3}%
+\contentsline {subsubsection}{\numberline {3.6.4.3}Verwahrung am Zielsystem}{66}{subsubsection.3.6.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6.6}Controllerklassen}{64}{subsection.3.6.6}%
+\contentsline {subsection}{\numberline {3.6.5}Statistiken}{66}{subsection.3.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.1}Grundlagen}{64}{subsubsection.3.6.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.5.1}Konzept}{66}{subsubsection.3.6.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.2}StartupController}{64}{subsubsection.3.6.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.5.2}Datenmodelle}{66}{subsubsection.3.6.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.3}MainController}{64}{subsubsection.3.6.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.5.3}Verwahrung am Zielsystem}{66}{subsubsection.3.6.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.4}HomeController}{64}{subsubsection.3.6.6.4}%
+\contentsline {subsection}{\numberline {3.6.6}Controllerklassen}{66}{subsection.3.6.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.5}StatsController}{64}{subsubsection.3.6.6.5}%
+\contentsline {subsubsection}{\numberline {3.6.6.1}Grundlagen}{66}{subsubsection.3.6.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.6.6}About- und HelpController}{64}{subsubsection.3.6.6.6}%
+\contentsline {subsubsection}{\numberline {3.6.6.2}StartupController}{66}{subsubsection.3.6.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.7}Frontend-Programmierung}{64}{section.3.7}%
+\contentsline {subsubsection}{\numberline {3.6.6.3}MainController}{66}{subsubsection.3.6.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.1}Designkonzept}{64}{subsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.6.6.4}HomeController}{66}{subsubsection.3.6.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.2}Utility Klassen}{67}{subsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.6.6.5}StatsController}{66}{subsubsection.3.6.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.2.1}AlertUtil}{67}{subsubsection.3.7.2.1}%
+\contentsline {subsubsection}{\numberline {3.6.6.6}About- und HelpController}{66}{subsubsection.3.6.6.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.2.2}GuiUtil}{67}{subsubsection.3.7.2.2}%
+\contentsline {section}{\numberline {3.7}Frontend-Programmierung}{66}{section.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.3}Implementierung von CSS}{67}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.1}Designkonzept}{66}{subsection.3.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.3.1}StartupCSS}{67}{subsubsection.3.7.3.1}%
+\contentsline {subsection}{\numberline {3.7.2}Utility Klassen}{69}{subsection.3.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.3.2}HomeCSS}{67}{subsubsection.3.7.3.2}%
+\contentsline {subsubsection}{\numberline {3.7.2.1}AlertUtil}{69}{subsubsection.3.7.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7.4}Internationalisierung}{67}{subsection.3.7.4}%
+\contentsline {subsubsection}{\numberline {3.7.2.2}GuiUtil}{69}{subsubsection.3.7.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.4.1}Gründe der Umsetzung}{67}{subsubsection.3.7.4.1}%
+\contentsline {subsection}{\numberline {3.7.3}Implementierung von CSS}{69}{subsection.3.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.4.2}Integration in das Interface}{67}{subsubsection.3.7.4.2}%
+\contentsline {subsubsection}{\numberline {3.7.3.1}StartupCSS}{69}{subsubsection.3.7.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.4.3}Ressourcen Manager}{67}{subsubsection.3.7.4.3}%
+\contentsline {subsubsection}{\numberline {3.7.3.2}HomeCSS}{69}{subsubsection.3.7.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.4.4}Resource Utility}{67}{subsubsection.3.7.4.4}%
+\contentsline {subsection}{\numberline {3.7.4}Internationalisierung}{69}{subsection.3.7.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.4.5}Bereitgestellte Ressources Bundles}{67}{subsubsection.3.7.4.5}%
+\contentsline {subsubsection}{\numberline {3.7.4.1}Gründe der Umsetzung}{69}{subsubsection.3.7.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.8}Hardwarenahe-Programmierung}{67}{section.3.8}%
+\contentsline {subsubsection}{\numberline {3.7.4.2}Integration in das Interface}{69}{subsubsection.3.7.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8.1}Einrichtung des Mikrocontrollers}{67}{subsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.7.4.3}Ressourcen Manager}{69}{subsubsection.3.7.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8.2}Konzept und Ablaufdiagramm zur Kartenausgabe}{67}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.7.4.4}Resource Utility}{69}{subsubsection.3.7.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8.3}Request- und Responsehandling}{67}{subsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.7.4.5}Bereitgestellte Ressources Bundles}{69}{subsubsection.3.7.4.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.9}Teilaufbau}{67}{section.3.9}%
+\contentsline {section}{\numberline {3.8}Hardwarenahe-Programmierung}{69}{section.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9.1}Auswahl des Zielsystems}{67}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.8.1}Einrichtung des Mikrocontrollers}{69}{subsection.3.8.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.1.1}Arduino}{67}{subsubsection.3.9.1.1}%
+\contentsline {subsection}{\numberline {3.8.2}Konzept und Ablaufdiagramm zur Kartenausgabe}{69}{subsection.3.8.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.1.2}Raspberry PI}{67}{subsubsection.3.9.1.2}%
+\contentsline {subsection}{\numberline {3.8.3}Request- und Responsehandling}{69}{subsection.3.8.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9.2}Auswahl des Displays}{67}{subsection.3.9.2}%
+\contentsline {section}{\numberline {3.9}Teilaufbau}{69}{section.3.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9.3}Montage und Testaufbau}{67}{subsection.3.9.3}%
+\contentsline {subsection}{\numberline {3.9.1}Auswahl des Zielsystems}{69}{subsection.3.9.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9.4}Konfiguration des Zielsytsems}{67}{subsection.3.9.4}%
+\contentsline {subsubsection}{\numberline {3.9.1.1}Arduino}{69}{subsubsection.3.9.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.4.1}Betriebssystem}{67}{subsubsection.3.9.4.1}%
+\contentsline {subsubsection}{\numberline {3.9.1.2}Raspberry PI}{69}{subsubsection.3.9.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.4.2}Speichermedium}{67}{subsubsection.3.9.4.2}%
+\contentsline {subsection}{\numberline {3.9.2}Auswahl des Displays}{69}{subsection.3.9.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.4.3}Touchpanel}{67}{subsubsection.3.9.4.3}%
+\contentsline {subsection}{\numberline {3.9.3}Montage und Testaufbau}{69}{subsection.3.9.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.4.4}SSH und SFTP}{67}{subsubsection.3.9.4.4}%
+\contentsline {subsection}{\numberline {3.9.4}Konfiguration des Zielsytsems}{69}{subsection.3.9.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.9.4.5}Autostart realisiert durch Services}{67}{subsubsection.3.9.4.5}%
+\contentsline {subsubsection}{\numberline {3.9.4.1}Betriebssystem}{69}{subsubsection.3.9.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.10}Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}{67}{section.3.10}%
+\contentsline {subsubsection}{\numberline {3.9.4.2}Speichermedium}{69}{subsubsection.3.9.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10.1}Probleme}{67}{subsection.3.10.1}%
+\contentsline {subsubsection}{\numberline {3.9.4.3}Touchpanel}{69}{subsubsection.3.9.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10.1.1}Probleme bei der Implementierung von JavaFX}{67}{subsubsection.3.10.1.1}%
+\contentsline {subsubsection}{\numberline {3.9.4.4}SSH und SFTP}{69}{subsubsection.3.9.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10.1.2}Kommunikation zwischen Controllern}{67}{subsubsection.3.10.1.2}%
+\contentsline {subsubsection}{\numberline {3.9.4.5}Autostart realisiert durch Services}{69}{subsubsection.3.9.4.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10.2}Verbesserungsmöglichkeiten}{67}{subsection.3.10.2}%
+\contentsline {section}{\numberline {3.10}Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}{69}{section.3.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10.2.1}Online Update-Möglichkeit der Software}{67}{subsubsection.3.10.2.1}%
+\contentsline {subsection}{\numberline {3.10.1}Probleme}{69}{subsection.3.10.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.10.2.2}Smartphone-Interface zum Zählen der Punkte}{67}{subsubsection.3.10.2.2}%
+\contentsline {subsubsection}{\numberline {3.10.1.1}Probleme bei der Implementierung von JavaFX}{69}{subsubsection.3.10.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10.3}Zusammenfassung}{67}{subsection.3.10.3}%
+\contentsline {subsubsection}{\numberline {3.10.1.2}Kommunikation zwischen Controllern}{69}{subsubsection.3.10.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Gesamtsystemtests}{69}{chapter.4}%
+\contentsline {subsection}{\numberline {3.10.2}Verbesserungsmöglichkeiten}{69}{subsection.3.10.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Zeitaufzeichnung}{73}{appendix.A}%
+\contentsline {subsubsection}{\numberline {3.10.2.1}Online Update-Möglichkeit der Software}{69}{subsubsection.3.10.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {B}Persönlicher Anhang 1}{75}{appendix.B}%
+\contentsline {subsubsection}{\numberline {3.10.2.2}Smartphone-Interface zum Zählen der Punkte}{69}{subsubsection.3.10.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {C}Abkürzungsverzeichnis}{77}{appendix.C}%
+\contentsline {subsection}{\numberline {3.10.3}Zusammenfassung}{69}{subsection.3.10.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {D}Abbildungsverzeichnis}{79}{appendix.D}%
+\contentsline {chapter}{\numberline {4}Gesamtsystemtests}{71}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {E}Tabellenverzeichnis}{81}{appendix.E}%
+\contentsline {chapter}{\numberline {A}Zeitaufzeichnung}{75}{appendix.A}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {F}Listings}{83}{appendix.F}%
+\contentsline {chapter}{\numberline {B}Persönlicher Anhang 1}{77}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Abkürzungsverzeichnis}{79}{appendix.C}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Abbildungsverzeichnis}{81}{appendix.D}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {E}Tabellenverzeichnis}{83}{appendix.E}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {F}Listings}{85}{appendix.F}%
