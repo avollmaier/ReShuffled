@@ -13,7 +13,57 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
 
 \subsection{Zeitplan}
 
+\begin{figure}[hbt!]
+    \centering
+    \scalebox{0.6}{
+    \begin{ganttchart}[
+    hgrid style/.style={black, dotted},
+    calendar week text={\currentweek},
+    vgrid={*6{white},*1{black,dotted}},
+    x unit=1mm,
+    group label font= \Large,
+    y unit chart=9mm,
+    y unit title=12mm,
+    time slot format=isodate,
+    time slot unit=year
+    link/.style={->, thick}
+    ]{2019-09-2}{2020-03-15}
+    \gantttitlecalendar{year, month=name, week}\\
+
+    \ganttgroup[group .style={fill=teal, draw=none},]
+    {Konzeptionierung}{2019-09-02}{2019-11-31}\\ [grid]
+    \ganttbar[]{Schaltungsentwürfe}{2019-09-30}{2019-11-31}\\ [grid]
+    \ganttbar[]{Steckbrettaufbauten}{2019-10-14}{2019-11-31}\\ [grid]
+    \ganttnewline[thick, black]
+
+    \ganttgroup[group/.append style={draw=none}]
+    {Leiterplattenherstellung}{2019-10-14}{2020-01-31}\\ [grid]
+    \ganttbar[]
+    {Schaltplanerstellung}{2019-10-14}{2019-12-15}\\ [grid]
+    \ganttbar[]
+    {Layouterstellung}{2019-11-15}{2020-01-12}\\ [grid]
+    \ganttbar[]
+    {Leiterplattenherstellung}{2020-01-13}{2020-01-31}\\ [grid]
+    \ganttnewline[thick, black]
+
+    \ganttgroup[group/.append style={draw=none}]
+    {Prototyping}{2020-02-01}{2020-02-15}\\ [grid]
+    \ganttbar[]
+    {Leiterplattenfunktionsprüfungen}{2020-02-01}{2020-02-07}\\ [grid]
+    \ganttbar[]
+    {Gesamtsystemtests}{2020-02-01}{2020-02-15}\\ [grid]
+    \ganttnewline[thick, black]
+
+    \ganttgroup[]
+    {Dokumentation}{2019-11-15}{2020-02-31}\\ [grid]
+
+    \end{ganttchart}
+    }
+    \caption{Zeitplan Bereich Elektronik}
+\end{figure}
+
 \newpage
+
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \section{Variantenvergleiche und Konzeptionierungen}
@@ -37,24 +87,24 @@ Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden.
 \subsubsection{Mikrocontroller-Auswahl}
 
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        & \textbf{ATmega162} & \textbf{ATmega324P} & \textbf{ATmega128} \\ \hline
-        Preis & gering & gering & mittel            \\ \hline
-        Flash-Speicher & 16kiB & 32kiB & 128kiB     \\ \hline
-        EEPROM-Speicher & 512B & 1kiB & 4kiB        \\ \hline
-        I/O-Pins & 35 & 32 & 53                     \\ \hline
-        UART-Schnittstellen & 2 & 2 & 2             \\ \hline
-        SPI-Schnittstelle & ja & ja & ja            \\ \hline
-        Versorgungsspannung & 2,7V-5V & 1,8V-5V & 4,5V-5V  \\ \hline
-    \end{tabular}
-    \caption{Vergleich der Mikrocontrollerattribute}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+& \textbf{ATmega162} & \textbf{ATmega324P} & \textbf{ATmega128} \\ \hline
+Preis & gering & gering & mittel            \\ \hline
+Flash-Speicher & 16kiB & 32kiB & 128kiB     \\ \hline
+EEPROM-Speicher & 512B & 1kiB & 4kiB        \\ \hline
+I/O-Pins & 35 & 32 & 53                     \\ \hline
+UART-Schnittstellen & 2 & 2 & 2             \\ \hline
+SPI-Schnittstelle & ja & ja & ja            \\ \hline
+Versorgungsspannung & 2,7V-5V & 1,8V-5V & 4,5V-5V  \\ \hline
+\end{tabular}
+\caption{Vergleich der Mikrocontrollerattribute}
 \end{table}
 
 Unsere Entscheidung fiel auf den ATmega324P, da dieser die nötigen Parameter, wie eine Versorgungsmöglichkeit mit 3,3V und einen ausreichend großen, programmierbaren Speicher, mit sich bringt.
@@ -72,42 +122,42 @@ Für das Ansteuern einer H-Brücke werden drei Steuersignale benötigt:
 zwei digitale Signale sowie ein PWM-Signal.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1]
-        \draw (3,0) to [short, -*](5,0) to (7,0);
-        \draw (2,2) to (2.5,2);
-        \draw (3,2)node[npn, bodydiode]{};
-        \draw (3,5)node[pnp, bodydiode]{};
-        \draw (7,2.5) to (7,4.5);
-        \draw (3,2.5) to (3,4.5);
-        \draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
-        \draw (5,6)node[vcc]{Vcc};
-        \draw (3,3.5) to [short,*-o](4,3.5);
-        \draw (7,3.5) to [short,*-o](6,3.5);
-        \draw (7,2)node[npn, bodydiode, xscale = -1]{};
-        \draw (7,5)node[pnp, bodydiode,xscale = -1]{};
-        \draw (0.5,5) to [R, l=$R_1$, o-](2,5) to (2.5,5);
-        \draw (9.5,5) to [R, l_=$R_2$, o-](8,5) to (7.5,5);
-        \draw (0.5,2) to [R, l=$R_3$](2,2) to (2.5,2);
-        \draw (9.5,2) to [R, l_=$R_4$](8,2) to (7.5,2);
-        \draw (9.5,2)node[american and port, xscale = -1](){};
-        \draw (0.5,2)node[american and port](){};
-        \draw (-0.9,1.725) to [short, o-](-0.9,1.725);
-        \draw (-0.9,2.275) to [short, o-](-0.9,2.275);
-        \draw (10.9,1.725) to [short, o-](10.9,1.725);
-        \draw (10.9,2.275) to [short, o-](10.9,2.275);
-        \draw (5,4.3)node[anchor=north]{Spule 1};
-        \draw (-1,1.7)node[anchor=east]{PWM-Signal};
-        \draw (-1,2.3)node[anchor=east]{Steuersignal};
-        \draw (13.3,2.3)node[anchor=east]{Steuersignal};
-        \draw (13.5,1.7)node[anchor=east]{PWM-Signal};
-        \draw (0.5,5)node[anchor=east]{Steuersignal};
-        \draw (12,5)node[anchor=east]{Steuersignal};
-        \draw (3,1.5) to (3,0);
-        \draw (7,1.5) to (7,0);
-        \draw (3,0) to (5,0) node[rground]{};
-    \end{circuitikz}
-    \caption{Aufbau einer H-Brücke}
+\centering
+\begin{circuitikz}[european, scale = 1]
+\draw (3,0) to [short, -*](5,0) to (7,0);
+\draw (2,2) to (2.5,2);
+\draw (3,2)node[npn, bodydiode]{};
+\draw (3,5)node[pnp, bodydiode]{};
+\draw (7,2.5) to (7,4.5);
+\draw (3,2.5) to (3,4.5);
+\draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
+\draw (5,6)node[vcc]{Vcc};
+\draw (3,3.5) to [short,*-o](4,3.5);
+\draw (7,3.5) to [short,*-o](6,3.5);
+\draw (7,2)node[npn, bodydiode, xscale = -1]{};
+\draw (7,5)node[pnp, bodydiode,xscale = -1]{};
+\draw (0.5,5) to [R, l=$R_1$, o-](2,5) to (2.5,5);
+\draw (9.5,5) to [R, l_=$R_2$, o-](8,5) to (7.5,5);
+\draw (0.5,2) to [R, l=$R_3$](2,2) to (2.5,2);
+\draw (9.5,2) to [R, l_=$R_4$](8,2) to (7.5,2);
+\draw (9.5,2)node[american and port, xscale = -1](){};
+\draw (0.5,2)node[american and port](){};
+\draw (-0.9,1.725) to [short, o-](-0.9,1.725);
+\draw (-0.9,2.275) to [short, o-](-0.9,2.275);
+\draw (10.9,1.725) to [short, o-](10.9,1.725);
+\draw (10.9,2.275) to [short, o-](10.9,2.275);
+\draw (5,4.3)node[anchor=north]{Spule 1};
+\draw (-1,1.7)node[anchor=east]{PWM-Signal};
+\draw (-1,2.3)node[anchor=east]{Steuersignal};
+\draw (13.3,2.3)node[anchor=east]{Steuersignal};
+\draw (13.5,1.7)node[anchor=east]{PWM-Signal};
+\draw (0.5,5)node[anchor=east]{Steuersignal};
+\draw (12,5)node[anchor=east]{Steuersignal};
+\draw (3,1.5) to (3,0);
+\draw (7,1.5) to (7,0);
+\draw (3,0) to (5,0) node[rground]{};
+\end{circuitikz}
+\caption{Aufbau einer H-Brücke}
 \end{figure}
 
 Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
@@ -123,107 +173,107 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, u
 
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 0.9]
+\centering
+\begin{circuitikz}[european, scale = 0.9]
 
-        % Mikrocontroller
-        \draw [line width=1.5pt](-7,4) -- (-3,4) -- (-3,11) -- (-7,11) -- (-7,4);
-        \draw (-5,8)node[anchor=north]{ATmega324P};
-        \draw (-5,4.6)node[anchor=north]{OC1A};
-        \draw (-5,11)node[anchor=north]{OC1B};
-        \draw (-6.5,4.6)node[anchor=north]{PD2};
-        \draw (-3.5,4.6)node[anchor=north]{PD3};
-        \draw (-6.5,11)node[anchor=north]{PD0};
-        \draw (-3.5,11)node[anchor=north]{PD1};
+% Mikrocontroller
+\draw [line width=1.5pt](-7,4) -- (-3,4) -- (-3,11) -- (-7,11) -- (-7,4);
+\draw (-5,8)node[anchor=north]{ATmega324P};
+\draw (-5,4.6)node[anchor=north]{OC1A};
+\draw (-5,11)node[anchor=north]{OC1B};
+\draw (-6.5,4.6)node[anchor=north]{PD2};
+\draw (-3.5,4.6)node[anchor=north]{PD3};
+\draw (-6.5,11)node[anchor=north]{PD0};
+\draw (-3.5,11)node[anchor=north]{PD1};
 
 
-        % 1. Spulenanschluss
-        \draw (3,8) to [short, -*](5,8) to (7,8);
-        \draw (2,10) to (2.5,10);
-        \draw (3,10)node[npn, bodydiode]{};
-        \draw (3,13)node[pnp, bodydiode]{};
-        \draw (7,10.5) to (7,12.5);
-        \draw (3,10.5) to (3,12.5);
-        \draw (3,13.5) to (3,14) to [short, -*](5,14) to (7,14) to (7, 13.5);
-        \draw (5,14)node[vcc]{Vcc};
-        \draw (3,11.5) to [short,*-o](4,11.5);
-        \draw (7,11.5) to [short,*-o](6,11.5);
-        \draw (7,10)node[npn, bodydiode, xscale = -1]{};
-        \draw (7,13)node[pnp, bodydiode,xscale = -1]{};
+% 1. Spulenanschluss
+\draw (3,8) to [short, -*](5,8) to (7,8);
+\draw (2,10) to (2.5,10);
+\draw (3,10)node[npn, bodydiode]{};
+\draw (3,13)node[pnp, bodydiode]{};
+\draw (7,10.5) to (7,12.5);
+\draw (3,10.5) to (3,12.5);
+\draw (3,13.5) to (3,14) to [short, -*](5,14) to (7,14) to (7, 13.5);
+\draw (5,14)node[vcc]{Vcc};
+\draw (3,11.5) to [short,*-o](4,11.5);
+\draw (7,11.5) to [short,*-o](6,11.5);
+\draw (7,10)node[npn, bodydiode, xscale = -1]{};
+\draw (7,13)node[pnp, bodydiode,xscale = -1]{};
 
-        \draw (0.5,13) to [R, l=$R_1$, ](2,13) to (2.5,13);
-        \draw (9.5,13) to [R, l_=$R_2$, ](8,13) to (7.5,13);
-        \draw (9.5,13)to [short,-*](13,13);
-        \draw (0.5,10) to [R, l=$R_3$](2,10) to (2.5,10);
-        \draw (9.5,10) to [R, l_=$R_4$](8,10) to (7.5,10);
+\draw (0.5,13) to [R, l=$R_1$, ](2,13) to (2.5,13);
+\draw (9.5,13) to [R, l_=$R_2$, ](8,13) to (7.5,13);
+\draw (9.5,13)to [short,-*](13,13);
+\draw (0.5,10) to [R, l=$R_3$](2,10) to (2.5,10);
+\draw (9.5,10) to [R, l_=$R_4$](8,10) to (7.5,10);
 
-        \draw (9.5,10)node[american and port, xscale = -1](){};
-        \draw (0.5,10)node[american and port](){};
+\draw (9.5,10)node[american and port, xscale = -1](){};
+\draw (0.5,10)node[american and port](){};
 
-        \draw (-0.9,9.69) to (-2.5,9.69) to [short,-*](-2.5,16);
-        \draw (-0.9,10.31) to (-2,10.31) to (-2,13) to (0.5,13);
-        \draw (-2,13) to [short,*-](-4,13) to (-4,11);
-        \draw (10.9,9.69) to (13,9.69) to (13,17) to (-6,17) to (-6,11);
-        \draw (10.9,10.31) to (12,10.31) to (12,13) to (12,16) to (-5,16) to (-5,11);
+\draw (-0.9,9.69) to (-2.5,9.69) to [short,-*](-2.5,16);
+\draw (-0.9,10.31) to (-2,10.31) to (-2,13) to (0.5,13);
+\draw (-2,13) to [short,*-](-4,13) to (-4,11);
+\draw (10.9,9.69) to (13,9.69) to (13,17) to (-6,17) to (-6,11);
+\draw (10.9,10.31) to (12,10.31) to (12,13) to (12,16) to (-5,16) to (-5,11);
 
-        \draw (3,13.7)node[anchor=east]{Q1};
-        \draw (7,13.7)node[anchor=west]{Q2};
-        \draw (3,10.7)node[anchor=east]{Q3};
-        \draw (7,10.7)node[anchor=west]{Q4};
+\draw (3,13.7)node[anchor=east]{Q1};
+\draw (7,13.7)node[anchor=west]{Q2};
+\draw (3,10.7)node[anchor=east]{Q3};
+\draw (7,10.7)node[anchor=west]{Q4};
 
-        \draw (-0.5,11.2)node[anchor=north]{IC1};
-        \draw (10,11.2)node[anchor=north]{IC2};
+\draw (-0.5,11.2)node[anchor=north]{IC1};
+\draw (10,11.2)node[anchor=north]{IC2};
 
-        \draw (5,12.3)node[anchor=north]{Spule 1};
-        \draw (3,9.5) to (3,8);
-        \draw (7,9.5) to (7,8);
-        \draw (3,8) to (5,8) node[rground]{};
+\draw (5,12.3)node[anchor=north]{Spule 1};
+\draw (3,9.5) to (3,8);
+\draw (7,9.5) to (7,8);
+\draw (3,8) to (5,8) node[rground]{};
 
-        % 2. Spuelanschluss
-        \draw (3,0) to [short, -*](5,0) to (7,0);
-        \draw (2,2) to (2.5,2);
-        \draw (3,2)node[npn, bodydiode]{};
-        \draw (3,5)node[pnp, bodydiode]{};
-        \draw (7,2.5) to (7,4.5);
-        \draw (3,2.5) to (3,4.5);
-        \draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
-        \draw (5,6)node[vcc]{Vcc};
-        \draw (3,3.5) to [short,*-o](4,3.5);
-        \draw (7,3.5) to [short,*-o](6,3.5);
-        \draw (7,2)node[npn, bodydiode, xscale = -1]{};
-        \draw (7,5)node[pnp, bodydiode,xscale = -1]{};
+% 2. Spuelanschluss
+\draw (3,0) to [short, -*](5,0) to (7,0);
+\draw (2,2) to (2.5,2);
+\draw (3,2)node[npn, bodydiode]{};
+\draw (3,5)node[pnp, bodydiode]{};
+\draw (7,2.5) to (7,4.5);
+\draw (3,2.5) to (3,4.5);
+\draw (3,5.5) to (3,6) to [short, -*](5,6) to (7,6) to (7, 5.5);
+\draw (5,6)node[vcc]{Vcc};
+\draw (3,3.5) to [short,*-o](4,3.5);
+\draw (7,3.5) to [short,*-o](6,3.5);
+\draw (7,2)node[npn, bodydiode, xscale = -1]{};
+\draw (7,5)node[pnp, bodydiode,xscale = -1]{};
 
-        \draw (0.5,5) to [R, l=$R_5$, ](2,5) to (2.5,5);
-        \draw (9.5,5) to [R, l_=$R_6$, ](8,5) to (7.5,5);
-        \draw (0.5,2) to [R, l=$R_7$](2,2) to (2.5,2);
-        \draw (9.5,2) to [R, l_=$R_8$](8,2) to (7.5,2);
+\draw (0.5,5) to [R, l=$R_5$, ](2,5) to (2.5,5);
+\draw (9.5,5) to [R, l_=$R_6$, ](8,5) to (7.5,5);
+\draw (0.5,2) to [R, l=$R_7$](2,2) to (2.5,2);
+\draw (9.5,2) to [R, l_=$R_8$](8,2) to (7.5,2);
 
-        \draw (9.5,2)node[american and port, xscale = -1](){};
-        \draw (0.5,2)node[american and port](){};
+\draw (9.5,2)node[american and port, xscale = -1](){};
+\draw (0.5,2)node[american and port](){};
 
-        \draw (-0.9,1.685) to [short, -*](-5,1.685);
-        \draw (-0.9,2.315) to [short,-*](-2,2.315) to (-2,5) to (0.5,5);
-        \draw (-0.9,2.315) to (-4,2.315) to (-4,4);
-        \draw (10.9,1.685) to (12,1.685);
-        \draw (10.9,2.315) to (12,2.315) to (12,5) to (9.5,5);
-        \draw (12,1.685) to (12,-1) to (-5,-1) to (-5,4);
-        \draw (12,5) to [short,*-](13,5) to (13,-2) to (-6,-2) to (-6,4);
+\draw (-0.9,1.685) to [short, -*](-5,1.685);
+\draw (-0.9,2.315) to [short,-*](-2,2.315) to (-2,5) to (0.5,5);
+\draw (-0.9,2.315) to (-4,2.315) to (-4,4);
+\draw (10.9,1.685) to (12,1.685);
+\draw (10.9,2.315) to (12,2.315) to (12,5) to (9.5,5);
+\draw (12,1.685) to (12,-1) to (-5,-1) to (-5,4);
+\draw (12,5) to [short,*-](13,5) to (13,-2) to (-6,-2) to (-6,4);
 
-        \draw (-0.5,3.2)node[anchor=north]{IC3};
-        \draw (10,3.2)node[anchor=north]{IC4};
+\draw (-0.5,3.2)node[anchor=north]{IC3};
+\draw (10,3.2)node[anchor=north]{IC4};
 
-        \draw (3,5.7)node[anchor=east]{Q5};
-        \draw (7,5.7)node[anchor=west]{Q6};
-        \draw (3,2.7)node[anchor=east]{Q7};
-        \draw (7,2.7)node[anchor=west]{Q8};
+\draw (3,5.7)node[anchor=east]{Q5};
+\draw (7,5.7)node[anchor=west]{Q6};
+\draw (3,2.7)node[anchor=east]{Q7};
+\draw (7,2.7)node[anchor=west]{Q8};
 
-        \draw (5,4.3)node[anchor=north]{Spule 2};
-        \draw (3,1.5) to (3,0);
-        \draw (7,1.5) to (7,0);
-        \draw (3,0) to (5,0) node[rground]{};
+\draw (5,4.3)node[anchor=north]{Spule 2};
+\draw (3,1.5) to (3,0);
+\draw (7,1.5) to (7,0);
+\draw (3,0) to (5,0) node[rground]{};
 
-    \end{circuitikz}
-    \caption{Anschluss einer H-Brücke an einen Mikrocontroller}
+\end{circuitikz}
+\caption{Anschluss einer H-Brücke an einen Mikrocontroller}
 \end{figure}
 
 In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt.
@@ -243,32 +293,32 @@ Wenn nun ein HIGH-Pegel vom Ausgang OC1B bereitgestellt wird, liefert das UND-Ga
 ein Fließen des Stromes durch die Motorwicklung bewirkt.
 
 \begin{itemize}
-    \item \textbf{Vorteile}
-    \begin{itemize}
-        \item günstig
-    \end{itemize}
-    \item \textbf{Nachteile}
-    \begin{itemize}
-        \item viele Bauteile
-        \item Bauteile müssen erst dimensioniert werden
-        \item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
-    \end{itemize}
+\item \textbf{Vorteile}
+\begin{itemize}
+\item günstig
+\end{itemize}
+\item \textbf{Nachteile}
+\begin{itemize}
+\item viele Bauteile
+\item Bauteile müssen erst dimensioniert werden
+\item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
+\end{itemize}
 \end{itemize}
 
 \subsubsection{Schrittmotor-Treibermodule}
 Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der Lage sind, Schrittmotoren steuern zu können.
 
 \begin{itemize}
-    \item \textbf{Vorteile}
-    \begin{itemize}
-        \item platzsparend
-        \item leicht austauschbar
-        \item leicht verwendbar
-    \end{itemize}
-    \item \textbf{Nachteile}
-    \begin{itemize}
-        \item Kosten könnten sich, aufgrund eines Kühlkörpers erhöhen
-    \end{itemize}
+\item \textbf{Vorteile}
+\begin{itemize}
+\item platzsparend
+\item leicht austauschbar
+\item leicht verwendbar
+\end{itemize}
+\item \textbf{Nachteile}
+\begin{itemize}
+\item Kosten könnten sich, aufgrund eines Kühlkörpers erhöhen
+\end{itemize}
 \end{itemize}
 
 \subsubsection{A4988}
@@ -304,23 +354,23 @@ Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
 \subsubsection{Treiber-Auswahl}
 
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
-        Preis & gering & gering & mittel    \\ \hline
-        Max. Strom & 2A & 2.2A & 4A    \\ \hline
-        Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
-        Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
-        Max. Schrittauflösung & 16 & 32 & 32        \\ \hline
-        Größe & klein & klein & groß        \\ \hline
-    \end{tabular}
-    \caption{Vergleich der Treibermodule}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+& \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
+Preis & gering & gering & mittel    \\ \hline
+Max. Strom & 2A & 2.2A & 4A    \\ \hline
+Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
+Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
+Max. Schrittauflösung & 16 & 32 & 32        \\ \hline
+Größe & klein & klein & groß        \\ \hline
+\end{tabular}
+\caption{Vergleich der Treibermodule}
 \end{table}
 
 Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
@@ -359,10 +409,10 @@ Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus
 Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
 
 \begin{itemize}
-    \item Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden.
-    \item Lichtsender und Empfänger sind baulich getrennt.
+\item Optische Sensoren des Lichtschrankentyps detektieren Unterbrechungen einer Lichtachse, welche durch ein Zielobjekt hervorgerufen werden.
+\item Lichtsender und Empfänger sind baulich getrennt.
 
-    \item Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
+\item Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
 \end{itemize}
 
 Optische Sensoren besitzen eine fast wartungsfreie, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
@@ -372,20 +422,20 @@ Es sind große Erkennungsabstände möglich.
 \subsubsection{Sensoren-Auswahl}
 
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        & \textbf{Kapazitive Sensoren} & \textbf{Ultraschall-Sensoren} & \textbf{Optische Sensoren} \\ \hline
-        Preis & gering & hoch & mittel    \\ \hline
-        Platzbedarf & gering & gering & mittel   \\ \hline
-        Genauigkeit & hoch & mittel & hoch        \\ \hline
-    \end{tabular}
-    \caption{Vergleich der Sensorattribute}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+& \textbf{Kapazitive Sensoren} & \textbf{Ultraschall-Sensoren} & \textbf{Optische Sensoren} \\ \hline
+Preis & gering & hoch & mittel    \\ \hline
+Platzbedarf & gering & gering & mittel   \\ \hline
+Genauigkeit & hoch & mittel & hoch        \\ \hline
+\end{tabular}
+\caption{Vergleich der Sensorattribute}
 \end{table}
 
 Unsere Wahl fiel auf einen kapazitiven Sensor da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
@@ -401,20 +451,20 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
 
 \subsubsection{Varianten-Auswahl}
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        & \textbf{Endschalter} & \textbf{Licntschranke} \\ \hline
-        Preis & sehr gering & mittel  \\ \hline
-        Platzbedarf & sehr gering & mittel     \\ \hline
-        Genauigkeit & mittel & hoch     \\ \hline
-    \end{tabular}
-    \caption{Vergleich der Sensorattribute}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+& \textbf{Endschalter} & \textbf{Licntschranke} \\ \hline
+Preis & sehr gering & mittel  \\ \hline
+Platzbedarf & sehr gering & mittel     \\ \hline
+Genauigkeit & mittel & hoch     \\ \hline
+\end{tabular}
+\caption{Vergleich der Sensorattribute}
 \end{table}
 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
@@ -442,22 +492,22 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
 
 \subsubsection{Auswahl der Spannungsversorgung}
 \begin{table}[htbp]
-    \centering
-    \begin{tabular}{|
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |
-    >{\columncolor[HTML]{FFFFFF}}l |}
-        \hline
-        & \textbf{Doppel-Schaltnetzteil} & \textbf{SN und Schaltregler} & \textbf{SN und Festspannungsregler} \\ \hline
-        Preis & hoch & mittel & sehr gering    \\ \hline
-        \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
-                                 Platzbedarf\\ und Gewicht
-        \end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{gering} & \multicolumn{1}{l|}{gering} \\ \hline
-        Bauteilbedarf & gering & mittel & sehr gering        \\ \hline
-    \end{tabular}
-    \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |
+>{\columncolor[HTML]{FFFFFF}}l |}
+\hline
+& \textbf{Doppel-Schaltnetzteil} & \textbf{SN und Schaltregler} & \textbf{SN und Festspannungsregler} \\ \hline
+Preis & hoch & mittel & sehr gering    \\ \hline
+\multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
+Platzbedarf\\ und Gewicht
+\end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{gering} & \multicolumn{1}{l|}{gering} \\ \hline
+Bauteilbedarf & gering & mittel & sehr gering        \\ \hline
+\end{tabular}
+\caption{Vergleich der Spannungsversorgungsmodul-Attribute}
 \end{table}
 
 Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Festspannungsregler, da diese für einen geringen Preis erhältlich ist
@@ -472,9 +522,9 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 \subsection{Blockschaltbild der gesamten Elektronik}
 
 \begin{figure}[hb]
-    \centering
-    \includegraphics[scale=0.85,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
-    \caption{Blockschaltbild der gesamten Elektronik}
+\centering
+\includegraphics[scale=0.85,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
+\caption{Blockschaltbild der gesamten Elektronik}
 \end{figure}
 
 \newpage
@@ -494,18 +544,18 @@ Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Diode.
 Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, was bei 12V immerhin 8.33 Prozent entsprechen.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
-        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
-        \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
-        \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
-        \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (4,0) to (3,0) node[rground]{};
-        \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
-    \end{circuitikz}
-    \caption{Variante mithilfe einer Diode}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
+\draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
+\draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
+\draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
+\draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
+\draw (4,0) to (3,0) node[rground]{};
+\draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+\end{circuitikz}
+\caption{Variante mithilfe einer Diode}
 \end{figure}
 
 \subsubsection{Verpolungsschutz mit einer Sicherung und einer Diode}
@@ -517,20 +567,20 @@ von der Spannungsversorgung zur Verfügung gestelltem Strom, durch.
 Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bis die Sicherung auslöst.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
-        \draw (1,3) to[R, l=$F1$](3,3){};
-        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
-        \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
-        \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
-        \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (4,0) to (3,0) node[rground]{};
-        \draw (4,0) to (4,2);
-        \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
-    \end{circuitikz}
-    \caption{Zerstörerische Variante mithilfe einer Sicherung und einer Diode}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
+\draw (1,3) to[R, l=$F1$](3,3){};
+\draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
+\draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
+\draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
+\draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
+\draw (4,0) to (3,0) node[rground]{};
+\draw (4,0) to (4,2);
+\draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+\end{circuitikz}
+\caption{Zerstörerische Variante mithilfe einer Sicherung und einer Diode}
 \end{figure}
 
 \subsubsection{Verpolungsschutz mithilfe eines P-Kanal MOSFET}
@@ -545,24 +595,24 @@ Bei Spannungen, die kleiner als UGSmax sind, kann die Z-Diode vernachlässigt we
 In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, weshalb die Diode vernachlässigt werden kann und ein beinahe verlustfreier Betrieb möglich ist.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.4,4.3) to [short,-*](3.4,4){};
-        \draw (3,4)node[pfet, rotate = 90 ]{};
-        \draw (3.55,4.3)node[anchor=south]{Q1};
-        \draw (3,0) to [R, l=$R1$, *-](3,3.3){};
-        \draw (3,2.5) to [short, *-](4.2,2.5){};
-        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=1cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
-        \draw (3.225,4) to [short, -*](3.225,4);
-        \draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
-        \draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
-        \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[rground]{};
-        \draw (0,3.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,3.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
-    \end{circuitikz}
-    \caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+\draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.4,4.3) to [short,-*](3.4,4){};
+\draw (3,4)node[pfet, rotate = 90 ]{};
+\draw (3.55,4.3)node[anchor=south]{Q1};
+\draw (3,0) to [R, l=$R1$, *-](3,3.3){};
+\draw (3,2.5) to [short, *-](4.2,2.5){};
+\draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=1cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
+\draw (3.225,4) to [short, -*](3.225,4);
+\draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
+\draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
+\draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
+\draw (3,0) to (2,0) node[rground]{};
+\draw (0,3.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (6,3.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+\end{circuitikz}
+\caption{Verpolungsschutz mit P-Kanal MOSFET für kleine Spannungen}
 \end{figure}
 
 Aufgrund der Vorteile des fast verlustlosen und wartungsarmen Betriebs entschieden wir uns für den Gebrauch der 3.Variante.
@@ -591,53 +641,53 @@ Ein genaue Dimensionierung von C\textsubscript{1} und R\textsubscript{8} sorgen 
 sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt werden kann. \\
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
 
-        \draw (1.7,7) to [R, l=$R1$, *-*](1.7,5.5) to (5.2,5.5){};
-        \draw (3.5,7) to [R, l=$R2$, *-](3.5,5.5) to (3.5,4.8) to (3.2,4.8);
-        \draw (3.2,4.2) to (3.5,4.2) to [short, -*](3.5,3);
-        \draw (3.2,4.5)node[pushbuttonshape, rotate = 90]{};
-        \draw (3,4.5) to (3,4.5)node[anchor=east]{S1};
-        \draw (6,7) to (6,5.5);
-        \draw (6,5.5)node[pfet, bodydiode]{};
-        \draw (6,4) to [short, *-](7,4) to (7,7) to (10,7);
-        \draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[rground]{};
-        \draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[rground]{};
-        \draw (6,4.9) to (6,3) to [R, l_=$R3$](4,3) to (2,3);
-        \draw (1.5,3)node[nfet, rotate=180]{};
-        \draw (1.5,2.6) to [short, *-](1.2,2.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](1.2,3.4) to [short,-*](1.5,3.4){};
-        \draw (1.5,0) to [short, *-](1.5,3);
-        \draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
-        \draw (2.6,0) to [R, l_=$R5$, *-*](2.6,3);
-        \draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
-        \draw (6,2) to (5,2) to [R, l=$R8$, *-*](5,0);
-        \draw (5,2) to (4.5,2);
-        \draw (4,2) to [short, -*](4,0);
-        \draw (4,2.5) to [short, -*](4,3);
-        \draw (4,2)node[nfet, solderdot, rotate=180]{};
-        \draw (4,1.6) to [short, *-](3.8,1.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.8,2.4) to [short,-*](4,2.4){};
-        \draw (4,1.6) to [short, -*](4,1.775);
-        \draw (1.5,2.775) to [short, -*](1.5,2.775);
-        \draw (7.1,2) to (6.1,2);
-        \draw (6,5.775) to [short, -*](6,5.725);
-        \draw (6,5.1) to [short, -*](6,5.1);
-        \draw (6,5.9) to [short, -*](6,5.9);
-        \draw (8.3,0) to [short, -*](8.3,0);
-        \draw (5.7,5.8) to (5.7,5.8)node[anchor=south]{Q1};
-        \draw (1.9,3.3) to (1.9,3.3)node[anchor=south]{Q2};
-        \draw (4.4,2.3) to (4.4,2.3)node[anchor=south]{Q3};
-        \draw (8.3,2) to (8.3,2)node[anchor=west]{+};
-        \draw (6,7) to [short, -o](0,7)node[anchor=east]{+};
-        \draw (9,7) to [short, -o](10,7)node[anchor=west]{+};
-        \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[rground]{};
-        \draw (0,6.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
-        \draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
-    \end{circuitikz}
-    \caption{12V Soft-Latching Circuit}
+\draw (1.7,7) to [R, l=$R1$, *-*](1.7,5.5) to (5.2,5.5){};
+\draw (3.5,7) to [R, l=$R2$, *-](3.5,5.5) to (3.5,4.8) to (3.2,4.8);
+\draw (3.2,4.2) to (3.5,4.2) to [short, -*](3.5,3);
+\draw (3.2,4.5)node[pushbuttonshape, rotate = 90]{};
+\draw (3,4.5) to (3,4.5)node[anchor=east]{S1};
+\draw (6,7) to (6,5.5);
+\draw (6,5.5)node[pfet, bodydiode]{};
+\draw (6,4) to [short, *-](7,4) to (7,7) to (10,7);
+\draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[rground]{};
+\draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[rground]{};
+\draw (6,4.9) to (6,3) to [R, l_=$R3$](4,3) to (2,3);
+\draw (1.5,3)node[nfet, rotate=180]{};
+\draw (1.5,2.6) to [short, *-](1.2,2.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](1.2,3.4) to [short,-*](1.5,3.4){};
+\draw (1.5,0) to [short, *-](1.5,3);
+\draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
+\draw (2.6,0) to [R, l_=$R5$, *-*](2.6,3);
+\draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
+\draw (6,2) to (5,2) to [R, l=$R8$, *-*](5,0);
+\draw (5,2) to (4.5,2);
+\draw (4,2) to [short, -*](4,0);
+\draw (4,2.5) to [short, -*](4,3);
+\draw (4,2)node[nfet, solderdot, rotate=180]{};
+\draw (4,1.6) to [short, *-](3.8,1.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.8,2.4) to [short,-*](4,2.4){};
+\draw (4,1.6) to [short, -*](4,1.775);
+\draw (1.5,2.775) to [short, -*](1.5,2.775);
+\draw (7.1,2) to (6.1,2);
+\draw (6,5.775) to [short, -*](6,5.725);
+\draw (6,5.1) to [short, -*](6,5.1);
+\draw (6,5.9) to [short, -*](6,5.9);
+\draw (8.3,0) to [short, -*](8.3,0);
+\draw (5.7,5.8) to (5.7,5.8)node[anchor=south]{Q1};
+\draw (1.9,3.3) to (1.9,3.3)node[anchor=south]{Q2};
+\draw (4.4,2.3) to (4.4,2.3)node[anchor=south]{Q3};
+\draw (8.3,2) to (8.3,2)node[anchor=west]{+};
+\draw (6,7) to [short, -o](0,7)node[anchor=east]{+};
+\draw (9,7) to [short, -o](10,7)node[anchor=west]{+};
+\draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
+\draw (3,0) to (2,0) node[rground]{};
+\draw (0,6.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
+\draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
+\end{circuitikz}
+\caption{12V Soft-Latching Circuit}
 \end{figure}
 
 \subsubsection{Andere Variante}
@@ -654,36 +704,36 @@ Somit kommt am Ausgang keine Spannung vorgefunden werden.
 Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\textsubscript{1} vom Drain auf das Gate geschaltet.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
-        \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
-        \draw (2,4) to [short, *-](2,2.5);
-        \draw (2.5,6) to (5,6);
-        \draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
-        \draw (5,2) to (5,1.5) to (5.15,1.5);
-        \draw (5.5,1.5)node[pushbuttonshape]{};
-        \draw (5.5,2.5)node[pushbuttonshape]{};
-        \draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
-        \draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
-        \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
-        \draw (4,2) to (2.5,2);
-        \draw (2,1.5) to (2,0);
-        \draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
-        \draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
-        \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
-        \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
-        \draw (2,2)node[npn, xscale = -1]{};
-        \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
-        \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
-        \draw (5,4) to (5,4)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[rground]{};
-        \draw (5,4) to [short, o-o](5,4)to(5,3.9) node[rground]{};
-        \draw (0,5.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (5,5.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(5,4.2);
-    \end{circuitikz}
-    \caption{Realisierung einer Selbsthaltung mit zwei Tastern}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+\draw (2,6)node[pfet,bodydiode, rotate = 90]{};
+\draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
+\draw (2,4) to [short, *-](2,2.5);
+\draw (2.5,6) to (5,6);
+\draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
+\draw (5,2) to (5,1.5) to (5.15,1.5);
+\draw (5.5,1.5)node[pushbuttonshape]{};
+\draw (5.5,2.5)node[pushbuttonshape]{};
+\draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
+\draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
+\draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
+\draw (4,2) to (2.5,2);
+\draw (2,1.5) to (2,0);
+\draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
+\draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
+\draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
+\draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
+\draw (2,2)node[npn, xscale = -1]{};
+\draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
+\draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
+\draw (5,4) to (5,4)node[anchor=west]{-};
+\draw (3,0) to (2,0) node[rground]{};
+\draw (5,4) to [short, o-o](5,4)to(5,3.9) node[rground]{};
+\draw (0,5.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (5,5.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(5,4.2);
+\end{circuitikz}
+\caption{Realisierung einer Selbsthaltung mit zwei Tastern}
 \end{figure}
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
@@ -700,32 +750,32 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
 \subsubsection{Beschaltung}
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (1,0);
-        \draw (1.5,5) to [eC, l=$C1$, *-*](1.5,0);
-        \draw (8.5,5) to [eC, l=$C2$, *-*](8.5,0);
-        \draw (6.5,0) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
-        \draw [line width=1.5pt](3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
-        \draw (5.5,5.5) to (8.5,5.5) to (8.5,5);
-        \draw (5.5,5) to (6.5,5);
-        \draw (6.5,5) to [L, l_=$L1$](8.5,5);
-        \draw (3.5,4) to [short, -*](3.5,0);
-        \draw (5,4) to [short, -*](5,0);
-        \draw (4.25,5.25) to (4.25,5.25)node[anchor=north]{LM2576-5.0};
-        \draw (3.1,5.2) to (3.1,5.2)node[anchor=east]{VIN};
-        \draw (3.5,3.8) to (3.5,3.8)node[anchor=east]{GND};
-        \draw (5.1,3.8) to (5.1,3.8)node[anchor=east]{ON/OFF};
-        \draw (6.6,5.2) to (6.6,5.2)node[anchor=east]{VOUT};
-        \draw (6.1,5.7) to (6.1,5.7)node[anchor=east]{FB};
-        \draw (3,5) to [short, -o](0,5)node[anchor=east]{+};
-        \draw (8.5,5) to [short, -o](10,5)node[anchor=west]{+};
-        \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
-        \draw (3,0) to (1,0) node[rground]{};
-        \draw (0,4.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (10,4.8) -- node[right] {$5V$}node[sloped,currarrow,pos=1] {}(10,0.2);
-    \end{circuitikz}
-    \caption{Beschaltung des LM2576-5.0}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (1,0);
+\draw (1.5,5) to [eC, l=$C1$, *-*](1.5,0);
+\draw (8.5,5) to [eC, l=$C2$, *-*](8.5,0);
+\draw (6.5,0) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
+\draw [line width=1.5pt](3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
+\draw (5.5,5.5) to (8.5,5.5) to (8.5,5);
+\draw (5.5,5) to (6.5,5);
+\draw (6.5,5) to [L, l_=$L1$](8.5,5);
+\draw (3.5,4) to [short, -*](3.5,0);
+\draw (5,4) to [short, -*](5,0);
+\draw (4.25,5.25) to (4.25,5.25)node[anchor=north]{LM2576-5.0};
+\draw (3.1,5.2) to (3.1,5.2)node[anchor=east]{VIN};
+\draw (3.5,3.8) to (3.5,3.8)node[anchor=east]{GND};
+\draw (5.1,3.8) to (5.1,3.8)node[anchor=east]{ON/OFF};
+\draw (6.6,5.2) to (6.6,5.2)node[anchor=east]{VOUT};
+\draw (6.1,5.7) to (6.1,5.7)node[anchor=east]{FB};
+\draw (3,5) to [short, -o](0,5)node[anchor=east]{+};
+\draw (8.5,5) to [short, -o](10,5)node[anchor=west]{+};
+\draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
+\draw (3,0) to (1,0) node[rground]{};
+\draw (0,4.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (10,4.8) -- node[right] {$5V$}node[sloped,currarrow,pos=1] {}(10,0.2);
+\end{circuitikz}
+\caption{Beschaltung des LM2576-5.0}
 \end{figure}
 
 \subsubsection{Kühlkörperberechnung}
@@ -735,35 +785,35 @@ Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenb
 Um die Verlustleistung des LM2576 zu berechnen, wird von folgender Formel Gebrauch gemacht.
 
 \begin{equation}
-    P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
+P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
 \end{equation}
 wobei
 \begin{itemize}
-    \item P\textsubscript{D} der auszurechnenden Verlustleistung,
-    \item V\textsubscript{IN} der Eingangsspannung,
-    \item I\textsubscript{Q} dem Ruhestrom,
-    \item V\textsubscript{OUT} der regulierten Ausgangsspannung,
-    \item I\textsubscript{LOAD} dem Laststrom und V\textsubscript{SAT} der Sättigungsspannung entspricht.
+\item P\textsubscript{D} der auszurechnenden Verlustleistung,
+\item V\textsubscript{IN} der Eingangsspannung,
+\item I\textsubscript{Q} dem Ruhestrom,
+\item V\textsubscript{OUT} der regulierten Ausgangsspannung,
+\item I\textsubscript{LOAD} dem Laststrom und V\textsubscript{SAT} der Sättigungsspannung entspricht.
 \end{itemize}
 
 Setzen wir nun die bei unserer Anwendung maximal anfallenden Werte ein erhalten wir folgendes Ergebnis:
 \begin{flalign*}
-    P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V &\\
-    &= 1.906W
+P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V &\\
+&= 1.906W
 \end{flalign*}
 
 Der Anstieg der Sperrschichtübergangstemperatur lässt sich somit folgend berechnen:
 \begin{flalign}
-    \Delta T_j &= P_D \cdot \Theta_{ja} &\\
-    &= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag &\\
-    &= 81,1946^{\circ}C \notag
+\Delta T_j &= P_D \cdot \Theta_{ja} &\\
+&= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag &\\
+&= 81,1946^{\circ}C \notag
 \end{flalign}
 
 Zu diesem Anstieg ist noch die gewöhnliche Umgebungstemperatur hinzuzurechnen.
 \begin{flalign}
-    T_j &= \Delta  T_j + T_A &\\
-    &= 81,1946^{\circ}C + 25^{\circ}C \notag &\\
-    &= 106,1956^{\circ}C \notag
+T_j &= \Delta  T_j + T_A &\\
+&= 81,1946^{\circ}C + 25^{\circ}C \notag &\\
+&= 106,1956^{\circ}C \notag
 \end{flalign}
 
 Durch dieses Ergebnis lässt es sich, trotz eines Sicherheitsabschlages der maximalen Sperrschichttemperatur (T\textsubscript{jmax} = 125°C-15°C), auf einen zulässigen Betrieb schließen.\\\\
@@ -802,76 +852,76 @@ Parallel zum Taster wurde ein RC-Glied vorgesehn, welches einerseits als Entprel
 andererseits auch als Prevention gegen Spikes und für ein längeres, definiertes Bestehen des µC im Reset-Zustand.
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.1]
-        \draw [line width=1.5pt](5,0) to (8.5,0) to (8.5,5) to (5,5) to (5,0);
+\centering
+\begin{circuitikz}[european, scale = 1.1]
+\draw [line width=1.5pt](5,0) to (8.5,0) to (8.5,5) to (5,5) to (5,0);
 
-        %AREF
-        \draw (7.9,2) to (7.9,2)node[anchor=north]{AREF};
-        \draw (8.5,1.75) to (9.5,1.75) to [C, l=$C9$](9.5,0) to (9.5,0) node[rground]{};
+%AREF
+\draw (7.9,2) to (7.9,2)node[anchor=north]{AREF};
+\draw (8.5,1.75) to (9.5,1.75) to [C, l=$C9$](9.5,0) to (9.5,0) node[rground]{};
 
-        %Quarz
-        \draw (5.65,2.8) to (5.65,2.8)node[anchor=north]{XTAL2};
-        \draw (5.65,1.2) to (5.65,1.2)node[anchor=north]{XTAL1};
-        \draw (5,2.6) to (3,2.6);
-        \draw (5,1) to (3,1);
-        \draw (4,2.6) to [PZ, l_=$Y1$, *-*](4,1);
-        \draw (3,1) to [C, l=$C8$](1.5,1);
-        \draw (3,2.6) to [C, l=$C7$](1.5,2.6);
-        \draw (1.5,1) to (1.5,2.6);
-        \draw (1.5,1.8) to [short, *-](0.5,1.8) to (0.5,1)node[rground]{};
+%Quarz
+\draw (5.65,2.8) to (5.65,2.8)node[anchor=north]{XTAL2};
+\draw (5.65,1.2) to (5.65,1.2)node[anchor=north]{XTAL1};
+\draw (5,2.6) to (3,2.6);
+\draw (5,1) to (3,1);
+\draw (4,2.6) to [PZ, l_=$Y1$, *-*](4,1);
+\draw (3,1) to [C, l=$C8$](1.5,1);
+\draw (3,2.6) to [C, l=$C7$](1.5,2.6);
+\draw (1.5,1) to (1.5,2.6);
+\draw (1.5,1.8) to [short, *-](0.5,1.8) to (0.5,1)node[rground]{};
 
-        %RESET
-        \draw (5.65,4) to (5.65,4)node[anchor=north]{RESET};
-        \draw (5,3.7) to (3,3.7) to (3,6) to [R, l=$R1$](3,7.5) to (3,8)node[vcc]{+3.3V};
-        \draw (3,6) to [short, *-](4,6) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](4,7.5) to  [short,-*](3,7.5);
-        \draw (4,7.5) to (4,6);
-        \draw (3,5.5) to [short,*-o](3.5,5.5)node[anchor=west]{SPI-RST};
-        \draw (3,5) to [short, *-o](2,5);
-        \draw (1.5,5) to [short, o-](0.5,5) to [C, l=$C5$](0.5,6.5) to [short, -o](0,6.5)node[anchor=east]{DTR-USB};
-        \draw (3,4.5) to (-1,4.5) to [R, l=$R2$](-1,3) to [C, l=$C6$](-1,1.5) to (-1,1.5)node[rground]{};
-        \draw (3,4) to [short, *-](2.15,4);
-        \draw (1.8,4)node[pushbuttonshape]{};
-        \draw (1.48,4) to [short,o-](0.5,4) to (0.5,3.5)node[rground]{};
-        \draw (1.825,4) to (1.825,4)node[anchor=north]{S1};
+%RESET
+\draw (5.65,4) to (5.65,4)node[anchor=north]{RESET};
+\draw (5,3.7) to (3,3.7) to (3,6) to [R, l=$R1$](3,7.5) to (3,8)node[vcc]{+3.3V};
+\draw (3,6) to [short, *-](4,6) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](4,7.5) to  [short,-*](3,7.5);
+\draw (4,7.5) to (4,6);
+\draw (3,5.5) to [short,*-o](3.5,5.5)node[anchor=west]{SPI-RST};
+\draw (3,5) to [short, *-o](2,5);
+\draw (1.5,5) to [short, o-](0.5,5) to [C, l=$C5$](0.5,6.5) to [short, -o](0,6.5)node[anchor=east]{DTR-USB};
+\draw (3,4.5) to (-1,4.5) to [R, l=$R2$](-1,3) to [C, l=$C6$](-1,1.5) to (-1,1.5)node[rground]{};
+\draw (3,4) to [short, *-](2.15,4);
+\draw (1.8,4)node[pushbuttonshape]{};
+\draw (1.48,4) to [short,o-](0.5,4) to (0.5,3.5)node[rground]{};
+\draw (1.825,4) to (1.825,4)node[anchor=north]{S1};
 
-        \draw (1.825,5.7) to (1.825,5.7)node[anchor=north]{Jumper};
+\draw (1.825,5.7) to (1.825,5.7)node[anchor=north]{Jumper};
 
-        %VCC und GND
-        \draw (5.4,5) to (5.4,5)node[anchor=north]{VCC};
-        \draw (6.2,5) to (6.2,5)node[anchor=north]{VCC};
-        \draw (7,5) to (7,5)node[anchor=north]{VCC};
-        \draw (7.9,5) to (7.9,5)node[anchor=north]{AVCC};
-        \draw (5.45,0.5) to (5.45,0.5)node[anchor=north]{GND};
-        \draw (6.3,0.5) to (6.3,0.5)node[anchor=north]{GND};
-        \draw (7.15,0.5) to (7.15,0.5)node[anchor=north]{GND};
-        \draw (8,0.5) to (8,0.5)node[anchor=north]{GND};
+%VCC und GND
+\draw (5.4,5) to (5.4,5)node[anchor=north]{VCC};
+\draw (6.2,5) to (6.2,5)node[anchor=north]{VCC};
+\draw (7,5) to (7,5)node[anchor=north]{VCC};
+\draw (7.9,5) to (7.9,5)node[anchor=north]{AVCC};
+\draw (5.45,0.5) to (5.45,0.5)node[anchor=north]{GND};
+\draw (6.3,0.5) to (6.3,0.5)node[anchor=north]{GND};
+\draw (7.15,0.5) to (7.15,0.5)node[anchor=north]{GND};
+\draw (8,0.5) to (8,0.5)node[anchor=north]{GND};
 
-        \draw (5.4,7.5) to [short, *-*](6.2,7.5) to [short,-*](7.9,7.5) to [short,-*](9.6,7.5) to(11.2,7.5);
-        \draw (6.2,6) to [short,-*](7.9,6) to [short,-*](9.6,6) to [short,-*](11.2,6) to (11.2,5.5)node[rground]{};
-        \draw (6.2,7.5) to [C, l=$C1$](6.2,6);
-        \draw (7.9,7.5) to [C, l=$C2$](7.9,6);
-        \draw (9.6,7.5) to [C, l=$C3$](9.6,6);
-        \draw (11.2,7.5) to [C, l=$C4$](11.2,6);
+\draw (5.4,7.5) to [short, *-*](6.2,7.5) to [short,-*](7.9,7.5) to [short,-*](9.6,7.5) to(11.2,7.5);
+\draw (6.2,6) to [short,-*](7.9,6) to [short,-*](9.6,6) to [short,-*](11.2,6) to (11.2,5.5)node[rground]{};
+\draw (6.2,7.5) to [C, l=$C1$](6.2,6);
+\draw (7.9,7.5) to [C, l=$C2$](7.9,6);
+\draw (9.6,7.5) to [C, l=$C3$](9.6,6);
+\draw (11.2,7.5) to [C, l=$C4$](11.2,6);
 
 
-        \draw (5.4,8) to (5.4,5);
-        \draw (5.4,5.5) to [short, *-*] (6.2,5.5) to [short, *-*] (7,5.5) to (7.9,5.5);
-        \draw (6.2,5.5) to (6.2,5);
-        \draw (7,5.5) to (7,5);
-        \draw (7.9,5.5) to (7.9,5);
+\draw (5.4,8) to (5.4,5);
+\draw (5.4,5.5) to [short, *-*] (6.2,5.5) to [short, *-*] (7,5.5) to (7.9,5.5);
+\draw (6.2,5.5) to (6.2,5);
+\draw (7,5.5) to (7,5);
+\draw (7.9,5.5) to (7.9,5);
 
-        \draw (5.5,-0.4) to [short, *-*] (6.3,-0.4) to [short, *-*] (7.1,-0.4) to (8,-0.4);
-        \draw (6.3,-0.4) to (6.3,0);
-        \draw (7.1,-0.4) to (7.1,0);
-        \draw (8,-0.4) to (8,0);
+\draw (5.5,-0.4) to [short, *-*] (6.3,-0.4) to [short, *-*] (7.1,-0.4) to (8,-0.4);
+\draw (6.3,-0.4) to (6.3,0);
+\draw (7.1,-0.4) to (7.1,0);
+\draw (8,-0.4) to (8,0);
 
-        %Beschriftungen
-        \draw (9.2,5.6) to (9.2,5.6)node[anchor=north]{ATmega324P};
-        \draw (5.4,8)node[vcc]{+3.3V};
-        \draw (5.5,0) to (5.5,-0.5) node[rground]{};
-    \end{circuitikz}
-    \caption{Beschaltung des ATmega324P}
+%Beschriftungen
+\draw (9.2,5.6) to (9.2,5.6)node[anchor=north]{ATmega324P};
+\draw (5.4,8)node[vcc]{+3.3V};
+\draw (5.5,0) to (5.5,-0.5) node[rground]{};
+\end{circuitikz}
+\caption{Beschaltung des ATmega324P}
 \end{figure}
 
 \subsection{DRV8825-Schrittmotortreiber}
@@ -884,67 +934,67 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 \subsubsection{Datenblattwerte}
 
 \begin{itemize}
-    \item Minimale Betriebsspannung 8.2V
-    \item Maximale Betriebsspannung 47V
-    \item Maximaler Strom per Phase 1.5A (2.5A*)
-    \item Minimale Steuerspannung 2.2V
-    \item Maximale Steuerspannung 5.25V
-    \item Dimensionen 15.5mm x 20.5mm
+\item Minimale Betriebsspannung 8.2V
+\item Maximale Betriebsspannung 47V
+\item Maximaler Strom per Phase 1.5A (2.5A*)
+\item Minimale Steuerspannung 2.2V
+\item Maximale Steuerspannung 5.25V
+\item Dimensionen 15.5mm x 20.5mm
 \end{itemize}
 * nur bei ausreichender Kühlung möglich
 
 \subsubsection{Beschaltung}
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}{european, scale = 1}
-        \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
+\centering
+\begin{circuitikz}{european, scale = 1}
+\draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
 
 
-        \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
-        \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
-        \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
-        \draw (4.95,2) to [short,o-o](4,2)node[anchor=east]{RESET};
-        \draw (5,2.5) to [short,-o](4,2.5)node[anchor=east]{M2};
-        \draw (5,3) to [short,-o](4,3)node[anchor=east]{M1};
-        \draw (5,3.5) to [short,-o](4,3.5)node[anchor=east]{M0};
-        \draw (4.95,4) to [short,o-o](4,4)node[anchor=east]{EN};
+\draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
+\draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
+\draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
+\draw (4.95,2) to [short,o-o](4,2)node[anchor=east]{RESET};
+\draw (5,2.5) to [short,-o](4,2.5)node[anchor=east]{M2};
+\draw (5,3) to [short,-o](4,3)node[anchor=east]{M1};
+\draw (5,3.5) to [short,-o](4,3.5)node[anchor=east]{M0};
+\draw (4.95,4) to [short,o-o](4,4)node[anchor=east]{EN};
 
-        \draw (5,0.5) to (5,0.5)node[anchor=west]{DIR};
-        \draw (5,1) to (5,1)node[anchor=west]{STEP};
-        \draw (5,1.5) to (5,1.5)node[anchor=west]{/SLEEP};
-        \draw (5,2) to (5,2)node[anchor=west]{/RESET};
-        \draw (5,2.5) to (5,2.5)node[anchor=west]{M2};
-        \draw (5,3) to (5,3)node[anchor=west]{M1};
-        \draw (5,3.5) to (5,3.5)node[anchor=west]{M0};
-        \draw (5,4) to (5,4)node[anchor=west]{/EN};
+\draw (5,0.5) to (5,0.5)node[anchor=west]{DIR};
+\draw (5,1) to (5,1)node[anchor=west]{STEP};
+\draw (5,1.5) to (5,1.5)node[anchor=west]{/SLEEP};
+\draw (5,2) to (5,2)node[anchor=west]{/RESET};
+\draw (5,2.5) to (5,2.5)node[anchor=west]{M2};
+\draw (5,3) to (5,3)node[anchor=west]{M1};
+\draw (5,3.5) to (5,3.5)node[anchor=west]{M0};
+\draw (5,4) to (5,4)node[anchor=west]{/EN};
 
-        \draw (8,0.5) to (8,0.5)node[anchor=east]{GND};
-        \draw (8,1) to (8,1)node[anchor=east]{/FLT};
-        \draw (8,1.5) to (8,1.5)node[anchor=east]{A2};
-        \draw (8,2) to (8,2)node[anchor=east]{A1};
-        \draw (8,2.5) to (8,2.5)node[anchor=east]{B1};
-        \draw (8,3) to (8,3)node[anchor=east]{B2};
-        \draw (8,3.5) to (8,3.5)node[anchor=east]{GND};
-        \draw (8,4) to (8,4)node[anchor=east]{VMOT};
+\draw (8,0.5) to (8,0.5)node[anchor=east]{GND};
+\draw (8,1) to (8,1)node[anchor=east]{/FLT};
+\draw (8,1.5) to (8,1.5)node[anchor=east]{A2};
+\draw (8,2) to (8,2)node[anchor=east]{A1};
+\draw (8,2.5) to (8,2.5)node[anchor=east]{B1};
+\draw (8,3) to (8,3)node[anchor=east]{B2};
+\draw (8,3.5) to (8,3.5)node[anchor=east]{GND};
+\draw (8,4) to (8,4)node[anchor=east]{VMOT};
 
-        \draw (8,0.5) to (9, 0.5) to (9,0)node[rground]{};
-        \draw (8.05,1) to [short,o-](8.5, 1);
-        \draw [line width=1pt](8.4,1.1) to (8.6,0.9);
-        \draw [line width=1pt](8.4,0.9) to (8.6,1.1);
-        \draw (8,1.5) to [short,-o](9, 1.5);
-        \draw (8,2) to [short,-o](9, 2);
-        \draw (8,2.5) to [short,-o](9, 2.5);
-        \draw (8,3) to [short,-o](9, 3);
-        \draw (8,3.5) to (10.5, 3.5) to (11.5,3.5);
-        \draw (11,3.5) to [short,*-](11,3.5)node[rground]{};
-        \draw (8,4) to (10.5, 4) to (10.5,5) to (11.5,5) to [eC, l=$C1$](11.5,3.5);
-        \draw (11,5) to [short,*-](11,5)node[vcc]{12V};
-        \draw (9,2.75) to (9,2.75)node[anchor=west]{Coil 1};
-        \draw (9,1.75) to (9,1.75)node[anchor=west]{Coil 2};
-        \draw (5,5.1) to (5,5.1)node[anchor=north]{DRV8825};
-    \end{circuitikz}
-    \caption{Gewöhnliche Beschaltung eines DRV8825}
+\draw (8,0.5) to (9, 0.5) to (9,0)node[rground]{};
+\draw (8.05,1) to [short,o-](8.5, 1);
+\draw [line width=1pt](8.4,1.1) to (8.6,0.9);
+\draw [line width=1pt](8.4,0.9) to (8.6,1.1);
+\draw (8,1.5) to [short,-o](9, 1.5);
+\draw (8,2) to [short,-o](9, 2);
+\draw (8,2.5) to [short,-o](9, 2.5);
+\draw (8,3) to [short,-o](9, 3);
+\draw (8,3.5) to (10.5, 3.5) to (11.5,3.5);
+\draw (11,3.5) to [short,*-](11,3.5)node[rground]{};
+\draw (8,4) to (10.5, 4) to (10.5,5) to (11.5,5) to [eC, l=$C1$](11.5,3.5);
+\draw (11,5) to [short,*-](11,5)node[vcc]{12V};
+\draw (9,2.75) to (9,2.75)node[anchor=west]{Coil 1};
+\draw (9,1.75) to (9,1.75)node[anchor=west]{Coil 2};
+\draw (5,5.1) to (5,5.1)node[anchor=north]{DRV8825};
+\end{circuitikz}
+\caption{Gewöhnliche Beschaltung eines DRV8825}
 \end{figure}
 
 \newpage
@@ -996,27 +1046,27 @@ Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersin
 In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt, um die gewünschte Mikroschrittauflösung zu erreichen.
 
 \begin{table}[h]
-    \centering
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        \textbf{M2} & \textbf{M1} & \textbf{M0} & \textbf{Schrittauflösung}    \\ \hline
-        0 & 0 & 0 & Vollschritt                  \\ \hline
-        0 & 0 & 1 & ½ Schritt                    \\ \hline
-        0 & 1 & 0 & ¼ Schritt                    \\ \hline
-        0 & 1 & 1 & 8 Mikroschritte pro Schritt  \\ \hline
-        1 & 0 & 0 & 16 Mikroschritte pro Schritt \\ \hline
-        1 & 0 & 1 & 32 Mikroschritte pro Schritt \\ \hline
-        1 & 1 & 0 & 32 Mikroschritte pro Schritt \\ \hline
-        1 & 1 & 1 & 32 Mikroschritte pro Schritt \\ \hline
-    \end{tabular}
-    \caption{1 signalisiert ein HIGH-Signal, 0 sein LOW-Signal}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{M2} & \textbf{M1} & \textbf{M0} & \textbf{Schrittauflösung}    \\ \hline
+0 & 0 & 0 & Vollschritt                  \\ \hline
+0 & 0 & 1 & ½ Schritt                    \\ \hline
+0 & 1 & 0 & ¼ Schritt                    \\ \hline
+0 & 1 & 1 & 8 Mikroschritte pro Schritt  \\ \hline
+1 & 0 & 0 & 16 Mikroschritte pro Schritt \\ \hline
+1 & 0 & 1 & 32 Mikroschritte pro Schritt \\ \hline
+1 & 1 & 0 & 32 Mikroschritte pro Schritt \\ \hline
+1 & 1 & 1 & 32 Mikroschritte pro Schritt \\ \hline
+\end{tabular}
+\caption{1 signalisiert ein HIGH-Signal, 0 sein LOW-Signal}
 \end{table}
 
 \subsubsection{Stromlimitierung}
 Um den durch die Motorwindungen fließenden Strom zu limitieren, kann dem Datenblatt des DRV8825 folgende Formel entnommen werden:
 
 \begin{equation}
-    I_{max} = \frac{V_{ref}} {5 \cdot R_{sense}}
+I_{max} = \frac{V_{ref}} {5 \cdot R_{sense}}
 \end{equation}
 
 Der von uns ausgewählte Schrittmotor 17HS19-2004S1 braucht laut dessen Datenblatt einen Strom von 2A .
@@ -1024,15 +1074,15 @@ Durch einige Tests und Messungen fanden wir jedoch heraus, dass 1.6A bei gewöhn
 Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung adaptiert werden.
 
 \begin{equation*}
-    V_{ref} = I_{max} \cdot 5 \cdot R_{sense}
+V_{ref} = I_{max} \cdot 5 \cdot R_{sense}
 \end{equation*}
 
 Der R\textsubscript{sense} kann dem Datenblatt entnommen werden.
 Beim DRV8825 beträgt der Wert 0.1 Ohm.
 
 \begin{align*}
-    V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
-    &= 0.8V
+V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
+&= 0.8V
 \end{align*}
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
 Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet, eingestellt werden.
@@ -1041,11 +1091,11 @@ Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treiberm
 Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden folgende Formeln benötigt:
 
 \begin{equation}
-    P_D = \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}}
+P_D = \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}}
 \end{equation}
 
 \begin{equation}
-    P_V = R_{DSon} \cdot I_{max}^2
+P_V = R_{DSon} \cdot I_{max}^2
 \end{equation}
 
 Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} ist ein Kühlkörper von Nöten. \\
@@ -1059,15 +1109,15 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 
 \textbf{Berechnung}
 \begin{flalign*}
-    P_V &= R_{DSon} \cdot I_{max}^2 &\\
-    &= 0,32\Omega \cdot 1.6A^2 &\\
-    &= 0.8192W
+P_V &= R_{DSon} \cdot I_{max}^2 &\\
+&= 0,32\Omega \cdot 1.6A^2 &\\
+&= 0.8192W
 \end{flalign*}
 
 \begin{flalign*}
-    P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} &\\
-    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
-    &= 3.1646W
+P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} &\\
+&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
+&= 3.1646W
 \end{flalign*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
@@ -1076,9 +1126,9 @@ Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwend
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
 \begin{flalign}
-    R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
-    &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag &\\
-    &= 106.07\frac{{}^{\circ}C}{W}  \notag
+R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
+&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag &\\
+&= 106.07\frac{{}^{\circ}C}{W}  \notag
 \end{flalign}
 
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
@@ -1091,17 +1141,17 @@ Der vom Mikrocontroller auf "HIGH" gesetzte Ausgang, wird bei einer Betätigung 
 Der Zustand dieses Ausgangs wird über das zugehörige PIN-Register vom Mikrocontroller eingelesen.
 So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen aufgetragen werden.
 \begin{figure}[hpt]
-    \centering
-    \begin{circuitikz}[european, scale = 0.7]
-        \draw (-1,7) to (0,7) to (0,6) to [short, -o](1,6);
-        \draw (1,5) to [short, o-](0,5) to (0,4.5);
-        \draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, led, l_=$D1$](0,0);
-        \draw (0,4.5) to [R, l_ = $R1$](0,2.5) to (0,2);
-        \draw (1,5.5) to (1,5.5)node[anchor=west]{Mikroschalter};
-        \draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
-        \draw (0,2) to (0,0) node[rground]{};
-    \end{circuitikz}
-    \caption{Erfassung der Schrittmotorposition}
+\centering
+\begin{circuitikz}[european, scale = 0.7]
+\draw (-1,7) to (0,7) to (0,6) to [short, -o](1,6);
+\draw (1,5) to [short, o-](0,5) to (0,4.5);
+\draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, led, l_=$D1$](0,0);
+\draw (0,4.5) to [R, l_ = $R1$](0,2.5) to (0,2);
+\draw (1,5.5) to (1,5.5)node[anchor=west]{Mikroschalter};
+\draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
+\draw (0,2) to (0,0) node[rground]{};
+\end{circuitikz}
+\caption{Erfassung der Schrittmotorposition}
 \end{figure}
 
 
@@ -1112,10 +1162,10 @@ einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer 
 
 \textbf{Datenblattwerte:}
 \begin{itemize}
-    \item Schaltabstand 1 bis 10mm, einstellbar durch Stellschraube
-    \item Betriebsspannung 6V-36V
-    \item Maximale Last 300mA
-    \item Ausgang realisiert durch einen NPN-Schließer
+\item Schaltabstand 1 bis 10mm, einstellbar durch Stellschraube
+\item Betriebsspannung 6V-36V
+\item Maximale Last 300mA
+\item Ausgang realisiert durch einen NPN-Schließer
 \end{itemize}
 
 In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt.
@@ -1125,29 +1175,29 @@ Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannung
 Hierzu verwenden wir folgende Formel:
 
 \begin{equation}
-    U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
+U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
 \end{equation}
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (4,0);
-        \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
-        \draw (4,3) to [R, l_=$R_2$, v^=$U_2$, *-] (4,0);
-        \draw (1,3) to[R, l=$R_1$, v_>=$U_1$](4,3) to [short, -o](6,3)node[anchor=west]{+};
-        \draw (4,0) to [short, *-o](6,0)node[anchor=west]{-};
-        \draw (4,0) to (4,0) node[rground]{};
-        \draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
-    \end{circuitikz}
-    \caption{Aufbau einer Spannungsteilers}
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+\draw (0,0) node[anchor=east] {-} to [short, o-*] (4,0);
+\draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
+\draw (4,3) to [R, l_=$R_2$, v^=$U_2$, *-] (4,0);
+\draw (1,3) to[R, l=$R_1$, v_>=$U_1$](4,3) to [short, -o](6,3)node[anchor=west]{+};
+\draw (4,0) to [short, *-o](6,0)node[anchor=west]{-};
+\draw (4,0) to (4,0) node[rground]{};
+\draw (0,2.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+\end{circuitikz}
+\caption{Aufbau einer Spannungsteilers}
 \end{figure}
 
 Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
 
 \begin{equation*}
-    R_1 = 5.1k\Omega, R_2 = 2k\Omega
+R_1 = 5.1k\Omega, R_2 = 2k\Omega
 \end{equation*}
 
 Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
@@ -1171,24 +1221,26 @@ Diese hat die Aufgabe, den MOSFET vor einer selbsterzeugenten, rückfließenden 
 
 
 \begin{figure}[hpt]
-    \centering
-    \begin{circuitikz}[european, scale = 0.8]
-        \draw (5,8)node[vcc]{+12V};
-        \draw (5,8) to (5,6.5) to [short, -o](6,6.5);
-        \draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
-        \draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
-        \draw (4,5) to (4,7);
-        \draw (6,6) to (6,6)node[anchor=west]{Hubmagnet};
-        \draw (5,3) to (5,0);
-        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
-        \draw (5,3)node[nfet, solderdot, bodydiode]{};
-        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
-        \draw (5,-0.5) to (5,-0.5) node[rground]{};
+\centering
+\begin{circuitikz}[european, scale = 1]
+\draw (5,8)node[vcc]{+12V};
+\draw (5,8) to (5,6.5) to [short, -o](6,6.5);
+\draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
+\draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
+\draw (4,5) to (4,7);
+\draw (6,6) to (6,6)node[anchor=west]{Hubmagnet};
+\draw (5,3) to (5,0);
+\draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
+\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
+\draw (5,3)node[nfet, solderdot, bodydiode]{};
+\draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+\draw (5,-0.5) to (5,-0.5) node[rground]{};
 
-    \end{circuitikz}
-    \caption{Ansteuerung der Hubmagneten}
+\end{circuitikz}
+\caption{Ansteuerung der Hubmagneten}
 \end{figure}
+
+\newpage
 
 \subsection{Ansteuerung der Pumpe und des Ventils}
 
@@ -1202,38 +1254,40 @@ Um jene am MOSFET anfallende, parasitäre Kapazitäten zu negieren, wurde der Wi
 Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer "Fly-Wheel-Diode" erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
 
 \begin{figure}[hpt]
-    \centering
-    \begin{circuitikz}[european, scale = 0.8]
-        % Pumpe
-        \draw (5,8)node[vcc]{+5V};
-        \draw (5,8) to (5,6.5) to [short, -o](6,6.5);
-        \draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
-        \draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
-        \draw (4,5) to (4,7);
-        \draw (6,6) to (6,6)node[anchor=west]{Pumpe};
-        \draw (5,3) to (5,0);
-        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
-        \draw (5,3)node[nfet, solderdot, bodydiode]{};
-        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
-        \draw (5,0) to (5,0) node[rground]{};
+\centering
+\begin{circuitikz}[european, scale = 0.8]
+% Pumpe
+\draw (5,8)node[vcc]{+5V};
+\draw (5,8) to (5,6.5) to [short, -o](6,6.5);
+\draw (6,5.5) to [short, o-](5,5.5) to (5,3.5);
+\draw (5,5) to [short, *-](4,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,7) to [short, -*](5,7);
+\draw (4,5) to (4,7);
+\draw (6,6) to (6,6)node[anchor=west]{Pumpe};
+\draw (5,3) to (5,0);
+\draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
+\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
+\draw (5,3)node[nfet, solderdot, bodydiode]{};
+\draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+\draw (5,0) to (5,0) node[rground]{};
 
-        % Ventil
-        \draw (15,8)node[vcc]{+5V};
-        \draw (15,8) to (15,6.5) to [short, -o](16,6.5);
-        \draw (16,5.5) to [short, o-](15,5.5) to (15,3.5);
-        \draw (15,5) to [short, *-](14,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](14,7) to [short, -*](15,7);
-        \draw (14,5) to (14,7);
-        \draw (16,6) to (16,6)node[anchor=west]{Ventil};
-        \draw (15,3) to (15,0);
-        \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
-        \draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,1) to [short,-*](15,1);
-        \draw (15,3)node[nfet, solderdot, bodydiode]{};
-        \draw (9,3) to (9,3)node[anchor=east]{SIG};
-        \draw (15,0) to (15,0) node[rground]{};
-    \end{circuitikz}
-    \caption{Ansteuerung der Pumpe und des Ventils}
+% Ventil
+\draw (15,8)node[vcc]{+5V};
+\draw (15,8) to (15,6.5) to [short, -o](16,6.5);
+\draw (16,5.5) to [short, o-](15,5.5) to (15,3.5);
+\draw (15,5) to [short, *-](14,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](14,7) to [short, -*](15,7);
+\draw (14,5) to (14,7);
+\draw (16,6) to (16,6)node[anchor=west]{Ventil};
+\draw (15,3) to (15,0);
+\draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
+\draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,1) to [short,-*](15,1);
+\draw (15,3)node[nfet, solderdot, bodydiode]{};
+\draw (9,3) to (9,3)node[anchor=east]{SIG};
+\draw (15,0) to (15,0) node[rground]{};
+\end{circuitikz}
+\caption{Ansteuerung der Pumpe und des Ventils}
 \end{figure}
+
+\newpage
 
 \subsection{Mini-USB Schnittstelle}
 
@@ -1244,99 +1298,101 @@ Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine ge
 Dieser Treiberbaustein ist wie folgend zu beschalten:
 
 \begin{figure}[ht]
-    \centering
-    \begin{circuitikz}[european, scale = 1.15]
+\centering
+\begin{circuitikz}[european, scale = 1.15]
 
-        %Mini-USB
-        \draw [line width=1.5pt](-1,1) to (-1,3.5) to (1,3.5) to (1,1) to (-1,1);
-        \draw (1,3) to (1.5,3) to [sD, l=$D1$](1.5,6) to (1.5,3);
-        \draw (1,2.5) to (1.5,2.5);
-        \draw (1,2) to (1.5,2);
-        \draw (1,1.5) to (1.5,1.5);
-        \draw (1,1.5) to (1,1.5)node[anchor=east]{ID};
-        \draw (1,2) to (1,2)node[anchor=east]{D-};
-        \draw (1,2.5) to (1,2.5)node[anchor=east]{D+};
-        \draw (1,3) to (1,3)node[anchor=east]{VBUS};
-        \draw (-0.6,1.5) to (-0.6,1.5)node[anchor=north]{SH};
-        \draw (0.1,1.5) to (0.1,1.5)node[anchor=north]{GND};
+%Mini-USB
+\draw [line width=1.5pt](-1,1) to (-1,3.5) to (1,3.5) to (1,1) to (-1,1);
+\draw (1,3) to (1.5,3) to [sD, l=$D1$](1.5,6) to (1.5,3);
+\draw (1,2.5) to (1.5,2.5);
+\draw (1,2) to (1.5,2);
+\draw (1,1.5) to (1.5,1.5);
+\draw (1,1.5) to (1,1.5)node[anchor=east]{ID};
+\draw (1,2) to (1,2)node[anchor=east]{D-};
+\draw (1,2.5) to (1,2.5)node[anchor=east]{D+};
+\draw (1,3) to (1,3)node[anchor=east]{VBUS};
+\draw (-0.6,1.5) to (-0.6,1.5)node[anchor=north]{SH};
+\draw (0.1,1.5) to (0.1,1.5)node[anchor=north]{GND};
 
-        %Unconnected Pins
-        \draw (1.6,1.6) to (1.4,1.4);
-        \draw (1.6,1.4) to (1.4,1.6);
-        \draw (4.4,3.4) to (4.6,3.6);
-        \draw (4.4,3.6) to (4.6,3.4);
+%Unconnected Pins
+\draw (1.6,1.6) to (1.4,1.4);
+\draw (1.6,1.4) to (1.4,1.6);
+\draw (4.4,3.4) to (4.6,3.6);
+\draw (4.4,3.6) to (4.6,3.4);
 
-        \draw (8.6,0.6) to (8.4,0.4);
-        \draw (8.4,0.6) to (8.6,0.4);
-        \draw (8.6,1.6) to (8.4,1.4);
-        \draw (8.4,1.6) to (8.6,1.4);
-        \draw (8.6,2.1) to (8.4,1.9);
-        \draw (8.4,2.1) to (8.6,1.9);
-        \draw (8.6,2.6) to (8.4,2.4);
-        \draw (8.4,2.6) to (8.6,2.4);
-        \draw (8.6,3.1) to (8.4,2.9);
-        \draw (8.4,3.1) to (8.6,2.9);
+\draw (8.6,0.6) to (8.4,0.4);
+\draw (8.4,0.6) to (8.6,0.4);
+\draw (8.6,1.6) to (8.4,1.4);
+\draw (8.4,1.6) to (8.6,1.4);
+\draw (8.6,2.1) to (8.4,1.9);
+\draw (8.4,2.1) to (8.6,1.9);
+\draw (8.6,2.6) to (8.4,2.4);
+\draw (8.4,2.6) to (8.6,2.4);
+\draw (8.6,3.1) to (8.4,2.9);
+\draw (8.4,3.1) to (8.6,2.9);
 
-        \draw (5,3.5) to (5,3.5)node[anchor=west]{RS232};
-        \draw (5, 2) to (1, 2);
-        \draw (5,2) to (5,2)node[anchor=west]{UD-};
-        \draw (5,2.5) to (1,2.5);
-        \draw (5,2.5) to (5,2.5)node[anchor=west]{UD+};
-        \draw (6,4.55) to (6,4.55)node[anchor=north]{V3};
-        \draw (7,4.55) to (7,4.55)node[anchor=north]{VCC};
-        \draw (8,4) to (8,4)node[anchor=east]{TXD};
-        \draw (8,3.5) to (8,3.5)node[anchor=east]{RXD};
-        \draw (8,3) to (8,3)node[anchor=east]{CTS};
-        \draw (8,2.5) to (8,2.5)node[anchor=east]{DSR};
-        \draw (8,2) to (8,2)node[anchor=east]{RT};
-        \draw (8,1.5) to (8,1.5)node[anchor=east]{DCD};
-        \draw (8,1) to (8,1)node[anchor=east]{DTR};
-        \draw (8,0.5) to (8,0.5)node[anchor=east]{RTS};
-
-
-        %USB to UART - Modul
-        \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
-        \draw (5, 0.5) to (4.5, 0.5) to (4.5,0) to (4,0) to [C](2.5,0);
-        \draw (5, 1) to (4.5, 1) to (4.5, 1.5) to (4,1.5) to [C](2.5,1.5) to (2,1.5) to (2,0) to [short,-*](2,0.75) to (1.5,0.75) to (1.5,0.25)node[rground]{};
-        \draw (4,1.5) to [PZ, l_=$Y1$, *-*](4,0);
-        \draw (2,0) to (2.5,0);
-        \draw (5,0.5) to (5,0.5)node[anchor=west]{XI};
-        \draw (5,1) to (5,1)node[anchor=west]{XO};
-        \draw (6.5,0.5) to (6.5,0.5)node[anchor=north]{GND};
-
-        \draw (5,3.5) to (4.5,3.5);
-        \draw (6,4.5) to (6,7) to (4.5,7) to [C, l_=$C1$](4.5,5.5) to (4.5,5.5) node[rground]{};;
-        \draw (7,4.5) to (7,7.5);
-        \draw (7,7 )to [short,*-](8.5,7) to [C, l_=$C2$](8.5,5.5)  to (8.5,5.5) node[rground]{};;;
-
-        \draw (8,0.5) to (8.5, 0.5);
-        \draw (8,1) to [short, -o](10, 1)node[anchor=west]{DTR-USB};
-        \draw (8,1.5) to (8.5, 1.5);
-        \draw (8,2) to (8.5, 2);
-        \draw (8,2.5) to (8.5, 2.5);
-        \draw (8,3) to (8.5, 3);
-        \draw (8,3.5) to [short, -o](10, 3.5)node[anchor=west]{RxD-USB};
-        \draw (9.5,3.5) to [R, l_=$R1$, *-](9.5,6.5) to (9.5,6.5)node[vcc]{+3.3V};
-        \draw (8,4) to [short, -o](10, 4)node[anchor=west]{TxD-USB};;
+\draw (5,3.5) to (5,3.5)node[anchor=west]{RS232};
+\draw (5, 2) to (1, 2);
+\draw (5,2) to (5,2)node[anchor=west]{UD-};
+\draw (5,2.5) to (1,2.5);
+\draw (5,2.5) to (5,2.5)node[anchor=west]{UD+};
+\draw (6,4.55) to (6,4.55)node[anchor=north]{V3};
+\draw (7,4.55) to (7,4.55)node[anchor=north]{VCC};
+\draw (8,4) to (8,4)node[anchor=east]{TXD};
+\draw (8,3.5) to (8,3.5)node[anchor=east]{RXD};
+\draw (8,3) to (8,3)node[anchor=east]{CTS};
+\draw (8,2.5) to (8,2.5)node[anchor=east]{DSR};
+\draw (8,2) to (8,2)node[anchor=east]{RT};
+\draw (8,1.5) to (8,1.5)node[anchor=east]{DCD};
+\draw (8,1) to (8,1)node[anchor=east]{DTR};
+\draw (8,0.5) to (8,0.5)node[anchor=east]{RTS};
 
 
-        %Beschriftungen
-        \draw (5,5) to (5,5)node[anchor=north]{CH340G};
-        \draw (2.8,0) to (2.8,0)node[anchor=north]{C4};
-        \draw (2.8,1.5) to (2.8,1.5)node[anchor=north]{C3};
-        \draw (-0.25,4) to (-0.25,4)node[anchor=north]{Mini-USB};
-        \draw (1.5,6)node[vcc]{+5V};
-        \draw (7,7.5)node[vcc]{+3.3V};
-        \draw (-0.5,1) to (-0.5,0.5) node[rground]{};
-        \draw (6.5,0) to (6.5,-0.5) node[rground]{};
-        \draw (0,1) to (0,0.5) to [short, -*](-0.5,0.5);
-    \end{circuitikz}
-    \caption{Beschaltung des Mini USB Treibers}
+%USB to UART - Modul
+\draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
+\draw (5, 0.5) to (4.5, 0.5) to (4.5,0) to (4,0) to [C](2.5,0);
+\draw (5, 1) to (4.5, 1) to (4.5, 1.5) to (4,1.5) to [C](2.5,1.5) to (2,1.5) to (2,0) to [short,-*](2,0.75) to (1.5,0.75) to (1.5,0.25)node[rground]{};
+\draw (4,1.5) to [PZ, l_=$Y1$, *-*](4,0);
+\draw (2,0) to (2.5,0);
+\draw (5,0.5) to (5,0.5)node[anchor=west]{XI};
+\draw (5,1) to (5,1)node[anchor=west]{XO};
+\draw (6.5,0.5) to (6.5,0.5)node[anchor=north]{GND};
+
+\draw (5,3.5) to (4.5,3.5);
+\draw (6,4.5) to (6,7) to (4.5,7) to [C, l_=$C1$](4.5,5.5) to (4.5,5.5) node[rground]{};;
+\draw (7,4.5) to (7,7.5);
+\draw (7,7 )to [short,*-](8.5,7) to [C, l_=$C2$](8.5,5.5)  to (8.5,5.5) node[rground]{};;;
+
+\draw (8,0.5) to (8.5, 0.5);
+\draw (8,1) to [short, -o](10, 1)node[anchor=west]{DTR-USB};
+\draw (8,1.5) to (8.5, 1.5);
+\draw (8,2) to (8.5, 2);
+\draw (8,2.5) to (8.5, 2.5);
+\draw (8,3) to (8.5, 3);
+\draw (8,3.5) to [short, -o](10, 3.5)node[anchor=west]{RxD-USB};
+\draw (9.5,3.5) to [R, l_=$R1$, *-](9.5,6.5) to (9.5,6.5)node[vcc]{+3.3V};
+\draw (8,4) to [short, -o](10, 4)node[anchor=west]{TxD-USB};;
+
+
+%Beschriftungen
+\draw (5,5) to (5,5)node[anchor=north]{CH340G};
+\draw (2.8,0) to (2.8,0)node[anchor=north]{C4};
+\draw (2.8,1.5) to (2.8,1.5)node[anchor=north]{C3};
+\draw (-0.25,4) to (-0.25,4)node[anchor=north]{Mini-USB};
+\draw (1.5,6)node[vcc]{+5V};
+\draw (7,7.5)node[vcc]{+3.3V};
+\draw (-0.5,1) to (-0.5,0.5) node[rground]{};
+\draw (6.5,0) to (6.5,-0.5) node[rground]{};
+\draw (0,1) to (0,0.5) to [short, -*](-0.5,0.5);
+\end{circuitikz}
+\caption{Beschaltung des Mini USB Treibers}
 \end{figure}
 
 Neben der vorgeschriebenen Beschaltung wurde zusätzlich die Schottkydiode D1 und ein Pull-Up Widerstand am RXD-Pin implementiert.
 Die Schottkydiode hat die Aufgabe eine Rückspeisung von 5V zum eingesteckten Gerät zu verhindern.
 Der Pull-Up Widerstand fungiert als Prevention einer floatenden Leitung.
+
+\newpage
 
 \subsection{Spannungspegelüberwachung}
 
@@ -1355,28 +1411,28 @@ Die benötigte Spannung, um ein Leuchten der LED zu geährleisten, steigt somit 
 An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie geschaltet, welche ab einer Spannung von 2.2V leuchtet.
 
 \begin{figure}[htp]
-    \centering
-    \begin{circuitikz}[european, scale = 0.8]
-        \draw (1,9)node[vcc]{+3.3V};
-        \draw (1,5) to [R, l_=$R_1$](1,3){};
-        \draw (1,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D1$](1,1);
-        \draw (1,3) to (1,0) node[rground]{};
-        \draw (3,9)node[vcc]{+5V};
-        \draw (3,9) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_2$](3,7){};
-        \draw (3,7) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_3$](3,5){};
-        \draw (3,5) to [R, l_=$R_2$](3,3){};
-        \draw (3,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D4$](3,1);
-        \draw (3,3) to (3,0) node[rground]{};
-        \draw (5,9)node[vcc]{+12V};
-        \draw (5,5) to [/tikz/circuitikz/bipoles/length=1.1cm, zDo, l=$D_5$](5,7);
-        \draw (5,5) to [R, l_=$R_3$](5,3){};
-        \draw (5,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D6$](5,1);
-        \draw (5,3) to (5,0) node[rground]{};
-        \draw (3,5) to (3,9);
-        \draw (1,5) to (1,9);
-        \draw (5,5) to (5,9);
-    \end{circuitikz}
-    \caption{Realisierung der Leuchtdioden}
+\centering
+\begin{circuitikz}[european, scale = 0.8]
+\draw (1,9)node[vcc]{+3.3V};
+\draw (1,5) to [R, l_=$R_1$](1,3){};
+\draw (1,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D1$](1,1);
+\draw (1,3) to (1,0) node[rground]{};
+\draw (3,9)node[vcc]{+5V};
+\draw (3,9) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_2$](3,7){};
+\draw (3,7) to [/tikz/circuitikz/bipoles/length=1.1cm, D, l_=$D_3$](3,5){};
+\draw (3,5) to [R, l_=$R_2$](3,3){};
+\draw (3,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D4$](3,1);
+\draw (3,3) to (3,0) node[rground]{};
+\draw (5,9)node[vcc]{+12V};
+\draw (5,5) to [/tikz/circuitikz/bipoles/length=1.1cm, zDo, l=$D_5$](5,7);
+\draw (5,5) to [R, l_=$R_3$](5,3){};
+\draw (5,3) to [/tikz/circuitikz/bipoles/length=1.1cm, led, l_=$D6$](5,1);
+\draw (5,3) to (5,0) node[rground]{};
+\draw (3,5) to (3,9);
+\draw (1,5) to (1,9);
+\draw (5,5) to (5,9);
+\end{circuitikz}
+\caption{Realisierung der Leuchtdioden}
 \end{figure}
 
 \subsection{Netzteil}
@@ -1389,6 +1445,8 @@ Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu k�
 
 \newpage
 \section{Auswahl der Bauteile}
+
+
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -1411,28 +1469,28 @@ Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
 \begin{itemize}
-    \item Zuallererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
-    Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
-    Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
-    Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
+\item Zuallererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
+Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
+Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
+Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
 
-    \item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine unter Vakuuum zu belichten. \\
+\item Zunächst ist die Leiterplatte mithilfe der angefertigten Tasche eine Minute lang in der Belichtungsmaschine unter Vakuuum zu belichten. \\
 
-    \item Die beleuchtete Leiterplatte ist anschließend eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
+\item Die beleuchtete Leiterplatte ist anschließend eine Minute lang in ein Natriumhydroxid-Bad zu begeben, um sie zu entwickeln. \\
 
-    \item Folgend ist sie mit heißem Wasser abzuspülen und in ein Natriumpersulfat-Bad zu geben.
-    Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
-    In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
+\item Folgend ist sie mit heißem Wasser abzuspülen und in ein Natriumpersulfat-Bad zu geben.
+Die Zeitdauer des Verweilens variiert je nach Belastung des Ätzbades.
+In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
-    \item Anschließend ist die Leiterplatte mit heißem Wasser abzuspülen und mit Azeton zu reinigen. \\
+\item Anschließend ist die Leiterplatte mit heißem Wasser abzuspülen und mit Azeton zu reinigen. \\
 
-    \item Als nächsten Schritt ist sie für einige Minuten in ein Zinnbad zu legen. \\
+\item Als nächsten Schritt ist sie für einige Minuten in ein Zinnbad zu legen. \\
 
-    \item Nun kann die Leiterplatte ein letztes Mal mit heißem Wasser gereinigt und mit Fluxclean gereinigt werden.
+\item Nun kann die Leiterplatte ein letztes Mal mit heißem Wasser gereinigt und mit Fluxclean gereinigt werden.
 
-    \item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
+\item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
 
-    \item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
+\item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
 \subsubsection{Professionelle Fertigung}
