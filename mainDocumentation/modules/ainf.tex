@@ -3,29 +3,35 @@
 
 \lohead{Vollmaier Alois}
 
+
 \chapter{Informatik}\label{ch:informatik}
+
+
 \section{Allgemeines}\label{sec:einleitung}
-Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt. Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst. Die Aufteilung dieses XX seitigen Kaptiels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
+Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
+Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
+
 
 \section{Zeitplan}\label{sec:zeitplan}
 
 \begin{figure}[hbt!]
     \centering
     \scalebox{0.57}{
-    \begin{ganttchart}[
-    hgrid style/.style={black, dotted},
-    calendar week text={\currentweek},
-    vgrid={*6{white, dotted}, *1{black, dashed}},
-    x unit=1mm,
-    group label font=\bfseries \Large,
-    y unit chart=9mm,
-    y unit title=12mm,
-    time slot format=isodate,
-    time slot unit=year
-    link/.style={->, thick}
-    ]{2019-09-2}{2020-03-15}
+        \begin{ganttchart}[
+            hgrid style/.style={black, dotted},
+            calendar week text={\currentweek},
+            vgrid={*6{white, dotted}, *1{black, dashed}},
+            x unit=1mm,
+            group label font=\bfseries \Large,
+            y unit chart=9mm,
+            y unit title=12mm,
+            time slot format=isodate,
+            time slot unit=year
+            link/.style={->, thick}
+        ]{2019-09-2}{2020-03-15}
         \gantttitlecalendar{year, month=name, week}\\
 
         \ganttgroup[
@@ -109,7 +115,7 @@ Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusa
 \end{figure}
 \newpage
 Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
-Um das Zeitfenster der Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
+Um das Zeitfenster des Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
 \begin{enumerate}
     \item xx.xx.xxxx - Aufgabe XX
     \item xx.xx.xxxx - Aufgabe XX
@@ -132,9 +138,10 @@ Die Möglichkeiten des Benutzers, die Maschine zu bedienen sollen folgende Kernp
 
 Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden.
 Grundsätzlich steht die sogenannte \textbf{User Experience}, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt, sowie die \textbf{Funktionalität} bei der Programmierung im Vordergrund.
-Um dies zu gewährleisten sollte eine Voruntersuchung vollzogen werden.
+Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
+
 \subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
-Wie in der Einleitung bereits erwähnt besteht das Backend aus Aufgaben welche im Hintergrund abgearbeitet werden.
+Wie in der Einleitung bereits erwähnt besteht das Backend aus Tätigkeiten, welche im Hintergrund abgearbeitet werden.
 Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.
 
 Auch wird im Hintergrund eine sogenannte LOG-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert.
@@ -263,7 +270,7 @@ Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen 
     \end{center}
     \caption{Projektstruktur}
 \end{figure}\\
-Der Kopf dieser Struktur ist der Ordner mit dem Namen des Projekts.
+Der Kopf dieser Struktur beschreibt den Ordner mit dem Namen des Projekts.
 Dieser wird auch \lstinline{root-directory} genannt, und ist selbst kein Package.
 Auch die Trennung von Sourcecode und externen Dateien spielt eine wesentliche Rolle.
 Dadurch erfolgt darunter die Aufteilung in die Ordner \lstinline{src}, \lstinline{lib}, \lstinline{config}.
@@ -275,12 +282,14 @@ Diese benennen sich in unserem Fall \lstinline{data}, \lstinline{exception}, \ls
 \\\\
 \textbf{Bibliotheken}
 \\
-Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammtelt werden.
+Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammelt werden.
 Dabei erleichtert diese Verzeichnishirachie die übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
 \\\\
 \textbf{Konfigurationsdateien}
 \\
-In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen. Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
+In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen.
+Dort können Textresourcen für Sprachvarianten und Konfigurationsdateien für etwaige Aufgaben abgelegt werden.
+
 \subsubsection{Projektstruktur für Maven und Gradle}
 Das zuvor genannte Layout der Projekthrachie eignet sich gut für viele Projekte.
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.
@@ -312,9 +321,6 @@ Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline
 Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
 Implementiert wird dies durch eine weitere statische Methode namens \lstinline{getInstance()}.
 Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
-
-
-
 \subsubsection{Beispiel}
 Der nachfolgende Code zeigt, wie Singelton angewendet werden kann.
 
@@ -334,53 +340,11 @@ Im Kern herrscht jedoch immer das selbe Prinzip:
     \caption{UML-Diagramm Command}
 \end{figure}
 \subsubsection{Beispiel}
-
-% @formatter:on
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Java Code]
-
-    public class Config {
-
-    private static final Logger LOG = Logger.getLogger(Config.class.getName());
-    private static Config instance;
-
-
-    public static Config getInstance () {
-    if (instance == null) {
-    throw new IllegalStateException("Instance not created yet");
-    }
-    return instance;
-    }
-
-
-    public static Config createInstance (String configPath) {
-    if (instance != null) {
-    throw new IllegalStateException("Instance already created");
-    }
-    else {
-    instance = new Config(configPath);
-    }
-    return instance;
-    }
-
-    // *************************************************************************
-    private final File configFile;
-    private ConfigModel configModel;
-
-
-    private Config (String configPath) {
-    configFile = new File(configPath);
-    readConfig();
-    }
-
-    public void save () {
-    writeConfig();
-    }
-    }
-\end{lstlisting}
-% @formatter:off
 \subsection{Entwurfsmuster MVC}\label{subsec:entwurfsmuster-mvc}
+
 \subsubsection{Beschreibung}
-Das MVC-Design Pattern, auch Model-View-Controller Design Pattern ist eines der weit verbreiteste Design Patterns. Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt von einander getrennt sind.
+Das MVC-Design Pattern, auch Model-View-Controller Design-Pattern ist eines der weit verbreitesten Design-Patterns.
+Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt voneinander getrennt sind.
 Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
 \newpage
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -403,31 +367,44 @@ Datenrepräsentation\\
 Ist von der Benutzerschnittstelle komplett abgeschirmt
 \end{enumerate}
 \vspace{20pt}
+
 \subsubsection{Beispiel}
-Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im folgenden ein Beispiel dargestellt. Ziel des Programms ist es, einen Wert mithilfe eines Buttons hochzuzählen und auf einem Label im View anzeigen zu lassen.
+Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im Folgenden ein Beispiel dargestellt.
+Ziel des Programms ist es, einen Wert mithilfe eines Buttons hoch zuzählen und auf einem Label im View anzeigen zu lassen.
 Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht werden.
 \begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Hauptprogramm]
 public class Main extends Application {
-@Override
-public void start(Stage stage) throws Exception {
-Model model = new Model();
-View view = new View(model, stage);
-Controller controller = new Controller(model, view);
-}
-public static void main(String[] args) {
-launch(args);
-}
+    @Override
+    public void start(Stage stage) throws Exception {
+        Model model = new Model();
+        View view = new View(model, stage);
+        Controller controller = new Controller(model, view);
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
 \end{lstlisting}
+
 \subsection{SceneBuilder}\label{subsec:scenebuilder}
+
 \subsubsection{Beschreibung}
+SceneBuilder ist ein Tool, mit diesem man
+
 \subsubsection{Bibliothek JFoenix}
+
 \subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
+
 \subsubsection{XML}
+
 \subsubsection{FXML}
+
 \subsubsection{CSS}
+
 \subsection{Datenformat JSON}\label{subsec:json}
+
 \subsubsection{Beschreibung}
+
 \subsubsection{Bibliothek GSON}
 
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
