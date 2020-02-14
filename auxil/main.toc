@@ -1,0 +1,406 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {ngerman}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Mechanik}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Einleitung}{1}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Anforderung}{1}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Problemstellungen}{1}{section.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.4}Konzepte}{1}{section.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.1}Anforderungen}{1}{subsection.1.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.2}Variantenvergleich}{2}{subsection.1.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.4.2.1}Variante 1 - Linearachsen}{2}{subsubsection.1.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.4.2.2}Variante 2 - Lagerrad mit Asugaberäder}{3}{subsubsection.1.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {1.4.2.3}Variante 3 - Lagerrad mit Saugnäpfe}{5}{subsubsection.1.4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.3}Ausgaberäder}{6}{subsection.1.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.4}Klemmmechanissmen}{7}{subsection.1.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.5}Seperation der Karten}{9}{subsection.1.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.6}Saugmechanismus}{13}{subsection.1.4.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.4.7}Endauswahl der Varianten}{15}{subsection.1.4.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.5}Konstruktion}{16}{section.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.1}Konstruktion des Lagerrades}{16}{subsection.1.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.2}Konstruktion der Kartenhalterung}{18}{subsection.1.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.3}Konstruktion der Kartenentnahme}{18}{subsection.1.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.4}Konstruktion der Endschalterhalterung}{18}{subsection.1.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.5}Konstruktion des Gehäuses}{18}{subsection.1.5.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.6}Berechnungen und Dimensionierungen}{18}{section.1.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.7}Teilaufbau}{18}{section.1.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.8}Analyse}{18}{section.1.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Elektronik}{19}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Anforderungen}{19}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Zeitplan}{19}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Variantenvergleiche und Konzeptionierungen}{20}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Mikrocontroller}{20}{subsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.1}ATmega162}{20}{subsubsection.2.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.2}ATmega324P}{20}{subsubsection.2.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.3}ATmega128}{20}{subsubsection.2.2.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1.4}Mikrocontroller-Auswahl}{20}{subsubsection.2.2.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Schrittmotor-Ansteuerung}{21}{subsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.1}DIY-H-Brücke}{21}{subsubsection.2.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.2}Schrittmotor-Treibermodule}{23}{subsubsection.2.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.3}A4988}{24}{subsubsection.2.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.4}DRV8825}{24}{subsubsection.2.2.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.5}TB6600}{24}{subsubsection.2.2.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.6}Treiber-Auswahl}{25}{subsubsection.2.2.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}Detektion der Kartenposition}{25}{subsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.1}Kapazitive Sensoren}{25}{subsubsection.2.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.2}Ultraschall-Sensoren}{26}{subsubsection.2.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.3}Optische Sensoren}{26}{subsubsection.2.2.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3.4}Sensoren-Auswahl}{26}{subsubsection.2.2.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}Erfassung der Position des Motors}{27}{subsection.2.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.1}Endschalter}{27}{subsubsection.2.2.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.2}Lichtschranke}{27}{subsubsection.2.2.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4.3}Varianten-Auswahl}{27}{subsubsection.2.2.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.5}Spannungsversorgung}{27}{subsection.2.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.1}Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}{27}{subsubsection.2.2.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.2}Schaltnetzteil und Schaltregler}{27}{subsubsection.2.2.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.3}Schaltnetzteil und Festspannungsregler}{28}{subsubsection.2.2.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.4}Auswahl der Spannungsversorgung}{28}{subsubsection.2.2.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.6}Blockschaltbild der gesamten Elektronik}{29}{subsection.2.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Schaltplan}{30}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Verpolungsschutz}{30}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.1}Verpolungsschutz mit einer Diode}{30}{subsubsection.2.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.2}Verpolungsschutz mit einer Sicherung und einer Diode}{30}{subsubsection.2.3.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.1.3}Verpolungsschutz mithilfe eines P-Kanal MOSFET}{31}{subsubsection.2.3.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Soft-Latching-Circuit}{32}{subsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.2.1}Realisierte Variante mit einzelnem Taster zum Ein- und Ausschalten}{32}{subsubsection.2.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.2.2}Andere Variante}{33}{subsubsection.2.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}DC/DC Wandler}{34}{subsection.2.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.3.1}Beschaltung}{34}{subsubsection.2.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.3.2}Kühlkörperberechnung}{34}{subsubsection.2.3.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.4}Raspberry Pi 3B+}{35}{subsection.2.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.4.1}Watchdog}{35}{subsubsection.2.3.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.5}Beschaltung des ATmega324P}{36}{subsection.2.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.6}DRV8825-Schrittmotortreiber}{36}{subsection.2.3.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.1}Datenblattwerte}{36}{subsubsection.2.3.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.2}Beschaltung}{37}{subsubsection.2.3.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.3}Beschaltungs- und Anschlussfunktionen}{37}{subsubsection.2.3.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.4}Schrittauflösung}{38}{subsubsection.2.3.6.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.5}Stromlimitierung}{38}{subsubsection.2.3.6.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.6.6}Kühlkörperberechnung}{39}{subsubsection.2.3.6.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.7}Erfassung der Motorposition}{40}{subsection.2.3.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.8}Kapazitive Sensoren}{41}{subsection.2.3.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.9}Ansteuerung der Hubmagneten}{42}{subsection.2.3.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.3.9.1}Funktion}{42}{subsubsection.2.3.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.10}Mini-USB Schnittstelle}{43}{subsection.2.3.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.11}Spannungspegelüberwachung}{43}{subsection.2.3.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.12}Netzteil}{44}{subsection.2.3.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Auswahl der Bauteile}{45}{section.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Leiterplattendesign}{46}{section.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}Leiterplattenfertigung}{46}{subsection.2.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.1.1}Prototyping}{46}{subsubsection.2.5.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.5.1.2}Professionelle Fertigung}{47}{subsubsection.2.5.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.6}Resümee und Aussichten für die Zukunft}{48}{section.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Informatik}{49}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Allgemeines}{49}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Zeitplan}{49}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Anforderungen und Ziele}{50}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Fronted-Programmierung}{50}{subsection.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Backend-Programmierung}{50}{subsection.3.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Hardwarenahe-Programmierung}{51}{subsection.3.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Projektspezifische Voruntersuchung}{51}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Auswahl der Arbeitsumgebung}{51}{subsection.3.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.1.1}Apache-Netbeans}{52}{subsubsection.3.4.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.1.2}Intellij IDEA}{52}{subsubsection.3.4.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.1.3}Fazit}{52}{subsubsection.3.4.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.2}Auswahl des GUI-Toolkits}{52}{subsection.3.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.2.1}Swing}{52}{subsubsection.3.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.2.2}JavaFX}{53}{subsubsection.3.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.2.3}Fazit}{53}{subsubsection.3.4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.3}Projektorganisation}{53}{subsection.3.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.3.1}Projektstruktur in Netbeans}{53}{subsubsection.3.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.4.3.2}Projektstruktur für Maven und Gradle}{54}{subsubsection.3.4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Grundlagen}{55}{section.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.1}Entwurfsmuster Singelton}{55}{subsection.3.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.1.1}Beschreibung}{55}{subsubsection.3.5.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.1.2}Struktur}{55}{subsubsection.3.5.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.1.3}Beispiel}{55}{subsubsection.3.5.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.2}Verhaltensmuster Command}{56}{subsection.3.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.2.1}Beschreibung}{56}{subsubsection.3.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.2.2}Struktur}{56}{subsubsection.3.5.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.2.3}Beispiel}{56}{subsubsection.3.5.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.3}Entwurfsmuster MVC}{57}{subsection.3.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.3.1}Beschreibung}{57}{subsubsection.3.5.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.3.2}Beispiel}{58}{subsubsection.3.5.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.4}SceneBuilder}{59}{subsection.3.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.4.1}Beschreibung}{59}{subsubsection.3.5.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.4.2}Bibliothek JFoenix}{59}{subsubsection.3.5.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.5}Datenformate in Java-FX}{59}{subsection.3.5.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.5.1}XML}{59}{subsubsection.3.5.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.5.2}FXML}{59}{subsubsection.3.5.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.5.3}CSS}{59}{subsubsection.3.5.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.6}Datenformat JSON}{59}{subsection.3.5.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.6.1}Beschreibung}{59}{subsubsection.3.5.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.5.6.2}Bibliothek GSON}{59}{subsubsection.3.5.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Backend-Programmierung}{59}{section.3.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.1}Kommunikation - serielle Schnittstelle}{59}{subsection.3.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.1.1}Konzept}{59}{subsubsection.3.6.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.1.2}Übertragungsprotokoll}{60}{subsubsection.3.6.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.1.3}Request- und Responsehandling}{62}{subsubsection.3.6.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.2}Kommunikation - Debugging-Simulator}{62}{subsection.3.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.2.1}Konzept}{62}{subsubsection.3.6.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.2.2}Datenaustausch}{62}{subsubsection.3.6.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.2.3}Verarbeitung ankommender Daten}{62}{subsubsection.3.6.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.3}Logging}{62}{subsection.3.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.3.1}Konzept}{62}{subsubsection.3.6.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.3.2}Integration in das Programm}{62}{subsubsection.3.6.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.4}Konfiguration}{62}{subsection.3.6.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.4.1}Konzept}{62}{subsubsection.3.6.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.4.2}Datenmodelle}{62}{subsubsection.3.6.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.4.3}Verwahrung am Zielsystem}{62}{subsubsection.3.6.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.5}Statistiken}{62}{subsection.3.6.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.5.1}Konzept}{62}{subsubsection.3.6.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.5.2}Datenmodelle}{62}{subsubsection.3.6.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.5.3}Verwahrung am Zielsystem}{62}{subsubsection.3.6.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.6}Controllerklassen}{62}{subsection.3.6.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.1}Grundlagen}{62}{subsubsection.3.6.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.2}StartupController}{62}{subsubsection.3.6.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.3}MainController}{62}{subsubsection.3.6.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.4}HomeController}{62}{subsubsection.3.6.6.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.5}StatsController}{62}{subsubsection.3.6.6.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.6.6.6}About- und HelpController}{62}{subsubsection.3.6.6.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.7}Frontend-Programmierung}{62}{section.3.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.1}Designkonzept}{62}{subsection.3.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.2}Utility Klassen}{65}{subsection.3.7.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.2.1}AlertUtil}{65}{subsubsection.3.7.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.2.2}GuiUtil}{65}{subsubsection.3.7.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.3}Implementierung von CSS}{65}{subsection.3.7.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.3.1}StartupCSS}{65}{subsubsection.3.7.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.3.2}HomeCSS}{65}{subsubsection.3.7.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.7.4}Internationalisierung}{65}{subsection.3.7.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.4.1}Gründe der Umsetzung}{65}{subsubsection.3.7.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.4.2}Integration in das Interface}{65}{subsubsection.3.7.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.4.3}Ressourcen Manager}{65}{subsubsection.3.7.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.4.4}Resource Utility}{65}{subsubsection.3.7.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.7.4.5}Bereitgestellte Ressources Bundles}{65}{subsubsection.3.7.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.8}Hardwarenahe-Programmierung}{65}{section.3.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.8.1}Einrichtung des Mikrocontrollers}{65}{subsection.3.8.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.8.2}Konzept und Ablaufdiagramm zur Kartenausgabe}{65}{subsection.3.8.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.8.3}Request- und Responsehandling}{65}{subsection.3.8.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.9}Teilaufbau}{65}{section.3.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.9.1}Auswahl des Zielsystems}{65}{subsection.3.9.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.1.1}Arduino}{65}{subsubsection.3.9.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.1.2}Raspberry PI}{65}{subsubsection.3.9.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.9.2}Auswahl des Displays}{65}{subsection.3.9.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.9.3}Montage und Testaufbau}{65}{subsection.3.9.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.9.4}Konfiguration des Zielsytsems}{65}{subsection.3.9.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.4.1}Betriebssystem}{65}{subsubsection.3.9.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.4.2}Speichermedium}{65}{subsubsection.3.9.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.4.3}Touchpanel}{65}{subsubsection.3.9.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.4.4}SSH und SFTP}{65}{subsubsection.3.9.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.9.4.5}Autostart realisiert durch Services}{65}{subsubsection.3.9.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.10}Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}{65}{section.3.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.10.1}Probleme}{65}{subsection.3.10.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.10.1.1}Probleme bei der Implementierung von JavaFX}{65}{subsubsection.3.10.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.10.1.2}Kommunikation zwischen Controllern}{65}{subsubsection.3.10.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.10.2}Verbesserungsmöglichkeiten}{65}{subsection.3.10.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.10.2.1}Online Update-Möglichkeit der Software}{65}{subsubsection.3.10.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.10.2.2}Smartphone-Interface zum Zählen der Punkte}{65}{subsubsection.3.10.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.10.3}Zusammenfassung}{65}{subsection.3.10.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Gesamtsystemtests}{67}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Zeitaufzeichnung}{71}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Persönlicher Anhang 1}{73}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Abkürzungsverzeichnis}{75}{appendix.C}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Abbildungsverzeichnis}{77}{appendix.D}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {E}Tabellenverzeichnis}{79}{appendix.E}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {F}Listings}{81}{appendix.F}%

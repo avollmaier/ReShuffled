@@ -411,6 +411,55 @@ erhöht oder vermindert.
     \item Gummi wird spröde
 \end{itemize}
 
+\subsection{Saugmechanismus}
+
+Da bei der 3. Variante, Lagerrad mit Saugnäpfe, Saugnäpfe zum Einsatz kommen, muss entschieden werden, welche Saugnäpfe angewand werden.
+
+\begin{itemize}
+    \item \textbf{einfacher unterdruck Saugnapf}
+\end{itemize}
+Die erste Möglichkeit wäre einen einfachen Saugnnapf zu nehemen, der durch anpressen an einer Oberfläche einen Unterdruck erzeugt und somit Haftet. Ein Vorteil dieses Saugnapfes ist es, das es kostengünstig ist und keine weiteren Bauteile benötigt, sowie die
+unkomplizierte Befestigung an dem Hubmagneten über ein Gewinde.
+Jedoch muss dieser Saugnapf mit einer gewissen Kraft auf das Kartendeck gepresst werden, um einen Unterdruck erzeugen zu können, die kann dazu führen, dass die Karten untereinander auch ein Vakuum erzeugen und somit mehr als eine Karte vom Saugnapf
+hochgehoben wird. Ein weiterer Nachteil wäre, das die Karte nicht steuerbar abwerfbar ist, da sie erst abfällt, wenn der Unterdruck verschwindet, dies kann zu unerwarteteten Wartezeiten führen. Wenn der Ansaugdruck durch den Hubagneten nicht erreicht wird, kann
+es auch dazu führen, dass keine Karte angesaugt wird, dies kann die Wartezeiten wiederum verlängern und somit den Spielablauf stören.
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item Billig
+    \item unkomplizierter Einbau
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item unzuverlässig
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{vakuum Saugnapf}
+\end{itemize}
+Eine andere Möglichkeit wäre ein vakuum Saugnapf, dieser erzeugt seinen Unterdruck über eine Vakuumpumpe und kann somit gesteuert werden. Der Vorteil dieses Saugnapfes ist es, das die Karten zu einer gewünschten Zeit abgeworfen werden können, da man den
+Unterdruck des Saugnapfes durch die Pumpe steuern kann. Ein anderer Vorteil ist, dass der Hubmagnet keine hohe Kraft aufweisen muss, da der Saugnapf nicht mehr auf die Karten aufpressen muss, dies würde auch das Problem das mehrere Karten auf einmal
+aufgehoben werden lösen. Der Nachteil dieser Möglichkeit wäre jedoch der erhöte Preis des Saugnapfes sowie die zusätzlichen Bauteile, wie zum Beispiel die Pumpe und die Valve. Außerdem ist der Einbau des Saugnapfes etwas komlizierter, da ein Luftdruckschlauch
+zum Saugnapf geführt werden muss.
+
+\textbf{Vorteile:}
+\begin{itemize}
+    \item Zuverlässig
+    \item Unterdruck ist kontrollierbar
+\end{itemize}
+\textbf{Nachteile:}
+\begin{itemize}
+    \item mehr Bauteile
+    \item teuer
+    \item komplizierter Einbau
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Vergleich der Saunäpfe}
+\end{itemize}
+
+Beide Saugnäpfe würden ihre idividuelle Vorteile besitzen. Da wir zum einen ein begrenztes Budget habe wäre der einfache unterdruck Saugnapf für uns attrektiv, zum anderen wäre der vakuum Saugnapf druch seine zuerlässigkeit vom Vorteil.
+Da der ausgewählt Hubmagnet jedoch nicht in der Lage ist den erforderlichen Ansaugdruck zu erreichen, und das kontrollierte abwerfen der Karten massgeblich für ie Funktion der Maschine ist, fällt unsere Auswahl auf den \textbf{vakuum Saugnapf}.
 \subsection{Endauswahl der Varianten}
 
 \textbf{\large{Gegenüberstellung der Varianten}}
@@ -465,8 +514,22 @@ Auch in der oben gezeigten Grafik wurde die Außenwand entfernt um das Bauteil b
 mit einem Stecksystem verbunden sind. Im inneren befinden sich 3 Trennplatten die mit einem Stecksystem mit der Außenplatte verbunden sind. Diese zweite Version des Lagerrades wurde für die produktion durch einen 3D Drucker
 entworfen, das Stecksystem für die einzelnen Bauteile wurde aus dem Grund angewendet, da es eine stärkere Verbindung als kleben aufweist und das 3D drcuken des gesamten Lagerrades eine zu hohe Materialverschwendung aufweisen würde.
 
-\subsection{Konstruktion der Kartenhalterung}
+Die Außenwände wurden mit jeweils 2 Laschen außen versehen, diese sollen mit den dazupassenden einkerbungen in den Seitenplatten versteckt werden, außerdem besitzen sie jeweils 3 längsöffnungen in einem gleichmäßigen Abstand auf der Oberfläche,
+diese werden mit den Laschen der Trennplatten verbunden. Beim Konstruieren dieser Laschen und Längsöffnungen ist dabei zu achten, dass die Laschen um einen halben Millimeter kleiner und die Öfffnungen um einen halben Millimeter größer gemacht werden,
+da die Maße beim 3D Drucken oftmals von den Zeichnungen abweichen, und somit Innenbohrungen zu klein werden. //Nochmal überarbeiten
 
+\\
+
+Um das Moment der Welle effektiv von der Welle zum Rad übertragen wurde ein Modul entworfen. Dieses Modul wird benötigt, da das Wellenmoment nicht effektiv an einem 3D gedruckten Bauteil angreifen kann, da das gedruckt PLA die kontinuierlichen Richtungswechsel
+sowie das abrupte Bremsens des Motors in kombination mit der Trägheit des Lagerrades nicht standhalten würde. Zwei aus Aluminium gefräßte Quader sind mit den Seitenwänden über jeweils zwei Gewindebohrungen verschraubt sind und das Moment endgültig auf das
+Lagerrad übertragen. Das Moment der Welle wird von zwei "L" geformten, 3D gedruckten Bauteilen an den zwei quadern weitergegeben, diese sind wiederum mit jeweils vier Gewindebohrungen and den Quadern verschraubt. Die "L" förmigen Bauteile besitzen jeweils
+eine angesengte Durchgangsbohrung, durch diese wird das Bauteil mit einem Gewinde am Ende der Welle verschraubt um das Moment ohne verschleis zu übertragen. Die erste Welle ist mit einer Kupplung mit dem Motor verschraubt, die zweite Welle ist am anderen
+Ende des Gehäuses mit einem Flanschlager verschraubt und gibt dem System somit zusätzliche Sicherheit.
+
+Um das Lagern der Karten nicht zu behindern, wurden bei den Bohrungen der Seeitenplatten, die diese mit den gefräßten Aluminiumquader verbinden eine Senklochbohrung angewendet, dadurch kann eine Senkkpfschraube vollkommen eingesenkt werden und hindernt die Karten
+somit nicht in das Lagerfach zu rutschen.
+\subsection{Konstruktion der Kartenhalterung}
+hallo
 \subsection{Konstruktion der Kartenentnahme}
 
 \subsection{Konstruktion der Endschalterhalterung}
