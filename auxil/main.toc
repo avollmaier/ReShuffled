@@ -39,25 +39,27 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.5.3}Konstruktion des Kartenhalterungsmodul}{18}{subsection.1.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.5.3.1}Sensorhalterung}{19}{subsubsection.1.5.3.1}%
+\contentsline {subsubsection}{\numberline {1.5.3.1}Sensorhalterung}{18}{subsubsection.1.5.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.5.3.2}Kartenlager}{19}{subsubsection.1.5.3.2}%
+\contentsline {subsubsection}{\numberline {1.5.3.2}Kartenlager}{18}{subsubsection.1.5.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {1.5.3.3}Abstreifer}{19}{subsubsection.1.5.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {1.5.3.4}Hubmagnetaufhängung}{19}{subsubsection.1.5.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.4}Konstruktion der Kartenentnahme}{19}{subsection.1.5.4}%
+\contentsline {subsection}{\numberline {1.5.4}Aufhänger}{19}{subsection.1.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.5}Konstruktion der Endschalterhalterung}{19}{subsection.1.5.5}%
+\contentsline {subsection}{\numberline {1.5.5}Konstruktion der Kartenentnahme}{20}{subsection.1.5.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.5.6}Konstruktion des Gehäuses}{19}{subsection.1.5.6}%
+\contentsline {subsection}{\numberline {1.5.6}Konstruktion der Endschalterhalterung}{20}{subsection.1.5.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.6}Berechnungen und Dimensionierungen}{19}{section.1.6}%
+\contentsline {subsection}{\numberline {1.5.7}Konstruktion des Gehäuses}{20}{subsection.1.5.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.7}Teilaufbau}{19}{section.1.7}%
+\contentsline {section}{\numberline {1.6}Berechnungen und Dimensionierungen}{20}{section.1.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.8}Analyse}{19}{section.1.8}%
+\contentsline {section}{\numberline {1.7}Teilaufbau}{20}{section.1.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.8}Analyse}{20}{section.1.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Elektronik}{21}{chapter.2}%
 \defcounter {refsection}{0}\relax 
