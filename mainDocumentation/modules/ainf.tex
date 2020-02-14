@@ -1,11 +1,7 @@
 %@COPYRIGHT VOLLMAIER ALOIS
 \definecolor{hellgrau}{RGB}{230, 230, 230}
-
 \lohead{Vollmaier Alois}
-
-
 \chapter{Informatik}\label{ch:informatik}
-
 
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
@@ -14,9 +10,7 @@ Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifik
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
 
-
 \section{Zeitplan}\label{sec:zeitplan}
-
 \begin{figure}[hbt!]
     \centering
     \scalebox{0.57}{
@@ -123,7 +117,6 @@ Um das Zeitfenster des Projekts nicht zu verzögern werden folgende Meilensteine
 \end{enumerate}
 
 \section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
-
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
 Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb der Maschine auf einem 7" Display angezeigt werden soll.
 Auf diesem Interface soll es möglich sein, die Steuerung der Maschine zu übernehmen.
@@ -135,7 +128,6 @@ Die Möglichkeiten des Benutzers, die Maschine zu bedienen sollen folgende Kernp
     \item Ausschalten der Maschine
     \item Übersicht aller vergangenen Spiele
 \end{enumerate}
-
 Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden.
 Grundsätzlich steht die sogenannte \textbf{User Experience}, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt, sowie die \textbf{Funktionalität} bei der Programmierung im Vordergrund.
 Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
@@ -163,7 +155,7 @@ Aufgrund der Tatsache, das die verwendete Ansteuerplatine über einen ATmega 324
 Als Basis dafür dienen ankommenden Befehle über der seriellen Schnittstelle.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
 
-\section{Projektspezifische Voruntersuchung}\label{subsec:projektspezifische-voruntersuchung}
+\section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, einige Voruntersuchungen durchzuführen.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
 \subsection{Auswahl der Arbeitsumgebung}\label{subsec:auswahl-der-arbeitsumgebung}
@@ -203,15 +195,16 @@ Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt ein
 Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
 \subsubsection{Swing}
-Das bereits in der Standart Java Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
+Das bereits in der Standard-Java-Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
 Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
 Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen.
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
 \subsubsection{JavaFX}
 Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
-Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format. \textbf{\textit{\autoref{subsec:datenformate-in-java-fx}}}
-Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
-Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen Beschreibenden Elementen der GUI
+Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
+Näher wird dieses Format im \textit{\autoref{subsec:datenformate-in-java-fx}} erklärt.
+Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
+Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI
 und dem dahinter stehenden Code ist dadurch möglich.\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 \subsubsection{Fazit}
@@ -224,8 +217,6 @@ Um die Übersichtlichkeit eines Projektes zu verbessern wird nach einer klar def
 Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden:
 \begin{figure}[htb!]
     \begin{center}
-
-
         \begin{forest}
             for tree={
             font=\ttfamily,
@@ -295,22 +286,65 @@ Das zuvor genannte Layout der Projekthrachie eignet sich gut für viele Projekte
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.
 
 Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
-Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken.
-\\\\
-Trotz alledem wurde auf die althergebrachte Version gesetzt und das Projekt so erstellt.
+Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken. \\
+Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktur vor.
+
+\begin{figure}[htb!]
+    \begin{center}
+        \begin{forest}
+            for tree={
+                font=\ttfamily,
+                grow'=0,
+                child anchor=west,
+                parent anchor=south,
+                anchor=west,
+                calign=first,
+                edge path={
+                    \noexpand\path [draw, \forestoption{edge}]
+                    (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+                },
+                before typesetting nodes={
+                    if n=1
+                    {insert before={[,phantom]}}
+                    {}
+                },
+                fit=band,
+                before computing xy={l=15pt},
+            }
+            [<project-root>
+                [src
+                    [main
+                        [java
+                            [resources
+                            ]
+                        ]
+                    ]
+
+                    [test
+                        [java
+                            [resources
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        \end{forest}
+    \end{center}
+    \caption{Projektstruktur}
+\end{figure}
+Trotz alledem wurde auf die althergebrachte Version der Projekterstellung gesetzt.
 Grund dafür ist widerum die fehlende Möglichkeit, Remote-Debugging durchzuführen.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
-\newpage
+
 \section{Grundlagen}\label{sec:grundlagen}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
-Das Erzeugungsmuster namens Singelton dient dazu, die Einzigartikeit eines Objekts sicherzustellen.
+Das Erzeugungsmuster namens Singelton dient dazu, die Einzigartigkeit eines Objekts sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
 Auch bietet eine Klasse, welche nach dem Singelton-Pattern erzeugt wurde, einen globalen Zugriffspunkt über das gesamte Programm.
-
 \subsubsection{Struktur}
 Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
-Dies bedeuted es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
+Dies bedeutet es liegt eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vor.
 Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
 Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\
 \begin{figure}[H]
@@ -322,7 +356,9 @@ Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
 Implementiert wird dies durch eine weitere statische Methode namens \lstinline{getInstance()}.
 Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
 \subsubsection{Beispiel}
-Der nachfolgende Code zeigt, wie Singelton angewendet werden kann.
+Das folgende \textit{\autoref{Singelton Code}}, entnommen aus dem \textit{\autoref{subsec:konfiguration}}, zeigt wie Singelton angewendet werden kann.
+
+\lstinputlisting[firstline=22, lastline=38, style=java,caption=Singelton Codebeispiel,label=Singelton Code]{src/data/config/Config.java}
 
 \subsection{Verhaltensmuster Command}\label{subsec:verhaltensmuster-command}
 \subsubsection{Beschreibung}
@@ -332,29 +368,24 @@ Auch kann das tatsächliche Ausführen eines Befehls, aus programmatischer Sicht
 Dieses Verhalten führt zu einer Vereinfachung der Ausführung von komplexeren Tätigkeiten des Programms.
 \subsubsection{Struktur}
 Das Command-Pattern verfügt meist über verschieden starke Ausprägung.
-Im Kern herrscht jedoch immer das selbe Prinzip:
-\textbf{Kapselung von Befehlswunsch und Ausführung}
-\begin{figure}[H]
+Im Kern herrscht jedoch immer dasselbe Prinzip, welches in \textit{\autoref{fig:UML-Diagramm Command}} dargestellt wird.
+Vorallem die \textbf{Kapselung von Befehlswunsch und Ausführung} steht an erster Stelle.
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=1\textwidth]{fig/ainf/Command.pdf}
     \caption{UML-Diagramm Command}
+    \label{fig:UML-Diagramm Command}
 \end{figure}
 \subsubsection{Beispiel}
 \subsection{Entwurfsmuster MVC}\label{subsec:entwurfsmuster-mvc}
-
 \subsubsection{Beschreibung}
-Das MVC-Design Pattern, auch Model-View-Controller Design-Pattern ist eines der weit verbreitesten Design-Patterns.
+Das MVC-Design Pattern, auch Model-View-Controller Design-Pattern, ist eines der weit verbreitetsten Entwurfsmuster.
 Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt voneinander getrennt sind.
-Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen. Auch ist es nun möglich pararell an dem Programm zu arbeiten den Ersteller von GUI und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander Abhängig.
-\newpage
-\begin{wrapfigure}{r}{0.5\textwidth}
-\vspace{-310pt}
-\begin{center}
-\includegraphics[width=0.17\textwidth]{fig/ainf/ModelViewController.pdf}
-\end{center}
-\caption{MVC-Design Pattern}
-\vspace{20pt}
-\end{wrapfigure}
+Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen, da das System nun klar definiert und strukturiert ist.
+Auch ist es nun einfacher, parallel an dem Programm zu Arbeiten, denn Ersteller von View und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander abhängig.\\
+Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weitergegeben werden müssen.
+\subsubsection{Struktur}
+
 \begin{enumerate}
 \item \textbf{View}  \\
 Datenrepräsentation\\
@@ -364,33 +395,30 @@ Stellt die Verbindung zwischen View und Model her\\
 Verwaltet Benutzerinteraktion und enthält Steuerlogik
 \item \textbf{Model} \\
 Datenrepräsentation\\
-Ist von der Benutzerschnittstelle komplett abgeschirmt
+Komplett Abgeschirmt
 \end{enumerate}
-\vspace{20pt}
-
-\subsubsection{Beispiel}
-Um zu zeigen, wie das MVC-Pattern in der Realität umgesetzt wird, ist im Folgenden ein Beispiel dargestellt.
-Ziel des Programms ist es, einen Wert mithilfe eines Buttons hoch zuzählen und auf einem Label im View anzeigen zu lassen.
-Sobald der Knopf "Increment by 1" betätigt wird, soll der Wert um 1 erhöht werden.
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Hauptprogramm]
-public class Main extends Application {
-    @Override
-    public void start(Stage stage) throws Exception {
-        Model model = new Model();
-        View view = new View(model, stage);
-        Controller controller = new Controller(model, view);
-    }
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-\end{lstlisting}
-
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/ainf/ModelViewController.pdf}
+    \caption{UML-Diagramm MVC}
+    \label{fig:UML-Diagramm MVC}
+\end{figure}
 \subsection{SceneBuilder}\label{subsec:scenebuilder}
-
 \subsubsection{Beschreibung}
-SceneBuilder ist ein Tool, mit diesem man
-
+Scenebuilder ist umfangreiches GUI-Design-Tool der Firma Gluon.
+Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.
+Die Vorteile eines solchen Tools sind klar definiert:
+\begin{enumerate}
+    \item Übersichtlichkeit
+    \item Einfache Wartbarkeit
+\end{enumerate}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/ainf/SceneBuilder.png}
+    \caption{Tool SceneBuilder}
+    \label{fig:Tool SceneBuilder}
+\end{figure}
+Weitere nicht unzuerwähnende Vorteile sind außerdem die direkte Unterstützung von JavaFX.
 \subsubsection{Bibliothek JFoenix}
 
 \subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
@@ -476,7 +504,7 @@ Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänge
 \subsection{Logging}
 \subsubsection{Konzept}
 \subsubsection{Integration in das Programm}
-\subsection{Konfiguration}
+\subsection{Konfiguration}\label{subsec:konfiguration}
 \subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
