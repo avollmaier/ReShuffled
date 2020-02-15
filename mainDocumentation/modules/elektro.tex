@@ -1,4 +1,4 @@
-\lohead{Perl Nicolas}
+cd \lohead{Perl Nicolas}
 \chapter{Elektronik}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
@@ -30,7 +30,7 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
     ]{2019-09-2}{2020-03-15}
     \gantttitlecalendar{year, month=name, week}\\
 
-    \ganttgroup[group .style={fill=teal, draw=none},]
+    \ganttgroup[group/.append style={draw=none}]
     {Konzeptionierung}{2019-09-02}{2019-11-31}\\ [grid]
     \ganttbar[]{Schaltungsentwürfe}{2019-09-30}{2019-11-31}\\ [grid]
     \ganttbar[]{Steckbrettaufbauten}{2019-10-14}{2019-11-31}\\ [grid]
@@ -1441,6 +1441,20 @@ Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus.
 Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
 Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
 
+\section{Steckbrettaufbauten}
+
+Um Gewissheit zu erlangen, dass jene Schaltungen, welche für die Ansteuerung der Aktoren und Sensoren zuständig sind, reichen Simulationen und Berechnungen nicht aus.
+Somit galt es, jene Schaltungen auf einem Steckbrett konkret aufzubauen und diese auf ihre Funktion zu prüfen. \\
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[scale=0.08]{fig/elektro/Steckbrett}
+    \caption{Diverse Schaltungen in der Praxis}
+\end{figure}
+
+Sobald die Funktionstüchtigkeit einen praktischen Hintergrund angenommen hatte,
+war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu dimensionieren.
+
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \newpage
@@ -1455,9 +1469,33 @@ Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu k�
 
 Sogleich die Auswahl der Peripherie beendet war, war es an der Zeit ein Design für die geplante Platine in KiCad zu entwerfen.
 Als Anforderungen stellten wir uns ein möglichst kompaktes, strukturiertes sowie übersichtliches Design zu erstellen.
+Hierzu kamen noch spezifischere Anforderungen, da bei einem Fertigen der Leiterplatte in der schuleigenen Werkstätte nur eingeschränkte Fertigungsparameter gegeben sind.
+Zu diesen zählen ein Mindestbohrdurchmesser bei Durchkontaktierungen von 0.6 mm sowie die Tatsache, eine Mindestleiterbahnbreite von 0.2 mm zu verwenden.
+Außerdem dürfen keine Durchkontaktierungen unter Bauteilen platziert werden, da bei diesen jeweils ein Leiter per Hand eingelötet werden muss.
+Nennswert ist zudem, dass nur maximal zweilagige Leiterplatten angefertigt werden können.
+
+\subsection{Layoutdesign}
+
 Im Laufe der Diplomarbeit entstanden unzählig viele, verschiedene Layouts, welche die Gründe von ständig neu aufkommenden Ideen, Ausmerzung von Fehlerquellen und Simplifizierungen hatten.
-Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen Aufgabe.
-Eine falsche Dimensionierung von Bauteilen und Baugruppen, Denkfehler, die das Fertigen erschweren würden, und ungünstige Leiterbahnanordnungen waren hierbei die Hauptfaktoren.
+Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen, aber lehrreichen Aufgabe.
+Eine falsche Dimensionierung von Bauteilen und Baugruppen und Denkfehler, die das Fertigen erschweren würden waren hierbei die Hauptfaktoren. \\
+Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
+
+Die Breite aller Leiterbahnen wurden auf den maximal fließenden Strom ausgelegt.
+Um zu diesen Werten zu kommen, wurde ein Tool angewandt, welches sich in der KiCad Nutzerumgebung finden lässt.
+Dieses wendet folgende Formel an: \\
+
+\begin{equation}
+    I = K \cdot dT^{0.44} \cdot (W \cdot H)^{0.725}
+\end{equation}
+wobei
+\begin{itemize}
+    \item P\textsubscript{I} dem maximal fließenden Strom in Ampere,
+    \item V\textsubscript{K} 0.048 für externe oder 0.024 für interne Leiterbahnen,
+    \item I\textsubscript{dT} dem Temperaturanstieg über der Umgebungstemperatur in Grad Celsius,
+    \item V\textsubscript{W} der Leiterbahndicke in mils und
+    \item I\textsubscript{H} der Leiterbahnbreite in mils entspricht.
+\end{itemize}
 
 \subsection{Leiterplattenfertigung}
 
@@ -1469,7 +1507,7 @@ Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
 \begin{itemize}
-\item Zuallererst ist das Layout der Kupferforderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
+\item Zuallererst ist das Layout der Kupfervorderseite und der Kupferückseite jeweils auf eine transparentes Papier mit den bestmöglichen Einstellungen zu drucken.
 Für einen erfolgreichen Druck ist ein Spiegeln der Vorderseite der Platine ein Muss.
 Folgend ist ein Spray zum Verdichten des Toners anzuwenden.
 Aus den zwei Stücken Transparentpapier ist eine Tasche anzufertigen, sodass jegliche Bohrungen genau gegenüberliegen. \\
@@ -1493,7 +1531,6 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 \item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
-\subsubsection{Professionelle Fertigung}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
