@@ -690,6 +690,79 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 \caption{12V Soft-Latching Circuit}
 \end{figure}
 
+\subsubsection{Dimensionierung der UNLATCH - Komponenten}
+
+\begin{figure}[ht]
+\centering
+\begin{circuitikz}[european, scale = 1.2]
+
+    \draw (1.5,2) to [R, l=$R1$](2.5,2);
+    \draw (0.5,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$](1.5,2);
+    \draw (2.5,2) to (3,2) to [eC, l=$C1$, *-*](3,0);
+    \draw (3,2) to (4.5,2) to [R, l=$R2$, *-*](4.5,0) to (2.05,0);
+    \draw (4.5,2) to (4.8,2);
+    \draw (5.5,2)node[nfet]{};
+    \draw (5.5,2) to [short, -*](5.5,1.775) to (5.5,0) to (4.5,0);
+    \draw (1.5,2) to [short, -o](0,2)node[anchor=east]{+};
+    \draw (2,0) to [short, *-o](0,0)node[anchor=east]{-};
+    \draw (2,-0.05) to (2,-0.05) node[rground]{};
+    \draw (5.5,2.3) to (5.5,3)node[vcc]{};
+    \draw (0,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+\end{circuitikz}
+\caption{Schaltung zum Aufheben der Selbsthaltung}
+\end{figure}
+
+Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationsformeln und den grundlegenden Formeln der Elektrotechnik gemacht:
+
+\begin{flalign}
+    u_R = R \cdot i_R \\
+    u_c = \frac{1}{C} \cdot \int i_c \mathrm{d}t \\
+    \sum_{k=1}^n U_k = 0
+\end{flalign}
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (1.5,2) to [R, l=$R1$](2.5,2);
+        \draw (2.5,2) to (3.5,2) to [eC, l=$C1$, *-*](3.5,0);
+        \draw (3,2) to [short, -o](4.5,2)node[anchor=west]{+};
+        \draw (1.05,0) to [short, -o](4.5,0)node[anchor=west]{-};
+        \draw (1.5,2) to [short, -o](1,2)node[anchor=east]{+};
+        \draw (2.75,0) to [short, *-o](1,0)node[anchor=east]{-};
+        \draw (2.75,-0.05) to (2.75,-0.05) node[rground]{};
+        \draw (1,1.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
+        \draw (4.5,1.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(4.5,0.2);
+    \end{circuitikz}
+    \caption{Laden des Kondensators}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (2,2) to [eC, l=$C1$, *-*](2,0);
+        \draw (3.5,2) to [R, l=$R2$, *-*](3.5,0);
+        \draw (1,2) to [short, -o](4.5,2)node[anchor=west]{+};
+        \draw (1.05,0) to [short, -*](2.75,0)to [short, *-o](4.5,0)node[anchor=west]{-};
+        \draw (1.5,2) to [short, -o](1,2)node[anchor=east]{+};
+        \draw (1,0) to [short, *-o](1,0)node[anchor=east]{-};
+        \draw (2.75,-0.05) to (2.75,-0.05) node[rground]{};
+        \draw (1,1.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
+        \draw (4.5,1.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(4.5,0.2);
+    \end{circuitikz}
+    \caption{Entladen des Kondensators}
+\end{figure}
+
+Betrachte man das Spannungspotential nach der Diode als Eingangsspannung U\textsubscript{e} und das am dem Kondensator anliegende Potential als Ausgangsspannung U\textsubscript{a},
+erhält man aufgrund des Maschengleichungsgesetzes folgende Formel:
+
+\begin{equation*}
+    U_e = U_R + U_a
+\end{equation*}
+
+\begin{equation*}
+    $\Laplace{ f(t)}=F(s)$
+\end{equation*}
+
 \subsubsection{Andere Variante}
 Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
 
@@ -785,7 +858,7 @@ Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenb
 Um die Verlustleistung des LM2576 zu berechnen, wird von folgender Formel Gebrauch gemacht.
 
 \begin{equation}
-P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
+    P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
 \end{equation}
 wobei
 \begin{itemize}
@@ -1536,3 +1609,5 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
 \newpage
 \section{Resümee und Aussichten für die Zukunft}
+
+%/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
