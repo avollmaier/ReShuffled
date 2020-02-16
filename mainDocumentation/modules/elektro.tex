@@ -712,22 +712,29 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 \caption{Schaltung zum Aufheben der Selbsthaltung}
 \end{figure}
 
-Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationsformeln und den grundlegenden Formeln der Elektrotechnik gemacht:
+Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationskorrespondenzen und einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
-\begin{flalign}
-    u_R = R \cdot i_R \\
-    u_c = \frac{1}{C} \cdot \int i_c \mathrm{d}t \\
-    \sum_{k=1}^n U_k = 0
-\end{flalign}
+\begin{align}
+    $\mathscr{L}\{f(t)\}&=F(s)$ \\
+    (1-e^{\frac{-1}{\tau}} \cdot 1(t)) &= \frac{1}{s \cdot (1 + s\tau)} \\
+    u_R &= R \cdot i_R \\
+    u_c &= \frac{1}{C} \cdot \int i_c \mathrm{d}t \\
+    \sum_{k=1}^n U_k &= 0 \\
+    q(t) &= C \cdot u_c \\
+    i_c &= -\dot{q}(t) = -C \cdot \dot u_c\\
+    \tau &= R \cdot C
+\end{align}
+
+Betrachte man das Spannungspotential nach der Diode als Eingangsspannung U\textsubscript{e} und das am dem Kondensator anliegende Potential als Ausgangsspannung U\textsubscript{a},
+erhält man folgende Schaltung:
 
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (1.5,2) to [R, l=$R1$](2.5,2);
-        \draw (2.5,2) to (3.5,2) to [eC, l=$C1$, *-*](3.5,0);
+    \begin{circuitikz}[european, scale = 1]
+        \draw (1.2,2) to [R, l=$R1$](2.5,2) to (3.5,2) to [eC, l=$C1$, *-*](3.5,0);
         \draw (3,2) to [short, -o](4.5,2)node[anchor=west]{+};
         \draw (1.05,0) to [short, -o](4.5,0)node[anchor=west]{-};
-        \draw (1.5,2) to [short, -o](1,2)node[anchor=east]{+};
+        \draw (1.2,2) to [short, -o](1,2)node[anchor=east]{+};
         \draw (2.75,0) to [short, *-o](1,0)node[anchor=east]{-};
         \draw (2.75,-0.05) to (2.75,-0.05) node[rground]{};
         \draw (1,1.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
@@ -736,9 +743,43 @@ Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird 
     \caption{Laden des Kondensators}
 \end{figure}
 
+\newpage
+Wendet man das Maschengleichungsgesetz auf jene Schaltung an, erhält man folgende Gleichung:
+
+\begin{align*}
+    U_e &=  u_R + u_C \\
+    U_e &= R \cdot i_R + u_C \\
+    U_e &= RC \cdot \dot u_c + u_c
+\end{align*}
+
+\begin{equation*}
+    U_e = RC \cdot \dot u_c + u_c \laplace \frac{U_e}{s} = RC \cdot u_c \cdot s + u_c
+\end{equation*}
+
+\begin{align*}
+    U_e &= u_c \cdot s \cdot (RCs + 1) \\
+    u_c &= U_e \cdot \frac{1}{s \cdot (1 + s\tau)}
+\end{align*}
+
+Durch das Anwenden jener Laplace-Korrespondenz kann man auf folgendes Ergebnis schließen:
+
+\begin{equation*}
+    u_c = U_e \cdot \frac{1}{s \cdot (1 + \tau s)} \Laplace {u_c = U_e \cdot (1 - e^{\frac{-t}{\tau}})}
+\end{equation*}
+
+Die eingehende Spannung lässt sich aus der Differenz von Pinausgangsspannung und der an der Schottkydiode abfallenden Spannung berechnen.
+Durch das Einsetzen von Datenblattwerten der von uns verwendeten Diode MBR130 ergibt sich eine Spannung von 3.08V .
+Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangsspannung erschließt sich der Wert des Kondensators nach 0.5 Sekunden wie folgt:
+
+\begin{align*}
+    u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}})
+\end{align*}
+
+\newpage
+
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1.2]
+    \begin{circuitikz}[european, scale = 1]
         \draw (2,2) to [eC, l=$C1$, *-*](2,0);
         \draw (3.5,2) to [R, l=$R2$, *-*](3.5,0);
         \draw (1,2) to [short, -o](4.5,2)node[anchor=west]{+};
@@ -752,16 +793,24 @@ Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird 
     \caption{Entladen des Kondensators}
 \end{figure}
 
-Betrachte man das Spannungspotential nach der Diode als Eingangsspannung U\textsubscript{e} und das am dem Kondensator anliegende Potential als Ausgangsspannung U\textsubscript{a},
-erhält man aufgrund des Maschengleichungsgesetzes folgende Formel:
+\begin{align*}
+    u_c - u_R &= 0 \\
+    u_c - R \cdot i_R &= 0 \\
+    u_c - (-C \cdot \dot u_c) \cdot R &= 0 \\
+    \dot u_c + \frac{1}{RC} \cdot u_c &= 0 \\
+\end{align*}
+Über den Exponentialansatz ergibt sich folgender Rechenweg:
 
-\begin{equation*}
-    U_e = U_R + U_a
-\end{equation*}
 
-\begin{equation*}
-    $\Laplace{ f(t)}=F(s)$
-\end{equation*}
+\begin{align*}
+    u_c &= K \cdot e^{\lambda \cdot t} \\
+    \dot{u}_c &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
+    K \cdot e^{\lambda \cdot t} &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
+    \lambda + \frac{1}{RC} &= 0 \\
+    \lambda &= -\frac{1}{RC} \\
+    u_c &= K \cdot e^{-\frac{t}{RC}}, (t >= 0, K = u_c(t=0)) \\
+\end{align*}
+
 
 \subsubsection{Andere Variante}
 Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
@@ -778,7 +827,7 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 
 \begin{figure}[ht]
 \centering
-\begin{circuitikz}[european, scale = 1.2]
+\begin{circuitikz}[european, scale = 1]
 \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
 \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
 \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
@@ -794,7 +843,7 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \draw (4,2) to (2.5,2);
 \draw (2,1.5) to (2,0);
 \draw (1.9,2) to (1.9,2)node[anchor=east]{Q2};
-\draw (1.5,6.7) to (1.5,6.7)node[anchor=north]{Q1};
+\draw (1.4,6.8) to (1.4,6.8)node[anchor=north]{Q1};
 \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
 \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
 \draw (2,2)node[npn, xscale = -1]{};
@@ -811,8 +860,6 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
 Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, zu welchem diese Schaltung nicht in der Lage ist.
-
-\newpage
 
 \subsection{DC/DC Wandler}
 
