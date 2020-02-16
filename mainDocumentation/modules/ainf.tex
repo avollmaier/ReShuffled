@@ -14,18 +14,18 @@ Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusa
 \begin{figure}[hbt!]
     \centering
     \scalebox{0.57}{
-        \begin{ganttchart}[
-            hgrid style/.style={black, dotted},
-            calendar week text={\currentweek},
-            vgrid={*6{white, dotted}, *1{black, dashed}},
-            x unit=1mm,
-            group label font=\bfseries \Large,
-            y unit chart=9mm,
-            y unit title=12mm,
-            time slot format=isodate,
-            time slot unit=year
-            link/.style={->, thick}
-        ]{2019-09-2}{2020-03-15}
+    \begin{ganttchart}[
+    hgrid style/.style={black, dotted},
+    calendar week text={\currentweek},
+    vgrid={*6{white, dotted}, *1{black, dashed}},
+    x unit=1mm,
+    group label font=\bfseries \Large,
+    y unit chart=9mm,
+    y unit title=12mm,
+    time slot format=isodate,
+    time slot unit=year
+    link/.style={->, thick}
+    ]{2019-09-2}{2020-03-15}
         \gantttitlecalendar{year, month=name, week}\\
 
         \ganttgroup[
@@ -293,37 +293,37 @@ Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktu
     \begin{center}
         \begin{forest}
             for tree={
-                font=\ttfamily,
-                grow'=0,
-                child anchor=west,
-                parent anchor=south,
-                anchor=west,
-                calign=first,
-                edge path={
-                    \noexpand\path [draw, \forestoption{edge}]
-                    (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-                },
-                before typesetting nodes={
-                    if n=1
-                    {insert before={[,phantom]}}
-                    {}
-                },
-                fit=band,
-                before computing xy={l=15pt},
+            font=\ttfamily,
+            grow'=0,
+            child anchor=west,
+            parent anchor=south,
+            anchor=west,
+            calign=first,
+            edge path={
+            \noexpand\path [draw, \forestoption{edge}]
+            (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+            },
+            before typesetting nodes={
+            if n=1
+            {insert before={[,phantom]}}
+            {}
+            },
+            fit=band,
+            before computing xy={l=15pt},
             }
             [<project-root>
-                [src
-                    [main
-                        [java
-                            [resources]
-                        ]
-                    ]
-                    [test
-                        [java
-                            [resources]
-                        ]
-                    ]
-                ]
+            [src
+            [main
+            [java
+            [resources]
+            ]
+            ]
+            [test
+            [java
+            [resources]
+            ]
+            ]
+            ]
             ]
         \end{forest}
     \end{center}
@@ -384,15 +384,15 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
 \subsubsection{Struktur}
 
 \begin{enumerate}
-\item \textbf{View}  \\
-Datenrepräsentation\\
-Organisiert alle Kontrollelemente
-\item \textbf{Controller} \\
-Stellt die Verbindung zwischen View und Model her\\
-Verwaltet Benutzerinteraktion und enthält Steuerlogik
-\item \textbf{Model} \\
-Datenrepräsentation\\
-Komplett Abgeschirmt
+    \item \textbf{View}  \\
+    Datenrepräsentation\\
+    Organisiert alle Kontrollelemente
+    \item \textbf{Controller} \\
+    Stellt die Verbindung zwischen View und Model her\\
+    Verwaltet Benutzerinteraktion und enthält Steuerlogik
+    \item \textbf{Model} \\
+    Datenrepräsentation\\
+    Komplett Abgeschirmt
 \end{enumerate}
 \begin{figure}[htb!]
     \centering
@@ -447,6 +447,19 @@ Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelements
 Auch ist es notwendig, ein Tag mihilfe eines sogenannten End-Tags zu schließen.
 Zwischen diesen Start- bzw. \ End-Tags befindet sich ein Datensatz.
 Ein Indikator für ein End-Tag ist ein \lstinline{/}.
+
+Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
+% @formatter:off
+\begin{lstlisting}[style=xml,caption=XML-Codebeispiel,label=xmlExample]
+    <note>
+        <to>Person1</to>
+        <from>Person2</from>
+        <heading>Test-Header</heading>
+        <body>This is a body :)</body>
+    </note>
+\end{lstlisting}
+% @formatter:on
+
 \subsubsection{FXML}
 
 \subsubsection{CSS}
@@ -464,10 +477,10 @@ Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die A
 Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft.
 Anforderungen an dieses Protokoll sollen sein:
 \begin{enumerate}
-\item einfache Integration in die Zielsysteme
-\item erweiterbarkeit des Protokolls mit geringem Arbeitsaufwand
-\item hohe Sicherheit gegenüber Übertragungsfehler
-\item schnelle Fehlererkennung sowie Fehlerbehebung
+    \item einfache Integration in die Zielsysteme
+    \item erweiterbarkeit des Protokolls mit geringem Arbeitsaufwand
+    \item hohe Sicherheit gegenüber Übertragungsfehler
+    \item schnelle Fehlererkennung sowie Fehlerbehebung
 \end{enumerate}
 Neben standartisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit selbst ein sogenanntes propretäres Übertragungsprotokoll zu kreieren.
 Dies ist in unserem Fall nötig, um alle Anforderungen abzudecken.
@@ -477,28 +490,28 @@ Zusätzlich soll, um die Anforderung des einfachen Fehlerhandlings zu erfüllen,
 Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfigurationsdatei vonstatten gehen.
 Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
-\caption{Schematische Darstellung der Geräteauswahl}
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
+    \caption{Schematische Darstellung der Geräteauswahl}
 \end{figure}
 \begin{enumerate}
-\item Einzelbitfehler (1 Bit verändert)
-\item Burstfehler (ganze Folge von Bits verändert)
+    \item Einzelbitfehler (1 Bit verändert)
+    \item Burstfehler (ganze Folge von Bits verändert)
 \end{enumerate}
 \subsubsection{Übertragungsprotokoll}
 \begin{table}[htb!]
-\centering
-\begin{tabular}{|
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |
->{\columncolor[HTML]{FFFFFF}}l |}
-\hline
-\textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
-8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
-\end{tabular}
-\caption{Visualisierung des Datenakets}
+    \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |
+    >{\columncolor[HTML]{FFFFFF}}l |}
+        \hline
+        \textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
+        8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
+    \end{tabular}
+    \caption{Visualisierung des Datenakets}
 \end{table}
 Das verbindugslose Protokoll basiert, wie in der Konzeptbeschreibung bereits erwähnt, auf dem Master-Slave Prinzip.
 Außerdem erfolgt die Datenübertragung rein textuell wobei nur Großbuchstaben verwendet werden dürfen.\\\\
