@@ -190,9 +190,9 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
 \end{enumerate}
 \subsubsection{Fazit}
 Natürlich ist es meist Ansichtssache, für welche IDE man sich entscheidet doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
-\subsection{Auswahl des GUI-Toolkits}\label{subsec:auswahl-des-gui-toolkits}
-Die Auswahl des für die Anwendung am besten geeigneten GUI-Toolkits, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
-Diese Toolkits stellen meist alle Elemente zur Erstellung einer GUI bereit.
+\subsection{Auswahl des GUI-Frameworks}\label{subsec:auswahl-des-gui-frameworks}
+Die Auswahl des für die Anwendung am besten geeigneten GUI-Frameworks, spielt eine wesentliche Rolle in der programmierung von grafischen Anwendungen.
+Diese Frameworks stellen meist alle Elemente zur Erstellung einer GUI bereit.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
 \subsubsection{Swing}
 Das bereits in der Standard-Java-Bibliothek verfügbare Java Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
@@ -200,13 +200,16 @@ Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX m
 Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen.
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
 \subsubsection{JavaFX}\label{sssec: JavaFX}
-Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
+JavaFX ist ein GUI-Framework, welches oft als Java-Swing nachfolger betitelt wird.
+Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Näher wird dieses Format im \textit{\autoref{subsec:datenformate-in-java-fx}} erklärt.
-Der Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller Klassen, welche mit der GUI verknüpft sind.
+Der logische Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI
-und dem dahinter stehenden Code ist dadurch möglich.\\
+und dem dahinter stehenden Code ist dadurch möglich.
+Benennen darf sich dieses Designkonzept Model-View-Controller. \autoref{subsec:entwurfsmuster-mvc}\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
+Diese verbessern das sogenannte Look and Feel drastisch.
 \subsubsection{Fazit}
 
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
@@ -404,11 +407,11 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
 \subsubsection{Beschreibung}
 Scenebuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
 Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.\\\\
-Die Verwendung von Toolkits wie dieses hat mehrere Vorteile.
+Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits Verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeit Zeitpunk möglich ist, den Code hinter der Oberfläche grafisch darzustellen.
 Andererseits kann nun, nur mit wenigen Klicks eine für den Endbenutzer ansprechende GUI gebaut werden.\\
-Im speziellen hat SceneBuilder weitere wichtige Vorteile wie die direkte Verbindung mit JavaFX.
-Weiters ist es möglich CSS-Dateien einzubinden und diese direkt in SceneBuilder zu erweitern.
+Im speziellen hat SceneBuilder weitere wichtige Vorteile wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
+Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu verfeinern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eigent sich optimal für große Projekte wie dieses.
 \begin{figure}[htb!]
     \centering
@@ -435,7 +438,7 @@ Angewendet werden die Attribute \lstinline{-fx-border-radius: 20pt;}  \lstinline
 \end{figure}
 \subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
 Im folgenden Kapitel soll auf die Speicherung des Beschreibenden Teils des Layouts eingegangen werden.
-Dies geschieht aufgrund des verwendeten GUI-Toolkits nähmlich nicht im Code selbst, sondern in externen Dateien.
+Dies geschieht aufgrund des verwendeten GUI-Frameworks nähmlich nicht im Code selbst, sondern in externen Dateien.
 Ziel ist es, grundlegende Dinge zu klären und näher zu erläutern.
 \subsubsection{XML}
 XML(Extensible Markup Language) ist, wie im \autoref{sssec: JavaFX} schon erwähnt, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
@@ -446,24 +449,45 @@ Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenen
 Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelements.
 Auch ist es notwendig, ein Tag mihilfe eines sogenannten End-Tags zu schließen.
 Zwischen diesen Start- bzw. \ End-Tags befindet sich ein Datensatz.
-Ein Indikator für ein End-Tag ist ein \lstinline{/}.
-
+Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
-\begin{lstlisting}[style=xml,caption=XML-Codebeispiel,label=xmlExample]
-    <note>
+\begin{lstlisting}[caption=XML-Codebeispiel,label=xmlExample]
+<?xml version="1.0" encoding="UTF-8"?>
+    <email>
         <to>Person1</to>
         <from>Person2</from>
         <heading>Test-Header</heading>
         <body>This is a body :)</body>
-    </note>
+    </email>
 \end{lstlisting}
 % @formatter:on
 
 \subsubsection{FXML}
+FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
+Da hier die Trennung von GUI- und Programmcode vollzogen wurde, kann erst mithilfe des von Oracle entwickelte Formats ein Layout nach dem MVC -Pattern gebaut werden.\\\\
+Die Struktur und Syntax von FXML Dateien ähnelt der von XML-Dateien.
+So werden auch Start- und End-Tags verwendet.
+Ein wesentlicher Unterschied ist jedoch bei der Groß-/Kleinschreibung ersichtlich.
+Beginnen in FXML-Dateien Elemente mit einem Großbuchstaben, werden diese als Objektdeklarationen behandelt.
+Infolgedessen erkennt der FXML-Loader, welcher diese \lstinline{*.fxml} ins Programm lädt, diese Objektdeklarationen nimmt eine dementsprechende Objektbildungen vor.
+Sobald diese jedoch mit einem Kleibuchstaben beginnen, definieren sie Eigenschaften.
+Eine weitere Besonderheit ist, dass es möglich ist, Import-Anweisungen durchzuführen.
+Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
+\begin{lstlisting}[caption=FXML-Codebeispiel,label=fxmlExample]
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox>
+    <children>
+    <Label text="Hello ReShuffled :)"/>
+    </children>
+</VBox>
+\end{lstlisting}
 
 \subsubsection{CSS}
-
+Bei der Verfolgung von Designzielen spielt auch CSS(Cascading Style Sheet) eine wichtige Rolle.
 \subsection{Datenformat JSON}\label{subsec:json}
 
 \subsubsection{Beschreibung}
