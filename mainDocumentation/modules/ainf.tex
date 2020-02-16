@@ -129,7 +129,7 @@ Die Möglichkeiten des Benutzers, die Maschine zu bedienen sollen folgende Kernp
     \item Übersicht aller vergangenen Spiele
 \end{enumerate}
 Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden.
-Grundsätzlich steht die sogenannte \textbf{User Experience}, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt, sowie die \textbf{Funktionalität} bei der Programmierung im Vordergrund.
+Grundsätzlich steht die sogenannte \textbf{User-Experience}, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt, sowie die \textbf{Funktionalität} bei der Programmierung im Vordergrund.
 Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
 
 \subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
@@ -199,7 +199,7 @@ Das bereits in der Standard-Java-Bibliothek verfügbare Java Swing bietet die M�
 Der Aufwand zur Einrichtung hält sich in Grenzen denn im Vergleich zu Java-FX muss hier nicht extern in einem eigenen Programm gearbeitet werden, um die GUI zu erstellen.
 Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur erstellung von Oberflächen.
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
-\subsubsection{JavaFX}
+\subsubsection{JavaFX}\label{sssec: JavaFX}
 Der Nachfolger von Java Swing ist Java FX. Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Näher wird dieses Format im \textit{\autoref{subsec:datenformate-in-java-fx}} erklärt.
@@ -260,7 +260,7 @@ Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen 
         \end{forest}
     \end{center}
     \caption{Projektstruktur}
-\end{figure}\\
+\end{figure}
 Der Kopf dieser Struktur beschreibt den Ordner mit dem Namen des Projekts.
 Dieser wird auch \lstinline{root-directory} genannt, und ist selbst kein Package.
 Auch die Trennung von Sourcecode und externen Dateien spielt eine wesentliche Rolle.
@@ -315,15 +315,12 @@ Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktu
                 [src
                     [main
                         [java
-                            [resources
-                            ]
+                            [resources]
                         ]
                     ]
-
                     [test
                         [java
-                            [resources
-                            ]
+                            [resources]
                         ]
                     ]
                 ]
@@ -405,26 +402,51 @@ Komplett Abgeschirmt
 \end{figure}
 \subsection{SceneBuilder}\label{subsec:scenebuilder}
 \subsubsection{Beschreibung}
-Scenebuilder ist umfangreiches GUI-Design-Tool der Firma Gluon.
-Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.
-Die Vorteile eines solchen Tools sind klar definiert:
-\begin{enumerate}
-    \item Übersichtlichkeit
-    \item Einfache Wartbarkeit
-\end{enumerate}
+Scenebuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
+Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.\\\\
+Die Verwendung von Toolkits wie dieses hat mehrere Vorteile.
+Einerseits Verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeit Zeitpunk möglich ist, den Code hinter der Oberfläche grafisch darzustellen.
+Andererseits kann nun, nur mit wenigen Klicks eine für den Endbenutzer ansprechende GUI gebaut werden.\\
+Im speziellen hat SceneBuilder weitere wichtige Vorteile wie die direkte Verbindung mit JavaFX.
+Weiters ist es möglich CSS-Dateien einzubinden und diese direkt in SceneBuilder zu erweitern.
+Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eigent sich optimal für große Projekte wie dieses.
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/ainf/SceneBuilder.png}
     \caption{Tool SceneBuilder}
     \label{fig:Tool SceneBuilder}
 \end{figure}
-Weitere nicht unzuerwähnende Vorteile sind außerdem die direkte Unterstützung von JavaFX.
 \subsubsection{Bibliothek JFoenix}
-
+Sobald nun SceneBuilder als wichtiges Element der Erstellung ausgewählt wurde, kann jetzt ein näherer Blick auf die User-Experience geworfen werden.
+Diese sogenannte User-Experience beschreibt, wie der Endbenutzer das Produkt bzw. in unserem Fall die grafische Oberfläche empfindet.
+Wird auf diesen Kernpunkt kein Wert gelegt, wird auch niemand erfreut bei der Bedienung sein.\\\\
+SceneBuilder bietet bereits einige Grundelemente für Layouts an, doch diese sind nicht ansprechend.
+Sie können zwar mir CSS gestaltet werden, dies ist jedoch für alle Elemte schwierig umzusetzten.
+Abhilfe schafft dabei die Material-Design Bibliothek von JFoenix.
+Diese Bibliothek ist Open-Source und implementiert, wie schon im Namen genannt, Designelemente nach dem von Google entwickelten Material-Design Vorgaben.
+Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut werden kann.\\
+Anhand der folgenden \autoref{fig:Rendered Button} soll gezeigt werden, wie nun Elemente, gebaut mithilfe der JFoenix Bibliothek, aussehen.
+Angewendet werden die Attribute \lstinline{-fx-border-radius: 20pt;}  \lstinline{-fx-background-radius: 20pt;} und \lstinline{-fx-background-color:grey}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/ainf/RenderedButton.PNG}
+    \caption{Gerenderter Button}
+    \label{fig:Rendered Button}
+\end{figure}
 \subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
-
+Im folgenden Kapitel soll auf die Speicherung des Beschreibenden Teils des Layouts eingegangen werden.
+Dies geschieht aufgrund des verwendeten GUI-Toolkits nähmlich nicht im Code selbst, sondern in externen Dateien.
+Ziel ist es, grundlegende Dinge zu klären und näher zu erläutern.
 \subsubsection{XML}
+XML(Extensible Markup Language) ist, wie im \autoref{sssec: JavaFX} schon erwähnt, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
+Damit ist sie also keine Programmiersprache.
+Diese XML-Dateien sind zu vergleichen mit normalen Textdokumenten, welche mit einen gewöhnlichen Texteditor geöffnet werden können.
 
+Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenennaten XML-Tags.
+Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelements.
+Auch ist es notwendig, ein Tag mihilfe eines sogenannten End-Tags zu schließen.
+Zwischen diesen Start- bzw. \ End-Tags befindet sich ein Datensatz.
+Ein Indikator für ein End-Tag ist ein \lstinline{/}.
 \subsubsection{FXML}
 
 \subsubsection{CSS}
