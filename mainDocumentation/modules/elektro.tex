@@ -364,10 +364,10 @@ Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
 \hline
 & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
 Preis & gering & gering & mittel    \\ \hline
-Max. Strom & 2A & 2.2A & 4A    \\ \hline
+Max.Strom & 2A & 2.2A & 4A    \\ \hline
 Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
 Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
-Max. Schrittauflösung & 16 & 32 & 32        \\ \hline
+Max.Schrittauflösung & 16 & 32 & 32        \\ \hline
 Größe & klein & klein & groß        \\ \hline
 \end{tabular}
 \caption{Vergleich der Treibermodule}
@@ -715,7 +715,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationskorrespondenzen und einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
 \begin{align}
-    $\mathscr{L}\{f(t)\}&=F(s)$ \\
+    \mathscr{L}\{f(t)\}&=F(s) \\
     (1-e^{\frac{-1}{\tau}} \cdot 1(t)) &= \frac{1}{s \cdot (1 + s\tau)} \\
     u_R &= R \cdot i_R \\
     u_c &= \frac{1}{C} \cdot \int i_c \mathrm{d}t \\
@@ -731,7 +731,7 @@ erhält man folgende Schaltung:
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1]
-        \draw (1.2,2) to [R, l=$R1$](2.5,2) to (3.5,2) to [eC, l=$C1$, *-*](3.5,0);
+        \draw (1.2,2) to [R, l=$R1$](2.5,2) to (3.5,2) to [eC, l_=$C1$, *-*](3.5,0);
         \draw (3,2) to [short, -o](4.5,2)node[anchor=west]{+};
         \draw (1.05,0) to [short, -o](4.5,0)node[anchor=west]{-};
         \draw (1.2,2) to [short, -o](1,2)node[anchor=east]{+};
@@ -749,33 +749,43 @@ Wendet man das Maschengleichungsgesetz auf jene Schaltung an, erhält man folgen
 \begin{align*}
     U_e &=  u_R + u_C \\
     U_e &= R \cdot i_R + u_C \\
-    U_e &= RC \cdot \dot u_c + u_c
-\end{align*}
-
-\begin{equation*}
-    U_e = RC \cdot \dot u_c + u_c \laplace \frac{U_e}{s} = RC \cdot u_c \cdot s + u_c
-\end{equation*}
-
-\begin{align*}
+    U_e &= RC \cdot \dot u_c + u_c \\
+    U_e &= RC \cdot \dot u_c + u_c \\
+    &\laplace& \\
+    \frac{U_e}{s} &= RC \cdot u_c \cdot s + u_c \\
     U_e &= u_c \cdot s \cdot (RCs + 1) \\
     u_c &= U_e \cdot \frac{1}{s \cdot (1 + s\tau)}
 \end{align*}
 
 Durch das Anwenden jener Laplace-Korrespondenz kann man auf folgendes Ergebnis schließen:
 
-\begin{equation*}
-    u_c = U_e \cdot \frac{1}{s \cdot (1 + \tau s)} \Laplace {u_c = U_e \cdot (1 - e^{\frac{-t}{\tau}})}
-\end{equation*}
+\begin{align*}
+    u_c &= U_e \cdot \frac{1}{s \cdot (1 + \tau s)} \\
+    &\Laplace& \\
+    {u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}})}
+\end{align*}
 
 Die eingehende Spannung lässt sich aus der Differenz von Pinausgangsspannung und der an der Schottkydiode abfallenden Spannung berechnen.
 Durch das Einsetzen von Datenblattwerten der von uns verwendeten Diode MBR130 ergibt sich eine Spannung von 3.08V .
-Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangsspannung erschließt sich der Wert des Kondensators nach 0.5 Sekunden wie folgt:
+Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangsspannung erschließt sich der Wert des Kondensators bei einem Spannungs-Sollwert von 3V nach 0.5 Sekunden wie folgt:
 
 \begin{align*}
-    u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}})
+    u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}}) \\
+    \frac{u_c}{U_e} -1 &= - e^{\frac{-t}{\tau}}) \\
+    ln(1- \frac{u_c}{U_e}) &= \frac{-t}{\tau} \\
+    \tau &= \frac{-t}{ln(1- \frac{u_c}{U_e})} \\
+    C &= \frac{-t}{ln(1- \frac{u_c}{U_e}) \cdot R} \\
+    C &= \frac{-0.5s}{ln(1- \frac{3V}{3.08V}) \cdot 560\Omega} \\
+    C &= 244.574 \mu F
 \end{align*}
 
-\newpage
+Durch diese Berechnung bewiesen, gilt es, für jene Bedingung einen Kondensator auszuwählen, dessen Wert kleiner gleich 244.57µF entspricht.
+Unsere Wahl fiel somit auf einen Elektrolytondensator mit 100µF . \\
+
+Um ein sicheres Aufheben der Selbsthaltung zu gewähren, muss ein ausreichend langes Potential am N-Kanal MOSFET bereitstellen zu können, muss ebenfalls der Widerstand R2 richtig dimensioniert werden.
+Der von uns ausgewählte MOSFET FDN337 verfügt über das Attribut einer maximalen Threshold-Voltage von 3V .
+Aufgrund dessen sollte auch nach einer Zeit 2 Sekunden ein Potential von größer gleich 3V am Gate der Halbleiterkompontente anliegen.
+Um die Formel zur Widerstandsdimensionierung herzuleiten, wurde Folgendes als Ersatzschaltbild herangezogen.
 
 \begin{figure}[ht]
     \centering
@@ -787,7 +797,7 @@ Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangssp
         \draw (1.5,2) to [short, -o](1,2)node[anchor=east]{+};
         \draw (1,0) to [short, *-o](1,0)node[anchor=east]{-};
         \draw (2.75,-0.05) to (2.75,-0.05) node[rground]{};
-        \draw (1,1.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
+        \draw (1,1.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
         \draw (4.5,1.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(4.5,0.2);
     \end{circuitikz}
     \caption{Entladen des Kondensators}
@@ -799,18 +809,37 @@ Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangssp
     u_c - (-C \cdot \dot u_c) \cdot R &= 0 \\
     \dot u_c + \frac{1}{RC} \cdot u_c &= 0 \\
 \end{align*}
-Über den Exponentialansatz ergibt sich folgender Rechenweg:
 
+Über den Exponentialansatz ergibt sich folgender Rechenweg:
 
 \begin{align*}
     u_c &= K \cdot e^{\lambda \cdot t} \\
     \dot{u}_c &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
-    K \cdot e^{\lambda \cdot t} &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
+    K \cdot \lambda \cdot e^{\lambda \cdot t} + \frac{1}{RC} \cdot K \cdot e^{\lambda \cdot t} &= 0 \\
+    \cancel{K} \cdot \lambda \cdot \cancel{e^{\lambda \cdot t}} + \frac{1}{RC} \cdot \cancel{K} \cdot \cancel{e^{\lambda \cdot t}} &= 0 \\
     \lambda + \frac{1}{RC} &= 0 \\
     \lambda &= -\frac{1}{RC} \\
-    u_c &= K \cdot e^{-\frac{t}{RC}}, (t >= 0, K = u_c(t=0)) \\
+    u_c(t) &= K \cdot e^{-\frac{t}{RC}}, (t >= 0, K = u_c(t=0)) \\
 \end{align*}
 
+Sollte nach 0.5s die Spannungsversorgung des Mikrocontrollers versagen, läge an einem Kondensator mit 100µF eine Spannung von 3.078592V an.
+Bie einer solchen Kondensatorspannung zum Zeitpunkt t=0 erschließt sich der
+Wert des Widerstands R2 bei einem Spannungs-Sollwert von 3V nach 2 Sekunden wie folgt:
+
+\begin{align*}
+    u_c(t) &= u_c(t=0) \cdot e^{-\frac{t}{RC}} \\
+    \frac{u_c(t)}{u_c(t=0)} &= e^{-\frac{t}{RC}} \\
+    ln(\frac{u_c(t)}{u_c(t=0)}) &= -\frac{t}{RC} \\
+    RC &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)})} \\
+    R &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)}) \cdot C} \\
+    R &= -\frac{2s}{ln(\frac{3V}{3.078592V}) \cdot 100\muF} \\
+    R &=  763803.3\Omega
+\end{align*}
+
+Dieses Ergebnis macht deutlich, dass es bei derartigen Bedingungen einen Widerstand auszuwählen, dessen Wert 763803.3 Ohm übersteigt.
+Diese Erkenntnis brachte uns zu der Entscheidung, einen Widerstand in der Höhe von 1 MOhm auszuwählen.
+
+\newpage
 
 \subsubsection{Andere Variante}
 Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
@@ -837,8 +866,8 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \draw (5,2) to (5,1.5) to (5.15,1.5);
 \draw (5.5,1.5)node[pushbuttonshape]{};
 \draw (5.5,2.5)node[pushbuttonshape]{};
-\draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
-\draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
+\draw (5.9,1.5) to (6,1.5) to (6,0) to (2,0);
+\draw (5.1,2.5) to (5,2.5) to [short,-*](5,2);
 \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
 \draw (4,2) to (2.5,2);
 \draw (2,1.5) to (2,0);
@@ -860,6 +889,8 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
 Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, zu welchem diese Schaltung nicht in der Lage ist.
+
+\newpage
 
 \subsection{DC/DC Wandler}
 
@@ -917,24 +948,24 @@ wobei
 \end{itemize}
 
 Setzen wir nun die bei unserer Anwendung maximal anfallenden Werte ein erhalten wir folgendes Ergebnis:
-\begin{flalign*}
-P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V &\\
-&= 1.906W
-\end{flalign*}
+\begin{align*}
+P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V \\
+P_D &= 1.906W
+\end{align*}
 
 Der Anstieg der Sperrschichtübergangstemperatur lässt sich somit folgend berechnen:
-\begin{flalign}
-\Delta T_j &= P_D \cdot \Theta_{ja} &\\
-&= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag &\\
-&= 81,1946^{\circ}C \notag
-\end{flalign}
+\begin{align}
+\Delta T_j &= P_D \cdot \Theta_{ja} \\
+\Delta T_j &= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag \\
+\Delta T_j &= 81,1946^{\circ}C \notag
+\end{align}
 
 Zu diesem Anstieg ist noch die gewöhnliche Umgebungstemperatur hinzuzurechnen.
-\begin{flalign}
-T_j &= \Delta  T_j + T_A &\\
-&= 81,1946^{\circ}C + 25^{\circ}C \notag &\\
-&= 106,1956^{\circ}C \notag
-\end{flalign}
+\begin{align}
+T_j &= \Delta  T_j + T_A \\
+T_j &= 81,1946^{\circ}C + 25^{\circ}C \notag \\
+T_j &= 106,1956^{\circ}C \notag
+\end{align}
 
 Durch dieses Ergebnis lässt es sich, trotz eines Sicherheitsabschlages der maximalen Sperrschichttemperatur (T\textsubscript{jmax} = 125°C-15°C), auf einen zulässigen Betrieb schließen.\\\\
 Obgleich dieser Wert recht hoch erscheint, werden wir auf einen Kühlkörper verzichten, da wir dieses maximale Potential des Gleichspannungswandlers nicht voll ausnutzen werden.
@@ -1163,7 +1194,8 @@ Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
 Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
 \subsubsection{Schrittauflösung}
-In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt, um die gewünschte Mikroschrittauflösung zu erreichen.
+In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
+Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Anschlüsse M2, M1 und M0 mit dem entsprechenden Spannungspegel versorgt werden.
 
 \begin{table}[h]
 \centering
@@ -1179,7 +1211,7 @@ In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Ansc
 1 & 1 & 0 & 32 Mikroschritte pro Schritt \\ \hline
 1 & 1 & 1 & 32 Mikroschritte pro Schritt \\ \hline
 \end{tabular}
-\caption{1 signalisiert ein HIGH-Signal, 0 sein LOW-Signal}
+\caption{Festlegen der Schrittauflösung}
 \end{table}
 
 \subsubsection{Stromlimitierung}
@@ -1202,7 +1234,7 @@ Beim DRV8825 beträgt der Wert 0.1 Ohm.
 
 \begin{align*}
 V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
-&= 0.8V
+V_{ref} &= 0.8V
 \end{align*}
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
 Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet, eingestellt werden.
@@ -1227,29 +1259,28 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 • R\textsubscript{thja} = 31.6°C/W \\
 • R\textsubscript{DSon} = 0,32 Ohm \\
 
-\textbf{Berechnung}
-\begin{flalign*}
-P_V &= R_{DSon} \cdot I_{max}^2 &\\
-&= 0,32\Omega \cdot 1.6A^2 &\\
-&= 0.8192W
-\end{flalign*}
+\begin{align*}
+P_V &= R_{DSon} \cdot I_{max}^2 \\
+P_V &= 0,32\Omega \cdot 1.6A^2 \\
+P_V &= 0.8192W
+\end{align*}
 
-\begin{flalign*}
-P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} &\\
-&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
-&= 3.1646W
-\end{flalign*}
+\begin{align*}
+P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} \\
+P_D &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} \\
+P_D &= 3.1646W
+\end{align*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
 Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.
 
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
-\begin{flalign}
-R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
-&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag &\\
-&= 106.07\frac{{}^{\circ}C}{W}  \notag
-\end{flalign}
+\begin{align}
+R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) \\
+R_{thK} &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag \\
+R_{thK} &= 106.07\frac{{}^{\circ}C}{W}  \notag
+\end{align}
 
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
@@ -1313,7 +1344,7 @@ U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
 \caption{Aufbau einer Spannungsteilers}
 \end{figure}
 
-Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
+Durch verschiedene Tests mussten wir die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
 
 \begin{equation*}
@@ -1610,11 +1641,11 @@ Dieses wendet folgende Formel an: \\
 \end{equation}
 wobei
 \begin{itemize}
-    \item P\textsubscript{I} dem maximal fließenden Strom in Ampere,
-    \item V\textsubscript{K} 0.048 für externe oder 0.024 für interne Leiterbahnen,
-    \item I\textsubscript{dT} dem Temperaturanstieg über der Umgebungstemperatur in Grad Celsius,
-    \item V\textsubscript{W} der Leiterbahndicke in mils und
-    \item I\textsubscript{H} der Leiterbahnbreite in mils entspricht.
+    \item I dem maximal fließenden Strom in Ampere,
+    \item K 0.048 für externe oder 0.024 für interne Leiterbahnen,
+    \item dT dem Temperaturanstieg über der Umgebungstemperatur in Grad Celsius,
+    \item W der Leiterbahndicke in mils und
+    \item H der Leiterbahnbreite in mils entspricht.
 \end{itemize}
 
 \subsection{Leiterplattenfertigung}
