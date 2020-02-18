@@ -104,10 +104,7 @@ Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusa
     \end{ganttchart}
     }
     \caption{Zeitplanung - Informatik}
-
-
 \end{figure}
-\newpage
 Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
 Um das Zeitfenster des Projekts nicht zu verzögern werden folgende Meilensteine in den Zeitplan implementiert:
 \begin{enumerate}
@@ -115,7 +112,6 @@ Um das Zeitfenster des Projekts nicht zu verzögern werden folgende Meilensteine
     \item xx.xx.xxxx - Aufgabe XX
     \item xx.xx.xxxx - Aufgabe XX
 \end{enumerate}
-
 \section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
 Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb der Maschine auf einem 7" Display angezeigt werden soll.
@@ -211,7 +207,7 @@ Benennen darf sich dieses Designkonzept Model-View-Controller. \autoref{subsec:e
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 Diese verbessern das sogenannte Look and Feel drastisch.
 
-\begin{figure}[htb!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
     \caption{JavaFX Stage-Scene-Node Übersicht}
@@ -225,7 +221,7 @@ Eine einheitliche Formatierung und Namensgebung ein Kernbestandteil einer gelung
 Dies führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
 Um die Übersichtlichkeit eines Projektes zu verbessern wird nach einer klar definierten Projektstruktur gearbeitet.
 Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden:
-\begin{figure}[htb!]
+\begin{figure}[H]
     \begin{center}
         \begin{forest}
             for tree={
@@ -299,7 +295,7 @@ Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht
 Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken. \\
 Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktur vor.
 
-\begin{figure}[htb!]
+\begin{figure}[H]
     \begin{center}
         \begin{forest}
             for tree={
@@ -377,7 +373,7 @@ Dieses Verhalten führt zu einer Vereinfachung der Ausführung von komplexeren T
 Das Command-Pattern verfügt meist über verschieden starke Ausprägung.
 Im Kern herrscht jedoch immer dasselbe Prinzip, welches in \textit{\autoref{fig:UML-Diagramm Command}} dargestellt wird.
 Vorallem die \textbf{Kapselung von Befehlswunsch und Ausführung} steht an erster Stelle.
-\begin{figure}[htb!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{fig/ainf/Command.pdf}
     \caption{UML-Diagramm Command}
@@ -404,7 +400,7 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
     Datenrepräsentation\\
     Komplett Abgeschirmt
 \end{enumerate}
-\begin{figure}[htb!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/ainf/ModelViewController.pdf}
     \caption{UML-Diagramm MVC}
@@ -420,7 +416,7 @@ Andererseits kann nun, nur mit wenigen Klicks eine für den Endbenutzer ansprech
 Im speziellen hat SceneBuilder weitere wichtige Vorteile wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
 Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu verfeinern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eigent sich optimal für große Projekte wie dieses.
-\begin{figure}[htb!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/ainf/SceneBuilder.png}
     \caption{Tool SceneBuilder}
@@ -438,16 +434,16 @@ Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut
 Zusätzlich kann man auch hier, eigene CSS-Deklarationen vornehmen, jedoch ist vieles schon vorab definiert\\
 Anhand der folgenden \autoref{fig:Rendered Button} soll gezeigt werden, wie nun Elemente, gebaut mithilfe der JFoenix Bibliothek, aussehen.
 Angewendet werden die Attribute \lstinline{-fx-border-radius: 20pt;}  \lstinline{-fx-background-radius: 20pt;} und \lstinline{-fx-background-color:grey}
-\begin{figure}[htb!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{fig/ainf/RenderedButton.PNG}
     \caption{Gerenderter Button}
     \label{fig:Rendered Button}
 \end{figure}
 \subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
-Im folgenden Kapitel soll auf die Speicherung des Beschreibenden Teils des Layouts eingegangen werden.
-Dies geschieht aufgrund des verwendeten GUI-Frameworks nähmlich nicht im Code selbst, sondern in externen Dateien.
-Ziel ist es, grundlegende Dinge zu klären und näher zu erläutern.
+Im folgenden Kapitel soll auf die Datenpersistenz eingegangen werden.
+Speziell in diesem Projekt werden die Datenformate \textbf{XML/FXML}, \textbf{CSS} und \textbf{JSON} verwendet.
+Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblich zu erschaffen.
 \subsubsection{XML}
 XML(Extensible Markup Language) ist, wie im \autoref{sssec: JavaFX} schon erwähnt, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Damit ist sie also keine Programmiersprache.
@@ -456,10 +452,8 @@ Diese XML-Dateien sind zu vergleichen mit normalen Textdokumenten, welche mit ei
 Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenennaten XML-Tags.
 Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelements.
 Auch ist es notwendig, ein Tag mihilfe eines sogenannten End-Tags zu schließen.
-<<<<<<< Updated upstream
 Zwischen diesen Start- bzw. \ End-Tags befindet sich ein Datensatz.
 Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
-=======
 Zwischen diesen Start- bzw. \ End-Tags befindet sich e
 in Datensatz.
 Ein Indikator für ein End-Tag ist ein \lstinline{/}.
@@ -503,22 +497,53 @@ Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
 
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache mit welcher Gestaltungsanweisungen erstellt werden können.
-Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat sondern rein für Design und Stilaspekte verwendet wird.\\
+Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
 \footfullcite{JavaFX CSS Reference Guide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
-Diese Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
+Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von Java-FX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglicket zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
-Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.
-
-Neben dem definieren von Attributen
-
+Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
+Eine Besonderheit von JavaFX CSS besteht im Vergleich zur normalen CSS-Sprache.
+Alle Elemente, welche mit JavaFX in Verbindung stehen besitzen das Prefix \lstinline{-fx-...}.
+Dies lässt sofort auf die Beschreibung eines JavaFX Elements schließen.
 \subsection{Datenformat JSON}\label{subsec:json}
 
 \subsubsection{Beschreibung}
-
-\subsubsection{Bibliothek GSON}
-
+Der Name JSON(JavaScript Object Notation) beschreibt neben XML eines der wichtigsten Datenformate zur Sicherstellung der Datenpersistent in der Softwaregeschichte.
+Dieser Nachfolger von CSV und INI setzte sich vorallem in der heutigen Datentechnik durch.
+Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
+Ein weiterer Grund zur Verwendung ist ebenso eine effektive Umwandlung von Daten, also Objekten, Arrays und sonstigen Variablen,  in das JSON-Dateiformat.\\
+All diese Merkale sind esentiell wichtig und eröffnen ein breites Spektrum an Verwendungsmöglichkeiten.\\\\
+Die Syntax von JSON ist klar definiert und wird ebenfals durch ein Beispiel näher visualisiert.
+\begin{lstlisting}[caption=JSON-Codebeispiel,label=jsonExample]
+{
+    "employee": {
+    "name": "tester",
+    "salary": 5432,
+    "children": false
+    }
+}
+\end{lstlisting}
+\subsubsection{Bibliothek Gson}
+Die von Google entwickelte Bibliothek Gson spielt in diesem Projekt eine wichtige Rolle.
+Aufgrund enormer Datenmengen ist es zeitaufwändig, JSON Dateien in Java zu erstellen.\\
+Eine Hilfe bietet dabei Gson.
+Diese unterstützende Bibliothek hilft dem Emtwickler bei der Konvertierung zwischen Java-und JSON-Objekten.
+Erstellt wird eine Gson Instanz durch Aufruf des Default-Konstruktors: \lstinline{Gson gson = new Gson();}.
+Sobald dies vonstatten gegangen ist kann nun entweder mit der Methode \lstinline{toJson} oder mit \lstinline{fromJson} gearbeitet werden.
+Diese beiden Methoden stellen die Haupteinstiegspunkte von Gson dar und werden im folgenden Teil erklärt.
+\\\\
+\textbf{\lstinline{toJson}}
+\\
+Mithilfe der Mehode \lstinline{gson.toJson()} kann direkt aus einem Objekt ein JSON-String erzeugt werden.
+Dieser genannte String kann danach je nach belieben in eine Datei geschreiben oder versendet werden.
+\\\\
+\textbf{\lstinline{fromJson}}
+\\
+Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline{gson.fromJson()} umgekehr werden.
+Hierbei wird aus einem JSON-String ein Objekt erzeugt.
+\\
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
-\subsection{Kommunikation - serielle Schnittstelle}\label{subsec:kommunikation---serielle-schnittstelle}
+\subsection{Kommunikation}
 \subsubsection{Konzept}
 Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
 Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft.
@@ -545,9 +570,10 @@ Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
     \item Einzelbitfehler (1 Bit verändert)
     \item Burstfehler (ganze Folge von Bits verändert)
 \end{enumerate}
-\subsubsection{Übertragungsprotokoll}
-\begin{table}[htb!]
+\subsubsection{Übertragungsprotokoll} \label{sssec:uebertragungsprotokoll}
+\begin{table}[H]
     \centering
+\resizebox{\textwidth}{!}{%
     \begin{tabular}{|
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |
@@ -558,13 +584,15 @@ Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
         \textbf{Doppelpunkt :} & \textbf{Daten (ASCII)} & \textbf{Trennzeichen \#} & \textbf{CRC32-Prüfsumme} & \textbf{Semicolon \textbackslash{}n} \\ \hline
         8-Bit & 16-Bit & 8-Bit & 32-Bit & 8-Bit                                \\ \hline
     \end{tabular}
+}
     \caption{Visualisierung des Datenakets}
 \end{table}
 Das verbindugslose Protokoll basiert, wie in der Konzeptbeschreibung bereits erwähnt, auf dem Master-Slave Prinzip.
 Außerdem erfolgt die Datenübertragung rein textuell wobei nur Großbuchstaben verwendet werden dürfen.\\\\
 Wie aus der oben dargestellten Tabelle zu entnehmen, ist der Aufbau eines Frames klar definiert.
 Der eindeutige Start des Datenpakets, welcher mit einem Doppelpunkt (:) eingeleitet wird, sowie das ebenfalls eindeutige Ende, umgesetzt mit einem Line Feed Character (), bringt eindeutige Vorteile mit sich.
-Im Gegensatz zu anderen Protokollen wie z.B. Modbus RTU, muss hier nicht auf das Ende des Pakets "gewartet" werden. Dies führ oft zu Einbußen im Bereich der Performance und ist für uns nicht zielführend.\\\\
+Im Gegensatz zu anderen Protokollen wie z.B. Modbus RTU, muss hier nicht auf das Ende des Pakets "gewartet" werden.
+Dies führ oft zu Einbußen im Bereich der Performance und ist für uns nicht zielführend.\\\\
 Gefolgt von dem Startzeichen folgen nun die Daten.
 Diese beinhalten eindeutig definierte Zecichenfolgen, welche verwendet werden um verschiedenste Zustände der Ansteuerplatine auszuführen.
 Diese Um auch hier zu wissen, wo sich das der Nutzdaten befindet, schließt das Trennzeichen () diese ab.\\\\
@@ -577,12 +605,45 @@ Die wichtigsten Arten von Übertragungsfehlern sind:
 Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere. Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
 Sie ist realtiv einfach zu realisieren und dennoch wirkungsvoll.
 Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänger, das selbe Generator-Polynom verwenden. Der Grad des Generatorpolyoms beträgt in unserem Fall 32 (CRC-32).
-\subsubsection{Request- und Responsehandling}
-
-\subsection{Kommunikation - Debugging-Simulator}\label{subsec:kommunikation---debugging-simulator}
-\subsubsection{Konzept}
-\subsubsection{Datenaustausch}
-\subsubsection{Verarbeitung ankommender Daten}
+\subsubsection{Request- und Responsebeispiele}
+Folgend wird anhand von tabelarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
+Jeder Request sowie Reponse basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|c|}
+\hline
+\rowcolor[HTML]{FFFFFF}
+\textbf{Request} & \textbf{Request-String {[}Rx{]}} & \textbf{Aktion} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}\textbf{Response-String {[}Tx{]}}} \\ \hline
+Init     & IN                                          & Initialisierungs-Zustand     & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+Shutdown & XX                                          & Herunterfahren der Maschine  & --//--                                                      \\ \hline
+Shuffle  & SH                                          & Mischen von Karten           & --//--                                                      \\ \hline
+Deal     & D\textless{}Anzahl der Karten\textgreater{} & Kartenausgabe je nach Anzahl & --//--                                                      \\ \hline
+AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausgabe   & --//--                                                      \\ \hline
+\end{tabular}%
+}
+\caption{Request- und Responsebeispiele Tabellarisch dargestellt}
+\end{table}
+Aufgrund eines wohldurchdachten Systems bei der Request-Definition, ist es nun möglich, den Pool an verschiedenen Requests explizit zu minimieren.
+Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden den einzelnen Spieler, was mithilfe des Requests \textbf{Deal} und \textbf{AutoDeal} umgesetzt wird.\\
+Neben den Request, welche sich rein auf den Ablauf eines Kartenspiels konzentrieren, verfügt der Pool über Requests, welche allgemein zur Funktionalität der Maschine beitragen.
+Der Request \textbf{Shutdown} führt jedeglich zu einem Herunterfahren der Maschine.
+Auch wird bevor die Maschine in Betrieb genommen wird, der Request \textbf{Init} gesendet.
+Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.\\
+Die genauere Aufarbeitung und Umsetztung sei im \autoref{ssec:konzeptCardDeal} verzeichnet.
+\subsubsection{Datenaustausch-Serielle Schnittstelle}
+Zuallererst soll der Ablauf der Kommunikation zwsichen dem Programm und des Endgeräts, welches über die serielle Schnitstelle verbunden ist, betrachtet werden.
+Im ersten Schritt wird auf die Erstellung jedes einzelnen Request Eingegangen.\\
+Um die Aufgabe der Einbindung von Requests elegant und objektorientiert umzusetzten, stellt die abstrakte Klasse \lstinline{Request} den Kopf jedes einzelnen Requests dar.
+Dies bedeutet im engsten Sinne, dass jeder einzelne Request eine Abstammung dieser Klasse ist.
+Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{fig/ainf/RequestUML.pdf}
+\caption{UML-Diagramm-Abstrakte Klasse Request}
+\label{umlReq}
+\end{figure}
+gfd
 \subsection{Logging}
 \subsubsection{Konzept}
 \subsubsection{Integration in das Programm}
@@ -659,8 +720,7 @@ label.setText("Counter: " + model.getCounter());
 
 \section{Hardwarenahe-Programmierung}
 \subsection{Einrichtung des Mikrocontrollers}
-\subsection{Konzept und Ablaufdiagramm zur Kartenausgabe}
-\subsection{Request- und Responsehandling}
+\subsection{Konzept und Ablaufdiagramm zur Kartenausgabe} \label{ssec:konzeptCardDeal}
 \section{Teilaufbau}
 \subsection{Auswahl des Zielsystems}
 \subsubsection{Arduino}
