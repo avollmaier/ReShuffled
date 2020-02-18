@@ -1,4 +1,4 @@
-cd \lohead{Perl Nicolas}
+\lohead{Perl Nicolas}
 \chapter{Elektronik}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
@@ -8,7 +8,7 @@ cd \lohead{Perl Nicolas}
 Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
 Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten anzusteuern, einen Endschalter einzulesen und einen Schrittmotor anzusteuern.
 Zudem hat sie die Aufgabe, jegliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
-Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten.
+Außerdem soll der Mikroprozessor dazu im Stande sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten.
 Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
 
 \subsection{Zeitplan}
@@ -80,7 +80,7 @@ Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an E²PR
 Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen sowie drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben.
 \subsubsection{ATmega128}
-Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB.
+Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB .
 Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
 Zusätzlich bietet er vier Timer und 53 I/O Pins.
 Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden.
@@ -475,7 +475,7 @@ Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über 
 um die Versorgung der Peripherie zu gewährleisten.
 Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden,
 die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
-Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
+Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V .
 
 \subsubsection{Schaltnetzteil und Schaltregler}
 Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal tranferiert.
@@ -783,8 +783,8 @@ Durch diese Berechnung bewiesen, gilt es, für jene Bedingung einen Kondensator 
 Unsere Wahl fiel somit auf einen Elektrolytondensator mit 100µF . \\
 
 Um ein sicheres Aufheben der Selbsthaltung zu gewähren, muss ein ausreichend langes Potential am N-Kanal MOSFET bereitstellen zu können, muss ebenfalls der Widerstand R2 richtig dimensioniert werden.
-Der von uns ausgewählte MOSFET FDN337 verfügt über das Attribut einer maximalen Threshold-Voltage von 3V .
-Aufgrund dessen sollte auch nach einer Zeit 2 Sekunden ein Potential von größer gleich 3V am Gate der Halbleiterkompontente anliegen.
+Der von uns ausgewählte MOSFET FDN337N verfügt über das Attribut einer maximalen Threshold-Voltage von 1V .
+Aufgrund dessen sollte auch nach einer Zeit 5 Sekunden ein Potential von größer gleich 1V am Gate der Halbleiterkompontente anliegen.
 Um die Formel zur Widerstandsdimensionierung herzuleiten, wurde Folgendes als Ersatzschaltbild herangezogen.
 
 \begin{figure}[ht]
@@ -824,7 +824,7 @@ Um die Formel zur Widerstandsdimensionierung herzuleiten, wurde Folgendes als Er
 
 Sollte nach 0.5s die Spannungsversorgung des Mikrocontrollers versagen, läge an einem Kondensator mit 100µF eine Spannung von 3.078592V an.
 Bie einer solchen Kondensatorspannung zum Zeitpunkt t=0 erschließt sich der
-Wert des Widerstands R2 bei einem Spannungs-Sollwert von 3V nach 2 Sekunden wie folgt:
+Wert des Widerstands R2 bei einem Spannungs-Sollwert von 1V nach 5 Sekunden wie folgt:
 
 \begin{align*}
     u_c(t) &= u_c(t=0) \cdot e^{-\frac{t}{RC}} \\
@@ -832,12 +832,12 @@ Wert des Widerstands R2 bei einem Spannungs-Sollwert von 3V nach 2 Sekunden wie 
     ln(\frac{u_c(t)}{u_c(t=0)}) &= -\frac{t}{RC} \\
     RC &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)})} \\
     R &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)}) \cdot C} \\
-    R &= -\frac{2s}{ln(\frac{3V}{3.078592V}) \cdot 100\muF} \\
-    R &=  763803.3\Omega
+    R &= -\frac{5s}{ln(\frac{1V}{3.078592V}) \cdot 100\muF} \\
+    R &=  44452.464\Omega
 \end{align*}
 
-Dieses Ergebnis macht deutlich, dass es bei derartigen Bedingungen einen Widerstand auszuwählen, dessen Wert 763803.3 Ohm übersteigt.
-Diese Erkenntnis brachte uns zu der Entscheidung, einen Widerstand in der Höhe von 1 MOhm auszuwählen.
+Dieses Ergebnis macht deutlich, dass es bei derartigen Bedingungen einen Widerstand auszuwählen, dessen Wert 44452.464 Ohm übersteigt.
+Diese Erkenntnis brachte uns zu der Entscheidung, einen Widerstand in der Höhe von 100 kOhm auszuwählen.
 
 \newpage
 
@@ -949,7 +949,7 @@ wobei
 
 Setzen wir nun die bei unserer Anwendung maximal anfallenden Werte ein erhalten wir folgendes Ergebnis:
 \begin{align*}
-P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V \\
+P_D &= 12V \cdot 0.013A + \frac{5V}{12V} \cdot 3A \cdot 1.4V \\
 P_D &= 1.906W
 \end{align*}
 
@@ -969,7 +969,7 @@ T_j &= 106,1956^{\circ}C \notag
 
 Durch dieses Ergebnis lässt es sich, trotz eines Sicherheitsabschlages der maximalen Sperrschichttemperatur (T\textsubscript{jmax} = 125°C-15°C), auf einen zulässigen Betrieb schließen.\\\\
 Obgleich dieser Wert recht hoch erscheint, werden wir auf einen Kühlkörper verzichten, da wir dieses maximale Potential des Gleichspannungswandlers nicht voll ausnutzen werden.
-(Die Verlustleistung erreicht bei einem Laststrom von 1.5A einen Wert von 0.8435W. Der daraus zu schließende Wert der Sperrschichttemperatur beträgt somit gerade einmal 60,9331°C.)
+(Die Verlustleistung erreicht bei einem realistischen, maximalen Laststrom von 2A einen Wert von 1.322667W. Der daraus zu schließende Wert der Sperrschichttemperatur beträgt somit 81.3456°C.)
 
 \subsection{Raspberry Pi 3B+}
 
@@ -1348,7 +1348,7 @@ Durch verschiedene Tests mussten wir die Erkenntnis machen, dass sich der Spannu
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
 
 \begin{equation*}
-R_1 = 5.1k\Omega, R_2 = 2k\Omega
+R_1 = 5.6k\Omega, R_2 = 4.7k\Omega
 \end{equation*}
 
 Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
@@ -1588,9 +1588,8 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 
 \subsection{Netzteil}
 
-Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus.
-Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
-Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
+Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe hat ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
+Zudem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
 
 \section{Steckbrettaufbauten}
 
@@ -1611,7 +1610,39 @@ war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu d
 \newpage
 \section{Auswahl der Bauteile}
 
+\subsection{Auswahl der Transistoren}
+\subsubsection{P-Kanal MOSFET}
 
+Als P-Kanal MOSFET traf unsere Wahl auf den FDD6637.
+Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source mit sich.
+Außerdem ist dieser dazu in der Lage, eine Spannung von maximal -35V zu schalten und gleichzeitig einen Strom von bis -55A treiben zu können.
+
+\subsubsection{N-Kanal MOSFET}
+
+Als N-Kanal MOSFET wählten wir den FDN337N aus, welcher in der Lage ist, Ströme von bis zu 2.2A treiben zu können.
+Außerdem ist es diesem möglich, Drain-Source-Spannungen von bis zu 30V zu schalten, was für unsere Anwendung weitaus genügt.
+Hinzu kommt noch die wesentliche Tatsache, dass dieser eine niedrige Gate Treshold Voltage von nur max.1V mit sich bringt.
+
+\subsection{Auswahl der Gleichspannungswandler-Peripherie}
+
+\subsubsection{Spule}
+Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf dessen Datenblatt zurückgegriffen.
+Über die uns verwendete Eingangsspannung des Gleichspannungswandlers und den maximal fließenden Strom von 2A
+traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf eine Spule mit einem Wert von 100µH .
+Über die Bedingung einen derartig hohen Strom treiben zu können, fiel unsere Wahl auf die DR127-101-R,
+welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, magnetische Geschirmtheit und einem SMD-Gehäuse mit sich bringt.
+
+\subsubsection{Schottky-Diode}
+Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
+Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
+
+\subsection{Auswahl der Z-Diode}
+
+\subsection{Auswahl der Dioden}
+
+\subsection{Auswahl der Schottky-Dioden}
+
+\subsection{Auswahl sonstiger passiver Bauelemente}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
