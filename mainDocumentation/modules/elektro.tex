@@ -1636,13 +1636,27 @@ welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen 
 Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
 Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
 
-\subsection{Auswahl der Z-Diode}
+\subsection{Auswahl der Gleichrichter-Dioden}
 
-\subsection{Auswahl der Dioden}
+Als diese Dioden selektierten wir die RR264M, welche sowohl einen Strom von 1A treiben kann, was wichtig für die Implemntierung an den induktiven Last ist.
+Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
+Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
 
 \subsection{Auswahl der Schottky-Dioden}
 
-\subsection{Auswahl sonstiger passiver Bauelemente}
+Als Schottky-Diode wählten wir die MBR130, welche die Maximalwerte von 1A und 30V mit sich bringt.
+Außerdem ist anzuführen, dass ein wesentliches Attribut der an ihr niedriger, abfallender Spannungsabfall von nur 0.25V bei 25°C und 0.1A ist.
+Bei 1A und 25°C beträgt der Spannungsabfall 0.35V .
+Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schaltung und der Beschaltung des USB-UART-Converters befürworteten ihren Einsatz.
+
+\subsection{Auswahl der Zener-Diode}
+
+Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
+
+\subsection{Auswahl sonstiger Bauelemente}
+
+Bei den Bauformen jener Kondensatoren, dessen Wert 100nF oder 22pF beträgt, und aller Leuchtdioden und Widerstände wurde auf 0805er Chips zurückgegriffen,
+da sich diese bereits in unserem Besiz befanden und diese eine platzsparende, und dennoch einfach zu lötende Lösung bereitstellten.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -1658,10 +1672,11 @@ Nennswert ist zudem, dass nur maximal zweilagige Leiterplatten angefertigt werde
 
 \subsection{Layoutdesign}
 
+Beim Layoutdesign wurde darauf geachtet, keine THT und SMD Bauteile zu vermischen.
+Somit wurden diese jeweils auf zwei verschiedenen Layern platziert. \\
 Im Laufe der Diplomarbeit entstanden unzählig viele, verschiedene Layouts, welche die Gründe von ständig neu aufkommenden Ideen, Ausmerzung von Fehlerquellen und Simplifizierungen hatten.
 Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen, aber lehrreichen Aufgabe.
 Eine falsche Dimensionierung von Bauteilen und Baugruppen und Denkfehler, die das Fertigen erschweren würden waren hierbei die Hauptfaktoren. \\
-Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
 
 Die Breite aller Leiterbahnen wurden auf den maximal fließenden Strom ausgelegt.
 Um zu diesen Werten zu kommen, wurde ein Tool angewandt, welches sich in der KiCad Nutzerumgebung finden lässt.
@@ -1678,6 +1693,8 @@ wobei
     \item W der Leiterbahndicke in mils und
     \item H der Leiterbahnbreite in mils entspricht.
 \end{itemize}
+
+Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
 
 \subsection{Leiterplattenfertigung}
 
