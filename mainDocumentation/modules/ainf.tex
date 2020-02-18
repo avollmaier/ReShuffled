@@ -210,6 +210,13 @@ und dem dahinter stehenden Code ist dadurch möglich.
 Benennen darf sich dieses Designkonzept Model-View-Controller. \autoref{subsec:entwurfsmuster-mvc}\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
 Diese verbessern das sogenannte Look and Feel drastisch.
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
+    \caption{JavaFX Stage-Scene-Node Übersicht}
+    \label{fig:Tool SceneBuilder}
+\end{figure}
 \subsubsection{Fazit}
 
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
@@ -424,10 +431,11 @@ Sobald nun SceneBuilder als wichtiges Element der Erstellung ausgewählt wurde, 
 Diese sogenannte User-Experience beschreibt, wie der Endbenutzer das Produkt bzw. in unserem Fall die grafische Oberfläche empfindet.
 Wird auf diesen Kernpunkt kein Wert gelegt, wird auch niemand erfreut bei der Bedienung sein.\\\\
 SceneBuilder bietet bereits einige Grundelemente für Layouts an, doch diese sind nicht ansprechend.
-Sie können zwar mir CSS gestaltet werden, dies ist jedoch für alle Elemte schwierig umzusetzten.
+Sie können zwar mir CSS, was im \autoref{sssec: CSS} beschrieben wird, gestaltet werden, dies ist jedoch für alle Elemte schwierig umzusetzten.
 Abhilfe schafft dabei die Material-Design Bibliothek von JFoenix.
 Diese Bibliothek ist Open-Source und implementiert, wie schon im Namen genannt, Designelemente nach dem von Google entwickelten Material-Design Vorgaben.
-Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut werden kann.\\
+Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut werden kann.
+Zusätzlich kann man auch hier, eigene CSS-Deklarationen vornehmen, jedoch ist vieles schon vorab definiert\\
 Anhand der folgenden \autoref{fig:Rendered Button} soll gezeigt werden, wie nun Elemente, gebaut mithilfe der JFoenix Bibliothek, aussehen.
 Angewendet werden die Attribute \lstinline{-fx-border-radius: 20pt;}  \lstinline{-fx-background-radius: 20pt;} und \lstinline{-fx-background-color:grey}
 \begin{figure}[htb!]
@@ -448,8 +456,15 @@ Diese XML-Dateien sind zu vergleichen mit normalen Textdokumenten, welche mit ei
 Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenennaten XML-Tags.
 Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelements.
 Auch ist es notwendig, ein Tag mihilfe eines sogenannten End-Tags zu schließen.
+<<<<<<< Updated upstream
 Zwischen diesen Start- bzw. \ End-Tags befindet sich ein Datensatz.
 Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
+=======
+Zwischen diesen Start- bzw. \ End-Tags befindet sich e
+in Datensatz.
+Ein Indikator für ein End-Tag ist ein \lstinline{/}.
+
+>>>>>>> Stashed changes
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
 \begin{lstlisting}[caption=XML-Codebeispiel,label=xmlExample]
@@ -465,14 +480,14 @@ Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien i
 
 \subsubsection{FXML}
 FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
-Da hier die Trennung von GUI- und Programmcode vollzogen wurde, kann erst mithilfe des von Oracle entwickelte Formats ein Layout nach dem MVC -Pattern gebaut werden.\\\\
+Da die Trennung von GUI- und Programmcode bei Java FX nach dem MVC-Pattern \autoref{subsec:entwurfsmuster-mvc}vollzogen wurde, kann erst mithilfe des von Oracle entwickelte Formats ein Layout in einer eigenen Datei gebaut werden.\\\\
 Die Struktur und Syntax von FXML Dateien ähnelt der von XML-Dateien.
 So werden auch Start- und End-Tags verwendet.
 Ein wesentlicher Unterschied ist jedoch bei der Groß-/Kleinschreibung ersichtlich.
 Beginnen in FXML-Dateien Elemente mit einem Großbuchstaben, werden diese als Objektdeklarationen behandelt.
 Infolgedessen erkennt der FXML-Loader, welcher diese \lstinline{*.fxml} ins Programm lädt, diese Objektdeklarationen nimmt eine dementsprechende Objektbildungen vor.
 Sobald diese jedoch mit einem Kleibuchstaben beginnen, definieren sie Eigenschaften.
-Eine weitere Besonderheit ist, dass es möglich ist, Import-Anweisungen durchzuführen.
+Eine weitere Besonderheit liegt bei dem Einbinden von Importanweisungen vor.
 Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
 \begin{lstlisting}[caption=FXML-Codebeispiel,label=fxmlExample]
 <?xml version="1.0" encoding="UTF-8"?>
@@ -486,8 +501,16 @@ Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
 </VBox>
 \end{lstlisting}
 
-\subsubsection{CSS}
-Bei der Verfolgung von Designzielen spielt auch CSS(Cascading Style Sheet) eine wichtige Rolle.
+\subsubsection{CSS}\label{sssec:CSS}
+CSS ist eine Gestaltungs- und Formatierungssprache mit welcher Gestaltungsanweisungen erstellt werden können.
+Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat sondern rein für Design und Stilaspekte verwendet wird.\\
+\footfullcite{JavaFX CSS Reference Guide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
+Diese Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
+Grundlegend besteht das Ziel von Java-FX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglicket zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
+Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.
+
+Neben dem definieren von Attributen
+
 \subsection{Datenformat JSON}\label{subsec:json}
 
 \subsubsection{Beschreibung}
