@@ -40,8 +40,8 @@ public abstract class Request {
         CRC32.reset();
         resFrame = res.getResFrame();
         LOG.fine("Received response " + Arrays.toString(resFrame));
-
         System.arraycopy(resFrame, 1, receivedContentCRC, 0, 2);
+
         CRC32.update(receivedContentCRC);
 
         for (int i = 4; i <= 11; i++) {

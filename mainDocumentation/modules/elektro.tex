@@ -1,4 +1,4 @@
-cd \lohead{Perl Nicolas}
+\lohead{Perl Nicolas}
 \chapter{Elektronik}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
@@ -8,7 +8,7 @@ cd \lohead{Perl Nicolas}
 Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
 Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten anzusteuern, einen Endschalter einzulesen und einen Schrittmotor anzusteuern.
 Zudem hat sie die Aufgabe, jegliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
-Außerdem soll der Mikroprozessor im Stande dazu sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten.
+Außerdem soll der Mikroprozessor dazu im Stande sein, Befehle von einem Raspberry Pi 3B+ über UART zu erhalten.
 Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini USB zu betreiben, soll ebenfalls gegeben sein.
 
 \subsection{Zeitplan}
@@ -55,7 +55,7 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
     \ganttnewline[thick, black]
 
     \ganttgroup[]
-    {Dokumentation}{2019-11-15}{2020-02-31}\\ [grid]
+    {Dokumentation}{2019-11-15}{2020-02-23}\\ [grid]
 
     \end{ganttchart}
     }
@@ -67,23 +67,28 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \section{Variantenvergleiche und Konzeptionierungen}
+
 \subsection{Mikrocontroller}
 Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
-Wir stellten die Anforderungen einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
+Wir stellten die Anforderungen einer SPI-Programmierschnittstelle sowie die einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
-\subsubsection{ATmega162}
+
+\subsubsection{ATmega162}\footfullcite{AVR Typen}
 Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen E²PROM-Speicher von 512 Bytes.
 Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 I/O Register und zwei Timer.
 Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.
-\subsubsection{ATmega324P}
+
+\subsubsection{ATmega324P}\footnotemark[1]
 Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an E²PROM-Speicher sowie 1kiB an SRAM mit sich bringt.
 Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen sowie drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben.
-\subsubsection{ATmega128}
-Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB.
+
+\subsubsection{ATmega128}\footnotemark[1]
+Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB .
 Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
 Zusätzlich bietet er vier Timer und 53 I/O Pins.
 Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden.
+
 \subsubsection{Mikrocontroller-Auswahl}
 
 \begin{table}[h]
@@ -100,8 +105,6 @@ Preis & gering & gering & mittel            \\ \hline
 Flash-Speicher & 16kiB & 32kiB & 128kiB     \\ \hline
 EEPROM-Speicher & 512B & 1kiB & 4kiB        \\ \hline
 I/O-Pins & 35 & 32 & 53                     \\ \hline
-UART-Schnittstellen & 2 & 2 & 2             \\ \hline
-SPI-Schnittstelle & ja & ja & ja            \\ \hline
 Versorgungsspannung & 2,7V-5V & 1,8V-5V & 4,5V-5V  \\ \hline
 \end{tabular}
 \caption{Vergleich der Mikrocontrollerattribute}
@@ -166,11 +169,9 @@ Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Tran
 Wie in Abbildung 2.1 zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
 Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode.
 Diese haben folgende Aufgabe:\\\\
-Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie.
-Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
-Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, um dem Strom einen Pfad zu bieten, der die Energie freisetzt. \\\\
-
-
+Ein Nebeneffekt der Funktionsweise eines Motors ist die Erzeugung von Energie.
+Bei einem Deaktivieren der Transistoren um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
+Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, da diese dem Strom einen Pfad zu bieten, welcher die Energie freisetzt. \\
 
 \begin{figure}[ht]
 \centering
@@ -285,7 +286,7 @@ Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzu
 Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang PD0 ein HIGH-Signal erzeugt werden.
 Am Ausgang PD1 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang OC1B, befindet sich ein HIGH-Signal am unteren Eingang des UND-Gatters IC2.
-Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\\\
+Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
 Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang PD1 ein HIGH-Signal gesetzt.
 Am Ausgang PD0 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein HIGH-Signal am oberen Eingang des UND-Gatters.
@@ -321,7 +322,7 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 \end{itemize}
 \end{itemize}
 
-\subsubsection{A4988}
+\subsubsection{A4988}\footfullcite{A4988 Stepper Motor Driver Carrier}
 Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Es besteht kein Bedarf daran Phasenfolgetabellen, Hochfrequenz-Steuerleitungen oder komplexe Schnittstellen zu programmieren.
@@ -332,7 +333,7 @@ Zusätzlich wird die Gewährleistung eines Überstromschutz und Übertemperaturs
 Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
 
-\subsubsection{DRV8825}
+\subsubsection{DRV8825}\footfullcite{DRV8825 Stepper Motor Driver Carrier, High Current}
 Diesem Treiber-Board von Texas Instruments ist es Möglich mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
 Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welche mit zugeführter Kühlung auch getrieben werden können.
@@ -342,7 +343,7 @@ Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebau
 Der DRV8825-Treiber verfügt über eine Schnittstelle und eine Pinbelegung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind,
 sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
 
-\subsubsection{TB6600}
+\subsubsection{TB6600}\footfullcite{TB6600 arduino Stepper Motor Driver}
 Dieser Ein-Achsen-Schrittmotortreiber ist für Hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0,7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Übersitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
@@ -364,10 +365,10 @@ Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V. Das Gewicht von
 \hline
 & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
 Preis & gering & gering & mittel    \\ \hline
-Max. Strom & 2A & 2.2A & 4A    \\ \hline
+Max.Strom & 2A & 2.2A & 4A    \\ \hline
 Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
 Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
-Max. Schrittauflösung & 16 & 32 & 32        \\ \hline
+Max.Schrittauflösung & 16 & 32 & 32        \\ \hline
 Größe & klein & klein & groß        \\ \hline
 \end{tabular}
 \caption{Vergleich der Treibermodule}
@@ -379,15 +380,15 @@ Ein Begründung, warum die Wahl auf das DRV8825 Modul und nicht das A4988 Modul 
 
 \subsection{Detektion der Kartenposition}
 
-\subsubsection{Kapazitive Sensoren}
+\subsubsection{Kapazitive Sensoren}\footfullcite{Funktionsweise und Technologie von kapazitiven Sensoren}
 Die Funktion von kapazitiven Sensoren ist mit der eines offenen Kondensators zu vergleichen.
 Zwischen der Messelektrode und der GND - Elektrode bildet sich ein elektrisches Feld.
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
-Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\\\
+Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
 \textbf{Sensoren mit GND-Elektrode} \\
 Ein bündiger Einbau dieser Sensoren ist möglich, da sich ihr Messfeld von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
-Diese Variante dient sich gut zur Detektion von nicht leitenden Materialien. \\\\
+Diese Variante dient sich gut zur Detektion von nicht leitenden Materialien. \\
 
 \textbf{Sensoren ohne GND-Elektrode} \\
 Ein bündiges Einbauen dieser Art ist nicht vorteilhaft.
@@ -395,7 +396,7 @@ Eine integrierte GND-Elektrode ist nicht vorhanden, sie wird nämlich vom zu kon
 Diese Bauform weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
 Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 
-\subsubsection{Ultraschall-Sensoren}
+\subsubsection{Ultraschall-Sensoren}\footfullcite{Induktiv, kapazitiv, optisch oder Ultraschall}
 Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
 Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
 Das Echo wird vom Sensor wieder aufgenommen und aus der Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wir der Abstand vom Sensor berechnet.
@@ -475,7 +476,7 @@ Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über 
 um die Versorgung der Peripherie zu gewährleisten.
 Sensoren, Schrittmotor und Hubmagneten würden über den 12V DC Ausgang versorgt werden,
 die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
-Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V.
+Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V .
 
 \subsubsection{Schaltnetzteil und Schaltregler}
 Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal tranferiert.
@@ -534,18 +535,16 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 \section{Schaltplan}
 
 \subsection{Verpolungsschutz}
-
 Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingespeist wird und eine Verwechslung der Anschlusspolaritäten nicht unwahrscheinlich ist,
 vermag es einen Verpolungsschutz zu verwerden um die dahinter gelegene Elektronik zu schützen.
 
-\subsubsection{Verpolungsschutz mit einer Diode}
-
+\subsubsection{Verpolungsschutz mit einer Diode}\footfullcite{Verpolschutz}
 Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Diode.
 Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, was bei 12V immerhin 8.33 Prozent entsprechen.
 
 \begin{figure}[ht]
 \centering
-\begin{circuitikz}[european, scale = 1.2]
+\begin{circuitikz}[european, scale = 1.1]
 \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
 \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
 \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
@@ -568,7 +567,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
 
 \begin{figure}[ht]
 \centering
-\begin{circuitikz}[european, scale = 1.2]
+\begin{circuitikz}[european, scale = 1.1]
 \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
 \draw (1,3) to[R, l=$F1$](3,3){};
 \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
@@ -715,7 +714,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationskorrespondenzen und einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
 \begin{align}
-    $\mathscr{L}\{f(t)\}&=F(s)$ \\
+    \mathscr{L}\{f(t)\}&=F(s) \\
     (1-e^{\frac{-1}{\tau}} \cdot 1(t)) &= \frac{1}{s \cdot (1 + s\tau)} \\
     u_R &= R \cdot i_R \\
     u_c &= \frac{1}{C} \cdot \int i_c \mathrm{d}t \\
@@ -731,7 +730,7 @@ erhält man folgende Schaltung:
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1]
-        \draw (1.2,2) to [R, l=$R1$](2.5,2) to (3.5,2) to [eC, l=$C1$, *-*](3.5,0);
+        \draw (1.2,2) to [R, l=$R1$](2.5,2) to (3.5,2) to [eC, l_=$C1$, *-*](3.5,0);
         \draw (3,2) to [short, -o](4.5,2)node[anchor=west]{+};
         \draw (1.05,0) to [short, -o](4.5,0)node[anchor=west]{-};
         \draw (1.2,2) to [short, -o](1,2)node[anchor=east]{+};
@@ -749,33 +748,43 @@ Wendet man das Maschengleichungsgesetz auf jene Schaltung an, erhält man folgen
 \begin{align*}
     U_e &=  u_R + u_C \\
     U_e &= R \cdot i_R + u_C \\
-    U_e &= RC \cdot \dot u_c + u_c
-\end{align*}
-
-\begin{equation*}
-    U_e = RC \cdot \dot u_c + u_c \laplace \frac{U_e}{s} = RC \cdot u_c \cdot s + u_c
-\end{equation*}
-
-\begin{align*}
+    U_e &= RC \cdot \dot u_c + u_c \\
+    U_e &= RC \cdot \dot u_c + u_c \\
+    &\laplace& \\
+    \frac{U_e}{s} &= RC \cdot u_c \cdot s + u_c \\
     U_e &= u_c \cdot s \cdot (RCs + 1) \\
     u_c &= U_e \cdot \frac{1}{s \cdot (1 + s\tau)}
 \end{align*}
 
 Durch das Anwenden jener Laplace-Korrespondenz kann man auf folgendes Ergebnis schließen:
 
-\begin{equation*}
-    u_c = U_e \cdot \frac{1}{s \cdot (1 + \tau s)} \Laplace {u_c = U_e \cdot (1 - e^{\frac{-t}{\tau}})}
-\end{equation*}
+\begin{align*}
+    u_c &= U_e \cdot \frac{1}{s \cdot (1 + \tau s)} \\
+    &\Laplace& \\
+    {u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}})}
+\end{align*}
 
 Die eingehende Spannung lässt sich aus der Differenz von Pinausgangsspannung und der an der Schottkydiode abfallenden Spannung berechnen.
 Durch das Einsetzen von Datenblattwerten der von uns verwendeten Diode MBR130 ergibt sich eine Spannung von 3.08V .
-Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangsspannung erschließt sich der Wert des Kondensators nach 0.5 Sekunden wie folgt:
+Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangsspannung erschließt sich der Wert des Kondensators bei einem Spannungs-Sollwert von 3V nach 0.5 Sekunden wie folgt:
 
 \begin{align*}
-    u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}})
+    u_c &= U_e \cdot (1 - e^{\frac{-t}{\tau}}) \\
+    \frac{u_c}{U_e} -1 &= - e^{\frac{-t}{\tau}}) \\
+    ln(1- \frac{u_c}{U_e}) &= \frac{-t}{\tau} \\
+    \tau &= \frac{-t}{ln(1- \frac{u_c}{U_e})} \\
+    C &= \frac{-t}{ln(1- \frac{u_c}{U_e}) \cdot R} \\
+    C &= \frac{-0.5s}{ln(1- \frac{3V}{3.08V}) \cdot 560\Omega} \\
+    C &= 244.574 \mu F
 \end{align*}
 
-\newpage
+Durch diese Berechnung bewiesen, gilt es, für jene Bedingung einen Kondensator auszuwählen, dessen Wert kleiner gleich 244.57µF entspricht.
+Unsere Wahl fiel somit auf einen Elektrolytondensator mit 100µF . \\
+
+Um ein sicheres Aufheben der Selbsthaltung zu gewähren, muss ein ausreichend langes Potential am N-Kanal MOSFET bereitstellen zu können, muss ebenfalls der Widerstand R2 richtig dimensioniert werden.
+Der von uns ausgewählte MOSFET FDN337N verfügt über das Attribut einer maximalen Threshold-Voltage von 1V .
+Aufgrund dessen sollte auch nach einer Zeit 5 Sekunden ein Potential von größer gleich 1V am Gate der Halbleiterkompontente anliegen.
+Um die Formel zur Widerstandsdimensionierung herzuleiten, wurde Folgendes als Ersatzschaltbild herangezogen.
 
 \begin{figure}[ht]
     \centering
@@ -787,7 +796,7 @@ Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangssp
         \draw (1.5,2) to [short, -o](1,2)node[anchor=east]{+};
         \draw (1,0) to [short, *-o](1,0)node[anchor=east]{-};
         \draw (2.75,-0.05) to (2.75,-0.05) node[rground]{};
-        \draw (1,1.8) -- node[right] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
+        \draw (1,1.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(1,0.2);
         \draw (4.5,1.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(4.5,0.2);
     \end{circuitikz}
     \caption{Entladen des Kondensators}
@@ -799,18 +808,37 @@ Bei einem von uns ausgewähltem Widerstandswert von 560 Ohm und jener Eingangssp
     u_c - (-C \cdot \dot u_c) \cdot R &= 0 \\
     \dot u_c + \frac{1}{RC} \cdot u_c &= 0 \\
 \end{align*}
-Über den Exponentialansatz ergibt sich folgender Rechenweg:
 
+Über den Exponentialansatz ergibt sich folgender Rechenweg:
 
 \begin{align*}
     u_c &= K \cdot e^{\lambda \cdot t} \\
     \dot{u}_c &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
-    K \cdot e^{\lambda \cdot t} &= K \cdot \lambda \cdot e^{\lambda \cdot t} \\
+    K \cdot \lambda \cdot e^{\lambda \cdot t} + \frac{1}{RC} \cdot K \cdot e^{\lambda \cdot t} &= 0 \\
+    \cancel{K} \cdot \lambda \cdot \cancel{e^{\lambda \cdot t}} + \frac{1}{RC} \cdot \cancel{K} \cdot \cancel{e^{\lambda \cdot t}} &= 0 \\
     \lambda + \frac{1}{RC} &= 0 \\
     \lambda &= -\frac{1}{RC} \\
-    u_c &= K \cdot e^{-\frac{t}{RC}}, (t >= 0, K = u_c(t=0)) \\
+    u_c(t) &= K \cdot e^{-\frac{t}{RC}}, (t >= 0, K = u_c(t=0)) \\
 \end{align*}
 
+Sollte nach 0.5s die Spannungsversorgung des Mikrocontrollers versagen, läge an einem Kondensator mit 100µF eine Spannung von 3.078592V an.
+Bie einer solchen Kondensatorspannung zum Zeitpunkt t=0 erschließt sich der
+Wert des Widerstands R2 bei einem Spannungs-Sollwert von 1V nach 5 Sekunden wie folgt:
+
+\begin{align*}
+    u_c(t) &= u_c(t=0) \cdot e^{-\frac{t}{RC}} \\
+    \frac{u_c(t)}{u_c(t=0)} &= e^{-\frac{t}{RC}} \\
+    ln(\frac{u_c(t)}{u_c(t=0)}) &= -\frac{t}{RC} \\
+    RC &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)})} \\
+    R &= -\frac{t}{ln(\frac{u_c(t)}{u_c(t=0)}) \cdot C} \\
+    R &= -\frac{5s}{ln(\frac{1V}{3.078592V}) \cdot 100\muF} \\
+    R &=  44452.464\Omega
+\end{align*}
+
+Dieses Ergebnis macht deutlich, dass es bei derartigen Bedingungen einen Widerstand auszuwählen, dessen Wert 44452.464 Ohm übersteigt.
+Diese Erkenntnis brachte uns zu der Entscheidung, einen Widerstand in der Höhe von 100 kOhm auszuwählen.
+
+\newpage
 
 \subsubsection{Andere Variante}
 Die folgenden Variante kam ebenfalls im Laufe der Diplomarbeit auf.
@@ -837,8 +865,8 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \draw (5,2) to (5,1.5) to (5.15,1.5);
 \draw (5.5,1.5)node[pushbuttonshape]{};
 \draw (5.5,2.5)node[pushbuttonshape]{};
-\draw (5.85,1.5) to (6,1.5) to (6,0) to (2,0);
-\draw (5.15,2.5) to (5,2.5) to [short,-*](5,2);
+\draw (5.9,1.5) to (6,1.5) to (6,0) to (2,0);
+\draw (5.1,2.5) to (5,2.5) to [short,-*](5,2);
 \draw (3.5,6) to [R, l=$R3$, *-*](3.5,2) to (5,2);
 \draw (4,2) to (2.5,2);
 \draw (2,1.5) to (2,0);
@@ -859,13 +887,15 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \end{figure}
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
-Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, zu welchem diese Schaltung nicht in der Lage ist.
+Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, welches diese Schaltung nicht bereitstellen kann.
+
+\newpage
 
 \subsection{DC/DC Wandler}
 
 Als Buck-Converter wählten wir den LM2576-5.0 aus.
 Mit diesem ist es möglich eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
-Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients. \\
+Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients.
 
 \subsubsection{Beschaltung}
 
@@ -900,9 +930,8 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
 
 \subsubsection{Kühlkörperberechnung}
 
-Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenblätter zur Berechnung angewandt.
-
-Um die Verlustleistung des LM2576 zu berechnen, wird von folgender Formel Gebrauch gemacht.
+Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenblätter zur Berechnung angewandt.\footfullcite{LM2576 Datasheet}
+Um die Verlustleistung zu berechnen, wird folgende Formel angewandt.
 
 \begin{equation}
     P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
@@ -917,28 +946,28 @@ wobei
 \end{itemize}
 
 Setzen wir nun die bei unserer Anwendung maximal anfallenden Werte ein erhalten wir folgendes Ergebnis:
-\begin{flalign*}
-P_D &= 12V \cdot 0.013A + \frac{12V}{5V} \cdot 3A \cdot 1.4V &\\
-&= 1.906W
-\end{flalign*}
+\begin{align*}
+P_D &= 12V \cdot 0.013A + \frac{5V}{12V} \cdot 3A \cdot 1.4V \\
+P_D &= 1.906W
+\end{align*}
 
 Der Anstieg der Sperrschichtübergangstemperatur lässt sich somit folgend berechnen:
-\begin{flalign}
-\Delta T_j &= P_D \cdot \Theta_{ja} &\\
-&= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag &\\
-&= 81,1946^{\circ}C \notag
-\end{flalign}
+\begin{align}
+\Delta T_j &= P_D \cdot \Theta_{ja} \\
+\Delta T_j &= 1.906W \cdot 42.6\frac{{}^{\circ}C}{W} \notag \\
+\Delta T_j &= 81,1946^{\circ}C \notag
+\end{align}
 
 Zu diesem Anstieg ist noch die gewöhnliche Umgebungstemperatur hinzuzurechnen.
-\begin{flalign}
-T_j &= \Delta  T_j + T_A &\\
-&= 81,1946^{\circ}C + 25^{\circ}C \notag &\\
-&= 106,1956^{\circ}C \notag
-\end{flalign}
+\begin{align}
+T_j &= \Delta  T_j + T_A \\
+T_j &= 81,1946^{\circ}C + 25^{\circ}C \notag \\
+T_j &= 106,1956^{\circ}C \notag
+\end{align}
 
 Durch dieses Ergebnis lässt es sich, trotz eines Sicherheitsabschlages der maximalen Sperrschichttemperatur (T\textsubscript{jmax} = 125°C-15°C), auf einen zulässigen Betrieb schließen.\\\\
 Obgleich dieser Wert recht hoch erscheint, werden wir auf einen Kühlkörper verzichten, da wir dieses maximale Potential des Gleichspannungswandlers nicht voll ausnutzen werden.
-(Die Verlustleistung erreicht bei einem Laststrom von 1.5A einen Wert von 0.8435W. Der daraus zu schließende Wert der Sperrschichttemperatur beträgt somit gerade einmal 60,9331°C.)
+(Die Verlustleistung erreicht bei einem realistischen, maximalen Laststrom von 2A einen Wert von 1.322667W. Der daraus zu schließende Wert der Sperrschichttemperatur beträgt somit 81.3456°C.)
 
 \subsection{Raspberry Pi 3B+}
 
@@ -1070,7 +1099,6 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 \begin{circuitikz}{european, scale = 1}
 \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
 
-
 \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
 \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
 \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
@@ -1163,7 +1191,8 @@ Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
 Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
 \subsubsection{Schrittauflösung}
-In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt, um die gewünschte Mikroschrittauflösung zu erreichen.
+In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
+Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Anschlüsse M2, M1 und M0 mit dem entsprechenden Spannungspegel versorgt werden.
 
 \begin{table}[h]
 \centering
@@ -1179,7 +1208,7 @@ In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Ansc
 1 & 1 & 0 & 32 Mikroschritte pro Schritt \\ \hline
 1 & 1 & 1 & 32 Mikroschritte pro Schritt \\ \hline
 \end{tabular}
-\caption{1 signalisiert ein HIGH-Signal, 0 sein LOW-Signal}
+\caption{Festlegen der Schrittauflösung}
 \end{table}
 
 \subsubsection{Stromlimitierung}
@@ -1202,7 +1231,7 @@ Beim DRV8825 beträgt der Wert 0.1 Ohm.
 
 \begin{align*}
 V_{ref} &= 1.6A \cdot 5 \cdot 0.1\Omega \\
-&= 0.8V
+V_{ref} &= 0.8V
 \end{align*}
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
 Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet, eingestellt werden.
@@ -1227,29 +1256,28 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 • R\textsubscript{thja} = 31.6°C/W \\
 • R\textsubscript{DSon} = 0,32 Ohm \\
 
-\textbf{Berechnung}
-\begin{flalign*}
-P_V &= R_{DSon} \cdot I_{max}^2 &\\
-&= 0,32\Omega \cdot 1.6A^2 &\\
-&= 0.8192W
-\end{flalign*}
+\begin{align*}
+P_V &= R_{DSon} \cdot I_{max}^2 \\
+P_V &= 0,32\Omega \cdot 1.6A^2 \\
+P_V &= 0.8192W
+\end{align*}
 
-\begin{flalign*}
-P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} &\\
-&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} &\\
-&= 3.1646W
-\end{flalign*}
+\begin{align*}
+P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} \\
+P_D &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} \\
+P_D &= 3.1646W
+\end{align*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper nötig ist.
 Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.
 
 Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
 
-\begin{flalign}
-R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) &\\
-&= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag &\\
-&= 106.07\frac{{}^{\circ}C}{W}  \notag
-\end{flalign}
+\begin{align}
+R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) \\
+R_{thK} &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{0,8192W} - (0.1\frac{{}^{\circ}C}{W} + 15.9\frac{{}^{\circ}C}{W}) \notag \\
+R_{thK} &= 106.07\frac{{}^{\circ}C}{W}  \notag
+\end{align}
 
 Die Berechnung zeigt, dass die Verwendung eines Kühlkörpers nicht unvorteilhaft wäre, weshalb wir den mitgelieferten Kühlkörper auch verwenden.
 Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests seine geeignete Funktionalität unter Beweis stellen.
@@ -1313,11 +1341,11 @@ U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
 \caption{Aufbau einer Spannungsteilers}
 \end{figure}
 
-Durch verschiedene Tests musste ich die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
+Durch verschiedene Tests mussten wir die Erkenntnis machen, dass sich der Spannungspegel des Sensorausgangssignals je nach Spannungsteiler ändert.
 Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden folgende Werte als günstige Lösung gewählt:
 
 \begin{equation*}
-R_1 = 5.1k\Omega, R_2 = 2k\Omega
+R_1 = 5.6k\Omega, R_2 = 4.7k\Omega
 \end{equation*}
 
 Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
@@ -1385,10 +1413,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 \draw (6,6) to (6,6)node[anchor=west]{Pumpe};
 \draw (5,3) to (5,0);
 \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
+\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
 \draw (5,3)node[nfet, solderdot, bodydiode]{};
 \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
-\draw (5,0) to (5,0) node[rground]{};
+\draw (5,-0.5) to (5,-0.5) node[rground]{};
 
 % Ventil
 \draw (15,8)node[vcc]{+5V};
@@ -1399,10 +1427,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 \draw (16,6) to (16,6)node[anchor=west]{Ventil};
 \draw (15,3) to (15,0);
 \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
-\draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,1) to [short,-*](15,1);
+\draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,0) to [short,-*](15,0) to (15,-0.5);
 \draw (15,3)node[nfet, solderdot, bodydiode]{};
 \draw (9,3) to (9,3)node[anchor=east]{SIG};
-\draw (15,0) to (15,0) node[rground]{};
+\draw (15,-0.5) to (15,-0.5) node[rground]{};
 \end{circuitikz}
 \caption{Ansteuerung der Pumpe und des Ventils}
 \end{figure}
@@ -1555,11 +1583,33 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 \caption{Realisierung der Leuchtdioden}
 \end{figure}
 
-\subsection{Netzteil}
+\newpage
 
-Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus.
-Dieses hat die Aufgabe ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
-Außerdem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
+\subsection{Netzteil-Dimensionierung}
+
+Zur Netzteil-Dimensionierung wurden die maximal möglichen Stromwerte der einzelnen Peripheriebausteine herangezogen.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Komponente} & \textbf{max.Strom} \\ \hline
+        Hubmagnete & 700mA \\ \hline
+        Schrittmotor & 2000mA \\ \hline
+        Sensoren & 50mA \\ \hline
+        Pumpe inkl.Ventil & 500mA \\ \hline
+        Raspberry Pi 3B+ inkl.LCD & 800mA \\ \hline
+        ATmega324P & 200mA \\ \hline
+        \textbf{Summe} & \textbf{4250mA} \\ \hline
+    \end{tabular}
+    \caption{Überschlagsmäßige Dimensionierung des Netzteils}
+\end{table}
+
+Hinzuzufügen ist jedoch, dass in keinem Fall alle Geräte gleichzeitig betrieben werden, sodass der Dauerstrom weitaus niedriger ausfällt.
+Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe erfüllt ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
+Zudem genügt es unserer Anforderung, einen Strom von 5A bereitstellen zu können.
+
+\newpage
 
 \section{Steckbrettaufbauten}
 
@@ -1580,7 +1630,54 @@ war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu d
 \newpage
 \section{Auswahl der Bauteile}
 
+\subsection{Auswahl der Transistoren}
+\subsubsection{P-Kanal MOSFET}
 
+Als P-Kanal MOSFET traf unsere Wahl auf den FDD6637.
+Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source mit sich.
+Außerdem ist dieser dazu in der Lage, eine Spannung von maximal -35V zu schalten und gleichzeitig einen Strom von bis -55A treiben zu können.
+
+\subsubsection{N-Kanal MOSFET}
+
+Als N-Kanal MOSFET wählten wir den FDN337N aus, welcher in der Lage ist, Ströme von bis zu 2.2A treiben zu können.
+Außerdem ist es diesem möglich, Drain-Source-Spannungen von bis zu 30V zu schalten, was für unsere Anwendung weitaus genügt.
+Hinzu kommt noch die wesentliche Tatsache, dass dieser eine niedrige Gate Treshold Voltage von nur max.1V mit sich bringt.
+
+\subsection{Auswahl der Gleichspannungswandler-Peripherie}
+
+\subsubsection{Spule}
+Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf dessen Datenblatt zurückgegriffen.
+Über die uns verwendete Eingangsspannung des Gleichspannungswandlers und den maximal fließenden Strom von 2A
+traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf eine Spule mit einem Wert von 100µH .
+Über die Bedingung einen derartig hohen Strom treiben zu können, fiel unsere Wahl auf die DR127-101-R,
+welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, magnetische Geschirmtheit und einem SMD-Gehäuse mit sich bringt.
+
+\subsubsection{Schottky-Diode}
+Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
+Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
+
+\subsection{Auswahl der Gleichrichter-Dioden}
+
+Als diese Dioden selektierten wir die RR264M, welche sowohl einen Strom von 1A treiben kann, was wichtig für die Implemntierung an den induktiven Last ist.
+Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
+Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
+
+\subsection{Auswahl der Schottky-Dioden}
+
+Als Schottky-Diode wählten wir die MBR130, welche die Maximalwerte von 1A und 30V mit sich bringt.
+Außerdem ist anzuführen, dass ein wesentliches Attribut der an ihr niedriger, abfallender Spannungsabfall von nur 0.25V bei 25°C und 0.1A ist.
+Bei 1A und 25°C beträgt der Spannungsabfall 0.35V .
+Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schaltung und der Beschaltung des USB-UART-Converters befürworteten ihren Einsatz.
+
+\subsection{Auswahl der Zener-Diode}
+
+Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
+
+\subsection{Auswahl sonstiger Bauelemente}
+
+Bei den Bauformen jener Kondensatoren, dessen Wert 100nF oder 22pF beträgt, und aller Leuchtdioden und Widerstände wurde auf 0805er Chips zurückgegriffen,
+da sich diese bereits in unserem Besiz befanden und diese eine platzsparende, und dennoch einfach zu lötende Lösung bereitstellten.
+Bei der Auswahl der Kondensatoren im µF-Bereich wurde auf SMD-Elektrolytkondensatoren mit einem Diameter von 6 bis 8mm zurückgegriffen.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -1596,10 +1693,11 @@ Nennswert ist zudem, dass nur maximal zweilagige Leiterplatten angefertigt werde
 
 \subsection{Layoutdesign}
 
+Beim Layoutdesign wurde darauf geachtet, keine THT und SMD Bauteile zu vermischen.
+Somit wurden diese jeweils auf zwei verschiedenen Layern platziert. \\
 Im Laufe der Diplomarbeit entstanden unzählig viele, verschiedene Layouts, welche die Gründe von ständig neu aufkommenden Ideen, Ausmerzung von Fehlerquellen und Simplifizierungen hatten.
 Diese Faktoren machten das Designen eines optimalen Layouts zu einer langwierigen, aber lehrreichen Aufgabe.
 Eine falsche Dimensionierung von Bauteilen und Baugruppen und Denkfehler, die das Fertigen erschweren würden waren hierbei die Hauptfaktoren. \\
-Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
 
 Die Breite aller Leiterbahnen wurden auf den maximal fließenden Strom ausgelegt.
 Um zu diesen Werten zu kommen, wurde ein Tool angewandt, welches sich in der KiCad Nutzerumgebung finden lässt.
@@ -1610,19 +1708,22 @@ Dieses wendet folgende Formel an: \\
 \end{equation}
 wobei
 \begin{itemize}
-    \item P\textsubscript{I} dem maximal fließenden Strom in Ampere,
-    \item V\textsubscript{K} 0.048 für externe oder 0.024 für interne Leiterbahnen,
-    \item I\textsubscript{dT} dem Temperaturanstieg über der Umgebungstemperatur in Grad Celsius,
-    \item V\textsubscript{W} der Leiterbahndicke in mils und
-    \item I\textsubscript{H} der Leiterbahnbreite in mils entspricht.
+    \item I dem maximal fließenden Strom in Ampere,
+    \item K 0.048 für externe oder 0.024 für interne Leiterbahnen,
+    \item dT dem Temperaturanstieg über der Umgebungstemperatur in Grad Celsius,
+    \item W der Leiterbahndicke in mils und
+    \item H der Leiterbahnbreite in mils entspricht.
 \end{itemize}
+
+Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
 
 \subsection{Leiterplattenfertigung}
 
 \subsubsection{Prototyping}
 
-Bevor wir den Auftrag einer Leiterplattenfertigung an ein professionielles Unternehmen aufgaben, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
-Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
+Bevor wir fester Überzeugung aller Funktionen sein konnten, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
+Dies hat die Vorteile, etwa im Platinenlayout falsch Gemachtes, bereits vor der finalen Version zu erkennen und auszumerzen.
+Jener Prototyp wurde in der Werkstätte der HBTLA Kaindorf angefertigt. \\
 
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
@@ -1651,10 +1752,46 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 \item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
-
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \newpage
 \section{Resümee und Aussichten für die Zukunft}
+\subsection{Reflexion der Arbeit}
+
+\subsection{Verbesserungsmöglichkeiten}
+
+Sollte man die Versorgung des Raspberry Pi's über die GPIO Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
+Eine essenzeille Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre ein sogenannter Crowbar-Circuit.
+Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannung zu schützen.
+
+\begin{figure}[hpt]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+        \draw (2,0) to [R,l=$R1$, *-*](2,2) to [/tikz/circuitikz/bipoles/length=1cm, zD-, l=$D1$,-*](2,4);
+        \draw (2,2) to (3.5,2);
+        \draw (4,4) to [/tikz/circuitikz/bipoles/length=1.1cm, Ty-, mirror, l=$T1$,*-](4,0.915) to [short,-*](4,0);
+        \draw (2,4) to [short, -o](0,4)node[anchor=east]{+};
+        \draw (2,4) to [short, -o](6,4)node[anchor=west]{+};
+        \draw (3,0) to [short, -o](6,0)node[anchor=west]{-};
+        \draw (3,0) to (2,0) node[rground]{};
+        \draw (0,3.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (6,3.8) -- node[right] {$U_\mathrm{Last}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+    \end{circuitikz}
+    \caption{Crowbar Circuit}
+\end{figure}
+
+Bei einer zulässigen Versorgungsspannung von 5V gelangt die Zenerdiode nicht in einen leitenden Zustand und eine sichere Versorgung der dahinter liegenden Schaltung ist gegeben.
+Sobald der Wert der Versorgungsspannung jenen nominalen Zenerspannungswert der Zenerdiode übersteigt, wird diese leitend.
+Überschüssige Spannung fällt somit am Widerstand ab, wobei die am Widerstand abfallende Spannung der am Gate anliegenden Spannung gleichzusetzen ist.
+Sollte diese Spannung die maximalen Gate-Triggerspannung übersteigen, zündet das Gate des Thyristors und er wird leitend.
+Somit schließt der Thyristor die dahinter liegende Schaltung kurz und ein Schutz der sensiblen Komponenten ist gegeben. \\
+
+Diese Schaltung konkret auf unsere Anwendung angewandt, wären die Komponenten wie folgt zu wählen:
+\begin{itemize}
+    \item R1 mit etwa 10kOhm
+    \item D1 mit einer Zenerspannung von 4.3V
+    \item D2 mit möglichst niedriger maximaler Gate-Triggerspannung, z.B.0.8V
+\end{itemize}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
