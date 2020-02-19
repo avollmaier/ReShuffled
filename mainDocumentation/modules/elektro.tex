@@ -55,7 +55,7 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
     \ganttnewline[thick, black]
 
     \ganttgroup[]
-    {Dokumentation}{2019-11-15}{2020-02-31}\\ [grid]
+    {Dokumentation}{2019-11-15}{2020-02-23}\\ [grid]
 
     \end{ganttchart}
     }
@@ -67,23 +67,28 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini US
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \section{Variantenvergleiche und Konzeptionierungen}
+
 \subsection{Mikrocontroller}
 Da unser finales Konzept Einiges an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
-Wir stellten die Anforderungen einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
+Wir stellten die Anforderungen einer SPI-Programmierschnittstelle sowie die einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
-\subsubsection{ATmega162}
+
+\subsubsection{ATmega162}\footfullcite{AVR Typen}
 Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen E²PROM-Speicher von 512 Bytes.
 Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 I/O Register und zwei Timer.
 Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.
-\subsubsection{ATmega324P}
+
+\subsubsection{ATmega324P}\footnotemark[1]
 Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an E²PROM-Speicher sowie 1kiB an SRAM mit sich bringt.
 Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen sowie drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben.
-\subsubsection{ATmega128}
+
+\subsubsection{ATmega128}\footnotemark[1]
 Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB .
 Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
 Zusätzlich bietet er vier Timer und 53 I/O Pins.
 Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden.
+
 \subsubsection{Mikrocontroller-Auswahl}
 
 \begin{table}[h]
@@ -100,8 +105,6 @@ Preis & gering & gering & mittel            \\ \hline
 Flash-Speicher & 16kiB & 32kiB & 128kiB     \\ \hline
 EEPROM-Speicher & 512B & 1kiB & 4kiB        \\ \hline
 I/O-Pins & 35 & 32 & 53                     \\ \hline
-UART-Schnittstellen & 2 & 2 & 2             \\ \hline
-SPI-Schnittstelle & ja & ja & ja            \\ \hline
 Versorgungsspannung & 2,7V-5V & 1,8V-5V & 4,5V-5V  \\ \hline
 \end{tabular}
 \caption{Vergleich der Mikrocontrollerattribute}
@@ -166,11 +169,9 @@ Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Tran
 Wie in Abbildung 2.1 zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
 Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode.
 Diese haben folgende Aufgabe:\\\\
-Ein Nebeneffekt der Funktionsweise eines Motors, ist die Erzeugung von Energie.
-Bei einem Deaktivieren der Transistoren, um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
-Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, um dem Strom einen Pfad zu bieten, der die Energie freisetzt. \\\\
-
-
+Ein Nebeneffekt der Funktionsweise eines Motors ist die Erzeugung von Energie.
+Bei einem Deaktivieren der Transistoren um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
+Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, da diese dem Strom einen Pfad zu bieten, welcher die Energie freisetzt. \\
 
 \begin{figure}[ht]
 \centering
@@ -285,7 +286,7 @@ Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzu
 Um den Schrittmotor nach Rechts drehen zu lassen, muss am Ausgang PD0 ein HIGH-Signal erzeugt werden.
 Am Ausgang PD1 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang OC1B, befindet sich ein HIGH-Signal am unteren Eingang des UND-Gatters IC2.
-Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\\\
+Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
 Um den Schrittmotor nach Links drehen zu lassen, wird am Ausgang PD1 ein HIGH-Signal gesetzt.
 Am Ausgang PD0 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein HIGH-Signal am oberen Eingang des UND-Gatters.
@@ -321,7 +322,7 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 \end{itemize}
 \end{itemize}
 
-\subsubsection{A4988}
+\subsubsection{A4988}\footfullcite{A4988 Stepper Motor Driver Carrier}
 Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Es besteht kein Bedarf daran Phasenfolgetabellen, Hochfrequenz-Steuerleitungen oder komplexe Schnittstellen zu programmieren.
@@ -332,7 +333,7 @@ Zusätzlich wird die Gewährleistung eines Überstromschutz und Übertemperaturs
 Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
 
-\subsubsection{DRV8825}
+\subsubsection{DRV8825}\footfullcite{DRV8825 Stepper Motor Driver Carrier, High Current}
 Diesem Treiber-Board von Texas Instruments ist es Möglich mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
 Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welche mit zugeführter Kühlung auch getrieben werden können.
@@ -342,7 +343,7 @@ Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebau
 Der DRV8825-Treiber verfügt über eine Schnittstelle und eine Pinbelegung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind,
 sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
 
-\subsubsection{TB6600}
+\subsubsection{TB6600}\footfullcite{TB6600 arduino Stepper Motor Driver}
 Dieser Ein-Achsen-Schrittmotortreiber ist für Hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0,7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Übersitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
@@ -379,15 +380,15 @@ Ein Begründung, warum die Wahl auf das DRV8825 Modul und nicht das A4988 Modul 
 
 \subsection{Detektion der Kartenposition}
 
-\subsubsection{Kapazitive Sensoren}
+\subsubsection{Kapazitive Sensoren}\footfullcite{Funktionsweise und Technologie von kapazitiven Sensoren}
 Die Funktion von kapazitiven Sensoren ist mit der eines offenen Kondensators zu vergleichen.
 Zwischen der Messelektrode und der GND - Elektrode bildet sich ein elektrisches Feld.
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
-Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\\\
+Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
 \textbf{Sensoren mit GND-Elektrode} \\
 Ein bündiger Einbau dieser Sensoren ist möglich, da sich ihr Messfeld von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
-Diese Variante dient sich gut zur Detektion von nicht leitenden Materialien. \\\\
+Diese Variante dient sich gut zur Detektion von nicht leitenden Materialien. \\
 
 \textbf{Sensoren ohne GND-Elektrode} \\
 Ein bündiges Einbauen dieser Art ist nicht vorteilhaft.
@@ -395,7 +396,7 @@ Eine integrierte GND-Elektrode ist nicht vorhanden, sie wird nämlich vom zu kon
 Diese Bauform weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
 Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 
-\subsubsection{Ultraschall-Sensoren}
+\subsubsection{Ultraschall-Sensoren}\footfullcite{Induktiv, kapazitiv, optisch oder Ultraschall}
 Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
 Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
 Das Echo wird vom Sensor wieder aufgenommen und aus der Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wir der Abstand vom Sensor berechnet.
@@ -534,18 +535,16 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 \section{Schaltplan}
 
 \subsection{Verpolungsschutz}
-
 Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingespeist wird und eine Verwechslung der Anschlusspolaritäten nicht unwahrscheinlich ist,
 vermag es einen Verpolungsschutz zu verwerden um die dahinter gelegene Elektronik zu schützen.
 
-\subsubsection{Verpolungsschutz mit einer Diode}
-
+\subsubsection{Verpolungsschutz mit einer Diode}\footfullcite{Verpolschutz}
 Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Diode.
 Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, was bei 12V immerhin 8.33 Prozent entsprechen.
 
 \begin{figure}[ht]
 \centering
-\begin{circuitikz}[european, scale = 1.2]
+\begin{circuitikz}[european, scale = 1.1]
 \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
 \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
 \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
@@ -568,7 +567,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
 
 \begin{figure}[ht]
 \centering
-\begin{circuitikz}[european, scale = 1.2]
+\begin{circuitikz}[european, scale = 1.1]
 \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
 \draw (1,3) to[R, l=$F1$](3,3){};
 \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
@@ -888,7 +887,7 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden ist der Widerstand R\
 \end{figure}
 
 Diese Variante wurde letztendlich verworfen, da wir uns dazu entschieden haben, nur einen Schalter zu verwenden, wessen Funktion das Einschalten der 12V sein soll.
-Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, zu welchem diese Schaltung nicht in der Lage ist.
+Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein, welches diese Schaltung nicht bereitstellen kann.
 
 \newpage
 
@@ -896,7 +895,7 @@ Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein,
 
 Als Buck-Converter wählten wir den LM2576-5.0 aus.
 Mit diesem ist es möglich eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
-Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients. \\
+Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizients.
 
 \subsubsection{Beschaltung}
 
@@ -931,9 +930,8 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
 
 \subsubsection{Kühlkörperberechnung}
 
-Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenblätter zur Berechnung angewandt.
-
-Um die Verlustleistung des LM2576 zu berechnen, wird von folgender Formel Gebrauch gemacht.
+Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden Formeln der Datenblätter zur Berechnung angewandt.\footfullcite{LM2576 Datasheet}
+Um die Verlustleistung zu berechnen, wird folgende Formel angewandt.
 
 \begin{equation}
     P_D = V_{IN} \cdot I_Q + \frac{V_{OUT}}{V_{IN}} \cdot I_{LOAD} \cdot V_{SAT}
@@ -1597,19 +1595,19 @@ Zur Netzteil-Dimensionierung wurden die maximal möglichen Stromwerte der einzel
         \hline
         \textbf{Komponente} & \textbf{max.Strom} \\ \hline
         Hubmagnete & 700mA \\ \hline
-        Schrittmotor & 2500mA \\ \hline
+        Schrittmotor & 2000mA \\ \hline
         Sensoren & 50mA \\ \hline
         Pumpe inkl.Ventil & 500mA \\ \hline
         Raspberry Pi 3B+ inkl.LCD & 800mA \\ \hline
         ATmega324P & 200mA \\ \hline
-        \textbf{Summe} & \textbf{4750mA} \\ \hline
+        \textbf{Summe} & \textbf{4250mA} \\ \hline
     \end{tabular}
     \caption{Überschlagsmäßige Dimensionierung des Netzteils}
 \end{table}
 
 Hinzuzufügen ist jedoch, dass in keinem Fall alle Geräte gleichzeitig betrieben werden, sodass der Dauerstrom weitaus niedriger ausfällt.
-Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe hat ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
-Zudem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
+Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe erfüllt ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
+Zudem genügt es unserer Anforderung, einen Strom von 5A bereitstellen zu können.
 
 \newpage
 
@@ -1763,7 +1761,7 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 \subsection{Verbesserungsmöglichkeiten}
 
 Sollte man die Versorgung des Raspberry Pi's über die GPIO Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
-Eine essenzeille Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre ein sogenannter zu implementierender Crowbar-Circuit.
+Eine essenzeille Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre ein sogenannter Crowbar-Circuit.
 Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannung zu schützen.
 
 \begin{figure}[hpt]
@@ -1772,7 +1770,7 @@ Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannu
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
         \draw (2,0) to [R,l=$R1$, *-*](2,2) to [/tikz/circuitikz/bipoles/length=1cm, zD-, l=$D1$,-*](2,4);
         \draw (2,2) to (3.5,2);
-        \draw (4,4) to [/tikz/circuitikz/bipoles/length=1.1cm, Ty-, mirror, l=$D2$,*-](4,0.915) to [short,-*](4,0);
+        \draw (4,4) to [/tikz/circuitikz/bipoles/length=1.1cm, Ty-, mirror, l=$T1$,*-](4,0.915) to [short,-*](4,0);
         \draw (2,4) to [short, -o](0,4)node[anchor=east]{+};
         \draw (2,4) to [short, -o](6,4)node[anchor=west]{+};
         \draw (3,0) to [short, -o](6,0)node[anchor=west]{-};
