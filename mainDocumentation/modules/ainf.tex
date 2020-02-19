@@ -461,7 +461,7 @@ Ein Indikator für ein End-Tag ist ein \lstinline{/}.
 >>>>>>> Stashed changes
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
-\begin{lstlisting}[caption=XML-Codebeispiel,label=xmlExample]
+\begin{lstlisting}[style=XML,caption=XML-Codebeispiel,label=xmlExample]
 <?xml version="1.0" encoding="UTF-8"?>
     <email>
         <to>Person1</to>
@@ -483,7 +483,7 @@ Infolgedessen erkennt der FXML-Loader, welcher diese \lstinline{*.fxml} ins Prog
 Sobald diese jedoch mit einem Kleibuchstaben beginnen, definieren sie Eigenschaften.
 Eine weitere Besonderheit liegt bei dem Einbinden von Importanweisungen vor.
 Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
-\begin{lstlisting}[caption=FXML-Codebeispiel,label=fxmlExample]
+\begin{lstlisting}[style=XML,caption=FXML-Codebeispiel,label=fxmlExample]
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
@@ -514,7 +514,7 @@ Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und ei
 Ein weiterer Grund zur Verwendung ist ebenso eine effektive Umwandlung von Daten, also Objekten, Arrays und sonstigen Variablen,  in das JSON-Dateiformat.\\
 All diese Merkale sind esentiell wichtig und eröffnen ein breites Spektrum an Verwendungsmöglichkeiten.\\\\
 Die Syntax von JSON ist klar definiert und wird ebenfals durch ein Beispiel näher visualisiert.
-\begin{lstlisting}[caption=JSON-Codebeispiel,label=jsonExample]
+\begin{lstlisting}[style=json, caption=JSON-Codebeispiel,label=jsonExample]
 {
     "employee": {
     "name": "tester",
@@ -528,18 +528,18 @@ Die von Google entwickelte Bibliothek Gson spielt in diesem Projekt eine wichtig
 Aufgrund enormer Datenmengen ist es zeitaufwändig, JSON Dateien in Java zu erstellen.\\
 Eine Hilfe bietet dabei Gson.
 Diese unterstützende Bibliothek hilft dem Emtwickler bei der Konvertierung zwischen Java-und JSON-Objekten.
-Erstellt wird eine Gson Instanz durch Aufruf des Default-Konstruktors: \lstinline{Gson gson = new Gson();}.
+Erstellt wird eine Gson Instanz durch Aufruf des Default-Konstruktors: \lstinline[style=java]{Gson gson = new Gson()}.
 Sobald dies vonstatten gegangen ist kann nun entweder mit der Methode \lstinline{toJson} oder mit \lstinline{fromJson} gearbeitet werden.
 Diese beiden Methoden stellen die Haupteinstiegspunkte von Gson dar und werden im folgenden Teil erklärt.
 \\\\
 \textbf{\lstinline{toJson}}
 \\
-Mithilfe der Mehode \lstinline{gson.toJson()} kann direkt aus einem Objekt ein JSON-String erzeugt werden.
+Mithilfe der Mehode \lstinline[style=java]{gson.toJson()} kann direkt aus einem Objekt ein JSON-String erzeugt werden.
 Dieser genannte String kann danach je nach belieben in eine Datei geschreiben oder versendet werden.
 \\\\
 \textbf{\lstinline{fromJson}}
 \\
-Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline{gson.fromJson()} umgekehr werden.
+Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline[style=java]{gson.fromJson()} umgekehr werden.
 Hierbei wird aus einem JSON-String ein Objekt erzeugt.
 \\
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
@@ -566,10 +566,6 @@ Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
     \includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
     \caption{Schematische Darstellung der Geräteauswahl}
 \end{figure}
-\begin{enumerate}
-    \item Einzelbitfehler (1 Bit verändert)
-    \item Burstfehler (ganze Folge von Bits verändert)
-\end{enumerate}
 \subsubsection{Übertragungsprotokoll} \label{sssec:uebertragungsprotokoll}
 \begin{table}[H]
     \centering
@@ -602,9 +598,15 @@ Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den emp
 Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
 Stimmen diese nicht überein liegt ein Fehler vor.
 Die wichtigsten Arten von Übertragungsfehlern sind:
-Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere. Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
+\begin{enumerate}
+    \item Einzelbitfehler (1 Bit verändert)
+    \item Burstfehler (ganze Folge von Bits verändert)
+\end{enumerate}
+Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere.
+Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
 Sie ist realtiv einfach zu realisieren und dennoch wirkungsvoll.
-Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänger, das selbe Generator-Polynom verwenden. Der Grad des Generatorpolyoms beträgt in unserem Fall 32 (CRC-32).
+Wichtig beim CRC-Verfahren ist, dass beide Teilnehmen, also Sender und Empfänger, das selbe Generator-Polynom verwenden.
+Der Grad des Generatorpolyoms beträgt in unserem Fall 32 (CRC-32).
 \subsubsection{Request- und Responsebeispiele}
 Folgend wird anhand von tabelarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
 Jeder Request sowie Reponse basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
@@ -632,18 +634,56 @@ Auch wird bevor die Maschine in Betrieb genommen wird, der Request \textbf{Init}
 Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.\\
 Die genauere Aufarbeitung und Umsetztung sei im \autoref{ssec:konzeptCardDeal} verzeichnet.
 \subsubsection{Datenaustausch-Serielle Schnittstelle}
-Zuallererst soll der Ablauf der Kommunikation zwsichen dem Programm und des Endgeräts, welches über die serielle Schnitstelle verbunden ist, betrachtet werden.
-Im ersten Schritt wird auf die Erstellung jedes einzelnen Request Eingegangen.\\
-Um die Aufgabe der Einbindung von Requests elegant und objektorientiert umzusetzten, stellt die abstrakte Klasse \lstinline{Request} den Kopf jedes einzelnen Requests dar.
+Zuallererst soll der Ablauf der Kommunikation zwsichen dem Programm und dem Endgeräts, welches über die serielle Schnitstelle verbunden ist, betrachtet werden.
+Im ersten Schritt wird auf die Erstellung jedes einzelnen Request eingegangen.\\
+Um die Aufgabe der Einbindung von Requests elegant und objektorientiert umzusetzten, stellt die abstrakte Klasse \lstinline[style=java]{Request} den Kopf jedes einzelnen Requests dar.
 Dies bedeutet im engsten Sinne, dass jeder einzelne Request eine Abstammung dieser Klasse ist.
 Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}
 \begin{figure}[H]
 \centering
+\vspace{-5mm}
 \includegraphics[width=1\textwidth]{fig/ainf/RequestUML.pdf}
-\caption{UML-Diagramm-Abstrakte Klasse Request}
+\caption{UML-Diagramm-Request-Baum}
 \label{umlReq}
 \end{figure}
-gfd
+Bevor nun auf jeden einzelnen Request eingegangen wird, soll nun die abstrakte Klasse \lstinline[style=java]{Request} betrachtet werden.
+Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()}, \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
+Wie der Namen der Methoden schon ahnen lässt, ist \lstinline[style=java]{createRequestFrame()} für die Erstellung jedes Request zuständig.
+Diese Methode hat hat ist \lstinline[style=java]{protected} somit kann von den abstammenden Requests darauf zugegriffen werden.
+\lstinputlisting[firstline=87, lastline=99, style=java,caption=fdsa,label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
+Sobald die Methode von einem abstammenden Request aufgerufen wird und der Content, also der Request-String, übergeben wird, überprüft diese Mathode den übergebenen Content.
+Sollte dieser leer leet sein wird eine \lstinline[style=java]{IllegalArgumentException} geworfen und die Erstellung des Requests wird somit abgebrochen.
+Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
+Letztendlich wird danach der Request-String mithilfe eines \lstinline{StringBuilders} zusammengebaut.
+Das für die Datenspeicherung im Objekt zuständige Atrribut benennt sich \lstinline[style=java]{private byte[] resFrame} und speichert dessen Daten in ein Byte-Array.\\\\
+Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent()} welche ausschließlich die Aufgabe hat, den definierten Zeitstempel \lstinline[style=java]{timeMillisFrameSent} zu setzten.
+Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
+Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins spiel.
+Aufgabe dieser ist es, das akommende Response-Objekt, welches im unteren Abschnitt beschreiben wird, in dessen elementaren Daten zu zerlegen.
+\lstinputlisting[firstline=36, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+Auch soll wiederum in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist. Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
+Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der Request im Zielsystem verhalten hat.
+Wie im Protokoll definiert kann nun entweder ein \lstinline[style=java]{OK} oder ein Errorcode mit dem Prefix \lstinline[style=java]{E} zurückkommen.
+Der Pool an Codes kann jedoch nur ein Volumen von 9 annehmen, da ansonsten der Frame zu groß wäre.
+Umgesetzt wird die Analyse mithilfe einer switch-case-Verzweigung.
+\lstinputlisting[firstline=62, lastline=86, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+Jeder einzelne Error steht für eine spezielle Fehlerquelle bei der Ausführung.
+Eine Übersicht wird in \autoref{ssec:konzeptCardDeal} gegeben.\\\\
+Zusätzlich wird in der Klasse \lstinline[style=java]{Request} die \lstinline[style=java]{toString()} Methode überlagert.
+Dadurch kann das Request Objekt nun optimal in einen String umgweandelt werden.
+\lstinputlisting[firstline=105, lastline=149, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/Request.java}
+Nun betrachten wir die spezifischen Request, welche in \autoref{umlReq} zu sehen sind.\\
+Im Prinzip ist der Aufbau jeder Request Klasse ähnlich.
+Aufgerufen wird der Konstruktor welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
+Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
+\lstinputlisting[firstline=9, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
+Als Beispiel soll der Request Shuffle gezeigt werden.\\\\
+\textbf{Conclusion:}\\
+Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwärtiges Onjekt mit dem gearbeitet werden kann.
+Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
+Die gesamte Kommunikation wird umgesetzt durch die Klasse \lstinline[style=java]{Communication}.
+Diese kann verglichen werden mit einem Wächter, welcher sich um das Senden und Empfangen von Daten kümmert.
+
 \subsection{Logging}
 \subsubsection{Konzept}
 \subsubsection{Integration in das Programm}
