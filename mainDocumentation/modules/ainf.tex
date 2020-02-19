@@ -132,7 +132,7 @@ Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
 Wie in der Einleitung bereits erwähnt besteht das Backend aus Tätigkeiten, welche im Hintergrund abgearbeitet werden.
 Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.
 
-Auch wird im Hintergrund eine sogenannte LOG-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert.
+Auch soll im Hintergrund eine sogenannte LOG-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert werden.
 Diese Datei kann z.B. \ beim Debugging-Vorgang notwendig sein bzw. \ dem Entwickler dabei unterstützen, was eine enorme Zeitersparnis mit sich bringt.
 
 Um etwaige Einstellungen der Seriellen Schnittstelle sowie die Definition der Pfade für verschiedene Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird.
@@ -436,7 +436,7 @@ Anhand der folgenden \autoref{fig:Rendered Button} soll gezeigt werden, wie nun 
 Angewendet werden die Attribute \lstinline{-fx-border-radius: 20pt;}  \lstinline{-fx-background-radius: 20pt;} und \lstinline{-fx-background-color:grey}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/ainf/RenderedButton.PNG}
+    \includegraphics[width=0.4\textwidth]{fig/ainf/RenderedButton.PNG}
     \caption{Gerenderter Button}
     \label{fig:Rendered Button}
 \end{figure}
@@ -457,8 +457,6 @@ Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
 Zwischen diesen Start- bzw. \ End-Tags befindet sich e
 in Datensatz.
 Ein Indikator für ein End-Tag ist ein \lstinline{/}.
-
->>>>>>> Stashed changes
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
 \begin{lstlisting}[style=XML,caption=XML-Codebeispiel,label=xmlExample]
@@ -471,7 +469,6 @@ Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien i
     </email>
 \end{lstlisting}
 % @formatter:on
-
 \subsubsection{FXML}
 FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
 Da die Trennung von GUI- und Programmcode bei Java FX nach dem MVC-Pattern \autoref{subsec:entwurfsmuster-mvc}vollzogen wurde, kann erst mithilfe des von Oracle entwickelte Formats ein Layout in einer eigenen Datei gebaut werden.\\\\
@@ -633,7 +630,7 @@ Der Request \textbf{Shutdown} führt jedeglich zu einem Herunterfahren der Masch
 Auch wird bevor die Maschine in Betrieb genommen wird, der Request \textbf{Init} gesendet.
 Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.\\
 Die genauere Aufarbeitung und Umsetztung sei im \autoref{ssec:konzeptCardDeal} verzeichnet.
-\subsubsection{Datenaustausch-Serielle Schnittstelle}
+\subsubsection{Umsetztung-Datenaustausch}
 Zuallererst soll der Ablauf der Kommunikation zwsichen dem Programm und dem Endgeräts, welches über die serielle Schnitstelle verbunden ist, betrachtet werden.
 Im ersten Schritt wird auf die Erstellung jedes einzelnen Request eingegangen.\\
 Um die Aufgabe der Einbindung von Requests elegant und objektorientiert umzusetzten, stellt die abstrakte Klasse \lstinline[style=java]{Request} den Kopf jedes einzelnen Requests dar.
@@ -658,7 +655,7 @@ Letztendlich wird danach der Request-String mithilfe eines \lstinline{StringBuil
 Das für die Datenspeicherung im Objekt zuständige Atrribut benennt sich \lstinline[style=java]{private byte[] resFrame} und speichert dessen Daten in ein Byte-Array.\\\\
 Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent()} welche ausschließlich die Aufgabe hat, den definierten Zeitstempel \lstinline[style=java]{timeMillisFrameSent} zu setzten.
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
-Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins spiel.
+Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
 Aufgabe dieser ist es, das akommende Response-Objekt, welches im unteren Abschnitt beschreiben wird, in dessen elementaren Daten zu zerlegen.
 \lstinputlisting[firstline=36, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Auch soll wiederum in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist. Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
@@ -676,16 +673,124 @@ Nun betrachten wir die spezifischen Request, welche in \autoref{umlReq} zu sehen
 Im Prinzip ist der Aufbau jeder Request Klasse ähnlich.
 Aufgerufen wird der Konstruktor welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
 Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
+Als Beispiel soll der Request Shuffle gezeigt werden.
 \lstinputlisting[firstline=9, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
-Als Beispiel soll der Request Shuffle gezeigt werden.\\\\
 \textbf{Conclusion:}\\
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwärtiges Onjekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
 Die gesamte Kommunikation wird umgesetzt durch die Klasse \lstinline[style=java]{Communication}.
 Diese kann verglichen werden mit einem Wächter, welcher sich um das Senden und Empfangen von Daten kümmert.
+Die vom Designpattern Singelton abgeleitete Klasse stellt 2 Threads bereit, wobei einer davon für den Sendung- und einer für den Empfangsvorgang zuständig ist.
+Beide werden im privaten Konstruktor der Klasse erstellt und gestartet.
+Somit ist ab diesem Zeitpunkt die Verfügbarkeit zur Kommunikation gegeben.\\\\
+\textbf{Der CommunicationSendThread:}\\
+Nun besteht jedoch das Problem, das  untereinander abgestimmt werden müssen.
+Ein wichtiges Beispiel zeigt hierbei das \textbf{Producer-Consumer-Problem} welches in der \autoref{ProducerConsumer} dargestellt wird.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{fig/ainf/ProducerConsumer.pdf}
+\caption{Kommunikation Producer-Consumer}
+\label{ProducerConsumer}
+\end{figure}
+Dies bezieht sich auf die gemeinsame Verwendung von Items, da hier Überschneidungen entstehen.
+In diesem Fall stellet die sogenannte \lstinline[style=java]{toSentList}, welche als LinkedList vom Typ \lstinline[style=java]{Request} implementiert wurde, die Items dar.
+Einerseits müssen hier Requests zur Liste hinzugefügt und andererseits entnommen werden.\\
+Um nun die Thread-Sicherheit zu gewährleisten und Deadlocks zu vermeiden, wurde von \lstinline[style=java]{synchronized()} gebrauch gemacht.
+Wie schon im oberern Teil beschrieben, bietet die sogenannte \lstinline[style=java]{toSentList} eine gemeinsame Ablage von Requests.
+Bei jedem Zugriff wird nun also mit \lstinline[style=java]{synchronized(toSentList)} gearbeitet.
+Mithilfe der Methoden \lstinline[style=java]{wait()} und \lstinline[style=java]{notify()} wurde nun eine Möglichkeit geschaffen, um Busy-Waiting, zu vermeiden.
+Hier wartet bzw "schläft" der Thread, bis er von außen aktiviert also "aufgeweckt" wird.
+Zu sehen ist dies im \autoref{commThreadSync}.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSync]
+try {
+    mainLoop:
+    while (!Thread.currentThread().isInterrupted()) {
+        synchronized (toSentList) {
+            LOG.fine("Thread waiting for items ...");
+            toSentList.wait();
 
+            if (!toSentList.isEmpty()) {
+            ....
+            }
+        }
+    }
+}
+catch (Exception ex) {
+    LOG.warning(ex, Thread.currentThread().getName() + " exception");
+}
+finally {
+    LOG.info(Thread.currentThread().getName() + " ended");
+}
+\end{lstlisting}
+% @formatter:on
+Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
+Diese Methode, welche nach dem Command-Verhalensmuster (\autoref{subsec:verhaltensmuster-command}) gestaltet wurde, fügt ledeglich ein Element zur Liste hinzu und "weckt" den Thread mit \lstinline[style=java]{notifyAll()}.
+\lstinputlisting[firstline=67, lastline=72, style=java,caption=fdsa,label=toString() Methode]{src/serial/Communication.java}
+Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der Thread zu arbeiten.
+Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+if (!toSentList.isEmpty()) {
+    pendingRequest = toSentList.removeFirst();
+    LOG.fine("sending request " + pendingRequest.getMreqFrame());
+    serial.writeString(pendingRequest.getMreqFrame());
+    pendingRequest.handleRequestSent();
+}
+\end{lstlisting}
+% @formatter:on
+Vorerst wird der wartende Request in dem Attribut \lstinline[style=java]{Request pendingRequest} gespeichert und von der Liste gelöscht.
+Danach kann dieser über die serielle Schnitstelle versendet werden.
+Dies erfolgt mithilfe der Hilfsmethode \lstinline[style=java]{serial.writeString()} welche im \autoref{sssec:deviceSelection} beschrieben wurde.\\\\
+Nun soll auf den ankommenden Response gewartet werden.
+Auch hier wird eine LinkedList implementiert.
+Diese besteht jedoch nicht aus Request-Objekten, sondern aus sogenannten Response-Objekten.
+In jedem einzelnen Objekt vom Typ \lstinline[style=java]{Response} befindet sich der Frame, gepeichert in dem Attribut \lstinline[style=java]{byte [] resFrame}, und ein Zeitstempel namens \lstinline[style=java]{long timeMillisCreatedAt}.\\\\
+Wird nun vom CommunicationReceiveThread, welcher später beschrieben wird, empfangen und zur \lstinline[style=java]{responseList} hinzugefügt, entfernen die folgenden Zeilen Code den Request von der Liste und speichern diesen.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+res = responseList.removeFirst();
+if (!responseList.isEmpty()) {
+    LOG.warning("response list should be empty, but " + responseList.size() + " items in list");
+    responseList.clear();
+}
+\end{lstlisting}
+% @formatter:on
+Mithilfe des Methodenaufrufs \lstinline[style=java]{pendingRequest.handleResponse(res)} wird nun, wie oben beschreiben, der Response weiter verarbeitet.\\\\
+Sollte jedoch kein Response ankommen, versucht das Programm, sofern in der Konfigurationsdatei ein zweiter Versuch erlaubt ist, den selben Response nochmals zu senden.
+Ist dies nicht der Fall, wird eine \lstinline[style=java]{SerialException} geworfen.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+if (responseList.isEmpty()) {
+    if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
+        sendRequestExecutor(pendingRequest);//send second response
+        continue mainLoop;
+    }
+throw new SerialException("request timeout, mssing response"); // if second try isnt allowed throw serial exception
+}
+\end{lstlisting}
+% @formatter:on
+Somit wäre ein Kommunikationsloop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
+\textbf{Der CommunicationReceiveThread:}\\
+Nun sollte jedoch das Empfangen eines Response näher beschrieben werden.
+Dieser Thread holt sich vorerst den InputStream und liest danach die Zeichen ein.
+Sollte ein unerwartetes Zeichen ankommen, wird in dien Log-Datei eine Warunung geschrieben.
+Werden die ankommenden Daten nun als vollwärtigen Request empfunden, fügt der Thread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den Thread.
+\subsubsection{Umsetztung-Geräteauswahl} \label{sssec:deviceSelection}
+
+\subsubsection{Serial-Simulator}
 \subsection{Logging}
 \subsubsection{Konzept}
+Logging ist nach dem Debugging selbst, dass zweitwichtigeste Mittel um einzelne Programmbausteine oder das gsamte Programm auf Fehler zu untersuchen.
+Mithilfe einer Log-Datei können z.b aktuelle Wertebelegungen im Detail dargestellt werden.
+Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks immer sinvoller.\\\\
+\textbf{Gründe für die Verwendung von Logging-Frameworks}\\
+Als Beispiel kann mithilfe einer Log-Datei auch ein Benutzer, welcher nicht über die Möglichkeit verfügt, den Quellcode einzusehen, einzelne Fehler erkennen(vorrausgesetzt diese Möglichkeit ist durch das Programm geschaffen).
+Auch ist nun die Persistenz der Logging-Einträge gegeben.
+Dies bedeuted, es kann nun sichergestellt werden, dass diese Einträge auf dem System gespeichert werden und nach einem Neustart verfügbar sind.
+Nutzt man diese Art von Protokollierung kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
+Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
+In unserem Fall
 \subsubsection{Integration in das Programm}
 \subsection{Konfiguration}\label{subsec:konfiguration}
 \subsubsection{Konzept}
