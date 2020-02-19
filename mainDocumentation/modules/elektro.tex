@@ -1101,7 +1101,6 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 \begin{circuitikz}{european, scale = 1}
 \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
 
-
 \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
 \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
 \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
@@ -1416,10 +1415,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 \draw (6,6) to (6,6)node[anchor=west]{Pumpe};
 \draw (5,3) to (5,0);
 \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,1) to [short,-*](5,1);
+\draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
 \draw (5,3)node[nfet, solderdot, bodydiode]{};
 \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
-\draw (5,0) to (5,0) node[rground]{};
+\draw (5,-0.5) to (5,-0.5) node[rground]{};
 
 % Ventil
 \draw (15,8)node[vcc]{+5V};
@@ -1430,10 +1429,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 \draw (16,6) to (16,6)node[anchor=west]{Ventil};
 \draw (15,3) to (15,0);
 \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
-\draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,1) to [short,-*](15,1);
+\draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,0) to [short,-*](15,0) to (15,-0.5);
 \draw (15,3)node[nfet, solderdot, bodydiode]{};
 \draw (9,3) to (9,3)node[anchor=east]{SIG};
-\draw (15,0) to (15,0) node[rground]{};
+\draw (15,-0.5) to (15,-0.5) node[rground]{};
 \end{circuitikz}
 \caption{Ansteuerung der Pumpe und des Ventils}
 \end{figure}
@@ -1586,10 +1585,33 @@ An dem 3.3V Spannungspegel ist ein Widerstand und eine Leuchtiode in Serie gesch
 \caption{Realisierung der Leuchtdioden}
 \end{figure}
 
-\subsection{Netzteil}
+\newpage
 
+\subsection{Netzteil-Dimensionierung}
+
+Zur Netzteil-Dimensionierung wurden die maximal möglichen Stromwerte der einzelnen Peripheriebausteine herangezogen.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Komponente} & \textbf{max.Strom} \\ \hline
+        Hubmagnete & 700mA \\ \hline
+        Schrittmotor & 2500mA \\ \hline
+        Sensoren & 50mA \\ \hline
+        Pumpe inkl.Ventil & 500mA \\ \hline
+        Raspberry Pi 3B+ inkl.LCD & 800mA \\ \hline
+        ATmega324P & 200mA \\ \hline
+        \textbf{Summe} & \textbf{4750mA} \\ \hline
+    \end{tabular}
+    \caption{Überschlagsmäßige Dimensionierung des Netzteils}
+\end{table}
+
+Hinzuzufügen ist jedoch, dass in keinem Fall alle Geräte gleichzeitig betrieben werden, sodass der Dauerstrom weitaus niedriger ausfällt.
 Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe hat ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
 Zudem erfüllt es unsere Anforderung, einen Strom von 5A bereitstellen zu können.
+
+\newpage
 
 \section{Steckbrettaufbauten}
 
@@ -1657,6 +1679,7 @@ Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigens
 
 Bei den Bauformen jener Kondensatoren, dessen Wert 100nF oder 22pF beträgt, und aller Leuchtdioden und Widerstände wurde auf 0805er Chips zurückgegriffen,
 da sich diese bereits in unserem Besiz befanden und diese eine platzsparende, und dennoch einfach zu lötende Lösung bereitstellten.
+Bei der Auswahl der Kondensatoren im µF-Bereich wurde auf SMD-Elektrolytkondensatoren mit einem Diameter von 6 bis 8mm zurückgegriffen.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -1700,8 +1723,9 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 
 \subsubsection{Prototyping}
 
-Bevor wir den Auftrag einer Leiterplattenfertigung an ein professionielles Unternehmen aufgaben, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
-Dieser sollte in der Werkstätte der HBTLA Kaindorf angefertigt werden. \\
+Bevor wir fester Überzeugung aller Funktionen sein konnten, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
+Dies hat die Vorteile, etwa im Platinenlayout falsch Gemachtes, bereits vor der finalen Version zu erkennen und auszumerzen.
+Jener Prototyp wurde in der Werkstätte der HBTLA Kaindorf angefertigt. \\
 
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
@@ -1736,6 +1760,40 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 \section{Resümee und Aussichten für die Zukunft}
 \subsection{Reflexion der Arbeit}
 
-\subsection{Aussichten für die Zukunft}
+\subsection{Verbesserungsmöglichkeiten}
+
+Sollte man die Versorgung des Raspberry Pi's über die GPIO Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
+Eine essenzeille Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre ein sogenannter zu implementierender Crowbar-Circuit.
+Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannung zu schützen.
+
+\begin{figure}[hpt]
+    \centering
+    \begin{circuitikz}[european, scale = 1.2]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
+        \draw (2,0) to [R,l=$R1$, *-*](2,2) to [/tikz/circuitikz/bipoles/length=1cm, zD-, l=$D1$,-*](2,4);
+        \draw (2,2) to (3.5,2);
+        \draw (4,4) to [/tikz/circuitikz/bipoles/length=1.1cm, Ty-, mirror, l=$D2$,*-](4,0.915) to [short,-*](4,0);
+        \draw (2,4) to [short, -o](0,4)node[anchor=east]{+};
+        \draw (2,4) to [short, -o](6,4)node[anchor=west]{+};
+        \draw (3,0) to [short, -o](6,0)node[anchor=west]{-};
+        \draw (3,0) to (2,0) node[rground]{};
+        \draw (0,3.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (6,3.8) -- node[right] {$U_\mathrm{Last}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+    \end{circuitikz}
+    \caption{Crowbar Circuit}
+\end{figure}
+
+Bei einer zulässigen Versorgungsspannung von 5V gelangt die Zenerdiode nicht in einen leitenden Zustand und eine sichere Versorgung der dahinter liegenden Schaltung ist gegeben.
+Sobald der Wert der Versorgungsspannung jenen nominalen Zenerspannungswert der Zenerdiode übersteigt, wird diese leitend.
+Überschüssige Spannung fällt somit am Widerstand ab, wobei die am Widerstand abfallende Spannung der am Gate anliegenden Spannung gleichzusetzen ist.
+Sollte diese Spannung die maximalen Gate-Triggerspannung übersteigen, zündet das Gate des Thyristors und er wird leitend.
+Somit schließt der Thyristor die dahinter liegende Schaltung kurz und ein Schutz der sensiblen Komponenten ist gegeben. \\
+
+Diese Schaltung konkret auf unsere Anwendung angewandt, wären die Komponenten wie folgt zu wählen:
+\begin{itemize}
+    \item R1 mit etwa 10kOhm
+    \item D1 mit einer Zenerspannung von 4.3V
+    \item D2 mit möglichst niedriger maximaler Gate-Triggerspannung, z.B.0.8V
+\end{itemize}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
