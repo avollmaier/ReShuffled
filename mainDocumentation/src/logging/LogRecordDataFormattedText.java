@@ -26,20 +26,14 @@ import java.io.PrintStream;
  * </pre></blockquote>
  *
  * @author Manfred Steiner (sx@htl-kaindorf.ac.at)
- * @see
- * <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="blank">https://en.wikipedia.org/wiki/ANSI_escape_code</a>
- * @see
- * <a href="http://wiki.netbeans.org/TerminalEmulatorHyperlinking" target="blank">http://wiki.netbeans.org/TerminalEmulatorHyperlinking</a>
+ * @see <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="blank">https://en.wikipedia.org/wiki/ANSI_escape_code</a>
+ * @see <a href="http://wiki.netbeans.org/TerminalEmulatorHyperlinking" target="blank">http://wiki.netbeans.org/TerminalEmulatorHyperlinking</a>
  */
 public class LogRecordDataFormattedText implements LogRecordData {
 
-    public enum Terminal {
-        LINUX, NETBEANS
-    }
-
-    String s;
     private final StringBuilder text;
     private final Terminal terminal;
+    String s;
 
     /**
      * Constructor. The value of the system property
@@ -370,6 +364,10 @@ public class LogRecordDataFormattedText implements LogRecordData {
     public LogRecordDataFormattedText bgWhite() {
         text.append("\033[0;47m");
         return this;
+    }
+
+    public enum Terminal {
+        LINUX, NETBEANS
     }
 
 }

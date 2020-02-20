@@ -1,14 +1,8 @@
 package serial.sim;
 
-import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import logging.Logger;
 
 /**
- *
  * @author volalm15
  */
 public class ReshuffledMainboardSimulator implements Runnable {

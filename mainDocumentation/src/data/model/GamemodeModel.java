@@ -63,8 +63,5 @@ public class GamemodeModel {
         this.playerQuantity = playerQuantity;
     }
 
-   
-  
 
-    
 }

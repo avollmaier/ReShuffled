@@ -1,12 +1,7 @@
 package serial;
 
-import exception.SerialException;
 import data.model.ConfigSerialModel;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
+import exception.SerialException;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
@@ -16,30 +11,19 @@ import serial.sim.ReshuffledMainboardSimulator;
 import serial.sim.SimInputStreamBuffer;
 import serial.sim.SimOutputStreamBuffer;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
  * @author alois
  */
 public class Serial {
 
     private static final Logger LOG = Logger.getLogger(Serial.class.getName());
     private static Serial instance;
-
-    public static Serial createInstance(ConfigSerialModel config) throws SerialException, IOException {
-        if (instance != null) {
-            throw new IllegalStateException("instance already created");
-        }
-        instance = new Serial(config);
-        return instance;
-    }
-
-    public static Serial getInstance() {
-        if (instance == null) {
-            throw new IllegalStateException("instance not created yet");
-        }
-        return instance;
-    }
-
     // *********************************************************************************
     private final ConfigSerialModel config;
     private InputStream inputStream;
@@ -57,6 +41,21 @@ public class Serial {
         } else {
             initSerialDevice();
         }
+    }
+
+    public static Serial createInstance(ConfigSerialModel config) throws SerialException, IOException {
+        if (instance != null) {
+            throw new IllegalStateException("instance already created");
+        }
+        instance = new Serial(config);
+        return instance;
+    }
+
+    public static Serial getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("instance not created yet");
+        }
+        return instance;
     }
 
     public InputStream getInputStream() {
@@ -133,23 +132,24 @@ public class Serial {
 
         private final jssc.SerialPort serialPort;
         private final List<Byte> receivedByteList = new ArrayList<Byte>();
-//TODO 
+
+        //TODO
         public SerialJsscInputStream(SerialPort serialPort) {
             this.serialPort = serialPort;
             try {
                 this.serialPort.addEventListener(new SerialPortEventListener() {
                     @Override
-                    public void serialEvent (SerialPortEvent arg0) {
+                    public void serialEvent(SerialPortEvent arg0) {
                         try {
-                            final byte [] received = serialPort.readBytes(1);
+                            final byte[] received = serialPort.readBytes(1);
                             if (received != null && received.length == 1) {
-                                synchronized(receivedByteList) {
+                                synchronized (receivedByteList) {
                                     receivedByteList.add(received[0]);
                                     receivedByteList.notifyAll();
                                 }
                             }
                         } catch (Exception ex) {
-                           LOG.warning(ex);
+                            LOG.warning(ex);
                         }
                     }
                 });
@@ -160,20 +160,20 @@ public class Serial {
 
         @Override
         public int read() throws IOException {
-           synchronized (receivedByteList) {
-               try {
+            synchronized (receivedByteList) {
+                try {
                     while (receivedByteList.isEmpty()) {
                         receivedByteList.wait();
                     }
                     Byte b = receivedByteList.remove(0);
                     return b < 0 ? b + 256 : b;
-               
-               } catch (Exception ex) {
-                   throw new IOException(ex);
-               }
-           }
+
+                } catch (Exception ex) {
+                    throw new IOException(ex);
+                }
+            }
         }
-        
+
 
     }
 
@@ -190,7 +190,7 @@ public class Serial {
             try {
                 serialPort.writeByte((byte) b);
             } catch (SerialPortException ex) {
-               LOG.warning("Execption while writing byte");
+                LOG.warning("Execption while writing byte");
             }
 
         }

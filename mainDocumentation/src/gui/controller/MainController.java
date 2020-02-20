@@ -11,22 +11,21 @@ import data.game.Game;
 import data.statistics.Statistics;
 import gui.multilanguage.ResourceKeyEnum;
 import gui.multilanguage.ResourceManager;
-import java.io.IOException;
-import util.AlertUtil;
-import util.GuiUtil;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 import serial.Communication;
 import serial.request.RequestShuffle;
 import serial.request.RequestShutdown;
-import util.ResourceBundleUtils;
+import util.AlertUtil;
+import util.GuiUtil;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 
 
 /**
@@ -37,110 +36,108 @@ import util.ResourceBundleUtils;
 public class MainController implements Initializable {
 
     @FXML
+
+    private static MainController instance;
+    @FXML
     private StackPane rootStackPane;
     @FXML
     private JFXTabPane rootTabPane;
-    @FXML
-
-    private static MainController instance;
 
 
-    public MainController () {
+    public MainController() {
         instance = this;
     }
 
 
-    public static MainController getInstance () {
+    public static MainController getInstance() {
         return instance;
     }
 
     // *************************************************************************
 
     @Override
-    public void initialize (URL arg0, ResourceBundle bundle) {
+    public void initialize(URL arg0, ResourceBundle bundle) {
     }
 
 
-    private Stage getStage () {
+    private Stage getStage() {
         return (Stage) rootStackPane.getScene().getWindow();
     }
 
 
-    public void loadShuffleDialog () {
+    public void loadShuffleDialog() {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shuffle));
 
         btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
-                             HomeController.getInstance().contentInvisibility(false);
-                             RequestShuffle shuffle = new RequestShuffle();
-                             Communication.getInstance().sendRequestExecutor(shuffle);
-                             HomeController.getInstance().handleCardChanged();
-                         });
+            HomeController.getInstance().contentInvisibility(false);
+            RequestShuffle shuffle = new RequestShuffle();
+            Communication.getInstance().sendRequestExecutor(shuffle);
+            HomeController.getInstance().handleCardChanged();
+        });
 
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cardCheck));
     }
 
 
-    public void loadShutdownDialog () {
+    public void loadShutdownDialog() {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdown));
 
         btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
-                             HomeController.getInstance().contentInvisibility(true);
+            HomeController.getInstance().contentInvisibility(true);
 
-                             Game.getInstance().setGameFinished(false);
-                             Statistics.getInstance().incrementOverallGamesPlayed(1);
-                             Statistics.getInstance().getGames().add(Game.getInstance());
-                             Statistics.getInstance().save();
-                             RequestShutdown shutdown = new RequestShutdown();
-                             Communication.getInstance().sendRequestExecutor(shutdown);
+            Game.getInstance().setGameFinished(false);
+            Statistics.getInstance().incrementOverallGamesPlayed(1);
+            Statistics.getInstance().getGames().add(Game.getInstance());
+            Statistics.getInstance().save();
+            RequestShutdown shutdown = new RequestShutdown();
+            Communication.getInstance().sendRequestExecutor(shutdown);
 
 
-                             String shutdownCmd = "shutdown -h now";
-                             if (Runtime.getRuntime().availableProcessors() >= 4) {
-                                 System.exit(0);
-                             }
-                             else {
-                                 try {
-                                     Process child = Runtime.getRuntime().exec(shutdownCmd);
-                                 }
-                                 catch (IOException e) {
-                                     e.printStackTrace();
-                                 }
-                             }
-                         });
+            String shutdownCmd = "shutdown -h now";
+            if (Runtime.getRuntime().availableProcessors() >= 4) {
+                System.exit(0);
+            } else {
+                try {
+                    Process child = Runtime.getRuntime().exec(shutdownCmd);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_shutdownCheck));
     }
 
 
-    public void loadGameFinishedDialog () {
+    public void loadGameFinishedDialog() {
         JFXButton btCancel = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_cancel));
         JFXButton btFinished = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_finished));
 
         btFinished.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
 
-                                   //PREPARE GAME FOR SAVING
-                                   Game.getInstance().setGameFinished(true);
-                                   Statistics.getInstance().incrementOverallGamesPlayed(1);
-                                   Statistics.getInstance().getGames().add(Game.getInstance());
-                                   Statistics.getInstance().save();
-                                   GuiUtil.loadWindow(getClass().getResource("/gui/fxml/startup.fxml"), "Gamemode Selection", new StartupController());
-                                   getStage().close();
+            //PREPARE GAME FOR SAVING
+            Game.getInstance().setGameFinished(true);
+            Statistics.getInstance().incrementOverallGamesPlayed(1);
+            Statistics.getInstance().getGames().add(Game.getInstance());
+            Statistics.getInstance().save();
+            GuiUtil.loadWindow(getClass().getResource("/gui/fxml/startup.fxml"), "Gamemode Selection", new StartupController());
+            getStage().close();
 
-                               });
+        });
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btCancel, btFinished), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_finishGame));
     }
 
 
-    public void loadLanguageChangeDialog () {
+    public void loadLanguageChangeDialog() {
         JFXButton btOk = new JFXButton(ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_ok));
 
         btOk.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
-                             HomeController.getInstance().contentInvisibility(false);
-                             RequestShuffle shuffle = new RequestShuffle();
-                             Communication.getInstance().sendRequestExecutor(shuffle);
-                             HomeController.getInstance().handleCardChanged();
-                         });
+            HomeController.getInstance().contentInvisibility(false);
+            RequestShuffle shuffle = new RequestShuffle();
+            Communication.getInstance().sendRequestExecutor(shuffle);
+            HomeController.getInstance().handleCardChanged();
+        });
 
         AlertUtil.showContentDialog(rootStackPane, rootTabPane, Arrays.asList(btOk), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_info), ResourceManager.getInstance().getLangString(ResourceKeyEnum.txt_msg_languageChanged));
     }

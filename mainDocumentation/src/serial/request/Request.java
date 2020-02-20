@@ -1,14 +1,14 @@
 package serial.request;
 
+import exception.SerialException;
+import logging.Logger;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import logging.Logger;
-import exception.SerialException;
 
 /**
- *
  * @author volalm15
  */
 public abstract class Request {
@@ -17,9 +17,8 @@ public abstract class Request {
 
     private static final java.util.zip.CRC32 CRC32 = new java.util.zip.CRC32();
     private static final DateFormat DATAFORMATTER = new SimpleDateFormat("mm:ss.S");
-
-    private String reqFrame;              // frame bytes sent to µC (only text)
     private final long timeMillisCreatedAt;     // epoch time when this object is created
+    private String reqFrame;              // frame bytes sent to µC (only text)
     private long timeMillisFrameSent;     // epoch time when frame is sent to µC
     private byte[] resFrame;             // frame bytes received from µC
     private long timeMillisFrameReceived; // epoch time ehne frame from µC is received  
@@ -36,12 +35,12 @@ public abstract class Request {
     public void handleResponse(Response res) throws SerialException {
         timeMillisFrameReceived = res.getTimeMillisCreatedAt();
         byte[] receivedContentCRC = new byte[2];
-        String receivedCRC = "", receivedContent ="";
+        String receivedCRC = "", receivedContent = "";
         CRC32.reset();
         resFrame = res.getResFrame();
         LOG.fine("Received response " + Arrays.toString(resFrame));
-        System.arraycopy(resFrame, 1, receivedContentCRC, 0, 2);
 
+        System.arraycopy(resFrame, 1, receivedContentCRC, 0, 2);
         CRC32.update(receivedContentCRC);
 
         for (int i = 4; i <= 11; i++) {
@@ -54,29 +53,33 @@ public abstract class Request {
             LOG.fine("Wrong CRC");
             throw new SerialException("Wrong CRC");
         }
-        
+
         for (int i = 1; i <= 2; i++) {
             receivedContent = receivedContent + (char) resFrame[i];
         }
-        
+
         switch (receivedContent) {
             case "OK": {
                 LOG.fine("Response OK on board");
-            
-            } break;
+
+            }
+            break;
             case "E1": {
                 LOG.severe("Error 1 on board");
-            
-            } break;
+
+            }
+            break;
             case "E2": {
                 LOG.severe("Error 2 on board");
-            
-            } break;
+
+            }
+            break;
             case "E3": {
                 LOG.severe("Error 3 on board");
-            
-            } break;
-            
+
+            }
+            break;
+
             default: {
                 LOG.warning("Received unmatchable response data");
             }
