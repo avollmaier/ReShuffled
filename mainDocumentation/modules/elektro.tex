@@ -627,7 +627,7 @@ Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt wird,
 Diese Versorgung soll auch nach der Betätigung zur Verfügung stehen.
 Die Versorgung soll durch ein Signal des RPI gestoppt werden, wodurch ein sicheres Herunterfahren des RPI bereitgestellt werden soll.
 
-\subsubsection{Realisierte Variante mit einzelnem Taster zum Ein- und Ausschalten}
+\subsubsection{Realisierte Variante mit einzelnem Taster}
 
 Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
 Dieser Feldeffekttransistor schaltet dadurch die am Drain anliegende Leitung auf Masse.
@@ -1610,16 +1610,33 @@ Hinzuzufügen ist jedoch, dass in keinem Fall alle Geräte gleichzeitig betriebe
 Als Netzteil wählten wir ein Schaltnetzteil mit Kaltgerätestecker aus, welches die Aufgabe erfüllt ein Wechselspannung von 230V in eine Gleichspannung von 12V umzuwandeln.
 Zudem genügt es unserer Anforderung, einen Strom von 5A bereitstellen zu können.
 
-\newpage
+\begin{figure}
+    \includegraphics[scale=0.85,page=1]{fig/elektro/Schaltplan.pdf}
+    \caption{Gesamtübersicht der Spannungsversorgung}
+\end{figure}
 
+\begin{figure}
+    \includegraphics[scale=0.85,page=2]{fig/elektro/Schaltplan.pdf}
+    \caption{Gesamtübersicht der Peripherie und Logik}
+\end{figure}
+
+%/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
+
+\newpage
 \section{Steckbrettaufbauten}
 
 Um Gewissheit zu erlangen, dass jene Schaltungen, welche für die Ansteuerung der Aktoren und Sensoren zuständig sind, reichen Simulationen und Berechnungen nicht aus.
 Somit galt es, jene Schaltungen auf einem Steckbrett konkret aufzubauen und diese auf ihre Funktion zu prüfen. \\
 
-\begin{figure}[hb]
+\begin{figure}[htb]
     \centering
-    \includegraphics[scale=0.08]{fig/elektro/Steckbrett}
+    \includegraphics[scale=0.065]{fig/elektro/ErsteSteckbrettVersuche.jpg}
+    \caption{Erste Schaltungsrealisierungen in der Praxis}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.075]{fig/elektro/Steckbrett}
     \caption{Diverse Schaltungen in der Praxis}
 \end{figure}
 
@@ -1717,6 +1734,17 @@ wobei
 \end{itemize}
 
 Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des fertigen Leiterplattenlayouts.
+\newpage
+\subsubsection{Top-Layer}
+\begin{figure}[htb]
+    \centering
+    \includesvg[scale=1]{fig/electro/TopLayer}
+    \caption{Top-Layer der Platine}
+\end{figure}
+
+\subsubsection{Bottom-Layer}
+
+\subsubsection{3D-Ansicht}
 
 \subsection{Leiterplattenfertigung}
 
@@ -1752,6 +1780,9 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
 \item Zuletzt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
+
+\subsubsection{Bestückter Prototyp}
+
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
