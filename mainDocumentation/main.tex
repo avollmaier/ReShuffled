@@ -64,7 +64,9 @@ bibliography=totocnumbered,											% Literaturverzeichnis
 \setlength{\parindent}{0em}                                            % Einrücken
 \setcounter{tocdepth}{5}                                               % Tiefe der Überschriften
 \setcounter{secnumdepth}{5}                                            % Nummerierungstiefe der Überschriften
-\usepackage{biblatex}
+\usepackage[backend=biber,
+style=alphabetic,
+]{biblatex}
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}                                        % Bild referenzieren
 \input{listings.tex}
@@ -91,8 +93,8 @@ Dipl-Ing. Manfred Steiner}
     \input{opening}
     \tableofcontents
     \mainmatter
-    %\include{modules/mech}
-    %\include{modules/elektro}
+    \include{modules/mech}
+    \include{modules/elektro}
     \include{modules/ainf}
     \include{modules/testing}
     \include{appendix}
