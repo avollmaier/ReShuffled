@@ -14,10 +14,10 @@ import java.util.logging.LogRecord;
  */
 public class ExtendedLogRecord extends LogRecord {
 
-    protected LogRecordData data;
     private final StackTraceElement location;
     private final StackTraceElement[] stackTrace;
     private final int locationDepth;
+    protected LogRecordData data;
     private boolean debugRecord;
 
     public ExtendedLogRecord(Level level, int locationStackTraceIndex) {

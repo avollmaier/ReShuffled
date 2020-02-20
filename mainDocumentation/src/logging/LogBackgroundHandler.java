@@ -52,7 +52,7 @@ public class LogBackgroundHandler extends Handler {
      * Queue the given log record and forward them to the handler in background.
      *
      * @param record description of the log event. A null record is silently
-     * ignored and is not published
+     *               ignored and is not published
      */
     @Override
     public void publish(LogRecord record) {
@@ -140,7 +140,7 @@ public class LogBackgroundHandler extends Handler {
      * {@link #close()} is not needed.
      *
      * @param timeout maximum time for blocking
-     * @param unit time units for parameter timeout
+     * @param unit    time units for parameter timeout
      * @return true if no records are pending
      * @throws InterruptedException is thrown if cureent thread is interrupted
      */
@@ -159,6 +159,17 @@ public class LogBackgroundHandler extends Handler {
             }
             return isTerminated.get();
         }
+    }
+
+    /**
+     * Returns a string representation of the object.<br>
+     * This is some statistical information, the class name and hashcode
+     *
+     * @return the string representation of the object
+     */
+    @Override
+    public String toString() {
+        return String.format("%s: %d records (max=%d)", super.toString(), recordCount, maxQueueSize);
     }
 
     private class HandlerThread extends Thread {
@@ -195,17 +206,6 @@ public class LogBackgroundHandler extends Handler {
                 }
             }
         }
-    }
-
-    /**
-     * Returns a string representation of the object.<br>
-     * This is some statistical information, the class name and hashcode
-     *
-     * @return the string representation of the object
-     */
-    @Override
-    public String toString() {
-        return String.format("%s: %d records (max=%d)", super.toString(), recordCount, maxQueueSize);
     }
 
 }

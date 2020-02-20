@@ -6,7 +6,6 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
 /**
- *
  * @author volalm15
  */
 public class SimOutputStreamBuffer extends OutputStream {

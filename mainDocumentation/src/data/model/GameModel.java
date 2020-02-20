@@ -8,7 +8,6 @@ package data.model;
 import java.util.List;
 
 /**
- *
  * @author alois
  */
 public class GameModel {
@@ -31,12 +30,12 @@ public class GameModel {
         return gameFinished;
     }
 
-    public GamemodeModel getGamemode() {
-        return gamemode;
-    }
-
     public void setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
+    }
+
+    public GamemodeModel getGamemode() {
+        return gamemode;
     }
 
     public void setGamemode(GamemodeModel gamemode) {

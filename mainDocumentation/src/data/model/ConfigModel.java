@@ -1,13 +1,10 @@
 package data.model;
 
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ConfigModel {
-    @SerializedName("logPath")
-    private  String logPath;
-    @SerializedName("statisticsPath")
-    private  String statisticsPath;
     @SerializedName("guiHeight")
     private final Integer guiHeight;
     @SerializedName("guiWidth")
@@ -18,9 +15,13 @@ public class ConfigModel {
     private final ConfigSerialModel serial;
     @SerializedName("internationalization")
     private final ConfigInternationalizationModel internationalization;
+    @SerializedName("logPath")
+    private String logPath;
+    @SerializedName("statisticsPath")
+    private String statisticsPath;
 
 
-    public ConfigModel (String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial, ConfigInternationalizationModel language) {
+    public ConfigModel(String logPath, String statisticsPath, Integer guiHeight, Integer guiWidth, List<GamemodeModel> gamemodes, ConfigSerialModel serial, ConfigInternationalizationModel language) {
         this.logPath = logPath;
         this.statisticsPath = statisticsPath;
         this.guiHeight = guiHeight;
@@ -31,7 +32,7 @@ public class ConfigModel {
     }
 
 
-    public ConfigInternationalizationModel getInternationalization () {
+    public ConfigInternationalizationModel getInternationalization() {
         return internationalization;
     }
 
@@ -39,8 +40,16 @@ public class ConfigModel {
         return logPath;
     }
 
+    public void setLogPath(String logPath) {
+        this.logPath = logPath;
+    }
+
     public String getStatisticsPath() {
         return statisticsPath;
+    }
+
+    public void setStatisticsPath(String statisticsPath) {
+        this.statisticsPath = statisticsPath;
     }
 
     public Integer getGuiHeight() {
@@ -59,13 +68,5 @@ public class ConfigModel {
         return serial;
     }
 
-    public void setLogPath(String logPath) {
-        this.logPath = logPath;
-    }
 
-    public void setStatisticsPath(String statisticsPath) {
-        this.statisticsPath = statisticsPath;
-    }
-    
-    
 }

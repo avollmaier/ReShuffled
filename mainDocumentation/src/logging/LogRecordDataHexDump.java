@@ -88,7 +88,7 @@ public class LogRecordDataHexDump implements LogRecordData {
      *
      * @param data data array from which bytes are taken.
      * @param from index of first byte printed
-     * @param to index of last byte printed
+     * @param to   index of last byte printed
      */
     public LogRecordDataHexDump(byte[] data, int from, int to) {
         if (data == null) {
@@ -108,9 +108,9 @@ public class LogRecordDataHexDump implements LogRecordData {
      * of the array<br>
      * For example by using {@link Arrays#copyOfRange(boolean[], int, int) }
      *
-     * @param data data array from which bytes are taken.
-     * @param from index of first byte printed
-     * @param to index of last byte printed
+     * @param data  data array from which bytes are taken.
+     * @param from  index of first byte printed
+     * @param to    index of last byte printed
      * @param start start index for printing
      */
     public LogRecordDataHexDump(byte[] data, int from, int to, int start) {

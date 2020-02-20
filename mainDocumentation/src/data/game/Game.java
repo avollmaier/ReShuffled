@@ -5,17 +5,22 @@
  */
 package data.game;
 
-import data.model.PlayerModel;
-import data.model.GamemodeModel;
 import data.model.GameModel;
+import data.model.GamemodeModel;
+import data.model.PlayerModel;
+
 import java.util.List;
 
 /**
- *
  * @author alois
  */
 public class Game {
     private static Game instance;
+    private final GameModel gameModel;
+
+    private Game(List<PlayerModel> players, boolean gameFinished, GamemodeModel gamemode) {
+        gameModel = new GameModel(players, gameFinished, gamemode);
+    }
 
     public static Game createInstance(List<PlayerModel> players, boolean gameFinished, data.model.GamemodeModel gamemode) {
         if (instance != null) {
@@ -24,6 +29,7 @@ public class Game {
         instance = new Game(players, gameFinished, gamemode);
         return instance;
     }
+    // *********************************************************
 
     public static Game getInstance() {
         if (instance == null) {
@@ -31,18 +37,12 @@ public class Game {
         }
         return instance;
     }
-    public static void clearInstance(){
-    instance=null;
+
+    public static void clearInstance() {
+        instance = null;
     }
-    // *********************************************************
-    
-    private final GameModel gameModel;
-    
-    private Game(List<PlayerModel> players, boolean gameFinished, GamemodeModel gamemode) {
-        gameModel = new GameModel(players, gameFinished, gamemode);
-    }
-    
-     public List<PlayerModel> getPlayers() {
+
+    public List<PlayerModel> getPlayers() {
         return gameModel.getPlayers();
     }
 
@@ -50,15 +50,15 @@ public class Game {
         return gameModel.isGameFinished();
     }
 
-    public GamemodeModel getGamemode() {
-        return gameModel.getGamemode();
-    }
-
     public void setGameFinished(boolean gameFinished) {
         this.gameModel.setGameFinished(gameFinished);
     }
 
+    public GamemodeModel getGamemode() {
+        return gameModel.getGamemode();
+    }
+
     public void setGamemode(GamemodeModel gamemode) {
         this.gameModel.setGamemode(gamemode);
-    }   
+    }
 }

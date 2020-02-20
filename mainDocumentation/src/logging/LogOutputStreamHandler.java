@@ -53,7 +53,7 @@ public class LogOutputStreamHandler extends Handler {
      * Publish a <tt>LogRecord</tt>.
      *
      * @param record description of the log event. A null record is silently
-     * ignored and is not published
+     *               ignored and is not published
      */
     @Override
     public void publish(LogRecord record) {
@@ -65,7 +65,8 @@ public class LogOutputStreamHandler extends Handler {
         //if (record.getThrown() != null || ((r !=null) && (r.getStackTraceSize()>0 || r.getData()!=null)))
         //  out.println();
         if (!colorize)
-            ; else if (record.getLevel().intValue() == Logger.DEBUG.intValue()) {
+            ;
+        else if (record.getLevel().intValue() == Logger.DEBUG.intValue()) {
             out.bgCyan();
         } else if (record.getLevel().intValue() >= Level.SEVERE.intValue()) {
             out.bgRed();
@@ -160,7 +161,7 @@ public class LogOutputStreamHandler extends Handler {
      * Setter-Method for attribute showRecordHashcode.
      *
      * @param showRecordHashcode true when class-name and hashcode of log record
-     * should be printed out
+     *                           should be printed out
      */
     public void setShowRecordHashcode(boolean showRecordHashcode) {
         this.showRecordHashcode = showRecordHashcode;
@@ -200,7 +201,7 @@ public class LogOutputStreamHandler extends Handler {
      * {@link System#out} or {@link System#err} object.
      *
      * @throws SecurityException if a security manager exists and if the caller
-     * does not have <tt>LoggingPermission("control")</tt>.
+     *                           does not have <tt>LoggingPermission("control")</tt>.
      */
     @Override
     public void close() throws SecurityException {

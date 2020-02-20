@@ -33,7 +33,7 @@ public class LogRecordDataString implements LogRecordData {
     /**
      * Constructor if only a part of the string should be written out.
      *
-     * @param str the string from which a substring is taken and written out.
+     * @param str    the string from which a substring is taken and written out.
      * @param offset the index of the first character written out
      * @param length the length of the string to write out
      */

@@ -1,7 +1,6 @@
 package serial.request;
 
 /**
- *
  * @author volalm15
  */
 public class RequestShuffle extends Request {

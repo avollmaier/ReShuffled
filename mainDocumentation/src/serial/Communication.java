@@ -1,55 +1,35 @@
 package serial;
 
-import exception.SerialException;
 import data.config.Config;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.LinkedList;
+import exception.SerialException;
 import logging.Logger;
 import serial.request.Request;
 import serial.request.Response;
 
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.LinkedList;
+
 
 /**
- *
  * @author volalm15
  */
 public class Communication {
 
     private static final Logger LOG = Logger.getLogger(Communication.class.getName());
     private static Communication instance;
-
-
-    public static Communication createInstance (Serial serial) {
-        if (instance != null) {
-            throw new IllegalStateException("instance already created");
-        }
-        instance = new Communication(serial);
-        return instance;
-    }
-
-
-    public static Communication getInstance () {
-        if (instance == null) {
-            throw new IllegalStateException("instance not created yet");
-        }
-        return instance;
-    }
-
     // *********************************************************
     private final Serial serial;
     private final Thread communicationSendThread;
     private final Thread communicationReceiveThread;
     private final LinkedList<Request> toSentList = new LinkedList<>();
     private final LinkedList<Response> responseList = new LinkedList<>();
-    private Request pendingRequest;
-
     private final long timeoutMillis = Config.getInstance().getConfigSerial().getTimeoutMillis();
     private final int maxReceiveFrameLength = Config.getInstance().getConfigSerial().getMaxReceiveFrameLength();
-
+    private Request pendingRequest;
 
     @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
-    private Communication (Serial serial) {
+    private Communication(Serial serial) {
         this.serial = serial;
         communicationReceiveThread = new Thread(new CommReceiveThread());
         communicationSendThread = new Thread(new CommSendThread());
@@ -57,14 +37,28 @@ public class Communication {
         communicationSendThread.start();
     }
 
+    public static Communication createInstance(Serial serial) {
+        if (instance != null) {
+            throw new IllegalStateException("instance already created");
+        }
+        instance = new Communication(serial);
+        return instance;
+    }
 
-    public void shutdown () {
+    public static Communication getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("instance not created yet");
+        }
+        return instance;
+    }
+
+    public void shutdown() {
         communicationSendThread.interrupt();
         communicationReceiveThread.interrupt();
     }
 
 
-    public void sendRequestExecutor (Request req) {
+    public void sendRequestExecutor(Request req) {
         synchronized (toSentList) {
             toSentList.add(req);
             toSentList.notifyAll();
@@ -75,7 +69,7 @@ public class Communication {
     private class CommReceiveThread implements Runnable {
 
         @Override
-        public void run () {
+        public void run() {
             Thread.currentThread().setName("Communication Receive Thread");
             LOG.info(Thread.currentThread().getName() + " started");
 
@@ -89,13 +83,11 @@ public class Communication {
                         if (bufferIndex == 0) {
                             if (b == ':') {
                                 buffer[bufferIndex++] = (byte) b;
-                            }
-                            else {
+                            } else {
                                 LOG.warning("receiving unexpected byte (':' expected, get " + b);
                             }
 
-                        }
-                        else if (bufferIndex < buffer.length) {
+                        } else if (bufferIndex < buffer.length) {
                             buffer[bufferIndex++] = (byte) b;
                             if (b == '\n') {
                                 synchronized (responseList) {
@@ -106,18 +98,15 @@ public class Communication {
                                 }
                             }
 
-                        }
-                        else {
+                        } else {
                             LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
                         }
                     }
                 }
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 LOG.warning(ex, Thread.currentThread().getName() + " exception");
                 ex.printStackTrace(System.err);
-            }
-            finally {
+            } finally {
                 LOG.info(Thread.currentThread().getName() + " ended");
             }
         }
@@ -128,7 +117,7 @@ public class Communication {
     private class CommSendThread implements Runnable {
 
         @Override
-        public void run () {
+        public void run() {
             Thread.currentThread().setName("Communication Send Thread");
             LOG.info(Thread.currentThread().getName() + " started");
 
@@ -167,12 +156,10 @@ public class Communication {
                     }
                 }
 
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 LOG.warning(ex, Thread.currentThread().getName() + " exception");
                 ex.printStackTrace(System.err);
-            }
-            finally {
+            } finally {
                 LOG.info(Thread.currentThread().getName() + " ended");
             }
 

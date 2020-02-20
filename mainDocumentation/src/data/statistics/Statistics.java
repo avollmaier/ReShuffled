@@ -7,23 +7,15 @@ package data.statistics;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
 import data.game.Game;
 import data.model.StatisticsModel;
 import logging.Logger;
 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
 
 /**
- *
  * @author alois
  */
 
@@ -33,43 +25,37 @@ public class Statistics {
 
 
     private static Statistics instance;
+    // *************************************************************************
+    private final File statisticsFile;
+    private StatisticsModel statisticsModel;
 
+    private Statistics(String configPath) {
+        statisticsFile = new File(configPath);
+        readStatistics();
+    }
 
-    public static Statistics getInstance () {
+    public static Statistics getInstance() {
         if (instance == null) {
             throw new IllegalStateException("Instance not created yet");
         }
         return instance;
     }
 
-
-    public static Statistics createInstance (String statsPath) {
+    public static Statistics createInstance(String statsPath) {
         if (instance != null) {
             throw new IllegalStateException("Instance already created");
-        }
-        else {
+        } else {
             instance = new Statistics(statsPath);
         }
         return instance;
     }
 
-    // *************************************************************************
-    private final File statisticsFile;
-    private StatisticsModel statisticsModel;
-
-
-    private Statistics (String configPath) {
-        statisticsFile = new File(configPath);
-        readStatistics();
-    }
-
-
-    public void save () {
+    public void save() {
         writeStatistics();
     }
 
 
-    private void readStatistics () {
+    private void readStatistics() {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(statisticsFile), StandardCharsets.UTF_8))) {
             int length = 0;
             StringBuilder stringBuilder = new StringBuilder();
@@ -84,37 +70,35 @@ public class Statistics {
 
             LOG.info("Statistics file %s successfully read (%d lines)", statisticsFile.getAbsolutePath(), length);
 
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             LOG.severe(ex, "Error while reading statistics file");
         }
     }
 
 
-    private void writeStatistics () {
+    private void writeStatistics() {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         String json = gson.toJson(statisticsModel);
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(statisticsFile), StandardCharsets.UTF_8))) {
             writer.write(json);
             LOG.info("Serialized new statistics successfully");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             LOG.severe(ex, "Error while writing statistics file");
         }
     }
 
 
-    public int getOverallGamesPlayed () {
+    public int getOverallGamesPlayed() {
         return statisticsModel.getOverallGamesPlayed();
     }
 
 
-    public void incrementOverallGamesPlayed (int value) {
+    public void incrementOverallGamesPlayed(int value) {
         statisticsModel.setOverallGamesPlayed(statisticsModel.getOverallGamesPlayed() + value);
     }
 
 
-    public List<Game> getGames () {
+    public List<Game> getGames() {
         return statisticsModel.getGames();
     }
 }

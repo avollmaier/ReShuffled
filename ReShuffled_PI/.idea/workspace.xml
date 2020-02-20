@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="20aaf0e3-6b54-4457-b946-9c838eeed34f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigInternationalizationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigInternationalizationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigSerialModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/ConfigSerialModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/GameModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/GamemodeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/GamemodeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/PlayerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/PlayerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/model/StatisticsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/model/StatisticsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/data/statistics/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/data/statistics/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/exception/ConfigException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/exception/ConfigException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/exception/SerialException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/exception/SerialException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/HelpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/HelpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/StartupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/StartupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/StatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/controller/StatsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/startup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/startup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/stats.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/fxml/stats.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/guiMain/GuiMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/guiMain/GuiMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/mainStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/mainStylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/multilanguage/ResourceKeyEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/multilanguage/ResourceKeyEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/multilanguage/ResourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/multilanguage/ResourceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/gui/startupStylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/gui/startupStylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/ExtendedLogRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/ExtendedLogRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogBackgroundHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogBackgroundHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogOutputStreamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogOutputStreamHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataFormattedText.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataFormattedText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataHexDump.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataHexDump.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataString.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/LogRecordDataString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/logging/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/logging/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/Communication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/Communication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/Serial.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/Serial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestAutoDeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestAutoDeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestDeal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestDeal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestShuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestShuffle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestShutdown.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/RequestShutdown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/request/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/ReshuffledMainboardSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/ReshuffledMainboardSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/SimInputStreamBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/SimInputStreamBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/SimOutputStreamBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/serial/sim/SimOutputStreamBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/util/AlertUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/util/AlertUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/util/GuiUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/util/GuiUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainDocumentation/src/util/ResourceBundleUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mainDocumentation/src/util/ResourceBundleUtils.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="142" />
+    <option name="idleThresholdMs" value="30000" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Y4LUgy3eH0M2z3IVTywPXxaFvD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20aaf0e3-6b54-4457-b946-9c838eeed34f" name="Default Changelist" comment="" />
+      <created>1582196936862</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582196936862</updated>
+      <workItem from="1582196939543" duration="307000" />
+      <workItem from="1582197436672" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="511" y="64" width="955" height="974" key="CommitChangelistDialog2" timestamp="1582196957705">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="511" y="64" width="955" height="974" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1582196957705" />
+    <state x="476" y="131" width="1024" height="841" key="SettingsEditor" timestamp="1582197074347">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="476" y="131" width="1024" height="841" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1582197074347" />
+  </component>
+</project>

@@ -7,8 +7,6 @@ package util;
 
 import data.config.Config;
 import gui.multilanguage.ResourceManager;
-import java.io.IOException;
-import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,8 +15,10 @@ import javafx.stage.StageStyle;
 import logging.Logger;
 import main.Main;
 
+import java.io.IOException;
+import java.net.URL;
+
 /**
- *
  * @author alois
  */
 public class GuiUtil {

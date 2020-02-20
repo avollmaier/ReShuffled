@@ -1,4 +1,5 @@
 %@COPYRIGHT VOLLMAIER ALOIS
+%@COPYRIGHT VOLLMAIER ALOIS
 \definecolor{hellgrau}{RGB}{230, 230, 230}
 \lohead{Vollmaier Alois}
 \chapter{Informatik}\label{ch:informatik}
@@ -6,7 +7,7 @@
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
 Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
-Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten programmatischen Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Folglich werden am Schluss der Verlauf der \textbf{Testing-Phase} sowie die Zusammensetzung des \textbf{Teilaufbaus} erläutert.
 
@@ -211,7 +212,7 @@ Diese verbessern das sogenannte Look and Feel drastisch.
     \centering
     \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
     \caption{JavaFX Stage-Scene-Node Übersicht}
-    \label{fig:Tool SceneBuilder}
+    \label{fig:Stage-Scene-Node}
 \end{figure}
 \subsubsection{Fazit}
 
@@ -361,7 +362,7 @@ Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
 \subsubsection{Beispiel}
 Das folgende \textit{\autoref{Singelton Code}}, entnommen aus dem \textit{\autoref{subsec:konfiguration}}, zeigt wie Singelton angewendet werden kann.
 
-\lstinputlisting[firstline=22, lastline=38, style=java,caption=Singelton Codebeispiel,label=Singelton Code]{src/data/config/Config.java}
+\lstinputlisting[firstline=21, lastline=42, style=java,caption=Singelton Codebeispiel,label=Singelton Code]{src/data/config/Config.java}
 
 \subsection{Verhaltensmuster Command}\label{subsec:verhaltensmuster-command}
 \subsubsection{Beschreibung}
@@ -495,7 +496,7 @@ Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache mit welcher Gestaltungsanweisungen erstellt werden können.
 Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
-\footfullcite{JavaFX CSS Reference Guide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
+\footfullcite{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
 Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von Java-FX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglicket zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
@@ -562,6 +563,7 @@ Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
     \centering
     \includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
     \caption{Schematische Darstellung der Geräteauswahl}
+    \label{deviceSelection}
 \end{figure}
 \subsubsection{Übertragungsprotokoll} \label{sssec:uebertragungsprotokoll}
 \begin{table}[H]
@@ -647,7 +649,7 @@ Bevor nun auf jeden einzelnen Request eingegangen wird, soll nun die abstrakte K
 Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()}, \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
 Wie der Namen der Methoden schon ahnen lässt, ist \lstinline[style=java]{createRequestFrame()} für die Erstellung jedes Request zuständig.
 Diese Methode hat hat ist \lstinline[style=java]{protected} somit kann von den abstammenden Requests darauf zugegriffen werden.
-\lstinputlisting[firstline=87, lastline=99, style=java,caption=fdsa,label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
+\lstinputlisting[firstline=90, lastline=102, style=java,caption=fdsa,label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
 Sobald die Methode von einem abstammenden Request aufgerufen wird und der Content, also der Request-String, übergeben wird, überprüft diese Mathode den übergebenen Content.
 Sollte dieser leer leet sein wird eine \lstinline[style=java]{IllegalArgumentException} geworfen und die Erstellung des Requests wird somit abgebrochen.
 Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
@@ -657,24 +659,24 @@ Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
 Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
 Aufgabe dieser ist es, das akommende Response-Objekt, welches im unteren Abschnitt beschreiben wird, in dessen elementaren Daten zu zerlegen.
-\lstinputlisting[firstline=36, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+\lstinputlisting[firstline=35, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Auch soll wiederum in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist. Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
 Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der Request im Zielsystem verhalten hat.
 Wie im Protokoll definiert kann nun entweder ein \lstinline[style=java]{OK} oder ein Errorcode mit dem Prefix \lstinline[style=java]{E} zurückkommen.
 Der Pool an Codes kann jedoch nur ein Volumen von 9 annehmen, da ansonsten der Frame zu groß wäre.
 Umgesetzt wird die Analyse mithilfe einer switch-case-Verzweigung.
-\lstinputlisting[firstline=62, lastline=86, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+\lstinputlisting[firstline=61, lastline=86, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Jeder einzelne Error steht für eine spezielle Fehlerquelle bei der Ausführung.
 Eine Übersicht wird in \autoref{ssec:konzeptCardDeal} gegeben.\\\\
 Zusätzlich wird in der Klasse \lstinline[style=java]{Request} die \lstinline[style=java]{toString()} Methode überlagert.
 Dadurch kann das Request Objekt nun optimal in einen String umgweandelt werden.
-\lstinputlisting[firstline=105, lastline=149, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/Request.java}
+\lstinputlisting[firstline=108, lastline=149, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/Request.java}
 Nun betrachten wir die spezifischen Request, welche in \autoref{umlReq} zu sehen sind.\\
 Im Prinzip ist der Aufbau jeder Request Klasse ähnlich.
 Aufgerufen wird der Konstruktor welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
 Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
 Als Beispiel soll der Request Shuffle gezeigt werden.
-\lstinputlisting[firstline=9, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
+\lstinputlisting[firstline=8, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
 \textbf{Conclusion:}\\
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwärtiges Onjekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
@@ -726,7 +728,7 @@ finally {
 % @formatter:on
 Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
 Diese Methode, welche nach dem Command-Verhalensmuster (\autoref{subsec:verhaltensmuster-command}) gestaltet wurde, fügt ledeglich ein Element zur Liste hinzu und "weckt" den Thread mit \lstinline[style=java]{notifyAll()}.
-\lstinputlisting[firstline=67, lastline=72, style=java,caption=fdsa,label=toString() Methode]{src/serial/Communication.java}
+\lstinputlisting[firstline=61, lastline=67, style=java,caption=fdsa,label=toString() Methode]{src/serial/Communication.java}
 Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der Thread zu arbeiten.
 Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
 % @formatter:off
@@ -770,17 +772,107 @@ throw new SerialException("request timeout, mssing response"); // if second try 
 }
 \end{lstlisting}
 % @formatter:on
-Somit wäre ein Kommunikationsloop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
+Somit wäre ein Kommunikations-Loop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
 \textbf{Der CommunicationReceiveThread:}\\
 Nun sollte jedoch das Empfangen eines Response näher beschrieben werden.
-Dieser Thread holt sich vorerst den InputStream und liest danach die Zeichen ein.
-Sollte ein unerwartetes Zeichen ankommen, wird in dien Log-Datei eine Warunung geschrieben.
-Werden die ankommenden Daten nun als vollwärtigen Request empfunden, fügt der Thread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den Thread.
-\subsubsection{Umsetztung-Geräteauswahl} \label{sssec:deviceSelection}
-
+Dieser sogenante CommunicationReceiveThread holt sich vorerst den InputStream und liest danach die Zeichen ein.
+Ist das ankommende Zeichen ein \lstinline[style=java]{:}, beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
+Sollte jedoch ein unerwartetes Zeichen ankommen, was oft auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+while (!Thread.currentThread().isInterrupted()) {
+    int b = is.read();
+    if (b >= 0 && b < 255) {
+        if (bufferIndex == 0) {
+            if (b == ':') {
+                buffer[bufferIndex++] = (byte) b;
+            }
+        else {
+            LOG.warning("receiving unexpected byte (':' expected, get " + b);
+        }
+        }
+\end{lstlisting}
+% @formatter:on
+Werden die ankommenden Daten nun als vollwärtigen Request empfunden, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschreiben, weiterverarbeitet.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+        else if (bufferIndex < buffer.length) {
+            buffer[bufferIndex++] = (byte) b;
+            if (b == '\n') {
+                synchronized (responseList) {
+                    byte[] resBuffer = Arrays.copyOf(buffer, bufferIndex);
+                    bufferIndex = 0;
+                    responseList.add(new Response(resBuffer));
+                    responseList.notifyAll();
+                }
+            }
+}
+else {
+LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
+}
+}
+}
+\end{lstlisting}
+% @formatter:on
 \subsubsection{Serial-Simulator}
+\subsubsection{Geräteauswahl} \label{sssec:deviceSelection}
+Nachdem nun ausführlich über den Serial-Simulator gesprochen wurde, wird nun im Folgenden die Geräteauswahl beschrieben.\\
+Wie in der \autoref{deviceSelection} gezeigt, erfolgt die Auswahl der Gerätes, mit welchem kommuniziert wird, bei jedem Start-Vorgang.
+Hierbei wird zuallererst die Konfigurationsdatei untersucht.
+Ist hier der Eintrag \lstinline[style=json]{"device": "sim"} vorhanden, wird der Simulator gestartet und alle notwendigen Konfigurationen werden vorgenommen.
+Sollte jedoch etwas anderes Eingetragen sein, wird versucht auf serieller Ebene mit dem Gerät zu kommunizieren.
+Ist dies der Fall, muss auch die serielle Schnittstelle vor der Verwendung konfiguriert werden.\\
+All diese Aufgaben übernimmt die vom Designpattern-Singelton abgeleitete Klasse \lstinline[style=java]{Serial} und wird im folgenden Abschnitt beschrieben.\\\\
+Wird im ersten Schritt eine Instanz der Klasse Serial mithilfe der Methode \lstinline[style=java]{createInstance()} erstellt, wird der private Konstruktor aufgerufen.
+Dieser hat 2 wesentliche Aufgaben.\\
+Einerseits soll er sicherstellen, dass sich alle Parameter der seriellen Schnittstelle in der Konfigurationsdateien befinden.
+Umgesetzt wird dies mithilfe der Abfrage \lstinline[style=java]{if (config.isDisabled())}
+Diese Parameter werden im Folgenden aufgelistet.
+% @formatter:off
+\begin{lstlisting}[style=json,caption=json-Codebeispiel,label=json]
+"serial": {
+"disabled": false,
+    "device": "sim",
+    "baudrate": 57600,
+    "timeoutMillis": 1000,
+    "secondTryAllowed": false,
+    "responseByteLength": 32
+},
+\end{lstlisting}
+% @formatter:on
+Ansererseits soll die Geräteauswahl mithilfe eines Abgleichs des Gerätenamens erfolgen.
+Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()} ausgeführt, ansonsten \lstinline[style=java]{initSerialDevice()}
+In diesen beiden Methoden werden sowohl die serielle Schnitstelle, als auch der Simulator konfiguriert.
+
+
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+private Serial(ConfigSerialModel config) throws SerialException, IOException {
+    this.config = config;
+
+    if (config.isDisabled()) {
+        return;
+    }
+    if (config.getDevice().equals("sim")) {
+        initSimulation();
+    } else {
+        initSerialDevice();
+    }
+}
+\end{lstlisting}
+% @formatter:on
+\textbf{\lstinline{initSimulation()}}
+\\
+Mithilfe der Mehode \lstinline[style=java]{gson.toJson()} kann direkt aus einem Objekt ein JSON-String erzeugt werden.
+Dieser genannte String kann danach je nach belieben in eine Datei geschreiben oder versendet werden.
+\\\\
+\textbf{\lstinline{initSerialDevice()}}
+\\
+Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline[style=java]{gson.fromJson()} umgekehr werden.
+Hierbei wird aus einem JSON-String ein Objekt erzeugt.
+\\
 \subsection{Logging}
-\subsubsection{Konzept}
+\subsubsection{Konzept}\label{sssec:logOverview}
 Logging ist nach dem Debugging selbst, dass zweitwichtigeste Mittel um einzelne Programmbausteine oder das gsamte Programm auf Fehler zu untersuchen.
 Mithilfe einer Log-Datei können z.b aktuelle Wertebelegungen im Detail dargestellt werden.
 Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks immer sinvoller.\\\\
@@ -790,18 +882,103 @@ Auch ist nun die Persistenz der Logging-Einträge gegeben.
 Dies bedeuted, es kann nun sichergestellt werden, dass diese Einträge auf dem System gespeichert werden und nach einem Neustart verfügbar sind.
 Nutzt man diese Art von Protokollierung kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
-In unserem Fall
 \subsubsection{Integration in das Programm}
+Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
+Es ist ledeglich notwendig, diese genannten Klassen in ein unterpackage des Programms einzufügen.
+Dazu soll in der \autoref{PackagestrukturLogging} die Struktur des Logging-Packages illustriert werden.
+\begin{figure}[H]
+\begin{center}
+\begin{forest}
+for tree={
+font=\ttfamily,
+grow'=0,
+child anchor=west,
+parent anchor=south,
+anchor=west,
+calign=first,
+edge path={
+\noexpand\path [draw, \forestoption{edge}]
+(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+},
+before typesetting nodes={
+if n=1
+{insert before={[,phantom]}}
+{}
+},
+fit=band,
+before computing xy={l=15pt},
+}
+[logging
+[ExtendedLogRecord]
+[LogBackgroundHandler]
+[LogOutputStreamHandler]
+[LogRecordData]
+[LogRecordDataFormattedText]
+[LogRecordDataHexDump]
+[LogRecordDataString]
+[Logger]
+]
+\end{forest}
+\end{center}
+\caption{Packagestruktur-Logging}
+\label{PackagestrukturLogging}
+\end{figure}
+Um nun die Implementierung zu vervollständigen muss nun in der Main-Methode, welche im Package \lstinline[style=java]{main} zu finden ist, der Logger parametrisiert werden.\\\\
+Im Gegensatz zu Javas Standard-Logger-Objekt sind alle Logger-Objekte automatisch an einen einzigen "übergeordneten" Logger gebunden.
+Nun ist es zuallererst nötig, das binding eines Handlers an das "übergeordnete" Logger-Objekt durchzuführen.
+Dies erfolgt mithilfe der Zeile \lstinline[style=java]{private static final Logger LOGP = Logger.getParentLogger()}.\\
+Der genannte Logger soll nun dessen Protokollierung auf 2 verschiedenen Ausgaben schreiben.
+\begin{enumerate}
+\item Konsolenausgabe
+\item Log-Datei
+\end{enumerate}
+Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
+try {
+    LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
+}
+catch (FileNotFoundException ex) {
+System.out.println("Should not see me :)");
+}
+\end{lstlisting}
+% @formatter:on
+Nun kann der Logger global im Programm angewendet werden.
+Es ist nur nötig dieses Logger-Objekt in die jeweilige Klasse zu bringen.
+Dies erfolgt über die Zeile \lstinline[style=java]{private static final Logger LOG = Logger.getLogger(Example.class.getName())}.
+In diesem Beispiel wird das Logger-Objekt der Klasse \lstinline[style=java]{Example} zugewiesen.\\\\
+Wie schon im \autoref{sssec:logOverview} beschiebem, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.
+Folgen soll tabellarisch gezeigt werden, welche Möglichkeiten dieser Logger bietet.
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFFFFF}
+\textbf{Methodenname} & \textbf{Schlüsselwort} & \textbf{Beschreibung}                                                                                                \\ \hline
+\rowcolor[HTML]{FFFFFF}
+DEBUG                 & debug                  & Verwendete Darstellung während Developement                                                                          \\ \hline
+SEVERE                & severe                 & \begin{tabular}[c]{@{}l@{}}Verwendung bei gravierenden Fehler \\ mit großer Auswirkung auf das Programm\end{tabular} \\ \hline
+WARNING               & warning                & \begin{tabular}[c]{@{}l@{}}Verwendung bei kleinen Fehlern welche\\ keine große Auswirkung haben\end{tabular}         \\ \hline
+INFO                  & info                   & Verwendung bei normalen Ausgaben                                                                                     \\ \hline
+CONFIG                & config                 & Verwendung bei Konfigurationen                                                                                                                       \\ \hline
+FINE                  & fine                   & Genaue Darstellung von Nachrichten                                                                                   \\ \hline
+FINER                 & finer                  & Genauere Darstellung von Nachrichten                                                                                 \\ \hline
+FINEST                & finest                 & Genaueste Darstellung von Nachrichten                                                                                \\ \hline
+ALL                   & all                    & Darstellung von allen Nachrichten                                                                                    \\ \hline
+\end{tabular}
+\caption{}
+\end{table}
 \subsection{Konfiguration}\label{subsec:konfiguration}
+
 \subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
-
 \subsection{Statistiken}
 \subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
-
+\section{Frontend-Programmierung}
+\subsection{Designkonzept}
 \subsection{Controllerklassen}
 \subsubsection{Grundlagen}
 \subsubsection{StartupController}
@@ -809,47 +986,6 @@ In unserem Fall
 \subsubsection{HomeController}
 \subsubsection{StatsController}
 \subsubsection{About- und HelpController}
-
-
-\section{Frontend-Programmierung}
-\subsection{Designkonzept}
-
-
-
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Model]
-public class Model extends Observable{
-private int counter;
-public Model() {
-}
-public int getCounter() {
-return countDown;
-}
-public void increment() {
-if (counter > 0) {
-counter++;
-}
-notifyObservers();
-}
-\end{lstlisting}
-
-\begin{lstlisting}[style=java,caption=Die Klasse View,label=View]
-public class View implements Observer {
-private Model model;
-private Stage stage;
-private Label label;
-private Button countButton;
-public View(Model model, Stage stage) {
-this.model = model;
-this.stage = stage;
-label = new Label("Counter: " + model.getCounter());
-btIncrement = new Button("Increment by 1");
-stage.setScene(new Scene(new VBox(label, countButton)));
-model.addObserver(this);
-}
-@Override
-public void update(Observable o, Object arg) {
-label.setText("Counter: " + model.getCounter());
-\end{lstlisting}
 \subsection{Utility Klassen}
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}

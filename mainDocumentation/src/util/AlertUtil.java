@@ -8,15 +8,15 @@ package util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
+import java.util.List;
+
 /**
- *
  * @author alois
  */
 public class AlertUtil {
@@ -26,7 +26,7 @@ public class AlertUtil {
         BoxBlur boxBlur = new BoxBlur(2, 2, 2);
 
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(root, dialogLayout,JFXDialog.DialogTransition.NONE);
+        JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.NONE);
 
         controls.forEach(control -> {
             control.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {

@@ -1,11 +1,11 @@
 package data.model;
 
-public class PlayerModel{
+public class PlayerModel {
     private String name;
     private int points;
 
 
-    public PlayerModel (String name, int points) {
+    public PlayerModel(String name, int points) {
         this.name = name;
         this.points = points;
     }
@@ -21,8 +21,8 @@ public class PlayerModel{
     public void increment(int value) {
         points += value;
     }
-    
-      public void decrement (int value) {
+
+    public void decrement(int value) {
         points -= value;
     }
 
@@ -31,7 +31,7 @@ public class PlayerModel{
     }
 
 
-    public int getPoints () {
+    public int getPoints() {
         return points;
     }
 }
