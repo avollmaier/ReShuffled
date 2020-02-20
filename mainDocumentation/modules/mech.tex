@@ -500,7 +500,7 @@ Die grundsätzliche Form dieses Rades besitzt ein virtel eines Hohlzylinders der
 \end{figure}
 
 In der oben angezeigen Grafik wurde die Außenwand entfernt um eine bessere Einsicht in das Bauteil zu bekommen.
-Durch die 20 #unterteilungen muss der Schrittmotor genauere Positionen anfahren, außerdem wäre der Aufwand beim produzieren groß. Aus diesem Grund
+Durch die 20 Unterteilungen muss der Schrittmotor genauere Positionen anfahren, außerdem wäre der Aufwand beim produzieren groß. Aus diesem Grund
 entschieden wir uns die Unterteilungen zu minimieren, und kamen zu dem Entschluss, dass 4 Unterteilungen für ein optimales Mischen ausreichen. Diese Konstruktion
 wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstellen kann und diese dannach zusammenstecken und verkleben kann.
 
@@ -510,23 +510,70 @@ wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstelle
     \caption{Version 2: Lagerrad 4 Fächer (geöffnete Außenwand zur vereinfachten Ansicht)}
 \end{figure}
 
-Auch in der oben gezeigten Grafik wurde die Außenwand entfernt um das Bauteil besser zu veranschaulichen. Das Baumodul besteht aus zwei Seitenplatten sowie zwei Außenplatten die
-mit einem Stecksystem verbunden sind. Im inneren befinden sich 3 Trennplatten die mit einem Stecksystem mit der Außenplatte verbunden sind. Diese zweite Version des Lagerrades wurde für die produktion durch einen 3D Drucker
-entworfen, das Stecksystem für die einzelnen Bauteile wurde aus dem Grund angewendet, da es eine stärkere Verbindung als kleben aufweist und das 3D drcuken des gesamten Lagerrades eine zu hohe Materialverschwendung aufweisen würde.
 
-Die Außenwände wurden mit jeweils 2 Laschen außen versehen, diese sollen mit den dazupassenden einkerbungen in den Seitenplatten versteckt werden, außerdem besitzen sie jeweils 3 längsöffnungen in einem gleichmäßigen Abstand auf der Oberfläche,
-diese werden mit den Laschen der Trennplatten verbunden. Beim Konstruieren dieser Laschen und Längsöffnungen ist dabei zu achten, dass die Laschen um einen halben Millimeter kleiner und die Öfffnungen um einen halben Millimeter größer gemacht werden,
-da die Maße beim 3D Drucken oftmals von den Zeichnungen abweichen, und somit Innenbohrungen zu klein werden. //Nochmal überarbeiten
+Auch in der oben gezeigten Grafik wurde die Außenwand entfernt um das Bauteil besser zu veranschaulichen.
+Das Lagerrad besteht aus mehreren Einzelteilen:
 
+\subsubsection{Außenwände}
+Die Außenwände wurden in der Form eines Teil eines Kreises konstruiert und geben somit die Fporm des Lagerrades vor. Sie besitzten jeweils 2 Laschen an der äußeren Seite, diese verboinden die Außenwände später mit den Seitenwänden es LAgerrades.
+Außerdem besitzen sie jeweils 3 Ausfräsungen auf Ihrer Grundfläche, über die sie später mit den Trennplatten versteckt werden. Bei der Konstruktion der ausfräsungen ist dabei zu achten, dass etwas größer als benötigt gezeichnet werden, da bei der
+Fertigungsart des 3D Druckens Innenbohrungen und Innenfräsungen durch die ungenauigkeit des Druckers kleiner gedruckt werden. Wie auch bei den Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese woederum beim
+drucken größer gedruckt werden als sie Ursprünglgich gezeichnet wurden.
 
-Um das Moment der Welle effektiv von der Welle zum Rad übertragen wurde ein Modul entworfen. Dieses Modul wird benötigt, da das Wellenmoment nicht effektiv an einem 3D gedruckten Bauteil angreifen kann, da das gedruckt PLA die kontinuierlichen Richtungswechsel
-sowie das abrupte Bremsens des Motors in kombination mit der Trägheit des Lagerrades nicht standhalten würde. Zwei aus Aluminium gefräßte Quader sind mit den Seitenwänden über jeweils zwei Gewindebohrungen verschraubt sind und das Moment endgültig auf das
-Lagerrad übertragen. Das Moment der Welle wird von zwei "L" geformten, 3D gedruckten Bauteilen an den zwei quadern weitergegeben, diese sind wiederum mit jeweils vier Gewindebohrungen and den Quadern verschraubt. Die "L" förmigen Bauteile besitzen jeweils
-eine angesengte Durchgangsbohrung, durch diese wird das Bauteil mit einem Gewinde am Ende der Welle verschraubt um das Moment ohne verschleis zu übertragen. Die erste Welle ist mit einer Kupplung mit dem Motor verschraubt, die zweite Welle ist am anderen
-Ende des Gehäuses mit einem Flanschlager verschraubt und gibt dem System somit zusätzliche Sicherheit.
+\subsubsection{Seitenwände}
+Diese Bauteile verbinden das Lagerrad mit der Lagerradhalterungsmodul. Sie besitzen auf der äußeren Seiter der Grundfläche
+jeweils 2 Auskerbungen, über diese werden sie mit den Laschen der Außenwände verbunden. Um einen Durchgang für die Welle zu schaffen
+schließen die Bauteile auf der unteren Seite nicht im rechten Winkel ab, sondern sind nach innen radial abgerundet.
+Je Bauteil sind 2 Bohrungen vorhanden, über diese wir es mit der Lagerradhalterungsmodul verbunden.
+Die Bohrungen sind als Senklochbohrungen ausgeführt, da somit die Schraube komplett in das Bauteil versenkt werden kann
+ und das hineinrutschen der Karten in das Lagerrad nicht behindert wird.
 
-Um das Lagern der Karten nicht zu behindern, wurden bei den Bohrungen der Seeitenplatten, die diese mit den gefräßten Aluminiumquader verbinden eine Senklochbohrung angewendet, dadurch kann eine Senkkpfschraube vollkommen eingesenkt werden und hindernt die Karten
-somit nicht in das Lagerfach zu rutschen.
+\subsubsection{Trennplatte}
+Um die einzelnen Lagerfächer zu unterteilen ist die Trennplatte konsturiert worden. Dieses Bauteil ist ein einfacher
+Quader mit je 2 Laschen an den Außenseiten. Diese Laschen werden mit den Ausfräsungen der Außenplatte versteckt.
+Hierbei ist wieder zu achten, das die Laschen kleiner konstruiert werden, da sie durch den 3D druck an größe zunehmen
+werden.
+
+\subsection{Konstruktion des Lagerradhalterungsmoduls}
+Um das Moment der Welle effektiv von der Welle zum Rad übertragen wurde ein Lagerradhalterungsmodul entworfen. Dieses Modul wird
+benötigt, da das Wellenmoment nicht effektiv an einem 3D gedruckten Bauteil angreifen kann, da das gedruckt PLA
+die kontinuierlichen Richtungswechsel sowie das abrupte Bremsens des Motors in kombination mit der
+Trägheit des Lagerrades nicht standhalten würde. Dieses Modul besteht aus folgenden Einzelteilen:
+
+\subsubsection{L-Grundplatte}
+Dieses Bauteil verbindet die Motorwelle sowie die Lagerwelle mit der Verbindungsplatte und somit auch mit dem Lagerrad, es
+überträgt somit auch das Moment des Motors. Es besitzt je 4 Bohrungen mit Zylinderschrauben Senkungen über die sie mit
+der Verbindungsplatte verbunden wird. Außerdem besitzt sie eine Bohrung mit einer Querbohrung. Über diese werden die
+Wellen geführt und mit einer Schraube am Bauteil fixiert.
+Dieses Bauteil wurde ürsprünglich aus Aluminium gefertig, durch Versuche mit einer 3D gedruckten L-Grundplatte zeigte
+sich jedoch, dass diese sich genau so gut eignet und optisch ansprechender ist. Um nicht in konflikt mit dem Lagerrad
+zu stehen hat das Bauteil jeweils 2 ausbuchtungen nahe der Welle.
+
+\subsubsection{Verbindungsplatte}
+Die Verbindungsplatte nimmt das von der L-Grundplatte aufgenommene Moment des Motors und überträgt es an das Lagerrad weiter.
+Sie wurde als einfacher Aluminiumquader konstruiert und besitzt insgesamt 6 Bohrungen. Zwei Bohrungen sind auf der
+Grundfläche des Bauteils und besitzten ein Gewinde. Diese verbinden Lagerradhalterungsmodul mit dem Lagerrad. Je 2
+Bohrungen sitzen auf der Unterseite sowie auf der Oberseite der Verbindungsplatte und sind ebenfalls mit Gewinde
+ausgeführt, durch diese Gewindebohrungen Verbinden das L-Bauteil mit der Verbindungsplatte.
+Dieses Bauteil wurde aus Aluminium gefertig da es problematisch ist ein Gewinde in PLA zu schneiden, außerdem spielt
+das zusätzliche Gewicht des Aluminiums bei diesem Modul nur eine geringe Rolle.
+
+\subsubsection{Motorwelle}
+Um das Moment vom Motor auf die L-Grundplatte zu übertragen wird die Motorwelle benötigt. Diese ist eine einfache Welle
+mit einer Gewindebohrung am äußeren ende der Welle. Diese dient dazu, die Welle mit der L-Grundplatte zu verbinden.
+Am anderen Ende ist die Welle über die Kupplung mit dem Motor verbunden.
+Die Welle wurde an der Drehbank gefertigt und anschließend an der Fräsmaschine die Gewindebohrung gebohrt..
+
+\subsubsection{Lagerwelle}
+Die Lagerwelle unterscheidet sich von der Motorwelle lediglich durch ihre Länge. Sie wird einerseits mit der
+L-Grundplatte verschraubt, auf der anderen Seite wird sie mit dem Zweiloch-Flanschlager auf der Vorderseite des Gehäuses über
+2 Wurmscchrauben geklemmt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25,page=1]{fig/mech/LagerRadGruppekomplett}
+    \caption{Lagerradhalterungsmodul}
+\end{figure}
 
 \subsection{Konstruktion der Motorhalterungsgruppe}
 
@@ -644,8 +691,66 @@ Die beiden Sensorhalterungswinkel ermöglichen das fixieren der Sensorhalterung 
 Entnahmeplatte. Sie werden jeweils mit der Unterseite des Gehäuses und mit der Sensorhalterung verklebt.
 
 \subsection{Konstruktion der Endschalterhalterung}
+Dieses Bauteil hat die Funktion den Endschalter, der als Referenzpunkt für den Motor und das darauf montierte
+Lagerrad gilt, zu befestigen. Es besitzt zwei diagonale Bohrungen über die der Enschalter verschraubt wird.
+Die Endschalterhalterung wird auf der Rückseite über zwei bohrungen mit dem Polycarbonatgehäuse verschraubt.
+Das Bauteil muss so stabil geabut sein, dass es einen leichten zusammenstoß mit dem  Lagerrad aushält, falls dieses
+den Referenzpunkt anfahren möchte.
 
 \subsection{Konstruktion des Gehäuses}
+Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
+des Gehäusematerials kamen diverse Materialien in Frage:
+
+\begin{table}[H]
+    \centering
+    \scalebox{0.8}{
+    \begin{tabular}{|c|c|c|}
+        \hline
+        & \textbf{Vorteile}                                                                                                                                  & \textbf{Nachteile}                                                                                    \\ \hline
+        \textbf{POLYCARBONAT (PC)}                    & \begin{tabular}[c]{@{}c@{}}sehr hohe Schlagfestigkeit\\ Transparent\\ leicht zu bearbeiten\\ geringes Gewicht\\ gute UV-Beständigkeit\end{tabular} & vergleichsweise teurer                                                                                \\ \hline
+        \textbf{ACRYLNITRIL-BUTADIEN-STYROL (ABS)}    & \begin{tabular}[c]{@{}c@{}}geringes Gewicht\\ günstiger als PC\end{tabular}                                                                        & \begin{tabular}[c]{@{}c@{}}nicht für die Verwendung im Freien\\ nicht transparent\end{tabular}        \\ \hline
+        \textbf{GLASFASERVERSTÄRKTES POLYESTER (GRP)} & \begin{tabular}[c]{@{}c@{}}Wetterbeständig\\ Stabil\\ Schlagfestig\end{tabular}                                                                    & \begin{tabular}[c]{@{}c@{}}teurer als PC\\ schwer zu bearbeiten\\ beträchtliches Gewicht\end{tabular} \\ \hline
+    \end{tabular}}
+    \caption{Vergleich der Gehäusematerialien}
+\end{table}
+
+Da wir unser Material bearbeiten müssen, es portabel gestalten wollen und kein großen Budget haben können wir
+GRP als Gehäusematerial ausschließen. Unser Gehäuse sollte auch optisch ansprechend sein und den Innenaufbau unserer
+Maschine zeigen, somit ist ABS auch ausgeschlossen, da es nicht transparent ist. Somit entschieden wir uns für
+Polycarbonat als finales Gehäuseamterial.
+
+\subsubsection{Grundplatte}
+Die Grudplatte ist die einzige Platte des Gehäuses das nicht aus Polycarbonat besteht sondern aus einem 12mm dicken
+Acrylglas, da uns dieses kostenlos zur Verfügung stand.\\
+Um den unteren Aufhänger des Kartenhalterungsmoduls und die Kartenführung Modul 2 unten zu befestigen befinden sich 8
+Bohrungen in der Mitte der Grundplatte. Diese Bohrungen sind mit einer bodenseitigen Senkung versehen, somit kann die
+Senkkopfschraube ganz in die Grundplatte gesenkt werden und behindert nicht die Stabilität der Maschine.
+Des Weiteren befindet sich in jeder Ecke eine weitere Bohrung mit Bodenseitiger Senkung. Über diese Bohrung werden die
+Winkel verschraubt die die Grundplatte mit den restlichen Platten des Gehäuses verbindet.
+
+\subsubsection{Seitenplatte Motor}
+Diese Gehäuseplatte besitzt, genauso wie die Grundplatte, 4 Bohrungen an den Ecken der Platte um sie über Winkel
+mit den anderen Platten zu verbinden. Weiters hat sie 4 Bohrungen im mittleren Bereich, über diese Borhungen wird
+der Winkel der Motorhalterungsgruppe verschraubt. Darüber hinaus besitzt sie eine innenseitige Einfräsung in der sich
+zwei weitere Bohrungen befinden. Diese Bohrungen werden für den Netzteilstecker sowie für den Taster benötigt.
+Die Einfräsung ist notwendig, da diese beiden Bauteile ein Gewinde besitzen über die sie mit dem Gehäuse verbunden werden,
+jedoch ist das Gewinde zu kurz für die dicke des Polycarbonats.
+
+\subsubsection{Seitenplatte Lager}
+Da diese Platte die Vorderseite des Gehäuses ist ist auf ihr auch der Liqid-Cristal-Display montiert. Um diesen zu montieren
+hat die Platte eine rechteckige Ausfräsung im oberen mittelbereich. Seitlich ober und unter der Ausfräsung befinden sich
+je Seite 2 Langlöcher, über diese wird der Display mit dem Gehäuse verschraubt.
+Unter dem Display besitzt diese Platte zusätzlich 2 Senklochbohrungen, über diese wird das Flanschlager verschraubt.
+Zuletzt besitzt diese Platte auch 4 Borhungen an den Ecken über die sie mit den anderen Platten verschraubt wird.
+
+\subsubsection{Frontplatte}
+Wie die vorherigen Platten wird auch diese Platte über 4 Bohrungen mit den Winkeln verschraubt.
+Ansonsten hat diese Platte des Gehäuses nur 2 weitere Bohrungen über die die Endschalterhalterung verschraubt wird.
+
+\subsubsection{Ausgabenplatte}
+
+
+\subsubsection{Topplatte}
 
 \section{Berechnungen und Dimensionierungen}
 
