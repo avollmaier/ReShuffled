@@ -361,9 +361,7 @@ Implementiert wird dies durch eine weitere statische Methode namens \lstinline{g
 Diese Methode ist der einzige Zugriffspunkt auf die Instanz.
 \subsubsection{Beispiel}
 Das folgende \textit{\autoref{Singelton Code}}, entnommen aus dem \textit{\autoref{subsec:konfiguration}}, zeigt wie Singelton angewendet werden kann.
-
 \lstinputlisting[firstline=21, lastline=42, style=java,caption=Singelton Codebeispiel,label=Singelton Code]{src/data/config/Config.java}
-
 \subsection{Verhaltensmuster Command}\label{subsec:verhaltensmuster-command}
 \subsubsection{Beschreibung}
 Ziel des Verhaltensmusters Command ist es, den jeweiligen Teilnehmen, welche einen Befehl erzeugt, von dem Teilnehmer der für die Ausführung zuständig ist, zu entkoppeln.
@@ -521,7 +519,7 @@ Die Syntax von JSON ist klar definiert und wird ebenfals durch ein Beispiel näh
     }
 }
 \end{lstlisting}
-\subsubsection{Bibliothek Gson}
+\subsubsection{Bibliothek Gson}\label{sssec:gson}
 Die von Google entwickelte Bibliothek Gson spielt in diesem Projekt eine wichtige Rolle.
 Aufgrund enormer Datenmengen ist es zeitaufwändig, JSON Dateien in Java zu erstellen.\\
 Eine Hilfe bietet dabei Gson.
@@ -561,7 +559,7 @@ Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfi
 Die folgende Grafik soll die schematisch die Geräteauswahl darstellen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{fig/ainf/DeviceSelection}
+    \includegraphics[width=0.6\textwidth]{fig/ainf/DeviceSelection}
     \caption{Schematische Darstellung der Geräteauswahl}
     \label{deviceSelection}
 \end{figure}
@@ -670,7 +668,6 @@ Jeder einzelne Error steht für eine spezielle Fehlerquelle bei der Ausführung.
 Eine Übersicht wird in \autoref{ssec:konzeptCardDeal} gegeben.\\\\
 Zusätzlich wird in der Klasse \lstinline[style=java]{Request} die \lstinline[style=java]{toString()} Methode überlagert.
 Dadurch kann das Request Objekt nun optimal in einen String umgweandelt werden.
-\lstinputlisting[firstline=108, lastline=149, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/Request.java}
 Nun betrachten wir die spezifischen Request, welche in \autoref{umlReq} zu sehen sind.\\
 Im Prinzip ist der Aufbau jeder Request Klasse ähnlich.
 Aufgerufen wird der Konstruktor welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
@@ -772,7 +769,7 @@ throw new SerialException("request timeout, mssing response"); // if second try 
 }
 \end{lstlisting}
 % @formatter:on
-Somit wäre ein Kommunikations-Loop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
+Somit wäre ein Kommunikations-Loop abgeschlossen und der CommunicationSendThread wartet wieder auf ankommende Requests des Programms.\\\\
 \textbf{Der CommunicationReceiveThread:}\\
 Nun sollte jedoch das Empfangen eines Response näher beschrieben werden.
 Dieser sogenante CommunicationReceiveThread holt sich vorerst den InputStream und liest danach die Zeichen ein.
@@ -814,13 +811,12 @@ LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)
 }
 \end{lstlisting}
 % @formatter:on
-\subsubsection{Serial-Simulator}
 \subsubsection{Geräteauswahl} \label{sssec:deviceSelection}
-Nachdem nun ausführlich über den Serial-Simulator gesprochen wurde, wird nun im Folgenden die Geräteauswahl beschrieben.\\
+%Nachdem nun ausführlich über den Serial-Simulator gesprochen wurde, wird nun im Folgenden die Geräteauswahl beschrieben.\\
 Wie in der \autoref{deviceSelection} gezeigt, erfolgt die Auswahl der Gerätes, mit welchem kommuniziert wird, bei jedem Start-Vorgang.
 Hierbei wird zuallererst die Konfigurationsdatei untersucht.
 Ist hier der Eintrag \lstinline[style=json]{"device": "sim"} vorhanden, wird der Simulator gestartet und alle notwendigen Konfigurationen werden vorgenommen.
-Sollte jedoch etwas anderes Eingetragen sein, wird versucht auf serieller Ebene mit dem Gerät zu kommunizieren.
+Sollte jedoch etwas anderes eingetragen sein, wird versucht auf serieller Ebene mit dem Gerät zu kommunizieren.
 Ist dies der Fall, muss auch die serielle Schnittstelle vor der Verwendung konfiguriert werden.\\
 All diese Aufgaben übernimmt die vom Designpattern-Singelton abgeleitete Klasse \lstinline[style=java]{Serial} und wird im folgenden Abschnitt beschrieben.\\\\
 Wird im ersten Schritt eine Instanz der Klasse Serial mithilfe der Methode \lstinline[style=java]{createInstance()} erstellt, wird der private Konstruktor aufgerufen.
@@ -829,7 +825,7 @@ Einerseits soll er sicherstellen, dass sich alle Parameter der seriellen Schnitt
 Umgesetzt wird dies mithilfe der Abfrage \lstinline[style=java]{if (config.isDisabled())}
 Diese Parameter werden im Folgenden aufgelistet.
 % @formatter:off
-\begin{lstlisting}[style=json,caption=json-Codebeispiel,label=json]
+\begin{lstlisting}[style=json,caption=json-Codebeispiel,label=jsonSerial]
 "serial": {
 "disabled": false,
     "device": "sim",
@@ -841,10 +837,8 @@ Diese Parameter werden im Folgenden aufgelistet.
 \end{lstlisting}
 % @formatter:on
 Ansererseits soll die Geräteauswahl mithilfe eines Abgleichs des Gerätenamens erfolgen.
-Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()} ausgeführt, ansonsten \lstinline[style=java]{initSerialDevice()}
+Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()} ausgeführt, ansonsten \lstinline[style=java]{initSerialDevice()}.
 In diesen beiden Methoden werden sowohl die serielle Schnitstelle, als auch der Simulator konfiguriert.
-
-
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
 private Serial(ConfigSerialModel config) throws SerialException, IOException {
@@ -861,16 +855,42 @@ private Serial(ConfigSerialModel config) throws SerialException, IOException {
 }
 \end{lstlisting}
 % @formatter:on
+Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
+\\\\
 \textbf{\lstinline{initSimulation()}}
 \\
-Mithilfe der Mehode \lstinline[style=java]{gson.toJson()} kann direkt aus einem Objekt ein JSON-String erzeugt werden.
-Dieser genannte String kann danach je nach belieben in eine Datei geschreiben oder versendet werden.
-\\\\
+Vorerst soll angenommen werden, dass als Gerät der Simulator ausgewählt wurde.
+Ist dies der Fall wird innerhalb der Methode \lstinline{initSimulation()} eine Möglichkeit zu Kommunikation mit dem Simulator geschaffen.
+Realisiert wird diese Verbindung, wie im anschließenden \autoref{serialSim} beschrieben, mithilfe von Input- und Outputstreams.
+Also werden diese zu Beginn definiert.\\
+Um nun den Serial-Simulator zu starten ist ledeglich eine Erstellung des ReshuffledMainboardSimulator-Objekts notwendig.
+Dieser erhält dessen Input- und Outputstreams übergeben von denen er aus kommuniziert.\\\\
+So ist nun die volle Funktionalität des Simulators gegeben und es kann ohne "echte" Peripherie gearbeitet werden.
+\lstinputlisting[firstline=69, lastline=87, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
 \textbf{\lstinline{initSerialDevice()}}
 \\
-Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline[style=java]{gson.fromJson()} umgekehr werden.
-Hierbei wird aus einem JSON-String ein Objekt erzeugt.
-\\
+Wird nun angenommen, dass es sich bei dem Konfigurationseintrag nicht um die Zeichenkette \lstinline[style=json]{"sim"} handelt, springt das Programm in die Methode \lstinline{initSerialDevice()}.
+Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.
+Verwendet wurde hierbei die Open-Source-Bibliothek jSSC (Java Simple Serial Connector).
+Erstellt wird eine Instanz des \lstinline[style=java]{jssc.SerialPort} mithilfe einer Objekterzeugung.
+Diese forderdert als Parameter den Portnamen.
+Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\\\
+Dieses genannte "Öffnen" des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException} führen.
+Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
+Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und Outputstreams für das serielle Endgerät definiert werden.\\\\
+\lstinputlisting[firstline=89, lastline=103, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
+Ab diesem Zeipunkt wird das richtige Endgerät ausgewählt und es kann über den jeweiligen Stream kommuniziert werden.
+Dies kann über die implementierte Methode \lstinline[style=java]{writeString()} geschehen, welcher direkt einen String als Parameter übergeben wird.
+\lstinputlisting[firstline=105, lastline=109, style=java,caption=fdsa,label=fdsa]{src/serial/Serial.java}
+Auf die Weiterverarbeitung der Daten an dem \lstinline[style=java]{SerialJsscInputStream} und \lstinline[style=java]{SerialJsscOutputStream} soll nicht weiter eingegangen werden, denn aufgrund der einfachen Implementierung ist dies selbstverstänglich und würde zur überladung des Kapitels führen.
+Wiederum wird jedoch anschließend auf die Verarbeitung von Daten an den Simulator gesprochen, denn dies spielt eine wichtige Rolle und sollte nicht unerwähnt bleiben.
+\subsubsection{Serial-Simulator}\label{sssec:serialSim}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{fig/ainf/InputOutputStreams.pdf}
+\caption{UML-Diagramm Streams}
+\label{ProducerConsumer}
+\end{figure}
 \subsection{Logging}
 \subsubsection{Konzept}\label{sssec:logOverview}
 Logging ist nach dem Debugging selbst, dass zweitwichtigeste Mittel um einzelne Programmbausteine oder das gsamte Programm auf Fehler zu untersuchen.
@@ -969,14 +989,59 @@ ALL                   & all                    & Darstellung von allen Nachricht
 \caption{}
 \end{table}
 \subsection{Konfiguration}\label{subsec:konfiguration}
-
 \subsubsection{Konzept}
-\subsubsection{Datenmodelle}
-\subsubsection{Verwahrung am Zielsystem}
+Sollten, wie in unserem Fall, Daten über einen längerem Zeitpunkt gespeichert werden und diese auch nach einem Systemneustart noch verfügbar sein, kann eine Datei implementiert werden, welche diese Daten speichert.
+In unserem Fall beziehen sich diese Daten auf Konfigurationseinträge der Maschine.
+Einige Anforderungen an diese Konfigurationsdatei sind:
+\begin{enumerate}
+\item Textuell
+\item Einfache Erweiterbarkeit
+\item Übersichtliche Darstellung
+\end{enumerate}
+Aufgrund dieser Darstellung setzte sich eine Lösung mithilfe des Datenformats JSON durch.
+Nun ergibt sich jedoch das Problem, dass eine enorm große Datenmenge in dieses Objekt verpackt werden muss.
+Eine Lösung bietet, wie im \autoref{sssec:gson} erwähnt, die Bibliothek Gson.
+Diese vereinfacht die Erstellung einer Json Datei.
+Somit kann in wenigen Schritten dieses Ziel umgesetzt werden.
+\subsubsection{Umsetzung}
+Die Realisierung dieser Config-Datei erfolg voll und ganz in der Klasse \lstinline[style=java]{Config} welche als Singelton implementiert wird.
+Diese genannte Klasse stellt ledeglich Methoden zum setzten der Einträge sowie die Methode \lstinline[style=java]{save()} zur Verfügung.
+Nach einem Aufruf der genannten Methode \lstinline[style=java]{save()} wird die aktuelle Instanz der Config-Datei auf dem System an einem gewissen Pfad gespeichert.
+Dieser Pfad wird automatisch bei jedem Startvorgang des Programms anhand von Untersuchungen verschiedenen Plätzen im Dateisystem festgelegt.
+Diese typischen Plätze sollten vom Programm vorgegeben sein.
+Falls nirgends die Möglichkeit besteht, diese Datei zu schreiben, wird im Projektverzeichnis automatisch eine Datei angelegt und daraufhin das Programm gestoppt um diese nach dem auf GitHub verfügbaren Pattern abzuändern.
+Dieses Pattern soll kurz in der \autoref{sampleConfig} gezeigt werden.
+\begin{lstlisting}[style=json, caption=JSON-Codebeispiel,label=sampleConfig]
+{
+    "logPath": "",
+    "statisticsPath": "",
+    "guiHeight": 600,
+    "guiWidth": 1024,
+    "gamemodes": [
+    ],
+    "serial": {
+    "disabled": false,
+    "device": "sim",
+    "baudrate": 57600,
+    "timeoutMillis": 1000,
+    "secondTryAllowed": false,
+    "responseByteLength": 32
+    },
+    "internationalization": {
+    "language": "en",
+    "country": "US",
+    "bundlePath": "",
+    "bundlePrefix": "bundle"
+    }
+}
+\end{lstlisting}
+Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im Konstruktor sein.
+Dies bedeuted, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwärtiges Objekt der Konfigurationsdatei zur Verfügung steht.
+Dieses genannte Objekt ist eine Instanz der Datenerhaltunsklasse \lstinline[style=java]{ConfigModel}.\\\\
+Implementiert wird die Methode read()
 \subsection{Statistiken}
 \subsubsection{Konzept}
-\subsubsection{Datenmodelle}
-\subsubsection{Verwahrung am Zielsystem}
+\subsubsection{Umsetzung}
 \section{Frontend-Programmierung}
 \subsection{Designkonzept}
 \subsection{Controllerklassen}
@@ -990,8 +1055,6 @@ ALL                   & all                    & Darstellung von allen Nachricht
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}
 \subsection{Implementierung von CSS}
-\subsubsection{StartupCSS}
-\subsubsection{HomeCSS}
 \subsection{Internationalisierung}
 \subsubsection{Gründe der Umsetzung}
 \subsubsection{Integration in das Interface}

@@ -106,7 +106,6 @@ public class Serial {
         final byte[] bytes = s.getBytes("UTF-8");
         getOutputStream().write(bytes);
         getOutputStream().flush();
-
     }
 
     private class SerialSimInputStream extends InputStream {
