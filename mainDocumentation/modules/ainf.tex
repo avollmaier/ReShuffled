@@ -495,7 +495,7 @@ Dies können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.\\
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache mit welcher Gestaltungsanweisungen erstellt werden können.
 Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
-\footfullcite{JavaFX CSS Reference Guide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
+\footfullcite{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
 Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von Java-FX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglicket zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
@@ -770,17 +770,55 @@ throw new SerialException("request timeout, mssing response"); // if second try 
 }
 \end{lstlisting}
 % @formatter:on
-Somit wäre ein Kommunikationsloop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
+Somit wäre ein Kommunikations-Loop abgeschlossen und der \lstinline[style=java]{communicationSendThread} wartet wieder auf ankommende Requests des Programms.\\\\
 \textbf{Der CommunicationReceiveThread:}\\
 Nun sollte jedoch das Empfangen eines Response näher beschrieben werden.
-Dieser Thread holt sich vorerst den InputStream und liest danach die Zeichen ein.
-Sollte ein unerwartetes Zeichen ankommen, wird in dien Log-Datei eine Warunung geschrieben.
-Werden die ankommenden Daten nun als vollwärtigen Request empfunden, fügt der Thread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den Thread.
+Dieser sogenante CommunicationReceiveThread holt sich vorerst den InputStream und liest danach die Zeichen ein.
+Ist das ankommende Zeichen ein \lstinline[style=java]{:}, beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
+Sollte jedoch ein unerwartetes Zeichen ankommen, was oft auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+while (!Thread.currentThread().isInterrupted()) {
+    int b = is.read();
+    if (b >= 0 && b < 255) {
+        if (bufferIndex == 0) {
+            if (b == ':') {
+                buffer[bufferIndex++] = (byte) b;
+            }
+        else {
+            LOG.warning("receiving unexpected byte (':' expected, get " + b);
+        }
+        }
+    ...
+\end{lstlisting}
+% @formatter:on
+Werden die ankommenden Daten nun als vollwärtigen Request empfunden, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschreiben, weiterverarbeitet.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+        ...
+        else if (bufferIndex < buffer.length) {
+            buffer[bufferIndex++] = (byte) b;
+            if (b == '\n') {
+                synchronized (responseList) {
+                    byte[] resBuffer = Arrays.copyOf(buffer, bufferIndex);
+                    bufferIndex = 0;
+                    responseList.add(new Response(resBuffer));
+                    responseList.notifyAll();
+                }
+            }
+}
+else {
+LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
+}
+}
+}
+\end{lstlisting}
+% @formatter:on
 \subsubsection{Umsetztung-Geräteauswahl} \label{sssec:deviceSelection}
 
 \subsubsection{Serial-Simulator}
 \subsection{Logging}
-\subsubsection{Konzept}
+\subsubsection{Konzept}\label{sssec:logOverview}
 Logging ist nach dem Debugging selbst, dass zweitwichtigeste Mittel um einzelne Programmbausteine oder das gsamte Programm auf Fehler zu untersuchen.
 Mithilfe einer Log-Datei können z.b aktuelle Wertebelegungen im Detail dargestellt werden.
 Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks immer sinvoller.\\\\
@@ -790,18 +828,101 @@ Auch ist nun die Persistenz der Logging-Einträge gegeben.
 Dies bedeuted, es kann nun sichergestellt werden, dass diese Einträge auf dem System gespeichert werden und nach einem Neustart verfügbar sind.
 Nutzt man diese Art von Protokollierung kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
-In unserem Fall
 \subsubsection{Integration in das Programm}
+Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
+Es ist ledeglich notwendig, diese genannten Klassen in ein unterpackage des Programms einzufügen.
+Dazu soll in der \autoref{PackagestrukturLogging} die Struktur des Logging-Packages illustriert werden.
+\begin{figure}[H]
+\begin{center}
+\begin{forest}
+for tree={
+font=\ttfamily,
+grow'=0,
+child anchor=west,
+parent anchor=south,
+anchor=west,
+calign=first,
+edge path={
+\noexpand\path [draw, \forestoption{edge}]
+(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+},
+before typesetting nodes={
+if n=1
+{insert before={[,phantom]}}
+{}
+},
+fit=band,
+before computing xy={l=15pt},
+}
+[logging
+[ExtendedLogRecord]
+[LogBackgroundHandler]
+[LogOutputStreamHandler]
+[LogRecordData]
+[LogRecordDataFormattedText]
+[LogRecordDataHexDump]
+[LogRecordDataString]
+[Logger]
+]
+\end{forest}
+\end{center}
+\label{PackagestrukturLogging}
+\caption{Packagestruktur-Logging}
+\end{figure}
+Um nun die Implementierung zu vervollständigen muss nun in der Main-Methode, welche im Package \lstinline[style=java]{main} zu finden ist, der Logger parametrisiert werden.\\\\
+Im Gegensatz zu Javas Standard-Logger-Objekt sind alle Logger-Objekte automatisch an einen einzigen "übergeordneten" Logger gebunden.
+Nun ist es zuallererst nötig, das binding eines Handlers an das "übergeordnete" Logger-Objekt durchzuführen.
+Dies erfolgt mithilfe der Zeile \lstinline[style=java]{private static final Logger LOGP = Logger.getParentLogger()}.\\
+Der genannte Logger soll nun dessen Protokollierung auf 2 verschiedenen Ausgaben schreiben.
+\begin{enumerate}
+\item Konsolenausgabe
+\item Log-Datei
+\end{enumerate}
+Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
+try {
+    LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
+}
+catch (FileNotFoundException ex) {
+System.out.println("Should not see me :)");
+}
+\end{lstlisting}
+% @formatter:on
+Nun kann der Logger global im Programm angewendet werden.
+Es ist nur nötig dieses Logger-Objekt in die jeweilige Klasse zu bringen.
+Dies erfolgt über die Zeile \lstinline[style=java]{private static final Logger LOG = Logger.getLogger(Example.class.getName())}.
+In diesem Beispiel wird das Logger-Objekt der Klasse \lstinline[style=java]{Example} zugewiesen.\\\\
+Wie schon im \autoref{sssec:logOverview} beschiebem, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.
+Folgen soll tabellarisch gezeigt werden, welche Möglichkeiten dieser Logger bietet.
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFFFFF}
+\textbf{Methodenname} & \textbf{Schlüsselwort} & \textbf{Beschreibung}                                                                                                \\ \hline
+\rowcolor[HTML]{FFFFFF}
+DEBUG                 & debug                  & Verwendete Darstellung während Developement                                                                          \\ \hline
+SEVERE                & severe                 & \begin{tabular}[c]{@{}l@{}}Verwendung bei gravierenden Fehler \\ mit großer Auswirkung auf das Programm\end{tabular} \\ \hline
+WARNING               & warning                & \begin{tabular}[c]{@{}l@{}}Verwendung bei kleinen Fehlern welche\\ keine große Auswirkung haben\end{tabular}         \\ \hline
+INFO                  & info                   & Verwendung bei normalen Ausgaben                                                                                     \\ \hline
+CONFIG                & config                 & Verwendung bei Konfigurationen                                                                                                                       \\ \hline
+FINE                  & fine                   & Genaue Darstellung von Nachrichten                                                                                   \\ \hline
+FINER                 & finer                  & Genauere Darstellung von Nachrichten                                                                                 \\ \hline
+FINEST                & finest                 & Genaueste Darstellung von Nachrichten                                                                                \\ \hline
+ALL                   & all                    & Darstellung von allen Nachrichten                                                                                    \\ \hline
+\end{tabular}
+\caption{}
+\end{table}
 \subsection{Konfiguration}\label{subsec:konfiguration}
+
 \subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
-
 \subsection{Statistiken}
 \subsubsection{Konzept}
 \subsubsection{Datenmodelle}
 \subsubsection{Verwahrung am Zielsystem}
-
 \subsection{Controllerklassen}
 \subsubsection{Grundlagen}
 \subsubsection{StartupController}
@@ -809,47 +930,8 @@ In unserem Fall
 \subsubsection{HomeController}
 \subsubsection{StatsController}
 \subsubsection{About- und HelpController}
-
-
 \section{Frontend-Programmierung}
 \subsection{Designkonzept}
-
-
-
-\begin{lstlisting}[style=java,caption=Java Codebeispiel,label=Model]
-public class Model extends Observable{
-private int counter;
-public Model() {
-}
-public int getCounter() {
-return countDown;
-}
-public void increment() {
-if (counter > 0) {
-counter++;
-}
-notifyObservers();
-}
-\end{lstlisting}
-
-\begin{lstlisting}[style=java,caption=Die Klasse View,label=View]
-public class View implements Observer {
-private Model model;
-private Stage stage;
-private Label label;
-private Button countButton;
-public View(Model model, Stage stage) {
-this.model = model;
-this.stage = stage;
-label = new Label("Counter: " + model.getCounter());
-btIncrement = new Button("Increment by 1");
-stage.setScene(new Scene(new VBox(label, countButton)));
-model.addObserver(this);
-}
-@Override
-public void update(Observable o, Object arg) {
-label.setText("Counter: " + model.getCounter());
-\end{lstlisting}
 \subsection{Utility Klassen}
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}
