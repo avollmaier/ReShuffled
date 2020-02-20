@@ -1,7 +1,6 @@
 package exception;
 
 /**
- *
  * @author volalm15
  */
 public class SerialException extends Exception {

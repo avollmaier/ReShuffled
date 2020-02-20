@@ -18,11 +18,12 @@
     -fx-font-size: 14;
 }
 
-.chart-bar{
+.chart-bar {
     -fx-bar-fill: #373E48;
-    
+
 }
-.jfx-button .jfx-rippler{
+
+.jfx-button .jfx-rippler {
     -jfx-rippler-disabled: true;
 }
 

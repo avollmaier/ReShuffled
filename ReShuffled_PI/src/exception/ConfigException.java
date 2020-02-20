@@ -3,7 +3,6 @@ package exception;
 import java.io.File;
 
 /**
- *
  * @author volalm15
  */
 public class ConfigException extends Exception {

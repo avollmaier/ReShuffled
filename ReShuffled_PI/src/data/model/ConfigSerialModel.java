@@ -3,7 +3,6 @@ package data.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
  * @author volalm15
  */
 public class ConfigSerialModel {
@@ -31,7 +30,6 @@ public class ConfigSerialModel {
     }
 
 
-
     public boolean isDisabled() {
         return disabled;
     }
@@ -56,7 +54,5 @@ public class ConfigSerialModel {
         return maxReceiveFrameLength;
     }
 
-   
-    
-    
+
 }

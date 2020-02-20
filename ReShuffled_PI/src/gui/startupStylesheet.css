@@ -1,7 +1,8 @@
-.jfx-button .jfx-rippler{
+.jfx-button .jfx-rippler {
     -jfx-rippler-disabled: true;
 }
+
 .jfx-combo-box .label {
-	-fx-text-fill: black;
-/*}*/
+    -fx-text-fill: black;
+    /*}*/
 }

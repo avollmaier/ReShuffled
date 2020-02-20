@@ -5,23 +5,28 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controller.HelpController">
-   <children>
-      <HBox prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="300.0">
-               <children>
-                  <ImageView fx:id="im1" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="im2" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <ImageView fx:id="im3" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
-                  <ImageView fx:id="im3" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </children>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+           xmlns="http://javafx.com/javafx/11.0.1" fx:controller="gui.controller.HelpController">
+    <children>
+        <HBox prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="300.0">
+                    <children>
+                        <ImageView fx:id="im1" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                        <ImageView fx:id="im2" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <ImageView fx:id="im3" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true"
+                                   preserveRatio="true" VBox.vgrow="ALWAYS"/>
+                        <ImageView fx:id="im3" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true"
+                                   preserveRatio="true" VBox.vgrow="ALWAYS"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
 </StackPane>

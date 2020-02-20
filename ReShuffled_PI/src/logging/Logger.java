@@ -1,7 +1,6 @@
 package logging;
 
 import java.io.PrintStream;
-import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -299,20 +298,28 @@ import java.util.logging.LogRecord;
  */
 public class Logger {
 
-    private static final HashMap<String, Logger> LOGGERMAP = new HashMap<>();
-    private static Logger parentLogger;
-    private static HashMap<String, String> cachedSystemProperties;
-    private static boolean shutdownExecuted;
-    private static boolean shutdownNowExecuted;
-
-    private final static String PROPERTYPARENTLEVEL = "logging.Logger.ParentLevel";
-    private final static String PROPERTYDEFAULTLEVEL = "logging.Logger.Level";
-
     /**
      * Log level used by default for debug method calls. It's value is the
      * highest possible log value (value of OFF minus 1).
      */
     public static final Level DEBUG = new SpecialLevel("DEBUG", Integer.MAX_VALUE - 1);
+    private static final HashMap<String, Logger> LOGGERMAP = new HashMap<>();
+    private final static String PROPERTYPARENTLEVEL = "logging.Logger.ParentLevel";
+    private final static String PROPERTYDEFAULTLEVEL = "logging.Logger.Level";
+    private static Logger parentLogger;
+    private static HashMap<String, String> cachedSystemProperties;
+    private static boolean shutdownExecuted;
+    private static boolean shutdownNowExecuted;
+    private final java.util.logging.Logger logger;
+    private final String name;
+    private boolean showLocation = true;
+    private Level debugLevel = DEBUG;
+
+    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
+    private Logger(String name) {
+        this.name = name;
+        logger = java.util.logging.Logger.getLogger(name);
+    }
 
     /**
      * Find or create a logger for a named subsystem.<br>
@@ -320,7 +327,7 @@ public class Logger {
      * Otherwise a new logger is created.
      *
      * @param name A name for the logger. This should be a dot-separated name,
-     * based on the package name and class name.
+     *             based on the package name and class name.
      * @return a suitable Logger object
      * @throws NullPointerException if the name is null.
      */
@@ -518,7 +525,7 @@ public class Logger {
      * Method {@link #shutdown()} is not needed.
      *
      * @param timeout maximum time for blocking
-     * @param unit time units for parameter timeout
+     * @param unit    time units for parameter timeout
      * @return list of handler objects which are not terminated
      * @throws InterruptedException is thrown if cureent thread is interrupted
      */
@@ -570,6 +577,7 @@ public class Logger {
             }
         }
     }
+    // *********************************************************
 
     private static void printFilter(String name, Logger logger, PrintStream out) {
         boolean printStackTrace = System.getProperty("logging.Logger.printStackTrace") != null;
@@ -613,7 +621,7 @@ public class Logger {
      * Converts a wildcard expression (with * and ?) into a regular expression
      *
      * @param wildcardExp the wildcard expression containing * for any count of
-     * any character and ? for one character
+     *                    any character and ? for one character
      * @return the regular expression
      */
     private static String getRegExp(String wildcardExp) {
@@ -727,18 +735,6 @@ public class Logger {
                 }
         }
     }
-    // *********************************************************
-
-    private final java.util.logging.Logger logger;
-    private boolean showLocation = true;
-    private Level debugLevel = DEBUG;
-    private final String name;
-
-    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
-    private Logger(String name) {
-        this.name = name;
-        logger = java.util.logging.Logger.getLogger(name);
-    }
 
     private void setParent(Logger parent) {
         logger.setParent(parent.logger);
@@ -757,7 +753,7 @@ public class Logger {
      *
      * @param handler a logging Handler
      * @throws SecurityException if a security manager exists, this logger is
-     * not anonymous, and the caller does not have LoggingPermission("control").
+     *                           not anonymous, and the caller does not have LoggingPermission("control").
      */
     public void addHandler(Handler handler) throws SecurityException {
         logger.addHandler(handler);
@@ -771,7 +767,7 @@ public class Logger {
      *
      * @param handler a logging Handler
      * @throws SecurityException if a security manager exists, this logger is
-     * not anonymous, and the caller does not have LoggingPermission("control").
+     *                           not anonymous, and the caller does not have LoggingPermission("control").
      */
     public void removeHandler(Handler handler) throws SecurityException {
         logger.removeHandler(handler);
@@ -788,6 +784,15 @@ public class Logger {
     }
 
     /**
+     * Get the current filter for this Logger.
+     *
+     * @return a filter object (may be null)
+     */
+    public Filter getFilter() {
+        return logger.getFilter();
+    }
+
+    /**
      * Set a filter to control output on this Logger.
      * <p>
      * After passing the initial cheap "level" check, the Logger will call this
@@ -795,20 +800,11 @@ public class Logger {
      *
      * @param filter a filter object (may be null)
      * @throws SecurityException if a security manager exists, this logger is
-     * not anonymous, and the caller does not have LoggingPermission("control").
+     *                           not anonymous, and the caller does not have LoggingPermission("control").
      */
     public void setFilter(Filter filter) throws SecurityException {
         logger.setFilter(filter);
         printFilter(name, this, System.out);
-    }
-
-    /**
-     * Get the current filter for this Logger.
-     *
-     * @return a filter object (may be null)
-     */
-    public Filter getFilter() {
-        return logger.getFilter();
     }
 
     /**
@@ -853,7 +849,7 @@ public class Logger {
      *
      * @param level the new value for the log level (may be null)
      * @throws SecurityException if a security manager exists, this logger is
-     * not anonymous, and the caller does not have LoggingPermission("control").
+     *                           not anonymous, and the caller does not have LoggingPermission("control").
      */
     public void setLevel(Level level) throws SecurityException {
         logger.setLevel(level);
@@ -867,22 +863,22 @@ public class Logger {
      * <p>
      *
      * @param level the value as integer or one of the following values (case
-     * insensitive)
-     * <ul>
-     * <li>"OFF"</li>
-     * <li>"DEBUG"</li>
-     * <li>"SEVERE"</li>
-     * <li>"WARNING"</li>
-     * <li>"INFO"</li>
-     * <li>"CONFIG"</li>
-     * <li>"FINE"</li>
-     * <li>"FINEST"</li>
-     * <li>"FINER"</li>
-     * </ul>
-     * @throws NumberFormatException if level is no valid level value and not an
-     * integer value
+     *              insensitive)
+     *              <ul>
+     *              <li>"OFF"</li>
+     *              <li>"DEBUG"</li>
+     *              <li>"SEVERE"</li>
+     *              <li>"WARNING"</li>
+     *              <li>"INFO"</li>
+     *              <li>"CONFIG"</li>
+     *              <li>"FINE"</li>
+     *              <li>"FINEST"</li>
+     *              <li>"FINER"</li>
+     *              </ul>
+     * @throws NumberFormatException    if level is no valid level value and not an
+     *                                  integer value
      * @throws IllegalArgumentException if level has an illegal value
-     * @throws NullPointerException if level is null
+     * @throws NullPointerException     if level is null
      */
     public void setLevel(String level) throws NumberFormatException, IllegalArgumentException {
         logger.setLevel(parseLevel(level));
@@ -1077,6 +1073,7 @@ public class Logger {
     }
 
     // *************************************************************************
+
     /**
      * Get the log level of debug method calls. By default the level
      * {@link #DEBUG} is used, which value is (Level.OFF.intvalue() - 1)
@@ -1130,12 +1127,12 @@ public class Logger {
      * software versions.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void debug(String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1164,7 +1161,7 @@ public class Logger {
      * {@link #setDebugLevel(Level)}. The call should be removed for released
      * software versions.
      *
-     * @param th Throwable object (Exception, Error, ...)
+     * @param th  Throwable object (Exception, Error, ...)
      * @param msg log message string
      */
     public void debug(Throwable th, String msg) {
@@ -1179,14 +1176,14 @@ public class Logger {
      * {@link #setDebugLevel(Level)}. The call should be removed for released
      * software versions.
      *
-     * @param th Throwable object (Exception, Error, ...)
+     * @param th        Throwable object (Exception, Error, ...)
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void debug(Throwable th, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1216,7 +1213,7 @@ public class Logger {
      * released software versions.
      *
      * @param data the data object to log
-     * @param msg log message string
+     * @param msg  log message string
      */
     public void debug(LogRecordData data, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, data, msg);
@@ -1230,14 +1227,14 @@ public class Logger {
      * changed by {@link #setDebugLevel(Level)}. The call should be removed for
      * released software versions.
      *
-     * @param data the data object to log
+     * @param data      the data object to log
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void debug(LogRecordData data, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1253,7 +1250,7 @@ public class Logger {
      * software versions.
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void debug(byte[] data) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, new LogRecordDataHexDump(data));
@@ -1268,8 +1265,8 @@ public class Logger {
      * released software versions.
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg log message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  log message string
      */
     public void debug(byte[] data, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, new LogRecordDataHexDump(data), msg);
@@ -1283,15 +1280,15 @@ public class Logger {
      * changed by {@link #setDebugLevel(Level)}. The call should be removed for
      * released software versions.
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void debug(byte[] data, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1306,7 +1303,7 @@ public class Logger {
      * changed by {@link #setDebugLevel(Level)}. The call should be removed for
      * released software versions.
      *
-     * @param th Throwable object (Exception, Error, ...)
+     * @param th   Throwable object (Exception, Error, ...)
      * @param data the data object to log
      */
     public void debug(Throwable th, LogRecordData data) {
@@ -1321,9 +1318,9 @@ public class Logger {
      * default, but can be changed by {@link #setDebugLevel(Level)}. The call
      * should be removed for released software versions.
      *
-     * @param th Throwable object (Exception, Error, ...)
+     * @param th   Throwable object (Exception, Error, ...)
      * @param data the data object to log
-     * @param msg log message string
+     * @param msg  log message string
      */
     public void debug(Throwable th, LogRecordData data, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, th, data, msg);
@@ -1337,15 +1334,15 @@ public class Logger {
      * default, but can be changed by {@link #setDebugLevel(Level)}. The call
      * should be removed for released software versions.
      *
-     * @param th Throwable object (Exception, Error, ...)
-     * @param data the data object to log
+     * @param th        Throwable object (Exception, Error, ...)
+     * @param data      the data object to log
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void debug(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1361,7 +1358,7 @@ public class Logger {
      * released software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void debug(int stackTraceDepth) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth);
@@ -1376,8 +1373,8 @@ public class Logger {
      * removed for released software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg log message string
+     *                        published
+     * @param msg             log message string
      */
     public void debug(int stackTraceDepth, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, msg);
@@ -1392,14 +1389,14 @@ public class Logger {
      * removed for released software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void debug(int stackTraceDepth, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1415,8 +1412,8 @@ public class Logger {
      * removed for released software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
      */
     public void debug(int stackTraceDepth, Throwable th) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, th);
@@ -1432,9 +1429,9 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
-     * @param msg log message string
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
+     * @param msg             log message string
      */
     public void debug(int stackTraceDepth, Throwable th, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, th, msg);
@@ -1450,15 +1447,15 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void debug(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1474,8 +1471,8 @@ public class Logger {
      * should be removed for released software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
+     *                        published
+     * @param data            the data object to log
      */
     public void debug(int stackTraceDepth, LogRecordData data) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, data);
@@ -1491,9 +1488,9 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
-     * @param msg log message string
+     *                        published
+     * @param data            the data object to log
+     * @param msg             log message string
      */
     public void debug(int stackTraceDepth, LogRecordData data, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, data, msg);
@@ -1509,15 +1506,15 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the data object to log
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void debug(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1534,9 +1531,9 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
-     * @param data the data object to log
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
+     * @param data            the data object to log
      */
     public void debug(int stackTraceDepth, Throwable th, LogRecordData data) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, th, data);
@@ -1552,10 +1549,10 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
-     * @param data the data object to log
-     * @param msg log message string
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
+     * @param data            the data object to log
+     * @param msg             log message string
      */
     public void debug(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         ExtendedLogRecord r = new ExtendedLogRecord(debugLevel, 3, stackTraceDepth, th, data, msg);
@@ -1571,16 +1568,16 @@ public class Logger {
      * software versions.
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th Throwable object (Exception, Error, ...)
-     * @param data the data object to log
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              Throwable object (Exception, Error, ...)
+     * @param data            the data object to log
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void debug(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         String msg = new java.util.Formatter().format(msgFormat, args).toString();
@@ -1590,6 +1587,7 @@ public class Logger {
     }
 
     // *************************************************************************
+
     /**
      * Check if a message of the given level would actually be logged by this
      * logger. This check is based on the Loggers effective level, which may be
@@ -1614,7 +1612,7 @@ public class Logger {
     /**
      * Log a string message.
      *
-     * @param l the message logging level
+     * @param l   the message logging level
      * @param msg the message string
      */
     public void log(Level l, String msg) {
@@ -1624,14 +1622,14 @@ public class Logger {
     /**
      * Log a string message.
      *
-     * @param l the message logging level
+     * @param l         the message logging level
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void log(Level l, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, msgFormat, args);
@@ -1640,7 +1638,7 @@ public class Logger {
     /**
      * Log a Throwable.
      *
-     * @param l the message logging level
+     * @param l  the message logging level
      * @param th Throwable associated with log message.
      */
     public void log(Level l, Throwable th) {
@@ -1650,8 +1648,8 @@ public class Logger {
     /**
      * Log a Throwable and message string.
      *
-     * @param l the message logging level
-     * @param th Throwable associated with log message.
+     * @param l   the message logging level
+     * @param th  Throwable associated with log message.
      * @param msg the message string
      */
     public void log(Level l, Throwable th, String msg) {
@@ -1661,15 +1659,15 @@ public class Logger {
     /**
      * Log a Throwable and message string.
      *
-     * @param l the message logging level
-     * @param th Throwable associated with log message.
+     * @param l         the message logging level
+     * @param th        Throwable associated with log message.
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void log(Level l, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, th, msgFormat, args);
@@ -1678,7 +1676,7 @@ public class Logger {
     /**
      * Log a LogRecordData Object.
      *
-     * @param l the message logging level
+     * @param l    the message logging level
      * @param data the data object to log
      */
     public void log(Level l, LogRecordData data) {
@@ -1688,9 +1686,9 @@ public class Logger {
     /**
      * Log a LogRecordData Object and message string.
      *
-     * @param l the message logging level
+     * @param l    the message logging level
      * @param data the data object to log
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void log(Level l, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(l, data, msg);
@@ -1699,15 +1697,15 @@ public class Logger {
     /**
      * Log a LogRecordData Object and message string.
      *
-     * @param l the message logging level
-     * @param data the data object to log
+     * @param l         the message logging level
+     * @param data      the data object to log
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void log(Level l, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, data, msgFormat, args);
@@ -1716,9 +1714,9 @@ public class Logger {
     /**
      * Log a byte array.
      *
-     * @param l the message logging level
+     * @param l    the message logging level
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void log(Level l, byte[] data) {
         Logger.this.fireLogRecord(l, data);
@@ -1727,10 +1725,10 @@ public class Logger {
     /**
      * Log a byte array and message string.
      *
-     * @param l the message logging level
+     * @param l    the message logging level
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void log(Level l, byte[] data, String msg) {
         Logger.this.fireLogRecord(l, data, msg);
@@ -1739,16 +1737,16 @@ public class Logger {
     /**
      * Log a byte array and message string.
      *
-     * @param l the message logging level
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param l         the message logging level
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void log(Level l, byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, data, msgFormat, args);
@@ -1757,8 +1755,8 @@ public class Logger {
     /**
      * Log a LogRecordData Object and Throwable Object.
      *
-     * @param l the message logging level
-     * @param th the Throwable associated with this
+     * @param l    the message logging level
+     * @param th   the Throwable associated with this
      * @param data the data object to log
      */
     public void log(Level l, Throwable th, LogRecordData data) {
@@ -1768,10 +1766,10 @@ public class Logger {
     /**
      * Log a LogRecordData Object, a Throwable Object and a message string.
      *
-     * @param l the message logging level
-     * @param th the Throwable associated with this
+     * @param l    the message logging level
+     * @param th   the Throwable associated with this
      * @param data the data object to log
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void log(Level l, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(l, th, data, msg);
@@ -1780,16 +1778,16 @@ public class Logger {
     /**
      * Log a LogRecordData Object, a Throwable Object and a message string.
      *
-     * @param l the message logging level
-     * @param th the Throwable associated with this
-     * @param data the data object to log
+     * @param l         the message logging level
+     * @param th        the Throwable associated with this
+     * @param data      the data object to log
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void log(Level l, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, th, data, msgFormat, args);
@@ -1798,9 +1796,9 @@ public class Logger {
     /**
      * Log call stack with limited depth.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void log(Level l, int stackTraceDepth) {
         Logger.this.fireLogRecord(l, stackTraceDepth);
@@ -1809,10 +1807,10 @@ public class Logger {
     /**
      * Log call stack with limited depth and message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void log(Level l, int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(l, stackTraceDepth, msg);
@@ -1821,16 +1819,16 @@ public class Logger {
     /**
      * Log call stack with limited depth and message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void log(Level l, int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, stackTraceDepth, msgFormat, args);
@@ -1839,10 +1837,10 @@ public class Logger {
     /**
      * Log call stack with limited depth and Throwable object.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void log(Level l, int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(l, stackTraceDepth, th);
@@ -1851,11 +1849,11 @@ public class Logger {
     /**
      * Log call stack with limited depth, a Throwable object and message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void log(Level l, int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(l, stackTraceDepth, th, msg);
@@ -1864,17 +1862,17 @@ public class Logger {
     /**
      * Log call stack with limited depth, a Throwable object and message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void log(Level l, int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, stackTraceDepth, th, msgFormat, args);
@@ -1883,10 +1881,10 @@ public class Logger {
     /**
      * Log call stack with limited depth and LogRecord Data object.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
+     *                        published
+     * @param data            the data object to log
      */
     public void log(Level l, int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(l, stackTraceDepth, data);
@@ -1896,11 +1894,11 @@ public class Logger {
      * Log call stack with limited depth, a LogRecord Data object and a message
      * string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
-     * @param msg the message string
+     *                        published
+     * @param data            the data object to log
+     * @param msg             the message string
      */
     public void log(Level l, int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(l, stackTraceDepth, data, msg);
@@ -1910,17 +1908,17 @@ public class Logger {
      * Log call stack with limited depth, a LogRecord Data object and a message
      * string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the data object to log
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the data object to log
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void log(Level l, int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(l, stackTraceDepth, data, msgFormat, args);
@@ -1930,11 +1928,11 @@ public class Logger {
      * Log call stack with limited depth, a Throwable object and LogRecord Data
      * object.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the data object to log
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the data object to log
      */
     public void log(Level l, int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(l, stackTraceDepth, th, data);
@@ -1944,12 +1942,12 @@ public class Logger {
      * Log call stack with limited depth, a Throwable object, a LogRecord Data
      * object and a message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the data object to log
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the data object to log
+     * @param msg             the message string
      */
     public void log(Level l, int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(l, stackTraceDepth, th, data, msg);
@@ -1959,24 +1957,25 @@ public class Logger {
      * Log call stack with limited depth, a Throwable object, a LogRecord Data
      * object and a message string.
      *
-     * @param l the message logging level
+     * @param l               the message logging level
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the data object to log
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the data object to log
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object. <!--
+     *                        <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void log(Level l, int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(l, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Log empty record with {@link Level#ALL}
      */
@@ -1997,12 +1996,12 @@ public class Logger {
      * Log message string with {@link Level#ALL}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void all(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, msgFormat, args);
@@ -2020,7 +2019,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#ALL}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void all(Throwable th, String msg) {
@@ -2030,14 +2029,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#ALL}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void all(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, th, msgFormat, args);
@@ -2056,7 +2055,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#ALL}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void all(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.ALL, data, msg);
@@ -2065,14 +2064,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#ALL}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void all(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, data, msgFormat, args);
@@ -2082,7 +2081,7 @@ public class Logger {
      * Log byte array with {@link Level#ALL}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void all(byte[] data) {
         Logger.this.fireLogRecord(Level.ALL, data);
@@ -2092,8 +2091,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#ALL}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void all(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.ALL, data, msg);
@@ -2102,14 +2101,14 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#ALL}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void all(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, data, msgFormat, args);
@@ -2118,7 +2117,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#ALL}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void all(Throwable th, LogRecordData data) {
@@ -2128,9 +2127,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#ALL}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void all(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.ALL, th, data, msg);
@@ -2139,14 +2138,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#ALL}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void all(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, th, data, msgFormat, args);
@@ -2156,7 +2155,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void all(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth);
@@ -2167,8 +2166,8 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void all(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, msg);
@@ -2179,13 +2178,13 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void all(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, msgFormat, args);
@@ -2195,8 +2194,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void all(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, th);
@@ -2207,9 +2206,9 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void all(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, th, msg);
@@ -2220,14 +2219,14 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void all(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, th, msgFormat, args);
@@ -2238,8 +2237,8 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void all(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, data);
@@ -2250,9 +2249,9 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void all(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, data, msg);
@@ -2263,14 +2262,14 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void all(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, data, msgFormat, args);
@@ -2281,9 +2280,9 @@ public class Logger {
      * {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void all(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, th, data);
@@ -2294,10 +2293,10 @@ public class Logger {
      * string with {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void all(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.ALL, stackTraceDepth, th, data, msg);
@@ -2308,21 +2307,22 @@ public class Logger {
      * string with {@link Level#ALL}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void all(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.ALL, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#FINEST} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -2354,12 +2354,12 @@ public class Logger {
      * Log message string with {@link Level#FINEST}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finest(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, msgFormat, args);
@@ -2377,7 +2377,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINEST}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void finest(Throwable th, String msg) {
@@ -2387,14 +2387,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINEST}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finest(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, th, msgFormat, args);
@@ -2413,7 +2413,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#FINEST}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void finest(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, data, msg);
@@ -2422,14 +2422,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#FINEST}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finest(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, data, msgFormat, args);
@@ -2439,7 +2439,7 @@ public class Logger {
      * Log byte array with {@link Level#FINEST}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void finest(byte[] data) {
         Logger.this.fireLogRecord(Level.FINEST, data);
@@ -2449,8 +2449,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#FINEST}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void finest(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, data, msg);
@@ -2459,15 +2459,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#FINEST}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finest(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, data, msgFormat, args);
@@ -2476,7 +2476,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#FINEST}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void finest(Throwable th, LogRecordData data) {
@@ -2486,9 +2486,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINEST}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void finest(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, th, data, msg);
@@ -2497,14 +2497,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINEST}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finest(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, th, data, msgFormat, args);
@@ -2514,7 +2514,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void finest(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth);
@@ -2525,8 +2525,8 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void finest(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, msg);
@@ -2537,13 +2537,13 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finest(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, msgFormat, args);
@@ -2553,8 +2553,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void finest(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, th);
@@ -2565,9 +2565,9 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void finest(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, th, msg);
@@ -2578,14 +2578,14 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finest(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, th, msgFormat, args);
@@ -2596,8 +2596,8 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void finest(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, data);
@@ -2608,9 +2608,9 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void finest(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, data, msg);
@@ -2621,14 +2621,14 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finest(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, data, msgFormat, args);
@@ -2639,9 +2639,9 @@ public class Logger {
      * {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void finest(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, th, data);
@@ -2652,10 +2652,10 @@ public class Logger {
      * string with {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void finest(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINEST, stackTraceDepth, th, data, msg);
@@ -2666,21 +2666,22 @@ public class Logger {
      * string with {@link Level#FINEST}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finest(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.FINEST, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#FINER} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -2712,12 +2713,12 @@ public class Logger {
      * Log message string with {@link Level#FINER}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finer(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, msgFormat, args);
@@ -2735,7 +2736,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINER}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void finer(Throwable th, String msg) {
@@ -2745,14 +2746,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINER}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finer(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, th, msgFormat, args);
@@ -2771,7 +2772,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#FINER}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void finer(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINER, data, msg);
@@ -2780,14 +2781,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#FINER}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finer(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, data, msgFormat, args);
@@ -2797,7 +2798,7 @@ public class Logger {
      * Log byte array with {@link Level#FINER}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void finer(byte[] data) {
         Logger.this.fireLogRecord(Level.FINER, data);
@@ -2807,8 +2808,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#FINER}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void finer(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.FINER, data, msg);
@@ -2817,15 +2818,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#FINER}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finer(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, data, msgFormat, args);
@@ -2834,7 +2835,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#FINER}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void finer(Throwable th, LogRecordData data) {
@@ -2844,9 +2845,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINER}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void finer(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINER, th, data, msg);
@@ -2855,14 +2856,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINER}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void finer(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, th, data, msgFormat, args);
@@ -2872,7 +2873,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void finer(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth);
@@ -2883,8 +2884,8 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void finer(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, msg);
@@ -2895,13 +2896,13 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finer(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, msgFormat, args);
@@ -2911,8 +2912,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void finer(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, th);
@@ -2923,9 +2924,9 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void finer(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, th, msg);
@@ -2936,14 +2937,14 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finer(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, th, msgFormat, args);
@@ -2954,8 +2955,8 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void finer(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, data);
@@ -2966,9 +2967,9 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void finer(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, data, msg);
@@ -2979,14 +2980,14 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finer(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, data, msgFormat, args);
@@ -2997,9 +2998,9 @@ public class Logger {
      * {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void finer(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, th, data);
@@ -3010,10 +3011,10 @@ public class Logger {
      * string with {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void finer(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINER, stackTraceDepth, th, data, msg);
@@ -3024,21 +3025,22 @@ public class Logger {
      * string with {@link Level#FINER}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void finer(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.FINER, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#FINE} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -3070,12 +3072,12 @@ public class Logger {
      * Log message string with {@link Level#FINE}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void fine(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, msgFormat, args);
@@ -3093,7 +3095,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINE}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void fine(Throwable th, String msg) {
@@ -3103,14 +3105,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#FINE}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void fine(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, th, msgFormat, args);
@@ -3129,7 +3131,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#FINE}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void fine(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINE, data, msg);
@@ -3138,14 +3140,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#FINE}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void fine(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, data, msgFormat, args);
@@ -3155,7 +3157,7 @@ public class Logger {
      * Log byte array with {@link Level#FINE}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void fine(byte[] data) {
         Logger.this.fireLogRecord(Level.FINE, data);
@@ -3165,8 +3167,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#FINE}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void fine(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.FINE, data, msg);
@@ -3175,15 +3177,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#FINE}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void fine(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, data, msgFormat, args);
@@ -3192,7 +3194,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#FINE}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void fine(Throwable th, LogRecordData data) {
@@ -3202,9 +3204,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINE}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void fine(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINE, th, data, msg);
@@ -3213,14 +3215,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#FINE}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void fine(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, th, data, msgFormat, args);
@@ -3230,7 +3232,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void fine(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth);
@@ -3241,8 +3243,8 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void fine(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, msg);
@@ -3253,13 +3255,13 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void fine(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, msgFormat, args);
@@ -3269,8 +3271,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void fine(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, th);
@@ -3281,9 +3283,9 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void fine(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, th, msg);
@@ -3294,14 +3296,14 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void fine(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, th, msgFormat, args);
@@ -3312,8 +3314,8 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void fine(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, data);
@@ -3324,9 +3326,9 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void fine(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, data, msg);
@@ -3337,14 +3339,14 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void fine(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, data, msgFormat, args);
@@ -3355,9 +3357,9 @@ public class Logger {
      * {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void fine(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, th, data);
@@ -3368,10 +3370,10 @@ public class Logger {
      * string with {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void fine(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.FINE, stackTraceDepth, th, data, msg);
@@ -3382,21 +3384,22 @@ public class Logger {
      * string with {@link Level#FINE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void fine(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.FINE, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#CONFIG} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -3428,12 +3431,12 @@ public class Logger {
      * Log message string with {@link Level#CONFIG}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void config(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, msgFormat, args);
@@ -3451,7 +3454,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#CONFIG}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void config(Throwable th, String msg) {
@@ -3461,14 +3464,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#CONFIG}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void config(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, th, msgFormat, args);
@@ -3487,7 +3490,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#CONFIG}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void config(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, data, msg);
@@ -3496,14 +3499,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#CONFIG}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void config(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, data, msgFormat, args);
@@ -3513,7 +3516,7 @@ public class Logger {
      * Log byte array with {@link Level#CONFIG}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void config(byte[] data) {
         Logger.this.fireLogRecord(Level.CONFIG, data);
@@ -3523,8 +3526,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#CONFIG}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void config(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, data, msg);
@@ -3533,15 +3536,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#CONFIG}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void config(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, data, msgFormat, args);
@@ -3550,7 +3553,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#CONFIG}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void config(Throwable th, LogRecordData data) {
@@ -3560,9 +3563,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#CONFIG}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void config(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, th, data, msg);
@@ -3571,14 +3574,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#CONFIG}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void config(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, th, data, msgFormat, args);
@@ -3588,7 +3591,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void config(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth);
@@ -3599,8 +3602,8 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void config(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, msg);
@@ -3611,13 +3614,13 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void config(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, msgFormat, args);
@@ -3627,8 +3630,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void config(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, th);
@@ -3639,9 +3642,9 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void config(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, th, msg);
@@ -3652,14 +3655,14 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void config(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, th, msgFormat, args);
@@ -3670,8 +3673,8 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void config(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, data);
@@ -3682,9 +3685,9 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void config(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, data, msg);
@@ -3695,14 +3698,14 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void config(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, data, msgFormat, args);
@@ -3713,9 +3716,9 @@ public class Logger {
      * {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void config(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, th, data);
@@ -3726,10 +3729,10 @@ public class Logger {
      * string with {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void config(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.CONFIG, stackTraceDepth, th, data, msg);
@@ -3740,21 +3743,22 @@ public class Logger {
      * string with {@link Level#CONFIG}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void config(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.CONFIG, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#INFO} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -3786,12 +3790,12 @@ public class Logger {
      * Log message string with {@link Level#INFO}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void info(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, msgFormat, args);
@@ -3809,7 +3813,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#INFO}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void info(Throwable th, String msg) {
@@ -3819,14 +3823,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#INFO}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void info(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, th, msgFormat, args);
@@ -3845,7 +3849,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#INFO}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void info(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, data, msg);
@@ -3854,14 +3858,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#INFO}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void info(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, data, msgFormat, args);
@@ -3871,7 +3875,7 @@ public class Logger {
      * Log byte array with {@link Level#INFO}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void info(byte[] data) {
         Logger.this.fireLogRecord(Level.INFO, data);
@@ -3881,8 +3885,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#INFO}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void info(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, data, msg);
@@ -3891,15 +3895,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#INFO}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void info(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, data, msgFormat, args);
@@ -3908,7 +3912,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#INFO}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void info(Throwable th, LogRecordData data) {
@@ -3918,9 +3922,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#INFO}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void info(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, th, data, msg);
@@ -3929,14 +3933,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#INFO}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void info(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, th, data, msgFormat, args);
@@ -3946,7 +3950,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void info(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth);
@@ -3957,8 +3961,8 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void info(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, msg);
@@ -3969,13 +3973,13 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void info(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, msgFormat, args);
@@ -3985,8 +3989,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void info(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th);
@@ -3997,9 +4001,9 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void info(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th, msg);
@@ -4010,14 +4014,14 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void info(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th, msgFormat, args);
@@ -4028,8 +4032,8 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void info(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, data);
@@ -4040,9 +4044,9 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void info(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, data, msg);
@@ -4053,14 +4057,14 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void info(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, data, msgFormat, args);
@@ -4071,9 +4075,9 @@ public class Logger {
      * {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void info(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th, data);
@@ -4084,10 +4088,10 @@ public class Logger {
      * string with {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void info(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th, data, msg);
@@ -4098,21 +4102,22 @@ public class Logger {
      * string with {@link Level#INFO}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void info(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.INFO, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#WARNING} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -4144,12 +4149,12 @@ public class Logger {
      * Log message string with {@link Level#WARNING}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void warning(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, msgFormat, args);
@@ -4167,7 +4172,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#WARNING}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void warning(Throwable th, String msg) {
@@ -4177,14 +4182,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#WARNING}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void warning(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, th, msgFormat, args);
@@ -4203,7 +4208,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#WARNING}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void warning(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, data, msg);
@@ -4212,14 +4217,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#WARNING}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void warning(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, data, msgFormat, args);
@@ -4229,7 +4234,7 @@ public class Logger {
      * Log byte array with {@link Level#WARNING}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void warning(byte[] data) {
         Logger.this.fireLogRecord(Level.WARNING, data);
@@ -4239,8 +4244,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#WARNING}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void warning(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, data, msg);
@@ -4249,15 +4254,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#WARNING}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void warning(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, data, msgFormat, args);
@@ -4266,7 +4271,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#WARNING}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void warning(Throwable th, LogRecordData data) {
@@ -4277,9 +4282,9 @@ public class Logger {
      * Log Throwable, LogRecordData and message string with
      * {@link Level#WARNING}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void warning(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, th, data, msg);
@@ -4289,14 +4294,14 @@ public class Logger {
      * Log Throwable, LogRecordData and message string with
      * {@link Level#WARNING}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void warning(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, th, data, msgFormat, args);
@@ -4306,7 +4311,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void warning(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth);
@@ -4317,8 +4322,8 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void warning(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, msg);
@@ -4329,13 +4334,13 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void warning(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, msgFormat, args);
@@ -4346,8 +4351,8 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void warning(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, th);
@@ -4358,9 +4363,9 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void warning(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, th, msg);
@@ -4371,14 +4376,14 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void warning(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, th, msgFormat, args);
@@ -4389,8 +4394,8 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void warning(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, data);
@@ -4401,9 +4406,9 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void warning(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, data, msg);
@@ -4414,14 +4419,14 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void warning(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, data, msgFormat, args);
@@ -4432,9 +4437,9 @@ public class Logger {
      * {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void warning(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, th, data);
@@ -4445,10 +4450,10 @@ public class Logger {
      * string with {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void warning(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.WARNING, stackTraceDepth, th, data, msg);
@@ -4459,21 +4464,22 @@ public class Logger {
      * string with {@link Level#WARNING}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void warning(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.WARNING, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * Check if a message with {@link Level#SEVERE} would actually be logged by
      * this logger. This check is based on the Loggers effective level, which
@@ -4505,12 +4511,12 @@ public class Logger {
      * Log message string with {@link Level#SEVERE}.
      *
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void severe(String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, msgFormat, args);
@@ -4528,7 +4534,7 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#SEVERE}.
      *
-     * @param th the Throwable object
+     * @param th  the Throwable object
      * @param msg the message string
      */
     public void severe(Throwable th, String msg) {
@@ -4538,14 +4544,14 @@ public class Logger {
     /**
      * Log a Throwable object and message string with {@link Level#SEVERE}.
      *
-     * @param th the Throwable object
+     * @param th        the Throwable object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void severe(Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, th, msgFormat, args);
@@ -4564,7 +4570,7 @@ public class Logger {
      * Log LogRecordData and message string with {@link Level#SEVERE}
      *
      * @param data the LogRecordData object
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void severe(LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, data, msg);
@@ -4573,14 +4579,14 @@ public class Logger {
     /**
      * Log LogRecordData and message string with {@link Level#SEVERE}
      *
-     * @param data the LogRecordData object
+     * @param data      the LogRecordData object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void severe(LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, data, msgFormat, args);
@@ -4590,7 +4596,7 @@ public class Logger {
      * Log byte array with {@link Level#SEVERE}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     *             {@link logging.LogRecordDataHexDump} object
      */
     public void severe(byte[] data) {
         Logger.this.fireLogRecord(Level.SEVERE, data);
@@ -4600,8 +4606,8 @@ public class Logger {
      * Log byte array and message string with {@link Level#SEVERE}
      *
      * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
-     * @param msg the message string
+     *             {@link logging.LogRecordDataHexDump} object
+     * @param msg  the message string
      */
     public void severe(byte[] data, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, data, msg);
@@ -4610,15 +4616,15 @@ public class Logger {
     /**
      * Log byte array and message string with {@link Level#SEVERE}
      *
-     * @param data byte array which is transferred to an
-     * {@link logging.LogRecordDataHexDump} object
+     * @param data      byte array which is transferred to an
+     *                  {@link logging.LogRecordDataHexDump} object
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object. <!--
-     * <a href="../util/Formatter.html#syntax">format string</a> not working -->
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object. <!--
+     *                  <a href="../util/Formatter.html#syntax">format string</a> not working -->
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void severe(byte[] data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, data, msgFormat, args);
@@ -4627,7 +4633,7 @@ public class Logger {
     /**
      * Log Throwable and LogRecordData object with {@link Level#ALL}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
      */
     public void severe(Throwable th, LogRecordData data) {
@@ -4637,9 +4643,9 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#SEVERE}
      *
-     * @param th the Throwable associated with this
+     * @param th   the Throwable associated with this
      * @param data the LogRecordData associated with this
-     * @param msg the message string
+     * @param msg  the message string
      */
     public void severe(Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, th, data, msg);
@@ -4648,14 +4654,14 @@ public class Logger {
     /**
      * Log Throwable, LogRecordData and message string with {@link Level#SEVERE}
      *
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     * @param th        the Throwable associated with this
+     * @param data      the LogRecordData associated with this
      * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                  {@link java.util.Formatter} object.
+     * @param args      Arguments referenced by the format specifiers in the
+     *                  msgFormat string. If there are more arguments than format specifiers, the
+     *                  extra arguments are ignored. The number of arguments is variable and may
+     *                  be zero.
      */
     public void severe(Throwable th, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, th, data, msgFormat, args);
@@ -4665,7 +4671,7 @@ public class Logger {
      * Log call stack with limited depth and {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
+     *                        published
      */
     public void severe(int stackTraceDepth) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth);
@@ -4676,8 +4682,8 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msg the message string
+     *                        published
+     * @param msg             the message string
      */
     public void severe(int stackTraceDepth, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, msg);
@@ -4688,13 +4694,13 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void severe(int stackTraceDepth, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, msgFormat, args);
@@ -4704,8 +4710,8 @@ public class Logger {
      * Log call stack with limited depth and Throwable with {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
+     *                        published
+     * @param th              the Throwable associated with this
      */
     public void severe(int stackTraceDepth, Throwable th) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, th);
@@ -4716,9 +4722,9 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msg             the message string
      */
     public void severe(int stackTraceDepth, Throwable th, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, th, msg);
@@ -4729,14 +4735,14 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void severe(int stackTraceDepth, Throwable th, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, th, msgFormat, args);
@@ -4747,8 +4753,8 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param data            the LogRecordData associated with this
      */
     public void severe(int stackTraceDepth, LogRecordData data) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, data);
@@ -4759,9 +4765,9 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void severe(int stackTraceDepth, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, data, msg);
@@ -4772,14 +4778,14 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void severe(int stackTraceDepth, LogRecordData data, String msgFormat, Object... args) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, data, msgFormat, args);
@@ -4790,9 +4796,9 @@ public class Logger {
      * {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
      */
     public void severe(int stackTraceDepth, Throwable th, LogRecordData data) {
         Logger.this.fireLogRecord(Level.SEVERE, stackTraceDepth, th, data);
@@ -4803,10 +4809,10 @@ public class Logger {
      * string with {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msg the message string
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msg             the message string
      */
     public void severe(int stackTraceDepth, Throwable th, LogRecordData data, String msg) {
         Logger.this.fireLogRecord(Level.INFO, stackTraceDepth, th, data, msg);
@@ -4817,21 +4823,22 @@ public class Logger {
      * string with {@link Level#SEVERE}
      *
      * @param stackTraceDepth the depth of call stack trace which should be
-     * published
-     * @param th the Throwable associated with this
-     * @param data the LogRecordData associated with this
-     * @param msgFormat The message format string for a
-     * {@link java.util.Formatter} object.
-     * @param args Arguments referenced by the format specifiers in the
-     * msgFormat string. If there are more arguments than format specifiers, the
-     * extra arguments are ignored. The number of arguments is variable and may
-     * be zero.
+     *                        published
+     * @param th              the Throwable associated with this
+     * @param data            the LogRecordData associated with this
+     * @param msgFormat       The message format string for a
+     *                        {@link java.util.Formatter} object.
+     * @param args            Arguments referenced by the format specifiers in the
+     *                        msgFormat string. If there are more arguments than format specifiers, the
+     *                        extra arguments are ignored. The number of arguments is variable and may
+     *                        be zero.
      */
     public void severe(int stackTraceDepth, Throwable th, LogRecordData data, String msgFormat, Object... args) {
         fireLogRecord(Level.SEVERE, stackTraceDepth, th, data, msgFormat, args);
     }
 
     // *************************************************************************
+
     /**
      * This class extends {@link Level} and is used for Level {@link #DEBUG}
      */
@@ -4840,7 +4847,7 @@ public class Logger {
         /**
          * Constructs a individual Level object
          *
-         * @param name name of this log level
+         * @param name  name of this log level
          * @param level value of this log level
          */
         public SpecialLevel(String name, int level) {

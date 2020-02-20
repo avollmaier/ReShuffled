@@ -6,6 +6,7 @@
 package util;
 
 import gui.multilanguage.ResourceKeyEnum;
+
 import java.io.FileFilter;
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -18,12 +19,11 @@ public class ResourceBundleUtils {
     private static final String INDICATOR_MISSING_KEY = "??";
 
 
-    public static String getLangString (final ResourceBundle resourceBundle, final ResourceKeyEnum key) {
+    public static String getLangString(final ResourceBundle resourceBundle, final ResourceKeyEnum key) {
         if (resourceBundle != null) {
             try {
                 return resourceBundle.getString(key.name());
-            }
-            catch (final MissingResourceException ex) {
+            } catch (final MissingResourceException ex) {
                 return INDICATOR_MISSING_KEY + key;
             }
         }
@@ -31,16 +31,16 @@ public class ResourceBundleUtils {
     }
 
 
-    public static FileFilter createResourceBundleFileFilter (final String bundlename) {
+    public static FileFilter createResourceBundleFileFilter(final String bundlename) {
         return (pathname) -> {
             return pathname.getName().startsWith(bundlename)
-                && pathname.getName().toLowerCase().endsWith(".properties");
+                    && pathname.getName().toLowerCase().endsWith(".properties");
         };
 
     }
 
 
-    public static Locale createLocaleFromBundleName (final String name) {
+    public static Locale createLocaleFromBundleName(final String name) {
         final int languageIndex = name.indexOf('_');
         final int countryIndex = name.indexOf('_', languageIndex + 1);
 
@@ -62,7 +62,6 @@ public class ResourceBundleUtils {
 
         return new Locale(language, country);
     }
-    
-    
-    
+
+
 }

@@ -3,10 +3,6 @@ package gui.guiMain;
 import data.config.Config;
 import gui.controller.StartupController;
 import gui.multilanguage.ResourceManager;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Locale;
-import java.util.logging.Level;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,14 +11,27 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logging.Logger;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+
 
 public class GuiMain {
 
     private static final Logger LOG = Logger.getLogger(GuiMain.class.getName());
     private static GuiMain instance;
+    // *********************************************************
+    private final Thread guiThread;
 
 
-    public static GuiMain createInstance () {
+    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
+    private GuiMain() {
+
+        guiThread = new Thread(new GuiThread());
+        guiThread.start();
+    }
+
+    public static GuiMain createInstance() {
         if (instance != null) {
             throw new IllegalStateException("instance already created");
         }
@@ -30,27 +39,14 @@ public class GuiMain {
         return instance;
     }
 
-
-    public static GuiMain getInstance () {
+    public static GuiMain getInstance() {
         if (instance == null) {
             throw new IllegalStateException("instance not created yet");
         }
         return instance;
     }
 
-    // *********************************************************
-    private final Thread guiThread;
-
-
-    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
-    private GuiMain () {
-
-        guiThread = new Thread(new GuiThread());
-        guiThread.start();
-    }
-
-
-    public void shutdown () {
+    public void shutdown() {
         guiThread.interrupt();
     }
 
@@ -58,7 +54,7 @@ public class GuiMain {
     public static class GuiThread extends Application implements Runnable {
 
         @Override
-        public void start (Stage stage) {
+        public void start(Stage stage) {
             try {
                 final String presetLanguage = Config.getInstance().getInternationalization().getLanguage();
                 final String presetCountry = Config.getInstance().getInternationalization().getCountry();
@@ -77,8 +73,7 @@ public class GuiMain {
 
                 LOG.info(stage.getTitle() + " started successfully");
 
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 LOG.severe("Exception while running GUI" + ex);
                 ex.printStackTrace();
             }
@@ -87,7 +82,7 @@ public class GuiMain {
 
 
         @Override
-        public void run () {
+        public void run() {
             launch();
         }
 

@@ -1,7 +1,6 @@
 package serial.request;
 
 /**
- *
  * @author volalm15
  */
 public class RequestAutoDeal extends Request {
@@ -10,7 +9,7 @@ public class RequestAutoDeal extends Request {
         super();
         createRequestFrame("A" + value);
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder(128);
@@ -19,6 +18,6 @@ public class RequestAutoDeal extends Request {
         sb.append('}');
         return sb.toString();
     }
-    
-    
+
+
 }

@@ -9,22 +9,21 @@ import com.google.gson.annotations.SerializedName;
 
 
 /**
- *
  * @author alois
  */
 public class ConfigInternationalizationModel {
 
-    @SerializedName("language")
-    private String language;
-    @SerializedName("country")
-    private String country;
     @SerializedName("bundlePath")
     private final String bundlePath;
     @SerializedName("bundlePrefix")
     private final String bundlePrefix;
+    @SerializedName("language")
+    private String language;
+    @SerializedName("country")
+    private String country;
 
 
-    public ConfigInternationalizationModel (String language, String country, String bundlePath, String bundlePrefix) {
+    public ConfigInternationalizationModel(String language, String country, String bundlePath, String bundlePrefix) {
         this.language = language;
         this.country = country;
         this.bundlePath = bundlePath;
@@ -32,33 +31,32 @@ public class ConfigInternationalizationModel {
     }
 
 
-    public String getLanguage () {
+    public String getLanguage() {
         return language;
     }
 
 
-    public void setLanguage (String language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
 
 
-    public String getCountry () {
+    public String getCountry() {
         return country;
     }
 
 
-    public void setCountry (String country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
 
-
-    public String getBundlePath () {
+    public String getBundlePath() {
         return bundlePath;
     }
 
 
-    public String getBundlePrefix () {
+    public String getBundlePrefix() {
         return bundlePrefix;
     }
 

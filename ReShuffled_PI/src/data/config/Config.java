@@ -1,14 +1,13 @@
 package data.config;
 
-import exception.ConfigException;
 import com.google.gson.*;
 import data.model.ConfigInternationalizationModel;
 import data.model.ConfigModel;
 import data.model.ConfigSerialModel;
 import data.model.GamemodeModel;
+import exception.ConfigException;
 import logging.Logger;
 
-import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -17,43 +16,37 @@ public class Config {
 
     private static final Logger LOG = Logger.getLogger(Config.class.getName());
     private static Config instance;
+    // *************************************************************************
+    private final File configFile;
+    private ConfigModel configModel;
 
+    private Config(String configPath) {
+        configFile = new File(configPath);
+        readConfig();
+    }
 
-    public static Config getInstance () {
+    public static Config getInstance() {
         if (instance == null) {
             throw new IllegalStateException("Instance not created yet");
         }
         return instance;
     }
 
-
-    public static Config createInstance (String configPath) {
+    public static Config createInstance(String configPath) {
         if (instance != null) {
             throw new IllegalStateException("Instance already created");
-        }
-        else {
+        } else {
             instance = new Config(configPath);
         }
         return instance;
     }
 
-    // *************************************************************************
-    private final File configFile;
-    private ConfigModel configModel;
-
-
-    private Config (String configPath) {
-        configFile = new File(configPath);
-        readConfig();
-    }
-
-
-    public void save () {
+    public void save() {
         writeConfig();
     }
 
 
-    private void readConfig () {
+    private void readConfig() {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configFile), StandardCharsets.UTF_8))) {
             int length = 0;
             StringBuilder stringBuilder = new StringBuilder();
@@ -83,57 +76,55 @@ public class Config {
 
             LOG.info("Config file %s successfully read (%d lines)", configFile.getAbsolutePath(), length);
 
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             LOG.severe(ex, "Error while reading config file");
         }
     }
 
 
-    private void writeConfig () {
+    private void writeConfig() {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         String json = gson.toJson(configModel);
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(configFile), StandardCharsets.UTF_8))) {
             writer.write(json);
             LOG.info("Serialized new config successfully");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             LOG.severe(ex, "Error while writing config file");
         }
     }
 
 
-    public void setLogPath (String logPath) {
+    public void setLogPath(String logPath) {
         configModel.setLogPath(logPath);
     }
 
 
-    public void setStatisticsPath (String statisticsPath) {
+    public void setStatisticsPath(String statisticsPath) {
         configModel.setStatisticsPath(statisticsPath);
     }
 
 
-    public List<GamemodeModel> getGamemodes () {
+    public List<GamemodeModel> getGamemodes() {
         return configModel.getGamemodes();
     }
 
 
-    public int getGuiWidth () {
+    public int getGuiWidth() {
         return configModel.getGuiWidth();
     }
 
 
-    public int getGuiHeight () {
+    public int getGuiHeight() {
         return configModel.getGuiHeight();
     }
 
 
-    public ConfigSerialModel getConfigSerial () {
+    public ConfigSerialModel getConfigSerial() {
         return configModel.getSerial();
     }
 
 
-    public ConfigInternationalizationModel getInternationalization () {
+    public ConfigInternationalizationModel getInternationalization() {
         return configModel.getInternationalization();
     }
 
