@@ -51,8 +51,11 @@ public class StartupController implements Initializable {
     BorderPane rootBorderPane;
     @FXML
     JFXListView playerNameList;
-    final ChangeListener<String> nameChangeListener = (observableValue, oldValue, newValue) -> {
+    private final ChangeListener<String> nameChangeListener = (observableValue, oldValue, newValue) -> {
         notifyList(newValue);
+    };
+    private final ChangeListener<PlayerModel> playerListener = (observableValue, oldValue, newValue) -> {
+        tfPlayerName.setText(newValue.getName());
     };
     @FXML
     JFXComboBox cbAutoDealValue;
@@ -64,9 +67,6 @@ public class StartupController implements Initializable {
     JFXTextField tfGamemodeName;
     @FXML
     JFXTextField tfPlayerName;
-    final ChangeListener<PlayerModel> playerListener = (observableValue, oldValue, newValue) -> {
-        tfPlayerName.setText(newValue.getName());
-    };
     @FXML
     JFXComboBox cbCardQuantity;
     @FXML
@@ -300,14 +300,10 @@ public class StartupController implements Initializable {
 
     //Player list service
     private class PlayerCell extends ListCell<PlayerModel> {
-
         @Override
         protected void updateItem(PlayerModel item, boolean empty) {
-
             super.updateItem(item, empty);
-
             if (item != null || !empty) {
-
                 Label label = new Label(item.getName());
                 setGraphic(label);
             } else {

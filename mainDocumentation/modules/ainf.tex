@@ -200,14 +200,24 @@ Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur En
 JavaFX ist ein GUI-Framework, welches oft als Java-Swing nachfolger betitelt wird.
 Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
-Näher wird dieses Format im \textit{\autoref{subsec:datenformate-in-java-fx}} erklärt.
+Näher wird dieses Format im \autoref{subsec:datenformate-in-java-fx} erklärt.
 Der logische Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI
 und dem dahinter stehenden Code ist dadurch möglich.
 Benennen darf sich dieses Designkonzept Model-View-Controller. \autoref{subsec:entwurfsmuster-mvc}\\
 Auch bieter Java FX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen.
-Diese verbessern das sogenannte Look and Feel drastisch.
-
+Diese verbessern das sogenannte Look and Feel drastisch.\\\\
+Im Gegensatz zu Java-Swing muss man als Programmierer hier auch nicht die \lstinline[style=java]{Stage} mithilfe von \lstinline[style=java]{new JFrame()} erzeugen, sondern dies wird von JavaFX automatisch erledigt um diese danach der Methode \lstinline[style=java]{start(Stage)} zu übergeben.
+So werden einem viele Schnritte beim Start durch die Methode \lstinline[style=java]{launch()} abgenommen.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSync]
+  public static void main(final String[] args)
+  {
+    launch(args);
+  }
+\end{lstlisting}
+% @formatter:on
+Innerhalb der \lstinline[style=java]{Stage} wird die Oberfläche in eine \lstinline[style=java]{Scene} und verschiedenen \lstinline[style=java]{Nodes} eingeteilt, wobei \lstinline[style=java]{Nodes} etwaige Controls und die \lstinline[style=java]{Scene} den gemeinsamen Container dieser Controls darstellt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
@@ -215,7 +225,8 @@ Diese verbessern das sogenannte Look and Feel drastisch.
     \label{fig:Stage-Scene-Node}
 \end{figure}
 \subsubsection{Fazit}
-
+Im Großen und Ganzen fiel aufgrund des großen Spektrums an Möglichkeiten, die Wahl auf das JavaFX-Framework.
+Dieses fordert jedoch eine Einarbeitungsphase, welche aber keine Auswirkung auf den Umfang des Projekts hat.
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
 \subsubsection{Projektstruktur in Netbeans}
 Eine einheitliche Formatierung und Namensgebung ein Kernbestandteil einer gelungenen Projektplanung.
@@ -370,7 +381,7 @@ Auch kann das tatsächliche Ausführen eines Befehls, aus programmatischer Sicht
 Dieses Verhalten führt zu einer Vereinfachung der Ausführung von komplexeren Tätigkeiten des Programms.
 \subsubsection{Struktur}
 Das Command-Pattern verfügt meist über verschieden starke Ausprägung.
-Im Kern herrscht jedoch immer dasselbe Prinzip, welches in \textit{\autoref{fig:UML-Diagramm Command}} dargestellt wird.
+Im Kern herrscht jedoch immer dasselbe Prinzip, welches in \autoref{fig:UML-Diagramm Command} dargestellt wird.
 Vorallem die \textbf{Kapselung von Befehlswunsch und Ausführung} steht an erster Stelle.
 \begin{figure}[H]
     \centering
@@ -988,7 +999,7 @@ ALL                   & all                    & Darstellung von allen Nachricht
 \end{tabular}
 \caption{}
 \end{table}
-\subsection{Konfiguration}\label{subsec:konfiguration}
+\subsection{Konfigurationsdatei}\label{subsec:konfiguration}
 \subsubsection{Konzept}
 Sollten, wie in unserem Fall, Daten über einen längerem Zeitpunkt gespeichert werden und diese auch nach einem Systemneustart noch verfügbar sein, kann eine Datei implementiert werden, welche diese Daten speichert.
 In unserem Fall beziehen sich diese Daten auf Konfigurationseinträge der Maschine.
@@ -1038,44 +1049,123 @@ Dieses Pattern soll kurz in der \autoref{sampleConfig} gezeigt werden.
 Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im Konstruktor sein.
 Dies bedeuted, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwärtiges Objekt der Konfigurationsdatei zur Verfügung steht.
 Dieses genannte Objekt ist eine Instanz der Datenerhaltunsklasse \lstinline[style=java]{ConfigModel}.\\\\
-Implementiert wird die Methode read()
+Implementiert wird dies durch der Methode read(), welche über einen \lstinline[style=java]{BufferedReader} den json-String einliest.
+Dieser String wird anschließend, wie im Kapitel \nameref{sssec:gson} schon geklärt, in dieses genannte Objekt umgewandelt.\\
+So verfügt das Programm nun Möglichkeit, wichtige Daten zu speichern.
 \subsection{Statistiken}
 \subsubsection{Konzept}
+Sobald die Implementierung der Konfigurationsdatei abgeschlossen ist, kann nun nach dem gleichen Schema auch die Statistik-Datei erstellt werden.\\\\
+Diese genannte Datei soll nach jedem Beenden des aktuellen Spiels am Interface, neu geschrieben werden.
+Die Bestandteile dieser Datei sollten vor der Umsetztung klar definiert sein.
+\begin{enumerate}
+\item Gesamtanzahl aller Spiele
+\item Jedes einzelne Spiel
+\begin{enumerate}
+\item Alle Spielernamen und deren Punktestand
+\item Den gepielten Spielmodus mit dessen Hintergrundinformationen
+\end{enumerate}
+\end{enumerate}
 \subsubsection{Umsetzung}
+Wie schon genannt, erfolgt die Umsetztung genau nach dem gleichen Schema wie die der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
+Dies bedeutet, dass hier anstatt des \lstinline[style=java]{ConfigModel}, das \lstinline[style=java]{StatisticModel} die Basis der Datei darstellt.
+Dieses Model verfügt eine Liste von Objekten des Typ \lstinline[style=java]{GameModel}, welches den Kopf eines jeden Spiels darstellt.
+Auch beinhaltet es einen Zahlenwert zur Zählung der Gesamtspiele.\\\\
+Ab diesem Zeitpunk ist es möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
+Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
 \section{Frontend-Programmierung}
+In den folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
+Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.
 \subsection{Designkonzept}
-\subsection{Controllerklassen}
-\subsubsection{Grundlagen}
-\subsubsection{StartupController}
-\subsubsection{MainController}
-\subsubsection{HomeController}
-\subsubsection{StatsController}
-\subsubsection{About- und HelpController}
+Aufgrund dem großen Spektrum an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
+Sobald es aber jetzt um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens \textbf{Material-Design} nicht vorbei.
+Folgend soll der Vergleich von Material-Design und Flat-Design gezeigt werden.\\\\
+\footfullcite{kulturbanause2016}Da sich der Look von Material Design aus einfarbigen Flächen, schlichten Icons, großen Bildern und aufgeräumten Benutzeroberflächen zusammensetzt, wird der Stil häufig mit Flat Design verwechselt bzw. gleichgesetzt. Auch wenn Material Design im Flat Look gestaltet ist, bestehen doch signifikante Unterschiede.\\\\
+Anders als beim Flat Design, bei dem es in erster Linie um Ästhetik und Reduzierung geht, besteht ein Schwerpunkt beim Material Design auf der Optimierung der Benutzerfreundlichkeit und in der Einhaltung physikalischer Gesetze.
+Material Design fügt daher zusätzlich eine virtuelle Z-Achse hinzu, um Dreidimensionalität zu schaffen, die im Flat Design so explizit unerwünscht wäre.
+Anders als im Flat Design wird viel mit Animationen und animierten Übergängen, sowie mit Licht und Schatten gearbeitet, um dem Benutzer Zusammenhänge besser zu visualisieren.
+So sollte sich bei der Erstellung an folgener Grafik gehalten werden.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{fig/ainf/material-design-rules.png}
+\caption{Material-Design}
+\label{rpiAndDisplay}
+\end{figure}
+Mithilfe dieser Hintergrundinformation steht jetzt der Erstellung der grafischen Oberfläche nichts mehr im Weg.
+\subsection{Umsetzung}
+In diesem Kaptitel soll gezeigt werden, wie die grafische Oberfläche organisiert ist und wie diese mit den jeweiligen Controllern zusammenarbeitet.
+Beschrieben werden jedoch nur wichtige Programmelemente und keine Grundlagen von JavaFX da dies ansonsten den Rahmen sprengen würde.\\
+Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welche anschließend in den Kapiteln \refname{sssec:startupController} und \refname{sssec:mainController} eingegangen wird.
+\subsubsection{MVC-Implementierung}\label{sssec:mvc}
+Wie schon in der Beschreibung von JavaFX erwähnt, organisiert sich die grafische Oberfläche nach dem MVC-Designpattern.
+\subsubsection{Startup-Window und Controller}\label{sssec:startupController}
+Aufgabe des Startup-Windows ist es, den Benutzer das Spiel, welches er spielen möchte, parametrisieren zu lassen.
+Diese Parametrisierung beinhaltet das Auswählen eines Spielmodis sowie die Konfiguration der Spielernamen.\\\\
+Die Auswahl eines Spielmodis erfolg über eine eigens dafür bereitgestellte ComboBox.
+In dieser ComboBox befinden sich Objekte vom Typ \lstinline[style=java]{GamemodeModel}
+\lstinputlisting[firstline=7, lastline=16, style=java,caption=fdsa,label=fdsafdsa]{src/data/model/GamemodeModel.java}
+Sollte nun der Spieler nicht zufrieden mit gegebenen Spielmodis aus der ComboBox sein, kann er diese selbst auf ihn abstimmen und konfigurieren.
+Es kann hier über das Interaktionsmenü die Karten-, Spieler-, und Automatic-Deal-Anzahl (AutoDeal) eingestellt werden.
+Auch kann der Name des Spielmodis verändert werden.
+Ist dies der Fall, führt das zu einer Ergänzung eines neuen Spielmodis mit den eingestellten Parametern in der eigens dafür vorgesehenen Konfigurationsdatei.\\\\
+Auch ist, wie oben schon erwähnt, die Möglichkeit gegeben, Spielernamen zu bearbeiten.
+Dies wird durch die Liste in \autoref{startupWindow} ersichtlich.
+Wird in dieser Liste ein Spielernamen selektiert, übernimmt das Programm diesen direkt in das darüber befindliche Textfeld.
+Von dort aus kann der Name bearbeitet werden.\\
+Umgesetzt wird dies mithilfe von 2 sogenannte \lstinline[style=java]{ChangeListeners}, welche dauerhaft auf eine Veränderung, also einen "Change" warten um dann eine Methode auszuführen.
+Neben Listener wären auch Properties und Bindings für diese Anwendung möglich.
+Besser sind jedoch Listener.
+\lstinputlisting[firstline=54, lastline=59, style=java,caption=fdsa,label=fdsafdsa]{src/gui/controller/StartupController.java}
+So sind nun alle Preferenzen der Spieler gedeckt.\\\\
+Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
+Die Daten werden ab jetzt nicht mehr in der standard Darstellung angezeigt, sondern basiert auf einem eigens dafür angepassten Rendering.
+Solch ein Verfahren hat den Vorteil, das nun direkt ein Objekt in die ComboBox bzw. in die Liste importiert werden kann und ab diesem Zeitpunk die Referenzierung des selektierten Elements leichter fällt.
+Auch werden hierberi Resourcen eingespart, denn es werden nur die Elemente gerendert, die auch wirklich angezeigt werden.
+Im \autoref{CellFactory} wird im ersten Schritt die Darstellung einer einzelnen Zelle definiert.
+\lstinputlisting[firstline=302, lastline=313, style=java,caption=fdsa,label=CellFactory]{src/gui/controller/StartupController.java}
+Jetzt muss ledeglich die CellFactory mithilfe des Methodenaufrufs \lstinline[style=java]{playerNameList.setCellFactory(list -> new PlayerCell())} gesetzt werden und die Liste baut sich nach dem import der Daten zusammen.
+Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/Startup_German.png}
+\caption{Startup-Window}
+\label{startupWindow}
+\end{figure}
+\subsubsection{Main-Window und Controller}\label{sssec:mainController}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/Main_Home_German.png}
+\caption{Main-Window}
+\label{mainWindows}
+\end{figure}
+\subsubsection{Home-Tab und Controller}
+\subsubsection{Stats-Tab und Controller}\label{sssec:statsController}
+\subsubsection{About- und Help-Tab und Controllers}
 \subsection{Utility Klassen}
 \subsubsection{AlertUtil}
 \subsubsection{GuiUtil}
 \subsection{Implementierung von CSS}
 \subsection{Internationalisierung}
-\subsubsection{Gründe der Umsetzung}
-\subsubsection{Integration in das Interface}
-\subsubsection{Ressourcen Manager}
-\subsubsection{Resource Utility}
-\subsubsection{Bereitgestellte Ressources Bundles}
+\subsubsection{Konzept}
+\subsubsection{Umsetzung}
+\subsubsection{Bereitstellung von Ressource-Bundles}
 
 \section{Hardwarenahe-Programmierung}
 \subsection{Einrichtung des Mikrocontrollers}
 \subsection{Konzept und Ablaufdiagramm zur Kartenausgabe} \label{ssec:konzeptCardDeal}
 \section{Teilaufbau}
-\subsection{Auswahl des Zielsystems}
-\subsubsection{Arduino}
-\subsubsection{Raspberry PI}
-\subsection{Auswahl des Displays}
-\subsection{Montage und Testaufbau}
+\subsection{Raspberry PI}
+\subsection{Raspberry PI Monitor}
+\subsection{Montage und Testaufbau}\newpage
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/IMG_3107.jpg}
+\caption{Teilaufbau - Nicht bestromt}
+\label{rpiAndDisplay}
+\end{figure}
 \subsection{Konfiguration des Zielsytsems}
 \subsubsection{Betriebssystem}
-\subsubsection{Speichermedium}
-\subsubsection{Touchpanel}
-\subsubsection{SSH und SFTP}
+\subsubsection{Integration des Touchpanels}
+\subsubsection{Kommunikation über SSH}
 \subsubsection{Autostart realisiert durch Services}
 
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
