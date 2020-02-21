@@ -1,5 +1,3 @@
-\usepackage{natbib}
-
 \lohead{Perl Nicolas}
 \chapter{Elektronik}
 
@@ -1803,13 +1801,24 @@ In unserem Fall ätzten wir die Leiterplatte 17 Minuten. \\
 
 \subsubsection{Bestückter Prototyp}
 
+Anzumerken ist bei diesem, dass die Idee der Implementierung von einer Pumpe und einem Ventil noch nicht im Raum stand.
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[scale=0.06]{fig/elektro/PrototypTop.jpg}
+    \caption{Draufsicht der Oberseite}
+\end{figure}
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[scale=0.06]{fig/elektro/PrototypBot.jpg}
+    \caption{Draufsicht der Unterseite}
+\end{figure}
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
 \newpage
-\section{Resümee und Aussichten für die Zukunft}
-\subsection{Reflexion der Arbeit}
-
+\section{Verbesserungsmöglichkeiten und Conclusio}
 \subsection{Verbesserungsmöglichkeiten}
 
 \subsubsection{Crowbar Circuit\footfullcite{The Art Of Electronics - Kapitel 9.13.1 Overvoltage crowbars}}
@@ -1835,17 +1844,67 @@ Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannu
     \caption{Crowbar Circuit}
 \end{figure}
 
-Bei einer zulässigen Versorgungsspannung von 5V gelangt die Zenerdiode nicht in einen leitenden Zustand und eine sichere Versorgung der dahinter liegenden Schaltung ist gegeben.
-Sobald der Wert der Versorgungsspannung jenen nominalen Zenerspannungswert der Zenerdiode übersteigt, wird diese leitend.
-Überschüssige Spannung fällt somit am Widerstand ab, wobei die am Widerstand abfallende Spannung der am Gate anliegenden Spannung gleichzusetzen ist.
-Sollte diese Spannung die maximalen Gate-Triggerspannung übersteigen, zündet das Gate des Thyristors und er wird leitend.
-Somit schließt der Thyristor die dahinter liegende Schaltung kurz und ein Schutz der sensiblen Komponenten ist gegeben. \\
+Bei einer zulässigen Versorgungsspannung gelangt die Zenerdiode nicht in einen leitenden Zustand und eine sichere Versorgung der dahinter liegenden Schaltung ist gegeben.
+Der SCR wird leitend, sobald der Wert der Versorgungsspannung jenen nominalen Zenerspannungswert der Zenerdiode und die Gate-Triggerspannung des Thyristors übersteigt.
+Der Thyristor bleibt so lange im leitenden Zustand, bis dessen Anodenstrom unter wenige Milliampere fällt.
+Ein niederohmige Widerstand wird verwendet, um einen ausreichend hohen Zenerstrom zu generieren, um den SCR zu zünden.
+Der Kondensator hat die Funktion, die Aktiverung des Crowbar-Schaltung durch harmlose Spannungsspitzen zu negieren.
 
 Diese Schaltung konkret auf unsere Anwendung angewandt, wären die Komponenten wie folgt zu wählen:
 \begin{itemize}
-    \item R1 mit etwa 1kOhm um einen ausreichend hohen Zündstrom zu generieren
-    \item D1 mit einer Zenerspannung von 4.3V
-    \item T1 mit möglichst niedriger maximaler Gate-Triggerspannung, 0.8V bei TS1220-600B
+    \item R1 mit 68Ohm
+    \item D1 mit einer nom.Zenerspannung von 5.6V
+    \item C1 mit 10nF
+    \item T1 als TS1220-600B
 \end{itemize}
+
+Jene Schaltung hätte auch Nachteile, welche besonders die Wahl der Zenerdiode betreffen.
+Zenerdioden sind nur in diskreten Werten mit bestimmten Toleranzen erhältlich.
+Zusätzliche Toleranzen von etwa 5 Prozent bringt die 5V Versorgung über den LM2576-5 mit sich, welches somit einen Crowbar Circuit von mindestens 5.5V erfordert.
+Dieses Minimum ist jedoch aufgrund von einem vorrübergehenden Überschwingen der geregelten Versorgung zu erhöhen:
+Bei plötzlichen, großen Stromänderungen werden Spannungsspitzen erzeugt, welchen einige Wellen folgen.
+Induktive Lasten, wie das Ventil oder die Pumpe, verschärfen dieses Problem aufgrund von "remote sensing" zusätzlich.
+Die resultierende Schwingungen führen zu Störungen in der Versorgung, welche die Crowbar-Schaltung jedoch nicht auslösen sollen.
+Aus diesen Gründen heraus sollte die Crowbar-Auslösespannung nicht unter 6V gewählt werden, jedoch sollte sie auch nicht über 7V gewählt werden,
+da ansonsten das Risko der Zerstörung der Logikschaltungen gegeben wäre.
+Rechnet man alle Toleranzen der Komponenten zusammen, ergibt sich eine Crowbar-Threshold-Voltage von etwa 5.9V bis 6.6V .
+
+\subsubsection{Zusätzliche Beschaltung der Mikroprozessor-Anschlüsse}
+
+Um hochfrequente Störimpulse auf Signal- und Versorgungsebene zu dämpfen sowie zusätzlichen Überspannungsschutz zu gewährleisten,
+wäre folgende Implementierung, wie in der Automatisierungstechnik üblich, an jedem I/O-Pin des µC anzubringen.
+
+\begin{figure}[htp]
+    \centering
+    \begin{circuitikz}[european, scale = 1]
+        \draw (5,3) to [/tikz/circuitikz/bipoles/length=1.1cm, D-, l_=$D_1$](5,6) to (5,6)node[vcc]{};
+        \draw (2,0) to [short, -*](1,0) node[rground]{};
+        \draw (8.5,0) to (8.5,0) node[rground]{};
+        \draw (0,3) [short, o-] to (0.5,3);
+        \draw (0.5,3) to [european inductor, l=$Ferrit$](2,3);
+        \draw (2,3) to [R, l=$R_1$](4,3) to [short, -*](4,3) to [short, -*](5,3);
+        \draw (4,3) to [C, l_=$C_1$, -*](4,0);
+        \draw (5,0) to [/tikz/circuitikz/bipoles/length=1.1cm, D-, l_=$D_2$,](5,3);
+        \draw (5,3) to [R, l=$R_2$](7,3);
+        \draw (10,0) to (7,0) to (7,5) to (10,5) to (10,0);
+        \draw (8.5,3)node[anchor=north]{µC};
+        \draw (0,2.7) -- node[left] {$U$}node[sloped,currarrow,pos=1] {}(0,0.3);
+        \draw (0,0) to [short, *-](5,0);
+        \draw (8.5,5) to (8.5,6)node[vcc]{};
+    \end{circuitikz}
+    \caption{Realisierung der Leuchtdioden}
+\end{figure}
+
+\newpage
+\subsection{Conclusio}
+
+Das Ziel dieser Arbeit war, eine elektronische Steuereinheit zu kreieren, welche in der Lage ist, jegliche Aktoren anzusteuern, Sensoren einzulesen und mit einem Raspberry Pi Information auszutauschen.
+Eingehende Information soll über den vorgesehenen Mikrocontroller verarbeiten werden und Prozesse über diesen Ausgeführt werden. \\
+
+Mit diesen Anforderungen wurde ein Schaltplan erstellt und eine Platine geplant, entworfen, gefertigt und bestückt.
+Über ausführliches Testen wurden Fehlerquellen und einzelne Mängel ausgemerzt, sodass ein funktionstüchtiger Prototyp zu Stande kam.\\
+
+Nach Ansicht des Autors hat dieser viel Wissen in den Bereichen Projektorganisation, Prototyping und Hardwaredesign erlangt.
+Das durch diese Arbeit erlangte Fachwissen in verschiedenen Softwareprodukten, in Schaltungsdimensionierungen allgemein sowie in der Praxis gemachten Fehlern erachtet der Autor als essenziell für die Zukunft.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
