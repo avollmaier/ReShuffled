@@ -17,6 +17,5 @@ public class FileUtil {
     public static File[] getMatchingFiles(final File path, final FileFilter fileFilter) {
         final File[] files = path.listFiles(fileFilter);
         return files != null ? files : new File[0];
-
     }
 }

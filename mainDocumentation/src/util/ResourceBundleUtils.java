@@ -48,20 +48,14 @@ public class ResourceBundleUtils {
         String country = null;
 
         if (languageIndex > 0 && name.length() > languageIndex + 3) {
-
             language = name.substring(languageIndex + 1, languageIndex + 3);
-
         }
         if (countryIndex > 0 && name.length() > countryIndex + 3) {
             country = name.substring(countryIndex + 1, countryIndex + 3);
-
         }
         if (language == null) {
             return Locale.getDefault();
         }
-
         return new Locale(language, country);
     }
-
-
 }

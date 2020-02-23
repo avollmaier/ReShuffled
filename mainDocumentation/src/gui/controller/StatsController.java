@@ -36,36 +36,22 @@ public class StatsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         final TreeItem<PlayerModel> root = createTreeData();
         tbStatistics.setRoot(root);
-
         tbStatistics.getColumns().addAll(createColumns());
-
-
     }
 
 
     private TreeItem<PlayerModel> createTreeData() {
-
         final TreeItem<PlayerModel> root = createGroupTreeItem("All Games");
-
-        //erzeugen der gruppen
-
         Statistics.getInstance().getGames().forEach(game -> {
             final TreeItem<PlayerModel> group1 = createGroupTreeItem(game.getGamemode().getName());
-
             game.getPlayers().forEach(player -> {
-
                 group1.getChildren().add(new TreeItem<>(player));
-
                 group1.setExpanded(true);
-
-
             });
             root.getChildren().add(group1);
         });
         root.setExpanded(true);
         return root;
-
-
     }
 
 
@@ -77,8 +63,6 @@ public class StatsController implements Initializable {
         final TreeTableColumn<PlayerModel, V> column = new TreeTableColumn<>(columnTitle);
         column.setPrefWidth(prefWidth);
         column.setCellValueFactory(new TreeItemPropertyValueFactory<>(attributeName));
-
-
         return column;
     }
 
@@ -86,6 +70,4 @@ public class StatsController implements Initializable {
         return Arrays.asList(createColumn("Name", "name", 175),
                 createColumn("Points", "points", 125));
     }
-
-
 }

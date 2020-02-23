@@ -96,12 +96,9 @@ public class ResourceManager {
             Config.getInstance().getInternationalization().setCountry(locale.getCountry());
             Config.getInstance().save();
             return true;
-
         } else {
             return false;
         }
-
-
     }
 
 

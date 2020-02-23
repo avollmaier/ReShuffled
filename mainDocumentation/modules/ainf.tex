@@ -1,5 +1,3 @@
-%@COPYRIGHT VOLLMAIER ALOIS
-%@COPYRIGHT VOLLMAIER ALOIS
 \definecolor{hellgrau}{RGB}{230, 230, 230}
 \lohead{Vollmaier Alois}
 \chapter{Informatik}\label{ch:informatik}
@@ -198,7 +196,7 @@ Aufgrund der Verfügbarkeit von Java Swing in der Java Bibliothek bieten alle ID
 Das etwas veraltete und lieblose Look and Feel von Java Swing brachte uns zur Entscheidung, den Nachfolger, nämlich Java FX, zu verwenden.
 \subsubsection{JavaFX}\label{sssec: JavaFX}
 JavaFX ist ein GUI-Framework, welches oft als Java-Swing nachfolger betitelt wird.
-Hierbei werden im Vergleich zu Java Swing nicht alle GUI Elemente in einer Datei beschrieben, was die Übersichtlichkeit beeinträchtigt, sondern die Beschreibung geschieht in externen FXML-Dateien.
+Hierbei müssen im Vergleich zu Java Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Näher wird dieses Format im \autoref{subsec:datenformate-in-java-fx} erklärt.
 Der logische Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI verknüpft sind.
@@ -423,8 +421,8 @@ Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dies
 Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits Verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeit Zeitpunk möglich ist, den Code hinter der Oberfläche grafisch darzustellen.
 Andererseits kann nun, nur mit wenigen Klicks eine für den Endbenutzer ansprechende GUI gebaut werden.\\
-Im speziellen hat SceneBuilder weitere wichtige Vorteile wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
-Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu verfeinern.
+Im speziellen hat SceneBuilder weitere wichtige Vorteile, wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
+Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.\\\\
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eigent sich optimal für große Projekte wie dieses.
 \begin{figure}[H]
     \centering
@@ -481,7 +479,7 @@ Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien i
 % @formatter:on
 \subsubsection{FXML}
 FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
-Da die Trennung von GUI- und Programmcode bei Java FX nach dem MVC-Pattern \autoref{subsec:entwurfsmuster-mvc}vollzogen wurde, kann erst mithilfe des von Oracle entwickelte Formats ein Layout in einer eigenen Datei gebaut werden.\\\\
+Wenn man FXML-Dateien zur deklarativen Beschreibung von grafischen Oberflächen nutzten möchte, ist auch eine strikte Aaufteilung nach dem \nameref{subsec:entwurfsmuster-mvc} möglich.\\\\
 Die Struktur und Syntax von FXML Dateien ähnelt der von XML-Dateien.
 So werden auch Start- und End-Tags verwendet.
 Ein wesentlicher Unterschied ist jedoch bei der Groß-/Kleinschreibung ersichtlich.
@@ -674,7 +672,7 @@ Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der R
 Wie im Protokoll definiert kann nun entweder ein \lstinline[style=java]{OK} oder ein Errorcode mit dem Prefix \lstinline[style=java]{E} zurückkommen.
 Der Pool an Codes kann jedoch nur ein Volumen von 9 annehmen, da ansonsten der Frame zu groß wäre.
 Umgesetzt wird die Analyse mithilfe einer switch-case-Verzweigung.
-\lstinputlisting[firstline=61, lastline=86, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+%\lstinputlisting[firstline=61, lastline=86, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Jeder einzelne Error steht für eine spezielle Fehlerquelle bei der Ausführung.
 Eine Übersicht wird in \autoref{ssec:konzeptCardDeal} gegeben.\\\\
 Zusätzlich wird in der Klasse \lstinline[style=java]{Request} die \lstinline[style=java]{toString()} Methode überlagert.
@@ -964,6 +962,7 @@ Der genannte Logger soll nun dessen Protokollierung auf 2 verschiedenen Ausgaben
 \item Log-Datei
 \end{enumerate}
 Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
+% @formatter:off
 \begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
 LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
 try {
@@ -1074,10 +1073,13 @@ Ab diesem Zeitpunk ist es möglich, Statistiken des gesamten Lebenszykluses der 
 Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
 \section{Frontend-Programmierung}
 In den folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
-Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.
+Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.\\\\
+So wird gezeigt, wie die grafische Oberfläche organisiert ist und wie diese mit den jeweiligen Controllern zusammenarbeitet.
+Beschrieben werden jedoch nur wichtige Programmelemente und keine Grundlagen von JavaFX da dies ansonsten den Rahmen sprengen würde.\\
+Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welche anschließend in \autoref{subsec:startupController} und \autoref{subsec:mainController} eingegangen wird.
 \subsection{Designkonzept}
 Aufgrund dem großen Spektrum an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
-Sobald es aber jetzt um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens \textbf{Material-Design} nicht vorbei.
+Sobald es aber jetzt, wie in den Anforderungen, um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens Material-Design nicht vorbei.
 Folgend soll der Vergleich von Material-Design und Flat-Design gezeigt werden.\\\\
 \footfullcite{kulturbanause2016}Da sich der Look von Material Design aus einfarbigen Flächen, schlichten Icons, großen Bildern und aufgeräumten Benutzeroberflächen zusammensetzt, wird der Stil häufig mit Flat Design verwechselt bzw. gleichgesetzt. Auch wenn Material Design im Flat Look gestaltet ist, bestehen doch signifikante Unterschiede.\\\\
 Anders als beim Flat Design, bei dem es in erster Linie um Ästhetik und Reduzierung geht, besteht ein Schwerpunkt beim Material Design auf der Optimierung der Benutzerfreundlichkeit und in der Einhaltung physikalischer Gesetze.
@@ -1091,18 +1093,56 @@ So sollte sich bei der Erstellung an folgener Grafik gehalten werden.
 \label{rpiAndDisplay}
 \end{figure}
 Mithilfe dieser Hintergrundinformation steht jetzt der Erstellung der grafischen Oberfläche nichts mehr im Weg.
-\subsection{Umsetzung}
-In diesem Kaptitel soll gezeigt werden, wie die grafische Oberfläche organisiert ist und wie diese mit den jeweiligen Controllern zusammenarbeitet.
-Beschrieben werden jedoch nur wichtige Programmelemente und keine Grundlagen von JavaFX da dies ansonsten den Rahmen sprengen würde.\\
-Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welche anschließend in den Kapiteln \refname{sssec:startupController} und \refname{sssec:mainController} eingegangen wird.
-\subsubsection{MVC-Implementierung}\label{sssec:mvc}
-Wie schon in der Beschreibung von JavaFX erwähnt, organisiert sich die grafische Oberfläche nach dem MVC-Designpattern.
-\subsubsection{Startup-Window und Controller}\label{sssec:startupController}
+\subsection{MVC-Implementierung}\label{subsec:mvc}
+Wie schon in der Beschreibung von JavaFX erwähnt, kann die grafische Oberfläche nach dem MVC-Pattern oragnisiert werden.
+So ist es nun nötig, Design und Funktionalität voneinander zu trennen, und dessen Verknüpfung auch erst nachträglich im Programmcode zu vollziehen.
+Würde man es genau nehmen, dürften noch nich einmal Controllerklassen in diesen FXML-Dateien genannt werden.\\\\
+Wichtig ist jetzt, das sogenannte Event-Hanlding sowie die Verknüpfung swischen FXML und Controllerklassen programmatisch vorzunehmen.\\\\
+\textbf{Anpassungen innerhalb des Controllers}\\
+Mithilfe der Implementierung des Interface \lstinline[style=java]{Initializable} ist es möglich die Methode \lstinline[style=java]{initialize()} zu erzeugen.
+Diese wird nach jedem Start Programms automatisch aufgerufen.
+In dieser können nun etwaige Events definiert werden.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+@Override
+public void initialize(URL arg0, ResourceBundle arg1) {
+    btDelete.setOnAction(this::handleDelete);
+}
+\end{lstlisting}
+% @formatter:on
+\textbf{Anpassungen beim Startvorgang}\\
+Nun muss nur noch der explizite Controller beim Starten definiert werden.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+@Override
+public void start(Stage stage) {
+try {
+    final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
+
+    fxmlLoader.setController(new StartupController());
+
+    final Parent root = fxmlLoader.load();
+    stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(), Config.getInstance().getGuiHeight()));
+    stage.initStyle(StageStyle.UNDECORATED);
+    stage.setTitle("Startup GUI");
+    stage.show();
+
+    LOG.info(stage.getTitle() + " started successfully");
+} catch (IOException ex) {
+    LOG.severe("Exception while running GUI" + ex);
+    ex.printStackTrace();
+}
+\end{lstlisting}
+% @formatter:on
+\textbf{Fazit}\\
+So ist es nun möglich, mit wenigen Schritten diese genannte Trennung sauber durchzuführen.
+Diese soll in allen weiteren Programmabschnitten vollzogen werden.
+\subsection{Startup-Window und Controller}\label{subsec:startupController}
 Aufgabe des Startup-Windows ist es, den Benutzer das Spiel, welches er spielen möchte, parametrisieren zu lassen.
 Diese Parametrisierung beinhaltet das Auswählen eines Spielmodis sowie die Konfiguration der Spielernamen.\\\\
 Die Auswahl eines Spielmodis erfolg über eine eigens dafür bereitgestellte ComboBox.
-In dieser ComboBox befinden sich Objekte vom Typ \lstinline[style=java]{GamemodeModel}
-\lstinputlisting[firstline=7, lastline=16, style=java,caption=fdsa,label=fdsafdsa]{src/data/model/GamemodeModel.java}
+In dieser ComboBox befinden sich Objekte vom Typ \lstinline[style=java]{GamemodeModel}, gezeigt im \autoref{gamemodeModel}.
+\lstinputlisting[firstline=7, lastline=16, style=java,caption=fdsa,label=gamemodeModel]{src/data/model/GamemodeModel.java}
 Sollte nun der Spieler nicht zufrieden mit gegebenen Spielmodis aus der ComboBox sein, kann er diese selbst auf ihn abstimmen und konfigurieren.
 Es kann hier über das Interaktionsmenü die Karten-, Spieler-, und Automatic-Deal-Anzahl (AutoDeal) eingestellt werden.
 Auch kann der Name des Spielmodis verändert werden.
@@ -1123,51 +1163,235 @@ Auch werden hierberi Resourcen eingespart, denn es werden nur die Elemente geren
 Im \autoref{CellFactory} wird im ersten Schritt die Darstellung einer einzelnen Zelle definiert.
 \lstinputlisting[firstline=302, lastline=313, style=java,caption=fdsa,label=CellFactory]{src/gui/controller/StartupController.java}
 Jetzt muss ledeglich die CellFactory mithilfe des Methodenaufrufs \lstinline[style=java]{playerNameList.setCellFactory(list -> new PlayerCell())} gesetzt werden und die Liste baut sich nach dem import der Daten zusammen.
-Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.
+Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.\\\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/Startup_German.png}
 \caption{Startup-Window}
 \label{startupWindow}
 \end{figure}
-\subsubsection{Main-Window und Controller}\label{sssec:mainController}
+Wird jetzt der Button \textit{Spielstart} betätigt, wird automatisch ein neues Objekt vom Typ \lstinline[style=java]{Game} erstellt.
+Dieses beinhaltet den gewählten Spielmodus und alle definierten Spieler samt deren Punkteanzahl.\\
+Auch gelangt man nun auf das Hauptfenster welches im folgenden Abschnitt beschrieben wird.
+\subsection{Main-Window und Controller}\label{subsec:mainController}
+Das Main-Window stellt im engsten Sinne das Interaktionsfenster des Bentzers während des Spiels dar.
+Dieses wird mithilfe von Tabs realisiert.
+Jeder einzelne Tab besitzt einen eigenen Controller.
+Aufgrund dieser Strukturierung ist der Code viel durchschaubarer und strukturierter.
+Die Verlinkung kann ganz enfach innerhalb der FXML-Dokumente geschehen.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/Main_Home_German.png}
 \caption{Main-Window}
 \label{mainWindows}
 \end{figure}
-\subsubsection{Home-Tab und Controller}
-\subsubsection{Stats-Tab und Controller}\label{sssec:statsController}
-\subsubsection{About- und Help-Tab und Controllers}
-\subsection{Utility Klassen}
-\subsubsection{AlertUtil}
-\subsubsection{GuiUtil}
-\subsection{Implementierung von CSS}
-\subsection{Internationalisierung}
-\subsubsection{Konzept}
-\subsubsection{Umsetzung}
-\subsubsection{Bereitstellung von Ressource-Bundles}
-
+In den folgenen Kapiteln wird nun jeder einzelne Tab beschrieben und gezeigt, welche Besonderheiten ern an Code mitsich bringt.
+\subsection{Home-Tab und Controller}
+Zuerst springt einen sofort der Home-Tab ins Auge.
+Dieser fällt sofort mit der mittig plazierten Punkteanzeige auf.
+Mithilfe der 2 Buttons, nähmlich \textit{Vorheriger Spieler} und \textit{Nächster Spieler}, kann zwischen den Spielern gewechselt werden.
+Adaptiv kann jedem Spieler jetzt ein Punkt hinzu oder abgezogen werden.
+Sollte je 1 Punkt nicht ausreichen, kann mithilfe eines implementierten Sliders eine größere Anzahl an Punkten zugewiesen werden.\
+Wird ein Punkt hinzugefügt, aktuelisiert dies automatisch die Punkteanzeige.\\\\
+Umgesetzt wurde diese genannte Anzeige als \lstinline[style=java]{XYChart}, welcher mithilfe der folgenden Zeilen deklariert wurde.
+\lstinputlisting[firstline=43, lastline=45, style=java,caption=fdsa,label=XYChart]{src/gui/controller/HomeController.java}
+Nachdem diese Deklarierung erfolgt hat, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
+Diese Methode iteriert durch alle Spieler des Game-Objekts, holt die Namen sowie Punkteanzahl der Spieler heraus und schreibt sie in den \lstinline[style=java]{XYChart}.\\
+Neben dieser Funktion stellt das Dashboard auf der linken Seite ein Kontrollmenü zum Steuern der Maschine bereit.
+In diesem Menü kann mit einem Drücken auf den Button \textit{Herunterfahren} und dem Anschließenden bestätigen der Abfrage(\autoref{sssec:alert}), die Maschine heruntergefahren werden.
+Im Hintergrund werden hier vom Backend, Daten über die serielle Schnitstelle gesendet.\\
+Auf dem gleichen Prinzip basiert auch der Button \textit{Mischen}, nur das dieser Karten mischen lässt und anschließend mithilfe der AutoDeal-Funktion, automatisch Karten ausgibt.\\
+Sollen während des Spiels nur einzelne Karten benötigt werden, können mithilfe der Button-Group \textit{Deal} Karten ausgeteilt werden.
+Diese können, wie auch bei der Punkteanzahl, mithilfe eines Sliders ausgewählt werden.
+Das Programm deaktiviert nach dem Fehlen von vorhandenen Karten die Buttons und es ist erst nach einem weiteren Mischvorgang möglich, diese auszuteilen.\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.2\textwidth]{fig/ainf/Interface.png}
+\caption{Interaktionsmenü}
+\label{interface}
+\end{figure}
+Wird mit dem Button \textit{Spiel beenden} nun das Spiel beendet, wird vollautomatisch das Game-Objekt in die Statistik-Datei geschrieben.
+Auch gelangt der Spieler wieder in das Startup-Window zurück.
+So schließt sich der Zyklus eines Spieles wieder und es kann ein Neues gestartet werden.
+\subsection{Stats-Tab und Controller}\label{sssec:statsController}
+Der Stats-Tab bietet die Möglichkeit , Statistiken aus der Statistik-Datei abzurufen.
+Diese genanntenn Daten werden innerhalb einer \lstinline[style=java]{TreeTableView<S,T>} angezeigt.
+Aufgrund der Tatsache, dass eine \lstinline[style=java]{TreeTableView<S,T>} eines der komplexesten Bedienelemente in JavaFX ist, soll nun darauf eingegangen werden.\\\\
+Eine \lstinline[style=java]{TreeTableView<S,T>} ist hirachisch organisiert.
+Das beudetet, dass das Datenmodell aus verschiedenen Instanzen, in unserem Fall Instanzen vom Typ \lstinline[style=java]{Game} besteht.
+Diese werden in einer Gruppe zusammengefasst, welche wiederum in einer Hauptgruppe namens \lstinline[style=java]{root} zusammengefasst werden.
+So besteht eine Baumstruktur.
+Dargestellt werden die Daten über Instanzen vom Typ \lstinline[style=java]{TreeItem<T>}.
+Erstellt werden diese TreeItems mithilfe der Methode \lstinline[style=java]{createTreeData())}.
+\lstinputlisting[firstline=43, lastline=56, style=java,caption=fdsa,label=createTreeData]{src/gui/controller/StatsController.java}
+In dieser Methode wird zuerst die Hauptgruppe namens \lstinline[style=java]{root} erstellt.
+Im nächsten Schritt werden alle Game-Instanzen geholt und mithilfe der Methode \lstinline[style=java]{createGroupTreeItem()} in Gruppenelemente umgewandelt.
+\lstinputlisting[firstline=58, lastline=60, style=java,caption=fdsa,label=createGroupTreeItem]{src/gui/controller/StatsController.java}
+Innerhalb dieser Schleife, welche diese genannte Gruppen erstell, befindet sich einere weitere Schleife, welche zu den jeweiligen Gruppen die einzelnen Spieler in Form von Instanzen vom Typ \lstinline[style=java]{TreeItem<PlayerModel>} hinzufügt.
+Diese werden als sogenannte \lstinline[style=java]{children} betitelt.\\\\
+Im letzten Schritt muss nun nur mehr das Data Binding umgesetzt werden.
+Dies erfolgt mithilfe der folgenden Listing.
+\lstinputlisting[firstline=62, lastline=73, style=java,caption=fdsa,label=dataBindinh]{src/gui/controller/StatsController.java}
+Hier wird mithilfe von Instanzen des Typs \lstinline[style=java]{TreeTableColumn<S,T>} die Verbindung zu den Spalten hergstellt.
+Dabei ist \lstinline[style=java]{S} der Typ der Elemente von {TreeItem<S>}.
+Zum Auslesen der Werte nutzt man Objekte vom Typ \lstinline[style=java]{TreeItemPropertyValueFactory} welche man bei der Erstellung den Namen des gewünschten Attributs übergibt.\\
+Mithilfe dieses Codes ist es nun möglich, eine gutaussehende TreeTableView zu bauen.
+\subsection{About- und Help-Tab und Controllers}
+Die nebensächlichen Tabs namens \textit{About} und \textit{Help} stellen ledeglich einige Informationen für den Benutzer der Maschine bereit.
+Diese wird in Form von mit Pfeilen und Texten beschriebenen Bildern dargestelt.
+Im \textit{About-Tab} findet sich jedoch ein kleines Feature.
+Mithilfe einer ComBox kann hier die gewünschte Systemsprache gewählt werden.
+Die Umsetztung wird im \autoref{internationalization} näher beschrieben.\\
+So bieten diese beiden Tabs im Großen und Ganzen eine Schnitstelle zur Informationsbeschaffung für den Benutzer an.
+\subsection{Alerts}\label{sssec:alert}
+Um wie in JavaFX die Möglichkeit zu haben, Abfragen vorzunehemen, wurden in diesem Projekt sogenannte Dialoge implementiert.
+Diese werden durch die Utility-Klasse \lstinline[style=java]{AlertUtil} bereitgestellt.
+Mithilfe der impementierten Methode \lstinline[style=java]{showContentDialog()} kann ein Dialog erstellt werden.
+Dieser Erstellte Dialog wird mithilfe einer \lstinline[style=java]{StackPane} über das aktuelle Layout gelegt.
+In der Parameterliste befindet sich also diese \lstinline[style=java]{StackPane} und wird innerhalb der Methode als \lstinline[style=java]{root} betitelt.
+Aufgrund des zusätzlichen Features, wobei der Hintergrund wichgezeichnet wird, muss hie eine Node übergeben werden, auf welcher der Effekt angewendet werden soll.
+Auch ist es nötig eine Liste von \lstinline[style=java]{JFXButton}, also den verwendeten Buttons, zu übergeben.
+Zusätzlich muss ein Titel und ein Text angegeben werden.
+\lstinputlisting[firstline=24, lastline=41, style=java,caption=fdsa,label=dataBindinh]{src/util/AlertUtil.java}
+So führt der Aufruf der Methode zu einem Erstellen eines Dialogs.\\
+Wird nun auf einen Button der übergebenen Liste ein EventHandler mithilfe der Methode \lstinline[style=java]{addEventHandler()} gesetzt,
+kann auf das Schließen oder Bestätigen des Dialogs gewartet werden und danach eine spezifische Aktion erfolgen.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/Shutdown-Dialog.png}
+\caption{Dialog}
+\label{shutdown}
+\end{figure}
+\subsection{Internationalisierung}\label{sssec:internationalization}
+Um das Produkt in verschiedenen Ländern einsatzfähig machen zu können, und den Benutzer das beste Erlebnis zu bieten, ist es notwendig, etwaige Texte, Uhrzeiten usw. der grafischen Oberfläche in das Format des spezifischen Landes zu konvertieren.
+In JavaFX ist dies recht einfach umgesetzt.
+Hier hilf die Klasse \lstinline[style=java]{Locale} bei der Beschreibung von etwaigen Sprachbesonderheiten.
+Eine Instanz vom Typ \lstinline[style=java]{Locale} beinhaltet eine bestimmte geografische Region, sowie die in diesem Land gesprochene Sprache.
+Die Darstellung innerhalb des Objektes ist von der ISO 639 und der ISO 3166 abgeleitet, welche eine Einheitliche kodierung von Länder-und Sprachcodes vorraussetzen.
+Beim Erstellprozess einer Oberfläche kann nun dieses Local Objekt als Parameter an den \lstinline[style=java]{FXMLLoader} übergeben werden.\\\\
+Nun gibt es die Möglichkeit, Sprachdateien zu implementieren, welche alle übersetzten Texte beinhalten.
+Diese Dateien sollte nach folgendem Pattern benannt werden: \lstinline[style=java]{prefix_<sprachkürzel>_<länderkürzel>.properties}\\
+Innerhalbt dieser Sprachdatei sind übersetzte Texte immer mit Konstanten verknüpft.
+Gezeigt wird dies in folgenden Beispiel.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=resource]
+txt_about_save=Speichern
+txt_home_player=Spieler
+txt_home_gamemode=Spielmodus
+txt_msg_finishGame=Wollen Sie wirklich das Spiel beenden?
+\end{lstlisting}
+% @formatter:on
+Die folgende Methode filtert nun genau nach dem oben genannte Pattern und es werden infolgedessen die Daten eingelesen.
+\lstinputlisting[firstline=17, lastline=20, style=java,caption=fdsa,label=readBundle]{src/util/FileUtil.java}
+Sobald diese nun standartmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{activateLocale()} aktiviert werden kann.
+\lstinputlisting[firstline=90, lastline=101, style=java,caption=fdsa,label=multiLang]{src/gui/multilanguage/ResourceManager.java}
+Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
+Sollte dies der Falls sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
+Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuelle Locale zu schreiben, um dann beim nächsten Start dieses zu verwenden.
 \section{Hardwarenahe-Programmierung}
-\subsection{Einrichtung des Mikrocontrollers}
-\subsection{Konzept und Ablaufdiagramm zur Kartenausgabe} \label{ssec:konzeptCardDeal}
+Um nun die gesendeten Daten über der seriellen Schnitstelle auf der Ansteuerplatine zu erhalten ist es von Nöten, diese genannte Platine einzurichten und zu programmieren.
+Im folgenden Abschnitt wird nun dieser Prozess näher erklärt.
+\subsection{Konfiguration des Mikrocontrollers}
+\footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtig des Mikrocontrollers.
+Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.
+Bei einem neuen µC ist es grundsätzlich notwendig im Datenblatt genau dieses µCs den Auslieferungszustand der Fuses zu ermitteln.
+So werden beispielsweise die ATmega mit aktiviertem internen Oszillator ausgeliefert und man darf sich dementsprechend nicht wundern, wenn der µC einfach nicht mit dem angeschlossenen Quarz (XTAL) oszillieren will.
+Aufgrund der Verfügbarkeit eines Programmiersteckers ist es nun einfach, diese Fuse-Bits, also die Bits, welche für die Konfiguration des Mikrocontrollers dienen zu setzten.
+Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.\\
+Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{fig/ainf/features}
+\caption{Teilaufbau - Nicht bestromt}
+\label{fuses}
+\end{figure}
+Diese Zeichenkette kann jetzt mithilfe von AVR-Dude verarbeitet werden.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=resource]
+avrdude -c usbasp -P /dev/ttyUSB0 -p atmega324pa -e -U lfuse:w:0xfe:m
+avrdude -c usbasp -P /dev/ttyUSB0 -p atmega324pa -e -U hfuse:w:0xd0:m
+avrdude -c usbasp -P /dev/ttyUSB0 -p atmega324pa -e -U efuse:w:0xfe:m
+\end{lstlisting}
+% @formatter:on
+Werden unterdessen diese Fuse-Bits gesetzt, kann nun mithilfe von AVR-Dude ein Bootloader auf den Microcontroller gespielt werden.
+So steht nun der volle Umfang des Mikrocontrollers zu Verfügung.\\\\
+\subsection{Umsetzung Kommunikation} \label{ssec:konzeptCardDeal}
+Sobald jetzt der Mikrocontroller programmierbar gemacht wurde, kann mit dem programmatischen Teil gestartet werden.
+Ziel ist es, die serielle Kommunikation am Mikrocontroller zu realisieren.
+Umgesetzt wurde dies mit verfügbaren Vorlagen welche aus dem Unterricht bekannt waren.
+In diesen Vorlagen sind etwaige Dinge, wie die Implementierung von Tasks oder UART schon vorkonfiguriert.
+Dies erleichtert den Programmiervorgang enorm und fürt zu einer schnelleren Umsetztung der Ziele.\\\\
+Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
+Das bedeuted, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
+Wird ein Zeichen von der serielle Schnitstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
+\lstinputlisting[firstline=142, lastline=176, style=c,caption=fdsa,label=multiLang]{src/app.c}
+Zuerst wird geprüft ob das ertse ankommende Byte ein Startbyte nähmlich ein ":" ist.
+Falls dies nicht der Fall ist sollte der \lstinline[style=C]{ErrorCount} hochgezählt werden.
+Wenn im Buffer bereits ein Startbyte : vorhanden ist, darf kein Zweites innerhalb der Request geschrieben werden, da dies sonst zu Fehlern führen könnte.
+Falls ein solcher Fehler auftritt, sollte in einer Funktion ein weiteres mal der \lstinline[style=C]{ErrorCount} hochgezählt werden.
+Werden danach mehr Zeichen in den Buffer geschrieben als Platz ist, wird ebenfalls der ErrorCount hochgezählt.\\
+Ist nach dem Übertragen der ErrorCount größer als 0, so soll die Anzahl der Fehler ausgegeben werden.
+Verwendet wird hierbei eine LED auf dem Board.
+
+Nachdem der Buffer gefüllt ist wird die Funktion \lstinline[style=C]{app_handleModbusRequest()} aufgerufen die sich jetzt um diese Anfrage kümmert.
+Die Aufgaben der Funktion sind folgende:
+\begin{enumerate}
+\item Prüfen auf validen Protokoll Request
+\item Prüfen des CRC
+\item Senden eines Response
+\end{enumerate}
+Mithilfe dieser beiden Funktionen ist es nun möglich, Requests zu Empfangen und eine Response zu schicken.
 \section{Teilaufbau}
-\subsection{Raspberry PI}
-\subsection{Raspberry PI Monitor}
-\subsection{Montage und Testaufbau}\newpage
+Der letzte Schritt dieses Projekts ist es, einen Teil der Maschine aufzubauen.
+Dieser Teil der Maschine gliedert sich in Display, Ansteuerplatine und Raspberry PI.
+Auch soll gezeigt werden, wie die Konfiguration des Display und das aufsetzten der Betriebssystem vonstatten ging.
+\subsection{Konfiguration des Zielsytsems}
+\subsubsection{Betriebssystem}
+Als Betriebssystem wurde Raspbian ausgewählt.
+Das offizielle Betriebssystem für den Raspberry PI basiert auf dem Linux-Kernel.
+Außerdem bringt es die aktuellste Unterstützung von Hardware mit und ist zudem noch außerordentlich schlank.
+So wird auch der verwendete Display optimal Unterstützt.\\
+Installiert werden kann Rasbian nach dem Download von der offiziellen Website.
+Diese Installation startet mit dem erstellen einer Bootfähigen SD-Karte.
+Verwendet wurde das Tool Rufus welches einfach zu bedienen ist.
+Ist nun die SD-Karte bootfähig muss ledeglich das Raspberry PI gestartet werden.
+Anschließend folgt eine Systemkonfiguration.
+\subsubsection{Integration des Touchpanels}
+Die Integration des Touchpanels ist spielt eine elementare Rolle bei der Inbetriebnahme der Maschine.
+Ohne dieses Touchpanel kann nähmlich kein Benutzer die Maschnine bedienen.
+Das ausgewählte Touchpanel besitzt folgende Eigenschaften:
+\begin{enumerate}
+\item  1024×600 Auflösung
+\item Mit kapazitiven Touchcontrol
+\item Einfache Konfiguration
+Nach dem Anschließen muss nur mehr die \textit{config.txt} am Betriebssystem des Raspberry PI ergänz werden.
+Folgenden Zeile werden vorrausgesetzt:
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=resource]
+hdmi_force_hotplug=1
+max_usb_current=1
+hdmi_group=2
+hdmi_mode=1
+hdmi_mode=87
+hdmi_cvt 1024 600 60 6 0 0 0
+hdmi_drive=1
+\end{lstlisting}
+% @formatter:on
+Ab diesem Zeitpunkt ist eine verwendung des Diplays möglich.
+\subsubsection{Aufbau}
+Das Ziel des letzten Schritts ist es, alle Komponenten miteinander zu verbinden.
+Das bedeutet es muss noch die ausständige Verbindung der Ansteuerplatine und des Raspberry gemacht werden.
+Diese wurde über einen 40 Pin Stecker realisiert, welcher alle Pins des Raspberry PIs auf die Ansteuerplatine führt.
+So ist nun die serielle Verbindung sowie die Spannungsversorung des Raspberry PIs sichergestellt.
+\end{enumerate}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/IMG_3107.jpg}
 \caption{Teilaufbau - Nicht bestromt}
 \label{rpiAndDisplay}
 \end{figure}
-\subsection{Konfiguration des Zielsytsems}
-\subsubsection{Betriebssystem}
-\subsubsection{Integration des Touchpanels}
-\subsubsection{Kommunikation über SSH}
-\subsubsection{Autostart realisiert durch Services}
-
+Um nun das gesamte System in Betrieb zu nehmen ist es ledeglich notwendig, eine Spannungsversorgung an die Ansteuerplatine anzuschließen.\\
+Anhand dieses Stadiums können jetzt alle Komponenten in das Gehäuse eingebaut und verwendet werden.
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
 \subsection{Probleme}
 \subsubsection{Probleme bei der Implementierung von JavaFX}

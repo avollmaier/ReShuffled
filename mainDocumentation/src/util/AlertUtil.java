@@ -22,28 +22,21 @@ import java.util.List;
 public class AlertUtil {
 
     public static void showContentDialog(StackPane root, Node noteToBeBlur, List<JFXButton> controls, String header, String body) {
-
         BoxBlur boxBlur = new BoxBlur(2, 2, 2);
-
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.NONE);
-
         controls.forEach(control -> {
             control.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
                 dialog.close();
             });
         });
-
         dialogLayout.setHeading(new Text(header));
         dialogLayout.setBody(new Text(body));
         dialogLayout.setActions(controls);
         dialog.show();
-
         dialog.setOnDialogClosed((arg0) -> {
             noteToBeBlur.setEffect(null);
         });
-
         noteToBeBlur.setEffect(boxBlur);
     }
-
 }
