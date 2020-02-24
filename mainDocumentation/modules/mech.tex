@@ -793,8 +793,8 @@ beträgt 1,8 m/s²,
 daher wird für für die Beschleunigung a = 1,8 m/s² eingesetzt. Da die Karten aneindander Haften könnten
 wird für die Sicherheit S = 4 angenommen.
 Setzt man die Werte in die Formel ein bekommmt man folgendes Ergebnis: \\
-\[F_{TH}= ??? \cdot ()(9,81)\frac{m}{s^{2}}+(1,8)\frac{m}{s^{2}})\cdot 4\]
-\[F_{TH}= ???\]
+\[F_{TH}=0,002kg\cdot (9,81\frac{m}{s^{2}}+1,8\frac{m}{s^{2}})\cdot 4\]
+\[F_{TH}= 0,09288N\]
 
 Um die Druckdiffernez zu berechnen muss als erstes die Fläche des Saugers berechnet werden.
 Mit einem Durhmessers des Saugers von 20mm ergibt sich eine Fläche von:
@@ -804,8 +804,8 @@ Mit einem Durhmessers des Saugers von 20mm ergibt sich eine Fläche von:
 
 Setzt man die Werte in die Formel ein bekommt man folgende Druckdifferenz:
 \[\triangle P=\frac{F_{TH}}{A}\]
-\[\triangle P=\frac{????}{0,001257}\]
-\[\triangle P=???Pa\]
+\[\triangle P=\frac{0,09288N}{0,001257m^{2}}\]
+\[\triangle P=73,8902Pa\]
 
 Da der erechnete Wert unbeachtlich klein ist, kann eine möglichst kleine Pumpe ausgewählt werden. Diese beansprucht
 wenig Platz, braucht wenig Strom und ist leise. Schlussendlicch wurde eine Pumpe mit einer Leistung von 2,15W und einer
@@ -834,6 +834,93 @@ wir uns für 2 Valves mit jeweils 5 V Spannung.
     \item Leistung: <2W
     \item Druckbereich: 0-350 mmHg
 \end{itemize}
+
+
+
+
+\section{Fertigung der Bauteile}
+\subsection{Werkstoffwahl}
+Anfangs stellte sich die Frage mit welchem Werkstoff die Prototypen sowie die Fertigen Bauteile der
+Maschine produziert werden sollen. Da die Bauteile ein niedriges Gewicht haben sollen, billig und schnell produzierbar
+sein sollten wurde Kunststoff ausgewählt. Es wurden folgende Arten zur verarbeitung von Kunststoff in betracht gezogen:
+\subsubsection{Extrudieren\footfullcite{Kunststoffverarbeitung Extrudieren}}
+Das geschmolzene Material wird beim Extrudieren über Düsen gepresst. Über Ringförmige Düsen können Rohre entstehen,
+über Schlitzförmige können Platten entstehen, somit entspricht der Querschnitt der Düse immer auch den Querschnitt
+des erzeugten Profils. Der Vorteil dabei ist, dass sogar Formen mit Hohlräumen an einem Tag herstellbar sind.
+Die erzeugten Platten werden oftmals noch weiterverarbeitet indem man sie erwärmt und über eine Form zieht, oder durch
+Vakuum und Druck die gewünschte From bringt.
+Es gibt noch diverse andere Arten der Extruder, wie den Schneckenextruder, dieser lässt sich weiterunterteilen in den
+Einschnecken-, gegenlaf Doppelschnecken- und gleichläufige Doppelschneckenextruder. Der Vortel der Doppelschneckenextruder
+liegt dabei in ihrem guten Mischungsverhältniss, jedoch sind Einschneckenextruder um vieles günnstiger.
+Andere Bauformen des Extruders wären der Kolbenextruder sowie der Planetwalzenextruder.
+Für Keramikmaterialien werden in der Regel Kolbenextruder eingesetz.
+Um PVC-Folien Herzustellen werden am häufigsten Planetwalzenextruder benutzt.
+
+\subsubsection{Spritzgießen\footfullcite{Kunststoffverarbeitung Spritzgießen}}
+Über das Spritzgießen können komplexe Bauteile mit einer hohen qualität Hergestellt werden. Die Maschine besteht dabei aus
+einer sogenannten Spritzeinheit und einer Schließeinheit. Die Spritzeinheit besteht aus einem Extruder mit einer
+beweglichen Schnecke, diese stößt die Polymerschmelze durch die Vorwärtsbewegung der Schnecke in das Werkzeug aus.
+Um das Werkzeug zu öffnen und zu Schließen und somit den ausstoß des Polymeres zu ermöglichen wird die Schließeinheit
+benötigt.
+Bei begin des Spritzgusses wird eine rotierende Schnecke mit einem Granulat oder einem Pulver befüllt. Das Material
+wird danach durch die rotierende Bewegund der Schnecke geschmolzen und nach vorne befördert. Das geschmolzene Material
+staut sich an der Spitzte da das Werkzeug durch die Schließeinheit noch nicht geöffnet wurde und somit entsteht ein
+hoher Druck. Da die Schnecke beweglich gelagert ist, dreht sich diese selbst aus dem verdichteten Polymere heraus.
+Wird das Material dann eingespritzt, öffnet sich das Werkzeug und die Schnecke wird unter Druck gesetzt, sodass das
+Materia in die gewünschte Form gepritzt werden Kann.
+Beim Spritzgießen wird immer mehr MAterial mitgedruckt, da sich beim abkühlen des Spritzgusses das Volumen leicht
+verringert.
+Da das Werkzeug des Spritzgusses sehr teuer ist, müssten einige tausend Stück unserer Bauteile hergestellt werden,
+sodass sich der Spritzguss rentiert.
+
+\subsubsection{Blasformen\footfullcite{Kunststoffverarbeitung Blasformen}}
+Bei dieser Form der Kunststoffverarbeitung wird Druckluft in ein Schlauchstück eingeblasen das zuvor über ein Werkzeug
+extrudiert wurde. Über dieses Verfahren können somit Hohlkörper wie Flaschen oder Kanister hergestellt werden.
+Über ringförmige Düsen können auch Folien hergestellt werden, dieses Verfahren wird dann auch als Folienblasen bezeichnet.
+
+\subsubsection{Kalandrieren\footfullcite{Kunststoffverarbeitung Kalandrieren}}
+Beim kalandrieren schmilzt man eine Kunststoffmasse zwischen zwei erwärmten, sich gegeneindander drehenden Wakzen auf.
+Weitere Walzen werden für die benötigte Dicke der Folie dazugeschalten und sorgen gleichzeitig für die Homogenisierung.
+Über das Kalandrieren werden Platten oder Folien hergestellt, man kann aber auchh anere Materialien wie Metalle, Papier
+oder Gummi verwenden.
+
+\subsubsection{Rotationsformen\footfullcite{Kunststoffverarbeitung Rotationsformen}}
+Bei diesem Produktionsverfahren werden größere, hohle und nahtlose Kunststoffteile hergestellt. Es befindet sich
+ein geschmolzenes Kunststoffgranulat in einer rotierenden Form, dieses Granulat setzt sich beim auskühlen an den
+Rand der rotierenden Form ab und erzeugt somit eine hohle Kunststoffform.
+Der Vorteil hierbei liegt bei den niedrigeren Kosten, jedoch ist man nur in der Lage primitivere Formen herzustellen
+die innen hohl sind.
+
+\subsubsection{Verarbeitung von duroplastischer Kunstoffe}
+Um duroplastische kunststoffe zu verarbeiten müssen sie mittels Synthese in die gewünschte Form gebracht werden, da sie
+nicht wärmeformbar sind. Dazu werden meist pulverförmige Vorprodukte direkt in eine Form gebracht, und nach bedarf
+Farb- oder Zusatzstoffe beigefügt. Dannach werden sie unter Katalysator- und Wärmeeinfluss zum Endprodukt ausgehärtet.
+Durch dieses Verfahren können auch metallische Werkstoffe mit Duroplasten verbunden werden, wie zum beispiel
+glasverstärkte Kunststoffe (GFK) die vielfältig in der Luft- und Wasserfahre zum einsatz kommen.
+
+\subsubsection{Kleben}
+Kleben ist ein Fügeverfahren von Kunststoffen, bei dem meist Duroplasten und Elastomere zusammengefügt werden.
+Jedoch benötigt man dazu Kunststoffe mit polaren Egenschaften um eine erfolgreiche klebeverbindung zu garantieren.
+Um diese Eigenschaften zu erschafen müssen viele Kunststofffe mit Korona- oder Plasmabehandlung vorbereitet werden,
+um die notwendige Benetzbarkeit aufzuweisen.\\
+Physikalische Kleber können in drei Kategoreien eingeteilt werden:
+\begin{itemize}
+    \item \textbf{Verdunstung}: Diese Kleber härten durch Verdunstung des Lösemittels aus.
+    \item \textbf{chemische Kleber}: Aushärtung durch chemische Reaktion
+    \item \textbf{molekulare Struktur}: Besitzten berreits vor dem Auftragen über eine molekulare Struktur
+\end{itemize}
+
+\subsubsection{Schweißen}
+Schweißen ist das zweite Fügeverfahren für Kusntstoffe, bei diesem Verfahren muss das Material in erster Linie die
+Fähigkeit zum Schmelzen verfügen. Da nur Thermoplaste diese Eigenschaft besitzt ist es der einzige Kunststoff der sich gut
+zum Schweißen eignet. Für das erwärmen und aufschmelzen des Materials können unterschiedliche Techniken angewendet werden:
+\begin{itemize}
+    \item elektrische Induktionsheizung (Heizelementschweißen)
+    \item heiße Druckluft (Warmgasschweißen)
+    \item Licht- oder Laserstrahlung (Strahlungsschweißen)
+    \item Reibung (Reibungsschweißen)
+\end{itemize}
+
 
 \section{Teilaufbau}
 
