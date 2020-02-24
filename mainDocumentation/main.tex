@@ -66,12 +66,7 @@ bibliography=totocnumbered,											% Literaturverzeichnis
 \setcounter{secnumdepth}{5}                                            % Nummerierungstiefe der Überschriften
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}
-\usepackage[backend=biber, %% Hilfsprogramm "biber" (statt "biblatex" oder "bibtex")
-style=authoryear, %% Zitierstil (siehe Dokumentation)
-natbib=true, %% Bereitstellen von natbib-kompatiblen Zitierkommandos
-hyperref=true, %% hyperref-Paket verwenden, um Links zu erstellen
-]{biblatex}
-\addbibresource{Literaturverzeichnis.bib} %% Einbinden der bib-Datei
+\input{biber.tex}
 \input{listings}													% Datei importieren
 \subject{\includegraphics[scale=0.025]{fig/logoMecha.pdf}}
 \title{Diplomarbeit ReShuffled}

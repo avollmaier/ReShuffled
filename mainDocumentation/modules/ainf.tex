@@ -47,16 +47,11 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
         \ganttgroup[
         group/.append style={fill=blue}
-        ]{Frontend-Programmierung}{2019-11-15}{2020-1-09}\\ [grid]
+        ]{Frontend-Programmierung}{2019-11-15}{2019-12-22}\\ [grid]
         \ganttbar[
         bar/.append style={pattern=north east lines},
         name=KonzeptplanungFront
         ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
-
-        \ganttbar[
-        bar/.append style={pattern=north east lines},
-        name=KonzeptplanungFront
-        ]{Anfertigen von Mockup-Skizzen}{2019-11-25}{2019-11-31}\\ [grid]
 
         \ganttbar[
         bar/.append style={pattern=north east lines},
@@ -66,8 +61,9 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
         \ganttnewline[thick, black]
 
         \ganttgroup[
-        group/.append style={fill=green}
-        ]{Hardwarenahe-Programmierung}{2019-31-31}{2020-2-12}\\ [grid]
+        group/.append style={fill=black}
+        ]{Hardwarenahe-Programmierung}{2019-12-31}{2020-1-31}\\ [grid]
+
         \ganttbar[
         bar/.append style={pattern=north east lines},
         name=KonzeptplanungHard
@@ -83,7 +79,7 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
         \ganttgroup[
         group/.append style={fill=green}
-        ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
+        ]{Testen - Aufbauen}{2019-12-22}{2020-02-15}\\ [grid]
 
         \ganttbar[
         bar/.append style={pattern=north east lines},
@@ -102,19 +98,20 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
     \end{ganttchart}
     }
-    \caption{Zeitplanung - Informatik}
+    \caption{Zeitplanung-Informatik}
 \end{figure}
 \newpage
 Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
 Um das Zeitfenster des Projekts nicht zu verzögern, werden folgende Meilensteine in den Zeitplan implementiert:
 \begin{enumerate}
-    \item xx.xx.xxxx - Aufgabe XX
-    \item xx.xx.xxxx - Aufgabe XX
-    \item xx.xx.xxxx - Aufgabe XX
+    \item \textbf{15.11.2019} Beenden der Backend-Programmierung
+    \item \textbf{22.12.2020} Beenden der Frontend-Programmierung
+    \item \textbf{31.01.2020} Beenden der Hardwarenahmen-Programmierung
+    \item \textbf{15.02.2020} Beenden von Testen-Aufbauen
 \end{enumerate}
 \section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
-Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem 7" Display angezeigt werden soll.
+Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche, grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem Display angezeigt werden soll.
 Auf diesem Interface soll es möglich sein, die Steuerung der Maschine zu übernehmen.
 Die Möglichkeiten des Benutzers, diese zu bedienen sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
@@ -146,13 +143,15 @@ Ein weiterer Bestandteil des Projekts ist die Hardwarenahe-Programmierung.
 Aufgrund der Tatsache, dass die entwickelte Ansteuerplatine über einen ATmega-324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
 Erstellt werden soll ein Programm, welches die ankommenden Daten der seriellen Schnittstelle verarbeitet.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
+Verwendet soll hierbei, die im Unterricht verwendete Vorlage werden, welche den Programmierprozess verschnellert.
 
 \section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, bestimmte Voruntersuchungen durchzuführen.
+Diese Voruntersuchung umfasst Fragen, welche für des gesamten Projekts relevant sind.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
 \subsection{Auswahl der Arbeitsumgebung}\label{subsec:auswahl-der-arbeitsumgebung}
 Das Bearbeiten von Code spielt bei der Programmierung eine elementare Rolle.
-Dadurch muss, bevor mit dem Programmierprozess gestartet wird, eine passende Arbeitsumgebung ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
+Dadurch muss, bevor mit dem Programmierprozess gestartet werden kann, eine passende Arbeitsumgebung ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
 In unserem Fall sind diese im Speziellen:
 \begin{enumerate}
     \item Möglichkeiten der Programmierung sowie dem Debuggen eines Remote-Rechners
@@ -164,7 +163,7 @@ Debugging selbst hilft dem Entwickler bei der Fehlersuche.
 Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktuelle Wertebelegung von Variablen zu überprüfen.
 Dadurch erspart dies enorme Zeit bei der Programmierung.
 In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry PI, welcher mit dem Netzwerk über Ethernet verbunden ist.
-Es erfordert aber nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
+Es erfordert also nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
 \subsubsection{Apache-Netbeans}
 Die Netbeans-IDE, bereitgestellt von der Firma Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
 Primär wurde sie entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
@@ -173,7 +172,7 @@ Die Möglichkeit, eine Remote-Plattform einzurichten, wurde einfach gelöst und 
 Auch das einfache Einbinden von Plugins und Bibliotheken zählt zu den Hauptvorteilen von Netbeans.
 \subsubsection{Intellij IDEA}
 Eine kostenpflichtige Alternative zu Netbeans ist Intellij.
-Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
+Aufgrund der komplizierteren Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
 Jedoch bring Intellij auch einige Vorteile mit sich.
 \begin{enumerate}
     \item Flüssigere Bedienung
@@ -183,28 +182,32 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
 \subsubsection{Fazit}
 Natürlich ist es meist Ansichtssache, für welche IDE man sich entscheidet.
 Doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
-\subsection{Auswahl des GUI-Frameworks}\label{subsec:auswahl-des-gui-frameworks}
+\subsection{Auswahl des GUI-Toolkits}\label{subsec:auswahl-des-gui-frameworks}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Frameworks spielt eine wesentliche Rolle in der Programmierung von grafischen Anwendungen.
-Diese Frameworks stellen meist alle Elemente zur Erstellung einer GUI bereit.
+Toolkits sind Bibliotheken, welche alle Elemente zur Erstellung einer GUI bereitstellen.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
+So helfen sie dem Programmierer bei der Erstellung, denn ohne ein GUI-Toolkit müsste er diese Elemente selbst programmieren.
 \subsubsection{Swing}
 Das bereits in der Standard-Java-Bibliothek verfügbare Java-Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
 Der Aufwand zur Einrichtung hält sich in Grenzen, denn im Vergleich zu JavaFX muss Swing nicht eigens implementiert werden, um die GUI zu erstellen.
-Aufgrund der Verfügbarkeit von Java-Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur Erstellung von Oberflächen.
-Das etwas veraltete und lieblose Look and Feel von Java-Swing brachte die Entscheidung, den Nachfolger, nämlich JavaFX, zu verwenden.
+Aufgrund der Verfügbarkeit von Java-Swing in der Java-Bibliothek bieten alle IDEs die Möglichkeit zur Erstellung von Oberflächen.
+Das etwas veraltete und lieblose Look and Feel von Java-Swing ist jedoch nicht immer ansprechend und stellt einen negativen Punkt dar.
 \subsubsection{Java-FX}\label{sssec: JavaFX}
-JavaFX ist ein GUI-Framework, welches oft als Java-Swing Nachfolger betitelt wird.
-Hierbei müssen im Vergleich zu Java-Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl in externen FXML-Dateien.
+JavaFX ist ein GUI-Toolkit, welches oft als Java-Swing Nachfolger betitelt wird.
+Hierbei müssen im Vergleich zu Java-Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl, in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Näher wird dieses Format im \autoref{subsec:datenformate-in-java-fx} erklärt.\\
-Der logische Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI programmatisch verknüpft sind.
+Der logische Code hinter der GUI befindet sich hier jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI programmatisch verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI und dem dahinter stehenden Code ist dadurch möglich.
 Benennen darf sich dieses Designkonzept Model-View-Controller(\autoref{subsec:entwurfsmuster-mvc})\\
 Auch bietet JavaFX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen und einzubinden.
-Diese verbessern das sogenannte Look and Feel drastisch.\\\\
-Im Gegensatz zu Java-Swing muss man als Programmierer hier auch nicht die sogenannte \lstinline[style=java]{Stage}, also das jeweilige Fenster selbst, mithilfe von \lstinline[style=java]{new JFrame()} erzeugen, sondern dies wird von JavaFX automatisch erledigt.
+Diese verbessern das sogenannte Look and Feel drastisch.
+Generell kann eine GUI, gebaut in JavaFX, viel schöner umgesetzt werden, denn die Möglichkeiten bei der Erstellung sind enorm groß.
+Der Grund dafür ist die Möglichkeit, externe Bibliotheken, welche weitere Elemente einbinden, zu implementieren\\\\
+Auch beim Starten der Anwendung muss in JavaFX nicht viel vom Programmierer selbst getan werden.
+Im Gegensatz zu Java-Swing muss hier nicht die sogenannte \lstinline[style=java]{Stage}, also das jeweilige Fenster selbst, mithilfe von \lstinline[style=java]{new JFrame()} erzeugen, sondern dies wird von JavaFX automatisch erledigt.
 Diese wird danach der Methode \lstinline[style=java]{start(Stage)} übergeben.
-So werden einem viele Schnritte beim Start durch die Methode \lstinline[style=java]{launch()} abgenommen.
+So werden einem viele Schritte beim Start durch die Methode \lstinline[style=java]{launch()} abgenommen.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=JavaFX Startvorgang,label=javafxStart]
   public static void main(final String[] args)
@@ -213,23 +216,28 @@ So werden einem viele Schnritte beim Start durch die Methode \lstinline[style=ja
   }
 \end{lstlisting}
 % @formatter:on
+\newpage
 Innerhalb der \lstinline[style=java]{Stage} wird die Oberfläche in eine \lstinline[style=java]{Scene} und verschiedenen \lstinline[style=java]{Nodes} eingeteilt, wobei \lstinline[style=java]{Nodes} etwaige Controls und die \lstinline[style=java]{Scene} den gemeinsamen Container dieser Controls darstellt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
+    \includegraphics[width=0.4\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
     \caption{JavaFX Stage-Scene-Node Übersicht}
     \label{fig:Stage-Scene-Node}
 \end{figure}
+Auch die Möglichkeit zur Implementierung von Animationen, Licht/Schatten-Renderings sowie Geometrischen Objekten lässt JavaFX zu einem Vorreiter im Bereich der GUI-Entwicklung werden.
 \subsubsection{Fazit}
-Im Großen und Ganzen fiel aufgrund des großen Spektrums an Möglichkeiten, die Wahl auf das JavaFX-Framework.
-Dieses fordert jedoch eine Einarbeitungsphase, welche aber keine Auswirkung auf den Umfang des Projekts hat.
+Im Großen und Ganzen fiel aufgrund des großen Spektrums an Möglichkeiten, die Wahl auf das JavaFX-Toolkit.
+Obwohl JavaFX aus der Standart-Java-Bibliothek herausgeflogen ist, wird es weiterentwickelt und somit stellt ein Update kein Problem dar.
+Leider erfordert es jedoch eine Einarbeitungsphase, welche aber keine Auswirkung auf den Umfang des Projekts hat.
+Diese Einarbeitungsphase umfasst alle, in JavaFX verwendeten Datenformate, welche in \autoref{subsec:datenformate-in-java-fx} erklärt werden.
+Auch muss die Verwendung von Basiselementen näher betrachtet werden, denn diese ist mit Swing-Elementen nicht zu vergleichen.
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
 \subsubsection{Projektstruktur in Netbeans}
 Eine einheitliche Formatierung und Namensgebung ist die Basis einer gelungenen Projektplanung.
-Diese genannte einheitliche Formatierung führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
-Um die Übersichtlichkeit eines Projektes zu verbessern, wird nach einer klar definierten Projektstruktur gearbeitet.
+Diese genannte einheitliche Formatierung führt zu einer leichteren Orientierung in fremden, aber auch in eigenen Projekten.
+Um die Übersichtlichkeit eines Projektes zu verbessern, wird nach einer klar definierten Projektstruktur, welche zu Beginn des Projekts akribisch untersucht wurde, gearbeitet.
 Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden.
-\vspace{-6mm}
+\vspace{-10mm}
 \begin{figure}[H]
     \begin{center}
         \begin{forest}
@@ -303,7 +311,7 @@ Das zuvor genannte Layout der Projekthirachie eignet sich gut für viele Projekt
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.\\
 Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
 Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken. \\
-Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktur vor.
+Im Vergleich dazu, schreiben die Build-Tools Maven und Gradle eine klar definierte Projektstruktur vor.
 \begin{figure}[H]
     \begin{center}
         \begin{forest}
@@ -343,7 +351,10 @@ Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktu
         \end{forest}
     \end{center}
     \caption{Maven Projektstruktur}
-\end{figure}\newpage
+\end{figure}
+Diese Projektstruktur teilt sich innerhalb des \lstinline{root-directory} in 2 Bereiche auf.
+Einerseits gibt es wiederum ein eigenes Package, wo sich der gesamte Sourcecode befindet.
+Andererseits verfügt diese Struktur auch ein Package namens \lstinline{test}, welches ausschließlich für Tests des Codes mit dem JUnit-Framework zur Verfügung steht.\\
 Trotz alledem wurde auf die althergebrachte Version der Projekterstellung gesetzt.
 Grund dafür ist wiederum die fehlende Möglichkeit, eine Remote-Platform innerhalb eines Maven-Projekts zu implementieren.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
@@ -354,9 +365,11 @@ Natürlich wäre eine Umstellung in einem finalen Release denkbar.
 Das Erzeugungsmuster namens Singelton dient dazu, die Einzigartigkeit eines Objektes sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
 Auch bietet eine Klasse, welche nach dem Singelton-Pattern erzeugt wurde, einen globalen Zugriffspunkt über das gesamte Programm.
+So ist Singelton vielseitig einsetzbar und wird in diesem Projekt häufig verwendet.
 \subsubsection{Struktur}
-Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
-Dies bedeutet, dass eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vorliegt.
+Um nun die Einzigartigkeit sicherzustellen sind mehrere Maßnamen bei der Erstellung notwendig.
+Realisiert wird eine Klasse, welche nach dem Singelton Design-Patter erzeugt wurde, durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
+Dies bedeutet, dass eine Kapselung des Konstruktionsprozesses nach außen vorliegt.
 Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
 Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\
 \begin{figure}[H]
@@ -403,7 +416,7 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
     Verwaltet Benutzerinteraktion und enthält Steuerlogik
     \item \textbf{Model} \\
     Datenrepräsentation\\
-    Komplett abgeschirmt
+    Komplett abgeschirmt von der View
 \end{enumerate}
 \begin{figure}[H]
     \centering
@@ -413,13 +426,13 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
 \end{figure}
 \subsection{SceneBuilder}\label{subsec:scenebuilder}
 \subsubsection{Beschreibung}
-Scenebuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
+SceneBuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
 Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.\\\\
 Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeitpunkt möglich ist, den Code hinter der Oberfläche direkt grafisch darzustellen.
 Andererseits kann nun, nur mit wenigen Klicks, eine für den Endbenutzer ansprechende GUI gebaut werden.\\
 Im speziellen hat SceneBuilder weitere wichtige Vorteile, wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
-Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.\\
+Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eignet sich optimal für große Projekte wie dieses.
 \begin{figure}[H]
     \centering
@@ -431,9 +444,8 @@ Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}
 Sobald nun SceneBuilder als wichtiges Element der Erstellung ausgewählt wurde, kann jetzt ein näherer Blick auf die User-Experience geworfen werden.
 Diese sogenannte User-Experience beschreibt, wie der Endbenutzer das Produkt bzw. in diesem Fall die grafische Oberfläche empfindet.
 Wird auf diesen Kernpunkt kein Wert gelegt, wird auch niemand bei der Bedienung erfreut sein.\\\\
-SceneBuilder bzw. JavaFX bietet bereits einige Grundelemente für Layouts an, diese jedoch nicht sehr ansprechend sind.
-Sie können zwar mit CSS, was im \autoref{sssec:CSS} beschrieben wird, gestaltet werden.
-Dies ist jedoch für alle Elemente schwierig umzusetzen.
+SceneBuilder bzw. JavaFX bieten bereits einige Grundelemente für Layouts an, doch diese erfüllen noch nicht die gesetzten Anforderungen.
+Sie können zwar mit CSS, was im \autoref{sssec:CSS} beschrieben wird, gestaltet werden, doch dies ist jedoch für alle Elemente schwierig umzusetzen, da jedes Element überarbeitet werden muss.
 Abhilfe schafft dabei die Material-Design-Bibliothek von JFoenix.
 Diese Bibliothek ist Open-Source und implementiert, wie schon im Namen genannt, Designelemente nach dem von Google entwickelten Material-Design Vorgaben.
 Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut werden kann.
@@ -446,20 +458,20 @@ Angewendet werden die CSS-Attribute \lstinline{-fx-border-radius: 20pt;}  \lstin
     \caption{Gerenderter Button}
     \label{fig:Rendered Button}
 \end{figure}
-\subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
+\subsection{Datenformate}\label{subsec:datenformate-in-java-fx}
 Im folgenden Kapitel soll auf die Datenpersistenz eingegangen werden.
 Speziell in diesem Projekt werden die Datenformate \textbf{XML/FXML}, \textbf{CSS} und \textbf{JSON} verwendet.
-Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblick zu erschaffen.
+Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblick zu erschaffen.\\
+Speziell bei JSON wird eine Bibliothek genannt, welche in diesem Projekt verwendet wurde.
 \subsubsection{XML}
 XML (Extensible Markup Language) ist, wie im \autoref{sssec: JavaFX} schon erwähnt, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Damit ist sie also keine Programmiersprache.
 Diese XML-Dateien sind zu vergleichen mit normalen Textdokumenten, welche mit einem gewöhnlichen Texteditor geöffnet werden können.\\
 Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenannten XML-Tags.
 Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelementes.
-Auch ist es notwendig, ein Tag mithilfe eines sogenannten End-Tags zu schließen.
-Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.
-Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
-Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.
+Auch ist es notwendig, ein Start-Tag mithilfe eines sogenannten End-Tags zu schließen.
+Ein Indikator für ein End-Tag ist ein \lstinline{/}.
+Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.\\
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
 \begin{lstlisting}[style=XML,caption=XML-Codebeispiel,label=xmlExample]
@@ -474,7 +486,7 @@ Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien i
 % @formatter:on
 \subsubsection{FXML}
 FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
-Werden FXML-Dateien zur deklarativen Beschreibung von grafischen Oberflächen genutzt, ist auch eine strikte Aufteilung nach dem \nameref{subsec:entwurfsmuster-mvc} möglich.\\\\
+Werden FXML-Dateien zur deklarativen Beschreibung von grafischen Oberflächen genutzt, ist auch eine strikte Aufteilung nach dem \nameref{subsec:entwurfsmuster-mvc} möglich.\\
 Die Struktur und Syntax von FXML-Dateien ähnelt der von XML-Dateien.
 So werden auch Start- und End-Tags verwendet.
 Ein wesentlicher Unterschied ist jedoch bei der Groß-/Kleinschreibung ersichtlich.
@@ -494,18 +506,16 @@ Diese können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.
     </children>
 </VBox>
 \end{lstlisting}
-\newpage
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache, mit welcher Gestaltungsanweisungen erstellt werden können.
-Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
+Es soll aber beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
 \footfullcite{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
 Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von JavaFX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglichkeit zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
 Eine Besonderheit von JavaFX CSS besteht im Vergleich zur normalen CSS-Sprache darin, dass alle Elemente, welche das Prefix \lstinline{-fx-...} besitzen, in direkter Verbindung mit JavaFX stehen.
 Dies lässt sofort auf die Beschreibung eines JavaFX Elements schließen.
-\subsection{Datenformat JSON}\label{subsec:json}
-\subsubsection{Beschreibung}
+\subsubsection{JSON}
 Der Name JSON (JavaScript Object Notation) beschreibt neben XML eines der wichtigsten Datenformate zur Sicherstellung der Datenpersistenz.
 Dieser Nachfolger von CSV und INI setzt sich vor allem in der heutigen Datentechnik durch.
 Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
@@ -521,7 +531,8 @@ Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel nä
     }
 }
 \end{lstlisting}
-\subsubsection{Bibliothek Gson}\label{sssec:gson}
+\\\\
+\textbf{Bibliothek Gson}\\
 Die von Google entwickelte Bibliothek Gson spielt in diesem Projekt eine wichtige Rolle.
 Bei vorhandensein von enormen Datenmengen ist es zeitaufwändig, JSON-Dateien in Java zu erstellen.\\
 Eine Hilfe bietet dabei Gson.
@@ -622,7 +633,7 @@ Deal     & D\textless{}Anzahl der Karten\textgreater{} & Kartenausgabe je nach A
 AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausgabe   & --//--                                                      \\ \hline
 \end{tabular}%
 }
-\caption{Request- und Responsebeispiele Tabellarisch dargestellt}
+\caption{Request- und Responsebeispiele tabellarisch dargestellt}
 \end{table}
 Aufgrund eines wohldurchdachten Systems bei der Request-Definition, ist es nun möglich, den Pool an verschiedenen Requests explizit zu minimieren.
 Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden einzelnen Spieler, was mithilfe des Requests \textit{Deal} und \textit{AutoDeal} umgesetzt wird.\\
@@ -640,14 +651,14 @@ Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}
 \centering
 \vspace{-5mm}
 \includegraphics[width=1\textwidth]{fig/ainf/RequestUML.pdf}
-\caption{UML-Diagramm-Request-Baum}
+\caption{UML-Diagramm Request-Baum}
 \label{umlReq}
 \end{figure}
 Bevor nun auf jeden einzelnen Request eingegangen wird, soll nun die abstrakte Klasse \lstinline[style=java]{Request} betrachtet werden.
 Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()}, \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
 Wie der Name der Methoden schon ahnen lässt, ist \lstinline[style=java]{createRequestFrame()} für die Erstellung jedes Request zuständig.
 Diese Methode besitzt den Zugriffsmodifizierer \lstinline[style=java]{protected} und kann somit von den abstammenden Requests aufgerufen werden.
-\lstinputlisting[firstline=90, lastline=102, style=java,caption=fdsa,label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
+\lstinputlisting[firstline=90, lastline=102, style=java,caption=Methode createRequestFrame(),label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
 Sobald die Methode von einem abstammenden Request aufgerufen wird und der Content, also der Request-String, übergeben wird, überprüft diese Methode den übergebenen Content.
 Sollte dieser leer sein wird eine \lstinline[style=java]{IllegalArgumentException} geworfen und die Erstellung des Requests wird somit abgebrochen.
 Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
@@ -657,7 +668,7 @@ Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
 Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
 Aufgabe dieser ist es, das ankommende Response-Objekt, welches im unteren Abschnitt beschrieben wird, in dessen elementaren Daten zu zerlegen.
-\lstinputlisting[firstline=35, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+\lstinputlisting[firstline=35, lastline=42, style=java,caption=Teilabschnitt Methode handleResponse(),label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Auch soll in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist.
 Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
 Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der Request im Zielsystem verhalten hat.
@@ -673,7 +684,7 @@ Im Prinzip ist der Aufbau jeder Request-Klasse ähnlich.
 Aufgerufen wird der Konstruktor, welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
 Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
 Anhand eines Beispiels soll der Request \textit{Shuffle} gezeigt werden.
-\lstinputlisting[firstline=8, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
+\lstinputlisting[firstline=8, lastline=12, style=java,caption=Konstruktor RequestShuffle(),label=toString() Methode]{src/serial/request/RequestShuffle.java}
 \textbf{Fazit:}\\
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwertiges Objekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
@@ -701,7 +712,7 @@ Mithilfe der Methoden \lstinline[style=java]{wait()} und \lstinline[style=java]{
 Hier wartet bzw. schläft der Thread, bis er von außen aktiviert, also aufgeweckt wird.
 Zu sehen ist dies im \autoref{commThreadSync}.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSync]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSync]
 try {
     mainLoop:
     while (!Thread.currentThread().isInterrupted()) {
@@ -725,11 +736,11 @@ finally {
 % @formatter:on
 Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
 Diese Methode, welche nach dem Command-Verhaltensmuster (\autoref{subsec:verhaltensmuster-command}) gestaltet wurde, fügt lediglich ein Element zur Liste hinzu und weckt den Thread mit \lstinline[style=java]{notifyAll()}.
-\lstinputlisting[firstline=61, lastline=67, style=java,caption=fdsa,label=toString() Methode]{src/serial/Communication.java}
+\lstinputlisting[firstline=61, lastline=67, style=java,caption=Methode sendRequestExecutor(),label=toString() Methode]{src/serial/Communication.java}
 Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der Thread zu arbeiten.
 Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 if (!toSentList.isEmpty()) {
     pendingRequest = toSentList.removeFirst();
     LOG.fine("sending request " + pendingRequest.getMreqFrame());
@@ -747,7 +758,7 @@ Diese besteht jedoch nicht aus Request-Objekten, sondern aus sogenannten Respons
 In jedem einzelnen Objekt vom Typ \lstinline[style=java]{Response} befindet sich der Frame, gespeichert in dem Attribut \lstinline[style=java]{byte [] resFrame}, und ein Zeitstempel namens \lstinline[style=java]{long timeMillisCreatedAt}.\\\\
 Wird nun vom CommunicationReceiveThread, welcher später beschrieben wird, ein Request empfangen und zur \lstinline[style=java]{responseList} hinzugefügt, entfernen die folgenden Zeilen Code den Request von der Liste und speichern diesen.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 res = responseList.removeFirst();
 if (!responseList.isEmpty()) {
     LOG.warning("response list should be empty, but " + responseList.size() + " items in list");
@@ -759,7 +770,7 @@ Mithilfe des Methodenaufrufs \lstinline[style=java]{pendingRequest.handleRespons
 Sollte jedoch kein Response ankommen, versucht das Programm, sofern in der Konfigurationsdatei ein zweiter Versuch erlaubt ist, den selben Request nochmals zu senden.
 Ist dies nicht der Fall, wird eine \lstinline[style=java]{SerialException} geworfen.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 if (responseList.isEmpty()) {
     if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
         sendRequestExecutor(pendingRequest);//send second response
@@ -776,7 +787,7 @@ Dieser sogenannte CommunicationReceiveThread holt sich vorerst den InputStream u
 Ist das ankommende Zeichen ein \lstinline[style=java]{:}, beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
 Sollte jedoch ein unerwartetes Zeichen ankommen, was auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
 while (!Thread.currentThread().isInterrupted()) {
     int b = is.read();
     if (b >= 0 && b < 255) {
@@ -792,7 +803,7 @@ while (!Thread.currentThread().isInterrupted()) {
 % @formatter:on
 Werden die ankommenden Daten nun als vollwertigen Request empfunden, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschrieben, weiterverarbeitet.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
         else if (bufferIndex < buffer.length) {
             buffer[bufferIndex++] = (byte) b;
             if (b == '\n') {
@@ -825,7 +836,7 @@ Einerseits soll er sicherstellen, dass sich alle Parameter der seriellen Schnitt
 Umgesetzt wird dies mithilfe der Abfrage \lstinline[style=java]{if (config.isDisabled())}.
 Diese Parameter werden im Folgenden aufgelistet.
 % @formatter:off
-\begin{lstlisting}[style=json,caption=json-Codebeispiel,label=jsonSerial]
+\begin{lstlisting}[style=json,caption=Teilabschnitt Konfigurationsdatei,label=jsonSerial]
 "serial": {
 "disabled": false,
     "device": "sim",
@@ -836,11 +847,13 @@ Diese Parameter werden im Folgenden aufgelistet.
 },
 \end{lstlisting}
 % @formatter:on
+\newpage
 Andererseits soll die Geräteauswahl mithilfe eines Abgleichs des Gerätenamens erfolgen.
-Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()} ausgeführt, ansonsten \lstinline[style=java]{initSerialDevice()}.
+Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()}, ansonsten \lstinline[style=java]{initSerialDevice()} ausgeführt.
 In diesen beiden Methoden werden sowohl die serielle Schnittstelle, als auch der Simulator konfiguriert.
+Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt Konstruktor Serial(),label=serialInit]
 private Serial(ConfigSerialModel config) throws SerialException, IOException {
     this.config = config;
 
@@ -855,8 +868,6 @@ private Serial(ConfigSerialModel config) throws SerialException, IOException {
 }
 \end{lstlisting}
 % @formatter:on
-Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
-\\\\
 \textbf{\lstinline{initSimulation()}}
 \\
 Vorerst soll angenommen werden, dass als Gerät der Simulator ausgewählt wurde.
@@ -866,11 +877,11 @@ Also werden diese zu Beginn definiert.\\
 Um nun den Serial-Simulator zu starten ist lediglich eine Erstellung des ReshuffledMainboardSimulator-Objekts notwendig.
 Dieser erhält einen Input- und Outputstream mit welchen er die Kommunikation durchführen kann.\\\\
 So ist nun die volle Funktionalität des Simulators gegeben und es kann ohne echte Peripherie gearbeitet werden.
-\lstinputlisting[firstline=69, lastline=87, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
+\lstinputlisting[firstline=69, lastline=87, style=java,caption=Methode initSimulation(),label=fdsafdsa]{src/serial/Serial.java}
 \textbf{\lstinline{initSerialDevice()}}
 \\
 Wird nun angenommen, dass es sich bei dem Konfigurationseintrag nicht um die Zeichenkette \lstinline[style=json]{"sim"} handelt, springt das Programm in die Methode \lstinline{initSerialDevice()}.
-Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.
+Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.\\
 Verwendet wurde hierbei die Open-Source-Bibliothek jSSC (Java Simple Serial Connector).
 Erstellt wird eine Instanz des \lstinline[style=java]{jssc.SerialPort} mithilfe einer Objekterzeugung.
 Diese fordert als Parameter den Namen des Ports.
@@ -878,16 +889,17 @@ Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\
 Dieses genannte Öffnen des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException}führen.
 Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
 Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und Outputstreams für das serielle Endgerät definiert werden.\\\\
-\lstinputlisting[firstline=89, lastline=103, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
+\lstinputlisting[firstline=89, lastline=103, style=java,caption=Methode initSerialDevice(),label=fdsafdsa]{src/serial/Serial.java}
+\newpage
 Ab diesem Zeitpunkt wird das richtige Endgerät ausgewählt und es kann über den jeweiligen Stream kommuniziert werden.
 Dies kann über die implementierte Methode \lstinline[style=java]{writeString()} geschehen, welcher direkt einen String als Parameter übergeben wird.
-\lstinputlisting[firstline=105, lastline=109, style=java,caption=fdsa,label=fdsa]{src/serial/Serial.java}
+\lstinputlisting[firstline=105, lastline=109, style=java,caption=Methode writeString(),label=fdsa]{src/serial/Serial.java}
 Auf die Weiterverarbeitung der Daten an dem \lstinline[style=java]{SerialJsscInputStream} und \lstinline[style=java]{SerialJsscOutputStream} soll nicht weiter eingegangen werden, denn aufgrund der einfachen Implementierung ist dies selbstverständlich und würde zur Überladung des Kapitels führen.
-Wiederum wird anschließend auf die Verarbeitung von Daten vom Simulator gesprochen, denn dies spielt eine wichtige Rolle und sollte nicht unerwähnt bleiben.
+Wiederum wird anschließend über die Verarbeitung von Daten vom Simulator gesprochen, denn dies spielt eine wichtige Rolle und sollte nicht unerwähnt bleiben.
 \subsubsection{Serial-Simulator}\label{sssec:serialSim}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{fig/ainf/InputOutputStreams.pdf}
+\includegraphics[width=0.7\textwidth]{fig/ainf/InputOutputStreams.pdf}
 \caption{UML-Diagramm Streams}
 \label{ProducerConsumer}
 \end{figure}
@@ -900,7 +912,7 @@ Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=
 Als Beispiel kann mithilfe einer Log-Datei auch ein Benutzer, welcher nicht über die Möglichkeit verfügt, den Quellcode einzusehen, einzelne Fehler erkennen (vorausgesetzt diese Möglichkeit ist durch das Programm geschaffen).
 Auch ist nun die Persistenz der Logging-Einträge gegeben.
 Dies bedeutet, es kann nun sichergestellt werden, dass diese Einträge auf dem System gespeichert werden und nach einem Neustart verfügbar sind.
-Nutzt man diese Art von Protokollierung kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
+Nutzt man diese Art von Protokollierung, kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
 \subsubsection{Integration in das Programm}
 Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
@@ -1292,7 +1304,7 @@ Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches P
 Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{fig/ainf/features}
+\includegraphics[width=0.8\textwidth]{fig/ainf/Features.png}
 \caption{Teilaufbau - Nicht bestromt}
 \label{fuses}
 \end{figure}
