@@ -748,11 +748,92 @@ Wie die vorherigen Platten wird auch diese Platte über 4 Bohrungen mit den Wink
 Ansonsten hat diese Platte des Gehäuses nur 2 weitere Bohrungen über die die Endschalterhalterung verschraubt wird.
 
 \subsubsection{Ausgabenplatte}
-
+Da über diese Platte die Karten entnommen werden bestzt die Ausgabenplatte eine rechteckige Einfräsung auf der unteren
+Seite.
+Weiters besiztz sie wie die anderen Platten 4 Bohrungen an den Ecken.
 
 \subsubsection{Topplatte}
+Die Topplatte oder auch der "Deckel" des Gehäuses hat eine rechteckige Einfräsung in der die Kartenführung Modul 1 oben
+gesteckt wird. Nach der Einfräsugng besitzt diese Platte noch 4 Bohrungen über die der Aufhänger des Kartenhalterungsmodul
+befestigt wird.
+Wie auch bei allen anderen Platten besitzt diese Platte auch 4 Bohrungen an ihren Eckpunkten.
 
 \section{Berechnungen und Dimensionierungen}
+\subsection{Auswahl des Motors}
+TODO\\
+\textbf{Eckdaten des gewählten Motors}
+\begin{itemize}
+    \item Motortyp: Bipolarer Schrittmotor
+    \item Schrittwinkel: 1,8 Grad
+    \item Haltemoment: 0,59 Nm
+    \item Bemessungsstrom / Phase: 2,0 A
+    \item Gewicht: 380 g
+    \item Rahmengröße 41 mm x 41 mm
+\end{itemize}
+\subsection{Auswahl der Vakuumaktorik}
+\subsubsection{Auswahl der Vakuumpumpe\footfullcite{Sauggreifer}}
+Um die Vakuumpumpe auszuwählen muss zuerst die erforderliche Druckdifferenz berechnet werden.
+Da die Karten liegend angehoben werden kommt für die berechnung der theoretischen Haltekraft der Typische Lastfall 1
+zum Einsatz. Zwar wird dieser für eine vertikale Kraftrichtung eingesetzt und nicht wie bei dem beispiel in einem
+60° Winkel, dennoch ist er der Lastfall der den am nächsten kommt.
+Die theoretische Haltekraft wird mit folgender Formel berechnet:
+\begin{equation}
+    F_{TH} = m \cdot (g + a) \cdot S
+\end{equation}
+
+    F\textsubscript{TH}.... theoretische Haltekraft [N] \\
+    m.... Masse [kg]\\
+    g.... Erdbeschleunigung [9,81 m/s²]\\
+   a.... Beschleunigung der Anlage [m/s²]\\
+    S.... Sicherheitsfaktor \\
+
+Die Masse einer standartmäsigen Spielkarte liegt bei ...., darum wird mit einem Wert von m = .... gerechnet.
+Die maximale Wegbeschleunigung des Saugnapfes wird  beim einziehen des Hubmagnetes erreicht und
+beträgt 1,8 m/s²,
+daher wird für für die Beschleunigung a = 1,8 m/s² eingesetzt. Da die Karten aneindander Haften könnten
+wird für die Sicherheit S = 4 angenommen.
+Setzt man die Werte in die Formel ein bekommmt man folgendes Ergebnis: \\
+\[F_{TH}= ??? \cdot ()(9,81)\frac{m}{s^{2}}+(1,8)\frac{m}{s^{2}})\cdot 4\]
+\[F_{TH}= ???\]
+
+Um die Druckdiffernez zu berechnen muss als erstes die Fläche des Saugers berechnet werden.
+Mit einem Durhmessers des Saugers von 20mm ergibt sich eine Fläche von:
+\[A=r^{2}\cdot \pi\]
+\[A=0,02^{2}\cdot \pi\]
+\[A=0,001257m^{2}\]
+
+Setzt man die Werte in die Formel ein bekommt man folgende Druckdifferenz:
+\[\triangle P=\frac{F_{TH}}{A}\]
+\[\triangle P=\frac{????}{0,001257}\]
+\[\triangle P=???Pa\]
+
+Da der erechnete Wert unbeachtlich klein ist, kann eine möglichst kleine Pumpe ausgewählt werden. Diese beansprucht
+wenig Platz, braucht wenig Strom und ist leise. Schlussendlicch wurde eine Pumpe mit einer Leistung von 2,15W und einer
+Spannung von 5V DC ausgewählt.\\
+\textbf{Daten der Pumpe}
+\begin{itemize}
+    \item Spannung 5V (max 6V)
+    \item Druck: > 400 mmHg (> 53329 Pa)
+    \item Verbrauch: 430 mA
+    \item Lautstärke: 63 dB
+    \item Durchflussrate: > 1,8 Liter pro Minute
+\end{itemize}
+
+
+
+\subsubsection{Auswahl der Valve}
+Da der Saugnapf nicht immer einen Unterdruck haben darf wir eine Valve benötigt, dieses Bauteil fungiert wie ein
+Schalter der dafür sorgt ob der Saugnapf einen Unterdruck bekommt oder nicht. Da wir mit 2 Saugern arbeiten benötigen wir
+auch 2 Valves. Die einzige Vorraussetzung der Valves war es nicht zu viel Spannung zu verbrauchen, daher entscchieden
+wir uns für 2 Valves mit jeweils 5 V Spannung.
+\textbf{Eckdaten der ausgewählten Valve}
+\begin{itemize}
+    \item Nennspannung: DC 6V
+    \item geeigneter Spannungsbereich:DC 5V - DC 6V
+    \item Strom: 220 mA
+    \item Leistung: <2W
+    \item Druckbereich: 0-350 mmHg
+\end{itemize}
 
 \section{Teilaufbau}
 
