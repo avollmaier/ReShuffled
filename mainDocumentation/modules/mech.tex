@@ -517,7 +517,7 @@ Das Lagerrad besteht aus mehreren Einzelteilen:
 \subsubsection{Außenwände}
 Die Außenwände wurden in der Form eines Teil eines Kreises konstruiert und geben somit die Fporm des Lagerrades vor. Sie besitzten jeweils 2 Laschen an der äußeren Seite, diese verboinden die Außenwände später mit den Seitenwänden es LAgerrades.
 Außerdem besitzen sie jeweils 3 Ausfräsungen auf Ihrer Grundfläche, über die sie später mit den Trennplatten versteckt werden. Bei der Konstruktion der ausfräsungen ist dabei zu achten, dass etwas größer als benötigt gezeichnet werden, da bei der
-Fertigungsart des 3D Druckens Innenbohrungen und Innenfräsungen durch die ungenauigkeit des Druckers kleiner gedruckt werden. Wie auch bei den Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese woederum beim
+Fertigungsart des 3D-Druckens Innenbohrungen und Innenfräsungen durch die ungenauigkeit des Druckers kleiner gedruckt werden. Wie auch bei den Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese woederum beim
 drucken größer gedruckt werden als sie Ursprünglgich gezeichnet wurden.
 
 \subsubsection{Seitenwände}
@@ -531,7 +531,7 @@ Die Bohrungen sind als Senklochbohrungen ausgeführt, da somit die Schraube komp
 \subsubsection{Trennplatte}
 Um die einzelnen Lagerfächer zu unterteilen ist die Trennplatte konsturiert worden. Dieses Bauteil ist ein einfacher
 Quader mit je 2 Laschen an den Außenseiten. Diese Laschen werden mit den Ausfräsungen der Außenplatte versteckt.
-Hierbei ist wieder zu achten, das die Laschen kleiner konstruiert werden, da sie durch den 3D druck an größe zunehmen
+Hierbei ist wieder zu achten, das die Laschen kleiner konstruiert werden, da sie durch den 3D-Druck an größe zunehmen
 werden.
 
 \subsection{Konstruktion des Lagerradhalterungsmoduls}
@@ -639,8 +639,7 @@ Das zweite Modul befindet sich nach dem Lagerrad und wird vom unteren Aufhänger
 wird mit 2 Schrauben mit der Grundplatte des Gehäuses verschraubt. Druch die dünne Bauweise des Aufhängers und die
 große Höhe führt dies zu einer instabilität des Modules und des Aufhängers in Querrichtung, dieses Problem ist irrelevant, da es
 zu keiner Krafteinwirkung auf das Modul auf dieser Achse kommt. Um das Problem dennoch zu beheben kann die Breite des
-Aufhängers variiert werden oder eine querstrebe bei der konstruktion hinzugefügt werden, da somit der Materielaufwand beim 3D
-drucken gering bleibt.\\
+Aufhängers variiert werden oder eine querstrebe bei der konstruktion hinzugefügt werden, da somit der Materielaufwand beim 3D-Drucken gering bleibt.\\
 Der Aufhänger wird wie der andere Aufhänger über jeweils 2 Schrauben mit dem Kartenhalterungsmodul verschraubt.
 
 \subsubsection{Kartenführung}
@@ -891,14 +890,14 @@ Rand der rotierenden Form ab und erzeugt somit eine hohle Kunststoffform.
 Der Vorteil hierbei liegt bei den niedrigeren Kosten, jedoch ist man nur in der Lage primitivere Formen herzustellen
 die innen hohl sind.
 
-\subsubsection{Verarbeitung von duroplastischer Kunstoffe}
+\subsubsection{Verarbeitung von duroplastischer Kunstoffe\footfullcite{Kunststoffverarbeitung Duroplasten}}
 Um duroplastische kunststoffe zu verarbeiten müssen sie mittels Synthese in die gewünschte Form gebracht werden, da sie
 nicht wärmeformbar sind. Dazu werden meist pulverförmige Vorprodukte direkt in eine Form gebracht, und nach bedarf
 Farb- oder Zusatzstoffe beigefügt. Dannach werden sie unter Katalysator- und Wärmeeinfluss zum Endprodukt ausgehärtet.
 Durch dieses Verfahren können auch metallische Werkstoffe mit Duroplasten verbunden werden, wie zum beispiel
 glasverstärkte Kunststoffe (GFK) die vielfältig in der Luft- und Wasserfahre zum einsatz kommen.
 
-\subsubsection{Kleben}
+\subsubsection{Kleben\footfullcite{Kunststoffverarbeitung Kleben}}
 Kleben ist ein Fügeverfahren von Kunststoffen, bei dem meist Duroplasten und Elastomere zusammengefügt werden.
 Jedoch benötigt man dazu Kunststoffe mit polaren Egenschaften um eine erfolgreiche klebeverbindung zu garantieren.
 Um diese Eigenschaften zu erschafen müssen viele Kunststofffe mit Korona- oder Plasmabehandlung vorbereitet werden,
@@ -910,7 +909,7 @@ Physikalische Kleber können in drei Kategoreien eingeteilt werden:
     \item \textbf{molekulare Struktur}: Besitzten berreits vor dem Auftragen über eine molekulare Struktur
 \end{itemize}
 
-\subsubsection{Schweißen}
+\subsubsection{Schweißen\footfullcite{Kunststoffverarbeitung Schweißen}}
 Schweißen ist das zweite Fügeverfahren für Kusntstoffe, bei diesem Verfahren muss das Material in erster Linie die
 Fähigkeit zum Schmelzen verfügen. Da nur Thermoplaste diese Eigenschaft besitzt ist es der einzige Kunststoff der sich gut
 zum Schweißen eignet. Für das erwärmen und aufschmelzen des Materials können unterschiedliche Techniken angewendet werden:
@@ -921,7 +920,41 @@ zum Schweißen eignet. Für das erwärmen und aufschmelzen des Materials können
     \item Reibung (Reibungsschweißen)
 \end{itemize}
 
+\subsubsection{3D-Druck}
+Der 3D-Druck ist zwar kein Umformverfahren oder Fügeverfahren, jedoch kann mit dadurch schnell und mit hoher genauigkeit Kunststoffteile
+drucken. Da das 3D-Drucken billig, schnell udn eine hohe genauigkeit hat nahmen wir es zum bau unserer Prototypen. Genaueres zum 3D Druck finden
+Sie unter Kaptiel 1.7.2 3D Druck.
 
+\subsection{3D-Druck}
+Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner schnelligkeit und der tatsache
+asugewählt, dass uns de 3D-Drucker der HTBLA Kaindrorf zur Verfügung stand.
+\subsubsection{Grundlagen\footfullcite{3- Druck Grundlagen}}
+Der 3D-Druck fungiert im Prinzip der addidiven Fertigung, das heißt, er Fertigt Objekte aus 3D-Modelldaten Schicht für Schicht
+durch das Verbinden von Materialien. Es unterscheidet sich von dem traditionellen subtraktiven Verfahren dadurch,
+das bei ihnen eine abtragende Kraftwirkung herrscht, wie zum Beispiel Fräßen oder Bohren. Formende Verfahren
+ereichen die gewünschte Form durch einfluss von mechanischen oder thermischen Kräften, wie zum Beispiel das Biegen oder
+Pressen. Beim addidiven Verfahre jedoch wird die gewünschte Form durch erzeugen von Geometrie erreicht, so werden Schichten
+hinzugefügt oder Aufgetragen. Als hybrides Verfahren bezeichnet man jene, die sich nicht in eine dieser kategorieren
+Unterbringen lassen oder jene die mehrere dieser Verfahren miteinander verbinden.
+
+\textbf{Produktionsverfahren}
+Produktionsverfahren lassen sich in 4 Kategorien einteilen:
+\begin{itemize}
+    \item \textbf{manuelle Verfahren}: Dieses Verfahren beschreibt vereinfacht egsagt die klasische #handarbeit, wie zum Beispiel das Biegen eines Drahtes (formend), das Hobeln von Holz (subtraktiv) oder das Auftragen von einem Guss (Additiv).
+    \item \textbf{mechanische Verfahren}: Das mechanische Verfahren entweickelte sich aus dem manuellen, die Kraftwirkung wird dadurch von Hebeln, Seilzügen oder anderen Systemen erzeugt.
+    \item \textbf{elektrische Verfahren}: Beim elektrischen Verfahren wird die Kraftwirkung mithilfe vonelektrischen Strom erzeugt. Ein Beispiel dafür wäre der Schmelzuguss, da die Schmelztemperatur dabei von einem elektrisch angetriebenen Heizsystem generiert wird.
+    \item \textbf{digitale Verfahren}: Das digitale Verfahren ist eine erweiterung des elektrischen Verfahrens, wird aber zusätzlich noch mit einem Computersystem angesteuert. Ein Biegeroboter wäre ein Beispiel für ein digital formendes Verfahren, ein 3D-Drucker wäre dadruch ein digital additives Verfahren.
+\end{itemize}
+
+\subsubsection{Arten des 3D-Drucks}
+\textbf{3D-Druck mit Pulver}
+Dieses Verfahren ist ein forgeschrittenes Verfahren aus dem "Additive Layer Manufacturing" Bereich, Pulver wird dabei
+als Grundlage für den 3D-Druck verwendet. Ein solcher Drucker besitzt mehrerer Druckköüfe, diese fungieren ähnlich wie
+die eines normalen Druckers, jedoch wird statt Tinte flüssiges Bindemittel extrudiert. Zur Vorlage des Drucks wird daher das
+3D-Modell in vielen 2D-Layers aufgeteil, diese 2D-Layers dienen auch als Datengrundlage.
+Als ersters wird beim Verfahren das unterste Layer über den Druckkopf mit einem flüssigen Bindemittel auf die Pulverschicht
+aufgetragen. Danach wird eine dünne Schicht Pulver über das erste Layer gezogen und der Vorgang wiederholt sich mit dem
+zweiten Layer. Dies geschieht solange, bis das Bauteil fertig gedruckt worden ist.
 \section{Teilaufbau}
 
 \section{Analyse}
