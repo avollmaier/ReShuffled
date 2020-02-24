@@ -1,14 +1,12 @@
 \definecolor{hellgrau}{RGB}{230, 230, 230}
 \lohead{Vollmaier Alois}
 \chapter{Informatik}\label{ch:informatik}
-
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
 Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
 Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
-
 \section{Zeitplan}\label{sec:zeitplan}
 \begin{figure}[hbt!]
     \centering
@@ -47,16 +45,11 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
         \ganttgroup[
         group/.append style={fill=blue}
-        ]{Frontend-Programmierung}{2019-11-15}{2020-1-09}\\ [grid]
+        ]{Frontend-Programmierung}{2019-11-15}{2019-12-22}\\ [grid]
         \ganttbar[
         bar/.append style={pattern=north east lines},
         name=KonzeptplanungFront
         ]{Konzeptplanung}{2019-11-15}{2019-11-31}\\ [grid]
-
-        \ganttbar[
-        bar/.append style={pattern=north east lines},
-        name=KonzeptplanungFront
-        ]{Anfertigen von Mockup-Skizzen}{2019-11-25}{2019-11-31}\\ [grid]
 
         \ganttbar[
         bar/.append style={pattern=north east lines},
@@ -66,8 +59,9 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
         \ganttnewline[thick, black]
 
         \ganttgroup[
-        group/.append style={fill=green}
-        ]{Hardwarenahe-Programmierung}{2019-31-31}{2020-2-12}\\ [grid]
+        group/.append style={fill=black}
+        ]{Hardwarenahe-Programmierung}{2019-12-31}{2020-1-31}\\ [grid]
+
         \ganttbar[
         bar/.append style={pattern=north east lines},
         name=KonzeptplanungHard
@@ -83,7 +77,7 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
         \ganttgroup[
         group/.append style={fill=green}
-        ]{Testen - Aufbauen}{2019-12-22}{2020-02-01}\\ [grid]
+        ]{Testen - Aufbauen}{2019-12-22}{2020-02-15}\\ [grid]
 
         \ganttbar[
         bar/.append style={pattern=north east lines},
@@ -102,19 +96,20 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 
     \end{ganttchart}
     }
-    \caption{Zeitplanung - Informatik}
+    \caption{Zeitplanung-Informatik}
 \end{figure}
 \newpage
 Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
 Um das Zeitfenster des Projekts nicht zu verzögern, werden folgende Meilensteine in den Zeitplan implementiert:
 \begin{enumerate}
-    \item xx.xx.xxxx - Aufgabe XX
-    \item xx.xx.xxxx - Aufgabe XX
-    \item xx.xx.xxxx - Aufgabe XX
+    \item \textbf{15.11.2019} Beenden der Backend-Programmierung
+    \item \textbf{22.12.2020} Beenden der Frontend-Programmierung
+    \item \textbf{31.01.2020} Beenden der Hardwarenahmen-Programmierung
+    \item \textbf{15.02.2020} Beenden von Testen-Aufbauen
 \end{enumerate}
 \section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
-Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem 7" Display angezeigt werden soll.
+Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche, grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem Display angezeigt werden soll.
 Auf diesem Interface soll es möglich sein, die Steuerung der Maschine zu übernehmen.
 Die Möglichkeiten des Benutzers, diese zu bedienen sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
@@ -129,7 +124,7 @@ Grundsätzlich steht die sogenannte User-Experience, welche alle Aspekte der Ein
 Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
 
 \subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
-Wie in der Einleitung bereits erwähnt besteht das Backend aus Aufgaben, welche im Hintergrund abgearbeitet werden.
+Wie in der Einleitung bereits erwähnt besteht das Backend aus Funktionen, welche im Hintergrund abgearbeitet werden.
 Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.\\
 Auch soll im Hintergrund eine sogenannte Log-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert werden.
 Diese Datei kann z.B.\ beim Debugging-Vorgang notwendig sein bzw.\ den Entwickler dabei unterstützen, was eine enorme Zeitersparnis mit sich bringt.\\
@@ -146,13 +141,15 @@ Ein weiterer Bestandteil des Projekts ist die Hardwarenahe-Programmierung.
 Aufgrund der Tatsache, dass die entwickelte Ansteuerplatine über einen ATmega-324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
 Erstellt werden soll ein Programm, welches die ankommenden Daten der seriellen Schnittstelle verarbeitet.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
+Verwendet soll hierbei, die im Unterricht verwendete Vorlage werden, welche den Programmierprozess verschnellert.
 
 \section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, bestimmte Voruntersuchungen durchzuführen.
+Diese Voruntersuchung umfasst Fragen, welche für des gesamten Projekts relevant sind.
 Folgend werden einige grundlegende Fragen geklärt und näher erläutert.
 \subsection{Auswahl der Arbeitsumgebung}\label{subsec:auswahl-der-arbeitsumgebung}
 Das Bearbeiten von Code spielt bei der Programmierung eine elementare Rolle.
-Dadurch muss, bevor mit dem Programmierprozess gestartet wird, eine passende Arbeitsumgebung ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
+Dadurch muss, bevor mit dem Programmierprozess gestartet werden kann, eine passende Arbeitsumgebung ausgewählt werden, welche alle vom Benutzer gestellten Anforderungen erfüllt.
 In unserem Fall sind diese im Speziellen:
 \begin{enumerate}
     \item Möglichkeiten der Programmierung sowie dem Debuggen eines Remote-Rechners
@@ -164,7 +161,7 @@ Debugging selbst hilft dem Entwickler bei der Fehlersuche.
 Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktuelle Wertebelegung von Variablen zu überprüfen.
 Dadurch erspart dies enorme Zeit bei der Programmierung.
 In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry PI, welcher mit dem Netzwerk über Ethernet verbunden ist.
-Es erfordert aber nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
+Es erfordert also nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
 \subsubsection{Apache-Netbeans}
 Die Netbeans-IDE, bereitgestellt von der Firma Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
 Primär wurde sie entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
@@ -173,7 +170,7 @@ Die Möglichkeit, eine Remote-Plattform einzurichten, wurde einfach gelöst und 
 Auch das einfache Einbinden von Plugins und Bibliotheken zählt zu den Hauptvorteilen von Netbeans.
 \subsubsection{Intellij IDEA}
 Eine kostenpflichtige Alternative zu Netbeans ist Intellij.
-Aufgrund der komplizierten Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
+Aufgrund der komplizierteren Einrichtung eines Remote-Systems, sowie dessen Handhabung im täglichen Arbeitsprozess wurde deutlich, dass Netbeans im wichtigsten Kriterium besser abschneidet.
 Jedoch bring Intellij auch einige Vorteile mit sich.
 \begin{enumerate}
     \item Flüssigere Bedienung
@@ -183,28 +180,32 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
 \subsubsection{Fazit}
 Natürlich ist es meist Ansichtssache, für welche IDE man sich entscheidet.
 Doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
-\subsection{Auswahl des GUI-Frameworks}\label{subsec:auswahl-des-gui-frameworks}
+\subsection{Auswahl des GUI-Toolkits}\label{subsec:auswahl-des-gui-frameworks}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Frameworks spielt eine wesentliche Rolle in der Programmierung von grafischen Anwendungen.
-Diese Frameworks stellen meist alle Elemente zur Erstellung einer GUI bereit.
+Toolkits sind Bibliotheken, welche alle Elemente zur Erstellung einer GUI bereitstellen.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
+So helfen sie dem Programmierer bei der Erstellung, denn ohne ein GUI-Toolkit müsste er diese Elemente selbst programmieren.
 \subsubsection{Swing}
 Das bereits in der Standard-Java-Bibliothek verfügbare Java-Swing bietet die Möglichkeit komplexe Oberflächen zu erstellen.
 Der Aufwand zur Einrichtung hält sich in Grenzen, denn im Vergleich zu JavaFX muss Swing nicht eigens implementiert werden, um die GUI zu erstellen.
-Aufgrund der Verfügbarkeit von Java-Swing in der Java Bibliothek bieten alle IDE's die Möglichkeit zur Erstellung von Oberflächen.
-Das etwas veraltete und lieblose Look and Feel von Java-Swing brachte die Entscheidung, den Nachfolger, nämlich JavaFX, zu verwenden.
+Aufgrund der Verfügbarkeit von Java-Swing in der Java-Bibliothek bieten alle IDEs die Möglichkeit zur Erstellung von Oberflächen.
+Das etwas veraltete und lieblose Look and Feel von Java-Swing ist jedoch nicht immer ansprechend und stellt einen negativen Punkt dar.
 \subsubsection{Java-FX}\label{sssec: JavaFX}
-JavaFX ist ein GUI-Framework, welches oft als Java-Swing Nachfolger betitelt wird.
-Hierbei müssen im Vergleich zu Java-Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl in externen FXML-Dateien.
+JavaFX ist ein GUI-Toolkit, welches oft als Java-Swing Nachfolger betitelt wird.
+Hierbei müssen im Vergleich zu Java-Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl, in externen FXML-Dateien.
 Die Basis dieser FXML-Dateien ist XML, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Näher wird dieses Format im \autoref{subsec:datenformate-in-java-fx} erklärt.\\
-Der logische Code hinter der GUI befindet sich jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI programmatisch verknüpft sind.
+Der logische Code hinter der GUI befindet sich hier jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI programmatisch verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI und dem dahinter stehenden Code ist dadurch möglich.
 Benennen darf sich dieses Designkonzept Model-View-Controller(\autoref{subsec:entwurfsmuster-mvc})\\
 Auch bietet JavaFX die Möglichkeit, separate Stylesheets, also Dokumente, in welchen das Aussehen von Elementen beschrieben wird, zu erstellen und einzubinden.
-Diese verbessern das sogenannte Look and Feel drastisch.\\\\
-Im Gegensatz zu Java-Swing muss man als Programmierer hier auch nicht die sogenannte \lstinline[style=java]{Stage}, also das jeweilige Fenster selbst, mithilfe von \lstinline[style=java]{new JFrame()} erzeugen, sondern dies wird von JavaFX automatisch erledigt.
+Diese verbessern das sogenannte Look and Feel drastisch.
+Generell kann eine GUI, gebaut in JavaFX, viel schöner umgesetzt werden, denn die Möglichkeiten bei der Erstellung sind enorm groß.
+Der Grund dafür ist die Möglichkeit, externe Bibliotheken, welche weitere Elemente einbinden, zu implementieren\\\\
+Auch beim Starten der Anwendung muss in JavaFX nicht viel vom Programmierer selbst getan werden.
+Im Gegensatz zu Java-Swing muss hier nicht die sogenannte \lstinline[style=java]{Stage}, also das jeweilige Fenster selbst, mithilfe von \lstinline[style=java]{new JFrame()} erzeugen, sondern dies wird von JavaFX automatisch erledigt.
 Diese wird danach der Methode \lstinline[style=java]{start(Stage)} übergeben.
-So werden einem viele Schnritte beim Start durch die Methode \lstinline[style=java]{launch()} abgenommen.
+So werden einem viele Schritte beim Start durch die Methode \lstinline[style=java]{launch()} abgenommen.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=JavaFX Startvorgang,label=javafxStart]
   public static void main(final String[] args)
@@ -213,23 +214,28 @@ So werden einem viele Schnritte beim Start durch die Methode \lstinline[style=ja
   }
 \end{lstlisting}
 % @formatter:on
+\newpage
 Innerhalb der \lstinline[style=java]{Stage} wird die Oberfläche in eine \lstinline[style=java]{Scene} und verschiedenen \lstinline[style=java]{Nodes} eingeteilt, wobei \lstinline[style=java]{Nodes} etwaige Controls und die \lstinline[style=java]{Scene} den gemeinsamen Container dieser Controls darstellt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
+    \includegraphics[width=0.4\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
     \caption{JavaFX Stage-Scene-Node Übersicht}
     \label{fig:Stage-Scene-Node}
 \end{figure}
+Auch die Möglichkeit zur Implementierung von Animationen, Licht/Schatten-Renderings sowie Geometrischen Objekten lässt JavaFX zu einem Vorreiter im Bereich der GUI-Entwicklung werden.
 \subsubsection{Fazit}
-Im Großen und Ganzen fiel aufgrund des großen Spektrums an Möglichkeiten, die Wahl auf das JavaFX-Framework.
-Dieses fordert jedoch eine Einarbeitungsphase, welche aber keine Auswirkung auf den Umfang des Projekts hat.
+Im Großen und Ganzen fiel aufgrund des großen Spektrums an Möglichkeiten, die Wahl auf das JavaFX-Toolkit.
+Obwohl JavaFX aus der Standart-Java-Bibliothek herausgeflogen ist, wird es weiterentwickelt und somit stellt ein Update kein Problem dar.
+Leider erfordert es jedoch eine Einarbeitungsphase, welche aber keine Auswirkung auf den Umfang des Projekts hat.
+Diese Einarbeitungsphase umfasst alle, in JavaFX verwendeten Datenformate, welche in \autoref{subsec:datenformate-in-java-fx} erklärt werden.
+Auch muss die Verwendung von Basiselementen näher betrachtet werden, denn diese ist mit Swing-Elementen nicht zu vergleichen.
 \subsection{Projektorganisation}\label{subsec:projektorganisation}
 \subsubsection{Projektstruktur in Netbeans}
 Eine einheitliche Formatierung und Namensgebung ist die Basis einer gelungenen Projektplanung.
-Diese genannte einheitliche Formatierung führt zu einer leichteren Orientierung in fremden aber auch in eigenen Projekten.
-Um die Übersichtlichkeit eines Projektes zu verbessern, wird nach einer klar definierten Projektstruktur gearbeitet.
+Diese genannte einheitliche Formatierung führt zu einer leichteren Orientierung in fremden, aber auch in eigenen Projekten.
+Um die Übersichtlichkeit eines Projektes zu verbessern, wird nach einer klar definierten Projektstruktur, welche zu Beginn des Projekts akribisch untersucht wurde, gearbeitet.
 Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden.
-\vspace{-6mm}
+\vspace{-10mm}
 \begin{figure}[H]
     \begin{center}
         \begin{forest}
@@ -303,7 +309,7 @@ Das zuvor genannte Layout der Projekthirachie eignet sich gut für viele Projekt
 Jedoch zeigen sich nach und nach einige Schwachstellen an diesem System.\\
 Einerseits ist das aufwendige Erstellen dieser Hirachie ein Punkt, welcher nicht unerwähnt bleiben soll.
 Auch besteht ein Risiko zur Inkonstistenz bei der Namensgebung von Packages oder Bibliotheken. \\
-Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktur vor.
+Im Vergleich dazu, schreiben die Build-Tools Maven und Gradle eine klar definierte Projektstruktur vor.
 \begin{figure}[H]
     \begin{center}
         \begin{forest}
@@ -343,7 +349,10 @@ Im Vergleich dazu, schreibt Maven und Gradle eine klar definierte Projektstruktu
         \end{forest}
     \end{center}
     \caption{Maven Projektstruktur}
-\end{figure}\newpage
+\end{figure}
+Diese Projektstruktur teilt sich innerhalb des \lstinline{root-directory} in 2 Bereiche auf.
+Einerseits gibt es wiederum ein eigenes Package, wo sich der gesamte Sourcecode befindet.
+Andererseits verfügt diese Struktur auch ein Package namens \lstinline{test}, welches ausschließlich für Tests des Codes mit dem JUnit-Framework zur Verfügung steht.\\
 Trotz alledem wurde auf die althergebrachte Version der Projekterstellung gesetzt.
 Grund dafür ist wiederum die fehlende Möglichkeit, eine Remote-Platform innerhalb eines Maven-Projekts zu implementieren.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
@@ -354,9 +363,11 @@ Natürlich wäre eine Umstellung in einem finalen Release denkbar.
 Das Erzeugungsmuster namens Singelton dient dazu, die Einzigartigkeit eines Objektes sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
 Auch bietet eine Klasse, welche nach dem Singelton-Pattern erzeugt wurde, einen globalen Zugriffspunkt über das gesamte Programm.
+So ist Singelton vielseitig einsetzbar und wird in diesem Projekt häufig verwendet.
 \subsubsection{Struktur}
-Realisiert wird dies durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
-Dies bedeutet, dass eine Kapselung des Konstruktionsprozesses innerhalb der Klasse vorliegt.
+Um nun die Einzigartigkeit sicherzustellen sind mehrere Maßnamen bei der Erstellung notwendig.
+Realisiert wird eine Klasse, welche nach dem Singelton Design-Patter erzeugt wurde, durch einen privaten Kontruktor, denn wo keine Zugriffsberechtigung von außen herrscht, kann auch kein Objekt erstellt werden.
+Dies bedeutet, dass eine Kapselung des Konstruktionsprozesses nach außen vorliegt.
 Die einzige Möglichkeit, eine Instanz zu erstellen, liefert die statische Methode \lstinline{createInstance()}.
 Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline{createInstance()} aufgerufen, wird diese erzeugte Instanz in einem statischen Attribut gespeichert.\\
 \begin{figure}[H]
@@ -403,7 +414,7 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
     Verwaltet Benutzerinteraktion und enthält Steuerlogik
     \item \textbf{Model} \\
     Datenrepräsentation\\
-    Komplett abgeschirmt
+    Komplett abgeschirmt von der View
 \end{enumerate}
 \begin{figure}[H]
     \centering
@@ -413,13 +424,13 @@ Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weiter
 \end{figure}
 \subsection{SceneBuilder}\label{subsec:scenebuilder}
 \subsubsection{Beschreibung}
-Scenebuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
+SceneBuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
 Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.\\\\
 Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeitpunkt möglich ist, den Code hinter der Oberfläche direkt grafisch darzustellen.
 Andererseits kann nun, nur mit wenigen Klicks, eine für den Endbenutzer ansprechende GUI gebaut werden.\\
 Im speziellen hat SceneBuilder weitere wichtige Vorteile, wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
-Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.\\
+Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eignet sich optimal für große Projekte wie dieses.
 \begin{figure}[H]
     \centering
@@ -431,9 +442,8 @@ Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}
 Sobald nun SceneBuilder als wichtiges Element der Erstellung ausgewählt wurde, kann jetzt ein näherer Blick auf die User-Experience geworfen werden.
 Diese sogenannte User-Experience beschreibt, wie der Endbenutzer das Produkt bzw. in diesem Fall die grafische Oberfläche empfindet.
 Wird auf diesen Kernpunkt kein Wert gelegt, wird auch niemand bei der Bedienung erfreut sein.\\\\
-SceneBuilder bzw. JavaFX bietet bereits einige Grundelemente für Layouts an, diese jedoch nicht sehr ansprechend sind.
-Sie können zwar mit CSS, was im \autoref{sssec:CSS} beschrieben wird, gestaltet werden.
-Dies ist jedoch für alle Elemente schwierig umzusetzen.
+SceneBuilder bzw. JavaFX bieten bereits einige Grundelemente für Layouts an, doch diese erfüllen noch nicht die gesetzten Anforderungen.
+Sie können zwar mit CSS, was im \autoref{sssec:CSS} beschrieben wird, gestaltet werden, doch dies ist jedoch für alle Elemente schwierig umzusetzen, da jedes Element überarbeitet werden muss.
 Abhilfe schafft dabei die Material-Design-Bibliothek von JFoenix.
 Diese Bibliothek ist Open-Source und implementiert, wie schon im Namen genannt, Designelemente nach dem von Google entwickelten Material-Design Vorgaben.
 Das bedeutet das ohne viel Aufwand, eine höchst ästhetische Oberfläche gebaut werden kann.
@@ -446,20 +456,20 @@ Angewendet werden die CSS-Attribute \lstinline{-fx-border-radius: 20pt;}  \lstin
     \caption{Gerenderter Button}
     \label{fig:Rendered Button}
 \end{figure}
-\subsection{Datenformate in Java-FX}\label{subsec:datenformate-in-java-fx}
+\subsection{Datenformate}\label{subsec:datenformate-in-java-fx}
 Im folgenden Kapitel soll auf die Datenpersistenz eingegangen werden.
 Speziell in diesem Projekt werden die Datenformate \textbf{XML/FXML}, \textbf{CSS} und \textbf{JSON} verwendet.
-Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblick zu erschaffen.
+Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblick zu erschaffen.\\
+Speziell bei JSON wird eine Bibliothek genannt, welche in diesem Projekt verwendet wurde.
 \subsubsection{XML}
 XML (Extensible Markup Language) ist, wie im \autoref{sssec: JavaFX} schon erwähnt, eine Sprache zur Darstellung von Daten in einem von Menschen lesbaren Format.
 Damit ist sie also keine Programmiersprache.
 Diese XML-Dateien sind zu vergleichen mit normalen Textdokumenten, welche mit einem gewöhnlichen Texteditor geöffnet werden können.\\
 Strukturiert und bezeichnet werden in XML-Dateien die Daten mithilfe von sogenannten XML-Tags.
 Diese Tags stehen in spitzen Klammern und beinhalten den Namen des Datenelementes.
-Auch ist es notwendig, ein Tag mithilfe eines sogenannten End-Tags zu schließen.
-Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.
-Ein Indikator für ein End-Tag ist ein \lstinline{/}.\\
-Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.
+Auch ist es notwendig, ein Start-Tag mithilfe eines sogenannten End-Tags zu schließen.
+Ein Indikator für ein End-Tag ist ein \lstinline{/}.
+Zwischen diesen Start- bzw.\ End-Tags befindet sich ein Datensatz.\\
 Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien im inneren aussehen.
 % @formatter:off
 \begin{lstlisting}[style=XML,caption=XML-Codebeispiel,label=xmlExample]
@@ -474,7 +484,7 @@ Anhand der folgenden \autoref{xmlExample} soll gezeigt werden, wie XML-Dateien i
 % @formatter:on
 \subsubsection{FXML}
 FXML ist ein auf XML basierendes Datenformat, welches hauptsächlich bei der Erstellung von JavaFX Anwendungen angewendet wird.
-Werden FXML-Dateien zur deklarativen Beschreibung von grafischen Oberflächen genutzt, ist auch eine strikte Aufteilung nach dem \nameref{subsec:entwurfsmuster-mvc} möglich.\\\\
+Werden FXML-Dateien zur deklarativen Beschreibung von grafischen Oberflächen genutzt, ist auch eine strikte Aufteilung nach dem \nameref{subsec:entwurfsmuster-mvc} möglich.\\
 Die Struktur und Syntax von FXML-Dateien ähnelt der von XML-Dateien.
 So werden auch Start- und End-Tags verwendet.
 Ein wesentlicher Unterschied ist jedoch bei der Groß-/Kleinschreibung ersichtlich.
@@ -494,18 +504,16 @@ Diese können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.
     </children>
 </VBox>
 \end{lstlisting}
-\newpage
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache, mit welcher Gestaltungsanweisungen erstellt werden können.
-Es soll also beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
+Es soll aber beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
 \footfullcite{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
 Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von JavaFX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglichkeit zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
 Eine Besonderheit von JavaFX CSS besteht im Vergleich zur normalen CSS-Sprache darin, dass alle Elemente, welche das Prefix \lstinline{-fx-...} besitzen, in direkter Verbindung mit JavaFX stehen.
 Dies lässt sofort auf die Beschreibung eines JavaFX Elements schließen.
-\subsection{Datenformat JSON}\label{subsec:json}
-\subsubsection{Beschreibung}
+\subsubsection{JSON}\label{sssec:json}
 Der Name JSON (JavaScript Object Notation) beschreibt neben XML eines der wichtigsten Datenformate zur Sicherstellung der Datenpersistenz.
 Dieser Nachfolger von CSV und INI setzt sich vor allem in der heutigen Datentechnik durch.
 Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
@@ -521,7 +529,7 @@ Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel nä
     }
 }
 \end{lstlisting}
-\subsubsection{Bibliothek Gson}\label{sssec:gson}
+\textbf{Bibliothek Gson}\\
 Die von Google entwickelte Bibliothek Gson spielt in diesem Projekt eine wichtige Rolle.
 Bei vorhandensein von enormen Datenmengen ist es zeitaufwändig, JSON-Dateien in Java zu erstellen.\\
 Eine Hilfe bietet dabei Gson.
@@ -622,7 +630,7 @@ Deal     & D\textless{}Anzahl der Karten\textgreater{} & Kartenausgabe je nach A
 AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausgabe   & --//--                                                      \\ \hline
 \end{tabular}%
 }
-\caption{Request- und Responsebeispiele Tabellarisch dargestellt}
+\caption{Request- und Responsebeispiele tabellarisch dargestellt}
 \end{table}
 Aufgrund eines wohldurchdachten Systems bei der Request-Definition, ist es nun möglich, den Pool an verschiedenen Requests explizit zu minimieren.
 Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden einzelnen Spieler, was mithilfe des Requests \textit{Deal} und \textit{AutoDeal} umgesetzt wird.\\
@@ -640,14 +648,14 @@ Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}
 \centering
 \vspace{-5mm}
 \includegraphics[width=1\textwidth]{fig/ainf/RequestUML.pdf}
-\caption{UML-Diagramm-Request-Baum}
+\caption{UML-Diagramm Request-Baum}
 \label{umlReq}
 \end{figure}
 Bevor nun auf jeden einzelnen Request eingegangen wird, soll nun die abstrakte Klasse \lstinline[style=java]{Request} betrachtet werden.
 Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()}, \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
 Wie der Name der Methoden schon ahnen lässt, ist \lstinline[style=java]{createRequestFrame()} für die Erstellung jedes Request zuständig.
 Diese Methode besitzt den Zugriffsmodifizierer \lstinline[style=java]{protected} und kann somit von den abstammenden Requests aufgerufen werden.
-\lstinputlisting[firstline=90, lastline=102, style=java,caption=fdsa,label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
+\lstinputlisting[firstline=90, lastline=102, style=java,caption=Methode createRequestFrame(),label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
 Sobald die Methode von einem abstammenden Request aufgerufen wird und der Content, also der Request-String, übergeben wird, überprüft diese Methode den übergebenen Content.
 Sollte dieser leer sein wird eine \lstinline[style=java]{IllegalArgumentException} geworfen und die Erstellung des Requests wird somit abgebrochen.
 Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
@@ -657,7 +665,7 @@ Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
 Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
 Aufgabe dieser ist es, das ankommende Response-Objekt, welches im unteren Abschnitt beschrieben wird, in dessen elementaren Daten zu zerlegen.
-\lstinputlisting[firstline=35, lastline=42, style=java,caption=fdsa,label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+\lstinputlisting[firstline=35, lastline=42, style=java,caption=Teilabschnitt Methode handleResponse(),label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
 Auch soll in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist.
 Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
 Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der Request im Zielsystem verhalten hat.
@@ -673,7 +681,7 @@ Im Prinzip ist der Aufbau jeder Request-Klasse ähnlich.
 Aufgerufen wird der Konstruktor, welcher die Methode \lstinline[style=java]{createRequestFrame()} ausführt.
 Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
 Anhand eines Beispiels soll der Request \textit{Shuffle} gezeigt werden.
-\lstinputlisting[firstline=8, lastline=12, style=java,caption=fdsa,label=toString() Methode]{src/serial/request/RequestShuffle.java}
+\lstinputlisting[firstline=8, lastline=12, style=java,caption=Konstruktor RequestShuffle(),label=toString() Methode]{src/serial/request/RequestShuffle.java}
 \textbf{Fazit:}\\
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwertiges Objekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
@@ -701,7 +709,7 @@ Mithilfe der Methoden \lstinline[style=java]{wait()} und \lstinline[style=java]{
 Hier wartet bzw. schläft der Thread, bis er von außen aktiviert, also aufgeweckt wird.
 Zu sehen ist dies im \autoref{commThreadSync}.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSync]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSync]
 try {
     mainLoop:
     while (!Thread.currentThread().isInterrupted()) {
@@ -725,11 +733,11 @@ finally {
 % @formatter:on
 Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
 Diese Methode, welche nach dem Command-Verhaltensmuster (\autoref{subsec:verhaltensmuster-command}) gestaltet wurde, fügt lediglich ein Element zur Liste hinzu und weckt den Thread mit \lstinline[style=java]{notifyAll()}.
-\lstinputlisting[firstline=61, lastline=67, style=java,caption=fdsa,label=toString() Methode]{src/serial/Communication.java}
+\lstinputlisting[firstline=61, lastline=67, style=java,caption=Methode sendRequestExecutor(),label=toString() Methode]{src/serial/Communication.java}
 Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der Thread zu arbeiten.
 Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 if (!toSentList.isEmpty()) {
     pendingRequest = toSentList.removeFirst();
     LOG.fine("sending request " + pendingRequest.getMreqFrame());
@@ -747,7 +755,7 @@ Diese besteht jedoch nicht aus Request-Objekten, sondern aus sogenannten Respons
 In jedem einzelnen Objekt vom Typ \lstinline[style=java]{Response} befindet sich der Frame, gespeichert in dem Attribut \lstinline[style=java]{byte [] resFrame}, und ein Zeitstempel namens \lstinline[style=java]{long timeMillisCreatedAt}.\\\\
 Wird nun vom CommunicationReceiveThread, welcher später beschrieben wird, ein Request empfangen und zur \lstinline[style=java]{responseList} hinzugefügt, entfernen die folgenden Zeilen Code den Request von der Liste und speichern diesen.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 res = responseList.removeFirst();
 if (!responseList.isEmpty()) {
     LOG.warning("response list should be empty, but " + responseList.size() + " items in list");
@@ -759,7 +767,7 @@ Mithilfe des Methodenaufrufs \lstinline[style=java]{pendingRequest.handleRespons
 Sollte jedoch kein Response ankommen, versucht das Programm, sofern in der Konfigurationsdatei ein zweiter Versuch erlaubt ist, den selben Request nochmals zu senden.
 Ist dies nicht der Fall, wird eine \lstinline[style=java]{SerialException} geworfen.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
 if (responseList.isEmpty()) {
     if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
         sendRequestExecutor(pendingRequest);//send second response
@@ -776,7 +784,7 @@ Dieser sogenannte CommunicationReceiveThread holt sich vorerst den InputStream u
 Ist das ankommende Zeichen ein \lstinline[style=java]{:}, beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
 Sollte jedoch ein unerwartetes Zeichen ankommen, was auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
 while (!Thread.currentThread().isInterrupted()) {
     int b = is.read();
     if (b >= 0 && b < 255) {
@@ -792,7 +800,7 @@ while (!Thread.currentThread().isInterrupted()) {
 % @formatter:on
 Werden die ankommenden Daten nun als vollwertigen Request empfunden, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschrieben, weiterverarbeitet.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
         else if (bufferIndex < buffer.length) {
             buffer[bufferIndex++] = (byte) b;
             if (b == '\n') {
@@ -825,7 +833,7 @@ Einerseits soll er sicherstellen, dass sich alle Parameter der seriellen Schnitt
 Umgesetzt wird dies mithilfe der Abfrage \lstinline[style=java]{if (config.isDisabled())}.
 Diese Parameter werden im Folgenden aufgelistet.
 % @formatter:off
-\begin{lstlisting}[style=json,caption=json-Codebeispiel,label=jsonSerial]
+\begin{lstlisting}[style=json,caption=Teilabschnitt Konfigurationsdatei,label=jsonSerial]
 "serial": {
 "disabled": false,
     "device": "sim",
@@ -836,11 +844,13 @@ Diese Parameter werden im Folgenden aufgelistet.
 },
 \end{lstlisting}
 % @formatter:on
+\newpage
 Andererseits soll die Geräteauswahl mithilfe eines Abgleichs des Gerätenamens erfolgen.
-Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()} ausgeführt, ansonsten \lstinline[style=java]{initSerialDevice()}.
+Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()}, ansonsten \lstinline[style=java]{initSerialDevice()} ausgeführt.
 In diesen beiden Methoden werden sowohl die serielle Schnittstelle, als auch der Simulator konfiguriert.
+Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=commThreadSend]
+\begin{lstlisting}[style=java,caption=Teilabschnitt Konstruktor Serial(),label=serialInit]
 private Serial(ConfigSerialModel config) throws SerialException, IOException {
     this.config = config;
 
@@ -855,42 +865,85 @@ private Serial(ConfigSerialModel config) throws SerialException, IOException {
 }
 \end{lstlisting}
 % @formatter:on
-Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
-\\\\
 \textbf{\lstinline{initSimulation()}}
 \\
 Vorerst soll angenommen werden, dass als Gerät der Simulator ausgewählt wurde.
 Ist dies der Fall wird innerhalb der Methode \lstinline{initSimulation()} eine Möglichkeit zu Kommunikation mit dem Simulator geschaffen.
-Realisiert wird diese Verbindung, wie im anschließenden \autoref{sssec:serialSim} beschrieben, mithilfe von Input- und Outputstreams.
+Realisiert wird diese Verbindung, wie im anschließenden \autoref{sssec:serialSim} beschrieben, mithilfe von Input- und OutputStreams.
 Also werden diese zu Beginn definiert.\\
 Um nun den Serial-Simulator zu starten ist lediglich eine Erstellung des ReshuffledMainboardSimulator-Objekts notwendig.
-Dieser erhält einen Input- und Outputstream mit welchen er die Kommunikation durchführen kann.\\\\
+Dieser erhält einen Input- und OutputStream mit welchen er die Kommunikation durchführen kann.\\\\
 So ist nun die volle Funktionalität des Simulators gegeben und es kann ohne echte Peripherie gearbeitet werden.
-\lstinputlisting[firstline=69, lastline=87, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
+\lstinputlisting[firstline=69, lastline=87, style=java,caption=Methode initSimulation(),label=fdsafdsa]{src/serial/Serial.java}
 \textbf{\lstinline{initSerialDevice()}}
 \\
 Wird nun angenommen, dass es sich bei dem Konfigurationseintrag nicht um die Zeichenkette \lstinline[style=json]{"sim"} handelt, springt das Programm in die Methode \lstinline{initSerialDevice()}.
-Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.
+Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.\\
 Verwendet wurde hierbei die Open-Source-Bibliothek jSSC (Java Simple Serial Connector).
 Erstellt wird eine Instanz des \lstinline[style=java]{jssc.SerialPort} mithilfe einer Objekterzeugung.
 Diese fordert als Parameter den Namen des Ports.
 Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\\\
 Dieses genannte Öffnen des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException}führen.
 Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
-Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und Outputstreams für das serielle Endgerät definiert werden.\\\\
-\lstinputlisting[firstline=89, lastline=103, style=java,caption=fdsa,label=fdsafdsa]{src/serial/Serial.java}
+Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und OutputStreams für das serielle Endgerät definiert werden.\\\\
+\lstinputlisting[firstline=89, lastline=103, style=java,caption=Methode initSerialDevice(),label=fdsafdsa]{src/serial/Serial.java}
+\newpage
 Ab diesem Zeitpunkt wird das richtige Endgerät ausgewählt und es kann über den jeweiligen Stream kommuniziert werden.
 Dies kann über die implementierte Methode \lstinline[style=java]{writeString()} geschehen, welcher direkt einen String als Parameter übergeben wird.
-\lstinputlisting[firstline=105, lastline=109, style=java,caption=fdsa,label=fdsa]{src/serial/Serial.java}
+\lstinputlisting[firstline=105, lastline=109, style=java,caption=Methode writeString(),label=fdsa]{src/serial/Serial.java}
 Auf die Weiterverarbeitung der Daten an dem \lstinline[style=java]{SerialJsscInputStream} und \lstinline[style=java]{SerialJsscOutputStream} soll nicht weiter eingegangen werden, denn aufgrund der einfachen Implementierung ist dies selbstverständlich und würde zur Überladung des Kapitels führen.
-Wiederum wird anschließend auf die Verarbeitung von Daten vom Simulator gesprochen, denn dies spielt eine wichtige Rolle und sollte nicht unerwähnt bleiben.
+Wiederum wird anschließend über die Verarbeitung von Daten innerhalb des Simulators gesprochen, denn dies spielt eine wichtige Rolle und sollte nicht unerwähnt bleiben.
 \subsubsection{Serial-Simulator}\label{sssec:serialSim}
+Ein weiteres Ziel ist es nun also, einen Simulator auszuprogrammieren.
+Nachdem dieser Simulator, wie im \autoref{sssec:deviceSelection} gezeigt, gestartet wurde, soll er nun die Aufgaben der Ansteuerplatine im Bereich der seriellen Kommunikation übernehmen.
+So muss er also Daten empfangen, diese verarbeiten und wieder andere Daten zurücksenden können.
+Auch muss er die aktuellste Version des Übertragungsprotokolls unterstützen, denn nur so ist eine richtige Kommunikation möglich.\\\\
+Übergeben wurden bei dieser Objekterzeugung des Simulators also die Streams, mit welchen er kommuniziert.
+Im Genaueren sieht der Konstuktor wie folgt aus:
+\lstinputlisting[firstline=14, lastline=18, style=java,caption=Konstruktor ReshuffledMainboardSimulator(),label=fdsafdsa]{src/serial/sim/ReshuffledMainboardSimulator.java}
+Wird nun der Thread gestartet, versucht dieser am InputStream Daten zu lesen.
+Bekommt er jetzt Daten übergeben, also wird ein Request gesendet, beginnt der Simulator diese in einen Puffer, welcher sich \lstinline[style=java]{reqFrame} benennt, zu schreiben.\\\\
+In diesem Fall besteht nun jedoch das Problem, dass diese Daten nicht als kodierte Zeichen daher kommen, sondern als int-Wert übergeben werden.
+Die Gründe werden später bei der Erklärung der Datenübertragung an den Simulator näher erläutert.
+So muss nun dieser int-Wert in einen String umgewandelt und in dem Frame gespeichert werden.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Umwandlung von Zeichen,label=stringParse]
+while (true) {
+    int c = in.read();
+    if (c < 0) {
+        return;
+    }
+    if (c == 10) {
+        break;
+    } else {
+        reqFrame = reqFrame + (char) c;
+    }
+}
+\end{lstlisting}
+% @formatter:on
+Wird nun ein \verb!\n!, also der int Wert 10 übertragen, ist der Frame vollständig zusammengebaut.
+Nun kann nach belieben ein Response erstellt und zurückgesendet werden.\\\\
+\textbf{Piping der Daten}\\
+In den nächsten Zeilen soll ein näherer Blick auf den Weg der Daten zwischen dem Programm und dem Simulator gelegt werden.\\
+Grundlegend besteht das Konzept also darin, Daten zwischen 2 Threads auszutauschen.
+Einer davon schreibt und der Andere liest etwas.
+\footfullcite{Wesley2020}Um diesen Fall von Datenaustausch in ein Programm zu implementieren, bietet Java eine Hilfe in Form von sogenannten Pipes an.
+Ziel dieser Pipe ist es, die beiden Threads zu synchronisieren.
+Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream}.
+So werden diese 2 Klassen immer in unabhängigen Threads verwendet, wobei der eine Thread aus dem \lstinline[style=java]{PipedInputStream} etwas liest und der andere in den \lstinline[style=java]{PipedOutputStream} etwas schreibt.\\
+Grundlegend kann man also sagen, dass das in der \autoref{ProducerConsumer} gezeigte Producer-Consumer Problem bzw. dessen Lösung, mithilfe eines \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} vereinfacht werden kann.
+Der Grund dafür liegt in der automatischen Synchronisation der zur Verfügung gestellten Methoden \lstinline[style=java]{read()} und \lstinline[style=java]{write()}.\\
+In der folgenden Grafik soll die Datenübertragung zwischen dem Simulator und dem Programm dargestellt werden.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{fig/ainf/InputOutputStreams.pdf}
-\caption{UML-Diagramm Streams}
+\includegraphics[width=1\textwidth]{fig/ainf/Pipe.pdf}
+\caption{Kommunikation Producer-Consumer}
 \label{ProducerConsumer}
 \end{figure}
+Hierbei ist zu bemerken, dass sich die Klasse, welche Daten an den Simulator überträgt,\\\lstinline[style=java]{SimInputStreamBuffer} benennt.
+Das Gegenstück dazu ist die Klasse \lstinline[style=java]{SimOutpuStreamBuffer}.
+In diesen beiden Klassen werden die jeweiligen \lstinline[style=java]{PipedInputStreams} und \lstinline[style=java]{PipedOutputStreams} gesetzt.
+So ist nun die Verbindung zwischen beiden Threads hergestellt.
 \subsection{Logging}
 \subsubsection{Konzept}\label{sssec:logOverview}
 Logging ist nach dem Debugging selbst, dass zweitwichtigste Mittel um einzelne Programmbausteine oder das gesamte Programm auf Fehler zu untersuchen.
@@ -900,11 +953,11 @@ Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=
 Als Beispiel kann mithilfe einer Log-Datei auch ein Benutzer, welcher nicht über die Möglichkeit verfügt, den Quellcode einzusehen, einzelne Fehler erkennen (vorausgesetzt diese Möglichkeit ist durch das Programm geschaffen).
 Auch ist nun die Persistenz der Logging-Einträge gegeben.
 Dies bedeutet, es kann nun sichergestellt werden, dass diese Einträge auf dem System gespeichert werden und nach einem Neustart verfügbar sind.
-Nutzt man diese Art von Protokollierung kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
+Nutzt man diese Art von Protokollierung, kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
 \subsubsection{Integration in das Programm}
 Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
-Es ist lediglich notwendig, diese genannten Klassen in ein Unterpackage des Programms einzufügen.
+Es ist lediglich notwendig, diese genannten Klassen in ein Package des Programms einzufügen.
 Dazu soll in der \autoref{PackagestrukturLogging} die Struktur des Logging-Packages illustriert werden.
 \begin{figure}[H]
 \begin{center}
@@ -954,7 +1007,7 @@ Der genannte Logger soll nun dessen Protokollierung auf 2 verschiedenen Ausgaben
 \end{enumerate}
 Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+\begin{lstlisting}[style=java,caption=Logger Implementierung,label=loggerOutput]
 LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
 try {
     LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
@@ -968,7 +1021,7 @@ Nun kann der Logger global im Programm angewendet werden.
 Es ist nur mehr nötig, dieses Logger-Objekt in die jeweilige Klasse zu bringen.
 Dies erfolgt über die Zeile \lstinline[style=java]{private static final Logger LOG = Logger.getLogger(Example.class.getName())}.
 In diesem Beispiel wird das Logger-Objekt der Klasse \lstinline[style=java]{Example} zugewiesen.\\\\
-Wie schon im \autoref{sssec:logOverview} beschrieben, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.
+Wie schon im \autoref{sssec:logOverview} beschrieben, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.\\
 Folgend soll tabellarisch gezeigt werden, welche Möglichkeiten dieser Logger bietet.
 \begin{table}[H]
 \centering
@@ -1001,7 +1054,7 @@ Einige Anforderungen an diese Konfigurationsdatei sind:
 \end{enumerate}
 Aufgrund dieser Darstellung setzte sich eine Lösung mithilfe des Datenformats JSON durch.
 Nun ergibt sich jedoch das Problem, dass eine enorm große Datenmenge in dieses Objekt verpackt werden muss.
-Eine Lösung bietet, wie im \autoref{sssec:gson} erwähnt, die Bibliothek Gson.
+Eine Lösung bietet, wie im \autoref{sssec:json} erwähnt, die Bibliothek Gson.
 Diese vereinfacht die Erstellung einer Json-Datei.
 Somit kann in wenigen Schritten dieses Ziel umgesetzt werden.
 \subsubsection{Umsetzung}
@@ -1036,65 +1089,66 @@ Dieses Pattern soll kurz in der \autoref{sampleConfig} gezeigt werden.
     }
 }
 \end{lstlisting}
-Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im Konstruktor sein.
-Dies bedeuted, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwärtiges Objekt der Konfigurationsdatei zur Verfügung steht.
-Dieses genannte Objekt ist eine Instanz der Datenerhaltunsklasse \lstinline[style=java]{ConfigModel}.\\\\
-Implementiert wird dies durch der Methode read(), welche über einen \lstinline[style=java]{BufferedReader} den json-String einliest.
-Dieser String wird anschließend, wie im Kapitel \nameref{sssec:gson} schon geklärt, in dieses genannte Objekt umgewandelt.\\
-So verfügt das Programm nun Möglichkeit, wichtige Daten zu speichern.
+Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im privaten Konstruktor sein.
+Dies bedeutet, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwertiges Objekt der Konfigurationsdatei zur Verfügung steht.
+Dieses genannte Objekt ist eine Instanz der Datenerhaltungsklasse \lstinline[style=java]{ConfigModel}.\\\\
+Implementiert wird das Einlesen durch die Methode \lstinline[style=java]{read()}, welche über einen \lstinline[style=java]{BufferedReader} den JSON-String einliest.
+Dieser String wird anschließend, wie im Kapitel \nameref{sssec:json} schon geklärt, in dieses genannte Objekt umgewandelt.\\
+So verfügt das Programm nun die Möglichkeit, wichtige Daten zu speichern und diese global innerhalb der Programms abzurufen.
 \subsection{Statistiken}
 \subsubsection{Konzept}
 Sobald die Implementierung der Konfigurationsdatei abgeschlossen ist, kann nun nach dem gleichen Schema auch die Statistik-Datei erstellt werden.\\\\
 Diese genannte Datei soll nach jedem Beenden des aktuellen Spiels am Interface, neu geschrieben werden.
-Die Bestandteile dieser Datei sollten vor der Umsetztung klar definiert sein.
+Die Bestandteile dieser Datei sollten vor der Umsetzung klar definiert sein.
 \begin{enumerate}
 \item Gesamtanzahl aller Spiele
 \item Jedes einzelne Spiel
 \begin{enumerate}
 \item Alle Spielernamen und deren Punktestand
-\item Den gepielten Spielmodus mit dessen Hintergrundinformationen
+\item Den gespielten Spielmodus mit dessen Hintergrundinformationen
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Umsetzung}
-Wie schon genannt, erfolgt die Umsetztung genau nach dem gleichen Schema wie die der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
+Wie schon genannt, erfolgt die Umsetzung genau nach dem gleichen Schema wie das der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
 Dies bedeutet, dass hier anstatt des \lstinline[style=java]{ConfigModel}, das \lstinline[style=java]{StatisticModel} die Basis der Datei darstellt.
-Dieses Model verfügt eine Liste von Objekten des Typ \lstinline[style=java]{GameModel}, welches den Kopf eines jeden Spiels darstellt.
-Auch beinhaltet es einen Zahlenwert zur Zählung der Gesamtspiele.\\\\
-Ab diesem Zeitpunk ist es möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
+Dieses Model verfügt eine Liste von Objekten des Typs \lstinline[style=java]{GameModel}, welches den Kopf eines jeden Spiels visualisiert.
+Auch beinhaltet es einen Zahlenwert zur Zählung der gespielten Spiele.\\\\
+Ab diesem Zeitpunkt ist es nun möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
 Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
+\newpage
 \section{Frontend-Programmierung}
-In den folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
+In dem folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
 Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.\\\\
 So wird gezeigt, wie die grafische Oberfläche organisiert ist und wie diese mit den jeweiligen Controllern zusammenarbeitet.
-Beschrieben werden jedoch nur wichtige Programmelemente und keine Grundlagen von JavaFX da dies ansonsten den Rahmen sprengen würde.\\
+Beschrieben werden jedoch nur wichtige Programmelemente und keine Grundlagen von JavaFX, da dies ansonsten den Rahmen sprengen würde.\\
 Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welche anschließend in \autoref{subsec:startupController} und \autoref{subsec:mainController} eingegangen wird.
 \subsection{Designkonzept}
-Aufgrund dem großen Spektrum an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
+Aufgrund des großen Spektrums an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
 Sobald es aber jetzt, wie in den Anforderungen, um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens Material-Design nicht vorbei.
 Folgend soll der Vergleich von Material-Design und Flat-Design gezeigt werden.\\\\
 \footfullcite{kulturbanause2016}Da sich der Look von Material Design aus einfarbigen Flächen, schlichten Icons, großen Bildern und aufgeräumten Benutzeroberflächen zusammensetzt, wird der Stil häufig mit Flat Design verwechselt bzw. gleichgesetzt. Auch wenn Material Design im Flat Look gestaltet ist, bestehen doch signifikante Unterschiede.\\\\
 Anders als beim Flat Design, bei dem es in erster Linie um Ästhetik und Reduzierung geht, besteht ein Schwerpunkt beim Material Design auf der Optimierung der Benutzerfreundlichkeit und in der Einhaltung physikalischer Gesetze.
 Material Design fügt daher zusätzlich eine virtuelle Z-Achse hinzu, um Dreidimensionalität zu schaffen, die im Flat Design so explizit unerwünscht wäre.
 Anders als im Flat Design wird viel mit Animationen und animierten Übergängen, sowie mit Licht und Schatten gearbeitet, um dem Benutzer Zusammenhänge besser zu visualisieren.
-So sollte sich bei der Erstellung an folgener Grafik gehalten werden.
+So sollte sich bei der Erstellung an folgender Grafik gehalten werden.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{fig/ainf/material-design-rules.png}
-\caption{Material-Design}
+\caption{Material-Design Vorgaben}
 \label{rpiAndDisplay}
 \end{figure}
-Mithilfe dieser Hintergrundinformation steht jetzt der Erstellung der grafischen Oberfläche nichts mehr im Weg.
+Mithilfe dieser Hintergrundinformation steht jetzt der Erstellung der grafischen Oberfläche nichts mehr im Wege.
 \subsection{MVC-Implementierung}\label{subsec:mvc}
-Wie schon in der Beschreibung von JavaFX erwähnt, kann die grafische Oberfläche nach dem MVC-Pattern oragnisiert werden.
+Wie schon in der Beschreibung von JavaFX erwähnt, kann die grafische Oberfläche nach dem MVC-Pattern organisiert werden.
 So ist es nun nötig, Design und Funktionalität voneinander zu trennen, und dessen Verknüpfung auch erst nachträglich im Programmcode zu vollziehen.
-Würde man es genau nehmen, dürften noch nich einmal Controllerklassen in diesen FXML-Dateien genannt werden.\\\\
-Wichtig ist jetzt, das sogenannte Event-Hanlding sowie die Verknüpfung swischen FXML und Controllerklassen programmatisch vorzunehmen.\\\\
+Würde man es genau nehmen, dürften noch nicht einmal Controller-Klassen in diesen FXML-Dateien genannt werden.\\\\
+Wichtig ist jetzt auch, das sogenannte Event-Handling sowie die Verknüpfung wischen FXML und Controller-Klassen programmatisch vorzunehmen.\\\\
 \textbf{Anpassungen innerhalb des Controllers}\\
 Mithilfe der Implementierung des Interface \lstinline[style=java]{Initializable} ist es möglich die Methode \lstinline[style=java]{initialize()} zu erzeugen.
-Diese wird nach jedem Start Programms automatisch aufgerufen.
+Diese wird nach jedem Start des Programms automatisch aufgerufen.
 In dieser können nun etwaige Events definiert werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+\begin{lstlisting}[style=java,caption=Methode initialize(),label=loggerOutput]
 @Override
 public void initialize(URL arg0, ResourceBundle arg1) {
     btDelete.setOnAction(this::handleDelete);
@@ -1104,7 +1158,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 \textbf{Anpassungen beim Startvorgang}\\
 Nun muss nur noch der explizite Controller beim Starten definiert werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+\begin{lstlisting}[style=java,caption=Methode start(),label=loggerOutput]
 @Override
 public void start(Stage stage) {
 try {
@@ -1131,29 +1185,28 @@ Diese soll in allen weiteren Programmabschnitten vollzogen werden.
 \subsection{Startup-Window und Controller}\label{subsec:startupController}
 Aufgabe des Startup-Windows ist es, den Benutzer das Spiel, welches er spielen möchte, parametrisieren zu lassen.
 Diese Parametrisierung beinhaltet das Auswählen eines Spielmodis sowie die Konfiguration der Spielernamen.\\\\
-Die Auswahl eines Spielmodis erfolg über eine eigens dafür bereitgestellte ComboBox.
+Die Auswahl eines Spielmodis erfolgt über eine eigens dafür bereitgestellte ComboBox.
 In dieser ComboBox befinden sich Objekte vom Typ \lstinline[style=java]{GamemodeModel}, gezeigt im \autoref{gamemodeModel}.
-\lstinputlisting[firstline=7, lastline=16, style=java,caption=fdsa,label=gamemodeModel]{src/data/model/GamemodeModel.java}
+\lstinputlisting[firstline=7, lastline=16, style=java,caption=Klasse GamemodeModel(),label=gamemodeModel]{src/data/model/GamemodeModel.java}
 Sollte nun der Spieler nicht zufrieden mit gegebenen Spielmodis aus der ComboBox sein, kann er diese selbst auf ihn abstimmen und konfigurieren.
 Es kann hier über das Interaktionsmenü die Karten-, Spieler-, und Automatic-Deal-Anzahl (AutoDeal) eingestellt werden.
 Auch kann der Name des Spielmodis verändert werden.
 Ist dies der Fall, führt das zu einer Ergänzung eines neuen Spielmodis mit den eingestellten Parametern in der eigens dafür vorgesehenen Konfigurationsdatei.\\\\
 Auch ist, wie oben schon erwähnt, die Möglichkeit gegeben, Spielernamen zu bearbeiten.
 Dies wird durch die Liste in \autoref{startupWindow} ersichtlich.
-Wird in dieser Liste ein Spielernamen selektiert, übernimmt das Programm diesen direkt in das darüber befindliche Textfeld.
+Wird in dieser Liste ein Spielername selektiert, übernimmt das Programm diesen direkt in das darüber befindliche Textfeld.
 Von dort aus kann der Name bearbeitet werden.\\
-Umgesetzt wird dies mithilfe von 2 sogenannte \lstinline[style=java]{ChangeListeners}, welche dauerhaft auf eine Veränderung, also einen "Change" warten um dann eine Methode auszuführen.
+Umgesetzt wird dies mithilfe von 2 sogenannte \lstinline[style=java]{ChangeListeners}, welche dauerhaft auf eine Veränderung, also einen "Change" warten, um dann eine Methode auszuführen.
 Neben Listener wären auch Properties und Bindings für diese Anwendung möglich.
 Besser sind jedoch Listener.
-\lstinputlisting[firstline=54, lastline=59, style=java,caption=fdsa,label=fdsafdsa]{src/gui/controller/StartupController.java}
-So sind nun alle Preferenzen der Spieler gedeckt.\\\\
+\lstinputlisting[firstline=54, lastline=59, style=java,caption=Deklaration ChangeListener,label=changelistener]{src/gui/controller/StartupController.java}
 Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
-Die Daten werden ab jetzt nicht mehr in der standard Darstellung angezeigt, sondern basiert auf einem eigens dafür angepassten Rendering.
-Solch ein Verfahren hat den Vorteil, das nun direkt ein Objekt in die ComboBox bzw. in die Liste importiert werden kann und ab diesem Zeitpunk die Referenzierung des selektierten Elements leichter fällt.
-Auch werden hierberi Resourcen eingespart, denn es werden nur die Elemente gerendert, die auch wirklich angezeigt werden.
+Die Daten werden ab jetzt nicht mehr in der standard Darstellung angezeigt, sondern basieren auf einem eigens dafür angepassten Rendering.
+Solch ein Verfahren hat den Vorteil, dass nun direkt ein Objekt in die ComboBox bzw. in die Liste importiert werden kann und ab diesem Zeitpunkt die Referenzierung des selektierten Elements leichter fällt.
+Auch werden hierbei Ressourcen eingespart, denn es werden nur die Elemente gerendert, die auch wirklich angezeigt werden.
 Im \autoref{CellFactory} wird im ersten Schritt die Darstellung einer einzelnen Zelle definiert.
-\lstinputlisting[firstline=302, lastline=313, style=java,caption=fdsa,label=CellFactory]{src/gui/controller/StartupController.java}
-Jetzt muss ledeglich die CellFactory mithilfe des Methodenaufrufs \lstinline[style=java]{playerNameList.setCellFactory(list -> new PlayerCell())} gesetzt werden und die Liste baut sich nach dem import der Daten zusammen.
+\lstinputlisting[firstline=302, lastline=313, style=java,caption=Klasse PlayerCell(),label=CellFactory]{src/gui/controller/StartupController.java}
+Jetzt muss lediglich die CellFactory mithilfe des Methodenaufrufs \lstinline[style=java]{playerNameList.setCellFactory(list -> new PlayerCell())} gesetzt werden und die Liste baut sich nach dem Import der Daten zusammen.
 Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.\\\\
 \begin{figure}[H]
 \centering
@@ -1162,39 +1215,39 @@ Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.\\\\
 \label{startupWindow}
 \end{figure}
 Wird jetzt der Button \textit{Spielstart} betätigt, wird automatisch ein neues Objekt vom Typ \lstinline[style=java]{Game} erstellt.
-Dieses beinhaltet den gewählten Spielmodus und alle definierten Spieler samt deren Punkteanzahl.\\
-Auch gelangt man nun auf das Hauptfenster welches im folgenden Abschnitt beschrieben wird.
+Dieses beinhaltet den gewählten Spielmodus und alle definierten Spieler, samt deren Punkteanzahl.\\
+Auch gelangt man nun auf das Hauptfenster, welches im folgenden Abschnitt beschrieben wird.
 \subsection{Main-Window und Controller}\label{subsec:mainController}
-Das Main-Window stellt im engsten Sinne das Interaktionsfenster des Bentzers während des Spiels dar.
+Das Main-Window stellt im engsten Sinne das Interaktionsfenster des Benutzers während des Spiels dar.
 Dieses wird mithilfe von Tabs realisiert.
 Jeder einzelne Tab besitzt einen eigenen Controller.
 Aufgrund dieser Strukturierung ist der Code viel durchschaubarer und strukturierter.
-Die Verlinkung kann ganz enfach innerhalb der FXML-Dokumente geschehen.
+Die Verlinkung kann ganz einfach innerhalb der FXML-Dokumente geschehen.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/Main_Home_German.png}
 \caption{Main-Window}
 \label{mainWindows}
 \end{figure}
-In den folgenen Kapiteln wird nun jeder einzelne Tab beschrieben und gezeigt, welche Besonderheiten ern an Code mitsich bringt.
+In den folgenden Kapiteln wird nun jeder einzelne Tab beschrieben und gezeigt, welche Besonderheiten er an Code mit sich bringt.
 \subsection{Home-Tab und Controller}
 Zuerst springt einen sofort der Home-Tab ins Auge.
-Dieser fällt sofort mit der mittig plazierten Punkteanzeige auf.
-Mithilfe der 2 Buttons, nähmlich \textit{Vorheriger Spieler} und \textit{Nächster Spieler}, kann zwischen den Spielern gewechselt werden.
+Dieser fällt sofort mit der mittig platzierten Punkteanzeige auf.
+Mithilfe der 2 Buttons, nämlich \textit{Vorheriger Spieler} und \textit{Nächster Spieler}, kann zwischen den Spielern gewechselt werden.
 Adaptiv kann jedem Spieler jetzt ein Punkt hinzu oder abgezogen werden.
 Sollte je 1 Punkt nicht ausreichen, kann mithilfe eines implementierten Sliders eine größere Anzahl an Punkten zugewiesen werden.\
-Wird ein Punkt hinzugefügt, aktuelisiert dies automatisch die Punkteanzeige.\\\\
+Wird ein Punkt hinzugefügt, aktualisiert dies automatisch die Punkteanzeige.\\\\
 Umgesetzt wurde diese genannte Anzeige als \lstinline[style=java]{XYChart}, welcher mithilfe der folgenden Zeilen deklariert wurde.
-\lstinputlisting[firstline=43, lastline=45, style=java,caption=fdsa,label=XYChart]{src/gui/controller/HomeController.java}
-Nachdem diese Deklarierung erfolgt hat, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
+\lstinputlisting[firstline=43, lastline=45, style=java,caption=Initialisierung der Achsen,label=XYChart]{src/gui/controller/HomeController.java}
+Nachdem diese Deklarierung erfolgte, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
 Diese Methode iteriert durch alle Spieler des Game-Objekts, holt die Namen sowie Punkteanzahl der Spieler heraus und schreibt sie in den \lstinline[style=java]{XYChart}.\\
 Neben dieser Funktion stellt das Dashboard auf der linken Seite ein Kontrollmenü zum Steuern der Maschine bereit.
-In diesem Menü kann mit einem Drücken auf den Button \textit{Herunterfahren} und dem Anschließenden bestätigen der Abfrage(\autoref{sssec:alert}), die Maschine heruntergefahren werden.
-Im Hintergrund werden hier vom Backend, Daten über die serielle Schnitstelle gesendet.\\
+In diesem Menü kann mit einem Drücken auf den Button \textit{Herunterfahren} und dem anschließenden Bestätigen der Abfrage(\autoref{sssec:alert}), die Maschine heruntergefahren werden.
+Im Hintergrund werden hier vom Backend, Daten über die serielle Schnittstelle gesendet.\\
 Auf dem gleichen Prinzip basiert auch der Button \textit{Mischen}, nur das dieser Karten mischen lässt und anschließend mithilfe der AutoDeal-Funktion, automatisch Karten ausgibt.\\
 Sollen während des Spiels nur einzelne Karten benötigt werden, können mithilfe der Button-Group \textit{Deal} Karten ausgeteilt werden.
 Diese können, wie auch bei der Punkteanzahl, mithilfe eines Sliders ausgewählt werden.
-Das Programm deaktiviert nach dem Fehlen von vorhandenen Karten die Buttons und es ist erst nach einem weiteren Mischvorgang möglich, diese auszuteilen.\\
+Das Programm deaktiviert nach dem Fehlen von vorhandenen Karten die Buttons und es ist erst nach einem weiteren Mischvorgang möglich, weiter auszuteilen.\\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.2\textwidth]{fig/ainf/Interface.png}
@@ -1206,44 +1259,44 @@ Auch gelangt der Spieler wieder in das Startup-Window zurück.
 So schließt sich der Zyklus eines Spieles wieder und es kann ein Neues gestartet werden.
 \subsection{Stats-Tab und Controller}\label{sssec:statsController}
 Der Stats-Tab bietet die Möglichkeit , Statistiken aus der Statistik-Datei abzurufen.
-Diese genanntenn Daten werden innerhalb einer \lstinline[style=java]{TreeTableView<S,T>} angezeigt.
+Diese genannten Daten werden innerhalb einer \lstinline[style=java]{TreeTableView<S,T>} angezeigt.
 Aufgrund der Tatsache, dass eine \lstinline[style=java]{TreeTableView<S,T>} eines der komplexesten Bedienelemente in JavaFX ist, soll nun darauf eingegangen werden.\\\\
-Eine \lstinline[style=java]{TreeTableView<S,T>} ist hirachisch organisiert.
-Das beudetet, dass das Datenmodell aus verschiedenen Instanzen, in unserem Fall Instanzen vom Typ \lstinline[style=java]{Game} besteht.
+Eine \lstinline[style=java]{TreeTableView<S,T>} ist hierarchisch organisiert.
+Das beutetet, dass das Datenmodell aus verschiedenen Instanzen, in unserem Fall Instanzen vom Typ \lstinline[style=java]{Game} besteht.
 Diese werden in einer Gruppe zusammengefasst, welche wiederum in einer Hauptgruppe namens \lstinline[style=java]{root} zusammengefasst werden.
 So besteht eine Baumstruktur.
 Dargestellt werden die Daten über Instanzen vom Typ \lstinline[style=java]{TreeItem<T>}.
 Erstellt werden diese TreeItems mithilfe der Methode \lstinline[style=java]{createTreeData())}.
-\lstinputlisting[firstline=43, lastline=56, style=java,caption=fdsa,label=createTreeData]{src/gui/controller/StatsController.java}
+\lstinputlisting[firstline=43, lastline=56, style=java,caption=createTreeData(),label=createTreeData]{src/gui/controller/StatsController.java}
 In dieser Methode wird zuerst die Hauptgruppe namens \lstinline[style=java]{root} erstellt.
 Im nächsten Schritt werden alle Game-Instanzen geholt und mithilfe der Methode \lstinline[style=java]{createGroupTreeItem()} in Gruppenelemente umgewandelt.
-\lstinputlisting[firstline=58, lastline=60, style=java,caption=fdsa,label=createGroupTreeItem]{src/gui/controller/StatsController.java}
-Innerhalb dieser Schleife, welche diese genannte Gruppen erstell, befindet sich einere weitere Schleife, welche zu den jeweiligen Gruppen die einzelnen Spieler in Form von Instanzen vom Typ \lstinline[style=java]{TreeItem<PlayerModel>} hinzufügt.
+\lstinputlisting[firstline=58, lastline=60, style=java,caption=createGroupTreeItem(),label=createGroupTreeItem]{src/gui/controller/StatsController.java}
+Innerhalb dieser Schleife, welche diese genannten Gruppen erstellt, befindet sich eine weitere Schleife, welche zu den jeweiligen Gruppen die einzelnen Spieler in Form von Instanzen vom Typ \lstinline[style=java]{TreeItem<PlayerModel>} hinzufügt werden.
 Diese werden als sogenannte \lstinline[style=java]{children} betitelt.\\\\
 Im letzten Schritt muss nun nur mehr das Data Binding umgesetzt werden.
-Dies erfolgt mithilfe der folgenden Listing.
-\lstinputlisting[firstline=62, lastline=73, style=java,caption=fdsa,label=dataBindinh]{src/gui/controller/StatsController.java}
-Hier wird mithilfe von Instanzen des Typs \lstinline[style=java]{TreeTableColumn<S,T>} die Verbindung zu den Spalten hergstellt.
+Dies erfolgt mithilfe des folgenden Listing.
+\lstinputlisting[firstline=62, lastline=73, style=java,caption=Methode createColumn(),label=dataBindinh]{src/gui/controller/StatsController.java}
+Hier wird mithilfe von Instanzen des Typs \lstinline[style=java]{TreeTableColumn<S,T>} die Verbindung zu den Spalten hergestellt.
 Dabei ist \lstinline[style=java]{S} der Typ der Elemente von {TreeItem<S>}.
-Zum Auslesen der Werte nutzt man Objekte vom Typ \lstinline[style=java]{TreeItemPropertyValueFactory} welche man bei der Erstellung den Namen des gewünschten Attributs übergibt.\\
+Zum Auslesen der Werte nutzt man Objekte vom Typ \lstinline[style=java]{TreeItemPropertyValueFactory}, welche man bei der Erstellung, den Namen des gewünschten Attributs übergibt.\\
 Mithilfe dieses Codes ist es nun möglich, eine gutaussehende TreeTableView zu bauen.
 \subsection{About- und Help-Tab und Controllers}
-Die nebensächlichen Tabs namens \textit{About} und \textit{Help} stellen ledeglich einige Informationen für den Benutzer der Maschine bereit.
-Diese wird in Form von mit Pfeilen und Texten beschriebenen Bildern dargestelt.
+Die nebensächlichen Tabs namens \textit{About} und \textit{Help} stellen lediglich einige Informationen für den Benutzer der Maschine bereit.
+Diese wird in Form von Pfeilen und Texten beschriebenen Bildern dargestellt.
 Im \textit{About-Tab} findet sich jedoch ein kleines Feature.
 Mithilfe einer ComBox kann hier die gewünschte Systemsprache gewählt werden.
-Die Umsetztung wird im \autoref{internationalization} näher beschrieben.\\
-So bieten diese beiden Tabs im Großen und Ganzen eine Schnitstelle zur Informationsbeschaffung für den Benutzer an.
+Die  wird im \autoref{sssec:internationalization} näher beschrieben.\\
+So bieten diese beiden Tabs im Großen und Ganzen eine Schnittstelle zur Informationsbeschaffung für den Benutzer an.
 \subsection{Alerts}\label{sssec:alert}
-Um wie in JavaFX die Möglichkeit zu haben, Abfragen vorzunehemen, wurden in diesem Projekt sogenannte Dialoge implementiert.
+Um wie in JavaFX die Möglichkeit zu haben, Abfragen vorzunehmen, wurden in diesem Projekt sogenannte Dialoge implementiert.
 Diese werden durch die Utility-Klasse \lstinline[style=java]{AlertUtil} bereitgestellt.
-Mithilfe der impementierten Methode \lstinline[style=java]{showContentDialog()} kann ein Dialog erstellt werden.
-Dieser Erstellte Dialog wird mithilfe einer \lstinline[style=java]{StackPane} über das aktuelle Layout gelegt.
+Mithilfe der implementierten Methode \lstinline[style=java]{showContentDialog()} kann ein Dialog erstellt werden.
+Dieser erstellte Dialog wird mithilfe einer \lstinline[style=java]{StackPane} über das aktuelle Layout gelegt.
 In der Parameterliste befindet sich also diese \lstinline[style=java]{StackPane} und wird innerhalb der Methode als \lstinline[style=java]{root} betitelt.
-Aufgrund des zusätzlichen Features, wobei der Hintergrund wichgezeichnet wird, muss hie eine Node übergeben werden, auf welcher der Effekt angewendet werden soll.
+Aufgrund des zusätzlichen Features der Weichzeichnung des Hintergrunds,muss hier eine \lstinline[style=java]{Node} übergeben werden, auf welcher der Effekt angewendet werden soll.
 Auch ist es nötig eine Liste von \lstinline[style=java]{JFXButton}, also den verwendeten Buttons, zu übergeben.
 Zusätzlich muss ein Titel und ein Text angegeben werden.
-\lstinputlisting[firstline=24, lastline=41, style=java,caption=fdsa,label=dataBindinh]{src/util/AlertUtil.java}
+\lstinputlisting[firstline=24, lastline=41, style=java,caption=Methode showContentDialog(),label=showContentDialog]{src/util/AlertUtil.java}
 So führt der Aufruf der Methode zu einem Erstellen eines Dialogs.\\
 Wird nun auf einen Button der übergebenen Liste ein EventHandler mithilfe der Methode \lstinline[style=java]{addEventHandler()} gesetzt,
 kann auf das Schließen oder Bestätigen des Dialogs gewartet werden und danach eine spezifische Aktion erfolgen.
@@ -1258,14 +1311,14 @@ Um das Produkt in verschiedenen Ländern einsatzfähig machen zu können, und de
 In JavaFX ist dies recht einfach umgesetzt.
 Hier hilf die Klasse \lstinline[style=java]{Locale} bei der Beschreibung von etwaigen Sprachbesonderheiten.
 Eine Instanz vom Typ \lstinline[style=java]{Locale} beinhaltet eine bestimmte geografische Region, sowie die in diesem Land gesprochene Sprache.
-Die Darstellung innerhalb des Objektes ist von der ISO 639 und der ISO 3166 abgeleitet, welche eine Einheitliche kodierung von Länder-und Sprachcodes vorraussetzen.
-Beim Erstellprozess einer Oberfläche kann nun dieses Local Objekt als Parameter an den \lstinline[style=java]{FXMLLoader} übergeben werden.\\\\
+Die Darstellung innerhalb des Objektes ist von der ISO 639 und der ISO 3166 abgeleitet, welche eine einheitliche Kodierung von Länder-und Sprachcodes vorraussetzen.
+Beim Erstellprozess einer Oberfläche kann nun dieses Local-Objekt als Parameter an den \lstinline[style=java]{FXMLLoader} übergeben werden.\\\\
 Nun gibt es die Möglichkeit, Sprachdateien zu implementieren, welche alle übersetzten Texte beinhalten.
 Diese Dateien sollte nach folgendem Pattern benannt werden: \lstinline[style=java]{prefix_<sprachkürzel>_<länderkürzel>.properties}\\
-Innerhalbt dieser Sprachdatei sind übersetzte Texte immer mit Konstanten verknüpft.
+Innerhalb dieser Sprachdatei sind übersetzte Texte immer mit Konstanten verknüpft.
 Gezeigt wird dies in folgenden Beispiel.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=resource]
+\begin{lstlisting}[style=java,caption=Beispielbundle,label=resource]
 txt_about_save=Speichern
 txt_home_player=Spieler
 txt_home_gamemode=Spielmodus
@@ -1273,27 +1326,27 @@ txt_msg_finishGame=Wollen Sie wirklich das Spiel beenden?
 \end{lstlisting}
 % @formatter:on
 Die folgende Methode filtert nun genau nach dem oben genannte Pattern und es werden infolgedessen die Daten eingelesen.
-\lstinputlisting[firstline=17, lastline=20, style=java,caption=fdsa,label=readBundle]{src/util/FileUtil.java}
+\lstinputlisting[firstline=17, lastline=20, style=java,caption=Methode getMatchingFiles(),label=readBundle]{src/util/FileUtil.java}
 Sobald diese nun standartmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{activateLocale()} aktiviert werden kann.
-\lstinputlisting[firstline=90, lastline=101, style=java,caption=fdsa,label=multiLang]{src/gui/multilanguage/ResourceManager.java}
+\lstinputlisting[firstline=90, lastline=101, style=java,caption=activateLocale(),label=multiLang]{src/gui/multilanguage/ResourceManager.java}
 Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
-Sollte dies der Falls sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
+Sollte dies der Fall sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
 Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuelle Locale zu schreiben, um dann beim nächsten Start dieses zu verwenden.
 \section{Hardwarenahe-Programmierung}
-Um nun die gesendeten Daten über der seriellen Schnitstelle auf der Ansteuerplatine zu erhalten ist es von Nöten, diese genannte Platine einzurichten und zu programmieren.
+Um nun die gesendeten Daten über der seriellen Schnittstelle auf der Ansteuerplatine zu erhalten ist es von Nöten, diese genannte Platine einzurichten und zu programmieren.
 Im folgenden Abschnitt wird nun dieser Prozess näher erklärt.
 \subsection{Konfiguration des Mikrocontrollers}
-\footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtig des Mikrocontrollers.
-Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.
+\footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtung des Mikrocontrollers.
+Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.\\
 Bei einem neuen µC ist es grundsätzlich notwendig im Datenblatt genau dieses µCs den Auslieferungszustand der Fuses zu ermitteln.
-So werden beispielsweise die ATmega mit aktiviertem internen Oszillator ausgeliefert und man darf sich dementsprechend nicht wundern, wenn der µC einfach nicht mit dem angeschlossenen Quarz (XTAL) oszillieren will.
+So werden beispielsweise die ATmega Prozessoren mit aktiviertem internen Oszillator ausgeliefert und man darf sich dementsprechend nicht wundern, wenn der µC einfach nicht mit dem angeschlossenen Quarz (XTAL) oszillieren will.
 Aufgrund der Verfügbarkeit eines Programmiersteckers ist es nun einfach, diese Fuse-Bits, also die Bits, welche für die Konfiguration des Mikrocontrollers dienen zu setzten.
 Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.\\
 Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{fig/ainf/features}
-\caption{Teilaufbau - Nicht bestromt}
+\includegraphics[width=0.8\textwidth]{fig/ainf/Features.PNG}
+\caption{Fuse-Calculator}
 \label{fuses}
 \end{figure}
 Diese Zeichenkette kann jetzt mithilfe von AVR-Dude verarbeitet werden.
@@ -1311,20 +1364,20 @@ Sobald jetzt der Mikrocontroller programmierbar gemacht wurde, kann mit dem prog
 Ziel ist es, die serielle Kommunikation am Mikrocontroller zu realisieren.
 Umgesetzt wurde dies mit verfügbaren Vorlagen welche aus dem Unterricht bekannt waren.
 In diesen Vorlagen sind etwaige Dinge, wie die Implementierung von Tasks oder UART schon vorkonfiguriert.
-Dies erleichtert den Programmiervorgang enorm und fürt zu einer schnelleren Umsetztung der Ziele.\\\\
+\newpage
+Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Umsetzung der Ziele.\\\\
 Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
-Das bedeuted, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
-Wird ein Zeichen von der serielle Schnitstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
-\lstinputlisting[firstline=142, lastline=176, style=c,caption=fdsa,label=multiLang]{src/app.c}
-Zuerst wird geprüft ob das ertse ankommende Byte ein Startbyte nähmlich ein ":" ist.
+Das bedeutet, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
+Wird ein Zeichen von der serielle Schnittstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
+\lstinputlisting[firstline=142, lastline=176, style=c,caption=Funktion app_handleUartByte(),label=multiLang]{src/app.c}
+Zuerst wird geprüft ob das erste ankommende Byte ein Startbyte nämlich ein ":" ist.
 Falls dies nicht der Fall ist sollte der \lstinline[style=C]{ErrorCount} hochgezählt werden.
 Wenn im Buffer bereits ein Startbyte : vorhanden ist, darf kein Zweites innerhalb der Request geschrieben werden, da dies sonst zu Fehlern führen könnte.
 Falls ein solcher Fehler auftritt, sollte in einer Funktion ein weiteres mal der \lstinline[style=C]{ErrorCount} hochgezählt werden.
-Werden danach mehr Zeichen in den Buffer geschrieben als Platz ist, wird ebenfalls der ErrorCount hochgezählt.\\
-Ist nach dem Übertragen der ErrorCount größer als 0, so soll die Anzahl der Fehler ausgegeben werden.
-Verwendet wird hierbei eine LED auf dem Board.
-
-Nachdem der Buffer gefüllt ist wird die Funktion \lstinline[style=C]{app_handleModbusRequest()} aufgerufen die sich jetzt um diese Anfrage kümmert.
+Werden danach mehr Zeichen in den Buffer geschrieben als Platz ist, wird ebenfalls der \lstinline[style=C]{ErrorCount} hochgezählt.\\
+Ist nach dem Übertragen der \lstinline[style=C]{ErrorCount} größer als 0, so soll die Anzahl der Fehler ausgegeben werden.
+Verwendet wird hierbei eine LED auf dem Board.\\
+Nachdem der Buffer gefüllt ist, wird die Funktion \lstinline[style=C]{app_handleModbusRequest()} aufgerufen die sich jetzt um diese Anfrage kümmert.
 Die Aufgaben der Funktion sind folgende:
 \begin{enumerate}
 \item Prüfen auf validen Protokoll Request
@@ -1334,31 +1387,31 @@ Die Aufgaben der Funktion sind folgende:
 Mithilfe dieser beiden Funktionen ist es nun möglich, Requests zu Empfangen und eine Response zu schicken.
 \section{Teilaufbau}
 Der letzte Schritt dieses Projekts ist es, einen Teil der Maschine aufzubauen.
-Dieser Teil der Maschine gliedert sich in Display, Ansteuerplatine und Raspberry PI.
-Auch soll gezeigt werden, wie die Konfiguration des Display und das aufsetzten der Betriebssystem vonstatten ging.
-\subsection{Konfiguration des Zielsytsems}
+Der Teilaufbau der Maschine gliedert sich in Display, Ansteuerplatine und Raspberry PI.
+Auch soll gezeigt werden, wie die Konfiguration des Display und das aufsetzten des Betriebssystems vonstatten ging.
+\subsection{Konfiguration des Zielsystems}
 \subsubsection{Betriebssystem}
 Als Betriebssystem wurde Raspbian ausgewählt.
 Das offizielle Betriebssystem für den Raspberry PI basiert auf dem Linux-Kernel.
 Außerdem bringt es die aktuellste Unterstützung von Hardware mit und ist zudem noch außerordentlich schlank.
 So wird auch der verwendete Display optimal Unterstützt.\\
-Installiert werden kann Rasbian nach dem Download von der offiziellen Website.
+Installiert werden kann Raspbian nach dem Download von der offiziellen Website.
 Diese Installation startet mit dem erstellen einer Bootfähigen SD-Karte.
-Verwendet wurde das Tool Rufus welches einfach zu bedienen ist.
-Ist nun die SD-Karte bootfähig muss ledeglich das Raspberry PI gestartet werden.
+Verwendet wurde das Tool Rufus, welches einfach zu bedienen ist.
+Ist nun die SD-Karte bootfähig, muss lediglich der Raspberry PI gestartet werden.
 Anschließend folgt eine Systemkonfiguration.
 \subsubsection{Integration des Touchpanels}
 Die Integration des Touchpanels ist spielt eine elementare Rolle bei der Inbetriebnahme der Maschine.
-Ohne dieses Touchpanel kann nähmlich kein Benutzer die Maschnine bedienen.
+Ohne dieses Touchpanel kann nämlich kein Benutzer die Maschine bedienen.
 Das ausgewählte Touchpanel besitzt folgende Eigenschaften:
 \begin{enumerate}
 \item  1024×600 Auflösung
 \item Mit kapazitiven Touchcontrol
 \item Einfache Konfiguration
-Nach dem Anschließen muss nur mehr die \textit{config.txt} am Betriebssystem des Raspberry PI ergänz werden.
-Folgenden Zeile werden vorrausgesetzt:
+Nach dem Anschließen muss nur mehr die \textit{config.txt} am Betriebssystem des Raspberry PI ergänzt werden.
+Folgende Zeilen werden vorausgesetzt:
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=resource]
+\begin{lstlisting}[style=java,caption=Display-Parameter,label=resource]
 hdmi_force_hotplug=1
 max_usb_current=1
 hdmi_group=2
@@ -1368,12 +1421,12 @@ hdmi_cvt 1024 600 60 6 0 0 0
 hdmi_drive=1
 \end{lstlisting}
 % @formatter:on
-Ab diesem Zeitpunkt ist eine verwendung des Diplays möglich.
+Ab diesem Zeitpunkt ist eine Verwendung des Displays möglich.
 \subsubsection{Aufbau}
 Das Ziel des letzten Schritts ist es, alle Komponenten miteinander zu verbinden.
 Das bedeutet es muss noch die ausständige Verbindung der Ansteuerplatine und des Raspberry gemacht werden.
 Diese wurde über einen 40 Pin Stecker realisiert, welcher alle Pins des Raspberry PIs auf die Ansteuerplatine führt.
-So ist nun die serielle Verbindung sowie die Spannungsversorung des Raspberry PIs sichergestellt.
+So ist nun die serielle Verbindung sowie die Spannungsversorgung des Raspberry PIs sichergestellt.
 \end{enumerate}
 \begin{figure}[H]
 \centering
@@ -1381,7 +1434,7 @@ So ist nun die serielle Verbindung sowie die Spannungsversorung des Raspberry PI
 \caption{Teilaufbau - Nicht bestromt}
 \label{rpiAndDisplay}
 \end{figure}
-Um nun das gesamte System in Betrieb zu nehmen ist es ledeglich notwendig, eine Spannungsversorgung an die Ansteuerplatine anzuschließen.\\
+Um nun das gesamte System in Betrieb zu nehmen ist es lediglich notwendig, eine Spannungsversorgung an die Ansteuerplatine anzuschließen.\\
 Anhand dieses Stadiums können jetzt alle Komponenten in das Gehäuse eingebaut und verwendet werden.
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
 \subsection{Probleme}
