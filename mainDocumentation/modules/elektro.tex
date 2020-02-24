@@ -74,18 +74,18 @@ Wir stellten die Anforderungen einer SPI-Programmierschnittstelle sowie die eine
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 
 \subsubsection{ATmega162}
-Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen E²PROM-Speicher von 512 Bytes.
+Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen SRAM in einer Größe von 1kiB und einen EEPROM-Speicher von 512 Bytes.
 Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 I/O Register und zwei Timer.
 Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.\footcite{AVR Typen}
 
 \subsubsection{ATmega324P}
-Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an E²PROM-Speicher sowie 1kiB an SRAM mit sich bringt.
-Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
+Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an EEPROM-Speicher sowie 1kiB an SRAM mit sich bringt.
+Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I2C Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben. \footnotemark[1]
 
 \subsubsection{ATmega128}
-Der ATmega128 besitzt einen E²PROM-Speicher von 4kiB, einen 123kiB großen Flash-Speicher und einen SRAM von 4kiB .
-Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
+Der ATmega128 besitzt einen EEPROM-Speicher von 4kiB, einen 128kiB großen Flash-Speicher und einen SRAM von 4kiB .
+Er besitzt zwei UART-, eine SPI- sowie eine I2C-Schnittstelle.
 Zusätzlich bietet er vier Timer und 53 I/O Pins.
 Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden. \footnotemark[1]
 
@@ -274,12 +274,12 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
         \draw (3,0) to (5,0) node[rground]{};
 
     \end{circuitikz}
-    \caption{Anschluss einer H-Brücke an einen Mikrocontroller}
+    \caption{Anschluss einer H-Brücke an einen Mikroprozessor}
 \end{figure}
 
-In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrocontroller dargestellt.
+In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
 Da sich die Ansteuerungen der beiden H-Brücken gleich gestalten, wird zur vereinfachten Funktionserklärung nur die obere behandelt. \\\\
-Mithilfe des Timer 0 wird am Ausgang OC1B des Mikrocontrollers ein PWM-Signal erzeugt, unter Verwendung dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
+Mithilfe des Timer 0 wird am Ausgang OC1B des µC ein PWM-Signal erzeugt, unter Verwendung dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
 Dadurch befindet sich jeweils an einem Eingang des UND-Gatters mit der Bezeichnung IC1 und an einem Eingang des UND-Gatters mit der Bezeichnung IC2 ein Signal mit einem HIGH-Pegel (Spannung) oder
 LOW-Pegel (keine Spannung). \\\\
 Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzusteuern: \\
@@ -288,7 +288,7 @@ Am Ausgang PD1 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transist
 Durch das HIGH-Signal, ausgehend vom Ausgang OC1B, befindet sich ein HIGH-Signal am unteren Eingang des UND-Gatters IC2.
 Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
 Um den Schrittmotor nach links drehen zu lassen, wird am Ausgang PD1 ein HIGH-Signal gesetzt.
-Am Ausgang PD0 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Y sperrt und kein Stromfluss gewährleistet wäre.
+Am Ausgang PD0 muss ein LOW-Signal zu Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das HIGH-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein HIGH-Signal am oberen Eingang des UND-Gatters.
 Wenn nun ein HIGH-Pegel vom Ausgang OC1B bereitgestellt wird, liefert das UND-Gatter IC1 ein HIGH-Signal weiter an den NPN-Transistor Q3, welcher somit leitend wird und
 ein Fließen des Stromes durch die Motorwicklung bewirkt.
@@ -331,7 +331,7 @@ Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
 
 \subsubsection{DRV8825\footfullcite{DRV8825 Stepper Motor Driver Carrier, High Current}}
-Diesem Treiber-Board von Texas Instruments ist es Möglich mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
+Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
 Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welches mit zugeführter Kühlung auch getrieben werden kann.
 Der DRV8825 arbeitet mit einem Logikpegel von 3,3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
@@ -341,7 +341,7 @@ Der DRV8825-Treiber verfügt über eine Schnittstelle und eine Pinbelegung, welc
 sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
 
 \subsubsection{TB6600\footfullcite{TB6600 arduino Stepper Motor Driver}}
-Dieser Ein-Achsen-Schrittmotortreiber ist für Hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
+Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0,7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Überhitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
 Der Ausgangsstrom ist mittels DIP-Schalter in acht Schritten wählbar.
@@ -376,7 +376,7 @@ Das Gewicht von 200dag und eine Größe von 57mm x 96mm x 28mm unterscheiden sic
 
 Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
 Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3,3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
-Ein Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
+Eine Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
 
 
 \subsection{Detektion der Kartenposition\footfullcite{Funktionsweise und Technologie von kapazitiven Sensoren}}
@@ -384,7 +384,7 @@ Ein Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul
 \subsubsection{Kapazitive Sensoren}
 Die Funktion von kapazitiven Sensoren ist mit der eines offenen Kondensators zu vergleichen.
 Zwischen der Messelektrode und der GND - Elektrode bildet sich ein elektrisches Feld.
-Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Material die Kapazität des Feldes.
+Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
 \textbf{Sensoren mit GND-Elektrode} \\
@@ -400,7 +400,8 @@ Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 \subsubsection{Ultraschall-Sensoren\footfullcite{Induktiv, kapazitiv, optisch oder Ultraschall}}
 Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
 Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
-Das Echo wird vom Sensor wieder aufgenommen und über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird der Abstand vom Sensor berechnet.
+Das Echo wird vom Sensor wieder aufgenommen.
+Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
 So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
 Lediglich schalldämpfende Materialien können nur schwer erfasst werden.
 Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
@@ -437,7 +438,7 @@ Es sind große Erkennungsabstände möglich.
         Platzbedarf & gering & gering & mittel   \\ \hline
         Genauigkeit & hoch & mittel & hoch        \\ \hline
     \end{tabular}
-    \caption{Vergleich der Sensorattribute}
+    \caption{Vergleich der Sensoreigenschaften}
 \end{table}
 
 Unsere Wahl fiel auf einen kapazitiven Sensor, da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
@@ -461,12 +462,12 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-        & \textbf{Endschalter} & \textbf{Licntschranke} \\ \hline
+        & \textbf{Endschalter} & \textbf{Lichtschranke} \\ \hline
         Preis & sehr gering & mittel  \\ \hline
         Platzbedarf & sehr gering & mittel     \\ \hline
         Genauigkeit & mittel & hoch     \\ \hline
     \end{tabular}
-    \caption{Vergleich der Sensorattribute}
+    \caption{Vergleich der Erfassungsvarianten}
 \end{table}
 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
@@ -588,8 +589,8 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
 Der P-Kanal MOSFET leitet, wenn das Gate um U\textsubscript{GSth} negativer ist als der Spannungspegel anliegend am Source.
 Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass am Sourceeingang die Eingangsspannung ankommt.
 Weil die am Source anliegende Spannung weitaus positiver als U\textsubscript{GSth} ist, leitet der MOSFET .
-Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährilichen Wert.
-Die Tatsache, dass der MOSFET quasi verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
+Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährlichen Wert.
+Die Tatsache, dass der MOSFET verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
 Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden Zustand.
 Bei Spannungen, die kleiner als UGSmax sind, kann die Z-Diode vernachlässigt werden.
 In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, weshalb die Diode vernachlässigt werden kann und ein beinahe verlustfreier Betrieb möglich ist.
@@ -1151,13 +1152,11 @@ Der DRV8825 besitzt 16 Anschlüsse.
 Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\
 
 Über den Anschluss VMOT werden in unserem Fall 12V eingespeist.
-Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators empfohlen. \\
-
-„Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen.
+Diese Trägerplatine benutzt niedrige-ESR Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen.
 Insbesondere, wenn längere Stromkabel verwendet werden.
 Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
-Selbst wenn die Versorgungsspannung des Motors nur 12 V, können diese Art von Spannungsspitzen auftreten.
-Eine Möglichkeit diese Gefahr zu negieren ist, einen mindestens 47µF großen Elektrolytkondensator zwischen dem Pin VMOT und Ground in der Nähe des Treibers zu schalten.“ \\
+Bei der Beschaltung der Spannungsversorgung des DRV8825 wird vom Hersteller der Gebrauch eines Elektrolytkondensators von mindestens 47µF in der Nähe des Treibers empfohlen, um diese Gefahr zu negieren.
+Aufgrund dessen entschieden wir uns dazu, einen derartigen Kondensator zu implementieren.\\
 
 An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit dem Treiber verbunden.
 Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
@@ -1178,6 +1177,8 @@ Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, das
 Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel 2.3.6.4 . \\
 
 Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\
+
+\newpage
 
 Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\
 
@@ -1666,7 +1667,8 @@ Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf desse
 Über die von uns verwendete Eingangsspannung des Gleichspannungswandlers und den maximal fließenden Strom von 2A
 traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf eine Spule mit einem Wert von 100µH .
 Über die Bedingung einen derartig hohen Strom treiben zu können, fiel unsere Wahl auf die DR127-101-R,
-welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, magnetische Geschirmtheit und einem SMD-Gehäuse mit sich bringt.
+welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, einen niedrigen magnetischen Sättigungsstrom,
+einen niedrigen Widerstandswert, magnetische Geschirmtheit und ein SMD-Gehäus mit sich bringt.
 
 \subsubsection{Schottky-Diode\footfullcite{MBRD340 Datasheet}}
 Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
@@ -1674,7 +1676,7 @@ Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Stro
 
 \subsection{Auswahl der Gleichrichter-Dioden\footfullcite{RR264M Datasheet}}
 
-Als diese Dioden selektierten wir die RR264M, welche einen Strom von 1A treiben können, was wichtig für die Implemntierung an den induktiven Lasten ist.
+Als diese Dioden selektierten wir die RR264M, welche einen Strom von 1A treiben können, was wichtig für die Implementierung an den induktiven Lasten ist.
 Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
 Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
 
@@ -1770,7 +1772,7 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 
 Bevor wir fester Überzeugung aller korrekten Funktionen sein konnten, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
 Dies hat die Vorteile, etwa im Platinenlayout falsch Gemachtes, bereits vor der finalen Version zu erkennen und zu korrigieren.
-Jener Prototyp wurde in der Werkstätte der HBTLA Kaindorf angefertigt. \\
+Jener Prototyp wurde in der Werkstätte der HTBLA Kaindorf angefertigt. \\
 
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
