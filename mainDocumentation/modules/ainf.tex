@@ -515,7 +515,7 @@ Grundlegend besteht das Ziel von JavaFX CSS darin, Webprogrammierer, welche CSS 
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
 Eine Besonderheit von JavaFX CSS besteht im Vergleich zur normalen CSS-Sprache darin, dass alle Elemente, welche das Prefix \lstinline{-fx-...} besitzen, in direkter Verbindung mit JavaFX stehen.
 Dies lässt sofort auf die Beschreibung eines JavaFX Elements schließen.
-\subsubsection{JSON}
+\subsubsection{JSON}\label{sssec:json}
 Der Name JSON (JavaScript Object Notation) beschreibt neben XML eines der wichtigsten Datenformate zur Sicherstellung der Datenpersistenz.
 Dieser Nachfolger von CSV und INI setzt sich vor allem in der heutigen Datentechnik durch.
 Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
@@ -916,7 +916,7 @@ Nutzt man diese Art von Protokollierung, kann man außerdem die Genauigkeit der 
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
 \subsubsection{Integration in das Programm}
 Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
-Es ist lediglich notwendig, diese genannten Klassen in ein Unterpackage des Programms einzufügen.
+Es ist lediglich notwendig, diese genannten Klassen in ein Package des Programms einzufügen.
 Dazu soll in der \autoref{PackagestrukturLogging} die Struktur des Logging-Packages illustriert werden.
 \begin{figure}[H]
 \begin{center}
@@ -966,7 +966,7 @@ Der genannte Logger soll nun dessen Protokollierung auf 2 verschiedenen Ausgaben
 \end{enumerate}
 Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Java-Codebeispiel,label=loggerOutput]
+\begin{lstlisting}[style=java,caption=Logger Implementierung,label=loggerOutput]
 LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
 try {
     LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
@@ -980,7 +980,7 @@ Nun kann der Logger global im Programm angewendet werden.
 Es ist nur mehr nötig, dieses Logger-Objekt in die jeweilige Klasse zu bringen.
 Dies erfolgt über die Zeile \lstinline[style=java]{private static final Logger LOG = Logger.getLogger(Example.class.getName())}.
 In diesem Beispiel wird das Logger-Objekt der Klasse \lstinline[style=java]{Example} zugewiesen.\\\\
-Wie schon im \autoref{sssec:logOverview} beschrieben, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.
+Wie schon im \autoref{sssec:logOverview} beschrieben, ist durch einen Logger die Möglichkeit gegeben, eine verschieden genaue Darstellung von Einträgen zu implementieren.\\
 Folgend soll tabellarisch gezeigt werden, welche Möglichkeiten dieser Logger bietet.
 \begin{table}[H]
 \centering
@@ -1013,7 +1013,7 @@ Einige Anforderungen an diese Konfigurationsdatei sind:
 \end{enumerate}
 Aufgrund dieser Darstellung setzte sich eine Lösung mithilfe des Datenformats JSON durch.
 Nun ergibt sich jedoch das Problem, dass eine enorm große Datenmenge in dieses Objekt verpackt werden muss.
-Eine Lösung bietet, wie im \autoref{sssec:gson} erwähnt, die Bibliothek Gson.
+Eine Lösung bietet, wie im \autoref{sssec:json} erwähnt, die Bibliothek Gson.
 Diese vereinfacht die Erstellung einer Json-Datei.
 Somit kann in wenigen Schritten dieses Ziel umgesetzt werden.
 \subsubsection{Umsetzung}
@@ -1048,31 +1048,31 @@ Dieses Pattern soll kurz in der \autoref{sampleConfig} gezeigt werden.
     }
 }
 \end{lstlisting}
-Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im Konstruktor sein.
-Dies bedeuted, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwärtiges Objekt der Konfigurationsdatei zur Verfügung steht.
+Auch nicht unerwähnt sollte das Einlesen dieser Konfigurationsdatei im privaten Konstruktor sein.
+Dies bedeutet, dass sobald die Methode \lstinline[style=java]{createInstance()} aufgerufen wird, ein vollwertiges Objekt der Konfigurationsdatei zur Verfügung steht.
 Dieses genannte Objekt ist eine Instanz der Datenerhaltunsklasse \lstinline[style=java]{ConfigModel}.\\\\
-Implementiert wird dies durch der Methode read(), welche über einen \lstinline[style=java]{BufferedReader} den json-String einliest.
-Dieser String wird anschließend, wie im Kapitel \nameref{sssec:gson} schon geklärt, in dieses genannte Objekt umgewandelt.\\
-So verfügt das Programm nun Möglichkeit, wichtige Daten zu speichern.
+Implementiert wird dies durch der Methode \lstinline[style=java]{read()}, welche über einen \lstinline[style=java]{BufferedReader} den json-String einliest.
+Dieser String wird anschließend, wie im Kapitel \nameref{sssec:json} schon geklärt, in dieses genannte Objekt umgewandelt.\\
+So verfügt das Programm nun Möglichkeit, wichtige Daten zu speichern und diese global innerhalb der Programms abzurufen.
 \subsection{Statistiken}
 \subsubsection{Konzept}
 Sobald die Implementierung der Konfigurationsdatei abgeschlossen ist, kann nun nach dem gleichen Schema auch die Statistik-Datei erstellt werden.\\\\
 Diese genannte Datei soll nach jedem Beenden des aktuellen Spiels am Interface, neu geschrieben werden.
-Die Bestandteile dieser Datei sollten vor der Umsetztung klar definiert sein.
+Die Bestandteile dieser Datei sollten vor der Umsetzung klar definiert sein.
 \begin{enumerate}
 \item Gesamtanzahl aller Spiele
 \item Jedes einzelne Spiel
 \begin{enumerate}
 \item Alle Spielernamen und deren Punktestand
-\item Den gepielten Spielmodus mit dessen Hintergrundinformationen
+\item Den gespielten Spielmodus mit dessen Hintergrundinformationen
 \end{enumerate}
 \end{enumerate}
 \subsubsection{Umsetzung}
-Wie schon genannt, erfolgt die Umsetztung genau nach dem gleichen Schema wie die der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
+Wie schon genannt, erfolgt die Umsetzung genau nach dem gleichen Schema wie das der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
 Dies bedeutet, dass hier anstatt des \lstinline[style=java]{ConfigModel}, das \lstinline[style=java]{StatisticModel} die Basis der Datei darstellt.
-Dieses Model verfügt eine Liste von Objekten des Typ \lstinline[style=java]{GameModel}, welches den Kopf eines jeden Spiels darstellt.
-Auch beinhaltet es einen Zahlenwert zur Zählung der Gesamtspiele.\\\\
-Ab diesem Zeitpunk ist es möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
+Dieses Model verfügt eine Liste von Objekten des Typs \lstinline[style=java]{GameModel}, welches den Kopf eines jeden Spiels visualisiert.
+Auch beinhaltet es einen Zahlenwert zur Zählung der gespielten Spiele.\\\\
+Ab diesem Zeitpunkt ist es nun möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
 Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
 \section{Frontend-Programmierung}
 In den folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
