@@ -5,16 +5,18 @@
 \section{Anforderungen}
 
 Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
+Eine Inbetriebnahme und das Durchführen von Tests soll ebenfalls vorgenommen werden.
 Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen, zwei Hubmagneten in Bewegung zu versetzen, einen Endschalter einzulesen, eine Pumpe und ein Ventil anzusteuern und einen Schrittmotor anzusteuern.
 Zudem hat sie die Aufgabe, sämtliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
 Außerdem soll der Mikroprozessor dazu im Stande sein, Befehle von einem Raspberry Pi 3B+ über \acs{UART} zu erhalten.
 Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini-\acs{USB} zu betreiben, soll ebenfalls gegeben sein.
+Ein Blockschaltbild hierzu ist in der \autoref{fig:Blockschaltbild} zu finden.
 
 \subsection{Zeitplan}
 
 \begin{figure}[hbt!]
     \centering
-    \scalebox{0.6}{
+    \scalebox{0.55}{
     \begin{ganttchart}[
     hgrid style/.style={black, dotted},
     calendar week text={\currentweek},
@@ -68,23 +70,23 @@ Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini-\a
 \section{Variantenvergleiche und Konzeptionierungen}
 
 \subsection{Mikrocontroller}
-Da unser finales Konzept Zahlreiches an Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
+Da unser finales Konzept zahlreiche Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
 Wir stellten die Anforderungen einer \acs{SPI}-Programmierschnittstelle sowie die einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 
 \subsubsection{ATmega162}
-Dieser Mikrochip besitzt einen Flash-Speicher von 16kiB, einen \acs{SRAM} in einer Größe von 1kiB und einen \acs{EEPROM}-Speicher von 512 Bytes.
-Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 \acs{I/O} Register und zwei Timer.
+Dieser Mikrochip besitzt einen Flash-Speicher von 16KiB, einen \acs{SRAM} in einer Größe von 1KiB und einen \acs{EEPROM}-Speicher mit 512 Bytes.
+Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 \acs{I/O} Pins und zwei Timer.
 Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.\footcite{AVR-Typen}
 
 \subsubsection{ATmega324P}
-Der ATmega324P ist ein Mikrochip, welcher 32kiB an Flash-Speicher, 1kiB an EEPROM-Speicher sowie 1kiB an SRAM mit sich bringt.
-Er verfügt über 32 I/O Register, eine SPI Schnittstelle, eine I2C Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
+Der ATmega324P ist ein Mikrochip, welcher 32KiB an Flash-Speicher, 1KiB an EEPROM-Speicher sowie 1KiB an SRAM mit sich bringt.
+Er verfügt über 32 I/O Pins, eine SPI Schnittstelle, eine I²C\acues{I2C} Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben. \footnotemark[1]
 
 \subsubsection{ATmega128}
-Der ATmega128 besitzt einen EEPROM-Speicher von 4kiB, einen 128kiB großen Flash-Speicher und einen SRAM von 4kiB .
-Er besitzt zwei UART-, eine SPI- sowie eine I2C-Schnittstelle.
+Der ATmega128 besitzt einen EEPROM-Speicher von 4KiB, einen 128KiB großen Flash-Speicher und einen SRAM von 4KiB .
+Er besitzt zwei UART-, eine SPI- sowie eine I²C-Schnittstelle.
 Zusätzlich bietet er vier Timer und 53 I/O Pins.
 Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden. \footnotemark[1]
 
@@ -112,14 +114,14 @@ Er kann mit einer Gleichspannung von 4.5V bis 5.5V betrieben werden. \footnotema
 Unsere Entscheidung fiel auf den ATmega324P, da dieser die nötigen Parameter, wie eine Versorgungsmöglichkeit mit 3,3V und einen ausreichend großen, programmierbaren Speicher, mit sich bringt.
 
 \subsection{Schrittmotor-Ansteuerung}
-Um jenen, im Automaten verbauten, Schrittmotor ansteuern zu können, ist eine Baugruppe notwendig.
+Um den im Automaten verbauten Schrittmotor ansteuern zu können, ist eine Baugruppe notwendig.
 Für das Ansteuern von Schrittmotoren gibt es verschiedenste Möglichkeiten.
 In den folgenden Unterkapiteln werden einzelne genannt, ein Variantenvergleich durchgeführt, und eine Variante ausgewählt.
 
 \subsubsection{\acs{DIY}-H-Brücke}
 
 Mithilfe einer sogenannten H-Brücke ist es möglich, Schrittmotoren unter der Verwendung eines Mikrocontrollers anzusteuern.
-Der von uns ausgewählte Schrittmotor 12HS19-2004S1 ist bipolarer Art und weist 2 Spulen auf, wodurch er sich von zwei H-Brücke steuern lässt.
+Der von uns ausgewählte Schrittmotor 12HS19-2004S1 der Firma Quimat ist bipolarer Art und weist 2 Spulen auf, wodurch er sich von zwei H-Brücke steuern lässt.
 Für das Ansteuern einer H-Brücke werden drei Steuersignale benötigt:
 zwei digitale Signale sowie ein \acs{PWM}-Signal.
 
@@ -168,8 +170,8 @@ Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Tran
 Wie in Abbildung 2.1 zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
 Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode.
 Diese haben folgende Aufgabe:\\\\
-Ein Nebeneffekt der Funktionsweise eines Motors ist die Erzeugung von Energie.
-Bei einem Deaktivieren der Transistoren um den Motor zu stoppen, muss diese erzeugte Energie des Motors auf irgendeine Weise freigesetzt werden können.
+Aufgrund der Induktivität der Motorspulen wird Energie gespeichert.
+Bei einem Deaktivieren der Transistoren um den Motor zu stoppen, muss diese gespeicherte Energie des Motors auf irgendeine Weise abgebaut werden können.
 Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, da diese dem Strom einen Pfad zu bieten, welcher die Energie freisetzt. \\
 
 \begin{figure}[ht]
@@ -185,7 +187,10 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
         \draw (-3.5,4.6)node[anchor=north]{PD3};
         \draw (-6.5,11)node[anchor=north]{PD0};
         \draw (-3.5,11)node[anchor=north]{PD1};
-
+        \draw (-7,10) to (-7.5,10) to (-7.5,11)node[vcc]{Vcc};
+        \draw (-7,5) to (-7.5,5) node[rground]{};
+        \draw (-7,5)node[anchor=west]{GND};
+        \draw (-7,10)node[anchor=west]{Vcc};
 
         % 1. Spulenanschluss
         \draw (3,8) to [short, -*](5,8) to (7,8);
@@ -203,7 +208,7 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
 
         \draw (0.5,13) to [R, l=$R1$, ](2,13) to (2.5,13);
         \draw (9.5,13) to [R, l_=$R2$, ](8,13) to (7.5,13);
-        \draw (9.5,13)to [short,-*](13,13);
+        \draw (9.5,13)to [short,-*](12,13);
         \draw (0.5,10) to [R, l=$R3$](2,10) to (2.5,10);
         \draw (9.5,10) to [R, l_=$R4$](8,10) to (7.5,10);
 
@@ -213,8 +218,8 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
         \draw (-0.9,9.69) to (-2.5,9.69) to [short,-*](-2.5,16);
         \draw (-0.9,10.31) to (-2,10.31) to (-2,13) to (0.5,13);
         \draw (-2,13) to [short,*-](-4,13) to (-4,11);
-        \draw (10.9,9.69) to (13,9.69) to (13,17) to (-6,17) to (-6,11);
-        \draw (10.9,10.31) to (12,10.31) to (12,13) to (12,16) to (-5,16) to (-5,11);
+        \draw (10.9,9.69) to (12,9.69) to (12,17) to (-6,17) to (-6,11);
+        \draw (10.9,10.31) to (11.5,10.31) to (11.5,13) to (11.5,16) to (-5,16) to (-5,11);
 
         \draw (3,13.7)node[anchor=east]{Q1};
         \draw (7,13.7)node[anchor=west]{Q2};
@@ -254,10 +259,10 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
         \draw (-0.9,1.685) to [short, -*](-5,1.685);
         \draw (-0.9,2.315) to [short,-*](-2,2.315) to (-2,5) to (0.5,5);
         \draw (-0.9,2.315) to (-4,2.315) to (-4,4);
-        \draw (10.9,1.685) to (12,1.685);
-        \draw (10.9,2.315) to (12,2.315) to (12,5) to (9.5,5);
-        \draw (12,1.685) to (12,-1) to (-5,-1) to (-5,4);
-        \draw (12,5) to [short,*-](13,5) to (13,-2) to (-6,-2) to (-6,4);
+        \draw (10.9,1.685) to (11.5,1.685);
+        \draw (10.9,2.315) to (11.5,2.315) to (11.5,5) to (9.5,5);
+        \draw (11.5,1.685) to (11.5,-1) to (-5,-1) to (-5,4);
+        \draw (11.5,5) to [short,*-](12,5) to (12,-2) to (-6,-2) to (-6,4);
 
         \draw (-0.5,3.2)node[anchor=north]{IC3};
         \draw (10,3.2)node[anchor=north]{IC4};
@@ -278,30 +283,31 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
 
 In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
 Da sich die Ansteuerungen der beiden H-Brücken gleich gestalten, wird zur vereinfachten Funktionserklärung nur die obere behandelt. \\\\
-Mithilfe des Timer 0 wird am Ausgang OC1B des \acs{µC} ein PWM-Signal erzeugt, unter Verwendung dessen, abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
-Dadurch befindet sich jeweils an einem Eingang des UND-Gatters mit der Bezeichnung IC1 und an einem Eingang des UND-Gatters mit der Bezeichnung \acs{I2C} ein Signal mit einem HIGH-Pegel (Spannung) oder
-LOW-Pegel (keine Spannung). \\\\
+Mithilfe des Timer 0 wird am Ausgang OC1B des \acs{µC} ein PWM-Signal erzeugt, unter Verwendung dessen,
+abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
+Dadurch befindet sich jeweils an einem Eingang der beiden UND-Gatter mit den Bezeichnung IC1 und IC2 ein Signal ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung). \\\\
 Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzusteuern: \\
-Um den Schrittmotor nach rechts drehen zu lassen, muss am Ausgang PD0 ein HIGH-Signal erzeugt werden.
-Am Ausgang PD1 muss ein LOW-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
-Durch das HIGH-Signal, ausgehend vom Ausgang OC1B, befindet sich ein HIGH-Signal am unteren Eingang des UND-Gatters IC2.
-Wenn nun ein HIGH-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein HIGH-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
-Um den Schrittmotor nach links drehen zu lassen, wird am Ausgang PD1 ein HIGH-Signal gesetzt.
-Am Ausgang PD0 muss ein LOW-Signal zu Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
-Durch das HIGH-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein HIGH-Signal am oberen Eingang des UND-Gatters.
-Wenn nun ein HIGH-Pegel vom Ausgang OC1B bereitgestellt wird, liefert das UND-Gatter IC1 ein HIGH-Signal weiter an den NPN-Transistor Q3, welcher somit leitend wird und
+Um den Schrittmotor nach rechts drehen zu lassen, muss am Ausgang PD0 eine Spannung von 3.3V erzeugt werden.
+Am Ausgang PD1 muss ein 0V-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
+Durch das 3.3V-Signal, ausgehend vom Ausgang OC1B, befindet sich ein 3.3V-Signal am unteren Eingang des UND-Gatters IC2.
+Wenn nun ein 3.3V-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein 3.3V-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
+Um den Schrittmotor nach links drehen zu lassen, wird am Ausgang PD1 ein 3.3V-Signal gesetzt.
+Am Ausgang PD0 muss ein 0V-Signal zu Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
+Durch das 3.3V-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein 3.3V-Signal am oberen Eingang des UND-Gatters.
+Wenn nun ein 3.3V-Pegel vom Ausgang OC1B bereitgestellt wird, liefert das UND-Gatter IC1 ein 3.3V-Signal weiter an den NPN-Transistor Q3, welcher somit leitend wird und
 ein Fließen des Stromes durch die Motorwicklung bewirkt.
 
 \begin{itemize}
     \item \textbf{Vorteile}
     \begin{itemize}
-        \item günstig
+        \item geringe Kosten
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
         \item viele Bauteile
-        \item Bauteile müssen erst dimensioniert werden
+        \item erhöhter Platzbedarf
         \item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
+        \item Motorspannung muss Versorgungsspannung des µC entsprechen
     \end{itemize}
 \end{itemize}
 
@@ -325,30 +331,28 @@ Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne 
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer,
 wodurch Spannungen über der Nennspannung des Schrittmotors verwendet werden können, um höhere Schrittgeschwindigkeiten erreichen zu können.
-Zusätzlich wird die Gewährleistung eines Überstrom- und Übertemperaturschutzes sowie eine Überspannungsabschaltung versichert.
-Erdschluss- und Kurzschlussschutz sind ebenfalls gegeben.
+Zusätzlich werden die Eigenschaften eines Überstrom- und Übertemperaturschutzes, Kurzschlussschutzes sowie eine Überspannungsabschaltung vom Hersteller versprochen.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
+Die Ansteuerlogik dieses Moduls gestaltet sich über binäre Spannungspegel.
 
 \subsubsection{DRV8825\footfullcite{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}}
-Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8,2 V bis 45 V zu arbeiten.
-Er kann ohne eine bestimmte Kühlung bis zu 1,5 A pro Phase liefern.
-Ausgelegt ist dieses Modul auf einen Strom von 2,5A, welches mit zugeführter Kühlung auch getrieben werden kann.
-Der DRV8825 arbeitet mit einem Logikpegel von 3,3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
+Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8.2V bis 45V zu arbeiten.
+Er kann ohne eine bestimmte Kühlung bis zu 1.5 A pro Phase liefern.
+Ausgelegt ist dieses Modul auf einen Strom von 2.5A, welcher mit zugeführter Kühlung auch getrieben werden kann.
+Der DRV8825 arbeitet mit einem Logikpegel von 3.3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
 Das Modul besitzt ebenfalls die Eigenschaften eines Überstrom- und Übertemperaturschutzes sowie sechs Mikroschrittauflösungen, welche bis zu einer Zweiunddreißigstel-Auflösung reichen.
 Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebauten Unterspannungsschutzes sind zusätzlich gegeben.
-Der DRV8825-Treiber verfügt über eine Schnittstelle und eine Pinbelegung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind,
+Der DRV8825-Treiber verfügt über eine Pinbelegung und eine Ansteuerung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind,
 sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
 
 \subsubsection{TB6600\footfullcite{TB6600-Arduino-Stepper-Motor-Driver}}
 Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
-Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0,7A bis 4A ausgelegt.
+Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0.7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Überhitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
 Der Ausgangsstrom ist mittels \acs{DIP}-Schalter in acht Schritten wählbar.
 Sechs verschieden wählbare Mikroschrittauflösungen, welche bis zu einer Auflösung von Zweiunddreißigstel reichen, werden zur Verfügung gestellt.
 Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V .
-Das Gewicht von 200dag und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.
-
-\newpage
+Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.
 
 \subsubsection{Treiber-Auswahl}
 
@@ -362,26 +366,26 @@ Das Gewicht von 200dag und eine Größe von 57mm x 96mm x 28mm unterscheiden sic
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-        & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} \\ \hline
-        Preis & gering & gering & mittel    \\ \hline
-        Max.Strom & 2A & 2.2A & 4A    \\ \hline
-        Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V      \\ \hline
-        Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V        \\ \hline
-        Max.Schrittauflösung & 16 & 32 & 32        \\ \hline
-        Größe & klein & klein & groß        \\ \hline
+        & \textbf{A4988} & \textbf{DRV8825} & \textbf{TB6600} & \textbf{µC}  \\ \hline
+        Preis & gering & gering & mittel & gering   \\ \hline
+        Max.Strom & 2A & 2.2A & 4A & variabel  \\ \hline
+        Spannungsbereich & 8V-35V & 8.2V-35V & 9V-40V & Vcc des µC    \\ \hline
+        Logik-Pegel & 3.3V-5V & 3.3V-5V & 5V & 3.3V bzw.5V      \\ \hline
+        Max.Schrittauflösung & 16 & 32 & 32  & -      \\ \hline
+        Größe & klein & klein & groß & mittel     \\ \hline
     \end{tabular}
     \caption{Vergleich der Treibermodule}
 \end{table}
 
 Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
-Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3,3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
+Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3.3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
 Eine Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
+Auf eine H-Brücke wurde nicht zurückgegriffen, da ihre Versorgungsspannung und somit auch die des Motors mit der des Mikrocontrollers übereinstimmen müsste.
 
+\subsection{Detektion der Kartenposition}
 
-\subsection{Detektion der Kartenposition\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}}
-
-\subsubsection{Kapazitive Sensoren}
-Die Funktion von kapazitiven Sensoren ist mit der eines offenen Kondensators zu vergleichen.
+\subsubsection{Kapazitive Sensoren\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}}
+Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
 Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisches Feld.
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
@@ -402,7 +406,7 @@ Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welche
 Das Echo wird vom Sensor wieder aufgenommen.
 Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
 So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
-Lediglich schalldämpfende Materialien können nur schwer erfasst werden.
+Lediglich schalldämpfende Materialien können nicht erfasst werden.
 Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
 Ein fast wartungsfreier Betrieb ist möglich.
 
@@ -442,7 +446,7 @@ Es sind große Erkennungsabstände möglich.
 
 Unsere Wahl fiel auf einen kapazitiven Sensor, da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
 Somit fiel unsere Wahl auf den LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1 bis 10mm erfassen kann.
-Dieser Sensor konnte mit einem sehr geringen Preis in unseren Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er seiner Aufgabe gewachsen war.
+Dieser Sensor konnte mit einem sehr geringen Preis in unseren Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er alle Anforderungen erfüllte.
 
 \subsection{Erfassung der Position des Motors}
 \subsubsection{Endschalter}
@@ -483,13 +487,13 @@ Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontro
 Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal transferiert.
 Jene 12V werden von jeglichen Aktoren und Sensoren genutzt.
 Außerdem wird mithilfe der 12V ein Schaltregler mit Spannung versorgt, welcher die 5V Spannungsversorgung des Raspberry Pi bereitstellt.
-Über die GPIO Pins des Raspberry Pi wird folgend der Mikrocontroller mit 3.3V versorgt.
+Über den Erweiterungsstecker des Raspberry Pi wird folgend der Mikrocontroller mit 3.3V versorgt.
 
-\subsubsection{Schaltnetzteil und Festspannungsregler}
+\subsubsection{Schaltnetzteil und 5V Schaltregler}
 Bei dieser Alternative wird ein Schaltnetzteil mit 230V AC versorgt, welches ein 12V DC Signal am Ausgang bereitstellt.
-Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Festspannungsregler, welcher 12V zu 5V umwandelt.
+Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Schaltregler, welcher 12V zu 5V umwandelt.
 Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
-Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet.
+Die Versorgung des Mikrocontroller wird über zwei 3.3V Expansion Header Pins gewährleistet.
 
 
 \subsubsection{Auswahl der Spannungsversorgung}
@@ -502,7 +506,7 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-        & \textbf{Doppel-Schaltnetzteil} & \textbf{\acs{SN} und Schaltregler} & \textbf{SN und Festspannungsregler} \\ \hline
+        & \textbf{Doppel-Schaltnetzteil} & \textbf{\acs{SN} und Schaltregler} & \textbf{SN und Schaltregler} \\ \hline
         Preis & hoch & mittel & sehr gering    \\ \hline
         \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
                                  Platzbedarf\\ und Gewicht
@@ -512,7 +516,7 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V GPIO Pins gewährleistet
     \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
 \end{table}
 
-Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Festspannungsregler, da diese für einen geringen Preis erhältlich ist
+Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Schaltregler, da diese für einen geringen Preis erhältlich ist
 und einen ebenfalls geringen Bedarf an Platz und Bauteilen aufweist.
 
 Den Mikrocontroller versorgen wir mit dem 3.3V Ausgang des Raspberry Pi 3B+.
@@ -526,7 +530,7 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 \begin{figure}[hb]
     \centering
     \includegraphics[scale=0.85,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
-    \caption{Blockschaltbild der gesamten Elektronik}
+    \caption{Blockschaltbild der gesamten Elektronik}\label{fig:Blockschaltbild}
 \end{figure}
 
 \newpage
@@ -627,9 +631,9 @@ Die Versorgung soll durch ein Signal des RPI gestoppt werden, wodurch ein korrek
 
 \subsubsection{Realisierte Variante mit einzelnem Taster}
 
-Durch jene Betätigung von T\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
+Durch die Betätigung von S\textsubscript{1} fließt Strom durch R\textsubscript{2} und aktiviert somit den N-Kanal MOSFET Q\textsubscript{2}.
 Dieser Feldeffekttransistor schaltet dadurch die am Drain anliegende Leitung auf Masse.
-Das deshalb auf Ground gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} lässt diesen durchschalten.
+Das deshalb auf Masse gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} lässt diesen durchschalten.
 Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
 Das dadurch ebenfalls über R\textsubscript{3} versorgte Gate von Q\textsubscript{2} lässt die davon am Drain liegende Leitung auf Masse schalten,
 welche die Versorgung der 12V Komponenten auch nach der Betätigung des S\textsubscript{1} bereitstellt.
@@ -681,8 +685,8 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (4.4,2.3) to (4.4,2.3)node[anchor=south]{Q3};
         \draw (8.3,2) to (8.3,2)node[anchor=west]{+};
         \draw (6,7) to [short, -o](0,7)node[anchor=east]{+};
-        \draw (9,7) to [short, -o](10,7)node[anchor=west]{+};
-        \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
+        \draw (9,7) to [short, -o](10,7)node[anchor=west]{$12V_\mathrm{OUT}$};
+        \draw (3,0) to [short, -o](10,0)node[anchor=west]{0V};
         \draw (3,0) to (2,0) node[rground]{};
         \draw (0,6.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
         \draw (10,6.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(10,0.2);
@@ -845,7 +849,7 @@ Diese Erkenntnis brachte uns zu der Entscheidung, einen Widerstand in der Höhe 
 \subsubsection{Andere Variante \footfullcite{EEVblog-262-Worlds-Simplest-Soft-Latching-Power-Switch-Circuit}}
 Die folgende Variante kam ebenfalls im Laufe der Diplomarbeit auf.
 
-Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, durch der Bipolartransistor Q\textsubscript{2}
+Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, wodurch der Bipolartransistor Q\textsubscript{2}
 die am Collector anliegende Leitung auf Masse schaltet.
 Das dadurch auf Masse gezogene Gate des P-Kanal MOSFET lässt diesen durchschalten und eine Ausgangsspannung von 12V ist verfügbar.
 Der durch den Widerstand R\textsubscript{3} fließende Strom sorgt für ein Durchschalten des npn-Transistors, auch wenn der Taster S1 nicht mehr gedrückt ist.
@@ -876,7 +880,10 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden, ist der Widerstand R
         \draw (1.4,6.8) to (1.4,6.8)node[anchor=north]{Q1};
         \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
         \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
-        \draw (2,2)node[npn, xscale = -1]{};
+        \draw (2,2)node[npn, xscale = -1](npn){};
+        \draw (npn.E) node[right]{E};
+        \draw (npn.C) node[right]{C};
+        \draw (npn.B) node[above]{B};
         \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
         \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
         \draw (5,4) to (5,4)node[anchor=west]{-};
@@ -909,7 +916,7 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
         \draw (8.5,5) to [eC, l=$C2$, *-*](8.5,0);
         \draw (6.5,0) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$, *-*](6.5,5) to (6.5,0);
         \draw [line width=1.5pt](3,4) to (3,6) to (5.5,6) to (5.5,4) to (3,4);
-        \draw (5.5,5.5) to (8.5,5.5) to (8.5,5);
+        \draw (5.5,5.5) to (8.5,5.5) to (8.5,5) to [short,i=$I_{LOAD}$](10,5);
         \draw (5.5,5) to (6.5,5);
         \draw (6.5,5) to [L, l_=$L1$](8.5,5);
         \draw (3.5,4) to [short, -*](3.5,0);
@@ -924,8 +931,8 @@ Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von
         \draw (8.5,5) to [short, -o](10,5)node[anchor=west]{+};
         \draw (3,0) to [short, -o](10,0)node[anchor=west]{-};
         \draw (3,0) to (1,0) node[rground]{};
-        \draw (0,4.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (10,4.8) -- node[right] {$5V$}node[sloped,currarrow,pos=1] {}(10,0.2);
+        \draw (0,4.8) -- node[left] {$V_\mathrm{IN}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (10,4.8) -- node[right] {$V_\mathrm{OUT}$}node[sloped,currarrow,pos=1] {}(10,0.2);
     \end{circuitikz}
     \caption{Beschaltung des LM2576-5.0}
 \end{figure}
@@ -1150,7 +1157,7 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 Der DRV8825 besitzt 16 Anschlüsse.
 Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\
 
-Über den Anschluss VMOT werden in unserem Fall 12V eingespeist.
+An dem Anschluss VMOT werden in unserem Fall 12V angelegt.
 Diese Trägerplatine benutzt niedrige-\acs{ESR} Keramikkondensatoren, welche sie anfällig für zerstörerische LC-Spannungsspitzen machen.
 Insbesondere, wenn längere Stromkabel verwendet werden.
 Unter den falschen Bedingungen können diese Spannungsspitzen die maximale Spannung von 45 V für den DRV8825-Treiber überschreiten und der Platine dauerhafte Schäden beisetzen.
@@ -1361,10 +1368,10 @@ Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der
 
 Sobald die Gate-Source-Schwellenspannung des MOSFETs mithilfe eines 3.3V Signals ausgehend vom Mikrocontroller überschritten wird, schaltet der N-Kanal MOSFET durch.
 Dieser ermöglich das Fließen des Drainstromes durch den Hubmagneten zum Massepotential.
-Um den fließenden Gate-Source-Strom zu verringern wurde der Widerstand R1 implementiert.
+Um den fließenden Gate-Strom zu verringern, wurde der Widerstand R1 implementiert.
 Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen
 Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine sogenannte Fly-Wheel-Diode zu schalten.
-Diese hat die Aufgabe, den MOSFET vor einer selbsterzeugten, rückfließenden Spannung des Hubmagneten zu schützen.
+Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden Strom des Hubmagneten zu schützen.
 
 
 \begin{figure}[hpt]
@@ -1396,7 +1403,7 @@ Um sowohl die Pumpe als auch das Ventil ansteuern zu können, wurde jeweils von 
 \subsubsection{Funktion}
 
 Sobald die Gate-Source-Schwellspannung des N-Kanal MOSFETs mithilfe des 3.3V Steuersignals überschritten wird, schaltet jener Halbleiterbaustein das am Drain liegende Potential auf Masse.
-Um den fließenden Gate-Source-Strom zu begrenzen wurde auf einen Widerstand, hier R1, zurückgegriffen.
+Um den fließenden Gate-Strom zu begrenzen, wurde auf einen Widerstand, hier R1, zurückgegriffen.
 Um jene am MOSFET anfallende, parasitäre Kapazitäten zu negieren, wurde der Widerstand R2 vorgesehen.
 Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer Fly-Wheel-Diode erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
 
