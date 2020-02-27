@@ -10,18 +10,17 @@ und einen Teilaufbau durchzuführen. Die Maschine sollte in der Lage
 sein 20 Spielkarten zu mischen und diese nach einem Spielmodus der
 zuvor am LCD gewählt wurde auszugeben. Das Ziel ist es, die Spielkarten
 optimal zu mischen, aber die Maschine dennoch kompakt und optisch
-ansprechen zu entwerfen. Im weiteren sollte der Mischvorgang und die
+ansprechen zu entwerfen. Weiters sollte der Mischvorgang und die
 Ausgabe der Karten nicht zu lange dauern. Die Teile der Maschine
 sollten so konstruiert werden, dass sie kostengünstig produziert
 werden können. Zum Schluss sollte noch ein Teilaufbau der Maschine
 geschehen, um die Funktionalität der einzelnen Bereiche zu testen
-und gegebenfalls zu verbessern.
+und gegebenenfalls zu verbessern.
 
 \section{Problemstellungen}
 Ein Problem ist das begrenzte Budget unseres Teams, somit sind
 wir auf gewisse Produktionsarten unserer Bauteile beschränkt.
-Dies hat zur Folge, dass die Bauteile oft sehr simpel sind um
-sie leichter zu konstruieren. Die Oberfläche der Karten ist ein
+Die Oberfläche der Karten ist ein
 weiteres Problem, da diese sich nicht immer separieren lassen, dies
 verursacht, dass oft zwei oder mehrere Karten auf einmal genommen
 werden und das Konzept des optimalen Mischens zerstört.
@@ -33,20 +32,20 @@ werden und das Konzept des optimalen Mischens zerstört.
 \begin{enumerate}
     \item \textbf{Kosten}  \\
     Der Automat sollte möglichst kostengünstig produziert werden,
-    da das vorhandene Budget gering ist. Dies hat zur Folge das keine teuren Motoren
+    da das vorhandene Budget gering ist. Dies hat zur Folge, dass keine teuren Motoren
     oder ähnliche Bauteile zum Einsatz kommen können und keine teuren Bauteile produziert
     werden können.
     \item \textbf{Schnelligkeit} \\
     Um ein gutes Spielerlebnis zu garantieren, sollte der Automat keine
-    langen Mischzeit besitzen. Die Dauer in der man die Karten einführt und auf den
+    lange Mischzeit aufweisen. Die Dauer, in der man die Karten einführt und auf den
     Mischen-Button klickt bis hin zur Ausgabe der ersten Karte sollte möglichst gering sein.
     \item \textbf{Mischgenauigkeit} \\
     Die Mischgenauigkeit ist die am schwersten gewichtete Anforderung,
     da es das Ziel ist ein optimales Mischen der Spielkarten zu erreichen, sollte
-    diese Anforderung mit größter Wichtigkeit erfüllt werden.
+    diese Anforderung mit größter Priorität erfüllt werden.
     \item \textbf{Optik und Größe} \\
-    Die Optik des Automaten soll schlicht gehalten werden, jedoch sollte
-    sie dennoch auf Messen und andere Ausstellungen präsentierbar sein. Der Automat
+    Die Optik des Automaten soll schlicht gehalten werden. Der Automat sollte ein ansprechendes Design aufweisen und
+    auf Messen und andere Ausstellungen präsentierbar sein. Der Automat
     sollte jedoch auch stabil konstruiert werden, muss aber dennoch mobil bleiben und
     darf eine gewisse Größe nicht Überschreiten.
 \end{enumerate}
@@ -67,19 +66,19 @@ Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte ent
 Das erste Konzept würde mit zwei Linearachsen realisiert werden, diese wären im rechten Winkel zueinander
 angeordnet. Die Senkrechte Linearachse ist mit einer Halterung versehen, diese Halterung ist in der Lage
 ein Kartendeck aufzunehmen und die unterste Karte mithilfe eines Ausgaberades weiterzubefördern. Die zweite
-Linearachse besitzt 4 Fächer in der die Karten von der ersten Linearachsenausgabe zufällig befördert werden.
-Dies wird realisiert indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
+Linearachse besitzt 4 Fächer, in der die Karten von der ersten Linearachsenausgabe zufällig befördert werden.
+Dies wird realisiert, indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
 hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
 fährt die zweite Linearachse impulsiv nach links, um die Karten aus dem Lager zu befördern. Diese fallen
-Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereit liegen. \\
+Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereitliegen. \\
 
 
 
 Durch die schnelle Bewegung der Linearachsen ist es möglich einen schnellen Mischprozess zu erreichen,
 auch die Tatsache das es nur ein rotierendes Rad gibt und zwei Bewegliche Linearachsen führt dazu, das
 Fehler bei Bewegungen nur selten Auftreten. Jedoch besteht durch den hohen Aufbau der Maschine und durch die hohe
-Position der zweiten Linearachse die sich horizontal bewegt die Gefahr des umkippens der Maschine, und somit ist
-keine stabilität mehr gegeben. Der Preis der Linearachsen ist ein weiterer Nachteil dieses Konzeptes, eine Linearachse
+Position der zweiten Linearachse die sich horizontal bewegt die Gefahr des Umkippens der Maschine, und somit ist
+keine Stabilität mehr gegeben. Der Preis der Linearachsen ist ein weiterer Nachteil dieses Konzeptes, eine Linearachse
 die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für unser Budget. \\
 
 \textbf{Vorteile:}
@@ -102,22 +101,22 @@ die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für
     \caption{Variante 2}
 \end{figure}
 
-Beim zweiten Konzept wird als Lager ein virtel eines Zylinders benutzt. In diesem befinden
-sich verschidene Fächer in der die Karten eingelagert werden. Dieser wird mit einem Motor betrieben
+Beim zweiten Konzept wird als Lager ein Viertel eines Zylinders benutzt. In diesem befinden
+sich verschiedene Fächer, in der die Karten eingelagert werden. Dieser wird mit einem Motor betrieben
 und dreht sich somit in die vorgegebenen Positionen um das Einlagern und das Ausgeben der Karten zu ermöglichen.
-Die Karteneingabe erfolgt über einen Schlitz in der Frontplatte der Maschine, dort befindet sich ein Hubmagnet der die Karten
-zum weiterbefördern nach oben drückt. Ein Kapazitiver Sensor sorgt dafür, das scihergestellt werden kann, dass sich Karten auf dem Hubmagnet befinden.
+Die Karteneingabe erfolgt über einen Schlitz in der Frontplatte der Maschine, dort befindet sich ein Hubmagnet, der die Karten
+zum weiterbefördern nach oben drückt. Ein Kapazitiver Sensor sorgt dafür, das sichergestellt werden kann, dass sich Karten auf dem Hubmagnet befinden.
 Um eine Karte in das Lager zu befördern wird der Hubmagnet eingeschaltet und drückt das Kartendeck auf das erste Ausgaberad, um die Kraft des Hubmagnetes zu minimieren sind Zugfedern angebracht.
-Das Ausgaberad befördert eine Karte weiter vor zum zweiten Ausgabrad welches weiderum sicherstellt das nur eine Karten in das Lagerrad transportiert wird.
-Danach dreht das Lagerrad auf eine andere zufällig ausgewählte Position. Dieser Prozess wird solange wiederholt bis alle Karten des Kartendecks sich im Lagerrad befinden.
-Befinden sich alle Karten im Lagerrad, so dreht sich dieses mit einer hochen Geschwindigkeit und wirft somit die Karten auf der Hinterseite der Maschine in eine Auffangführung. %Ist Geschwindigkeit der richtige Begriff? Eher Moment oder Drehzahl?
-Diese Auffangsführung befördert die Karten in einen gleichen Mechanismus wie bei der Vorderseite der Maschine, in der sie von einem Hubmagenten nach oben gedrückt werden und von zwei Ausgaberädern zur
-Kartenentnahme geschoben werden. Da die Karten zum Schluss nach einem Spielmodus und somit in einer bestimmten Anzahl Ausgegeben werden, befindet sich ein Kapazitiver Sensor auch bei der Ausgabe der Karten,
-dieser soll überprüfen ob die Karten von dem Spiler berreits genommen wurden oder nicht.\\
+Das Ausgaberad befördert eine Karte weiter vor zum zweiten Ausgaberad, welches wiederum sicherstellt, das nur eine Karte in das Lagerrad transportiert wird.
+Danach dreht das Lagerrad auf eine andere zufällig ausgewählte Position. Dieser Prozess wird so lange wiederholt, bis alle Karten des Kartendecks sich im Lagerrad befinden.
+Befinden sich alle Karten im Lagerrad, so dreht sich dieses mit einer hohen Geschwindigkeit und wirft somit die Karten auf der Hinterseite der Maschine in eine Auffangführung. %Ist Geschwindigkeit der richtige Begriff? Eher Moment oder Drehzahl?
+Diese Auffangsführung befördert die Karten in einen gleichen Mechanismus wie bei der Vorderseite der Maschine, in der sie von einem Hubmagneten nach oben gedrückt werden und von zwei Ausgaberädern zur
+Kartenentnahme geschoben werden. Da die Karten zum Schluss nach einem Spielmodus und somit in einer bestimmten Anzahl ausgegeben werden, befindet sich ein Kapazitiver Sensor auch bei der Ausgabe der Karten,
+dieser soll überprüfen, ob die Karten von dem Spieler bereits genommen wurden oder nicht.\\
 
-Durch den niedrigen Aufbau der durch ein "Fließbandartiges" befördern der Karten erreicht wird, besitzt die Maschine ein hohes Maß an stabilität, jedoch ensteht dadurch auch der Nachteil
-dass die Maschine sehr lang wird. Da dieses Konzept 5 bewegliche Räder besitzt sowie zwei Hubmagneten ist es anfällig für Fehler beim Bewegungsablauf. Auch kann nicht garantiert werden
-dass nur eine Karte in das Lagerrad befördert wird, dies würd das Konzept des optimalen Mischens zerstören. Die vielen Bauteile führen auch zu teureren Anschaffungskosten, die wir stark vermeiden möchten.\\
+Durch den niedrigen Aufbau der durch ein "Fließbandartiges" befördern der Karten erreicht wird, besitzt die Maschine ein hohes Maß an Stabilität, jedoch entsteht dadurch auch der Nachteil, dass die Maschine sehr lang wird. Da dieses
+Konzept 5 bewegliche Räder besitzt, sowie zwei Hubmagneten, ist es anfällig für Fehler beim Bewegungsablauf. Auch kann nicht garantiert werden, dass nur eine Karte in das Lagerrad befördert wird, dies würde das Konzept des optimalen
+Mischens zerstören. Die vielen Bauteile führen auch zu teureren Anschaffungskosten, die wir stark vermeiden möchten.\\
 
 \textbf{Vorteile:}
 \begin{itemize}
@@ -138,17 +137,16 @@ dass nur eine Karte in das Lagerrad befördert wird, dies würd das Konzept des 
     \caption{Variante 3}
 \end{figure}
 
-Das dritte Konzept besitzt ein identes Lagersystem wie das zweite Konzept, ein Lagerrad das in Fächer unterteilt ist und über einen Moter diverse Positionen einnehmen kann.
-Das Kartendeck wird in den oberen / vorderen Anfang der Maschine eingeführt. Dort liegt es schräg in einem Winkel von ca. 60°. Um sicherzustellen das sich Karten in dieser Halterung befinden
-ist ein Kapazitiver Sensor an der Unterseite angebracht. Ein Hubmagnet der im rechten Winkel zu den Karten über der Halterng angebracht ist, saugt jede Karte einzeln an indem ein Saugnapf der an einem Hubmagneten
-befestigt ist heruntergedrückt wird. Ist die Karte angesaugt, so wird der Hubmagnet von einer Feder in seine Ausgangsstellung zurückgebracht, dabei wird die Spielkarte durch eine Platte abgestreift und fliegt somit in das Lager des
-Lagerrades hinein. Dieser Prozess wird solange wiederholt bis sich alle Spilkarten des Kartendecks im Lagerrad befinden. Sind alle Karten im Lagerrad so dreht sich dieses und wirft die Karten auf der Rückseite der Maschine in ein Führung
-die die Karten in eine zweite Halterung befördern. Diese zweite Halterung ist ident Aufgebaut wie die erste. Die Karten werden nun wieder einzeln vom Saugnapf angesaugt und in ein Ausgabefach am Ende der Maschine befördert. Im Ausgabefach befindet sich
-ein Kapazitiver Sensor, dieser überprüft ob die Karten vom Spiler berreits genommen wurden oder nicht.\\
+Das dritte Konzept besitzt ein identes Lagersystem wie das zweite Konzept, ein Lagerrad, das in Fächer unterteilt ist und über einen Motor diverse Positionen einnehmen kann.
+Das Kartendeck wird in den oberen / vorderen Anfang der Maschine eingeführt. Dort liegt, es schräg in einem Winkel von ca. 60°. Um sicherzustellen, dass sich Karten in dieser Halterung befinden
+ist ein Kapazitiver Sensor an der Unterseite angebracht. Ein Hubmagnet der im rechten Winkel zu den Karten über der Halterung angebracht ist, saugt jede Karte einzeln an, indem ein Saugnapf, der an einem Hubmagneten
+befestigt, ist heruntergedrückt wird. Ist die Karte angesaugt, so wird der Hubmagnet von einer Feder in seine Ausgangsstellung zurückgebracht, dabei wird die Spielkarte durch eine Platte abgestreift und fliegt somit in das Lager des
+Lagerrades hinein. Dieser Prozess wird so lange wiederholt, bis sich alle Spielkarten des Kartendecks im Lagerrad befinden. Sind alle Karten im Lagerrad, so dreht sich dieses und wirft die Karten auf der Rückseite der Maschine in eine Führung, die die Karten in eine zweite Halterung befördern. Diese zweite Halterung ist ident aufgebaut wie die erste. Die Karten werden nun wieder einzeln vom Saugnapf angesaugt und in ein Ausgabefach am Ende der Maschine befördert. Im Ausgabefach befindet sich
+ein Kapazitiver Sensor, dieser überprüft, ob die Karten vom Spieler bereits genommen wurden oder nicht.\\
 
-Durch die wenigen Bauteile die dieses Konzept besitzt, nämlich zwei Hubmagnete und einen Motor, ist das Konzept sehr fehlerunanfällig bei Bewegungsabläufe. Außerdem ist es
-durch die wenigen Bauteile im vergleich billiger als die anderen Konzepte. Ein Problem dieses Konzeptes ist seine Höhe und dass das Lagerrad sich in der Mitte der Maschine befindet,
-jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend stabilität vorhanden, auch wenn sich dieses mit voller Geschwindigkeit dreht. \\
+Durch die wenigen Bauteile die dieses Konzept besitzt, nämlich zwei Hubmagnete und einen Motor, ist das Konzept wenig fehleranfällig bei Bewegungsabläufe. Außerdem ist es
+durch die wenigen Bauteile im Vergleich billiger als die anderen Konzepte. Ein Problem dieses Konzeptes ist seine Höhe und dass das Lagerrad sich in der Mitte der Maschine befindet,
+jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend Stabilität vorhanden, auch wenn sich dieses mit voller Geschwindigkeit dreht. \\
 
 \textbf{Vorteile:}
 \begin{itemize}
@@ -161,7 +159,7 @@ jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend stabili
 \end{itemize}
 
  \subsection{Ausgaberäder}
-Um die Karten weiterzubefödern werden bei zwei Konzepten Ausgaberäder benutzt, für diese gibt es verschiedene Konzepte dies sich in Preis, Herstellung und Funktionalität unterscheiden.\\
+Um die Karten weiterzubefördern werden bei zwei Konzepten Ausgaberäder benutzt, für diese gibt es verschiedene Konzepte dies sich in Preis, Herstellung und Funktionalität unterscheiden.\\
 Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte von einem Kartendeck weiterbefördert wird.
 \begin{itemize}
     \item \textbf{Rundes Ausgaberad}
@@ -188,23 +186,23 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
 \end{figure}
 
 
-        Ein elliptisches Ausgaberad wäre das nächste Konzept, dieses Rad wird auch wie beim ersten Rad mit einem Motor verbunden um somit Karten zu befördern.
-        Durch die elliptische Form des Rades herrscht kein durchgehender Kontakt mit der Oberfläche der Spilkarte, aus diesem Grund ist die Chance das mehrere
-        Karten zugleich befördert werden minimiert. Jedoch setzt dies auch einen Motor vorraus der in kurzer Zeit ein hohes Drehmoment entwickelt, da die
-        Karten schlagartig befördert werden. Das elliptische Rad würde in der Produktion auch mehr Kosten verursachen und wäre Zeitintesiver in der Hertellung. \\
+Ein elliptisches Ausgaberad wäre das nächste Konzept, dieses Rad wird auch wie beim ersten Rad mit einem Motor verbunden, um somit Karten zu befördern.
+Durch die elliptische Form des Rades herrscht kein durchgehender Kontakt mit der Oberfläche der Spielkarte, aus diesem Grund ist die Chance das mehrere
+Karten zugleich befördert werden minimiert. Jedoch setzt dies auch einen Motor voraus der in kurzer Zeit ein hohes Drehmoment entwickelt, da die
+Karten schlagartig befördert werden. Das elliptische Rad würde in der Produktion auch mehr Kosten verursachen und wäre Zeitintensiver in der Herstellung. \\
 
 \begin{itemize}
     \item \textbf{Vergleich der Ausgaberäder}
 \end{itemize}
 
-Da das primäre Ziel unserer Arbeit das perfekte Mischen der Spielkarten ist, wäre es besser das elliptische Ausgaberad in betracht zu ziehen. Die Kosten
- die durch die aufwendigere Herstellung entstehen wären überschaulich und somit wäre es nur profitabel dieses Konzept zu wählen. Durch die Tatsache das das elliptische Rad
-das Kartendeck nur jede halbe umdrehung berrührt und nicht konstant, muss ein Motor für die Räder einegesetzt werden der sich schnell genug dreht um eine Karte mit einer berührung
+Da das primäre Ziel unserer Arbeit das perfekte Mischen der Spielkarten ist, wäre es besser das elliptische Ausgaberad in Betracht zu ziehen. Die Kosten
+die durch die aufwendigere Herstellung entstehen wären überschaulich und somit wäre es nur profitabel dieses Konzept zu wählen. Durch die Tatsache, dass das elliptische Rad
+das Kartendeck nur jede halbe Umdrehung berührt und nicht konstant, muss ein Motor für die Räder eingesetzt werden, der sich schnell genug dreht, um eine Karte mit einer Berührung
 des Rades "herauszuschießen". Dies würde aber keine zusätzlichen Kosten verursachen. Aus diesen Gründen fällt die Wahl auf das \textbf{elliptisches Ausgaberad}. \\
 
 \subsection{Klemmmechanissmen}
 Um beim Ausgeben und beim Weiterbefördern der Karten die Chance zu minimieren das mehrere Karten auf einmal weiterbefördert werden, wird ein
-Klemmmechanissmus benutzt, dieser sorgt dafür das die Karten von außen Geklemmt werden, und somit nur die unterste Karte durch das Drehen des
+Klemmmechanismus benutzt, dieser sorgt dafür das die Karten von außen Geklemmt werden, und somit nur die unterste Karte durch das Drehen des
 Ausgaberades weiterbefördert wird.
 
 \begin{itemize}
@@ -218,8 +216,8 @@ Ausgaberades weiterbefördert wird.
 \end{figure}
 
 Dieser Klemmmechanismus ist der primitivste und einfachste, dadurch aber auch der billigste. Die Karten werden auf der einen Seite an eine feste Wand gedrückt
-auf der anderen Seite werden sie durch ein bewegliches Gelenk fixiert. Dieses Gelenk wrid durch das einschalten des Hubmagneten in die geschlossene Position bewegt,
-soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschalten und ein Zugfeder zieht das Gelenk wieder in seine Ausgangsposition zurück.
+auf der anderen Seite werden sie durch ein bewegliches Gelenk fixiert. Dieses Gelenk wird durch das Einschalten des Hubmagneten in die geschlossene Position bewegt,
+soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschaltet und eine Zugfeder zieht das Gelenk wieder in seine Ausgangsposition zurück.
 
 \begin{itemize}
     \item \textbf{Komplexer Klemmmechanissmus}
@@ -231,9 +229,9 @@ soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschalten und ein Zugf
     \caption{Komplexer Klemmmechanissmus}
 \end{figure}
 
-Bei diesem Mechanissmus werden die Karten auf der einen Seite durch eine feste Wand geklemmt, auf der anderen werden sie durch ein Gelenk geklemmt, dieses Gelenk
-ist beweglich und gleicht somit verschidene Kartengrößen aus. Um das Gelenk dieses Konzeptes zu schliesen wird ein Hubmagnet benötigt, wird dieser eingeschalten
-so schließt das Gelenk und passt sich der Kartengröße an. Soll es wieder geöffent werden, so wird der Hubmagnet ausgeschaltet und eine Zugfeder bringt den Mechanissmus wieder in den
+Bei diesem Mechanismus werden die Karten auf der einen Seite durch eine feste Wand geklemmt, auf der anderen werden sie durch ein Gelenk geklemmt, dieses Gelenk
+ist beweglich und gleicht somit verschiedene Kartengrößen aus. Um das Gelenk dieses Konzeptes zu schließen wird ein Hubmagnet benötigt, wird dieser eingeschalten
+so schließt das Gelenk und passt sich der Kartengröße an. Soll es wieder geöffnet werden, so wird der Hubmagnet ausgeschaltet und eine Zugfeder bringt den Mechanismus wieder in den
 Grundzustand. Dieses Konzept ist aufwendiger zu realisieren wie das erste, jedoch kann es verschiedene Kartengrößen klemmen und gleicht sich den Karten an. Das Konzept ist
 dafür aber auch aufwendiger in der Produktion.
 
@@ -247,27 +245,26 @@ dafür aber auch aufwendiger in der Produktion.
     \caption{Gummi Klemmmechanissmus}
 \end{figure}
 
-Der letzte Mechanissmus ist ufnktionsmäsig gleich wie der primitive Klemmmecahnissmus, der einzige Unterschied besteht aus dem
-Gummiähnlichen Block der auf der Klemmfläche sitzt. Dieser soll sich den Karten anpassen und sorgt dafür das alle Karten gleichmäßig
- geklemmt werden, auch erhöht es die Reibung zwischen den Karten und der Klemmoberfläche. Dieses Konzept wäre in der  Herstellung verglichsweise
-eifnach zu realisieren und dadurch auch billig in der Herstellung.
+Der letzte Mechanismus ist funktionsmäßig gleich wie der primitive Klemmmechanismus, der einzige Unterschied besteht aus dem
+Gummi-ähnlichen Block, der auf der Klemmfläche sitzt. Dieser soll sich den Karten anpassen und sorgt dafür das alle Karten gleichmäßig
+geklemmt werden, auch erhöht es die Reibung zwischen den Karten und der Klemmoberfläche. Dieses Konzept wäre in der Herstellung vergleichsweise
+einfach zu realisieren und dadurch auch billig in der Herstellung.
 
 
 \begin{itemize}
     \item \textbf{Vergleich der Klemmmechanissmen}
 \end{itemize}
 
-Da alle Mechanissmen die gleiche Anzahl an Bateile erfordern, spielt der Preis bei dieser Auswahl keine große Rolle. Aus diesem Grund
-sind die Kriterien Funktionalität und Aufwendigkeit in der Produktion. Der erst Mechanissmus wäre der einfachste in der Produktion, jedoch
+Da alle Mechanismen die gleiche Anzahl an Bauteile erfordern, spielt der Preis bei dieser Auswahl keine große Rolle. Aus diesem Grund
+sind die Kriterien Funktionalität und Aufwendigkeit in der Produktion. Der erst Mechanismus wäre der einfachste in der Produktion, jedoch
 hat er durch sein nicht anpassungsfähiges Klemmgelenk Probleme mit verschiedenen Kartengrößen, aus diesem Grund fällt er bei diesem Auswahlverfahren durch.
-Der zweite Mechanissmus wäre der komplexe Klemmmechanissmus, dieser würde sich zwar verschiedenen Kartengrößen anpassen, wäre aber etwas aufwendiger in der
-Produktion und ist somit auch nicht die bevorzugte Wahl. Der letzte Klemmechanissmus der einen gummiartigen Block auf der Klemmfläche hat, wäre einfach in der
-Produktion und würde sich auch bei verschiedenen Kartengrößen anpassen, aus diesem Grund  fätt die wahl auf den Gummi Klemmmechanissmus.
+Der zweite Mechanismus wäre der komplexe Klemmmechanismus, dieser würde sich zwar verschiedenen Kartengrößen anpassen, wäre aber etwas aufwendiger in der
+Produktion und ist somit auch nicht die bevorzugte Wahl. Da er einfach in der Produktion ist und sich verschiedenen Kartengrößen anpassen kann, fällt die Wahl jedoch auf den Gummiklemmmechanismus.
 
 \subsection{Seperation der Karten}
 Da bei "Variante 3 - Lagerrad mit Saugnäpfe" Saugnäpfe mit Unterdruckprinzip in Verwendung kommen würden, liegt das Problem vor,
 dass die Karten aneinander haften, dieses Problem entsteht durch den Unterdruck der beim Aufpressen des Saugnapfes entsteht.
-Um zu garantieren das nur eine Karten in das Lager befördert wir oder ausgegeben wird, müssen diese aneinander
+Um zu garantieren, das nur eine Karte in das Lager befördert wird oder ausgegeben wird, müssen diese aneinander
 haftende Karten getrennt werden.
 
 \begin{itemize}
@@ -275,8 +272,8 @@ haftende Karten getrennt werden.
 \end{itemize}
 
 Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten bis alle Karten sich durch die Schwerkraft
-von der eigentlich angesaugten Karte getrennt haben. Jedoch zeigten Versuche die durchgeführt wurden dass dies zu lange
-dauern würde und das Spielerlebniss somit beeinflussen würde.
+von der eigentlich angesaugten Karte getrennt haben. Jedoch zeigten Versuche die durchgeführt wurden, dass dies zu lange
+dauern würde und das Spielerlebnis somit beeinflussen würde.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -318,11 +315,11 @@ dauern würde und das Spielerlebniss somit beeinflussen würde.
     \caption{Diagramm Haftzeit der Karten}
 \end{figure}
 
-Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 sekunden bis sich nur mehr die
-eigentlich angesaugte Karte in der Luft befindet. der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
-5 Durchgänge, auch wurden alle Möglichkeiten der Kartenanzahlen im Kartendeck berücksichtigt, so saugte der Saugnapf
-bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt , bis hin zu einem Saugnapf der
-eine Karte ansaugt die nur auf einer einzelnen anderen Karte liegt.
+Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
+eigentlich angesaugte Karte in der Luft befindet. Der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
+5 Durchgänge, auch wurden alle Möglichkeiten der Kartenanzahl im Kartendeck berücksichtigt, so saugte der Saugnapf
+bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt, bis hin zu einem Saugnapf, der
+eine Karte ansaugt, die nur auf einer einzelnen anderen Karte liegt.
 
 \textbf{Vorteile:}
 \begin{itemize}
@@ -338,12 +335,11 @@ eine Karte ansaugt die nur auf einer einzelnen anderen Karte liegt.
 \begin{itemize}
     \item \textbf{Rütteln}
 \end{itemize}
-
-Ein weiteres Konzept um die angesaugte Karten von den anderen zu Trennen wäre die Karten minimal zu rütteln.
-Da die angesaugt Karte viel stärken an dem Saugnapf haftet als die Karten, die nur an der angesaugten Karten haften,
-könnte der Hubmagnet oder der ansaugmechanissmus leicht gerüttelt werden, so würden die anderen Karten schneller den
+Ein weiteres Konzept um die angesaugte Karten von den anderen zu trennen wäre die Karten minimal zu rütteln.
+Da die angesaugte Karte viel stärken an dem Saugnapf haftet als die Karten, die nur an der angesaugten Karten haften,
+könnte der Hubmagnet oder der Ansaugmechanismus leicht gerüttelt werden, so würden die anderen Karten schneller den
 Unterdruck untereinander verlieren und sich somit schon in kurzer Zeit separieren lassen. Jedoch müsste für dieses Konzept
-ein Mechanissmus entwickelt und produziert werden der nur einen ausgewählten Berreich rüttelt, dies wäre mit weiteren Bauteilkosten und
+ein Mechanismus entwickelt und produziert werden der nur einen ausgewählten Bereich rüttelt, dies wäre mit weiteren Bauteilkosten und
 Aufwand verbunden.
 
 \textbf{Vorteile:}
@@ -362,9 +358,9 @@ Aufwand verbunden.
     \item \textbf{Abstreifbürsten}
 \end{itemize}
 
-Bei diesem Konzept sind Bürstenartige Abstreifvorrichtungen in der Kartenhalterung angebracht. Diese Bürsten sollen beim aufheben der
-angesaugeten Karte die anderen Karten die mitgehebt wurden abstreifen. Dabei ist es wichtig, dass die Bürste den richtigen Widerstand aufbringt.
-Ist der Widerstand zu hoch, wird auch die eigentlich angesaugt Karte mitabgestreift, ist er jedoch zu niedrig ist es möglich, dass die anderen Karten
+Bei diesem Konzept sind bürstenartige Abstreifvorrichtungen in der Kartenhalterung angebracht. Diese Bürsten sollen beim Aufheben der
+angesaugten Karte die anderen Karten die mitgehebt wurden abstreifen. Dabei ist es wichtig, dass die Bürste den richtigen Widerstand aufbringt.
+Ist der Widerstand zu hoch, wird auch die eigentlich angesaugt Karte mit abgestreift, ist er jedoch zu niedrig ist es möglich, dass die anderen Karten
 die mitgehoben werden nicht abgestreift werden.
 
 \textbf{Vorteile:}
@@ -388,10 +384,9 @@ die mitgehoben werden nicht abgestreift werden.
     \item \textbf{Gummiabsstreifer}
 \end{itemize}
 
-Dises Konzept funktioniert ähnlich wie das "Abstreifbürsten Konzept". Es besitzt seitlich Abstreifplatten die aus Gummi sind, diese
-sollen der angesaugten Karte helfen die die migezogenen Karten abzustreifen. Wie beim vorherigen Konzept muss hierbei das Gummi auch so
-dimensioniert werden, dass es einerseits nicht zu steif ist und die eigentlich angesaugt Karte abstreift, andererseits sollte es steif genug
-sein um die Karten die mitgehoben werden abzustreifen. Man die Steifigkeit des Gummistreifens verändern, indem man die Breite der Einschnitte
+Dieses Konzept funktioniert ähnlich wie das "Abstreifbürsten Konzept". Es besitzt seitlich Abstreifplatten die aus Gummi sind, diese
+sollen der angesaugten Karte helfen, die mitgezogenen Karten abzustreifen. Wie beim vorherigen Konzept muss hierbei das Gummi auch so
+dimensioniert werden, dass es einerseits nicht zu steif ist und die eigentlich angesaugt Karte abstreift, andererseits sollte es steif genug sein, um die Karten die mitgehoben werden abzustreifen. Man die Steifigkeit des Gummistreifens verändern, indem man die Breite der Einschnitte
 erhöht oder vermindert.
 
 \begin{figure}[H]
@@ -421,7 +416,7 @@ Die erste Möglichkeit wäre einen einfachen Saugnapf zu nehmen, der durch Anpre
 unkomplizierte Befestigung an dem Hubmagneten über ein Gewinde.
 Jedoch muss dieser Saugnapf mit einer gewissen Kraft auf das Kartendeck gepresst werden, um einen Unterdruck erzeugen zu können. Dies kann dazu führen, dass zwischen den Karten auch ein Unterdruck erzeugt wird und somit mehr als eine Karte vom Saugnapf
 hochgehoben wird. Ein weiterer Nachteil wäre, das die Karte nicht steuerbar abwerfbar ist, da sie erst abfällt, wenn der Unterdruck verschwindet. Dies kann zu unerwarteten Wartezeiten führen. Wenn der Ansaugdruck durch den Hubmagneten nicht erreicht wird, kann
-es auch dazu führen, dass keine Karte angesaugt wird. Dies kann die Wartezeiten widerum verlängern und somit den Spielablauf stören.
+es auch dazu führen, dass keine Karte angesaugt wird. Dies kann die Wartezeiten wiederum verlängern und somit den Spielablauf stören.
 
 \textbf{Vorteile:}
 \begin{itemize}
@@ -436,9 +431,9 @@ es auch dazu führen, dass keine Karte angesaugt wird. Dies kann die Wartezeiten
 \begin{itemize}
     \item \textbf{Vakuumsaugnapf}
 \end{itemize}
-Eine andere Möglichkeit wäre ein vakuum Saugnapf, dieser erzeugt seinen Unterdruck über eine Vakuumpumpe und kann somit gesteuert werden. Der Vorteil dieses Saugnapfes ist es, dass die Karten zu einer gewünschten Zeit abgeworfen werden können, da man den
-Unterdruck des Saugnapfes durch die Pumpe steuern kann. Ein anderer Vorteil ist, dass der Hubmagnet keine hohe Kraft aufweisen muss, da der Saugnapf nicht mehr auf die Karten aufgepresst werden muss Dies würde auch das Problem, dass mehrere Karten auf einmal
-aufgehoben werden, lösen. Der Nachteil dieser Möglichkeit wäre jedoch der erhöte Preis des Saugnapfes sowie die zusätzlichen Bauteile, wie zum Beispiel die Pumpe und die Valve. Außerdem ist der Einbau des Saugnapfes etwas komplizierter, da ein Luftdruckschlauch
+Eine andere Möglichkeit wäre ein Vakuumsaugnapf, dieser erzeugt seinen Unterdruck über eine Vakuumpumpe und kann somit gesteuert werden. Der Vorteil dieses Saugnapfes ist es, dass die Karten zu einer gewünschten Zeit abgeworfen werden können, da man den
+Unterdruck des Saugnapfes durch die Pumpe steuern kann. Ein anderer Vorteil ist, dass der Hubmagnet keine hohe Kraft aufweisen muss, da der Saugnapf nicht mehr auf die Karten aufgepresst werden muss, dies würde auch das Problem, dass mehrere Karten auf einmal
+aufgehoben werden, lösen. Der Nachteil dieser Möglichkeit wäre jedoch der erhöhte Preis des Saugnapfes sowie die zusätzlichen Bauteile, wie zum Beispiel die Pumpe und die Valve. Außerdem ist der Einbau des Saugnapfes etwas komplizierter, da ein Luftdruckschlauch
 zum Saugnapf geführt werden muss.
 
 \textbf{Vorteile:}
@@ -457,7 +452,7 @@ zum Saugnapf geführt werden muss.
     \item \textbf{Vergleich der Saunäpfe}
 \end{itemize}
 
-Beide Saugnäpfe würden ihre individuelle Vorteile besitzen. Da wir zum einen ein begrenztes Budget haben wäre der einfache unterdruck Saugnapf für uns attraktiv, zum anderen wäre der vakuum Saugnapf durch seine Zuverlässigkeit von Vorteil.
+Beide Saugnäpfe würden ihre individuellen Vorteile besitzen. Da wir zum einen ein begrenztes Budget haben wäre der einfache Unterdrucksaugnapf für uns attraktiv, zum anderen wäre der Vakuumsaugnapf durch seine Zuverlässigkeit von Vorteil.
 Da der ausgewählte Hubmagnet jedoch nicht in der Lage ist, den erforderlichen Ansaugdruck zu erreichen, und das kontrollierte Abwerfen der Karten maßgeblich für die Funktion der Maschine ist, fällt unsere Auswahl auf den \textbf{Vakuumsaugnapf}.
 \subsection{Endauswahl der Varianten}
 
@@ -479,9 +474,9 @@ Da der ausgewählte Hubmagnet jedoch nicht in der Lage ist, den erforderlichen A
 \textbf{\large{Begründung der Wahl}}\\
 Alle drei Varianten wurden durchdacht und bieten ihre individuellen Vorteile. Durch den enormen Preis von
 Variante 1 ist diese aber nicht für unser Projekt geeignet. Das optimale Konzept des Mischens wird am besten durch
-Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten aufeinmal in das Lager zu befördern.
+Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten auf einmal in das Lager zu befördern.
 Da Variante 3 im Vergleich zur Variante 2 weniger Bauteile besitzt, ist diese Variante sowohl Preislich ansprechender für uns
- sowie auch die Tatsache das Fehlerquellen durch bewegliche Bauteile minimiert werden. \\
+sowie auch die Tatsache das Fehlerquellen durch bewegliche Bauteile minimiert werden. \\
 Somit fällt die finale Wahl auf \textbf{Variante 3}.
 
 
@@ -514,7 +509,7 @@ Auch in der oben gezeigten Grafik wurde die Außenwand entfernt, um das Bauteil 
 Das Lagerrad besteht aus mehreren Einzelteilen:
 
 \subsubsection{Außenwände}
-Die Außenwände wurden in der Form eines Teiles eines Kreises konstruiert und geben somit die Form des Lagerrades vor. Sie besitzten jeweils 2 Laschen an der äußeren Seite, diese verbinden die Außenwände später mit den Seitenwänden des Lagerrades.
+Die Außenwände wurden in der Form eines Teiles eines Kreises konstruiert und geben somit die Form des Lagerrades vor. Sie besitzen jeweils 2 Laschen an der äußeren Seite, diese verbinden die Außenwände später mit den Seitenwänden des Lagerrades.
 Außerdem besitzen sie jeweils 3 Ausfräsungen auf ihrer Grundfläche, über die sie später mit den Trennplatten versteckt werden. Bei der Konstruktion der Ausfräsungen ist dabei zu achten, dass sie etwas größer als benötigt gezeichnet werden, da bei der
 Fertigungsart des 3D-Druckens Innenbohrungen und Innenfräsungen durch die Ungenauigkeit des Druckers kleiner gedruckt werden. Wie auch bei den Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese wiederum beim
 Drucken größer gedruckt werden, als sie ursprünglich gezeichnet wurden.
