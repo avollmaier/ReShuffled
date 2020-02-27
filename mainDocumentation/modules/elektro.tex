@@ -529,7 +529,7 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 
 \begin{figure}[hb]
     \centering
-    \includegraphics[scale=0.85,page=1]{fig/elektro/ElectroBlockDiagram.pdf}
+    \includegraphics[scale=0.85,page=1]{fig/elektro/Blockschaltbild.pdf}
     \caption{Blockschaltbild der gesamten Elektronik}\label{fig:Blockschaltbild}
 \end{figure}
 
@@ -587,7 +587,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bi
     \caption{Zerstörerische Variante mithilfe einer Sicherung und einer Diode}
 \end{figure}
 
-\subsubsection{Verpolungsschutz mithilfe eines P-Kanal \acs{MOSFET}\footfullcite{Verpolschutz}}
+\subsubsection{Verpolungsschutz mithilfe eines P-Kanal \acs{MOSFET} \footfullcite{Verpolschutz}}
 
 Der P-Kanal MOSFET leitet, wenn das Gate um U\textsubscript{GSth} negativer ist als der Spannungspegel anliegend am Source.
 Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass am Sourceeingang die Eingangsspannung ankommt.
@@ -595,7 +595,7 @@ Weil die am Source anliegende Spannung weitaus positiver als U\textsubscript{GSt
 Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährlichen Wert.
 Die Tatsache, dass der MOSFET verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
 Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden Zustand.
-Bei Spannungen, die kleiner als UGSmax sind, kann die Z-Diode vernachlässigt werden.
+Bei Spannungen, die kleiner als die maximale U\textsubscript{GS} sind, kann die Z-Diode vernachlässigt werden.
 In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, weshalb die Diode vernachlässigt werden kann und ein beinahe verlustfreier Betrieb möglich ist.
 
 \begin{figure}[ht]
@@ -603,7 +603,10 @@ In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, w
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
         \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.4,4.3) to [short,-*](3.4,4){};
-        \draw (3,4)node[pfet, rotate = 90 ]{};
+        \draw (3,4)node[pfet, rotate = 90 ](pfet){};
+        \draw (pfet.G) node[anchor=east] {G};
+        \draw (pfet.D) node[anchor=south] {S};
+        \draw (pfet.S) node[anchor=south] {D};
         \draw (3.55,4.3)node[anchor=south]{Q1};
         \draw (3,0) to [R, l=$R1$, *-](3,3.3){};
         \draw (3,2.5) to [short, *-](4.2,2.5){};
@@ -661,7 +664,10 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (7.5,7) to [R, l=$R6$, *-](7.5,5) to (7.5,5) node[rground]{};
         \draw (9,7) to [eC, l=$C2$, *-](9,5) to (9,5)node[rground]{};
         \draw (6,4.9) to (6,3) to [R, l_=$R3$](4,3) to (2,3);
-        \draw (1.5,3)node[nfet, rotate=180]{};
+        \draw (1.5,3)node[nfet, rotate=180](nfet1){};
+        \draw (nfet1.G) node[anchor=south] {G};
+        \draw (nfet1.D) node[anchor=east] {S};
+        \draw (nfet1.S) node[anchor=east] {D};
         \draw (1.5,2.6) to [short, *-](1.2,2.6) to [/tikz/circuitikz/bipoles/length=0.45cm,D](1.2,3.4) to [short,-*](1.5,3.4){};
         \draw (1.5,0) to [short, *-](1.5,3);
         \draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
@@ -881,8 +887,8 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden, ist der Widerstand R
         \draw (5.5,2.3) to (5.5,2.3)node[anchor=north]{S2};
         \draw (5.5,3.3) to (5.5,3.3)node[anchor=north]{S1};
         \draw (2,2)node[npn, xscale = -1](npn){};
-        \draw (npn.E) node[right]{E};
-        \draw (npn.C) node[right]{C};
+        \draw (npn.E) node[left]{E};
+        \draw (npn.C) node[left]{C};
         \draw (npn.B) node[above]{B};
         \draw (2,6) to (1.775,6) to [short, *-o](0,6)node[anchor=east]{+};
         \draw (4,6) to [short, -o](5,6)node[anchor=west]{+};
@@ -1326,11 +1332,6 @@ In unserem Fall werden alle kapazitiven Sensoren mit 12V versorgt.
 Der Signalausgang des Sensors liefert im Grundzustand ein HIGH-Signal.
 Sobald ein Objekt in das Messumfeld des Sensors gelangt, liefert dieser ein Signal von 0.62V, welches als LOW-Signal gilt.
 Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannungsteiler am Signalausgang des Sensors zu dimensionieren.
-Hierzu verwenden wir folgende Formel:
-
-\begin{equation}
-    U_a = U_e \cdot \frac{R_1}{R_1 + R_2}
-\end{equation}
 
 \begin{figure}[ht]
     \centering
@@ -1341,8 +1342,8 @@ Hierzu verwenden wir folgende Formel:
         \draw (1,3) to[R, l=$R_1$, v_>=$U_1$](4,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (4,0) to [short, *-o](6,0)node[anchor=west]{-};
         \draw (4,0) to (4,0) node[rground]{};
-        \draw (0,2.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+        \draw (0,2.8) -- node[left] {$U_\mathrm{Sensor}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (6,2.8) -- node[right] {$U_\mathrm{Mikrocontroller}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
     \caption{Aufbau einer Spannungsteilers}
 \end{figure}
@@ -1386,7 +1387,10 @@ Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden St
         \draw (5,3) to (5,0);
         \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
         \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
-        \draw (5,3)node[nfet, solderdot, bodydiode]{};
+        \draw (5,3)node[nfet, solderdot, bodydiode](nfet){};
+        \draw (nfet.G) node[above]{G};
+        \draw (nfet.D) node[left]{D};
+        \draw (nfet.S) node[left]{S};
         \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
         \draw (5,-0.5) to (5,-0.5) node[rground]{};
 
@@ -1420,7 +1424,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
         \draw (5,3) to (5,0);
         \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
         \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
-        \draw (5,3)node[nfet, solderdot, bodydiode]{};
+        \draw (5,3)node[nfet, solderdot, bodydiode](nfet){};
+        \draw (nfet.G) node[above]{G};
+        \draw (nfet.D) node[left]{D};
+        \draw (nfet.S) node[left]{S};
         \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
         \draw (5,-0.5) to (5,-0.5) node[rground]{};
 
@@ -1434,7 +1441,10 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
         \draw (15,3) to (15,0);
         \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
         \draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,0) to [short,-*](15,0) to (15,-0.5);
-        \draw (15,3)node[nfet, solderdot, bodydiode]{};
+        \draw (15,3)node[nfet, solderdot, bodydiode](nfet1){};
+        \draw (nfet1.G) node[above]{G};
+        \draw (nfet1.D) node[left]{D};
+        \draw (nfet1.S) node[left]{S};
         \draw (9,3) to (9,3)node[anchor=east]{SIG};
         \draw (15,-0.5) to (15,-0.5) node[rground]{};
     \end{circuitikz}
@@ -1448,7 +1458,7 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 Um Debugging effektiv betreiben zu könnnen, ist eine Verbindung von Mini-USB zu UART implementiert worden.
 So können Vorgänge leicht über einen Computer via Kabel überwacht werden oder etwa ein neues Programm herübergespielt werden.
 
-Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringe, einfache Beschaltung und Implementierung sprach.
+Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringe Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.
 Dieser Treiberbaustein ist wie folgt zu beschalten:
 
 \begin{figure}[ht]
@@ -1681,7 +1691,7 @@ Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Stro
 
 \subsection{Auswahl der Gleichrichter-Dioden\footfullcite{RR264M-Datasheet}}
 
-Als diese Dioden selektierten wir die RR264M, welche einen Strom von 1A treiben können, was wichtig für die Implementierung an den induktiven Lasten ist.
+Als diese Dioden selektierten wir die RR264M, welche einem Strom von 1A standhalten können, was wichtig für die Implementierung an den induktiven Lasten ist.
 Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
 Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
 
@@ -1776,7 +1786,7 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 \subsubsection{Prototyping}
 
 Bevor wir fester Überzeugung aller korrekten Funktionen sein konnten, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
-Dies hat die Vorteile, etwa im Platinenlayout falsch Gemachtes, bereits vor der finalen Version zu erkennen und zu korrigieren.
+Dies hat die Vorteile, etwaige Fehler im Platinenlayout bereits vor der finalen Version zu erkennen und zu korrigieren.
 Jener Prototyp wurde in der Werkstätte der \acs{HTBLA} Kaindorf angefertigt. \\
 
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
@@ -1829,7 +1839,7 @@ Anzumerken ist bei diesem, dass die Idee der Implementierung von einer Pumpe und
 \subsection{Verbesserungsmöglichkeiten}
 
 \subsubsection{Crowbar Circuit\footfullcite{@TheArtOfElectronics-Kapitel-9.13.1-OvervoltageCrowbars}}
-Sollte man die Versorgung des Raspberry Pi's über die \acs{GPIO} Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
+Sollte man die Versorgung des Raspberry Pi's über die Expansion Header Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
 Eine essenzielle Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre eine sogenannte Klemmschaltung (engl.Crowbar Circuit).
 Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannung zu schützen.
 
