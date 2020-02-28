@@ -300,12 +300,11 @@ ein Fließen des Stromes durch die Motorwicklung bewirkt.
 \begin{itemize}
     \item \textbf{Vorteile}
     \begin{itemize}
-        \item geringe Kosten
+        \item geringe Kosten, 1€ bis 6€
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
         \item viele Bauteile
-        \item erhöhter Platzbedarf
         \item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
         \item Motorspannung muss Versorgungsspannung des µC entsprechen
     \end{itemize}
@@ -322,7 +321,7 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
-        \item Kosten könnten sich aufgrund eines Kühlkörpers erhöhen
+        \item höhere Kosten (5 Stück für etwa 12€)
     \end{itemize}
 \end{itemize}
 
@@ -378,6 +377,7 @@ Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich 
 \end{table}
 
 Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
+
 Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3.3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
 Eine Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
 Auf eine H-Brücke wurde nicht zurückgegriffen, da ihre Versorgungsspannung und somit auch die des Motors mit der des Mikrocontrollers übereinstimmen müsste.
@@ -543,15 +543,15 @@ verwarfen wir die Idee diesen mit 5V zu versorgen.
 Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingespeist wird und eine Verwechslung der Anschlusspolaritäten nicht unwahrscheinlich ist,
 vermag es einen Verpolungsschutz zu verwenden, um die dahinter gelegene Elektronik zu schützen.
 
-\subsubsection{Verpolungsschutz mit einer Diode\footfullcite{Verpolschutz}}
-Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Diode.
-Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 1V mit sich, was bei 12V immerhin 8.33 Prozent entsprechen.
+\subsubsection{Verpolungsschutz mit einer Schottky-Diode\footfullcite{Verpolschutz}}
+Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Schottkydiode.
+Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 0.3V im korrekten Betrieb mit sich.
 
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.1]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
-        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](4,3){};
+        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -562,20 +562,20 @@ Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall
     \caption{Variante mithilfe einer Diode}
 \end{figure}
 
-\subsubsection{Verpolungsschutz mit einer Sicherung und einer Diode\footfullcite{Verpolschutz}}
+\subsubsection{Verpolungsschutz mit einer Sicherung und einer Schottky-Diode\footfullcite{Verpolschutz}}
 
-Diese Realisierung bringt die Verwendung einer Sicherung und einer Diode mit sich.
+Diese Realisierung bringt die Verwendung einer Sicherung und einer Schottky-Diode mit sich.
 
 Bei verpolter anliegender Eingangsspannung brennt die Sicherung, bei ausreichendem,
 von der Spannungsversorgung zur Verfügung gestelltem Strom, durch.
-Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 1V, bis die Sicherung auslöst.
+Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 0.3V, bis die Sicherung auslöst.
 
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.1]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
         \draw (1,3) to[R, l=$F1$](3,3){};
-        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$, *-*](4,3){};
+        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$, *-*](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -723,7 +723,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
     \caption{Schaltung zum Aufheben der Selbsthaltung}
 \end{figure}
 
-Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von LaPlace-Transformationskorrespondenzen und einigen grundlegenden Formeln der Elektrotechnik gemacht:
+Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
 \begin{align}
     \mathscr{L}\{f(t)\}&=F(s) \\
@@ -1002,7 +1002,7 @@ Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspin
 An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
 
 Um die interne Referenzspannung zu glätten, wurde wie im Datenblatt empfohlen, ein 100nF Kondensator am Pin AREF implementiert.
-Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Quarz mit einer Taktfrequenz von 0 bis 10MHz zu arbeiten.
+Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Quarz mit einer Taktfrequenz von 0 bis 13.3MHz zu arbeiten.
 Aufgrund unserer Entscheidung, den Mikrocontroller mit einem 10MHz Quarz zu betreiben, waren zwei Kondensatoren mit einem Wert von 12 bis 22pF zu wählen.
 Diese haben den Nutzen, den Quarzoszillator gut anschwingen und stabil schwingen zu lassen.
 Der RESET-Pin setzt bei einem LOW-Pegel-Signal den µC zurück.
