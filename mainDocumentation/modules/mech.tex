@@ -25,6 +25,54 @@ weiteres Problem, da diese sich nicht immer separieren lassen, dies
 verursacht, dass oft zwei oder mehrere Karten auf einmal genommen
 werden und das Konzept des optimalen Mischens zerstört.
 
+\subsection{Zeitplan}
+
+\begin{figure}[hbt!]
+    \centering
+    \scalebox{0.6}{
+    \begin{ganttchart}[
+    hgrid style/.style={black, dotted},
+    calendar week text={\currentweek},
+    vgrid={*6{white},*1{black,dotted}},
+    x unit=1mm,
+    group label font= \Large,
+    y unit chart=9mm,
+    y unit title=12mm,
+    time slot format=isodate,
+    time slot unit=year
+    link/.style={->, thick}
+    ]{2019-09-2}{2020-03-15}
+        \gantttitlecalendar{year, month=name, week}\\
+
+        \ganttgroup[group/.append style={draw=none}]
+        {Variantenvergleich}{2019-09-02}{2019-11-13}\\ [grid]
+        \ganttbar[]{Variantenvergleich des Gesamtsystems}{2019-09-02}{2019-10-15}\\ [grid]
+        \ganttbar[]{Variantenvergleich der Einzelbauteile}{2019-10-03}{2019-11-8}\\ [grid]
+        \ganttbar[]{Variantenfreeze des Gesamtsystems}{2019-11-2}{2019-11-13}\\ [grid]
+        \ganttnewline[thick, black]
+
+        \ganttgroup[group/.append style={draw=none}]{Konstruktion}{2019-10-28}{2020-01-20}\\ [grid]
+        \ganttbar[]{Konstruktion des Lagerradmoduls}{2019-10-28}{2019-11-30}\\ [grid]
+        \ganttbar[]{Konstruktion des Kartenhalterungsmoduls}{2019-11-28}{2019-12-27}\\ [grid]
+        \ganttbar[]{Konstruktion der Kartenentnahme}{2019-12-27}{2020-01-03}\\ [grid]
+        \ganttbar[]{Fertigstellung des Gesamtsystems}{2020-01-03}{2020-01-20}\\ [grid]
+        \ganttnewline[thick, black]
+
+        \ganttgroup[group/.append style={draw=none}]{Fertigung}{2019-12-15}{2020-02-21}\\ [grid]
+        \ganttbar[]{Fertigung der 3D-Druck Teile}{2019-12-15}{2020-01-31}\\ [grid]
+        \ganttbar[]{Fertigung der Frästeile}{2019-12-28}{2020-01-08}\\ [grid]
+        \ganttbar[]{Fertigung des Gehäuses}{2020-01-20}{2020-02-21}\\ [grid]
+
+
+        \ganttnewline[thick, black]
+
+        \ganttgroup[]{Dokumentation}{2019-12-07}{2020-02-28}\\ [grid]
+
+    \end{ganttchart}
+    }
+    \caption{Zeitplan Bereich Mechanik}
+\end{figure}
+
 \section{Konzepte}
 
 \subsection{Anforderungen}
@@ -38,7 +86,7 @@ werden und das Konzept des optimalen Mischens zerstört.
     \item \textbf{Schnelligkeit} \\
     Um ein gutes Spielerlebnis zu garantieren, sollte der Automat keine
     lange Mischzeit aufweisen. Die Dauer, in der man die Karten einführt und auf den
-    Mischen-Button klickt bis hin zur Ausgabe der ersten Karte sollte möglichst gering sein.
+    Mischen-Button klickt bis hin zur Ausgabe der ersten Karte, sollte möglichst gering sein.
     \item \textbf{Mischgenauigkeit} \\
     Die Mischgenauigkeit ist die am schwersten gewichtete Anforderung,
     da es das Ziel ist ein optimales Mischen der Spielkarten zu erreichen, sollte
@@ -58,7 +106,7 @@ Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte ent
 
 \begin{figure}[hb]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Version1}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Version1}
     \caption{Variante 1}
 \end{figure}
 
@@ -69,7 +117,7 @@ ein Kartendeck aufzunehmen und die unterste Karte mithilfe eines Ausgaberades we
 Linearachse besitzt 4 Fächer, in der die Karten von der ersten Linearachsenausgabe zufällig befördert werden.
 Dies wird realisiert, indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
 hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
-fährt die zweite Linearachse impulsiv nach links, um die Karten aus dem Lager zu befördern. Diese fallen
+fährt die zweite Linearachse impulsiv nach links und bremst schlagartig ab, um die Karten aus dem Lager zu befördern. Diese fallen
 Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereitliegen. \\
 
 
@@ -97,7 +145,7 @@ die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für
 
 \begin{figure}[hb]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Version2}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Version2}
     \caption{Variante 2}
 \end{figure}
 
@@ -133,7 +181,7 @@ Mischens zerstören. Die vielen Bauteile führen auch zu teureren Anschaffungsko
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Version3}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Version3}
     \caption{Variante 3}
 \end{figure}
 
@@ -167,7 +215,7 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/RundesAusgaberad-Page-1}
+    \includegraphics[scale=0.9,page=1]{fig/mech/RundesAusgaberad-Page-1}
     \caption{Rundes Ausgaberad}
 \end{figure}
 
@@ -181,7 +229,7 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/ElliptischesAusgaberad}
+    \includegraphics[scale=0.9,page=1]{fig/mech/ElliptischesAusgaberad}
     \caption{Eliptisches Ausgaberad}
 \end{figure}
 
@@ -211,7 +259,7 @@ Ausgaberades weiterbefördert wird.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus1}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Klemmmechanissmus1}
     \caption{Primitiver Klemmmechanissmus}
 \end{figure}
 
@@ -225,7 +273,7 @@ soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschaltet und eine Zug
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus2}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Klemmmechanissmus2}
     \caption{Komplexer Klemmmechanissmus}
 \end{figure}
 
@@ -241,7 +289,7 @@ dafür aber auch aufwendiger in der Produktion.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus3}
+    \includegraphics[scale=0.9,page=1]{fig/mech/Klemmmechanissmus3}
     \caption{Gummi Klemmmechanissmus}
 \end{figure}
 
@@ -267,74 +315,70 @@ dass die Karten aneinander haften, dieses Problem entsteht durch den Unterdruck 
 Um zu garantieren, das nur eine Karte in das Lager befördert wird oder ausgegeben wird, müssen diese aneinander
 haftende Karten getrennt werden.
 
-\begin{itemize}
-    \item \textbf{Selbständiges Loslösen der Karten}
-\end{itemize}
+\begin{enumerate}
+    \item \textbf{Selbständiges Loslösen der Karten}\\
+    Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten bis Luft zwischen den Karten von außen eindringt und alle Karten sich durch die Schwerkraft
+    von der eigentlich angesaugten Karte getrennt haben. Jedoch zeigten Versuche die durchgeführt wurden, dass dies zu lange
+    dauern würde und das Spielerlebnis somit beeinflussen würde.
 
-Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten bis Luft zwischen den Karten von außen eindringt und alle Karten sich durch die Schwerkraft
-von der eigentlich angesaugten Karte getrennt haben. Jedoch zeigten Versuche die durchgeführt wurden, dass dies zu lange
-dauern würde und das Spielerlebnis somit beeinflussen würde.
+    % Please add the following required packages to your document preamble:
+    % \usepackage{multirow}
+    \begin{table}[H]
+        \centering
+        \scalebox{0.9}{
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            \textbf{}                         & \multicolumn{7}{c|}{\textbf{Sekunden}}                                                                  \\ \hline
+            \multirow{21}{*}{\textbf{Karten}} &    & 1. Durchgang & 2. Durchgang & 3. Durchgang & 4. Durchgang & 5. Durchgang        & Mittelwert       \\ \cline{2-8}
+            & 20 & 9.69         & 9.32         & 8.92         & 8.54         & 4.53                & 8.2              \\ \cline{2-8}
+            & 19 & 9.1          & 9.97         & 13.82        & 6.71         & 7.75                & 9.47             \\ \cline{2-8}
+            & 18 & 15.39        & 8.93         & 6.51         & 13.05        & 15.25               & 11.826           \\ \cline{2-8}
+            & 17 & 6.45         & 6.67         & 6.16         & 8.06         & 6.97                & 6.862            \\ \cline{2-8}
+            & 16 & 10.76        & 6.52         & 10.62        & 11.37        & 6.97                & 9.248            \\ \cline{2-8}
+            & 15 & 12.81        & 6.45         & 16.22        & 8.74         & 4.7                 & 9.784            \\ \cline{2-8}
+            & 14 & 3.46         & 9.78         & 11.72        & 5.85         & 6.39                & 7.44             \\ \cline{2-8}
+            & 13 & 4.85         & 8.18         & 10.77        & 10.5         & 3.43                & 7.546            \\ \cline{2-8}
+            & 12 & 15.1         & 5.37         & 12.36        & 8.54         & 12.31               & 10.736           \\ \cline{2-8}
+            & 11 & 15.83        & 6.32         & 5.58         & 5.08         & 1.12                & 6.786            \\ \cline{2-8}
+            & 10 & 7.14         & 8.4          & 11.21        & 12.76        & 4.43                & 8.788            \\ \cline{2-8}
+            & 9  & 7.48         & 6.24         & 11.87        & 4.32         & 6.36                & 7.254            \\ \cline{2-8}
+            & 8  & 4.68         & 5.65         & 8.61         & 5.2          & 4.41                & 5.71             \\ \cline{2-8}
+            & 7  & 9.73         & 8.29         & 9.13         & 5.35         & 11.2                & 8.74             \\ \cline{2-8}
+            & 6  & 5.41         & 5.16         & 8.05         & 4.98         & 9.73                & 6.666            \\ \cline{2-8}
+            & 5  & 6.06         & 4.81         & 7.8          & 4.73         & 7.19                & 6.118            \\ \cline{2-8}
+            & 4  & 4.86         & 9.87         & 7.74         & 9.51         & 7.4                 & 7.876            \\ \cline{2-8}
+            & 3  & 4.54         & 11.31        & 4.31         & 6.74         & 10.82               & 7.544            \\ \cline{2-8}
+            & 2  & 4.83         & 2.19         & 4.13         & 3.78         & 5.71                & 4.128            \\ \cline{2-8}
+            &    &              &              &              &              & \multicolumn{2}{c|}{Mittelwert: 7.932} \\ \hline
+        \end{tabular}}
+        \caption{Tabelle Haftzeit der Karten}
+        \label{tab:my-table}
+    \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-\begin{table}[H]
-    \centering
-\scalebox{0.8}{
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-        \hline
-        \textbf{}                         & \multicolumn{7}{c|}{\textbf{Sekunden}}                                                                  \\ \hline
-        \multirow{21}{*}{\textbf{Karten}} &    & 1. Durchgang & 2. Durchgang & 3. Durchgang & 4. Durchgang & 5. Durchgang        & Mittelwert       \\ \cline{2-8}
-        & 20 & 9.69         & 9.32         & 8.92         & 8.54         & 4.53                & 8.2              \\ \cline{2-8}
-        & 19 & 9.1          & 9.97         & 13.82        & 6.71         & 7.75                & 9.47             \\ \cline{2-8}
-        & 18 & 15.39        & 8.93         & 6.51         & 13.05        & 15.25               & 11.826           \\ \cline{2-8}
-        & 17 & 6.45         & 6.67         & 6.16         & 8.06         & 6.97                & 6.862            \\ \cline{2-8}
-        & 16 & 10.76        & 6.52         & 10.62        & 11.37        & 6.97                & 9.248            \\ \cline{2-8}
-        & 15 & 12.81        & 6.45         & 16.22        & 8.74         & 4.7                 & 9.784            \\ \cline{2-8}
-        & 14 & 3.46         & 9.78         & 11.72        & 5.85         & 6.39                & 7.44             \\ \cline{2-8}
-        & 13 & 4.85         & 8.18         & 10.77        & 10.5         & 3.43                & 7.546            \\ \cline{2-8}
-        & 12 & 15.1         & 5.37         & 12.36        & 8.54         & 12.31               & 10.736           \\ \cline{2-8}
-        & 11 & 15.83        & 6.32         & 5.58         & 5.08         & 1.12                & 6.786            \\ \cline{2-8}
-        & 10 & 7.14         & 8.4          & 11.21        & 12.76        & 4.43                & 8.788            \\ \cline{2-8}
-        & 9  & 7.48         & 6.24         & 11.87        & 4.32         & 6.36                & 7.254            \\ \cline{2-8}
-        & 8  & 4.68         & 5.65         & 8.61         & 5.2          & 4.41                & 5.71             \\ \cline{2-8}
-        & 7  & 9.73         & 8.29         & 9.13         & 5.35         & 11.2                & 8.74             \\ \cline{2-8}
-        & 6  & 5.41         & 5.16         & 8.05         & 4.98         & 9.73                & 6.666            \\ \cline{2-8}
-        & 5  & 6.06         & 4.81         & 7.8          & 4.73         & 7.19                & 6.118            \\ \cline{2-8}
-        & 4  & 4.86         & 9.87         & 7.74         & 9.51         & 7.4                 & 7.876            \\ \cline{2-8}
-        & 3  & 4.54         & 11.31        & 4.31         & 6.74         & 10.82               & 7.544            \\ \cline{2-8}
-        & 2  & 4.83         & 2.19         & 4.13         & 3.78         & 5.71                & 4.128            \\ \cline{2-8}
-        &    &              &              &              &              & \multicolumn{2}{c|}{Mittelwert: 7.932} \\ \hline
-    \end{tabular}}
-    \caption{Tabelle Haftzeit der Karten}
-    \label{tab:my-table}
-\end{table}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=1,page=1]{fig/mech/Haftzeit}
+        \caption{Diagramm Haftzeit der Karten}
+    \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=1,page=1]{fig/mech/Haftzeit}
-    \caption{Diagramm Haftzeit der Karten}
-\end{figure}
+    Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
+    eigentlich angesaugte Karte am Saugnapf befindet. Der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
+    5 Durchgänge, auch wurden alle Möglichkeiten der Kartenanzahl im Kartendeck berücksichtigt, so saugte der Saugnapf
+    bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt, bis hin zu einem Saugnapf, der
+    eine Karte ansaugt, die nur auf einer einzelnen anderen Karte liegt.
 
-Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
-eigentlich angesaugte Karte am Saugnapf befindet. Der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
-5 Durchgänge, auch wurden alle Möglichkeiten der Kartenanzahl im Kartendeck berücksichtigt, so saugte der Saugnapf
-bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt, bis hin zu einem Saugnapf, der
-eine Karte ansaugt, die nur auf einer einzelnen anderen Karte liegt.
+    \textbf{Vorteile:}
+    \begin{itemize}
+        \item billig
+        \item keine zusätzlichen Bauteile benötigt
+    \end{itemize}
+    \textbf{Nachteile:}
+    \begin{itemize}
+        \item lange Wartezeit
+        \item unzuverlässig
+    \end{itemize}
 
-\textbf{Vorteile:}
-\begin{itemize}
-    \item billig
-    \item keine zusätzlichen Bauteile benötigt
-\end{itemize}
-\textbf{Nachteile:}
-\begin{itemize}
-    \item lange Wartezeit
-    \item unzuverlässig
-\end{itemize}
-
-\begin{itemize}
-    \item \textbf{Rütteln}
-\end{itemize}
+    \item \textbf{Rütteln}\\\\
 Ein weiteres Konzept um die angesaugte Karten von den anderen zu trennen wäre die Karten minimal zu rütteln.
 Da die angesaugte Karte viel stärken an dem Saugnapf haftet als die Karten, die nur an der angesaugten Karten haften,
 könnte der Hubmagnet oder der Ansaugmechanismus leicht gerüttelt werden, so würden die anderen Karten schneller den
@@ -354,9 +398,9 @@ Aufwand verbunden.
 \end{itemize}
 
 
-\begin{itemize}
-    \item \textbf{Abstreifbürsten}
-\end{itemize}
+
+    \item \textbf{Abstreifbürsten}\\
+
 
 Bei diesem Konzept sind bürstenartige Abstreifvorrichtungen in der Kartenhalterung angebracht. Diese Bürsten sollen beim Aufheben der
 angesaugten Karte die anderen Karten die mitgehoben wurden abstreifen. Dabei ist es wichtig, dass die Bürste den richtigen Widerstand aufbringt.
@@ -380,9 +424,7 @@ die mitgehoben werden nicht abgestreift werden.
     \caption{Ausgabe mit Bürsten}
 \end{figure}
 
-\begin{itemize}
-    \item \textbf{Gummiabsstreifer}
-\end{itemize}
+    \item \textbf{Gummiabsstreifer}\\
 
 Dieses Konzept funktioniert ähnlich wie das "Abstreifbürsten Konzept". Es besitzt seitlich Abstreifplatten die aus Gummi sind, diese
 sollen der angesaugten Karte helfen, die mitgezogenen Karten abzustreifen. Wie beim vorherigen Konzept muss hierbei das Gummi auch so
@@ -392,7 +434,7 @@ erhöht oder vermindert.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/AusgabeMitGummiabstreifer}
-    \caption{Ausgabe mit Bürsten}
+    \caption{Ausgabe mit Gummiabsstreifer}
 \end{figure}
 
 \textbf{Vorteile:}
@@ -404,6 +446,7 @@ erhöht oder vermindert.
 \begin{itemize}
     \item Gummi wird spröde
 \end{itemize}
+\end{enumerate}
 
 \subsection{Saugmechanismus}
 
@@ -1033,10 +1076,38 @@ Geschwindigkeit oder die Dichte der Füllung getroffen. Ist dies geschehen, so k
 G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
 
 \section{Teilaufbau}
-\subsection{Aufgetretene Probleme und Lösungen}
+
+\subsection{Aufgetretene Probleme, Lösungsansätzte und Lösungen}
+Beim Teilaufbau des Automatens sind verschiedene Probleme aufgetreten, diese werden in diesen Unterkapitel bearbeitet und beschrieben.
+
+\subsubsection{Verschließen des Gehäuses}
+Da wir unser Gehäuse mit jeweils 3 Schrauben und 3 Muttern über 8 Winkel verschrauben, benötigen
+wir eine Lösung um die letzte Platte des Gehäuses anzuschrauben, da bei dieser die Muttern
+auf der Unterseite nicht mehr erreichbar sind. Der billigste und schnellste Lösungsweg wäre,
+die jeweilige Muttern an den 4 Winkel der TopPlatte zu verschweißen oder zu kleben, sodass sie genau über der
+Bohrung sitzen und zum Anschrauben nicht mehr erreichbar sein müssen.
+
+\subsubsection{Durchhängen des Lagerradmoduls}
+Weil sich bei dem Lagerradmodul eine Kupplung befindet, kam es dazu, dass ein leichter Knick
+auf der Höhe der Kupplung entstand. Dies führte zwar zu keinem Problem, da der Abstand zwischen
+den Baugruppen groß genug dimensioniert ist um gewisse Abweichungen der Bauteile und somit im
+vorgegeben Bewegungsablauf auszugleichen. Falls dies aber dennoch ein Problem darstellen würde,
+könnte eine andere Kupplung ausgewählt werden, die aktuelle benutzte Kupplung versteift werden oder
+man könnte die beiden Wellen des Lagerradmoduls so befestigen, das sie unter
+Zugspannung stehen und somit das Knicken der Kupplung minimieren.
+
+\subsubsection{Verschrauben des Displays}
+Da das Display über 4 Bohrungen mit der Seitenplatte-Motor verschraubt wird, mussten diese
+beim Bearbeiten des Polycarbonats eingezeichnet und gebohrt werden. Jedoch wurden
+die Maße des Displays falsch vermessen, und somit stimmten die Bohrungen und der Ausschnitt
+der Fräsung nicht mit dem Display überein. Um dieses Problem zu lösen, und die
+Vorderseite des Gehäuses dennoch optisch ansprechend zu gestalten, wurden die Bohrungen
+des Gehäuses auf Langlochbohrungen erweitert, dies löst einerseits das Problem, andererseits
+bleibt das Gehäuse durch die bleibende Symmetrie dennoch optisch ansprechend.
 
 \section{Selbstkritische Analyse, Resümee und Ausblick}
 \subsection{Verbesserungen}
+
 \subsubsection{Vorrausschauen konstruieren}
 Viele Konstruktionen wurden schnell gezeichnet und nicht sehr lange durchdacht, daher mussten die Prototypen mehrmals überarbeitet werden.
 Dies hätte sich durch genaueres durchdenken der Konstruktion verhindern lassen können, auch die Positionierung
