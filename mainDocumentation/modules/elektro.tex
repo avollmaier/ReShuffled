@@ -325,16 +325,16 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
     \end{itemize}
 \end{itemize}
 
-\subsubsection{A4988 \footfullcite{A4988-Stepper-Motor-Driver-Carrier}}
+\subsubsection{A4988}
 Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer,
 wodurch Spannungen über der Nennspannung des Schrittmotors verwendet werden können, um höhere Schrittgeschwindigkeiten erreichen zu können.
 Zusätzlich werden die Eigenschaften eines Überstrom- und Übertemperaturschutzes, Kurzschlussschutzes sowie eine Überspannungsabschaltung vom Hersteller versprochen.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
-Die Ansteuerlogik dieses Moduls gestaltet sich über binäre Spannungspegel.
+Die Ansteuerlogik dieses Moduls gestaltet sich über binäre Spannungspegel.\footfullcite{A4988-Stepper-Motor-Driver-Carrier}
 
-\subsubsection{DRV8825\footfullcite{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}}
+\subsubsection{DRV8825}
 Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8.2V bis 45V zu arbeiten.
 Er kann ohne eine bestimmte Kühlung bis zu 1.5 A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2.5A, welcher mit zugeführter Kühlung auch getrieben werden kann.
@@ -342,19 +342,18 @@ Der DRV8825 arbeitet mit einem Logikpegel von 3.3V bis 5V und bietet die Möglic
 Das Modul besitzt ebenfalls die Eigenschaften eines Überstrom- und Übertemperaturschutzes sowie sechs Mikroschrittauflösungen, welche bis zu einer Zweiunddreißigstel-Auflösung reichen.
 Die Besonderheit eines SLEEP-MODE mit geringen Stromverbrauch und eines eingebauten Unterspannungsschutzes sind zusätzlich gegeben.
 Der DRV8825-Treiber verfügt über eine Pinbelegung und eine Ansteuerung, welche beinahe mit denen des A4988-Schrittmotortreibers identisch sind,
-sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
+sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.\footfullcite{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}
 
-\subsubsection{TB6600\footfullcite{TB6600-Arduino-Stepper-Motor-Driver}}
+\subsubsection{TB6600}
 Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0.7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Überhitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
 Der Ausgangsstrom ist mittels \acs{DIP}-Schalter in acht Schritten wählbar.
 Sechs verschieden wählbare Mikroschrittauflösungen, welche bis zu einer Auflösung von Zweiunddreißigstel reichen, werden zur Verfügung gestellt.
 Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V .
-Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.
+Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.\footfullcite{TB6600-Arduino-Stepper-Motor-Driver}
 
 \subsubsection{Treiber-Auswahl}
-
 
 \begin{table}[ht]
     \centering
@@ -376,39 +375,12 @@ Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich 
     \caption{Vergleich der Treibermodule}
 \end{table}
 
-Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
-
+Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist und dieser einen Maximalstrom von 1.6A benötigt, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
 Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3.3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
 Eine Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
 Auf eine H-Brücke wurde nicht zurückgegriffen, da ihre Versorgungsspannung und somit auch die des Motors mit der des Mikrocontrollers übereinstimmen müsste.
 
 \subsection{Detektion der Kartenposition}
-
-\subsubsection{Kapazitive Sensoren\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}}
-Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
-Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisches Feld.
-Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
-Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
-
-\textbf{Sensoren mit GND-Elektrode} \\
-Ein bündiger Einbau dieser Sensoren ist möglich, da sich ihr Messfeld von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
-Diese Variante eignet sich gut zur Detektion von nicht leitenden Materialien. \\
-
-\textbf{Sensoren ohne GND-Elektrode} \\
-Ein bündiges Einbauen dieser Art ist nicht vorteilhaft.
-Eine integrierte GND-Elektrode ist nicht vorhanden, sie wird nämlich vom zu konstatierenden Objekt dargestellt.
-Diese Bauform weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
-Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
-
-\subsubsection{Ultraschall-Sensoren\footfullcite{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}}
-Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
-Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
-Das Echo wird vom Sensor wieder aufgenommen.
-Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
-So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
-Lediglich schalldämpfende Materialien können nicht erfasst werden.
-Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
-Ein fast wartungsfreier Betrieb ist möglich.
 
 \subsubsection{Optische Sensoren}
 Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus.
@@ -423,7 +395,39 @@ Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
 
 Optische Sensoren besitzen eine fast wartungsfreien, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
 Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden.
-Es sind große Erkennungsabstände möglich.
+Es sind große Erkennungsabstände möglich.\footfullcite{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}
+
+\subsubsection{Ultraschall-Sensoren}
+Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
+Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
+Das Echo wird vom Sensor wieder aufgenommen.
+Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
+So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
+Lediglich schalldämpfende Materialien können nicht erfasst werden.
+Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
+Ein fast wartungsfreier Betrieb ist möglich.\footfullcite{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}
+
+\subsubsection{Kapazitive Sensoren}
+Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
+Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisches Feld.
+Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
+Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
+
+\textbf{Sensoren mit GND-Elektrode} \\
+Ein bündiger Einbau dieser Sensoren ist möglich, da sich ihr Messfeld von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
+Diese Variante eignet sich gut zur Detektion von nicht leitenden Materialien. \\
+
+\textbf{Sensoren ohne GND-Elektrode} \\
+Ein bündiges Einbauen dieser Art ist nicht vorteilhaft.
+Eine integrierte GND-Elektrode ist nicht vorhanden, sie wird nämlich vom zu konstatierenden Objekt dargestellt.
+Diese Bauform weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
+Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.5]{fig/elektro/KapSensor.png}
+    \caption{Arten von Kapazitiven Sensoren}
+\end{figure}
 
 \subsubsection{Sensoren-Auswahl}
 
@@ -475,6 +479,7 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
+ \newpage
 \subsection{Spannungsversorgung}
 \subsubsection{Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V \acs{AC} in Verbindung gebracht werden müsste,
