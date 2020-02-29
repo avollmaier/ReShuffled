@@ -66,6 +66,7 @@ bibliography=totocnumbered,											% Literaturverzeichnis
 \setcounter{secnumdepth}{5}                                            % Nummerierungstiefe der Überschriften
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}
+\usepackage{wrapfig}
 \input{biber.tex}
 \input{listings}
 \subject{\includegraphics[scale=0.025]{fig/logoMecha.pdf}}
@@ -90,8 +91,8 @@ Dipl-Ing. Manfred Steiner}
     \tableofcontents
     \mainmatter
     \include{modules/mech}
-    %\include{modules/elektro}
-    %\include{modules/ainf}
+    \include{modules/elektro}
+    \include{modules/ainf}
     \include{modules/testing}
     \include{appendix}
 \end{document}

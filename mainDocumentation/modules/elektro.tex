@@ -413,6 +413,12 @@ Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisc
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.5]{fig/elektro/KapSensor.png}
+    \caption{Arten von Kapazitiven Sensoren}
+\end{figure}
+
 \textbf{Sensoren mit GND-Elektrode} \\
 Ein bündiger Einbau dieser Sensoren ist möglich, da sich ihr Messfeld von der Messelektrode zur integrierten GND-Elektrode ausbreitet.
 Diese Variante eignet sich gut zur Detektion von nicht leitenden Materialien. \\
@@ -422,12 +428,6 @@ Ein bündiges Einbauen dieser Art ist nicht vorteilhaft.
 Eine integrierte GND-Elektrode ist nicht vorhanden, sie wird nämlich vom zu konstatierenden Objekt dargestellt.
 Diese Bauform weist eine geringe Empfindlichkeit gegen Verschmutzung auf.
 Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[scale=0.5]{fig/elektro/KapSensor.png}
-    \caption{Arten von Kapazitiven Sensoren}
-\end{figure}
 
 \subsubsection{Sensoren-Auswahl}
 
@@ -479,7 +479,6 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
- \newpage
 \subsection{Spannungsversorgung}
 \subsubsection{Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V \acs{AC} in Verbindung gebracht werden müsste,
@@ -550,7 +549,7 @@ vermag es einen Verpolungsschutz zu verwenden, um die dahinter gelegene Elektron
 
 \subsubsection{Verpolungsschutz mit einer Schottky-Diode\footfullcite{Verpolschutz}}
 Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Schottkydiode.
-Jedoch bringt diese Methode einen erheblichen Nachteil von einem Spannungsabfall von bis zu 0.3V im korrekten Betrieb mit sich.
+Jedoch bringt diese Methode einen erheblichen Nachteil von einem dauerhaften Spannungsabfall von bis zu 0.3V im korrekten Betrieb mit sich.
 
 \begin{figure}[ht]
     \centering
@@ -1014,8 +1013,8 @@ Der RESET-Pin setzt bei einem LOW-Pegel-Signal den µC zurück.
 Um dies im Grundzustand zu unterbinden, wird ein Pull-Up Widerstand von 10kOhm implementiert.
 Parallel zu diesem wurde eine externe Diode zum Schutz vor Überspannungen vorgesehen.
 Um den RESET-Pin gegen Masse schalten zu können, wurde ein Taster implementiert.
-Über den Data-Terminal-Ready Pin des USB-UART-Converters und dessen Jumper-Pad oder die SPI-Schnittstelle ist es jedoch ebenfalls möglich, den ATmega324P zu resetten.
-Parallel zum Taster wurde ein RC-Glied vorgesehen, welches als Entprellung der Tasterbetätigung sowie als Prevention gegen Spikes und für ein längeres, definiertes Bestehen des µC im Reset-Zustand dient.
+Über den Data-Terminal-Ready Pin des USB-UART-Converters und dessen Jumper-Pad oder die ISP-Schnittstelle ist es jedoch ebenfalls möglich, den ATmega324P zu resetten.
+Parallel zum Taster wurde ein Kondensator vorgesehen, welcher als Prevention gegen Spikes und für ein längeres, definiertes Bestehen des µC im Reset-Zustand dient.
 
 \begin{figure}[ht]
     \centering
@@ -1025,6 +1024,21 @@ Parallel zum Taster wurde ein RC-Glied vorgesehen, welches als Entprellung der T
         %AREF
         \draw (7.9,2) to (7.9,2)node[anchor=north]{AREF};
         \draw (8.5,1.75) to (9.5,1.75) to [C, l=$C9$](9.5,0) to (9.5,0) node[rground]{};
+
+        %ISP
+        \draw (8.5,2.5) to (10,2.5);
+        \draw (8.5,3) to (10,3);
+        \draw (8.5,3.5) to (10,3.5);
+        \draw (7.9,2.7) to (7.9,2.7)node[anchor=north]{MOSI};
+        \draw (7.9,3.2) to (7.9,3.2)node[anchor=north]{MISO};
+        \draw (7.9,3.7) to (7.9,3.7)node[anchor=north]{SCK};
+
+        \draw [line width=1.5pt](10,2) to (10,4) to (11.5,4) to (11.5,2) to (10,2);
+        \draw (11.5,2.5) to (12,2.5) to (12,2)node[rground]{};
+        \draw (11.5,3.5) to (12,3.5) to (12,4)node[vcc]{+3.3V};
+        \draw (11.5,3) to [short,-o](12,3);
+        \draw (13.6,3)to (13.6,3)node[anchor=east]{ISP-RST};
+        \draw (11.8,4.3)node[anchor=east]{ISP-Header};
 
         %Quarz
         \draw (5.65,2.8) to (5.65,2.8)node[anchor=north]{XTAL2};
@@ -1039,13 +1053,17 @@ Parallel zum Taster wurde ein RC-Glied vorgesehen, welches als Entprellung der T
 
         %RESET
         \draw (5.65,4) to (5.65,4)node[anchor=north]{RESET};
+        \draw [line width=1.2pt](5.1,3.95) to (6.2,3.95);
         \draw (5,3.7) to (3,3.7) to (3,6) to [R, l=$R1$](3,7.5) to (3,8)node[vcc]{+3.3V};
         \draw (3,6) to [short, *-](4,6) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](4,7.5) to  [short,-*](3,7.5);
         \draw (4,7.5) to (4,6);
-        \draw (3,5.5) to [short,*-o](3.5,5.5)node[anchor=west]{SPI-RST};
+        \draw (3,5.5) to [short,*-o](3.5,5.5)node[anchor=west]{ISP-RST};
         \draw (3,5) to [short, *-o](2,5);
         \draw (1.5,5) to [short, o-](0.5,5) to [C, l=$C5$](0.5,6.5) to [short, -o](0,6.5)node[anchor=east]{DTR-USB};
-        \draw (3,4.5) to (-1,4.5) to [R, l=$R2$](-1,3) to [C, l=$C6$](-1,1.5) to (-1,1.5)node[rground]{};
+        \draw [line width=1.2pt](-1,6.75) to (-1.8,6.75);
+        \draw (-0.5,5.3) to (-0.5,5.3)node[anchor=west]{10n};
+        \draw (3,4.5) to [short,*-](-1,4.5) to [C=100n, l_=$C6$](-1,1.5) to (-1,1.5)node[rground]{};
+        \draw (-2,2.6) to (-2,2.6)node[anchor=west]{100n};
         \draw (3,4) to [short, *-](2.15,4);
         \draw (1.8,4)node[pushbuttonshape]{};
         \draw (1.48,4) to [short,o-](0.5,4) to (0.5,3.5)node[rground]{};
@@ -1090,24 +1108,31 @@ Parallel zum Taster wurde ein RC-Glied vorgesehen, welches als Entprellung der T
     \caption{Beschaltung des ATmega324P}
 \end{figure}
 
-\subsection{DRV8825-Schrittmotortreiber\footfullcite{DRV8825-Datasheet}}
+\subsection{DRV8825-Schrittmotortreiber}
 
 Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern.
 Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
 Um die Motorwindungen anzusteuern, sind die Ausgangsblöcke des Treibers als volle N-Kanal Leistung-MOSFET H-Brücken realisiert.
 Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
 
-\subsubsection{Datenblattwerte}
+\subsubsection{Datenblattwerte\footfullcite{DRV8825-Datasheet}}
 
-\begin{itemize}
-    \item Minimale Betriebsspannung 8.2V
-    \item Maximale Betriebsspannung 47V
-    \item Maximaler Strom per Phase 1.5A (2.5A*)
-    \item Minimale Steuerspannung 2.2V
-    \item Maximale Steuerspannung 5.25V
-    \item Dimensionen 15.5mm x 20.5mm
-\end{itemize}
-* nur bei ausreichender Kühlung möglich
+\begin{minipage}{.6\textwidth}
+    \begin{itemize}
+        \item Minimale Betriebsspannung 8.2V
+        \item Maximale Betriebsspannung 47V
+        \item Maximaler Strom per Phase 1.5A (2.5A*)
+        \item Minimale Steuerspannung 2.2V
+        \item Maximale Steuerspannung 5.25V
+        \item Dimensionen 15.5mm x 20.5mm
+    \end{itemize}
+    * nur bei ausreichender Kühlung möglich
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+    \centering
+    \includegraphics[scale=0.08]{fig/elektro/StepperDriver.jpg}
+    \captionof{figure}{Bild des Treibers}
+\end{minipage}
 
 \subsubsection{Beschaltung}
 
@@ -1118,12 +1143,12 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
 
         \draw (5,0.5) to [short,-o](4,0.5)node[anchor=east]{DIR};
         \draw (5,1) to [short,-o](4,1)node[anchor=east]{STEP};
-        \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{SLEEP};
-        \draw (4.95,2) to [short,o-o](4,2)node[anchor=east]{RESET};
+        \draw (4.95,1.5) to [short,o-o](4,1.5)node[anchor=east]{/SLEEP};
+        \draw (4.95,2) to [short,o-o](4,2)node[anchor=east]{/RESET};
         \draw (5,2.5) to [short,-o](4,2.5)node[anchor=east]{M2};
         \draw (5,3) to [short,-o](4,3)node[anchor=east]{M1};
         \draw (5,3.5) to [short,-o](4,3.5)node[anchor=east]{M0};
-        \draw (4.95,4) to [short,o-o](4,4)node[anchor=east]{EN};
+        \draw (4.95,4) to [short,o-o](4,4)node[anchor=east]{/EN};
 
         \draw (5,0.5) to (5,0.5)node[anchor=west]{DIR};
         \draw (5,1) to (5,1)node[anchor=west]{STEP};
@@ -1159,12 +1184,21 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
         \draw (9,1.75) to (9,1.75)node[anchor=west]{Coil 2};
         \draw (5,5.1) to (5,5.1)node[anchor=north]{DRV8825};
     \end{circuitikz}
-    \caption{Gewöhnliche Beschaltung eines DRV8825}
+    \caption{Gewöhnliche externe Beschaltung des Treibers}
+    \label{fig:Treiber}
 \end{figure}
 
 \newpage
 
-\subsubsection{Beschaltungs- und Anschlussfunktionen}
+\subsubsection{Beschaltungs- und Anschlussfunktionen\footfullcite{DRV8825-Datasheet}}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.25]{fig/elektro/drv8825.png}
+    \caption{Beschaltung des DRV8825-Treiberchips}
+    \label{fig:Treiberchip}
+\end{figure}
+
 Der DRV8825 besitzt 16 Anschlüsse.
 Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\
 
@@ -1179,12 +1213,12 @@ An die Anschlüsse B2, B1, A1 und A2 werden die Windungen des Schrittmotors mit 
 Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
 Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\
 
-Der invertierte FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden.
+Der /FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden.
 Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\
 
-Der DRV8825 Treiber verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in Abbildung X zu finden sind: \\
+Die Treiberplatine verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in \autoref{fig:Treiber} zu finden sind: \\
 
-Der invertierte EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
+Der /EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
 Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
 Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
 Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\
@@ -1193,13 +1227,11 @@ Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschalte
 Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
 Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel 2.3.6.4 . \\
 
-Der invertierte Anschluss RST sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\
+Der Anschluss /RESET sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\
 
-\newpage
+Ein Anlegen eines HIGH-Signals am invertierten Eingang /SLEEP versetzt den Treiber in einen stromsparenden Schlafzustand. \\
 
-Ein Anlegen eines HIGH-Signals am invertierten Eingang SLP versetzt den Treiber in einen stromsparenden Schlafzustand. \\
-
-Um den Treiber in voller Funktion verwenden zu können, müssen die Anschlüsse RST und SLP mit einem HIGH-Signal versorgt werden. \\
+Um den Treiber in voller Funktion verwenden zu können, müssen die Anschlüsse /RESET und /SLEEP mit einem HIGH-Signal versorgt werden. \\
 
 Der STEP Anschluss des DRV8825 liest ein Rechtecksignal ein.
 Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\
@@ -1207,8 +1239,9 @@ Bei jeder steigenden Flanke rückt der Indexer um einen Schritt weiter. \\
 Die Drehrichtung des Motors wird über den DIR Anschluss gesteuert.
 Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersinn, ein LOW-Pegel sorgt für eine Drehrichtung gegen den Uhrzeigersinn.
 
-\subsubsection{Schrittauflösung}
-In der unten zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
+\newpage
+\subsubsection{Schrittauflösung\footfullcite{DRV8825-Datasheet}}
+In der folgend zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
 Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Anschlüsse M2, M1 und M0 mit dem entsprechenden Spannungspegel versorgt werden.
 
 \begin{table}[h]
@@ -1229,7 +1262,7 @@ Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Ans
 \end{table}
 
 \subsubsection{Stromlimitierung}
-Um den durch die Motorwindungen fließenden Strom zu limitieren, kann dem Datenblatt des DRV8825 folgende Formel entnommen werden:
+Um den durch die Motorwindungen fließenden Strom zu limitieren, kann dem Datenblatt des DRV8825 folgende Formel entnommen werden:\footnotemark[16]
 
 \begin{equation}
     I_{max} = \frac{V_{ref}} {5 \cdot R_{sense}}
@@ -1243,7 +1276,7 @@ Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung ada
     V_{ref} = I_{max} \cdot 5 \cdot R_{sense}
 \end{equation*}
 
-Der R\textsubscript{sense} kann dem Datenblatt entnommen werden.
+Der R\textsubscript{sense} kann der \autoref{fig:Treiberchip} entnommen werden.
 Beim DRV8825 beträgt der Wert 0.1 Ohm.
 
 \begin{align*}
@@ -1251,8 +1284,9 @@ Beim DRV8825 beträgt der Wert 0.1 Ohm.
     V_{ref} &= 0.8V
 \end{align*}
 Die Berechnung ergibt, dass für einen Strom von 1.6A, eine Referenzspannung von 0.8V eingestellt werden muss.
-Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet, eingestellt werden.
+Diese Spannung kann mithilfe eines Potentiometers, welches sich auf dem Treibermodul befindet (siehe \autoref{fig:Treiberchip}), eingestellt werden.
 
+\newpage
 \subsubsection{Kühlkörperberechnung}
 Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden folgende Formeln benötigt:
 
@@ -1264,14 +1298,15 @@ Um die Notwendigkeit eines Kühlkörpers zu berechnen, werden folgende Formeln b
     P_V = R_{DSon} \cdot I_{max}^2
 \end{equation}
 
-Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} ist ein Kühlkörper notwendig. \\
+Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} sein, ist ein Kühlkörper notwendig. \\
 
 \textbf{Datenblattwerte}\\
-• T\textsubscript{jmax} = 150°C \\
-• T\textsubscript{ha} = 25°C \\
-• R\textsubscript{thjc} = 15.9°C/W \\
-• R\textsubscript{thja} = 31.6°C/W \\
-• R\textsubscript{DSon} = 0,32 Ohm \\
+• T\textsubscript{jmax} = 150°C (Maximale Sperrschicht-Temperatur)\\
+• T\textsubscript{a} = 25°C (Umgebungstemperatur)\\
+• R\textsubscript{thjc} = 15.9°C/W (Wärmewiderstand zwischen Sperrschicht und Gehäuse)\\
+• R\textsubscript{thja} = 31.6°C/W (Wärmewiderstand zwischen Sperrschicht und Umgebung)\\
+• R\textsubscript{thiso} = 0.1°C/W (Wärmewiderstand der Montagefläche)\\
+• R\textsubscript{DSon} = 0.32 Ohm (Drain-Source On-State Resistance)
 
 \begin{align*}
     P_V &= R_{DSon} \cdot I_{max}^2 \\
@@ -1280,15 +1315,24 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} is
 \end{align*}
 
 \begin{align*}
-    P_D &= \frac{(T_{jmax} - T_{ha} - Sicherheit)}{R_{thja}} \\
+    P_D &= \frac{(T_{jmax} - T_{a} - Sicherheit)}{R_{thja}} \\
     P_D &= \frac{150^{\circ}C - 25^{\circ}C - 25^{\circ}C}{31.6\frac{{}^{\circ}C}{W}} \\
     P_D &= 3.1646W
 \end{align*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper notwendig ist.
-Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch wir schlussendlich einen Kühlkörper auf dem Treiber platzierten.
+Um jedoch Gewissheit zu erlangen, ist die maximal erreichte Sperrschichttemperatur zu berechnen.
 
-Für die Kühlkörperberechnung wird von folgender Formel Gebrauch gemacht:
+\begin{align*}
+    T_{j} &= (T_{a}+Sicherheit) + {R_{thja}} \cdot P_{v}) \\
+    T_{j} &= (25^{\circ}C + 35^{\circ}C) + 31.6\frac{{}^{\circ}C}{W} \cdot 0.8192W \\
+    T_{j} &= 85.88672^{\circ}C
+\end{align*}
+
+Der Umstand einer Umgebungstemperatur von 60°C führt somit bewiesenerweise dennoch zu einem zulässigem Betrieb.
+Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch schlussendlich ein Kühlkörper auf dem Treiber platziert wurde.
+
+Für die Berechnung des Kühlkörperwärmewiderstandes R\textsubscript{thK} wird von folgender Formel Gebrauch gemacht:
 
 \begin{align}
     R_{thK} &= \frac{T_{jmax} - T_{ha} - Sicherheit}{P_V} - (R_{thiso} + R_{thjc}) \\
@@ -1303,23 +1347,26 @@ Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests se
 
 Zu Beginn wird der Schrittmotor in eine Richtung angesteuert, bis er seinen Referenzpunkt erreicht, welcher als Mikroschalter implementiert ist.
 Der vom Mikrocontroller auf "HIGH" gesetzte Ausgang wird bei einer Betätigung des Mikroschalters gegen Masse geschalten.
-Der Zustand dieses Ausgangs wird über das zugehörige PIN-Register vom Mikrocontroller eingelesen.
+Der Zustand dieses Ausgangs wird über das zugehörige PIN-Register vom Mikrocontroller eingelesen und folgend mit Software über eine Led visuell dargestellt.
 So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen aufgetragen werden.
+
 \begin{figure}[hpt]
     \centering
     \begin{circuitikz}[european, scale = 0.7]
-        \draw (-1,7) to (0,7) to (0,6) to [short, -o](1,6);
-        \draw (1,5) to [short, o-](0,5) to (0,4.5);
-        \draw (0,2) to [/tikz/circuitikz/bipoles/length=1cm, led, l_=$D1$](0,0);
-        \draw (0,4.5) to [R, l_ = $R1$](0,2.5) to (0,2);
-        \draw (1,5.5) to (1,5.5)node[anchor=west]{Mikroschalter};
-        \draw (-1,7) to [short, o-](-1,7)node[anchor=east]{SIG};
-        \draw (0,2) to (0,0) node[rground]{};
+
+        \draw [line width=1.5pt](-4,5) to (-1,5) to (-1,10);
+        \draw (-2,8.5)node[vcc]{Vcc};
+        \draw (-2,8.5) to [R,l_=$R1$](-2,6) to (-1,6);
+        \draw (-1,6) to (0,6) to (0,5) to [short, -o](1,5);
+        \draw (1,4) to [short, o-](0,4) to (0,3);
+        \draw (1,4.5) to (1,4.5)node[anchor=west]{Mikroschalter};
+        \draw (-3.5,5)node[anchor=south]{µC};
+        \draw (0,3) to (0,2) node[rground]{};
     \end{circuitikz}
     \caption{Erfassung der Schrittmotorposition}
 \end{figure}
 
-
+\newpage
 \subsection{Kapazitive Sensoren}
 
 Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
@@ -1362,21 +1409,21 @@ Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden fo
 
 Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
 Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V zu messen.
+Da die Schaltschwelle der I/O Pins des ATmega324P bei LOW-Pegeln maximal 0.99V und die bei HIGH-Pegeln mindestens 1.98V beträgt, wurden diese gemessenen Werte als zulässige bewertet.
 
-%Bild des Versuchsaufbaus einfügen
-
+\newpage
 \subsection{Ansteuerung der Hubmagneten}
 
 Als Ansteuerung der beiden Hubmagneten wird jeweils die unten zu sehende Schaltung angewandt.
-Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre derartige Ströme ohne Überhitzung zu schalten.
+Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre Ströme von 350mA ohne Überhitzung zu schalten.
 
 \subsubsection{Funktion}
 
 Sobald die Gate-Source-Schwellenspannung des MOSFETs mithilfe eines 3.3V Signals ausgehend vom Mikrocontroller überschritten wird, schaltet der N-Kanal MOSFET durch.
 Dieser ermöglich das Fließen des Drainstromes durch den Hubmagneten zum Massepotential.
 Um den fließenden Gate-Strom zu verringern, wurde der Widerstand R1 implementiert.
-Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen
-Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine sogenannte Fly-Wheel-Diode zu schalten.
+Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen.
+Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine sogenannte Fleilaufdiode zu schalten.
 Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden Strom des Hubmagneten zu schützen.
 
 
@@ -1398,7 +1445,6 @@ Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden St
         \draw (nfet.S) node[left]{S};
         \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
         \draw (5,-0.5) to (5,-0.5) node[rground]{};
-
     \end{circuitikz}
     \caption{Ansteuerung der Hubmagneten}
 \end{figure}
@@ -1414,7 +1460,7 @@ Um sowohl die Pumpe als auch das Ventil ansteuern zu können, wurde jeweils von 
 Sobald die Gate-Source-Schwellspannung des N-Kanal MOSFETs mithilfe des 3.3V Steuersignals überschritten wird, schaltet jener Halbleiterbaustein das am Drain liegende Potential auf Masse.
 Um den fließenden Gate-Strom zu begrenzen, wurde auf einen Widerstand, hier R1, zurückgegriffen.
 Um jene am MOSFET anfallende, parasitäre Kapazitäten zu negieren, wurde der Widerstand R2 vorgesehen.
-Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer Fly-Wheel-Diode erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
+Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer Freilaufdiode erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
 
 \begin{figure}[hpt]
     \centering
@@ -1760,7 +1806,7 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 
 \begin{figure}[hbt]
     \centering
-    \includegraphics[scale=0.26]{fig/elektro/TopLayer.png}
+    \includegraphics[scale=0.29]{fig/elektro/TopLayer.png}
     \caption{Top-Layer der Leiterplatte}
 \end{figure}
 
@@ -1768,7 +1814,7 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 
 \begin{figure}[hbt]
     \centering
-    \includegraphics[scale=0.26]{fig/elektro/BotLayer.png}
+    \includegraphics[scale=0.29]{fig/elektro/BotLayer.png}
     \caption{Bottom-Layer der Leiterplatte}
 \end{figure}
 
@@ -1776,12 +1822,12 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 \subsubsection{3D-Ansichten}
 
 \begin{figure}[hb]
-    \includegraphics[scale=0.24]{fig/elektro/PlatineTop.jpg}
+    \includegraphics[scale=0.25]{fig/elektro/3DTop.jpg}
     \caption{3D-Ansicht des Top-Layer}
 \end{figure}
 
 \begin{figure}[hb]
-    \includegraphics[scale=0.24]{fig/elektro/PlatineBot.jpg}
+    \includegraphics[scale=0.25]{fig/elektro/3DBot.jpg}
     \caption{3D-Ansicht des Bottom-Layer}
 \end{figure}
 
@@ -1818,7 +1864,7 @@ Jener Prototyp wurde in der Werkstätte der \acs{HTBLA} Kaindorf angefertigt. \\
 
     \item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
 
-    \item Als letzten Schritt kann das Anfertigen von Durchkontaktierungen sowie das Bestücken der Leiterplatte erfolgen.
+    \item Als letzten Schritt kann das Anfertigen von Durchkontaktierungen durch das Einpressen von Hülsen sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
 \subsubsection{Bestückter Prototyp}
