@@ -4,8 +4,8 @@
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
 Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
-Die Aufteilung dieses XX seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
-Auch wird gezeigt, wie einige Teile der \textbf{Hardwarenahen-Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
+Die Aufteilung dieses \pageref{LastPage} seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Auch wird gezeigt, wie einige Teile der \textbf{hardwarenahen Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 \section{Zeitplan}\label{sec:zeitplan}
 \begin{figure}[hbt!]
@@ -111,7 +111,7 @@ Um das Zeitfenster des Projekts nicht zu verzögern, werden folgende Meilenstein
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
 Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche, grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem Display angezeigt werden soll.
 Auf diesem Interface soll es möglich sein, die Steuerung der Maschine zu übernehmen.
-Die Möglichkeiten des Benutzers, diese zu bedienen sollen folgende Kernpunkte beinhalten:
+Die Möglichkeiten des Benutzers diese zu bedienen, sollen folgende Kernpunkte beinhalten:
 \begin{enumerate}
     \item Ausgabe von einzelnen Spielkarten
     \item Konfigurierung von Spielmodi, welche Einstellungen zum Spiel beinhalten
@@ -136,12 +136,12 @@ Soll eine Software in verschiedenen Ländern eingesetzt werden, ist eine Interna
 Aus diesem Grund stellt diese ein weiteres Ziel des Projekts dar.
 In unserem Fall ist es lediglich notwendig, alle angezeigten Texte zu übersetzen, da keine weiteren Informationen vorhanden sind.
 
-\subsection{Hardwarenahe-Programmierung}\label{subsec:hardwarenahe-programmierung}
-Ein weiterer Bestandteil des Projekts ist die Hardwarenahe-Programmierung.
-Aufgrund der Tatsache, dass die entwickelte Ansteuerplatine über einen ATmega-324PA verfügt, ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
+\subsection{Hardwarenahe Programmierung}\label{subsec:hardwarenahe-programmierung}
+Ein weiterer Bestandteil des Projekts ist die hardwarenahe Programmierung.
+Aufgrund der Tatsache, dass die entwickelte Ansteuerplatine über einen ATmega-324PA verfügt ist es notwendig, eine Programmierung dieses Mikrocontrollers durchzuführen.
 Erstellt werden soll ein Programm, welches die ankommenden Daten der seriellen Schnittstelle verarbeitet.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
-Verwendet soll hierbei, die im Unterricht verwendete Vorlage werden, welche den Programmierprozess verschnellert.
+Verwendet soll hierbei, die im Unterricht verwendete Vorlage werden, welche den Programmierprozess beschleunigt.
 
 \section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, bestimmte Voruntersuchungen durchzuführen.
@@ -1369,8 +1369,8 @@ Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Um
 Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
 Das bedeutet, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
 Wird ein Zeichen von der serielle Schnittstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
-\lstinputlisting[firstline=142, lastline=176, style=c,caption=Funktion app_handleUartByte(),label=multiLang]{src/app.c}
-Zuerst wird geprüft ob das erste ankommende Byte ein Startbyte nämlich ein ":" ist.
+\lstinputlisting[firstline=142, lastline=176, style=c,caption=Funktion apphandleUartByte(),label=multiLang]{src/app.c}
+Zuerst wird geprüft ob das erste ankommende Byte ein Startbyte nämlich ein \lstinline[style=C]{:} ist.
 Falls dies nicht der Fall ist sollte der \lstinline[style=C]{ErrorCount} hochgezählt werden.
 Wenn im Buffer bereits ein Startbyte : vorhanden ist, darf kein Zweites innerhalb der Request geschrieben werden, da dies sonst zu Fehlern führen könnte.
 Falls ein solcher Fehler auftritt, sollte in einer Funktion ein weiteres mal der \lstinline[style=C]{ErrorCount} hochgezählt werden.
