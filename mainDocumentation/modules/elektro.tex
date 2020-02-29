@@ -594,10 +594,10 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 0.3V, 
 \subsubsection{Verpolungsschutz mithilfe eines P-Kanal \acs{MOSFET} \footfullcite{Verpolschutz}}
 
 Der P-Kanal MOSFET leitet, wenn das Gate um U\textsubscript{GSth} negativer ist als der Spannungspegel anliegend am Source.
-Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass am Sourceeingang die Eingangsspannung ankommt.
-Weil die am Source anliegende Spannung weitaus positiver als U\textsubscript{GSth} ist, leitet der MOSFET .
+Das Anlegen einer korrekt gepolten Spannung am Eingang des MOSFET bewirkt ein Leiten der Bulk-Diode, sodass an der Source Spannung ankommt.
+Da jene, an der Source anliegende Spannung weit über der U\textsubscript{GSth} liegt, leitet der MOSFET.
 Die eingebaute Z-Diode begrenzt U\textsubscript{GS} auf einen für den MOSFET ungefährlichen Wert.
-Die Tatsache, dass der MOSFET verkehrt herum leitet und der Drain somit positiver als der Source ist, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
+Die Tatsache, dass der MOSFET verkehrt herum leitet und der Drain somit ein höheres Potential als der Source hat, gilt als redondant, da es sich lediglich um einige Millivolt Unterschied handelt.
 Sollte man eine verpolte Spannung am Eingang anlegen, sperrt die Bulk-Diode und der MOSFET gelangt nicht in den leitenden Zustand.
 Bei Spannungen, die kleiner als die maximale U\textsubscript{GS} sind, kann die Z-Diode vernachlässigt werden.
 In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, weshalb die Diode vernachlässigt werden kann und ein beinahe verlustfreier Betrieb möglich ist.
@@ -632,9 +632,10 @@ Aufgrund der Vorteile des fast verlustlosen und wartungsarmen Betriebs entschied
 
 \subsection{Soft-Latching-Circuit}
 
-Eine Eingangsspannung von 12V, welche vom Netzteil zur Verfügung gestellt wird, soll durch die Betätigung eines Tasters durchgeschaltet werden und die Elektronik versorgen.
+Eine Eingangsspannung von 12V, welche von einem Netzteil zur Verfügung gestellt wird, soll durch eine Tasterbetätigung durchgeschaltet werden und die Elektronik versorgen.
 Diese Versorgung soll auch nach der Betätigung zur Verfügung stehen.
-Die Versorgung soll durch ein Signal des RPI gestoppt werden, wodurch ein korrektes Herunterfahren des \acs{RPI} sichergestellt werden soll.
+Sie soll lediglich mithilfe eines Touch-Panels über den \acs{RPI} gestoppt werden.
+Außerdem soll ein korrektes Herunterfahren des RPI sichergestellt sein.
 
 \subsubsection{Realisierte Variante mit einzelnem Taster}
 
@@ -644,7 +645,9 @@ Das deshalb auf Masse gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} lässt
 Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
 Das dadurch ebenfalls über R\textsubscript{3} versorgte Gate von Q\textsubscript{2} lässt die davon am Drain liegende Leitung auf Masse schalten,
 welche die Versorgung der 12V Komponenten auch nach der Betätigung des S\textsubscript{1} bereitstellt.
-Um diese Selbsthaltung wieder zu lösen, benötigt es ein digitales „High“ von 3.3V am Eingang U\textsubscript{UNLATCH}, ausgehend von einem Pin des Mikrocontrollers.
+Um diese Selbsthaltung wieder zu lösen, wird ein Signal über einen LCD eingelesen.
+Der Raspberry wird heruntergefahren und über ein Watchdog-Signal erkennt dies der Mikrocontroller.
+Dieser stellt somit ein digitales „High“ von 3.3V am Eingang U\textsubscript{UNLATCH} zur Verfügung.
 Die Schottkydiode D\textsubscript{1} sorgt dafür, dass kein Strom zurück in den µC fließen kann und,
 dass sich der aufgeladene Elektrolytkondensator nur über den Widerstand R\textsubscript{8} entlädt.
 Das dadurch versorgte Gate von Q\textsubscript{3} schaltet die am Drain anliegende Leitung auf Masse.
@@ -654,7 +657,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1.2]
+    \begin{circuitikz}[european, scale = 1.15]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
 
         \draw (1.7,7) to [R, l=$R1$, *-*](1.7,5.5) to (5.2,5.5){};
@@ -677,7 +680,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (1.5,3.5) to (1.5, 5.5) to (1.7,5.5);
         \draw (2.6,0) to [R, l_=$R5$, *-*](2.6,3);
         \draw (8.3,2) to [short, o-](8.1,2) to [R, l_=$R7$](7.1,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l_=$D1$](6.1,2) to [eC, l=$C1$, *-*](6.1,0);
-        \draw (6,2) to (5,2) to [R, l=$R8$, *-*](5,0);
+        \draw (6.2,2) to (4.8,2) to [R, l=$R8$, *-*](4.8,0);
         \draw (5,2) to (4.5,2);
         \draw (4,2) to [short, -*](4,0);
         \draw (4,2.5) to [short, -*](4,3);
@@ -711,10 +714,10 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
     \centering
     \begin{circuitikz}[european, scale = 1.2]
 
-        \draw (1.5,2) to [R, l=$R1$](2.5,2);
+        \draw (1.5,2) to [R, l=$R7$](2.5,2);
         \draw (0.5,2) to [/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$](1.5,2);
         \draw (2.5,2) to (3,2) to [eC, l=$C1$, *-*](3,0);
-        \draw (3,2) to (4.5,2) to [R, l=$R2$, *-*](4.5,0) to (2.05,0);
+        \draw (3,2) to (4.5,2) to [R, l=$R8$, *-*](4.5,0) to (2.05,0);
         \draw (4.5,2) to (4.8,2);
         \draw (5.5,2)node[nfet]{};
         \draw (5.5,2) to [short, -*](5.5,1.775) to (5.5,0) to (4.5,0);
@@ -1509,7 +1512,7 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 Um Debugging effektiv betreiben zu könnnen, ist eine Verbindung von Mini-USB zu UART implementiert worden.
 So können Vorgänge leicht über einen Computer via Kabel überwacht werden oder etwa ein neues Programm herübergespielt werden.
 
-Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringe Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.
+Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringen Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.
 Dieser Treiberbaustein ist wie folgt zu beschalten:
 
 \begin{figure}[ht]
@@ -1562,6 +1565,13 @@ Dieser Treiberbaustein ist wie folgt zu beschalten:
         \draw (8,1) to (8,1)node[anchor=east]{DTR};
         \draw (8,0.5) to (8,0.5)node[anchor=east]{RTS};
 
+        \draw [line width = 1.2](7.15,0.7) to (7.85,0.7);
+        \draw [line width = 1.2](7.15,1.2) to (7.85,1.2);
+        \draw [line width = 1.2](7.15,1.7) to (7.85,1.7);
+        \draw [line width = 1.2](7.4,2.2) to (7.85,2.2);
+        \draw [line width = 1.2](7.15,2.7) to (7.85,2.7);
+        \draw [line width = 1.2](7.15,3.2) to (7.85,3.2);
+
 
         %USB to UART - Modul
         \draw [line width=1.5pt](5,0) to (8,0) to (8,4.5) to (5,4.5) to (5,0);
@@ -1580,6 +1590,7 @@ Dieser Treiberbaustein ist wie folgt zu beschalten:
 
         \draw (8,0.5) to (8.5, 0.5);
         \draw (8,1) to [short, -o](10, 1)node[anchor=west]{DTR-USB};
+        \draw [line width = 1.2](10.1,1.2) to (10.8,1.2);
         \draw (8,1.5) to (8.5, 1.5);
         \draw (8,2) to (8.5, 2);
         \draw (8,2.5) to (8.5, 2.5);
@@ -1717,14 +1728,18 @@ war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu d
 \subsubsection{P-Kanal MOSFET \footfullcite{FDD6637-Datasheet}}
 
 Als P-Kanal MOSFET traf unsere Wahl auf den FDD6637.
-Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source mit sich.
+Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source  von maximal 0.19m$\Omega$ mit sich.
 Außerdem ist dieser dazu in der Lage, eine Spannung von maximal -35V zu schalten und gleichzeitig einen Strom von bis -55A treiben zu können.
+Die maximale Gate-Source-Spannung beträgt -25V und die maximale Thresholdvoltage beträgt -3V .
+Der FDD6637 besitzt ein TO-252-Gehäuse.
 
 \subsubsection{N-Kanal MOSFET \footfullcite{FDN337N-Datasheet}}
 
 Als N-Kanal MOSFET wählten wir den FDN337N aus, welcher in der Lage ist, Ströme von bis zu 2.2A treiben zu können.
 Außerdem ist es diesem möglich, Drain-Source-Spannungen von bis zu 30V zu schalten, was für unsere Anwendung weitaus genügt.
 Hinzu kommt noch die wesentliche Tatsache, dass dieser eine niedrige Gate Treshold Voltage von nur max.1V mit sich bringt.
+Über Kennlinienwerte im Datenblatt lässt sich erkennen, dass sich der von uns benötigte Strom von 350mA bereits bei 1.25V und 25°C Umgebungstemperatur schalten lässt.
+Der FDN337N besitzt eine Gate-Source-Maximalspannung von 8V und ist mit einem SOT-23 Gehäuse erhältlich.
 
 \subsection{Auswahl der Gleichspannungswandler-Peripherie}
 
@@ -1734,17 +1749,20 @@ Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf desse
 traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf eine Spule mit einem Wert von 100µH .
 Über die Bedingung einen derartig hohen Strom treiben zu können, fiel unsere Wahl auf die DR127-101-R,
 welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, einen niedrigen magnetischen Sättigungsstrom,
-einen niedrigen Widerstandswert, magnetische Geschirmtheit und ein \acs{SMD}-Gehäuse mit sich bringt.
+einen niedrigen Widerstandswert, magnetische Schirmung und ein \acs{SMD}-Gehäuse mit sich bringt.
 
+\newpage
 \subsubsection{Schottky-Diode\footfullcite{MBRD340-Datasheet}}
 Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
 Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
+Eine leichte Montage ist über ihr TO-252 gegeben.
 
 \subsection{Auswahl der Gleichrichter-Dioden\footfullcite{RR264M-Datasheet}}
 
 Als diese Dioden selektierten wir die RR264M, welche einem Strom von 1A standhalten können, was wichtig für die Implementierung an den induktiven Lasten ist.
 Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
 Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
+Die RR264M besitzen ein SOD-123 Gehäuse.
 
 \subsection{Auswahl der Schottky-Dioden\footfullcite{MBR130-Datasheet}}
 
@@ -1752,10 +1770,12 @@ Als Schottky-Diode wählten wir die MBR130, welche die Maximalwerte von 1A und 3
 Ihr wesentliches Attribut ist der niedrige an ihr abfallende Spannungsabfall von nur 0.25V bei 25°C und 0.1A .
 Bei 1A und 25°C beträgt der an ihr vorzufindende Spannungsabfall 0.35V .
 Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schaltung und der Beschaltung des USB-UART-Converters befürworteten ihren Einsatz.
+Über ihr SOD-123 Gehäuse sind sie leicht zu bestücken.
 
 \subsection{Auswahl der Zener-Diode\footfullcite{BZX84-series-Datasheet}}
 
 Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
+Sie bringt eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0.9V und ein SOT-23 Gehäuse mit sich.
 
 \subsection{Auswahl sonstiger Bauelemente}
 
