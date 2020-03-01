@@ -400,11 +400,11 @@ public static Config getInstance() {
 }
 
 public static Config createInstance(String configPath) {
-    if (instance != null) {
+    if (instance != null)
         throw new IllegalStateException("Instance already created");
-    } else {
-        instance = new Config(configPath);
-    }
+
+    instance = new Config(configPath);
+
     return instance;
 }
 \end{lstlisting}
@@ -550,11 +550,11 @@ All diese Merkmale sind essenziell wichtig und eröffnen ein breites Spektrum an
 Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel näher visualisiert.
 \begin{lstlisting}[style=json, caption=JSON-Codebeispiel,label=jsonExample]
 {
-"employee": {
-"name": "tester",
-"salary": 5432,
-"children": false
-}
+    "employee": {
+    "name": "tester",
+    "salary": 5432,
+    "children": false
+    }
 }
 \end{lstlisting}
 \textbf{Bibliothek Gson}\\
@@ -591,7 +591,7 @@ Anforderungen an dieses Protokoll sollen sein:
 Neben standardisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit, selbst ein sogenanntes propretäres Übertragungsprotokoll zu definieren.
 Dies ist in unserem Fall möglich, um alle Anforderungen abzudecken.
 Basierend auf dem Master-Slave Prinzip, wobei der Raspberry PI den Master und die Ansteuerplatine den Slave darstellt, soll ein an Modbus-ASCII angelehntes Protokoll umgesetzt werden.\\
-Zusätzlich soll, um eine virtuelle Testumgebung zu schaffen, ein Simulator ausprogrammiert werden, welcher beim Start, auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
+Zusätzlich soll, um eine virtuelle Testumgebung zur Kommunikation zu schaffen, ein Simulator ausprogrammiert werden, welcher beim Start, auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
 Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfigurationsdatei vonstattengehen.
 Die folgende Grafik soll schematisch die Geräteauswahl darstellen.
 \begin{figure}[H]
@@ -625,8 +625,8 @@ Im Gegensatz zu anderen Protokollen wie z.B. Modbus-RTU, muss hier nicht auf das
 Dies führt zu einer erschwerten Umsetzung und ist für uns nicht zielführend.\\\\
 Gefolgt von dem Startzeichen folgen nun die Daten.
 Diese beinhalten eindeutig definierte Zeichenfolgen, welche verwendet werden, um verschiedenste Zustände der Ansteuerplatine auszuführen.
-Um auch hier zu wissen, wo sich die Nutzdaten befinden, schließt das Trennzeichen (#) diese ab.\\\\
-Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im nächsten Schritt eine Prüfsumme verwendet.
+Nachfolgend schließt das Trennzeichen (\verb!#!) diese Daten ab.\\\\
+Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im danach eine Prüfsumme übertragen.
 Ziel dieser ist es, anhand der Nutzdaten einen Wert zu bilden, welcher danach vom Sender im Frame als hexadezimalen String gespeichert bzw. übertragen wird.
 Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der Übertragenen Prüfsumme des Senders.
 Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
@@ -636,11 +636,16 @@ Die wichtigsten Arten von Übertragungsfehlern sind:
     \item Einzelbitfehler (1 Bit verändert)
     \item Burstfehler (ganze Folge von Bits verändert)
 \end{enumerate}
-Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch Komplexere.
+Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch effizientere Vorgehensweisen.
 Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
 Sie ist relativ einfach zu realisieren und dennoch wirkungsvoll.
-Wichtig beim CRC-Verfahren ist, dass beide Teilnehmer, also Sender und Empfänger, dasselbe Generator-Polynom verwenden.
+Wichtig beim CRC-Verfahren ist, dass beide Teilnehmer, also Sender und Empfänger, dasselbe Schema zur Berechnung der Prüfsumme verwenden.
+Hierbei spielt der Grad des Generator-Polynoms sowie die mögliche Invertierung eine wesentliche Rolle.
 Der Grad des Generator-Polynoms beträgt in unserem Fall 32 (CRC-32).
+\\\\
+\textbf{Beispiel}
+\\
+
 \subsubsection{Request- und Responsebeispiele}
 Folgend wird anhand von tabellarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
 Jeder Request sowie Response basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
