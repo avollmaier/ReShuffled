@@ -870,9 +870,49 @@ wir uns für eine Valve mit 5 V Spannung.
 \end{itemize}
 
 \subsection{Berechnung der Klebeverbindungen}
-\subsubsection{Klebeverbindung Kartenhalterunsmodul-oben}
+Für die Klebeverbindungen verwenden wir einen 2-Komponenten-Epoxy-Kleber, dieser Eignet sich hervorragend für das
+Kleben von harten Kunststoffen, wie gedrucktes PLA.
+
+\subsubsection{Klebeverbindung Kartenhalterunsmodul 1}
+Beim Kartenhalterunsmodul-oben wird die Kartenführung Modul 1 oben mit dem Kartenhalterunsmodul 1 verklebt.
+Die Formel zum Berechnen der Klebefläche lautet.
 \[\sigma _{K} = \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
 
+$\sigma_{K}$.... fasdfads \\
+$\sigma_{KB}$.... fasdfads\\
+F.... Kraft [N]\\
+A\textsubscript{K}.... Klebefläche [mm²]\\
+b.... Breite der Klebefläche [mm]\\
+t.... Tiefe der Klebefläche [mm]\\
+S.... Sicherheitsfaktor\\
+
+Für die Kraft werden 50 N angenommen, dies entspricht in etwa der Gewichtskraft von 5,1 Kg
+und simuliert somit ein kraftvolles Ankommen des Spielers an der Trichtervorrichtung.
+Die Fläche der Klebefläche A\textsubscript{K} ergibt sich durch die Breite und der Tiefe der Klebefläche, wobei
+die Breite der Klebefläche  40 mm beträgt und dessen Länge 20 mm.
+Der Wert $\sigma_{K}$ ist aus der Tabelle 5-3 im Tabellenbuch auszulesen.
+Um die 3-Fache Sicherheit zu gewähreisten, wurde dr Sicherheitsfaktor 3 gewählt.
+
+
+\[\sigma _{K} = \frac{50}{40\cdot 20}\leq \frac{21}{3}\]
+\[\sigma _{K} = 0,0625\leq 7\]
+
+Da die Gleichung sich als Wahr erweist und die Klebefläche sichtlich überdimensioniert ist, lässt sich erschließen,
+dass das Bauteil auch einen Zusammenstoß mit höherer Kraft überstehen, ohne das sich die Klebeverbindung löst.
+
+\subsubsection{Klebeverbindung Kartenhalterunsmodul 2}
+Hierbei werden die Kartenführungen Modul 2 oben mit dem unteren Kartenhalterunsmodul verklebt.
+Für die Berechnung der Klebefläche wird wieder folgende Formel benötigt.
+
+\[\sigma _{K} = \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
+
+$\sigma_{K}$.... fasdfads \\
+$\sigma_{KB}$.... fasdfads\\
+F.... Kraft [N]\\
+A\textsubscript{K}.... Klebefläche [mm²]\\
+b.... Breite der Klebefläche [mm]\\
+t.... Tiefe der Klebefläche [mm]\\
+S.... Sicherheitsfaktor\\
 
 \section{Fertigung der Bauteile}
 \subsection{Werkstoffwahl}
