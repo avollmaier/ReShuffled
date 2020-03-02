@@ -66,9 +66,42 @@ bibliography=totocnumbered,											% Literaturverzeichnis
 \setcounter{secnumdepth}{5}                                            % Nummerierungstiefe der Überschriften
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}
+\usepackage{calc}
 \input{biber.tex}
 \input{listings}
 \subject{\includegraphics[scale=0.035]{fig/LogoWithoutBorder.pdf}}
+
+\newcounter{checksum}
+\newcounter{weight}
+\makeatletter
+\newcommand\checksum[1]{%
+    \setcounter{checksum}{0}%
+    \setcounter{weight}{10}%
+    \expandafter\@checksum#1\@nnil
+    \loop\ifnum\value{checksum}>10
+    \addtocounter{checksum}{-11}%
+    \repeat
+    \setcounter{checksum}{11-\value{checksum}}%
+    \ifnum\value{checksum}=10
+    \def\checksumdigit{X}%
+    \else
+    \ifnum\value{checksum}=11
+    \def\checksumdigit{0}%
+    \else
+    \edef\checksumdigit{\arabic{checksum}}%
+    \fi\fi
+    \checksumdigit
+}
+% Reads the input one token a time, should only contains normal characters!
+\def\@checksum#1{%
+    \ifx\@nnil#1\relax\else % stop looping when endmarker is read
+    \addtocounter{checksum}{\value{weight}*(`#1-`0)}%
+    \addtocounter{weight}{-1}%
+    \expandafter\@checksum % Recursive call => loop
+    \fi
+}
+\makeatother
+
 \title{Diplomarbeit ReShuffled}
 
 \subtitle{
