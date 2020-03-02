@@ -481,12 +481,18 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
 Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
 \subsection{Spannungsversorgung}
-\subsubsection{Doppel-Schaltnetzteil mit zweierlei Ausgangsspannungspegeln}
+\subsubsection{Doppel-Schaltnetzteil mit zwei Ausgangsspannungspegeln}
 Diese Variante wäre mit einem Netzteil zu realisieren, welches lediglich über einen Kaltgerätestecker mit einer Netzspannung von 230V \acs{AC} in Verbindung gebracht werden müsste,
 um die Versorgung der Peripherie zu gewährleisten.
 Sensoren, Schrittmotor und Hubmagneten würden über den 12V \acs{DC} Ausgang versorgt werden,
 die Versorgung des Mikrocontrollers und des Raspberry Pi 3B+ würde über den 5V Ausgang des Schaltnetzteils realisiert werden.
 Es müsste jedoch ein Pegelwandler zwischen dem Raspberry Pi und dem Mikrocontroller eingebaut werden, da die Spannungslogik des Raspberry auf 3.3V basiert und die des Mikrocontrollers auf 5V .
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=1,page=1]{fig/elektro/DoppelSchaltnetzteil.pdf}
+    \caption{Blockschaltbild der Doppel-Schaltnetzteil-Anwendung}
+\end{figure}
 
 \subsubsection{Schaltnetzteil und Schaltregler}
 Bei dieser Realisierung handelt es sich um ein mit 230V Wechselspannung versorgtes Netzteil, welches diese in ein 12V Gleichspannungssignal transferiert.
@@ -494,12 +500,23 @@ Jene 12V werden von jeglichen Aktoren und Sensoren genutzt.
 Außerdem wird mithilfe der 12V ein Schaltregler mit Spannung versorgt, welcher die 5V Spannungsversorgung des Raspberry Pi bereitstellt.
 Über den Erweiterungsstecker des Raspberry Pi wird folgend der Mikrocontroller mit 3.3V versorgt.
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=1,page=1]{fig/elektro/Schaltregler.pdf}
+    \caption{Blockschaltbild der Schaltregler-Anwendung}
+\end{figure}
+\newpage
 \subsubsection{Schaltnetzteil und Linearregler}
 Bei dieser Alternative wird ein Schaltnetzteil mit 230V AC versorgt, welches ein 12V DC Signal am Ausgang bereitstellt.
 Dieses wird für die 12V Peripherie genutzt sowie als Versorgung für einen Linearregler, welcher 12V zu 5V umwandelt.
 Mit diesem Signal ist die Versorgung des Raspberry Pi bereitgestellt.
 Die Versorgung des Mikrocontroller wird über zwei 3.3V Expansion Header Pins gewährleistet.
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9,page=1]{fig/elektro/Linearregler.pdf}
+    \caption{Blockschaltbild der Linearregler-Anwendung}
+\end{figure}
 
 \subsubsection{Auswahl der Spannungsversorgung}
 \begin{table}[htbp]
@@ -511,24 +528,80 @@ Die Versorgung des Mikrocontroller wird über zwei 3.3V Expansion Header Pins ge
     >{\columncolor[HTML]{FFFFFF}}l |
     >{\columncolor[HTML]{FFFFFF}}l |}
         \hline
-        & \textbf{Doppel-Schaltnetzteil} & \textbf{\acs{SN} und Schaltregler} & \textbf{SN und Schaltregler} \\ \hline
-        Preis & hoch & mittel & sehr gering    \\ \hline
+        & \textbf{Doppel-Schaltnetzteil} & \textbf{\acs{SN} und Schaltregler} & \textbf{SN und Linearregler} \\ \hline
+        Preis & hoch & mittel & gering    \\ \hline
         \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}
                                  Platzbedarf\\ und Gewicht
         \end{tabular}} & \multicolumn{1}{l|}{hoch} & \multicolumn{1}{l|}{gering} & \multicolumn{1}{l|}{gering} \\ \hline
-        Bauteilbedarf & gering & mittel & sehr gering        \\ \hline
+        Bauteilbedarf & mittel & gering & sehr gering        \\ \hline
     \end{tabular}
     \caption{Vergleich der Spannungsversorgungsmodul-Attribute}
 \end{table}
 
 Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Schaltregler, da diese für einen geringen Preis erhältlich ist
 und einen ebenfalls geringen Bedarf an Platz und Bauteilen aufweist.
-
+Außerdem bringt dieser gegenüber dem Linearregler eine höhere Effizienz sowie eine geringe Wärmeabstrahlung mit sich.
 Den Mikrocontroller versorgen wir mit dem 3.3V Ausgang des Raspberry Pi 3B+.
-Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V auch mit einer Logik von +5V arbeiten würde und somit ein Pegelwandler zu 3.3V nötig wäre,
-verwarfen wir die Idee diesen mit 5V zu versorgen.
+Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V mit einer Logik von 5V arbeiten würde und somit ein Pegelwandler zu 3.3V nötig wäre, verwarfen wir die Idee diesen mit 5V zu versorgen.
+
+\subsubsection{Leistungsbedarf}
+
+Um die maximale Leistung des ATmega324PA zu berechnen, wird der maximal anfallende Ausgangsstrom bei unserer Verwendung herangezogen.
+Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA .
+Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V erhält man eine Leistung von 198mW .
+Dieser Wert liegt unter der maximalen Leistung des µC von 660mW und ist somit zulässig.
+
+\footfullcite{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
+Auf dem Raspberry Pi 3B+ befindet sich ein Linearregler, welcher aus der 5V Versorgungsspannugn eine 3.3V Spannung erzeugt.
 
 \newpage
+
+Die maximale Leistung ist somit von diesem abhängig und errechnet sich bei 50°C wie folgt:
+
+\begin{align*}
+    P_D &= \frac{T_{jmax} - (T_a + Sicherheit)}{R_{ja}}
+\end{align*}
+wobei
+\begin{itemize}
+    \item P\textsubscript{D} der auszurechnenden Verlustleistung,
+    \item T\textsubscript{jmax} der maximalen Sperrschichttemperatur von 150°C,
+    \item T\textsubscript{a} der Umgebungstemperatur und
+    \item R\textsubscript{ja} dem Wärmewiderstand zwischen Sperrschicht und Umgebung von 160$\frac{^\circ C}{W}$ entspricht.
+\end{itemize}
+
+\begin{align*}
+    P_D &= \frac{150^{\circ}C - (25^{\circ}C + 25)}{160 \frac{{}^{\circ}C}{W}} \\
+    P_D &= 0.625W
+\end{align*}
+
+Der durchschnittliche Betrieb bei 25°C lässt folgende Leistung zu:
+\begin{align*}
+    P_D &= \frac{T_{jmax} - T_a}{R_{ja}} \\
+    P_D &= \frac{150^{\circ}C - (25^{\circ}C)}{160\frac{{}^{\circ}C}{W}} \\
+    P_D &= 0.78125W
+\end{align*}
+
+Am Linearregler fällt eine Dropout-Spannung von 1.7V ab.
+Der maximale Strom kann somit ermittelt werden.
+
+\begin{align*}
+    P_{max} &= U_{DO} \cdot I_{max} \\
+    I_{max} &= \frac{P_{max}}{U_{DO}} \\
+    I_{max} &= \frac{0.625W}{1.7V} \\
+    I_{max} &= 367.65mA
+\end{align*}
+
+Mit einem Abschlag von 250mA, welche zur Selbstversorgung des Raspberry Pi verwendet werden, steht ein Strom von 117.65mA an den 3.3V Expansion Header Pins zur Verfügung.
+Das Leistungsmaximum der 3.3V-Pins beträgt somit 388.245mW .
+(Im Betrieb bei 25°C liegt der maximale Strom bei 459.56mA und die maximale Leistung bei 691.55mW.)\\
+Die maximalen Verluste des Linearreglers bei unserer Anwendung lassen sich auf folgende Weise kalkulieren:
+\begin{align*}
+    P_{V} &= U_{DO} \cdot I_{\mu Cmax} \\
+    P_{V} &= 1.7V \cdot 60mA \\
+    P_{V} &=  102mW
+\end{align*}
+
+Der maximale Leistungsbedarf des Raspberry Pi liegt bei einem Strom von 750mA und mit Einbezug der Mikrocontrollerversorgung bei etwa 4W .
 
 \subsection{Blockschaltbild der gesamten Elektronik}
 
@@ -1637,14 +1710,14 @@ Zur Netzteil-Dimensionierung wurden die maximal möglichen Stromwerte der einzel
     \centering
     \begin{tabular}{|c|c|c|c|}
         \hline
-        \textbf{Komponente} & \textbf{max.Strom} \\ \hline
-        Hubmagnete & 700mA \\ \hline
-        Schrittmotor & 2000mA \\ \hline
-        Sensoren & 50mA \\ \hline
-        Pumpe inkl.Ventil & 500mA \\ \hline
-        Raspberry Pi 3B+ inkl.\acs{LCD} & 800mA \\ \hline
-        ATmega324PA & 200mA \\ \hline
-        \textbf{Summe} & \textbf{4250mA} \\ \hline
+        \textbf{Komponente} & \textbf{max.Strom} & \textbf{Gemessene Werte} \\ \hline
+        Hubmagnete & je 350mA &  \\ \hline
+        Schrittmotor & 2000mA & \\ \hline
+        Sensoren & 10mA & \\ \hline
+        Pumpe inkl.Ventil & 500mA &  \\ \hline
+        Raspberry Pi 3B+ inkl.\acs{LCD} & 750mA & \\ \hline
+        ATmega324PA & 60mA & \\ \hline
+        \textbf{Summe} & \textbf{4020mA} & \\ \hline
     \end{tabular}
     \caption{Überschlagsmäßige Dimensionierung des Netzteils}
 \end{table}
