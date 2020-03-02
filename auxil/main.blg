@@ -1,0 +1,23 @@
+[0] Config.pm:304> INFO - This is Biber 2.13
+[0] Config.pm:307> INFO - Logfile is 'main.blg'
+[22] biber-MSWIN64:315> INFO - === 
+[38] Biber.pm:375> INFO - Reading 'C:\Users\alois\Documents\ReShuffled\mainDocumentation\main.bcf'
+[137] Biber.pm:902> INFO - Using all citekeys in bib section 0
+[149] Biber.pm:4196> INFO - Processing section 0
+[151] Utils.pm:75> INFO - Globbing data source 'Literaturverzeichnis.bib'
+[157] Utils.pm:91> INFO - Globbed data source 'Literaturverzeichnis.bib' to Literaturverzeichnis.bib
+[167] Biber.pm:4373> INFO - Looking for bibtex format file 'Literaturverzeichnis.bib' for section 0
+[175] bibtex.pm:1462> INFO - LaTeX decoding ...
+[193] bibtex.pm:1281> INFO - Found BibTeX data source 'C:\Users\alois\Documents\ReShuffled\mainDocumentation\Literaturverzeichnis.bib'
+[223] Utils.pm:300> WARN - Overwriting field 'year' with year value from field 'date' for entry 'scream3r2020'
+[228] Utils.pm:300> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Inden2018'
+[253] Utils.pm:300> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'
+[255] Utils.pm:300> WARN - Overwriting field 'year' with year value from field 'date' for entry 'kulturbanause2016'
+[274] Utils.pm:300> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Gamma2000'
+[330] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[330] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[330] Biber.pm:4024> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de_DE'
+[330] Biber.pm:4030> INFO - No sort tailoring available for locale 'de_DE'
+[353] bbl.pm:648> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[366] bbl.pm:751> INFO - Output to main.bbl
+[366] Biber.pm:110> INFO - WARNINGS: 5

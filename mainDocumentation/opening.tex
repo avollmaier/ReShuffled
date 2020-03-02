@@ -21,6 +21,20 @@
   \mbox{}\\
   \mbox{}\\
 }
+\newcommand{\singlesignature}[2]{%
+  \parbox{\textwidth}{
+    \hfill
+    \parbox{7cm}{
+      \centering
+      \rule{6cm}{1pt}\\
+      #1
+    }
+  }
+  \mbox{}\\
+  \mbox{}\\
+  \mbox{}\\
+  \mbox{}\\
+}
 
 \vspace*{20pt}
 
@@ -30,12 +44,12 @@ Ich erkläre an Eides statt, dass ich die vorliegende Arbeit selbstständig verf
 Quellen/Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich und inhaltlich entnommenen
 Stellen als solche kenntlich gemacht habe.\\
 \\
-Arnfels, am 5. April 2018\\
+Arnfels, am 18. März 2018\\
 
 \vskip 1cm
 
 \doublesignature{Stefan Hörmann}{Nicolas Perl}
-\doublesignature{Alois Vollmaier}{Mr. Mösensaft}
+\singlesignature{Alois Vollmaier}
 
 \vskip 5cm
 
@@ -49,10 +63,11 @@ Arnfels, am 5. April 2018\\
 
 \section*{Danksagung}
 \label{sec:danksagung}
-An dieser Stelle möchten wir uns bei allen bedanken, die uns im Rahmen der Diplomarbeit unterstützt und betreut haben.\\
-\\
-TODO
-
+An dieser Stelle möchten wir, Stefan Hörmann, Nicolas Perl und Alois Vollmaier, uns im Rahmen der Diplomarbeit bei allen bedanken, die uns unterstützt und betreut haben.
+Im Speziellen sind dies einerseits unsere Betreuer, Dipl.-Ing Dr. Gerhand Pretterhofer und Dipl.-Ing Manfred Steiner.
+Mithilfe deren fundamental wichtigen Ideen und deren Fachwissen ist es uns gelungen, dieses Werk zu kreieren.
+Des Weiteren möchten wir uns herzlich bei Herrn Ing. Konrad Wilhelm und bei Herrn Ing. Dipl.-Päd. St.-Rat Reinhard Semlitsch bedanken, welche uns beim Fertigungsprozess enorm unterstützten und eine elementare Rolle spielten.
+Nicht zuletzt gebührt ein ganz spezieller Dank unseren Familien, Verwandten und Freunden, welche und in dieser einschneidenten Zeit voll und ganz unterstützten.
 \clearpage
 
 \newpage
@@ -63,26 +78,12 @@ TODO
 
 \section*{Abstract}
 \label{sec:abstract}
-TODO
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
 \section*{Zusammenfassung}
-Wir setzten uns als Ziel eine Maschine zu entwickeln, welche das Mischen, sowie das Ausgeben von Spielkarten übernimmt.
-Die Idee ist es, diese Verfahren möglichst platzsparend, zeiteffizient und detailliert durchdacht und optimiert zu realisieren.\\
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{fig/Reshuffled_Version_3_0_prinzip.pdf}
-  \caption{Name des Bildes}
-  \label{fig:verweis}
-\end{figure}
-
-Grundsätzlich basiert das Mischprinzip auf einer Art "Fächersystem".
-Eingelegte Karten gelangen mithilfe eines ausgeklügelten Systems, welches aus einem Hubmagneten mit integriertem Saugnapf besteht, aus dem Einlegefach.
-Erfolgt die Kartenentnahme, rutscht die Karte in ein zufälliges Fach des Lagerrads. Anschließend wird dieses Lagerrad in Drehbewegung versetzt um die gelagerten Karten auszugeben.
-
-Der Benutzer steuert diese Maschiene mithilfe einer GUI welche auf einem 7" LCD Display angezeigt wird. Systemintern steuert ein 8-Bit Mikrocontroller der AVR-Familie den Ablauf.
-
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 \clearpage
 
 \newpage
@@ -111,9 +112,9 @@ Diese Arbeit wurde in \LaTeX{} verfasst. Diese Art der Dokumentation bietet gege
 \label{sec:projektteam}
 
 \subsection*{Stefan Hörmann}
-\begin{wrapfigure}[10]{l}{0.5\textwidth}
+\begin{wrapfigure}[10]{0}{0.5\textwidth}
 \begin{center}
-  \includegraphics[width=0.35\textwidth]{fig/logoMecha}
+  \includegraphics[width=0.35\textwidth]{fig/H.jpg}
 \end{center}
 \end{wrapfigure}
 \mbox{}\\
@@ -130,9 +131,9 @@ Dr. Dipl-Ing. Gerhard Pretterhofer
 \mbox{}\\
 
 \subsection*{Nicolas Perl}
-\begin{wrapfigure}[10]{l}{0.5\textwidth}
+\begin{wrapfigure}[10]{0}{0.5\textwidth}
 \begin{center}
-  \includegraphics[width=0.35\textwidth]{fig/logoMecha}
+  \includegraphics[width=0.35\textwidth]{fig/P.jpg}
 \end{center}
 \end{wrapfigure}
 \mbox{}\\
@@ -146,11 +147,11 @@ Dipl-Ing. Manfred Steiner
 \mbox{}\\
 \mbox{}\\
 \mbox{}\\
-
+\newpage
 \subsection*{Alois Vollmaier}
-\begin{wrapfigure}[10]{l}{0.5\textwidth}
+\begin{wrapfigure}[10]{0}{0.5\textwidth}
 \begin{center}
-  \includegraphics[width=0.35\textwidth]{fig/logoMecha}
+  \includegraphics[width=0.35\textwidth]{fig/V.jpg}
 \end{center}
 \end{wrapfigure}
 \mbox{}\\

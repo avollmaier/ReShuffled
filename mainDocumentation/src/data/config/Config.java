@@ -35,9 +35,8 @@ public class Config {
     public static Config createInstance(String configPath) {
         if (instance != null) {
             throw new IllegalStateException("Instance already created");
-        } else {
+
             instance = new Config(configPath);
-        }
         return instance;
     }
 
