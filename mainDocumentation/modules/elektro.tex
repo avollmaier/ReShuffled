@@ -1175,8 +1175,11 @@ Hierbei ist auf die richtige Zusammengehörigkeit zu achten:
 Die Anschlüsse B1 und B2 sind mit der einen Windung des Motors zu verbinden, A1 und A2 mit der anderen. \\
 
 Der /FLT (Fault)  Anschluss kann als Statusüberwachung genutzt werden.
-Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert. \\
+Er liefert ein LOW-Pegel Signal, falls der Treiber eine zu hohe Temperatur oder einen zu hohen Strom detektiert.
+Im Grundzustand besitzt der Pin durch einen 10k$\Omega$ Pull-Up-Widerstand ein Potential von 3.3V.
+Er fungiert als Open-Drain-Output.
 
+\newpage
 Die Treiberplatine verfügt 8 Logikanschlüsse, welche auf der linken Seite des Treibers in \autoref{fig:Treiber} zu finden sind: \\
 
 Der /EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
@@ -1289,7 +1292,7 @@ Um jedoch Gewissheit zu erlangen, ist die maximal erreichte Sperrschichttemperat
     T_{j} &= (25^{\circ}C + 35^{\circ}C) + 31.6\frac{{}^{\circ}C}{W} \cdot 0.8192W \\
     T_{j} &= 85.88672^{\circ}C
 \end{align*}
-
+\newpage
 Der Umstand einer Umgebungstemperatur von 60°C führt somit bewiesenerweise dennoch zu einem zulässigem Betrieb.
 Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch schlussendlich ein Kühlkörper auf dem Treiber platziert wurde.
 
@@ -1471,13 +1474,13 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
 
 \newpage
 
-\subsection{Mini-USB Schnittstelle\footfullcite{Datasheet-CH340G}}
+\subsection{Mini-USB Schnittstelle}
 
 Um Debugging effektiv betreiben zu könnnen, ist eine Verbindung von Mini-USB zu UART implementiert worden.
 So können Vorgänge leicht über einen Computer via Kabel überwacht werden oder etwa ein neues Programm herübergespielt werden.
 
-Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringen Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.
-Dieser Treiberbaustein ist wie folgt zu beschalten:
+Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringen Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.\\
+\footfullcite{Datasheet-CH340G}Dieser Treiberbaustein ist wie folgt zu beschalten:
 
 \begin{figure}[ht]
     \centering
