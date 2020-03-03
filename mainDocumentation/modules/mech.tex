@@ -878,9 +878,9 @@ Beim Kartenhalterunsmodul-oben wird die Kartenführung Modul 1 oben mit dem Kart
 Die Formel zum Berechnen der Klebefläche lautet.
 \[\sigma _{K} = \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
 
-$\sigma_{K}$.... fasdfads \\
-$\sigma_{KB}$.... fasdfads\\
-F.... Kraft [N]\\
+$\sigma_{K}$.... Bindefestigkeit der Klebefläche \\
+$\sigma_{KB}$.... indefestigkeit nach TB 5-2 und TB 5-3 (Maschinenelemente Tabellenbuch)\\
+F.... Größte zu übertragende Kraft [N]\\
 A\textsubscript{K}.... Klebefläche [mm²]\\
 b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
@@ -906,13 +906,65 @@ Für die Berechnung der Klebefläche wird wieder folgende Formel benötigt.
 
 \[\sigma _{K} = \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
 
-$\sigma_{K}$.... fasdfads \\
-$\sigma_{KB}$.... fasdfads\\
-F.... Kraft [N]\\
+$\sigma_{K}$.... Bindefestigkeit der Klebefläche \\
+$\sigma_{KB}$.... Bindefestigkeit nach TB 5-2 und TB 5-3 (Maschinenelemente Tabellenbuch)\\
+F.... Größte zu übertragende Kraft [N]\\
 A\textsubscript{K}.... Klebefläche [mm²]\\
 b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
 S.... Sicherheitsfaktor\\
+
+Die Klebefläche schließt sich aus 2 Teilen zusammmen, da das Bauteil 2 dieser Klebeflächen besitzt.
+\[A_{K} = b_{1}\cdot t_{1}+b_{2}\cdot t_{2}\]
+\[A_{K} =3 mm\cdot 5 mm+7 mm\cdot 5 mm\]
+\[A_{K} = 50 mm^{2}\]
+
+Die Größte zu übertragende Kraft tritt dann ein, wenn dar ganze Kartenstapel mit 20 Karten aus dem
+Lagerrad und auf den Punkt mit der Größten Hebelkraft fällt. Somit müssen wir als erstes die
+Bahngeschwindigkeit des Lagerrades ausrechnen:
+
+\[v = \omega \cdot r\]
+\[v = 2 \cdot \pi \cdot f \cdot \cdot r\]
+v.... Bahngeschwindigkeit[m/s²]\\
+$\omega$.... Winkelgeschwindigkeit[rad/s]\\
+f.... Frequenz[1/T]\\
+r.... Radius\\
+\[v = 2 \cdot \pi \cdot 0,5 Hz \cdot 0,127 m\]
+\[v = 0,39918 \tfrac{m}{s}\]
+
+
+Nun wird über die Geschwindigkeit die Beschleunigung ausgerechnet:
+
+\[a = \frac{v}{t}\]
+a.... Beschleunigung[m/s²]\\
+v.... Bahngeschwindigkeit[m/s]\\
+t.... Zeit[s]\\
+\[a = \frac{0,39918\tfrac{m}{s}}{0,25s}\]
+\[a = 1,59672\tfrac{m}{s^{2}}\]
+
+Anschließend wird über die Masse und über die Beschleunigung die Kraft der herausfallenden Karten ausgerechnet:
+\[F = m \cdot a\]
+F.... Kraft[N]\\
+m.... Masse[Kg]\\
+a.... Beschleunigung[m/s²]\\
+\[F = 0,04 kg \cdot 1,59672\tfrac{m}{s^{2}}\]
+\[F = 0,0638N\]
+
+Das Maximalmoment wird nun über die erechnete Kraft F und der maximalen Hebellänge l ausgerechnet.
+\[M_{max}=F\cdot l\]
+\[M_{max}=0,06386N\cdot 55mm\]
+\[M_{max}=3,4862\tfrac{N}{mm}\]
+
+Nun werden die errechneten Werte in die Formel eingesetzt. Dafür wird aber die Maximalkraft durch
+das Maximalmoment ersetzt, das Maximalmoment wird jedoch halbiert, da es auf 2 Kartenführungen aufgeteilt wird.
+
+\[\sigma _{K}=\frac{\frac{M_{max}{2}}}{50mm^{2}}\leq \frac{\sigma _{KB}}{S}\]
+\[\sigma _{K}=\frac{\frac{3,4862\tfrac{N}{m}}{2}}{50m^{2}}\leq  \frac{21 \tfrac{N}{mm^{2}}}{3}\]
+\[\sigma _{K}=0,034862 \tfrac{N}{mm^{2}}\leq 7 \tfrac{N}{mm^{2}}\]
+
+Da die Gleichung sich als Wahr erweist, halten die Führungen die Kraft der herausfallenden Karten
+aus. Auch durch die enorme überdimensionierung ist zu erkennen, das auch eine größere Kraft für
+keine Probleme berreiten würde.
 
 \section{Fertigung der Bauteile}
 \subsection{Werkstoffwahl}
