@@ -1710,14 +1710,15 @@ Zur Netzteil-Dimensionierung wurden die maximal möglichen Stromwerte der einzel
     \centering
     \begin{tabular}{|c|c|c|c|}
         \hline
-        \textbf{Komponente} & \textbf{max.Strom} & \textbf{Gemessene Werte} \\ \hline
-        Hubmagnete & je 350mA &  \\ \hline
-        Schrittmotor & 2000mA & \\ \hline
-        Sensoren & 10mA & \\ \hline
-        Pumpe inkl.Ventil & 500mA &  \\ \hline
-        Raspberry Pi 3B+ inkl.\acs{LCD} & 750mA & \\ \hline
-        ATmega324PA & 60mA & \\ \hline
-        \textbf{Summe} & \textbf{4020mA} & \\ \hline
+        \textbf{Komponente} & \textbf{maximaler Strom} & \textbf{gemessener Strom im durchschnittlichen Betrieb} \\ \hline
+        Hubmagnete & je 350mA & je 323mA \\ \hline
+        Schrittmotor & 2000mA & 1600mA \\ \hline
+        Sensoren & je 5mA & je 4.3mA \\ \hline
+        Pumpe & 280mA & 190mA (ohne Last), 250mA (mit Last) \\ \hline
+        Ventil & 260mA & 250mA \\ \hline
+        Raspberry Pi 3B+ inkl.\acs{LCD} & 850mA & Idle 600mA, bei intensiver Benutzung 750mA \\ \hline
+        ATmega324PA & 60mA & - \\ \hline
+        \textbf{Summe} & \textbf{4165mA} & - \\ \hline
     \end{tabular}
     \caption{Überschlagsmäßige Dimensionierung des Netzteils}
 \end{table}
