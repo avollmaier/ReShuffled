@@ -1460,6 +1460,7 @@ Sobald die Gate-Source-Schwellenspannung des MOSFETs mithilfe eines 3.3V Signals
 Dieser ermöglich das Fließen des Drainstromes durch den Hubmagneten zum Massepotential.
 Um den fließenden Gate-Strom zu verringern, wurde der Widerstand R1 implementiert.
 Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen.
+Um keinen Spannungsteiler und somit einen Spannungsabfall von rund 5 Prozent der Eingangsspannung zu verursachen, ist der Widerstand vor den Widerstand R1 zu schalten.
 Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine sogenannte Fleilaufdiode zu schalten.
 Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden Strom des Hubmagneten zu schützen.
 
@@ -1474,15 +1475,15 @@ Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden St
         \draw (4,5) to (4,7);
         \draw (6,6) to (6,6)node[anchor=west]{Hubmagnet};
         \draw (5,3) to (5,0);
-        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-        \draw (1.4,2.5)node[anchor=above]{560};
-        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
-        \draw (4.35,1.5)node[anchor=above]{10k};
+        \draw (4.1,3) to (3.5,3) to [R, l_= $R1$](1.5,3) to [short, -o](-0.5,3);
+        \draw (2.9,2.5)node[anchor=above]{560};
+        \draw (1,3) to [short,*-](1,3) to [R, l_=$R2$](1,0) to [short,-*](5,0) to (5,-0.5);
+        \draw (2,1.5)node[anchor=above]{10k};
         \draw (5,3)node[nfet, solderdot, bodydiode](nfet){};
         \draw (nfet.G) node[above]{G};
         \draw (nfet.D) node[left]{D};
         \draw (nfet.S) node[left]{S};
-        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+        \draw (-0.5,3) to (-0.5,3)node[anchor=east]{SIG};
         \draw (5,-0.5) to (5,-0.5) node[rground]{};
     \end{circuitikz}
     \caption{Ansteuerung der Hubmagneten}
@@ -1496,8 +1497,9 @@ Um sowohl die Pumpe als auch das Ventil ansteuern zu können, wurde jeweils von 
 
 \subsubsection{Funktion}
 
-Sobald die Gate-Source-Schwellspannung des N-Kanal MOSFETs mithilfe des 3.3V Steuersignals überschritten wird, schaltet jener Halbleiterbaustein das am Drain liegende Potential auf Masse.
-Um den fließenden Gate-Strom zu begrenzen, wurde auf einen Widerstand, hier R1, zurückgegriffen.
+Mithilfe eines 3.3V Steuersignals, ausgehend vom ATmega324PA, wird die Gate-Source-Schwellspannung des N-Kanal-MOSFET überschritten.
+Somit schaltet der MOSFET die am Drain anliegende Leitung auf Masse und Strom fließt vom Drain zur Source.
+Um den fließenden Gate-Strom des Steuersignals zu begrenzen, wurde auf einen Widerstand, hier R1, zurückgegriffen.
 Um jene am MOSFET anfallende, parasitäre Kapazitäten zu negieren, wurde der Widerstand R2 vorgesehen.
 Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen einer Freilaufdiode erfordern, da diese ansonsten den MOSFET durch ihren selbst induzierten Strom gefährden könnten.
 
@@ -1512,15 +1514,15 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
         \draw (4,5) to (4,7);
         \draw (6,6) to (6,6)node[anchor=west]{Pumpe};
         \draw (5,3) to (5,0);
-        \draw (4.1,3) to (2,3) to [R, l_= $R1$](0,3) to [short, -o](-1,3);
-        \draw (1.55,2.4)node[anchor=above]{560};
-        \draw (3.25,3) to [short,*-](3.25,3) to [R, l_=$R2$](3.25,0) to [short,-*](5,0) to (5,-0.5);
-        \draw (4.6,1.5)node[anchor=above]{10k};
+        \draw (4.1,3) to (3.5,3) to [R, l_= $R1$](1.5,3) to [short, -o](-0.5,3);
+        \draw (3.1,2.4)node[anchor=above]{560};
+        \draw (1,3) to [short,*-](1,3) to [R, l_=$R2$](1,0) to [short,-*](5,0) to (5,-0.5);
+        \draw (2.3,1.5)node[anchor=above]{10k};
         \draw (5,3)node[nfet, solderdot, bodydiode](nfet){};
         \draw (nfet.G) node[above]{G};
         \draw (nfet.D) node[left]{D};
         \draw (nfet.S) node[left]{S};
-        \draw (-1,3) to (-1,3)node[anchor=east]{SIG};
+        \draw (-0.5,3) to (-0.5,3)node[anchor=east]{SIG};
         \draw (5,-0.5) to (5,-0.5) node[rground]{};
 
         % Ventil
@@ -1531,15 +1533,15 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
         \draw (14,5) to (14,7);
         \draw (16,6) to (16,6)node[anchor=west]{Ventil};
         \draw (15,3) to (15,0);
-        \draw (14.1,3) to (12,3) to [R, l_= $R1$](10,3) to [short, -o](9,3);
-        \draw (11.55,2.4)node[anchor=above]{560};
-        \draw (13.25,3) to [short,*-](13.25,3) to [R, l_=$R2$](13.25,0) to [short,-*](15,0) to (15,-0.5);
-        \draw (14.6,1.5)node[anchor=above]{10k};
+        \draw (14.1,3) to (13.5,3) to [R, l_= $R1$](11.5,3) to [short, -o](9.5,3);
+        \draw (13.1,2.4)node[anchor=above]{560};
+        \draw (11,3) to [short,*-](11,3) to [R, l_=$R2$](11,0) to [short,-*](15,0) to (15,-0.5);
+        \draw (12.3,1.5)node[anchor=above]{10k};
         \draw (15,3)node[nfet, solderdot, bodydiode](nfet1){};
         \draw (nfet1.G) node[above]{G};
         \draw (nfet1.D) node[left]{D};
         \draw (nfet1.S) node[left]{S};
-        \draw (9,3) to (9,3)node[anchor=east]{SIG};
+        \draw (9.5,3) to (9.5,3)node[anchor=east]{SIG};
         \draw (15,-0.5) to (15,-0.5) node[rground]{};
     \end{circuitikz}
     \caption{Ansteuerung der Pumpe und des Ventils}
@@ -1927,7 +1929,7 @@ Jener Prototyp wurde in der Werkstätte der \acs{HTBLA} Kaindorf angefertigt. \\
 
     \item Letztendlich kann der exakte Zuschnitt und das Bohren durchgeführt werden. \\
 
-    \item Als letzten Schritt kann das Anfertigen von Durchkontaktierungen durch das Einpressen von Hülsen sowie das Bestücken der Leiterplatte erfolgen.
+    \item Als letzten Schritt kann das Anfertigen von Durchkontaktierungen durch das Einpressen von Nieten sowie das Bestücken der Leiterplatte erfolgen.
 \end{itemize}
 
 \subsubsection{Bestückter Prototyp}
@@ -1952,54 +1954,46 @@ Anzumerken ist bei diesem, dass die Idee der Implementierung von einer Pumpe und
 \section{Verbesserungsmöglichkeiten und Conclusio}
 \subsection{Verbesserungsmöglichkeiten}
 
-\subsubsection{Crowbar Circuit}
-Sollte man die Versorgung des Raspberry Pi's über die Expansion Header Pins vornehmen, ist ein Überspannungsschutz nicht gegeben.
-Eine essenzielle Schutzmaßnahme, um den Raspberry Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre eine sogenannte Klemmschaltung (engl.Crowbar Circuit).
-Diese Art von Schaltung ermöglicht es, empfindliche Komponenten vor Überspannung zu schützen.
+\subsubsection{Überspannungsschutz}
 
-\begin{figure}[hpt]
+Sollte man die Versorgung des Raspberry Pi über den Erweiterungsstecker vornehmen, ist ein Überspannungsschutz nicht gegeben.
+Eine essenzielle Schutzmaßnahme, um den Raspbbery Pi bei einer zugeführten Überspannung nicht zu beschädigen, wäre einen Überspannungsschutz mithilfe einer Polyfuse und einer Suppresordiode zu implementieren.
+
+\begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1.2]
-        \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2,0) to [R,l=$R1$, *-*](2,2) to [/tikz/circuitikz/bipoles/length=1cm, zD-, l=$D1$,-*](2,4);
-        \draw (2,2) to (3.5,2);
-        \draw (2.8,2) to [C, l=$C1$, *-*](2.8,0);
-        \draw (4,4) to [/tikz/circuitikz/bipoles/length=1.1cm, Ty-, mirror, l=$T1$,*-](4,0.915) to [short,-*](4,0);
-        \draw (2,4) to [short, -o](0,4)node[anchor=east]{+};
-        \draw (2,4) to [short, -o](6,4)node[anchor=west]{+};
-        \draw (3,0) to [short, -o](6,0)node[anchor=west]{-};
-        \draw (3,0) to (2,0) node[rground]{};
-        \draw (0,3.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
-        \draw (6,3.8) -- node[right] {$U_\mathrm{Last}$}node[sloped,currarrow,pos=1] {}(6,0.2);
+    \begin{circuitikz}[european, scale = 1]
+        \draw (0,0) node[anchor=east] {-} to [short, o-*] (4,0);
+        \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
+        \draw (4,0) to [zD-, l_=$D1$, *-*] (4,3);
+        \draw (1,3) to[thermistor ptc, l=$PTC$](4,3);
+        \draw (4,3) to [short, -o](6,3)node[anchor=west]{+};
+        \draw (4,0) to [short, *-o](6,0)node[anchor=west]{-};
+        \draw (2,0) to [short, -*](2,0) node[rground]{};
+        \draw (0,2.8) -- node[left] {$U_\mathrm{e}$}node[sloped,currarrow,pos=1] {}(0,0.2);
+        \draw (6,2.8) -- node[right] {$U_\mathrm{a}$}node[sloped,currarrow,pos=1] {}(6,0.2);
     \end{circuitikz}
-    \caption{Crowbar Circuit}
+    \caption{Überspannungsschutz mit PTC}
 \end{figure}
 
-\footfullcite{@TheArtOfElectronics-Kapitel-9.13.1-OvervoltageCrowbars}Bei einer zulässigen Versorgungsspannung gelangt die Zenerdiode nicht in einen leitenden Zustand und eine sichere Versorgung der dahinter liegenden Schaltung ist gegeben.
-Der \acs{SCR} wird leitend, sobald der Wert der Versorgungsspannung jenen nominalen Zenerspannungswert der Zenerdiode und die Gate-Triggerspannung des Thyristors übersteigt.
-Der Thyristor bleibt so lange im leitenden Zustand, bis dessen Anodenstrom unter wenige Milliampere fällt.
-Ein niederohmiger Widerstand wird verwendet, um einen ausreichend hohen Zenerstrom zu generieren und um den SCR zu zünden.
-Der Kondensator hat die Funktion, die Aktivierung der Crowbar-Schaltung durch harmlose Spannungsspitzen zu negieren.
+Sollte die Eingangsspannung die bauelementspezifische Spannungsschwelle der Supressordiode überschreiten, wird diese leitend.
+Infolgedessen wird der Strom des Spannungsimpulses an der zu schützenden Peripherie vorbeigeführt.
+Aufgrund dessen kann sich keine zerstörerische Spannung oberhalb des Suppressors aufbauen.
+Der nun rasant steigende Strom bewirkt ein Steigen der Leitungstemperatur.
+Aus diesem Grunde heraus steigt auch der Widerstand des Thermistors, weshalb dieser den Strom begrenz und der Strom somit auf ein Minimum zurückfällt.
+
+Diese Schaltung bringt die positive Tatsache mit sich, dass sie sich im Grundzustand, bis auf den niedrigen Leakagestrom der Diode und den geringen Widerstand des PTC, neutral verhält.
+Außerdem führt eine Auslösung der Schutzschaltung zu keiner Zerstörung von Bauteilen.
+Es muss lediglich auf das Abkühlen des PTC gewartet werden.
 
 Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Komponenten wie folgt zu wählen:
 \begin{itemize}
-    \item R1 mit 68Ohm
-    \item D1 mit einer nom.Zenerspannung von 5.6V
-    \item C1 mit 10nF
-    \item T1 als TS1220-600B
+    \item PTC als MF-MSMF250/16X
+    \item D1 als SMBJ5.0A
 \end{itemize}
 
-Jene Schaltung hätte auch Nachteile, welche besonders die Wahl der Zenerdiode betreffen.
-Zenerdioden sind nur in diskreten Werten mit bestimmten Toleranzen erhältlich.
-Zusätzliche Toleranzen von etwa 5 Prozent bringt die 5V Versorgung über den LM2576-5 mit sich, welches somit einen Crowbar Circuit von mindestens 5.5V erfordert.
-Dieses Minimum ist jedoch aufgrund von einem vorrübergehenden Überschwingen der geregelten Versorgung zu erhöhen:
-Bei plötzlichen, großen Stromänderungen werden Spannungsspitzen erzeugt, welchen einige Wellen folgen.
-Induktive Lasten, wie das Ventil oder die Pumpe, verschärfen dieses Problem aufgrund von remote sensing zusätzlich.
-Die resultierenden Schwingungen führen zu Störungen in der Versorgung, welche die Crowbar-Schaltung jedoch nicht auslösen sollen.
-Aus diesen Gründen sollte die Crowbar-Auslösespannung nicht unter 6V gewählt werden, jedoch sollte sie auch nicht über 7V gewählt werden,
-da ansonsten das Risko der Zerstörung der Logikschaltungen gegeben wäre.
-Rechnet man alle Toleranzen der Komponenten zusammen, ergibt sich eine Crowbar-Threshold-Voltage von etwa 5.9V bis 6.6V .
+Eine weitere, zerstörerische und wartungsintensivere Möglichkeit wäre, diese Schaltung mit einer Schmelzsicherung zu realisieren.
 
+\newpage
 \subsubsection{Zusätzliche Beschaltung der Mikroprozessor-Anschlüsse}
 
 Um hochfrequente Störimpulse auf Signal- und Versorgungsebene zu dämpfen sowie zusätzlichen Überspannungsschutz zu gewährleisten,
