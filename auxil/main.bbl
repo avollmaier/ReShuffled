@@ -781,12 +781,12 @@
     \endentry
     \entry{BZX84-series-Datasheet}{online}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=bdd95750033c6d1e71751acaf3c3d8de}{%
+        {{un=1,uniquepart=given,hash=bdd95750033c6d1e71751acaf3c3d8de}{%
            family={Semiconductors},
            familyi={S\bibinitperiod},
            given={NXP},
            giveni={N\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
       }
       \strng{namehash}{bdd95750033c6d1e71751acaf3c3d8de}
       \strng{fullhash}{bdd95750033c6d1e71751acaf3c3d8de}
@@ -796,7 +796,6 @@
       \strng{authorfullhash}{bdd95750033c6d1e71751acaf3c3d8de}
       \field{sortinit}{S}
       \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
-      \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 09.01.2020}
@@ -806,6 +805,34 @@
       \endverb
       \verb{url}
       \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
+      \endverb
+    \endentry
+    \entry{NCP1117-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=1,uniquepart=given,hash=f244f35c03c7be1c0e8b6b500a0d8460}{%
+           family={Semiconductors},
+           familyi={S\bibinitperiod},
+           given={ON},
+           giveni={O\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \strng{fullhash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \strng{bibnamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \strng{authorbibnamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \strng{authornamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \strng{authorfullhash}{f244f35c03c7be1c0e8b6b500a0d8460}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Eingesehen am 02.03.2020}
+      \field{title}{NCP1117,NCV1117 Datasheet}
+      \verb{urlraw}
+      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
+      \endverb
+      \verb{url}
+      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
       \endverb
     \endentry
     \entry{Steiner2020}{online}{}
@@ -835,7 +862,54 @@
       \field{title}{Logging}
       \field{year}{2019}
       \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.htl-mechatronik.at/gitweb/public/sx/?p=JavaLogger.git;a=summary
+      \endverb
+      \verb{url}
+      \verb https://www.htl-mechatronik.at/gitweb/public/sx/?p=JavaLogger.git;a=summary
+      \endverb
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'}
+    \endentry
+    \entry{trestre2020}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b5374ffaf39e98606afd4bccc31031d5}{%
+           family={trestre},
+           familyi={t\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=be386992c3e887b04f7b91f0165afc20}{%
+           family={strestr},
+           familyi={s\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{fullhash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{bibnamehash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{authorbibnamehash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{authornamehash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{authorfullhash}{b5374ffaf39e98606afd4bccc31031d5}
+      \strng{editorbibnamehash}{be386992c3e887b04f7b91f0165afc20}
+      \strng{editornamehash}{be386992c3e887b04f7b91f0165afc20}
+      \strng{editorfullhash}{be386992c3e887b04f7b91f0165afc20}
+      \field{sortinit}{t}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{1}
+      \field{title}{strestr}
+      \field{year}{2001}
+      \field{dateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://www.quora.com/LaTex-How-do-I-get-my-equations-to-be-left-aligned-instead-of-centered-when-using-the-article-document-class
+      \endverb
+      \verb{url}
+      \verb https://www.quora.com/LaTex-How-do-I-get-my-equations-to-be-left-aligned-instead-of-centered-when-using-the-article-document-class
+      \endverb
+      \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'trestre2020'}
     \endentry
     \entry{Ultraschallsensoren-Messprinzip}{online}{}
       \name{author}{1}{}{%
