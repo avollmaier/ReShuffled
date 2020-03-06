@@ -140,10 +140,10 @@ public class Communication {
                                 responseList.wait(timeoutMillis);
                                 if (responseList.isEmpty()) {
                                     if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
-                                        sendRequestExecutor(pendingRequest);//send second response
+                                        sendRequestExecutor(pendingRequest);
                                         continue mainLoop;
                                     }
-                                    throw new SerialException("request timeout, mssing response"); // if second try isnt allowed throw serial exception
+                                    throw new SerialException("request timeout, mssing response");
                                 }
                                 res = responseList.removeFirst();
                                 if (!responseList.isEmpty()) {
