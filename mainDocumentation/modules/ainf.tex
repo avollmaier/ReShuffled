@@ -8,7 +8,7 @@ Die Aufteilung dieses \pageref{LastPage} seitigen Kapitels überstreckt sich üb
 Auch wird gezeigt, wie Teile der \textbf{hardwarenahen Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 \section{Zeitplan}\label{sec:zeitplan}
-\begin{figure}[hbt!]
+\begin{figure}[H]
     \centering
     \scalebox{0.57}{
     \begin{ganttchart}[
@@ -462,7 +462,7 @@ Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubin
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eignet sich optimal für große Projekte wie dieses.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{fig/ainf/SceneBuilder.png}
+    \includegraphics[width=0.8\textwidth]{fig/ainf/SceneBuilder.png}
     \caption{Tool SceneBuilder}
     \label{fig:Tool SceneBuilder}
 \end{figure}
@@ -625,10 +625,10 @@ Im Gegensatz zu anderen Protokollen wie z.B. Modbus-RTU, muss hier nicht auf das
 Dies führt zu einer erschwerten Umsetzung und ist für uns nicht zielführend.\\\\
 Gefolgt von dem Startzeichen folgen nun die Daten.
 Diese beinhalten eindeutig definierte Zeichenfolgen, welche verwendet werden, um verschiedenste Zustände der Ansteuerplatine auszuführen.
-Nachfolgend schließt das Trennzeichen (\verb!#!) diese Daten ab.\\\\
+Nachfolgend schlie"st das Trennzeichen (\verb!#!) diese Daten ab.\\\\
 Um nun die Integrität, also die Korrektheit der Daten bei einer Übertragung zu überprüfen, wird im danach eine Prüfsumme übertragen.
-Ziel dieser ist es, anhand der Nutzdaten einen Wert zu bilden, welcher danach vom Sender im Frame als hexadezimalen String gespeichert bzw. übertragen wird.
-Der Empfänger berechnet nun mit dem selben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der Übertragenen Prüfsumme des Senders.
+Ziel dieser ist es, anhand der Nutzdaten(16-Bit Request-String) einen Wert zu bilden, welcher danach vom Sender im Frame als hexadezimalen String gespeichert bzw. übertragen wird.
+Der Empfänger berechnet nun mit demselben Verfahren die Prüfsumme aus den empfangenen Daten und vergleicht diese mit der übertragenen Prüfsumme des Senders.
 Sind beide Prüfsummen identisch, war die Übertragung erfolgreich und die Daten sind mit großer Wahrscheinlichkeit korrekt.
 Stimmen diese nicht überein, liegt ein Fehler vor.
 Die wichtigsten Arten von Übertragungsfehlern sind:
@@ -639,43 +639,58 @@ Die wichtigsten Arten von Übertragungsfehlern sind:
 Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch effizientere Vorgehensweisen.
 Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
 Sie ist relativ einfach zu realisieren und dennoch wirkungsvoll.
-Wichtig beim CRC-Verfahren ist, dass beide Teilnehmer, also Sender und Empfänger, dasselbe Schema zur Berechnung der Prüfsumme verwenden.
-Hierbei spielt der Grad des Generator-Polynoms sowie die mögliche Invertierung eine wesentliche Rolle.
-Der Grad des Generator-Polynoms beträgt in unserem Fall 32 (CRC-32).
-\\\\
-\textbf{Beispiel}
-\\
-
+Wichtig beim CRC-Verfahren ist, dass beide Teilnehmer, also Sender und Empfänger, dasselbe Schema zur Berechnung bzw. Verarbeitung der Prüfsumme verwenden.
+Hierbei spielt der Grad des Generator-Polynoms sowie die mögliche Invertierung der Bits vor dem Sendevorgang eine wesentliche Rolle.
+Der Grad des Generator-Polynoms beträgt in unserem Fall 32 (CRC-32) und die Prüfsumme wird nicht invertiert.\\\\
+Zusätzlich soll definiert werden, welche Ma"snahmen getroffen werden, wenn kein Response ankommt.
+Ist dies der Fall, wird je nach Wert eines Eintrags in der Konfigurationsdatei, ein weiterer Request mit demselben Inhalt gesendet.
+Kommt nun wiederum kein Response an, soll eine spezifische Exception geworfen werden.\\
+Wichtig ist auch die Definition des Fehlerhandling.
+So muss, wenn ein Response mit dem Fehler-Prefix (E) in den Nutzdaten ankommt, eine Ma"snahme getroffen werden.
+Diese soll in Form eines Log-Eintrags sowie einer Exception vonstattengehen, da es sich hierbei um gravierende Fehler beim Verarbeiten auf dem Endgerät handeln muss.
 \subsubsection{Request- und Responsebeispiele}
 Folgend wird anhand von tabellarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
 Jeder Request sowie Response basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
-\begin{table}[H]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|l|c|}
-\hline
-\rowcolor[HTML]{FFFFFF}
-\textbf{Request} & \textbf{Request-String {[}Rx{]}} & \textbf{Aktion} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}\textbf{Response-String {[}Tx{]}}} \\ \hline
-Init     & IN                                          & Initialisierungs-Zustand     & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
-Shutdown & XX                                          & Herunterfahren der Maschine  & --//--                                                      \\ \hline
-Shuffle  & SH                                          & Mischen von Karten           & --//--                                                      \\ \hline
-Deal     & D\textless{}Anzahl der Karten\textgreater{} & Kartenausgabe je nach Anzahl & --//--                                                      \\ \hline
-AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausgabe   & --//--                                                      \\ \hline
-\end{tabular}%
-}
-\caption{Request- und Responsebeispiele tabellarisch dargestellt}
+\begin{table}[]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        {\color[HTML]{333333} \textbf{Request}} & {\color[HTML]{333333} \textbf{Example Request Frame}} & {\color[HTML]{333333} \textbf{Example Response Frame}} \\ \hline
+        {\color[HTML]{333333} Init}             & {\color[HTML]{333333} :IN\#F1068A24\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+        {\color[HTML]{333333} Shutdown}         & {\color[HTML]{333333} :XX\#560B1C65\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
+        {\color[HTML]{333333} Shuffle}          & {\color[HTML]{333333} :SH\#A848D5CA\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+        {\color[HTML]{333333} Deal}             & {\color[HTML]{333333} :D1\#841298C4\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
+        {\color[HTML]{333333} AutoDeal}         & {\color[HTML]{333333} :A5\#FE08A898\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+    \end{tabular}
+    \caption{Request-Response Beispiele}
 \end{table}
 Aufgrund eines wohldurchdachten Systems bei der Request-Definition, ist es nun möglich, den Pool an verschiedenen Requests explizit zu minimieren.
 Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden einzelnen Spieler, was mithilfe des Requests \textit{Deal} und \textit{AutoDeal} umgesetzt wird.\\
-Neben diesen Requests, welche sich rein auf den Ablauf eines Kartenspiels konzentrieren, verfügt der Pool an Requests, welche allgemein zur Funktionalität der Maschine beitragen.
+Neben diesen genannten Requests, welche sich rein auf den Ablauf eines Kartenspiels konzentrieren, verfügt der Pool an Requests, welche allgemein zur Funktionalität der Maschine beitragen.
 Der Request \textit{Shutdown} führt lediglich zu einem Herunterfahren der Maschine.
-Auch der der Request \textit{Init}, welcher nach jedem Startvorgang ausgeführt wird, trägt zur allgemeinen Funktion der Maschine bei.
-Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.\\
+Auch der Request \textit{Init}, welcher nach jedem Startvorgang ausgeführt wird, trägt zur allgemeinen Funktion der Maschine bei.
+Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{|l|l|l|c|}
+            \hline
+            \rowcolor[HTML]{FFFFFF}
+            \textbf{Request} & \textbf{Request-String {[}Rx{]}} & \textbf{Aktion} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}\textbf{Response-String {[}Tx{]}}} \\ \hline
+Init     & IN                                          & Initialisierungs-Zustand     & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+Shutdown & XX                                          & Herunterfahren der Maschine  & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+Shuffle  & SH                                          & Mischen von Karten           & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+Deal     & D\textless{}Anzahl der Karten\textgreater{} & Kartenausgabe je nach Anzahl & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausgabe   & \multicolumn{1}{l|}{OK oder E\textless{}Code\textgreater{}} \\ \hline
+\end{tabular}%
+}
+\caption{Request-Response Pool}
+\end{table}
 \subsubsection{Umsetzung-Datenaustausch}
 Zuallererst soll der Ablauf der Kommunikation zwischen dem Programm und dem Endgeräts, welches über die serielle Schnittstelle verbunden ist, betrachtet werden.
 Im ersten Schritt wird auf die Erstellung jedes einzelnen Request eingegangen.\\
-Um die Einbindung von Requests elegant und objektorientiert umzusetzen, stellt die abstrakte Klasse \lstinline[style=java]{Request} den Kopf jedes einzelnen Requests dar.
-Dies bedeutet im engsten Sinne, dass jeder einzelne Request eine Abstammung dieser Klasse ist.
+Um die Einbindung von Requests elegant und objektorientiert umzusetzen, stellt die abstrakte Klasse \lstinline[style=java]{Request} die Elternklasse jedes einzelnen Request dar.
+Dies bedeutet im engsten Sinne, dass jeder einzelne Request eine Ableitung dieser Klasse ist.
 Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}.
 \begin{figure}[H]
 \centering
@@ -685,15 +700,34 @@ Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}
 \label{umlReq}
 \end{figure}
 Bevor nun auf jeden einzelnen Request eingegangen wird, soll nun die abstrakte Klasse \lstinline[style=java]{Request} betrachtet werden.
-Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()}, \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
+Diese Klasse implementiert die Methoden \lstinline[style=java]{createRequestFrame()},\\ \lstinline[style=java]{handleRequestSent()} und \lstinline[style=java]{handleResponse()}.\\\\
 Wie der Name der Methoden schon ahnen lässt, ist \lstinline[style=java]{createRequestFrame()} für die Erstellung jedes Request zuständig.
 Diese Methode besitzt den Zugriffsmodifizierer \lstinline[style=java]{protected} und kann somit von den abstammenden Requests aufgerufen werden.
-\lstinputlisting[firstline=90, lastline=102, style=java,caption=Methode createRequestFrame(),label=Gesamte Methode createRequestFrame()]{src/serial/request/Request.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Methode createRequestFrame(),label=Gesamte Methode createRequestFrame()]
+private static java.util.zip.CRC32 CRC32 = new java.util.zip.CRC32();
+private String reqFrame;
+...
+protected void createRequestFrame(String content) {
+
+    if (content == null || content.isEmpty()) {
+        throw new IllegalArgumentException();
+    }
+
+    CRC32.reset();
+    CRC32.update(content.getBytes());
+    final String crc32 = String.format("%08X", CRC32.getValue());
+    final StringBuilder sb = new StringBuilder(128);
+    sb.append(':').append(content).append('#').append(crc32).append('\n');
+    reqFrame = sb.toString();
+}
+\end{lstlisting}
+% @formatter:on
 Sobald die Methode von einem abstammenden Request aufgerufen wird und der Content, also der Request-String, übergeben wird, überprüft diese Methode den übergebenen Content.
 Sollte dieser leer sein wird eine \lstinline[style=java]{IllegalArgumentException} geworfen und die Erstellung des Requests wird somit abgebrochen.
-Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
+Ist jedoch ein Content vorhanden wird mithilfe der Bibliothek \lstinline{java.util.zip.CRC32} eine CRC-32 Prüfsumme erzeugt und in ein hexadezimales Format geparst.
 Letztendlich wird danach der Request-String mithilfe eines \lstinline{StringBuilders} zusammengebaut.
-Das für die Datenspeicherung im Objekt zuständige Attribut benennt sich \lstinline[style=java]{private byte[] resFrame} und speichert dessen Daten in ein Byte-Array.\\\\
+Das für die Datenspeicherung im Objekt zuständige Attribut benennt sich \lstinline[style=java]{private String reqFrame} und speichert dessen Daten in einem String.\\\\
 Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent()} welche ausschließlich die Aufgabe hat, den definierten Zeitstempel \lstinline[style=java]{timeMillisFrameSent} zu setzten.
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
 Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
@@ -719,8 +753,8 @@ Anhand eines Beispiels soll der Request \textit{Shuffle} gezeigt werden.
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwertiges Objekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
 Die gesamte Kommunikation wird umgesetzt durch die Klasse \lstinline[style=java]{Communication}.
-Diese kann verglichen werden mit einem Wächter, welcher sich um das Senden und Empfangen von Daten kümmert.
-Die vom Design-Pattern Singelton abgeleitete Klasse, stellt 2 Threads bereit, wobei einer davon für den Sendung- und einer für den Empfangsvorgang zuständig ist.
+Diese kann verglichen werden mit einem Service, welcher sich um das Senden und Empfangen von Daten kümmert.
+Die vom Design-Pattern Singelton abgeleitete Klasse, stellt 2 Threads bereit, wobei einer davon für den Sendungs- und einer für den Empfangsvorgang zuständig ist.
 Beide werden im privaten Konstruktor der Klasse erstellt und gestartet.
 Somit ist ab diesem Zeitpunkt die Verfügbarkeit zur Kommunikation gegeben.\\\\
 \textbf{Der CommunicationSendThread:}\\
@@ -735,7 +769,7 @@ Ein wichtiges Beispiel zeigt hierbei das Producer-Consumer-Problem welches in de
 Dieses Problem bezieht sich auf die gemeinsame Verwendung von Items, da hier Überschneidungen entstehen.
 In diesem Fall stellt die sogenannte \lstinline[style=java]{toSentList}, welche als \lstinline[style=java]{LinkedList} vom Typ \lstinline[style=java]{Request} implementiert wurde, die Items dar.
 Einerseits müssen hier Requests zur Liste hinzugefügt und andererseits entnommen werden.\\
-Um nun die Thread-Sicherheit zu gewährleisten und Deadlocks zu vermeiden, wurde von \lstinline[style=java]{synchronized()} gebrauch gemacht.
+Um nun die Thread-Sicherheit zu gewährleisten und Deadlocks zu vermeiden, wurde in kritischen Abschnitten vom Schlüsselwort \lstinline[style=java]{synchronized()} gebrauch gemacht.
 Wie schon im oberen Teil beschrieben, bietet die sogenannte \lstinline[style=java]{toSentList} eine gemeinsame Ablage von Requests.
 Bei jedem Zugriff wird nun also mit \lstinline[style=java]{synchronized(toSentList)} gearbeitet.
 Mithilfe der Methoden \lstinline[style=java]{wait()} und \lstinline[style=java]{notify()} wurde also eine Möglichkeit geschaffen, um Busy-Waiting zu vermeiden.
@@ -766,7 +800,17 @@ finally {
 % @formatter:on
 Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
 Diese Methode, welche nach dem Command-Verhaltensmuster (\autoref{subsec:verhaltensmuster-command}) gestaltet wurde, fügt lediglich ein Element zur Liste hinzu und weckt den Thread mit \lstinline[style=java]{notifyAll()}.
-\lstinputlisting[firstline=61, lastline=67, style=java,caption=Methode sendRequestExecutor(),label=toString() Methode]{src/serial/Communication.java}
+%\lstinputlisting[firstline=61, lastline=67, style=java,caption=Methode sendRequestExecutor(),label=toString() Methode]{src/serial/Communication.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Methode sendRequestExecutor(),label=sendRequestExecutor()]
+public void sendRequestExecutor(Request req) {
+    synchronized (toSentList) {
+        toSentList.add(req);
+        toSentList.notifyAll();
+    }
+}
+\end{lstlisting}
+% @formatter:on
 Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der Thread zu arbeiten.
 Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
 % @formatter:off
@@ -787,13 +831,18 @@ Auch hier wird eine \lstinline[style=java]{LinkedList} implementiert.
 Diese besteht jedoch nicht aus Request-Objekten, sondern aus sogenannten Response-Objekten.
 In jedem einzelnen Objekt vom Typ \lstinline[style=java]{Response} befindet sich der Frame, gespeichert in dem Attribut \lstinline[style=java]{byte [] resFrame}, und ein Zeitstempel namens \lstinline[style=java]{long timeMillisCreatedAt}.\\\\
 Wird nun vom CommunicationReceiveThread, welcher später beschrieben wird, ein Request empfangen und zur \lstinline[style=java]{responseList} hinzugefügt, entfernen die folgenden Zeilen Code den Request von der Liste und speichern diesen.
+Befinden sich jedoch mehrere Elemente in der Liste, ist dies ein Indiz für einen Fehler.
+Sollte dieser Fall auftreten, wird dies mithilfe einer Warnung in der Log-Datei dargestellt.
+Auch wird nur immer der erste Request verwendet und sämtliche Requests, welche sich danach in der Liste befinden, gelöscht.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
+...
 res = responseList.removeFirst();
 if (!responseList.isEmpty()) {
     LOG.warning("response list should be empty, but " + responseList.size() + " items in list");
     responseList.clear();
 }
+...
 \end{lstlisting}
 % @formatter:on
 Mithilfe des Methodenaufrufs \lstinline[style=java]{pendingRequest.handleResponse(res)} wird nun, wie oben beschrieben, der Response weiter verarbeitet.\\\\
@@ -801,20 +850,22 @@ Sollte jedoch kein Response ankommen, versucht das Programm, sofern in der Konfi
 Ist dies nicht der Fall, wird eine \lstinline[style=java]{SerialException} geworfen.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
+...
 if (responseList.isEmpty()) {
     if (Config.getInstance().getConfigSerial().isSecondTryAllowed()) {
-        sendRequestExecutor(pendingRequest);//send second response
+        sendRequestExecutor(pendingRequest); //send second response
         continue mainLoop;
     }
-throw new SerialException("request timeout, missing response"); // if second try isnt allowed throw serial exception
+    throw new SerialException("request timeout, missing response");
 }
+...
 \end{lstlisting}
 % @formatter:on
 Somit wäre ein Kommunikations-Loop abgeschlossen und der CommunicationSendThread wartet wieder auf ankommende Requests des Programms.\\\\
 \textbf{Der CommunicationReceiveThread:}\\
 Nun sollte jedoch das Empfangen eines Response näher beschrieben werden.
 Dieser sogenannte CommunicationReceiveThread holt sich vorerst den InputStream und liest danach die Zeichen ein.
-Ist das ankommende Zeichen ein \lstinline[style=java]{:}, beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
+Ist das ankommende Zeichen das Startzeichen(\lstinline[style=java]{:}), beginnt er, die folgenden Zeichen einschließlich des \lstinline[style=java]{:} in einen Buffer zu speichern.
 Sollte jedoch ein unerwartetes Zeichen ankommen, was auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
@@ -825,31 +876,32 @@ while (!Thread.currentThread().isInterrupted()) {
             if (b == ':') {
                 buffer[bufferIndex++] = (byte) b;
             }
-        else {
-            LOG.warning("receiving unexpected byte (':' expected, get " + b);
-        }
+            else {
+                LOG.warning("receiving unexpected byte
+                    (':' expected, get " + b);
+            }
         }
 \end{lstlisting}
 % @formatter:on
-Werden die ankommenden Daten nun als vollwertigen Request empfunden, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschrieben, weiterverarbeitet.
+Werden die ankommenden Daten nun als vollwertigen Request erkannt, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschrieben, weiterverarbeitet.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
-        else if (bufferIndex < buffer.length) {
-            buffer[bufferIndex++] = (byte) b;
-            if (b == '\n') {
-                synchronized (responseList) {
-                    byte[] resBuffer = Arrays.copyOf(buffer, bufferIndex);
-                    bufferIndex = 0;
-                    responseList.add(new Response(resBuffer));
-                    responseList.notifyAll();
-                }
-            }
+...
+else if (bufferIndex < buffer.length) {
+    buffer[bufferIndex++] = (byte) b;
+    if (b == '\n') {
+        synchronized (responseList) {
+            byte[] resBuffer = Arrays.copyOf(buffer, bufferIndex);
+            bufferIndex = 0;
+            responseList.add(new Response(resBuffer));
+            responseList.notifyAll();
+        }
+    }
 }
 else {
-LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
+    LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)");
 }
-}
-}
+...
 \end{lstlisting}
 % @formatter:on
 \subsubsection{Geräteauswahl} \label{sssec:deviceSelection}
@@ -857,7 +909,7 @@ LOG.warning("receiving byte " + b + " cannot be stored (receive buffer overflow)
 Wie in der \autoref{deviceSelection} gezeigt, erfolgt die Auswahl des Gerätes, mit welchem kommuniziert wird, bei jedem Start-Vorgang.
 Hierbei wird zuallererst die Konfigurationsdatei untersucht.
 Ist hier der Eintrag \lstinline[style=json]{"device": "sim"} vorhanden, wird der Simulator gestartet und alle notwendigen Konfigurationen werden vorgenommen.
-Sollte jedoch etwas anderes eingetragen sein, wird versucht, auf serieller Ebene mit dem Gerät zu kommunizieren.
+Sollte jedoch etwas anderes eingetragen sein, wird versucht mit dem seriellen Gerät zu kommunizieren.
 Ist dies der Fall, muss auch die serielle Schnittstelle vor der Verwendung konfiguriert werden.\\
 All diese Aufgaben übernimmt die vom Design-Pattern-Singelton abgeleitete Klasse \lstinline[style=java]{Serial} und wird im folgenden Abschnitt beschrieben.\\\\
 Wird im ersten Schritt eine Instanz der Klasse Serial mithilfe der Methode \lstinline[style=java]{createInstance()} erstellt, wird der private Konstruktor aufgerufen.
@@ -868,12 +920,12 @@ Diese Parameter werden im Folgenden aufgelistet.
 % @formatter:off
 \begin{lstlisting}[style=json,caption=Teilabschnitt Konfigurationsdatei,label=jsonSerial]
 "serial": {
-"disabled": false,
-    "device": "sim",
-    "baudrate": 57600,
-    "timeoutMillis": 1000,
-    "secondTryAllowed": false,
-    "responseByteLength": 32
+    "disabled": false,
+        "device": "sim",
+        "baudrate": 57600,
+        "timeoutMillis": 1000,
+        "secondTryAllowed": false,
+        "responseByteLength": 32
 },
 \end{lstlisting}
 % @formatter:on
@@ -907,7 +959,28 @@ Also werden diese zu Beginn definiert.\\
 Um nun den Serial-Simulator zu starten ist lediglich eine Erstellung des ReshuffledMainboardSimulator-Objekts notwendig.
 Dieser erhält einen Input- und OutputStream mit welchen er die Kommunikation durchführen kann.\\\\
 So ist nun die volle Funktionalität des Simulators gegeben und es kann ohne echte Peripherie gearbeitet werden.
-\lstinputlisting[firstline=69, lastline=87, style=java,caption=Methode initSimulation(),label=fdsafdsa]{src/serial/Serial.java}
+%\lstinputlisting[firstline=69, lastline=87, style=java,caption=Methode initSimulation(),label=fdsafdsa]{src/serial/Serial.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Methode initSimulation(),label=fdsafdsafds]
+private void initSimulation() throws IOException {
+    toSim = new SimInputStreamBuffer();
+    fromSim = new SimOutputStreamBuffer();
+    inputStream = new InputStream() {
+        @Override
+        public int read() throws IOException {
+            return fromSim.read();
+        }
+        @Override
+        public int available() throws IOException {
+            return fromSim.available();
+        }
+    };
+    outputStream = new SerialSimOutputStream();
+    new ReshuffledMainboardSimulator(toSim, fromSim);
+    LOG.info("serial simulation activated");
+}
+\end{lstlisting}
+% @formatter:on
 \textbf{\lstinline{initSerialDevice()}}
 \\
 Wird nun angenommen, dass es sich bei dem Konfigurationseintrag nicht um die Zeichenkette \lstinline[style=json]{"sim"} handelt, springt das Programm in die Methode \lstinline{initSerialDevice()}.
@@ -919,7 +992,30 @@ Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\
 Dieses genannte Öffnen des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException}führen.
 Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
 Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und OutputStreams für das serielle Endgerät definiert werden.\\\\
-\lstinputlisting[firstline=89, lastline=103, style=java,caption=Methode initSerialDevice(),label=fdsafdsa]{src/serial/Serial.java}
+%\lstinputlisting[firstline=89, lastline=103, style=java,caption=Methode initSerialDevice(),label=fdsafdsa]{src/serial/Serial.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Methode initSimulation(),label=fdsafdsafds]
+private void initSerialDevice() throws SerialException {
+    try {
+        final int baudrate = config.getBaudrate();
+        final String device = config.getDevice();
+        final jssc.SerialPort serialPort = new jssc.SerialPort(device);
+
+        serialPort.openPort();
+        serialPort.setParams(baudrate, jssc.SerialPort.DATABITS_8,
+            jssc.SerialPort.STOPBITS_1, jssc.SerialPort.PARITY_NONE);
+
+        inputStream = new SerialJsscInputStream(serialPort);
+        outputStream = new SerialJsscOutputStream(serialPort);
+
+        LOG.info("serial device port %s (baudrate %d)
+            opened", device, baudrate);
+    } catch (Exception ex) {
+        throw new SerialException("initSerialDevice() fails", ex);
+    }
+}
+\end{lstlisting}
+% @formatter:on
 \newpage
 Ab diesem Zeitpunkt wird das richtige Endgerät ausgewählt und es kann über den jeweiligen Stream kommuniziert werden.
 Dies kann über die implementierte Methode \lstinline[style=java]{writeString()} geschehen, welcher direkt einen String als Parameter übergeben wird.
@@ -959,10 +1055,10 @@ Nun kann nach belieben ein Response erstellt und zurückgesendet werden.\\\\
 \textbf{Piping der Daten}\\
 In den nächsten Zeilen soll ein näherer Blick auf den Weg der Daten zwischen dem Programm und dem Simulator gelegt werden.\\
 Grundlegend besteht das Konzept also darin, Daten zwischen 2 Threads auszutauschen.
-Einer davon schreibt und der Andere liest etwas.
+Einer davon schreibt und der andere liest etwas.
 \footfullcite{Wesley2020}Um diesen Fall von Datenaustausch in ein Programm zu implementieren, bietet Java eine Hilfe in Form von sogenannten Pipes an.
 Ziel dieser Pipe ist es, die beiden Threads zu synchronisieren.
-Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream}.
+Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} aus dem Paket \lstinline[style=java]{java.io}.
 So werden diese 2 Klassen immer in unabhängigen Threads verwendet, wobei der eine Thread aus dem \lstinline[style=java]{PipedInputStream} etwas liest und der andere in den \lstinline[style=java]{PipedOutputStream} etwas schreibt.\\
 Grundlegend kann man also sagen, dass das in der \autoref{ProducerConsumer} gezeigte Producer-Consumer Problem bzw. dessen Lösung, mithilfe eines \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} vereinfacht werden kann.
 Der Grund dafür liegt in der automatischen Synchronisation der zur Verfügung gestellten Methoden \lstinline[style=java]{read()} und \lstinline[style=java]{write()}.\\
@@ -979,9 +1075,9 @@ In diesen beiden Klassen werden die jeweiligen \lstinline[style=java]{PipedInput
 So ist nun die Verbindung zwischen beiden Threads hergestellt.
 \subsection{Logging}
 \subsubsection{Konzept}\label{sssec:logOverview}
-Logging ist nach dem Debugging selbst, dass zweitwichtigste Mittel um einzelne Programmbausteine oder das gesamte Programm auf Fehler zu untersuchen.
+Logging ist nach dem Debugging selbst, ein weiteres wichtiges Mittel um einzelne Programmbausteine oder das gesamte Programm auf Fehler zu untersuchen.
 Mithilfe einer Log-Datei können z.B aktuelle Wertebelegungen im Detail dargestellt werden.
-Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks immer sinnvoller.\\\\
+Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks aufgrund der Flexibilität im Einsatz immer sinnvoller.\\\\
 \textbf{Gründe für die Verwendung von Logging-Frameworks}\\
 Als Beispiel kann mithilfe einer Log-Datei auch ein Benutzer, welcher nicht über die Möglichkeit verfügt, den Quellcode einzusehen, einzelne Fehler erkennen (vorausgesetzt diese Möglichkeit ist durch das Programm geschaffen).
 Auch ist nun die Persistenz der Logging-Einträge gegeben.
@@ -1046,7 +1142,7 @@ try {
     LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
 }
 catch (FileNotFoundException ex) {
-System.out.println("Should not see me :)");
+    System.out.println("Should not see me :)");
 }
 \end{lstlisting}
 % @formatter:on
@@ -1085,7 +1181,7 @@ Einige Anforderungen an diese Konfigurationsdatei sind:
 \item Einfache Erweiterbarkeit
 \item Übersichtliche Darstellung
 \end{enumerate}
-Aufgrund dieser Darstellung setzte sich eine Lösung mithilfe des Datenformats JSON durch.
+Aufgrund dieser Darstellung soll eine Lösung mithilfe des Datenformats JSON geschaffen werden.
 Nun ergibt sich jedoch das Problem, dass eine enorm große Datenmenge in dieses Objekt verpackt werden muss.
 Eine Lösung bietet, wie im \autoref{sssec:json} erwähnt, die Bibliothek Gson.
 Diese vereinfacht die Erstellung einer Json-Datei.
@@ -1107,18 +1203,18 @@ Dieses Pattern soll kurz in der \autoref{sampleConfig} gezeigt werden.
     "gamemodes": [
     ],
     "serial": {
-    "disabled": false,
-    "device": "sim",
-    "baudrate": 57600,
-    "timeoutMillis": 1000,
-    "secondTryAllowed": false,
-    "responseByteLength": 32
+        "disabled": false,
+        "device": "sim",
+        "baudrate": 57600,
+        "timeoutMillis": 1000,
+        "secondTryAllowed": false,
+        "responseByteLength": 32
     },
     "internationalization": {
-    "language": "en",
-    "country": "US",
-    "bundlePath": "",
-    "bundlePrefix": "bundle"
+        "language": "en",
+        "country": "US",
+        "bundlePath": "",
+        "bundlePrefix": "bundle"
     }
 }
 \end{lstlisting}
@@ -1131,7 +1227,7 @@ So verfügt das Programm nun die Möglichkeit, wichtige Daten zu speichern und d
 \subsection{Statistiken}
 \subsubsection{Konzept}
 Sobald die Implementierung der Konfigurationsdatei abgeschlossen ist, kann nun nach dem gleichen Schema auch die Statistik-Datei erstellt werden.\\\\
-Diese genannte Datei soll nach jedem Beenden des aktuellen Spiels am Interface, neu geschrieben werden.
+Diese genannte Datei soll nach jedem Beenden des aktuellen Spiels, was mithilfe eines Buttons am Interface realisiert wird, neu geschrieben werden.
 Die Bestandteile dieser Datei sollten vor der Umsetzung klar definiert sein.
 \begin{enumerate}
 \item Gesamtanzahl aller Spiele
@@ -1196,11 +1292,10 @@ Nun muss nur noch der explizite Controller beim Starten definiert werden.
 public void start(Stage stage) {
 try {
     final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
-
     fxmlLoader.setController(new StartupController());
-
     final Parent root = fxmlLoader.load();
-    stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(), Config.getInstance().getGuiHeight()));
+    stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(),
+        Config.getInstance().getGuiHeight()));
     stage.initStyle(StageStyle.UNDECORATED);
     stage.setTitle("Startup GUI");
     stage.show();
@@ -1208,11 +1303,10 @@ try {
     LOG.info(stage.getTitle() + " started successfully");
 } catch (IOException ex) {
     LOG.severe("Exception while running GUI" + ex);
-    ex.printStackTrace();
 }
 \end{lstlisting}
 % @formatter:on
-\textbf{Fazit}\\
+\textbf{Fazit:}\\
 So ist es nun möglich, mit wenigen Schritten diese genannte Trennung sauber durchzuführen.
 Diese soll in allen weiteren Programmabschnitten vollzogen werden.
 \subsection{Startup-Window und Controller}\label{subsec:startupController}
@@ -1220,6 +1314,8 @@ Aufgabe des Startup-Windows ist es, den Benutzer das Spiel, welches er spielen m
 Diese Parametrisierung beinhaltet das Auswählen eines Spielmodis sowie die Konfiguration der Spielernamen.\\\\
 Die Auswahl eines Spielmodis erfolgt über eine eigens dafür bereitgestellte ComboBox.
 In dieser ComboBox befinden sich Objekte vom Typ \lstinline[style=java]{GamemodeModel}, gezeigt im \autoref{gamemodeModel}.
+Hierbei wurde von der Annotation \lstinline[style=java]{@SerializedName} gebrauch gemacht, welche das Datenelement mit einem bestimmten Namen in die JSON-Datei schreibt.
+So ist das Annotation Attribut genau der Name des Elements in der Datei.
 \lstinputlisting[firstline=7, lastline=16, style=java,caption=Klasse GamemodeModel(),label=gamemodeModel]{src/data/model/GamemodeModel.java}
 Sollte nun der Spieler nicht zufrieden mit gegebenen Spielmodis aus der ComboBox sein, kann er diese selbst auf ihn abstimmen und konfigurieren.
 Es kann hier über das Interaktionsmenü die Karten-, Spieler-, und Automatic-Deal-Anzahl (AutoDeal) eingestellt werden.
@@ -1232,7 +1328,19 @@ Von dort aus kann der Name bearbeitet werden.\\
 Umgesetzt wird dies mithilfe von 2 sogenannte \lstinline[style=java]{ChangeListeners}, welche dauerhaft auf eine Veränderung, also einen "Change" warten, um dann eine Methode auszuführen.
 Neben Listener wären auch Properties und Bindings für diese Anwendung möglich.
 Besser sind jedoch Listener.
-\lstinputlisting[firstline=54, lastline=59, style=java,caption=Deklaration ChangeListener,label=changelistener]{src/gui/controller/StartupController.java}
+%\lstinputlisting[firstline=54, lastline=59, style=java,caption=Deklaration ChangeListener,label=changelistener]{src/gui/controller/StartupController.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Deklaration ChangeListener,label=changelistener]
+private final ChangeListener<String> nameChangeListener
+    = (observableValue, oldValue, newValue) -> {
+    notifyList(newValue);
+};
+private final ChangeListener<PlayerModel> playerListener
+    = (observableValue, oldValue, newValue) -> {
+    tfPlayerName.setText(newValue.getName());
+};
+\end{lstlisting}
+% @formatter:on
 Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
 Die Daten werden ab jetzt nicht mehr in der standard Darstellung angezeigt, sondern basieren auf einem eigens dafür angepassten Rendering.
 Solch ein Verfahren hat den Vorteil, dass nun direkt ein Objekt in die ComboBox bzw. in die Liste importiert werden kann und ab diesem Zeitpunkt die Referenzierung des selektierten Elements leichter fällt.
@@ -1272,7 +1380,7 @@ Sollte je 1 Punkt nicht ausreichen, kann mithilfe eines implementierten Sliders 
 Wird ein Punkt hinzugefügt, aktualisiert dies automatisch die Punkteanzeige.\\\\
 Umgesetzt wurde diese genannte Anzeige als \lstinline[style=java]{XYChart}, welcher mithilfe der folgenden Zeilen deklariert wurde.
 \lstinputlisting[firstline=43, lastline=45, style=java,caption=Initialisierung der Achsen,label=XYChart]{src/gui/controller/HomeController.java}
-Nachdem diese Deklarierung erfolgte, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
+Nachdem diese Deklarierung erfolgt ist, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
 Diese Methode iteriert durch alle Spieler des Game-Objekts, holt die Namen sowie Punkteanzahl der Spieler heraus und schreibt sie in den \lstinline[style=java]{XYChart}.\\
 Neben dieser Funktion stellt das Dashboard auf der linken Seite ein Kontrollmenü zum Steuern der Maschine bereit.
 In diesem Menü kann mit einem Drücken auf den Button \textit{Herunterfahren} und dem anschließenden Bestätigen der Abfrage(\autoref{sssec:alert}), die Maschine heruntergefahren werden.
@@ -1360,22 +1468,22 @@ txt_msg_finishGame=Wollen Sie wirklich das Spiel beenden?
 % @formatter:on
 Die folgende Methode filtert nun genau nach dem oben genannte Pattern und es werden infolgedessen die Daten eingelesen.
 \lstinputlisting[firstline=17, lastline=20, style=java,caption=Methode getMatchingFiles(),label=readBundle]{src/util/FileUtil.java}
-Sobald diese nun standartmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{activateLocale()} aktiviert werden kann.
+Sobald diese nun standardmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{activateLocale()} aktiviert werden kann.
 \lstinputlisting[firstline=90, lastline=101, style=java,caption=activateLocale(),label=multiLang]{src/gui/multilanguage/ResourceManager.java}
 Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
 Sollte dies der Fall sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
 Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuelle Locale zu schreiben, um dann beim nächsten Start dieses zu verwenden.
 \section{Hardwarenahe-Programmierung}
-Um nun die gesendeten Daten über der seriellen Schnittstelle auf der Ansteuerplatine zu erhalten ist es von Nöten, diese genannte Platine einzurichten und zu programmieren.
+Um nun die gesendeten Daten über der seriellen Schnittstelle auf der Ansteuerplatine zu erhalten ist es notwendig, diese genannte Platine einzurichten und zu programmieren.
 Im folgenden Abschnitt wird nun dieser Prozess näher erklärt.
 \subsection{Konfiguration des Mikrocontrollers}
 \footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtung des Mikrocontrollers.
 Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.\\
 Bei einem neuen µC ist es grundsätzlich notwendig im Datenblatt genau dieses µCs den Auslieferungszustand der Fuses zu ermitteln.
-So werden beispielsweise die ATmega Prozessoren mit aktiviertem internen Oszillator ausgeliefert und man darf sich dementsprechend nicht wundern, wenn der µC einfach nicht mit dem angeschlossenen Quarz (XTAL) oszillieren will.
+So werden beispielsweise die ATmega Prozessoren mit aktiviertem internen Oszillator ausgeliefert und man darf sich nicht wunden, wieso des Mikrocontroller nicht funktioniert.
 Aufgrund der Verfügbarkeit eines Programmiersteckers ist es nun einfach, diese Fuse-Bits, also die Bits, welche für die Konfiguration des Mikrocontrollers dienen zu setzten.
 Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.\\
-Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
+\footfullcite{Haemmerling2020}Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/Features.PNG}
@@ -1402,7 +1510,7 @@ Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Um
 Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
 Das bedeutet, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
 Wird ein Zeichen von der serielle Schnittstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
-\lstinputlisting[firstline=142, lastline=176, style=c,caption=Funktion apphandleUartByte(),label=multiLang]{src/app.c}
+\lstinputlisting[firstline=141, lastline=166, style=c,caption=Funktion apphandleUartByte(),label=multiLang]{src/app.c}
 Zuerst wird geprüft ob das erste ankommende Byte ein Startbyte nämlich ein \lstinline[style=C]{:} ist.
 Falls dies nicht der Fall ist sollte der \lstinline[style=C]{ErrorCount} hochgezählt werden.
 Wenn im Buffer bereits ein Startbyte : vorhanden ist, darf kein Zweites innerhalb der Request geschrieben werden, da dies sonst zu Fehlern führen könnte.
@@ -1425,12 +1533,11 @@ Auch soll gezeigt werden, wie die Konfiguration des Display und das aufsetzten d
 \subsection{Konfiguration des Zielsystems}
 \subsubsection{Betriebssystem}
 Als Betriebssystem wurde Raspbian ausgewählt.
-Das offizielle Betriebssystem für den Raspberry PI basiert auf dem Linux-Kernel.
+Das offizielle Betriebssystem für den Raspberry PI basiert auf einem Debian-System mit Linux-Kernel.
 Außerdem bringt es die aktuellste Unterstützung von Hardware mit und ist zudem noch außerordentlich schlank.
 So wird auch der verwendete Display optimal Unterstützt.\\
 Installiert werden kann Raspbian nach dem Download von der offiziellen Website.
 Diese Installation startet mit dem erstellen einer Bootfähigen SD-Karte.
-Verwendet wurde das Tool Rufus, welches einfach zu bedienen ist.
 Ist nun die SD-Karte bootfähig, muss lediglich der Raspberry PI gestartet werden.
 Anschließend folgt eine Systemkonfiguration.
 \subsubsection{Integration des Touchpanels}
@@ -1440,8 +1547,8 @@ Das ausgewählte Touchpanel besitzt folgende Eigenschaften:
 \begin{enumerate}
 \item  1024×600 Auflösung
 \item Mit kapazitiven Touchcontrol
-\item Einfache Konfiguration
-Nach dem Anschließen muss nur mehr die \textit{config.txt} am Betriebssystem des Raspberry PI ergänzt werden.
+\item Einfache Konfiguration\\
+Nach dem Anschließen muss nur mehr die \textit{config.txt}, welche sich im Root-Verzeichnis des Betriebssystems vom Raspberry PI befindet, ergänzt werden.
 Folgende Zeilen werden vorausgesetzt:
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Display-Parameter,label=resource]

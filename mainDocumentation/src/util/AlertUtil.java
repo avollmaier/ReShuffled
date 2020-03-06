@@ -24,7 +24,8 @@ public class AlertUtil {
     public static void showContentDialog(StackPane root, Node noteToBeBlur, List<JFXButton> controls, String header, String body) {
         BoxBlur boxBlur = new BoxBlur(2, 2, 2);
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.NONE);
+        JFXDialog dialog = new JFXDialog(root, dialogLayout,
+                JFXDialog.DialogTransition.NONE);
         controls.forEach(control -> {
             control.addEventHandler(MouseEvent.MOUSE_CLICKED, (arg0) -> {
                 dialog.close();

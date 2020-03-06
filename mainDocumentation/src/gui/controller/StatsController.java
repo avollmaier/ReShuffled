@@ -43,7 +43,8 @@ public class StatsController implements Initializable {
     private TreeItem<PlayerModel> createTreeData() {
         final TreeItem<PlayerModel> root = createGroupTreeItem("All Games");
         Statistics.getInstance().getGames().forEach(game -> {
-            final TreeItem<PlayerModel> group1 = createGroupTreeItem(game.getGamemode().getName());
+            final TreeItem<PlayerModel> group1
+                    = createGroupTreeItem(game.getGamemode().getName());
             game.getPlayers().forEach(player -> {
                 group1.getChildren().add(new TreeItem<>(player));
                 group1.setExpanded(true);
@@ -53,7 +54,6 @@ public class StatsController implements Initializable {
         root.setExpanded(true);
         return root;
     }
-
 
     private TreeItem<PlayerModel> createGroupTreeItem(final String name) {
         return new TreeItem<>(new PlayerModel(name, 0));

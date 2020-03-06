@@ -91,8 +91,7 @@ uint8_t hex2int (char h)
 }
 
 
-uint8_t app_handleModbusRequest ()
-{
+uint8_t app_handleModbusRequest (){
   char *buffer = app.modbusBuffer;
   uint8_t size = app.bufferIndex;
 
@@ -139,34 +138,25 @@ void app_sendUartResponse ()
 }
 
 
-void app_handleUartByte (char c)
-{
-  if (c == ':')
-  {
-    if (app.bufferIndex > 0)
-    {
+void app_handleUartByte (char c){
+  if (c == ':'){
+    if (app.bufferIndex > 0){
       app.errorCount = app_inc16BitCount(app.errorCount);
     }
     app.modbusBuffer[0] = c;
     app.bufferIndex = 1;
   }
-  else if (app.bufferIndex == 0)
-  {
-    app.errorCount = app_inc16BitCount(app.errorCount);
-
-  }
-  else if (app.bufferIndex >= sizeof (app.modbusBuffer))
-  {
+  else if (app.bufferIndex == 0){
     app.errorCount = app_inc16BitCount(app.errorCount);
   }
-  else
-  {
+  else if (app.bufferIndex >= sizeof (app.modbusBuffer)){
+    app.errorCount = app_inc16BitCount(app.errorCount);
+  }
+  else{
     app.modbusBuffer[app.bufferIndex++] = c;
-    if (c == '\n')
-    {
+    if (c == '\n'){
       uint8_t errCode = app_handleModbusRequest();
-      if (errCode != 0)
-      {
+      if (errCode != 0){
         printf("Fehler: %u\r\n", errCode);
         app.errorCount = app_inc16BitCount(app.errorCount);
       }
