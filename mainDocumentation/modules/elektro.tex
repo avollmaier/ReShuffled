@@ -301,7 +301,7 @@ ein Fließen des Stromes durch die Motorwicklung bewirkt.
 \begin{itemize}
     \item \textbf{Vorteile}
     \begin{itemize}
-        \item geringe Kosten, 1€ bis 6€
+        \item geringe Kosten, 1€ bis 4€
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
@@ -322,7 +322,7 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
-        \item höhere Kosten (5 Stück für etwa 12€)
+        \item höhere Kosten (5 Stück für etwa 14€)
     \end{itemize}
 \end{itemize}
 
@@ -376,7 +376,7 @@ Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich 
     \caption{Vergleich der Treibermodule}
 \end{table}
 
-Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist und dieser einen Maximalstrom von 1.6A benötigt, wäre es ratsam einen Treiber auszuwählen, welcher 2A Strom zur Verfügung stellen kann.
+Da unsere Wahl auf den Schrittmotor 12HS19-2004S1 gefallen ist (siehe Mechanik-Teil) und dieser einen Maximalstrom von 2A benötigt, wäre es ratsam einen Treiber auszuwählen, welcher diesen Strom zur Verfügung stellen kann.
 Unsere Treiber-Auswahl ist somit auf den DRV8825 gefallen, da dieser alle erforderlichen Kriterien, wie einen geringen Preis und den 3.3V Logikpegel, erfüllt und ein gutes Allroundpaket mit sich bringt.
 Eine Begründung, warum die Wahl auf das DRV8825 Modul, und nicht das A4988 Modul fiel, sind die größere Spannungsbandbreite, der höhere maximale Strom pro Phase sowie die höhere maximale Schrittauflösung.
 Auf eine H-Brücke wurde nicht zurückgegriffen, da ihre Versorgungsspannung und somit auch die des Motors mit der des Mikrocontrollers übereinstimmen müsste.
@@ -478,7 +478,7 @@ Eine Lichtschranke würde, wie der Endschalter, am Anfang angefahren werden und 
     \caption{Vergleich der Erfassungsvarianten}
 \end{table}
 
-Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
+Unsere Wahl fiel auf den Endschalter, da dieser leicht in kürzester Zeit zu einem geringen Preis (je 1€) erworben werden konnte und ausreichend Genauigkeit mit sich bringt.
 
 \subsection{Spannungsversorgung}
 \subsubsection{Doppel-Schaltnetzteil mit zwei Ausgangsspannungspegeln}
@@ -548,7 +548,7 @@ Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V mit 
 
 Um die maximale Leistung des ATmega324PA zu berechnen, wird der maximal anfallende Ausgangsstrom bei unserer Verwendung herangezogen.
 Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA .
-Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V erhält man eine Leistung von 198mW .
+Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V, erhält man eine Leistung von 198mW .
 Dieser Wert liegt unter der maximalen Leistung des µC von 660mW und ist somit zulässig.
 
 \footfullcite{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
@@ -810,7 +810,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
 \begin{align}
-    R_{ges} &= \frac{R_1 \cdot R_2}{R_1 + R_2} \\
+    R_{ges} &= \frac{1}{\frac{1}{R1}+\frac{1}{R2}} \\
     U_c &= 1(t) \cdot (1-e^{\frac{-1}{\tau}})\\
     \sum_{k=1}^n U_k &= 0 \\
     \tau &= R \cdot C
@@ -836,7 +836,7 @@ Vereinfacht man die in \autoref{fig:UNLATCH} zu sehende Schaltung, erhält man f
 \end{figure}
 
 Dies hilft uns, den Gesamtwiderstand der Schaltung auszurechnen.
-Mann kann das Erssatzschaltbild in weiterer Folge zusammenfassen, womit der Betrag der Zeitkonstante $\tau$ berechnet werden kann.
+Mann kann das Ersatzschaltbild in weiterer Folge zusammenfassen, womit der Betrag der Zeitkonstante $\tau$ berechnet werden kann.
 Als Bauteilwerte erstellten wir folgende Annahmen:
 
 \begin{itemize}
@@ -1004,7 +1004,7 @@ Setzen wir nun die bei unserer Anwendung durchschnittlich anfallenden Werte ein,
     P_D &= 0.93W
 \end{align*}
 
-Der daraus folgende Sperrschichtübergangstemperatur lässt sich mit dieser Formel berechnen:
+Die daraus folgende Sperrschichtübergangstemperatur lässt sich mit dieser Formel berechnen:
 \begin{align}
     T_j &= P_D \cdot R_{ja} + T_A\\
     T_j &= 0.93W \cdot 70\frac{{}^{\circ}C}{W} + 25^{\circ}C \notag \\
@@ -1012,7 +1012,7 @@ Der daraus folgende Sperrschichtübergangstemperatur lässt sich mit dieser Form
 \end{align}
 
 Da sich die zulässige maximale Sperrschichttemperatur bei 125°C liegt, lässt es sich auf einen zulässigen Dauerbetrieb schließen.\\
-Um jedoch Gewissheit zu erlangen, ob sommerliche Extremtemperaturen im Gehäuse (50°C) keinen schädigenden Einfluss haben, ist dieser Fall ebenfalls zu berechnen.
+Um jedoch Gewissheit zu erlangen, ob sommerliche Extremtemperaturen im Gehäuse (50°C) keinen schädigenden Einfluss haben würden, ist dieser Fall ebenfalls zu berechnen.
 \begin{align*}
     T_j &= P_D \cdot R_{ja} + T_A\\
     T_j &= 0.93W \cdot 70\frac{{}^{\circ}C}{W} + 50^{\circ}C \\
@@ -1817,7 +1817,7 @@ Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schal
 
 \subsection{Auswahl der Zener-Diode}
 
-\footfullcite{BZX84-series-Datasheet}Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
+\footfullcite[Vgl.]{BZX84-series-Datasheet}Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
 Sie bringt eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0.9V und ein SOT-23 Gehäuse mit sich.
 
 \subsection{Auswahl sonstiger Bauelemente}
@@ -1903,7 +1903,7 @@ Die folgend zu findenden Abbildungen zeigen die Vorder- und Rückseite des ferti
 
 Bevor wir fester Überzeugung aller korrekten Funktionen sein konnten, stellten wir uns die Fertigung eines funktionierenden Prototypen als Aufgabe.
 Dies hat die Vorteile, etwaige Fehler im Platinenlayout bereits vor der finalen Version zu erkennen und zu korrigieren.
-Jener Prototyp wurde in der Werkstätte der \acs{HTBLA} Kaindorf angefertigt. \\
+Jener Prototyp wurde in der Werkstätte der HTBLA Kaindorf angefertigt. \\
 
 \textbf{Als Fertigungsschritte sind folgende zu nennen:}
 
@@ -1961,7 +1961,7 @@ Eine essenzielle Schutzmaßnahme, um den Raspbbery Pi bei einer zugeführten Üb
 
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1]
+    \begin{circuitikz}[european, scale = 0.9]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (4,0);
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (4,0) to [/tikz/circuitikz/bipoles/length=1cm,zD-, l_=$D1$, *-*] (4,3);
@@ -1988,16 +1988,16 @@ Es muss lediglich auf das Abkühlen des PTC gewartet werden.
 Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Komponenten wie folgt zu wählen:
 \begin{itemize}
     \item PTC als MF-MSMF250/16X
-    \item D1 als SMBJ5.0A
+    \item D1 als SMBJ5.A/CA
 \end{itemize}
 
-Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einem Haltestrom von 2A bei 23°C aus.
+Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
+Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
+Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand. \\
 
-Die Suppressordiode SMBJ5.0A bringt eine Breakdown Voltage von mindestens 6.4V bis 7V mit sich und kann einen maximalen Spitzenstrom von bis zu 65.3A bei einer Clamping Voltage von 9.
-
-Eine weitere, zerstörerische und wartungsintensivere Möglichkeit wäre, diese Schaltung mit einer Schmelzsicherung anstatt dem PTC zu realisieren.
+%Eine weitere, zerstörerische und wartungsintensivere Möglichkeit wäre, diese Schaltung mit einer Schmelzsicherung anstatt dem PTC zu realisieren.
 
 \newpage
 
