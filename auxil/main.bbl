@@ -65,6 +65,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 22.12.2019}
       \field{title}{Funktionsweise und Technologie von kapazitiven SensorenFunktionsweise und Technologie von kapazitiven Sensoren}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.mikrocontroller.net/articles/AVR_Typen
       \endverb
@@ -91,6 +92,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 22.12.2019}
       \field{title}{TB6600 arduino Stepper Motor Driver}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.dfrobot.com/product-1547.html
       \endverb
@@ -117,6 +119,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 13.01.2020}
       \field{title}{DR127-101-R Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/0512/0900766b8116a153.pdf
       \endverb
@@ -143,6 +146,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 15.09.2019}
       \field{title}{EEVblog #262 - World's Simplest Soft Latching Power Switch Circuit}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.youtube.com/watch?v=Foc9R0dC2iI
       \endverb
@@ -170,6 +174,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 24.01.2020}
       \field{title}{FDD6637 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/f1ee/0900766b810c960f.pdf
       \endverb
@@ -197,6 +202,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 24.01.2020}
       \field{title}{FDN337N Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/24f1/0900766b80d2310e.pdf
       \endverb
@@ -265,6 +271,35 @@
       \field{dateera}{ce}
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'Gamma2000'}
     \endentry
+    \entry{Haemmerling2020}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5a8631b0215388d72dab1db53797d13c}{%
+           family={Hämmerling},
+           familyi={H\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5a8631b0215388d72dab1db53797d13c}
+      \strng{fullhash}{5a8631b0215388d72dab1db53797d13c}
+      \strng{bibnamehash}{5a8631b0215388d72dab1db53797d13c}
+      \strng{authorbibnamehash}{5a8631b0215388d72dab1db53797d13c}
+      \strng{authornamehash}{5a8631b0215388d72dab1db53797d13c}
+      \strng{authorfullhash}{5a8631b0215388d72dab1db53797d13c}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Engbedded Atmel AVR® Fuse Calculato}
+      \verb{urlraw}
+      \verb http://www.engbedded.com/fusecalc/
+      \endverb
+      \verb{url}
+      \verb http://www.engbedded.com/fusecalc/
+      \endverb
+      \warn{\item Entry 'Haemmerling2020' (C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib): Invalid format '15.02.2020' of date field 'date' - ignoring}
+    \endentry
     \entry{Inden2018}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=1cba852b5fa0cfc4e416b6b16e373165}{%
@@ -331,6 +366,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 09.01.2020}
       \field{title}{DRV8825 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb http://www.ti.com/lit/ds/symlink/drv8825.pdf
       \endverb
@@ -455,6 +491,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 08.06.2019}
       \field{title}{AVR Typen}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.mikrocontroller.net/articles/AVR_Typen
       \endverb
@@ -523,6 +560,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 08.01.2020}
       \field{title}{Verpolschutz}
+      \true{nocite}
       \verb{urlraw}
       \verb http://www.lothar-miller.de/s9y/categories/39-Verpolschutz
       \endverb
@@ -616,6 +654,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 26.12.2019}
       \field{title}{DRV8825 Stepper Motor Driver Carrier, High Current}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.pololu.com/product/2133
       \endverb
@@ -645,6 +684,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 13.01.2020}
       \field{title}{MBRD320/330/340 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb http://www.irf.com/product-info/datasheets/data/mbrd320.pdf
       \endverb
@@ -671,6 +711,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 07.01.2020}
       \field{title}{RR264M Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/84b2/0900766b80dd2345.pdf
       \endverb
@@ -742,6 +783,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 09.01.2020}
       \field{title}{LM2576 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/1bc3/0900766b812e2552.pdf
       \endverb
@@ -772,6 +814,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 07.01.2020}
       \field{title}{MBR130 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
       \endverb
@@ -800,6 +843,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 09.01.2020}
       \field{title}{BZX84 series Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
       \endverb
@@ -828,6 +872,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 02.03.2020}
       \field{title}{NCP1117,NCV1117 Datasheet}
+      \true{nocite}
       \verb{urlraw}
       \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
       \endverb
@@ -957,6 +1002,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 26.05.2019}
       \field{title}{USB to serial chip CH340}
+      \true{nocite}
       \verb{urlraw}
       \verb https://cdn.sparkfun.com/datasheets/Dev/Arduino/Other/CH340DS1.PDF
       \endverb
@@ -1017,6 +1063,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Eingesehen am 22.12.2019}
       \field{title}{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}
+      \true{nocite}
       \verb{urlraw}
       \verb https://wirautomatisierer.industrie.de/allgemein/induktiv-kapazitiv-optisch-oder-ultraschall/
       \endverb
