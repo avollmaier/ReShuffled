@@ -122,7 +122,6 @@ Die Möglichkeiten des Benutzers diese zu bedienen, sollen folgende Kernpunkte b
 Die wesentliche Anforderung, die Oberfläche einfach und schlicht zu halten, soll im Projekt berücksichtigt werden.
 Grundsätzlich steht die sogenannte User-Experience, welche alle Aspekte der Eindrücke eines Nutzers bei der Interaktion mit einem Produkt beschreibt sowie die Funktionalität bei der Programmierung im Vordergrund.
 Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
-
 \subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
 Wie in der Einleitung bereits erwähnt besteht das Backend aus Funktionen, welche im Hintergrund abgearbeitet werden.
 Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.\\
@@ -356,7 +355,7 @@ Andererseits verfügt diese Struktur auch ein Package namens \lstinline{test}, w
 Trotz alledem wurde auf die althergebrachte Version der Projekterstellung gesetzt.
 Grund dafür ist wiederum die fehlende Möglichkeit, eine Remote-Platform innerhalb eines Maven-Projekts zu implementieren.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
-
+\newpage
 \section{Grundlagen}\label{sec:grundlagen}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
@@ -548,6 +547,7 @@ Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und ei
 Ein weiterer Grund zur Verwendung ist ebenso eine effektive Umwandlung von Daten, also Objekten, Arrays und sonstigen Variablen, in das JSON-Dateiformat.\\
 All diese Merkmale sind essenziell wichtig und eröffnen ein breites Spektrum an Verwendungsmöglichkeiten.\\\\
 Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel näher visualisiert.
+\newpage
 \begin{lstlisting}[style=json, caption=JSON-Codebeispiel,label=jsonExample]
 {
     "employee": {
@@ -575,7 +575,6 @@ Dieser genannte String kann danach je nach Belieben in eine Datei geschrieben od
 \\
 Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline[style=java]{gson.fromJson()} umgekehrt werden.
 Hierbei wird aus einem JSON-String ein Objekt erzeugt.
-\\
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
 \subsection{Kommunikation}\label{subsec:kommunikation}
 \subsubsection{Konzept}
@@ -669,7 +668,8 @@ Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden ei
 Neben diesen genannten Requests, welche sich rein auf den Ablauf eines Kartenspiels konzentrieren, verfügt der Pool an Requests, welche allgemein zur Funktionalität der Maschine beitragen.
 Der Request \textit{Shutdown} führt lediglich zu einem Herunterfahren der Maschine.
 Auch der Request \textit{Init}, welcher nach jedem Startvorgang ausgeführt wird, trägt zur allgemeinen Funktion der Maschine bei.
-Dieser hat den Sinn und Zweck, die Maschine in einen Initialisierungszustand zu versetzten.
+Dieser hat den Sinn und Zweck, die Maschin
+ e in einen Initialisierungszustand zu versetzten.
 \begin{table}[H]
     \centering
     \resizebox{\textwidth}{!}{%
@@ -694,8 +694,7 @@ Dies bedeutet im engsten Sinne, dass jeder einzelne Request eine Ableitung diese
 Dargestellt wird dies auch durch das generierte UML-Diagramm in \autoref{umlReq}.
 \begin{figure}[H]
 \centering
-\vspace{-5mm}
-\includegraphics[width=1\textwidth]{fig/ainf/RequestUML.pdf}
+\includegraphics[width=1\textwidth]{fig/ainf/AbstractRequestUML.pdf}
 \caption{UML-Diagramm Request-Baum}
 \label{umlReq}
 \end{figure}
@@ -906,8 +905,16 @@ else {
 % @formatter:on
 \subsubsection{Geräteauswahl} \label{sssec:deviceSelection}
 %Nachdem nun ausführlich über den Serial-Simulator gesprochen wurde, wird nun im Folgenden die Geräteauswahl beschrieben.\\
-Wie in der \autoref{deviceSelection} gezeigt, erfolgt die Auswahl des Gerätes, mit welchem kommuniziert wird, bei jedem Start-Vorgang.
-Hierbei wird zuallererst die Konfigurationsdatei untersucht.
+Wie in der \autoref{deviceSelection} gezeigt, erfolgt die Auswahl des Gerätes, mit welchem kommuniziert wird, bei jedem Startvorgang.
+Zuständig für diese Referenzierung des Endgeräts ist die Klasse \lstinline[style=java]{Serial}, welche alle dafür benötigten Methoden bereitstellt.
+Designt wurde diese Klasse nach dem Singelton-Entwurfsmuster was in der \autoref{umlSerial} ersichtlich ist.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{fig/ainf/SerialUML.pdf}
+\caption{UML-Diagramm Serial}
+\label{umlSerial}
+\end{figure}
+Im ersten Schritt erfolgt die Untersuchung der Konfigurationsdatei.
 Ist hier der Eintrag \lstinline[style=json]{"device": "sim"} vorhanden, wird der Simulator gestartet und alle notwendigen Konfigurationen werden vorgenommen.
 Sollte jedoch etwas anderes eingetragen sein, wird versucht mit dem seriellen Gerät zu kommunizieren.
 Ist dies der Fall, muss auch die serielle Schnittstelle vor der Verwendung konfiguriert werden.\\
@@ -929,7 +936,6 @@ Diese Parameter werden im Folgenden aufgelistet.
 },
 \end{lstlisting}
 % @formatter:on
-\newpage
 Andererseits soll die Geräteauswahl mithilfe eines Abgleichs des Gerätenamens erfolgen.
 Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinline[style=java]{if (config.getDevice().equals("sim"))} erkannt, wird die Methode \lstinline[style=java]{initSimulation()}, ansonsten \lstinline[style=java]{initSerialDevice()} ausgeführt.
 In diesen beiden Methoden werden sowohl die serielle Schnittstelle, als auch der Simulator konfiguriert.
@@ -1016,7 +1022,6 @@ private void initSerialDevice() throws SerialException {
 }
 \end{lstlisting}
 % @formatter:on
-\newpage
 Ab diesem Zeitpunkt wird das richtige Endgerät ausgewählt und es kann über den jeweiligen Stream kommuniziert werden.
 Dies kann über die implementierte Methode \lstinline[style=java]{writeString()} geschehen, welcher direkt einen String als Parameter übergeben wird.
 \lstinputlisting[firstline=105, lastline=109, style=java,caption=Methode writeString(),label=fdsa]{src/serial/Serial.java}
@@ -1171,6 +1176,7 @@ ALL                   & all                    & Darstellung von allen Nachricht
 \end{tabular}
 \caption{}
 \end{table}
+\newpage
 \subsection{Konfigurationsdatei}\label{subsec:konfiguration}
 \subsubsection{Konzept}
 Sollten, wie in unserem Fall, Daten über einen längeren Zeitpunkt gespeichert werden und diese auch nach einem Systemneustart noch verfügbar sein, kann eine Datei implementiert werden, welche diese Daten speichert.
@@ -1244,7 +1250,6 @@ Dieses Model verfügt eine Liste von Objekten des Typs \lstinline[style=java]{Ga
 Auch beinhaltet es einen Zahlenwert zur Zählung der gespielten Spiele.\\\\
 Ab diesem Zeitpunkt ist es nun möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
 Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
-\newpage
 \section{Frontend-Programmierung}
 In dem folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
 Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.\\\\
@@ -1341,10 +1346,19 @@ private final ChangeListener<PlayerModel> playerListener
 };
 \end{lstlisting}
 % @formatter:on
-Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
-Die Daten werden ab jetzt nicht mehr in der standard Darstellung angezeigt, sondern basieren auf einem eigens dafür angepassten Rendering.
-Solch ein Verfahren hat den Vorteil, dass nun direkt ein Objekt in die ComboBox bzw. in die Liste importiert werden kann und ab diesem Zeitpunkt die Referenzierung des selektierten Elements leichter fällt.
-Auch werden hierbei Ressourcen eingespart, denn es werden nur die Elemente gerendert, die auch wirklich angezeigt werden.
+\footfullcite{Oracle2015}Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
+Wie schon in Java-Swing, kann auch in JavaFX die Darstellung der Daten einer Tabelle oder einer Liste flexibel angepasst werden.
+Grund für die Verwendung solcher Mechanismen ist das Problem der erheblichen Speicherverschwendung bei der Anzeige.
+So werden nicht alle Daten direkt verarbeitet, sondern nur Daten, welche wirklich auf dem Bildschirm dargestellt werden.
+Auch hat solch ein Verfahren den Vorteil, dass nun die Darstellung von Datenelementen eines Objekts spezifischer abgestimmt werden kann.
+Zu sehen ist dies in der \autoref{CellRendering}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{fig/ainf/CellRendering}
+\caption{Cell-Rendering Beispiel}
+\label{CellRendering}
+\end{figure}
+Umgesetzt wird dies mithilfe der Basisklasse \lstinline[style=java]{javafx.scene.control.Cell}.
 Im \autoref{CellFactory} wird im ersten Schritt die Darstellung einer einzelnen Zelle definiert.
 \lstinputlisting[firstline=302, lastline=313, style=java,caption=Klasse PlayerCell(),label=CellFactory]{src/gui/controller/StartupController.java}
 Jetzt muss lediglich die CellFactory mithilfe des Methodenaufrufs \lstinline[style=java]{playerNameList.setCellFactory(list -> new PlayerCell())} gesetzt werden und die Liste baut sich nach dem Import der Daten zusammen.
@@ -1355,9 +1369,6 @@ Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.\\\\
 \caption{Startup-Window}
 \label{startupWindow}
 \end{figure}
-Wird jetzt der Button \textit{Spielstart} betätigt, wird automatisch ein neues Objekt vom Typ \lstinline[style=java]{Game} erstellt.
-Dieses beinhaltet den gewählten Spielmodus und alle definierten Spieler, samt deren Punkteanzahl.\\
-Auch gelangt man nun auf das Hauptfenster, welches im folgenden Abschnitt beschrieben wird.
 \subsection{Main-Window und Controller}\label{subsec:mainController}
 Das Main-Window stellt im engsten Sinne das Interaktionsfenster des Benutzers während des Spiels dar.
 Dieses wird mithilfe von Tabs realisiert.
@@ -1468,7 +1479,7 @@ txt_msg_finishGame=Wollen Sie wirklich das Spiel beenden?
 % @formatter:on
 Die folgende Methode filtert nun genau nach dem oben genannte Pattern und es werden infolgedessen die Daten eingelesen.
 \lstinputlisting[firstline=17, lastline=20, style=java,caption=Methode getMatchingFiles(),label=readBundle]{src/util/FileUtil.java}
-Sobald diese nun standardmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{activateLocale()} aktiviert werden kann.
+Sobald diese nun standardmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{Methode activateLocale()} aktiviert werden kann.
 \lstinputlisting[firstline=90, lastline=101, style=java,caption=activateLocale(),label=multiLang]{src/gui/multilanguage/ResourceManager.java}
 Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
 Sollte dies der Fall sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
@@ -1505,7 +1516,6 @@ Sobald jetzt der Mikrocontroller programmierbar gemacht wurde, kann mit dem prog
 Ziel ist es, die serielle Kommunikation am Mikrocontroller zu realisieren.
 Umgesetzt wurde dies mit verfügbaren Vorlagen welche aus dem Unterricht bekannt waren.
 In diesen Vorlagen sind etwaige Dinge, wie die Implementierung von Tasks oder UART schon vorkonfiguriert.
-\newpage
 Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Umsetzung der Ziele.\\\\
 Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
 Das bedeutet, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
@@ -1577,6 +1587,9 @@ So ist nun die serielle Verbindung sowie die Spannungsversorgung des Raspberry P
 Um nun das gesamte System in Betrieb zu nehmen ist es lediglich notwendig, eine Spannungsversorgung an die Ansteuerplatine anzuschließen.\\
 Anhand dieses Stadiums können jetzt alle Komponenten in das Gehäuse eingebaut und verwendet werden.
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
+
+Im folgenden Abschnitt soll auf die entstandenen Probleme während der Arbeiten eingegangen werden.
+Auch soll ein Resümee gefasst werden sowie
 \subsection{Probleme}
 \subsubsection{Probleme bei der Implementierung von JavaFX}
 \subsubsection{Kommunikation zwischen Controllern}
