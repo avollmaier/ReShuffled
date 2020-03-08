@@ -10,7 +10,7 @@ Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapaz
 zwei Hubmagneten in Bewegung zu versetzen, einen Endschalter einzulesen, eine Pumpe und ein Ventil anzusteuern und einen Schrittmotor anzusteuern.
 Zudem hat sie die Aufgabe, sämtliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
 Außerdem soll der Mikroprozessor dazu im Stande sein, Befehle von einem Raspberry Pi 3B+ über \acs{UART} zu erhalten.
-Die Möglichkeit, Debugging über eine zweite UART – Schnittstelle via Mini-\acs{USB} zu betreiben, soll ebenfalls gegeben sein.
+Die Möglichkeit, Debugging über eine zweite UART–Schnittstelle via Mini-\acs{USB} zu betreiben, soll ebenfalls gegeben sein.
 Ein Blockschaltbild hierzu ist in der \autoref{fig:Blockschaltbild} zu finden.
 
 \subsection{Zeitplan}
@@ -547,12 +547,12 @@ Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V mit 
 \subsubsection{Leistungsbedarf}
 
 Um die maximale Leistung des ATmega324PA zu berechnen, wird der maximal anfallende Ausgangsstrom bei unserer Verwendung herangezogen.
-Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA .
-Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V, erhält man eine Leistung von 198mW .
+Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA.
+Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V, erhält man eine Leistung von 198mW.
 Dieser Wert liegt unter der maximalen Leistung des µC von 660mW und ist somit zulässig.
 
 \footfullcite{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
-Auf dem Raspberry Pi 3B+ befindet sich ein Linearregler, welcher aus der 5V Versorgungsspannugn eine 3.3V Spannung erzeugt.
+Auf dem Raspberry Pi 3B+ befindet sich ein Linearregler, welcher aus der 5V Versorgungsspannung eine 3.3V Spannung erzeugt.
 
 \newpage
 
@@ -588,17 +588,17 @@ Der maximale Strom kann somit ermittelt werden.
     P_{max} &= U_{DO} \cdot I_{max} \\
     I_{max} &= \frac{P_{max}}{U_{DO}} \\
     I_{max} &= \frac{0.625W}{1.7V} \\
-    I_{max} &= 367.65mA
+    I_{max} &= 0.36765A
 \end{align*}
 
 Mit einem Abschlag von 250mA, welche zur Selbstversorgung des Raspberry Pi verwendet werden, steht ein Strom von 117.65mA an den 3.3V Expansion Header Pins zur Verfügung.
-Das Leistungsmaximum der 3.3V-Pins beträgt somit 388.245mW .
+Das Leistungsmaximum der 3.3V-Pins beträgt somit 388.25mW .
 (Im Betrieb bei 25°C liegt der maximale Strom bei 459.56mA und die maximale Leistung bei 691.55mW.)\\
 Die maximalen Verluste des Linearreglers bei unserer Anwendung lassen sich auf folgende Weise kalkulieren:
 \begin{align*}
     P_{V} &= U_{DO} \cdot I_{\mu Cmax} \\
     P_{V} &= 1.7V \cdot 60mA \\
-    P_{V} &=  102mW
+    P_{V} &= 0.102W
 \end{align*}
 
 Der maximale Leistungsbedarf des Raspberry Pi liegt bei einem Strom von 750mA und mit Einbezug der Mikrocontrollerversorgung bei etwa 4W .
@@ -948,7 +948,7 @@ Um ein floatendes Gate von Q\textsubscript{1} zu vermeiden, ist der Widerstand R
     \begin{circuitikz}[european, scale = 1]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
         \draw (2,6)node[pfet,bodydiode, rotate = 90]{};
-        \draw (1,6) to [R, l=$R_1$, *-](1,4) to (2,4) to (2,5.2);
+        \draw (1,6) to [R, l=$R1$, *-](1,4) to (2,4) to (2,5.2);
         \draw (2,4) to [short, *-](2,2.5);
         \draw (2.5,6) to (5,6);
         \draw (0.5,6) to [short, *-](0.5,7) to (6,7) to (6,5) to [R,l=$R2$](6,3) to (6,2.5) to (5.8,2.5);
@@ -1071,7 +1071,7 @@ Dieser hat die Aufgabe den Mikroprozessor ATmega324PA mit 3.3V zu versorgen sowi
 \subsubsection{Watchdog}
 
 Als Funktion der Ausfallerkennung implementierten wir eine Watchdog-Verbindung zwischen dem Raspberry Pi und dem Mikrocontroller.
-So kann bei einem Ausfall dennoch eine sicheres Herunterfahren sowie ein sicheres Lesen beziehungsweise Schreiben einer Datei gewähleistet werden.
+So kann bei einem Ausfall dennoch eine sicheres Herunterfahren sowie ein sicheres Lesen beziehungsweise Schreiben einer Datei gewährleistet werden.
 
 \subsection{Beschaltung des ATmega324PA}
 
@@ -1398,15 +1398,15 @@ Sollte die Verlustleistung P\textsubscript{V} größer als P\textsubscript{D} se
 \end{align*}
 
 Durch die Berechnung lässt sich beweisen, dass kein Kühlkörper notwendig ist.
-Um jedoch Gewissheit zu erlangen, ist die maximal erreichte Sperrschichttemperatur zu berechnen.
+Um jedoch Gewissheit zu erlangen, ist die maximal erreichte Sperrschichttemperatur bei sommerlichen Tempraturen zu berechnen.
 
 \begin{align*}
     T_{j} &= (T_{a}+Sicherheit) + {R_{thja}} \cdot P_{v}) \\
-    T_{j} &= (25^{\circ}C + 35^{\circ}C) + 31.6\frac{{}^{\circ}C}{W} \cdot 0.8192W \\
-    T_{j} &= 85.88672^{\circ}C
+    T_{j} &= (25^{\circ}C + 25^{\circ}C) + 31.6\frac{{}^{\circ}C}{W} \cdot 0.8192W \\
+    T_{j} &= 75.8867^{\circ}C
 \end{align*}
 \newpage
-Der Umstand einer Umgebungstemperatur von 60°C führt somit bewiesenerweise dennoch zu einem zulässigem Betrieb.
+Der Umstand einer Umgebungstemperatur von 50°C führt somit bewiesenerweise dennoch zu einem zulässigem Betrieb.
 Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch schlussendlich ein Kühlkörper auf dem Treiber platziert wurde.
 
 Für die Berechnung des Kühlkörperwärmewiderstandes R\textsubscript{thK} wird von folgender Formel Gebrauch gemacht:
@@ -1467,8 +1467,8 @@ Um den HIGH-Pegel für den Mikrocontroller lesbar zu gestalten, ist ein Spannung
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (4,0);
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
-        \draw (4,3) to [R, l_=$R_2$, v^=$U_2$, *-] (4,0);
-        \draw (1,3) to[R, l=$R_1$, v_>=$U_1$](4,3) to [short, -o](6,3)node[anchor=west]{+};
+        \draw (4,3) to [R, l_=$R2$, v^=$U2$, *-] (4,0);
+        \draw (1,3) to[R, l=$R1$, v_>=$U1$](4,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (4,0) to [short, *-o](6,0)node[anchor=west]{-};
         \draw (4,0) to (4,0) node[rground]{};
         \draw (0,2.8) -- node[left] {$U_\mathrm{Sensor}$}node[sloped,currarrow,pos=1] {}(0,0.2);
@@ -1569,13 +1569,13 @@ Die Pumpe sowie das Ventil stellen eine induktive Last dar, welche den Nutzen ei
         \draw (15,8)node[vcc]{+5V};
         \draw (15,8) to (15,6.5) to [short, -o](16,6.5);
         \draw (16,5.5) to [short, o-](15,5.5) to (15,3.5);
-        \draw (15,5) to [short, *-](14,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D1$](14,7) to [short, -*](15,7);
+        \draw (15,5) to [short, *-](14,5) to [/tikz/circuitikz/bipoles/length=1cm, D, l=$D2$](14,7) to [short, -*](15,7);
         \draw (14,5) to (14,7);
         \draw (16,6) to (16,6)node[anchor=west]{Ventil};
         \draw (15,3) to (15,0);
-        \draw (14.1,3) to (13.5,3) to [R, l_= $R1$](11.5,3) to [short, -o](9.5,3);
+        \draw (14.1,3) to (13.5,3) to [R, l_= $R3$](11.5,3) to [short, -o](9.5,3);
         \draw (13.1,2.4)node[anchor=above]{560};
-        \draw (11,3) to [short,*-](11,3) to [R, l_=$R2$](11,0) to [short,-*](15,0) to (15,-0.5);
+        \draw (11,3) to [short,*-](11,3) to [R, l_=$R4$](11,0) to [short,-*](15,0) to (15,-0.5);
         \draw (12.3,1.5)node[anchor=above]{10k};
         \draw (15,3)node[nfet, solderdot, bodydiode](nfet1){};
         \draw (nfet1.G) node[above]{G};
@@ -1974,7 +1974,7 @@ Jener Prototyp wurde in der Werkstätte der HTBLA Kaindorf angefertigt. \\
 
 \subsubsection{Bestückter Prototyp}
 
-Anzumerken ist bei diesem, dass die Idee der Implementierung von einer Pumpe und einem Ventil noch nicht im Raum stand.
+Anzumerken ist bei diesem, dass die Idee der Implementierung von einer Pumpe und einem Ventil noch nicht im Raum stand. \\
 
 \begin{figure}[hb]
     \centering
@@ -2019,7 +2019,7 @@ Sollte die Eingangsspannung die bauelementspezifische Spannungsschwelle der Supr
 Infolgedessen wird der Strom des Spannungsimpulses an der zu schützenden Peripherie vorbeigeführt.
 Aufgrund dessen kann sich keine zerstörerische Spannung oberhalb des Suppressors aufbauen.
 Der nun rasant steigende Strom bewirkt ein Steigen der Leitungstemperatur.
-Aus diesem Grunde heraus steigt auch der Widerstand des Thermistors, weshalb dieser den Strom begrenz und der Strom somit auf ein Minimum zurückfällt.
+Aus diesem Grunde heraus steigt auch der Widerstand des Thermistors, weshalb dieser den Strom begrenz und er somit auf ein Minimum zurückfällt.
 
 Diese Schaltung bringt die positive Tatsache mit sich, dass sie sich im Grundzustand, bis auf den niedrigen Leakagestrom der Diode und den geringen Widerstand des PTC, neutral verhält.
 Außerdem führt eine Auslösung der Schutzschaltung zu keiner Zerstörung von Bauteilen.
@@ -2031,18 +2031,18 @@ Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Kompone
     \item D1 als SMBJ5.A/CA
 \end{itemize}
 
-Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
+\footfullcite{MF-MSMF250-Datasheet}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
-Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
+\newpage
+\footfullcite{SMBJ5.A-Datasheet}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
 Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand.
 
 \subsubsection{Einzelne weitere Verbessungsmöglichkeiten}
 
 Als Ziel, ein langlebiges Produkt zu designen, sollte bei dem USB-Stecker auf einen THT-Baustein zurückgegriffen werden,
-da erhöhte Kräfte beim Abstecken die Festigkeit des SMD-Bausteins auf lange Zeit hin verringern. \\
-
-Um die Komfortabilität zu erhöhen, sollten wartungsfreundlichere Sensoren in Betracht gezogen werden. \\
+da erhöhte Kräfte beim Abstecken die Festigkeit des SMD-Bausteins auf lange Zeit hin verringern.
+Um außerdem die Komfortabilität zu erhöhen, sollten wartungsfreundlichere Sensoren in Betracht gezogen werden. \\
 
 Um ein Produkt mit höherer Qualität zu erlangen, sollte die Möglichkeit einer professionellen Leiterplattenfertigung abgewägt werden,
 welche die Attribute einer betrachtlicheren Optik, einer beidseitigen Kennzeichnung der Bauteilreferenzen sowie kleinere Durchkontaktierungen mit sich bringen würde. \\
@@ -2057,7 +2057,7 @@ Das Ziel dieser Arbeit war, eine elektronische Steuereinheit zu kreieren, welche
 Eingehende Information soll über den vorgesehenen Mikrocontroller verarbeitet, und Prozesse über diesen ausgeführt werden. \\
 
 Mit diesen Anforderungen wurde ein Schaltplan erstellt und eine Platine geplant, entworfen, gefertigt und bestückt.
-Durch ausführliches Testen wurden Fehlerquellen und einzelne Mängel korrigiert, sodass ein funktionstüchtiger Prototyp zu Stande kam.\\
+Durch ausführliches Testen wurden Fehlerquellen und einzelne Mängel korrigiert, sodass ein weitgehend funktionstüchtiger Prototyp zu Stande kam.\\
 
 \subsection{Conclusio}
 
