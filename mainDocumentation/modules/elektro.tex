@@ -629,7 +629,7 @@ Jedoch bringt diese Methode einen erheblichen Nachteil von einem dauerhaften Spa
     \centering
     \begin{circuitikz}[european, scale = 1.1]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
-        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$](4,3){};
+        \draw (2,3) to[/tikz/circuitikz/bipoles/length=1cm, sD-, l=$D1$](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -653,7 +653,7 @@ Jedoch entsteht die negative Tatsache einer verpolten Spannung von bis zu 0.3V, 
     \begin{circuitikz}[european, scale = 1.1]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (3,0);
         \draw (1,3) to[R, l=$F1$](3,3){};
-        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, sD, l=$D1$, *-*](4,3){};
+        \draw (4,0) to[/tikz/circuitikz/bipoles/length=1cm, sD-, l=$D1$, *-*](4,3){};
         \draw (1,3) to [short, -o](0,3)node[anchor=east]{+};
         \draw (1,3) to [short, -o](6,3)node[anchor=west]{+};
         \draw (3,0) to [short, *-o](6,0)node[anchor=west]{-};
@@ -680,7 +680,7 @@ In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, w
     \centering
     \begin{circuitikz}[european, scale = 1.2]
         \draw (0,0) node[anchor=east] {-} to [short, o-*] (2,0);
-        \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D](3.4,4.3) to [short,-*](3.4,4){};
+        \draw (2.6,4) to [short, *-](2.6,4.3) to [/tikz/circuitikz/bipoles/length=0.45cm,D-](3.4,4.3) to [short,-*](3.4,4){};
         \draw (3,4)node[pfet, rotate = 90 ](pfet){};
         \draw (pfet.G) node[anchor=east] {G};
         \draw (pfet.D) node[anchor=south] {S};
@@ -688,7 +688,7 @@ In unserem Fall handelt es sich lediglich um eine anliegende Spannung von 12V, w
         \draw (3.55,4.3)node[anchor=south]{Q1};
         \draw (3,0) to [R, l=$R1$, *-](3,3.3){};
         \draw (3,2.5) to [short, *-](4.2,2.5){};
-        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=1cm,zD, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
+        \draw (4.2,2.5) to [/tikz/circuitikz/bipoles/length=1cm,zD-, l=$D1$](4.2,4) to [short,-*](4.2,4) to (4.2,2.5){};
         \draw (3.225,4) to [short, -*](3.225,4);
         \draw (2.5,4) to [short, -o](0,4)node[anchor=east]{+};
         \draw (3,4) to [short, -o](6,4)node[anchor=west]{+};
@@ -780,6 +780,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (8.3,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(8.3,0.2);
     \end{circuitikz}
     \caption{12V Soft-Latching Circuit}
+    \label{fig:SoftLatchingCircuit}
 \end{figure}
 
 \subsubsection{Dimensionierung der UNLATCH - Komponenten}
@@ -787,7 +788,6 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}[european, scale = 1.2]
-
         \draw (1.5,2) to [/tikz/circuitikz/bipoles/length=1cm, sD-, l=$D1$](2.5,2);
         \draw (-0.5,2) to (0.5,2) to [R, l=$R7$](1.5,2);
         \draw (2.5,2) to (3,2) to [eC, l=$C1$, *-*](3,0);
@@ -798,7 +798,7 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
         \draw (-1.25,2.5)node[anchor=north]{µC};
         \draw (-1.25,1.5) to (-1.25,0) to (2,0);
         \draw (-2,1.5) to (-0.5,1.5) to (-0.5,3) to (-2,3) to (-2,1.5);
-        \draw (2,-0.05) to [short, -*](2,-0.05) node[rground]{};
+        \draw (2,0) to [short, -*](2,0) node[rground]{};
         \draw (5.5,2.3) to (5.5,3)node[vcc]{};
         \draw (-1.25,3) to (-1.25,3)node[vcc]{Vcc};
         \draw (0,1.8) -- node[right] {$U_\mathrm{UNLATCH}$}node[sloped,currarrow,pos=1] {}(0,0.2);
@@ -807,11 +807,12 @@ sodass ein zuverlässiges Abschalten der 12V Ausgangsspannung bereitgestellt wer
     \label{fig:UNLATCH}
 \end{figure}
 
-Um eine Dimensionierung der Widerstände und des Kondensators vorzunehmen, wird Gebrauch von einigen grundlegenden Formeln der Elektrotechnik gemacht:
+Um Berechnungen von verschiedensten Werten vorzunehmen, wird Gebrauch von einigen grundlegenden Formeln der Elektrotechnik gemacht:
 
 \begin{align}
-    R_{ges} &= \frac{1}{\frac{1}{R1}+\frac{1}{R2}} \\
-    U_c &= 1(t) \cdot (1-e^{\frac{-1}{\tau}})\\
+    R_{ges} &= \frac{R1 \cdot R2}{R1+R2} \\
+    u_C(t) &= 1(t) \cdot (1-e^{\frac{-1}{\tau}}) \\
+    u_c(t) &= 1(t) \cdot e^{\frac{-1}{\tau}} \\
     \sum_{k=1}^n U_k &= 0 \\
     \tau &= R \cdot C
 \end{align}
@@ -837,18 +838,17 @@ Vereinfacht man die in \autoref{fig:UNLATCH} zu sehende Schaltung, erhält man f
 
 Dies hilft uns, den Gesamtwiderstand der Schaltung auszurechnen.
 Mann kann das Ersatzschaltbild in weiterer Folge zusammenfassen, womit der Betrag der Zeitkonstante $\tau$ berechnet werden kann.
+
+\newpage
 Als Bauteilwerte erstellten wir folgende Annahmen:
 
 \begin{itemize}
-    \item R7 = 560$\Omega$
-    \item R8 = 100k$\Omega$
-    \item C1 = 100$\mu$F
+    \item R7 = 560$\Omega$, R8 = 100k$\Omega$, C1 = 100$\mu$F
 \end{itemize}
 
-\newpage
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1]
+    \begin{circuitikz}[european, scale = 1.1]
         \draw (0,2) to [V_=$3V$](0,0);
         \draw (0,2) to [R, l=$R7||R8$](2,2);
         \draw (2,2) to (4,2) to [C, l=$C1$](4,0);
@@ -880,7 +880,7 @@ Die Thresholdvoltage der von uns ausgewählten MOSFETs liegt bei 1V .
 Über das Umformen der Gleichung 2.2 kann die Zeit bis zur Schaltschwelle ermittelt werden.
 
 \begin{align*}
-    u_{c}(t) &= U_X (1 - e^{\frac{-t}{\tau}}) \\
+    u_{c}(t) &= U_X \cdot (1 - e^{\frac{-t}{\tau}}) \\
     \frac{u_{c}}{U_X} &= 1 - e^{\frac{-t}{\tau}} \\
     1 - \frac{u_{c}}{U_X} &= e^{\frac{-t}{\tau}} \\
     ln(1 - \frac{u_{c}}{U_X}) &= \frac{-t}{\tau} \\
@@ -888,6 +888,46 @@ Die Thresholdvoltage der von uns ausgewählten MOSFETs liegt bei 1V .
     -t &= ln(1 - \frac{1V}{2.983V}) \cdot 0.055688s \\
     t &= 22.736ms
 \end{align*}
+
+Sollte der Mikrocontroller die Versorgung aller Peripheriebausteine unterbrechen, so schwindet auch die Versorgung des µC .
+Über die Annahme, dass dies nicht innerhalb von 100ms passiert, wird zunächst die Spannung nach 100ms berechnet.
+
+\begin{align*}
+    u_{c}(t) &= U_X \cdot (1 - e^{\frac{-t}{\tau}}) \\
+    u_{c}(t) &= 2.983V \cdot (1 - e^{\frac{-0.1s}{0.055688s}}) \\
+    u_{c}(t) &= 2.488V
+\end{align*}
+
+Der aktivierte MOSFET soll mindestens für eine Zeit von 7s aktiviert sein, um ein möglichst sicheres Abschalten der Versorgung zu gewährleisten.
+Über diese Anforderung wird die Spannung des Kondensators nach 7 Sekunden berechnet. \\
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european, scale = 1.1]
+        \draw (4,2) to [C, l=$C1$, *-*](4,0);
+        \draw (5.5,2) to [R, l=$R8$, *-](5.5,0);
+        \draw (2,0) to (5.5,0);
+        \draw (2,2) to (6.5,2);
+        \draw (2.75,0) to [short, -*](2.75,0) node[rground]{};
+        \draw [line width = 1.2](1.9,2.1) to (2.1,1.9);
+        \draw [line width = 1.2](1.9,1.9) to (2.1,2.1);
+        \draw [line width = 1.2](6.4,2.1) to (6.6,1.9);
+        \draw [line width = 1.2](6.4,1.9) to (6.6,2.1);
+        \draw [line width = 1.2](1.9,0.1) to (2.1,-0.1);
+        \draw [line width = 1.2](1.9,-0.1) to (2.1,0.1);
+        \draw (2.75,1.8) -- node[left] {$U_\mathrm{X}$}node[sloped,currarrow,pos=1] {}(2.75,0.3);
+    \end{circuitikz}
+    \caption{Ersatzschaltbild des Entladezyklus}
+\end{figure}
+
+\begin{align*}
+    u_{c}(t) &= U_X \cdot e^{\frac{-t}{\tau}} \\
+    u_{c}(t) &= 2.488V \cdot e^{\frac{-7s}{100k\Omega \cdot 100\mu F}} \\
+    u_{c}(t) &= 1.235V
+\end{align*}
+
+Die Berechnung zeigt, dass nach einer Zeit von 7 Sekunden, die Spannung anliegend am Gate des MOSFET noch immer weit über der Theshold-Voltage liegt.
+(Die Schwelle von 1V wird nach 9.115 Sekunden erreicht.)
 
 \newpage
 \subsubsection{Andere Variante}
@@ -1995,11 +2035,21 @@ Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V u
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
 Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
-Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand. \\
+Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand.
 
-%Eine weitere, zerstörerische und wartungsintensivere Möglichkeit wäre, diese Schaltung mit einer Schmelzsicherung anstatt dem PTC zu realisieren.
+\subsubsection{Einzelne weitere Verbessungsmöglichkeiten}
 
-\newpage
+Als Ziel, ein langlebiges Produkt zu designen, sollte bei dem USB-Stecker auf einen THT-Baustein zurückgegriffen werden,
+da erhöhte Kräfte beim Abstecken die Festigkeit des SMD-Bausteins auf lange Zeit hin verringern. \\
+
+Um die Komfortabilität zu erhöhen, sollten wartungsfreundlichere Sensoren in Betracht gezogen werden. \\
+
+Um ein Produkt mit höherer Qualität zu erlangen, sollte die Möglichkeit einer professionellen Leiterplattenfertigung abgewägt werden,
+welche die Attribute einer betrachtlicheren Optik, einer beidseitigen Kennzeichnung der Bauteilreferenzen sowie kleinere Durchkontaktierungen mit sich bringen würde. \\
+
+Damit bei der UNLATCH-Schaltung genaue Zeitkonstanten zur Berechnung herangezogen werden können, müssen diese gemessen werden.
+Konkret bedeutet das, ein Oszilloskop mit vier Kanälen zu verwenden und
+die Spannungsverläufe am UNLATCH-Ausgang des µC, der 12V-Leitung, der 5V-Leitung sowie am Drain Anschluss des N-Kanal MOSFET Q3 zu messen (siehe \autoref{fig:SoftLatchingCircuit}).
 
 \subsection{Zusammenfassung}
 
