@@ -39,10 +39,10 @@ public class HomeController implements Initializable {
 
 
     private static HomeController instance;
-    //Define diagramm axis & diagramm
     private final CategoryAxis xAxis = new CategoryAxis();
     private final NumberAxis yAxis = new NumberAxis();
-    private final XYChart.Series<String, Number> dataSeries = new XYChart.Series<String, Number>();
+    private final XYChart.Series<String, Number> dataSeries = new XYChart
+            .Series<String, Number>();
     @FXML
     Label tfVersion;
     @FXML

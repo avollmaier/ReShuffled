@@ -44,7 +44,7 @@ Ich erkläre an Eides statt, dass ich die vorliegende Arbeit selbstständig verf
 Quellen/Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich und inhaltlich entnommenen
 Stellen als solche kenntlich gemacht habe.\\
 \\
-Arnfels, am 18. März 2018\\
+Arnfels, am 18. März 2020\\
 
 \vskip 1cm
 
@@ -66,7 +66,7 @@ Arnfels, am 18. März 2018\\
 An dieser Stelle möchten wir, Stefan Hörmann, Nicolas Perl und Alois Vollmaier, uns im Rahmen der Diplomarbeit bei allen bedanken, die uns unterstützt und betreut haben.
 Im Speziellen sind dies einerseits unsere Betreuer, Dipl.-Ing Dr. Gerhand Pretterhofer und Dipl.-Ing Manfred Steiner.
 Mithilfe deren fundamental wichtigen Ideen und deren Fachwissen ist es uns gelungen, dieses Werk zu kreieren.
-Des Weiteren möchten wir uns herzlich bei Herrn Ing. Konrad Wilhelm und bei Herrn Ing. Dipl.-Päd. St.-Rat Reinhard Semlitsch bedanken, welche uns beim Fertigungsprozess enorm unterstützten und eine elementare Rolle spielten.
+Des Weiteren möchten wir uns herzlich bei Herrn Ing. Konrad Wilhelm, Herrn Ing. Dipl.-Päd. St.-Rat Reinhard Semlitsch und Herrn Franz Skof bedanken, welche uns beim Fertigungsprozess enorm unterstützten und eine elementare Rolle spielten.
 Nicht zuletzt gebührt ein ganz spezieller Dank unseren Familien, Verwandten und Freunden, welche und in dieser einschneidenten Zeit voll und ganz unterstützten.
 \clearpage
 
@@ -78,12 +78,25 @@ Nicht zuletzt gebührt ein ganz spezieller Dank unseren Familien, Verwandten und
 
 \section*{Abstract}
 \label{sec:abstract}
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-
+The goal of this diploma thesis is to create a machine which is able to shuffle and dispense playing cards.
+The main idea is to create these processes as space and time efficient as possible.
+In order to achieve these goals, the entire project is split into the segments mechanics, electronics and programming.
+Each of these subdivisions is assigned to a separate team member.
+The task of the mechanical part consists of the mentioned machine, adapted to the requirements.
+Furthermore, calculations of elementary important and a partial construction shall be implemented.
+The electrical part of this diploma thesis includes the design and development of a circuit and a corresponding printed circuit board as well as its layout and its assembly.
+A commissioning and the execution of tests shall also be made.
+The task of the informatics subdivision is to program a user-friendly, graphical interface and to establish communication between a Raspberry Pi and a microcontroller.
 \section*{Zusammenfassung}
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+Wir setzten uns als Ziel, eine Maschine zu entwickeln, welche das Mischen sowie das Ausgeben von Spielkarten übernimmt.
+Die Idee ist es, dieses Verfahren möglichst platzsparend und zeiteffizient zu realisieren.
+Um genannte Ziele zu erfüllen, wird das gesamte Projekt in die Teilbereiche Mechanik, Elektronik und Informatik aufgeteilt, wobei jeder Teilbereich einem Teammitglied zugeordnet werden soll.
+Die Arbeit des mechanischen Teils besteht darin, die genannte Maschine, angepasst an die gestellten Anforderungen zu konstruieren.
+Weiters sollen Berechnungen von elementar wichtigen Baugruppen erstellt sowie ein Teilaufbau gemacht werden.
+Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans
+und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
+Eine Inbetriebnahme und das Durchführen von Tests soll ebenfalls vorgenommen werden.
+Die Aufgabe des informatischen Teilbereichs soll es sein, eine benutzerfreundliche, grafische Oberfläche zu programmieren sowie eine Kommunikation zwischen einem Raspberry Pi und einem Microcontroller herzustellen.
 \clearpage
 
 \newpage
@@ -94,12 +107,18 @@ Nicht zuletzt gebührt ein ganz spezieller Dank unseren Familien, Verwandten und
 
 \subsection*{Gender Erklärung}
 \label{sec:gender-erklaerung}
-Aus Gründen der besseren Lesbarkeit wird in dieser Arbeit die Sprachform des generischen Maskulinums angewendet. Es wird an dieser Stelle darauf hingewiesen, dass die ausschließliche Verwendung der männlichen Form geschlechtsunabhängig verstanden werden soll.
+Aus Gründen der besseren Lesbarkeit wird in dieser Arbeit die Sprachform des generischen Maskulinums angewendet.
+Es wird an dieser Stelle darauf hingewiesen, dass die ausschließliche Verwendung der männlichen Form geschlechtsunabhängig verstanden werden soll.
 
 \subsection*{Über dieses Dokument}
 \label{sec:ueber-dokument}
-Diese Arbeit wurde in \LaTeX{} verfasst. Diese Art der Dokumentation bietet gegenüber den normalen Textverarbeitungen gewisse Vorteile hinsichtlich der Formatierung und des Einbindens von Grafiken. Auch Formeln können sehr einfach und effizient angegegeben werden. Die Rohfassung des Dokuments befindet sich auf dem Arnfelser Gitweb Server der HTBLA Kaindorf Abteilung Mechatronik.
+Diese Arbeit wurde in \LaTeX{} verfasst.
+Diese Art der Dokumentation bietet gegenüber den normalen Textverarbeitungen gewisse Vorteile hinsichtlich der Formatierung und des Einbindens von Grafiken.
+Auch Formeln können sehr einfach und effizient angegegeben werden. Die Rohfassung des Dokuments befindet sich auf dem Arnfelser Gitweb Server der HTBLA Kaindorf Abteilung Mechatronik.
 
+\subsection*{Erklärung der Sprachen}
+\label{sec:erklärung-sprachen}
+Da viele Ausdrücke, Datenblätter und weitere technische Dokumente in Englisch verwendet werden, lässt sich eine teilweise Vermengung der Sprachen nicht vermeiden.
 \clearpage
 
 \newpage
