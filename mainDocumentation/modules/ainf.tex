@@ -101,12 +101,12 @@ Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 \newpage
 Das hier gezeigte Bild illustriert, wie der Projektzeitraum aufgeteilt wird.
 Um das Zeitfenster des Projekts nicht zu verzögern, werden folgende Meilensteine in den Zeitplan implementiert:
-\begin{enumerate}
+\begin{itemize}
     \item \textbf{15.11.2019} Beenden der Backend-Programmierung
     \item \textbf{22.12.2020} Beenden der Frontend-Programmierung
     \item \textbf{31.01.2020} Beenden der Hardwarenahmen-Programmierung
     \item \textbf{15.02.2020} Beenden von Testen-Aufbauen
-\end{enumerate}
+\end{itemize}
 \section{Anforderungen und Ziele}\label{sec:anforderungen-und-ziele}
 \subsection{Fronted-Programmierung}\label{subsec:fronted-programmierung}
 Im Allgemeinen besteht das Ziel darin, eine benutzerfreundliche, grafische Bedienoberfläche zu realisieren, welche schlussendlich im Betrieb auf einem Display angezeigt werden soll.
@@ -124,7 +124,7 @@ Grundsätzlich steht die sogenannte User-Experience, welche alle Aspekte der Ein
 Um dies zu gewährleisten, sollte eine Voruntersuchung vollzogen werden.
 \subsection{Backend-Programmierung}\label{subsec:backend-programmierung}
 Wie in der Einleitung bereits erwähnt besteht das Backend aus Funktionen, welche im Hintergrund abgearbeitet werden.
-Diese Aufgaben umfassen die Kommunikation des Raspberry PI mit der Ansteuerplatine sowie dem Simulator.\\
+Diese Aufgaben umfassen die Kommunikation des Raspberry Pi mit der Ansteuerplatine sowie dem Simulator.\\
 Auch soll im Hintergrund eine sogenannte Log-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert werden.
 Diese Datei kann z.B.\ beim Debugging-Vorgang notwendig sein bzw.\ den Entwickler dabei unterstützen, was eine enorme Zeitersparnis mit sich bringt.\\
 Um etwaige Einstellungen der seriellen Schnittstelle sowie die Definition der Pfade für verschiedene Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird.
@@ -141,7 +141,7 @@ Aufgrund der Tatsache, dass die entwickelte Ansteuerplatine über einen ATmega-3
 Erstellt werden soll ein Programm, welches die ankommenden Daten der seriellen Schnittstelle verarbeitet.
 Ziel ist es also, diese serielle Kommunikation auf dem Mikrocontroller auszuprogrammieren.
 Verwendet soll hierbei, die im Unterricht verwendete Vorlage werden, welche den Programmierprozess beschleunigt.
-
+\newpage
 \section{Projektspezifische Voruntersuchung}\label{sec:projektspezifische-voruntersuchung}
 Damit dem Programmierprozess nichts mehr im Wege steht, ist es notwendig, bestimmte Voruntersuchungen durchzuführen.
 Diese Voruntersuchung umfasst Fragen, welche für des gesamten Projekts relevant sind.
@@ -159,7 +159,7 @@ Einer der wichtigsten Punkte dieser Aufzählung ist dabei jedoch die Möglichkei
 Debugging selbst hilft dem Entwickler bei der Fehlersuche.
 Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktuelle Wertebelegung von Variablen zu überprüfen.
 Dadurch erspart dies enorme Zeit bei der Programmierung.
-In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry PI, welcher mit dem Netzwerk über TCP/IP verbunden ist.
+In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry Pi, welcher mit dem Netzwerk über TCP/IP verbunden ist.
 Es erfordert also nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
 \subsubsection{Apache-Netbeans}
 Die Netbeans-IDE, bereitgestellt von Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
@@ -213,11 +213,10 @@ So werden einem viele Schritte beim Start durch die Methode \lstinline[style=jav
   }
 \end{lstlisting}
 % @formatter:on
-\newpage
 Innerhalb der \lstinline[style=java]{Stage} wird die Oberfläche in eine \lstinline[style=java]{Scene} und verschiedenen \lstinline[style=java]{Nodes} eingeteilt, wobei \lstinline[style=java]{Nodes} etwaige Controls und die \lstinline[style=java]{Scene} den gemeinsamen Container dieser Controls darstellt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
+    \includegraphics[width=0.35\textwidth]{fig/ainf/JavaFXStageSceneNode.pdf}
     \caption{JavaFX Stage-Scene-Node Übersicht}
     \label{fig:Stage-Scene-Node}
 \end{figure}
@@ -234,7 +233,7 @@ Eine einheitliche Formatierung und Namensgebung ist die Basis einer gelungenen P
 Diese genannte einheitliche Formatierung führt zu einer leichteren Orientierung in fremden, aber auch in eigenen Projekten.
 Um die Übersichtlichkeit eines Projektes zu verbessern, wird nach einer klar definierten Projektstruktur, welche zu Beginn des Projekts akribisch untersucht wurde, gearbeitet.
 Anhand der folgenden Grafik kann die Projektstruktur dieses Projektes abgelesen werden.
-\vspace{-10mm}
+\vspace{-5mm}
 \begin{figure}[H]
     \begin{center}
         \begin{forest}
@@ -355,7 +354,6 @@ Andererseits verfügt diese Struktur auch ein Package namens \lstinline{test}, w
 Trotz alledem wurde auf die althergebrachte Version der Projekterstellung gesetzt.
 Grund dafür ist wiederum die fehlende Möglichkeit, eine Remote-Platform innerhalb eines Maven-Projekts zu implementieren.
 Natürlich wäre eine Umstellung in einem finalen Release denkbar.
-\newpage
 \section{Grundlagen}\label{sec:grundlagen}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
@@ -431,6 +429,7 @@ Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche
 Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen, da das System nun klar definiert und strukturiert ist.
 Auch ist es nun einfacher, parallel an dem Programm zu arbeiten, denn Ersteller von View und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander abhängig.
 Jedoch muss bedacht werden, dass Änderungen am Model, direkt an die View weitergegeben werden müssen.
+\newpage
 \subsubsection{Struktur}
 \begin{enumerate}
     \item \textbf{View}  \\
@@ -455,7 +454,7 @@ SceneBuilder ist ein umfangreiches GUI-Design-Tool der Firma Gluon.
 Verwendet wird es bei Erstellung komplexerer Layouts, denn je komplizierter dieses wird, desto eher stößt man ohne Design-Tool an seine Grenzen.\\\\
 Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeitpunkt möglich ist, den Code hinter der Oberfläche direkt grafisch darzustellen.
-Andererseits kann nun, nur mit wenigen Klicks, eine für den Endbenutzer ansprechende GUI gebaut werden.\\
+Andererseits kann nun, nur mit wenigen Klicks, eine für den Endbenutzer ansprechende GUI gebaut werden.
 Im speziellen hat SceneBuilder weitere wichtige Vorteile, wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
 Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eignet sich optimal für große Projekte wie dieses.
@@ -546,8 +545,8 @@ Dieser Nachfolger von CSV und INI setzt sich vor allem in der heutigen Datentech
 Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
 Ein weiterer Grund zur Verwendung ist ebenso eine effektive Umwandlung von Daten, also Objekten, Arrays und sonstigen Variablen, in das JSON-Dateiformat.\\
 All diese Merkmale sind essenziell wichtig und eröffnen ein breites Spektrum an Verwendungsmöglichkeiten.\\\\
-Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel näher visualisiert.
 \newpage
+Die Syntax von JSON ist klar definiert und wird ebenfalls durch ein Beispiel näher visualisiert.
 \begin{lstlisting}[style=json, caption=JSON-Codebeispiel,label=jsonExample]
 {
     "employee": {
@@ -575,10 +574,11 @@ Dieser genannte String kann danach je nach Belieben in eine Datei geschrieben od
 \\
 Auch kann der gesamte Prozess mithilfe des Methodenaufrufs \lstinline[style=java]{gson.fromJson()} umgekehrt werden.
 Hierbei wird aus einem JSON-String ein Objekt erzeugt.
+\newpage
 \section{Backend-Programmierung}\label{sec:backend-programmierung}
 \subsection{Kommunikation}\label{subsec:kommunikation}
 \subsubsection{Konzept}
-Um erfolgreich Daten zwischen dem Raspberry PI 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
+Um erfolgreich Daten zwischen dem Raspberry Pi 3B+ und der Platine, welche die Ansteuerung sämtlicher Komponenten übernimmt, zu übertragen, wird ein Kommunikationsprotokoll benötigt.
 Dieses Protokoll stellt im engsten Sinne eine Vereinbarung dar, wie die Datenübertragung zwischen zwei oder mehreren Parteien abläuft.
 Anforderungen an dieses Protokoll sollen sein:
 \begin{enumerate}
@@ -589,13 +589,13 @@ Anforderungen an dieses Protokoll sollen sein:
 \end{enumerate}
 Neben standardisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit, selbst ein sogenanntes propretäres Übertragungsprotokoll zu definieren.
 Dies ist in unserem Fall möglich, um alle Anforderungen abzudecken.
-Basierend auf dem Master-Slave Prinzip, wobei der Raspberry PI den Master und die Ansteuerplatine den Slave darstellt, soll ein an Modbus-ASCII angelehntes Protokoll umgesetzt werden.\\
+Basierend auf dem Master-Slave Prinzip, wobei der Raspberry Pi den Master und die Ansteuerplatine den Slave darstellt, soll ein an Modbus-ASCII angelehntes Protokoll umgesetzt werden.\\
 Zusätzlich soll, um eine virtuelle Testumgebung zur Kommunikation zu schaffen, ein Simulator ausprogrammiert werden, welcher beim Start, auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
 Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfigurationsdatei vonstattengehen.
 Die folgende Grafik soll schematisch die Geräteauswahl darstellen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{fig/ainf/DeviceSelection}
+    \includegraphics[width=0.7\textwidth]{fig/ainf/DeviceSelection}
     \caption{Schematische Darstellung der Geräteauswahl}
     \label{deviceSelection}
 \end{figure}
@@ -706,13 +706,11 @@ Diese Methode besitzt den Zugriffsmodifizierer \lstinline[style=java]{protected}
 \begin{lstlisting}[style=java,caption=Methode createRequestFrame(),label=Gesamte Methode createRequestFrame()]
 private static java.util.zip.CRC32 CRC32 = new java.util.zip.CRC32();
 private String reqFrame;
-...
-protected void createRequestFrame(String content) {
 
+protected void createRequestFrame(String content) {
     if (content == null || content.isEmpty()) {
         throw new IllegalArgumentException();
     }
-
     CRC32.reset();
     CRC32.update(content.getBytes());
     final String crc32 = String.format("%08X", CRC32.getValue());
@@ -731,7 +729,20 @@ Weiters verfügt die Klasse die Methode \lstinline[style=java]{handleRequestSent
 Dieser genannte Zeitstempel ist im nachhinein für das Timeout-Handling von Responses wichtig.\\
 Sobald nun ein Response ankommt, kommt die Methode \lstinline[style=java]{handleResponse()} ins Spiel.
 Aufgabe dieser ist es, das ankommende Response-Objekt, welches im unteren Abschnitt beschrieben wird, in dessen elementaren Daten zu zerlegen.
-\lstinputlisting[firstline=35, lastline=42, style=java,caption=Teilabschnitt Methode handleResponse(),label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+%\lstinputlisting[firstline=35, lastline=42, style=java,caption=Teilabschnitt Methode handleResponse(),label=handleResponse() Teilabschnitt]{src/serial/request/Request.java}
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Teilabschnitt Methode handleResponse(),label=handleResponse() Teilabschnitt]
+public void handleResponse(Response res) throws SerialException {
+    timeMillisFrameReceived = res.getTimeMillisCreatedAt();
+    byte[] receivedContentCRC = new byte[2];
+    String receivedCRC = "", receivedContent = "";
+    CRC32.reset();
+    resFrame = res.getResFrame();
+    LOG.fine("Received response " + Arrays.toString(resFrame));
+    ...
+}
+\end{lstlisting}
+% @formatter:on
 Auch soll in dieser Methode überprüft werden, ob der Content des Frames Fehler aufweist.
 Dies geschieht wieder mithilfe der in Java implementierten Bibliothek \lstinline{CRC32} und soll nicht näher beleuchtet werden.
 Nun wird anhand des zurückkommenden Response-Strings analysiert, wie sich der Request im Zielsystem verhalten hat.
@@ -748,7 +759,7 @@ Aufgerufen wird der Konstruktor, welcher die Methode \lstinline[style=java]{crea
 Als Parameter erhält diese Methode den vom Protokoll festgelegten Content.
 Anhand eines Beispiels soll der Request \textit{Shuffle} gezeigt werden.
 \lstinputlisting[firstline=8, lastline=12, style=java,caption=Konstruktor RequestShuffle(),label=toString() Methode]{src/serial/request/RequestShuffle.java}
-\textbf{Fazit:}\\
+\textbf{Fazit}\\
 Somit erhält man nach Erstellung eines Objekts vom gewählten Request-Typ ein vollwertiges Objekt mit dem gearbeitet werden kann.
 Im folgenden Abschnitt wird nun gezeigt, wie ein Request versendet werden kann.\\\\
 Die gesamte Kommunikation wird umgesetzt durch die Klasse \lstinline[style=java]{Communication}.
@@ -756,7 +767,7 @@ Diese kann verglichen werden mit einem Service, welcher sich um das Senden und E
 Die vom Design-Pattern Singelton abgeleitete Klasse, stellt 2 Threads bereit, wobei einer davon für den Sendungs- und einer für den Empfangsvorgang zuständig ist.
 Beide werden im privaten Konstruktor der Klasse erstellt und gestartet.
 Somit ist ab diesem Zeitpunkt die Verfügbarkeit zur Kommunikation gegeben.\\\\
-\textbf{Der CommunicationSendThread:}\\
+\textbf{Der CommunicationSendThread}\\
 Nun besteht jedoch das Problem, das diese 2 Threads untereinander abgestimmt werden müssen.
 Ein wichtiges Beispiel zeigt hierbei das Producer-Consumer-Problem welches in der \autoref{ProducerConsumer} dargestellt wird.
 \begin{figure}[H]
@@ -765,6 +776,7 @@ Ein wichtiges Beispiel zeigt hierbei das Producer-Consumer-Problem welches in de
 \caption{Kommunikation Producer-Consumer}
 \label{ProducerConsumer}
 \end{figure}
+\newpage
 Dieses Problem bezieht sich auf die gemeinsame Verwendung von Items, da hier Überschneidungen entstehen.
 In diesem Fall stellt die sogenannte \lstinline[style=java]{toSentList}, welche als \lstinline[style=java]{LinkedList} vom Typ \lstinline[style=java]{Request} implementiert wurde, die Items dar.
 Einerseits müssen hier Requests zur Liste hinzugefügt und andererseits entnommen werden.\\
@@ -776,6 +788,7 @@ Hier wartet bzw. schläft der Thread, bis er von außen aktiviert, also aufgewec
 Zu sehen ist dies im \autoref{commThreadSync}.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSync]
+...
 try {
     mainLoop:
     while (!Thread.currentThread().isInterrupted()) {
@@ -795,6 +808,7 @@ catch (Exception ex) {
 finally {
     LOG.info(Thread.currentThread().getName() + " ended");
 }
+...
 \end{lstlisting}
 % @formatter:on
 Hinzugefügt kann ein Item über die Methode \lstinline[style=java]{public void sendRequestExecutor (Request req)} werden.
@@ -814,12 +828,14 @@ Befindet sich nun etwas in der \lstinline[style=java]{toSentList}, beginnt der T
 Ein Loop zur Sendung eines Request kann einfach anhand des \autoref{commThreadSend} erklärt werden.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationSendThread,label=commThreadSend]
+...
 if (!toSentList.isEmpty()) {
     pendingRequest = toSentList.removeFirst();
     LOG.fine("sending request " + pendingRequest.getMreqFrame());
     serial.writeString(pendingRequest.getMreqFrame());
     pendingRequest.handleRequestSent();
 }
+...
 \end{lstlisting}
 % @formatter:on
 Vorerst wird der wartende Request in dem Attribut \lstinline[style=java]{Request pendingRequest} gespeichert und von der Liste gelöscht.
@@ -868,6 +884,7 @@ Ist das ankommende Zeichen das Startzeichen(\lstinline[style=java]{:}), beginnt 
 Sollte jedoch ein unerwartetes Zeichen ankommen, was auf einen Übertragungsfehler hinweist, wird ein Eintrag in die Log-Datei erstellt, welcher den Fehler veranschaulicht.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
+...
 while (!Thread.currentThread().isInterrupted()) {
     int b = is.read();
     if (b >= 0 && b < 255) {
@@ -880,9 +897,11 @@ while (!Thread.currentThread().isInterrupted()) {
                     (':' expected, get " + b);
             }
         }
+...
 \end{lstlisting}
 % @formatter:on
 Werden die ankommenden Daten nun als vollwertigen Request erkannt, fügt der CommunicationReceiveThread diesen zur oben genannten \lstinline[style=java]{responseList} hinzu und weckt den CommunicationSendThread, welcher diesen, wie oben beschrieben, weiterverarbeitet.
+\newpage
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Teilabschnitt CommunicationReceiveThread,label=commThreadSend]
 ...
@@ -941,7 +960,7 @@ Wird die Zeichenkette \lstinline[style=json]{"sim"} mithilfe der Abfrage \lstinl
 In diesen beiden Methoden werden sowohl die serielle Schnittstelle, als auch der Simulator konfiguriert.
 Nun soll anhand der Listings näher auf den Code der beiden Methoden eingegangen werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Teilabschnitt Konstruktor Serial(),label=serialInit]
+\begin{lstlisting}[style=java,caption=Konstruktor Serial(),label=serialInit]
 private Serial(ConfigSerialModel config) throws SerialException, IOException {
     this.config = config;
 
@@ -997,7 +1016,7 @@ Diese fordert als Parameter den Namen des Ports.
 Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\\\
 Dieses genannte Öffnen des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException}führen.
 Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
-Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und OutputStreams für das serielle Endgerät definiert werden.\\\\
+Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und OutputStreams für das serielle Endgerät definiert werden.
 %\lstinputlisting[firstline=89, lastline=103, style=java,caption=Methode initSerialDevice(),label=fdsafdsa]{src/serial/Serial.java}
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Methode initSimulation(),label=fdsafdsafds]
@@ -1041,7 +1060,8 @@ In diesem Fall besteht nun jedoch das Problem, dass diese Daten nicht als kodier
 Die Gründe werden später bei der Erklärung der Datenübertragung an den Simulator näher erläutert.
 So muss nun dieser int-Wert in einen String umgewandelt und in dem Frame gespeichert werden.
 % @formatter:off
-\begin{lstlisting}[style=java,caption=Umwandlung von Zeichen,label=stringParse]
+\begin{lstlisting}[style=java,caption=Teilabschnitt Methode run(),label=stringParse]
+...
 while (true) {
     int c = in.read();
     if (c < 0) {
@@ -1053,6 +1073,7 @@ while (true) {
         reqFrame = reqFrame + (char) c;
     }
 }
+...
 \end{lstlisting}
 % @formatter:on
 Wird nun ein \verb!\n!, also der int Wert 10 übertragen, ist der Frame vollständig zusammengebaut.
@@ -1131,6 +1152,7 @@ before computing xy={l=15pt},
 \label{PackagestrukturLogging}
 \end{figure}
 Um nun die Implementierung zu vervollständigen, muss nun in der Main-Methode, welche im Package \lstinline[style=java]{main} zu finden ist, der Logger parametrisiert werden.\\\\
+\newpage
 Im Gegensatz zu Javas Standard-Logger-Objekt sind alle Logger-Objekte automatisch an einen einzigen "übergeordneten" Logger gebunden.
 Nun ist es zuallererst nötig, das Binding eines Handlers an das "übergeordnete" Logger-Objekt durchzuführen.
 Dies erfolgt mithilfe der Zeile \lstinline[style=java]{private static final Logger LOGP = Logger.getParentLogger()}.\\
@@ -1174,9 +1196,8 @@ FINER                 & finer                  & Genauere Darstellung von Nachri
 FINEST                & finest                 & Genaueste Darstellung von Nachrichten                                                                                \\ \hline
 ALL                   & all                    & Darstellung von allen Nachrichten                                                                                    \\ \hline
 \end{tabular}
-\caption{}
+\caption{Logger-Funktionen}
 \end{table}
-\newpage
 \subsection{Konfigurationsdatei}\label{subsec:konfiguration}
 \subsubsection{Konzept}
 Sollten, wie in unserem Fall, Daten über einen längeren Zeitpunkt gespeichert werden und diese auch nach einem Systemneustart noch verfügbar sein, kann eine Datei implementiert werden, welche diese Daten speichert.
@@ -1250,6 +1271,7 @@ Dieses Model verfügt eine Liste von Objekten des Typs \lstinline[style=java]{Ga
 Auch beinhaltet es einen Zahlenwert zur Zählung der gespielten Spiele.\\\\
 Ab diesem Zeitpunkt ist es nun möglich, Statistiken des gesamten Lebenszykluses der Maschine, in einer Datei darzustellen.
 Dies soll im \nameref{sssec:statsController} an Bedeutung und Relevanz gewinnen.
+\newpage
 \section{Frontend-Programmierung}
 In dem folgenden Kapitel wird näher über das sogenannte "Frontend" gesprochen.
 Die Definition des Frontends bezieht sich in dieser Arbeit auf alle notwendigen Programmbausteine, welche zur Darstellung der grafischen Benutzeroberfläche notwendig sind.\\\\
@@ -1260,10 +1282,13 @@ Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welch
 Aufgrund des großen Spektrums an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
 Sobald es aber jetzt, wie in den Anforderungen, um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens Material-Design nicht vorbei.
 Folgend soll der Vergleich von Material-Design und Flat-Design gezeigt werden.\\\\
-\footfullcite{kulturbanause2016}Da sich der Look von Material Design aus einfarbigen Flächen, schlichten Icons, großen Bildern und aufgeräumten Benutzeroberflächen zusammensetzt, wird der Stil häufig mit Flat Design verwechselt bzw. gleichgesetzt. Auch wenn Material Design im Flat Look gestaltet ist, bestehen doch signifikante Unterschiede.\\\\
-Anders als beim Flat Design, bei dem es in erster Linie um Ästhetik und Reduzierung geht, besteht ein Schwerpunkt beim Material Design auf der Optimierung der Benutzerfreundlichkeit und in der Einhaltung physikalischer Gesetze.
-Material Design fügt daher zusätzlich eine virtuelle Z-Achse hinzu, um Dreidimensionalität zu schaffen, die im Flat Design so explizit unerwünscht wäre.
-Anders als im Flat Design wird viel mit Animationen und animierten Übergängen, sowie mit Licht und Schatten gearbeitet, um dem Benutzer Zusammenhänge besser zu visualisieren.
+\footfullcite{kulturbanause2016}
+Grundlegend besteht der Look von Material Design aus farbigen Flächen, einfachen Icons und großen Bildern, welche auf einer aufgeräumten Interaktionsoberfläche angezeigt werden.
+So wird dieses Design jedoch oft mit dem Flat-Design verwechselt aber
+es bestehen wesentliche Unterschiede.
+Im Gegensatz zum Flat Design, wo es hauptsächlich um die Ästhetik und Reduzierung der Oberfläche geht, spielt beim Material Design die Optimierung der Benutzerfreundlichkeit sowie die Implementierung von physikalischen Gesetzen eine wichtige Rolle.
+Jedoch ist auch zu beachten, dass beim Material Design eine virtuelle Z-Achse geschaffen wird um Dreidimensionalität zu kreieren.
+Auch besteht ein weiteres Ziel darin, viel mit Animationen, animierten Übergängen, sowie Licht und Schatten zu arbeiten.
 So sollte sich bei der Erstellung an folgender Grafik gehalten werden.
 \begin{figure}[H]
 \centering
@@ -1311,7 +1336,7 @@ try {
 }
 \end{lstlisting}
 % @formatter:on
-\textbf{Fazit:}\\
+\textbf{Fazit}\\
 So ist es nun möglich, mit wenigen Schritten diese genannte Trennung sauber durchzuführen.
 Diese soll in allen weiteren Programmabschnitten vollzogen werden.
 \subsection{Startup-Window und Controller}\label{subsec:startupController}
@@ -1354,7 +1379,7 @@ Auch hat solch ein Verfahren den Vorteil, dass nun die Darstellung von Datenelem
 Zu sehen ist dies in der \autoref{CellRendering}.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{fig/ainf/CellRendering}
+\includegraphics[width=0.3\textwidth]{fig/ainf/CellRendering}
 \caption{Cell-Rendering Beispiel}
 \label{CellRendering}
 \end{figure}
@@ -1365,6 +1390,7 @@ Jetzt muss lediglich die CellFactory mithilfe des Methodenaufrufs \lstinline[sty
 Genau das gleiche Verfahren kann auch bei der ComboBox angewendet werden.\\\\
 \begin{figure}[H]
 \centering
+\vspace{-10mm}
 \includegraphics[width=0.8\textwidth]{fig/ainf/Startup_German.png}
 \caption{Startup-Window}
 \label{startupWindow}
@@ -1390,7 +1416,7 @@ Adaptiv kann jedem Spieler jetzt ein Punkt hinzu oder abgezogen werden.
 Sollte je 1 Punkt nicht ausreichen, kann mithilfe eines implementierten Sliders eine größere Anzahl an Punkten zugewiesen werden.\
 Wird ein Punkt hinzugefügt, aktualisiert dies automatisch die Punkteanzeige.\\\\
 Umgesetzt wurde diese genannte Anzeige als \lstinline[style=java]{XYChart}, welcher mithilfe der folgenden Zeilen deklariert wurde.
-\lstinputlisting[firstline=43, lastline=45, style=java,caption=Initialisierung der Achsen,label=XYChart]{src/gui/controller/HomeController.java}
+\lstinputlisting[firstline=42, lastline=45, style=java,caption=Initialisierung der Diagrammachsen,label=XYChart]{src/gui/controller/HomeController.java}
 Nachdem diese Deklarierung erfolgt ist, kann mit der Methode \lstinline[style=java]{updateBarChart()} die Grafik aktualisiert werden.
 Diese Methode iteriert durch alle Spieler des Game-Objekts, holt die Namen sowie Punkteanzahl der Spieler heraus und schreibt sie in den \lstinline[style=java]{XYChart}.\\
 Neben dieser Funktion stellt das Dashboard auf der linken Seite ein Kontrollmenü zum Steuern der Maschine bereit.
@@ -1402,8 +1428,9 @@ Diese können, wie auch bei der Punkteanzahl, mithilfe eines Sliders ausgewählt
 Das Programm deaktiviert nach dem Fehlen von vorhandenen Karten die Buttons und es ist erst nach einem weiteren Mischvorgang möglich, weiter auszuteilen.\\
 \begin{figure}[H]
 \centering
+\vspace{-5mm}
 \includegraphics[width=0.2\textwidth]{fig/ainf/Interface.png}
-\caption{Interaktionsmenü}
+\caption{Interaktionsmenü-Kartenausgabe}
 \label{interface}
 \end{figure}
 Wird mit dem Button \textit{Spiel beenden} nun das Spiel beendet, wird vollautomatisch das Game-Objekt in die Statistik-Datei geschrieben.
@@ -1419,10 +1446,10 @@ Diese werden in einer Gruppe zusammengefasst, welche wiederum in einer Hauptgrup
 So besteht eine Baumstruktur.
 Dargestellt werden die Daten über Instanzen vom Typ \lstinline[style=java]{TreeItem<T>}.
 Erstellt werden diese TreeItems mithilfe der Methode \lstinline[style=java]{createTreeData())}.
-\lstinputlisting[firstline=43, lastline=56, style=java,caption=createTreeData(),label=createTreeData]{src/gui/controller/StatsController.java}
+\lstinputlisting[firstline=43, lastline=56, style=java,caption=Methode createTreeData(),label=createTreeData]{src/gui/controller/StatsController.java}
 In dieser Methode wird zuerst die Hauptgruppe namens \lstinline[style=java]{root} erstellt.
 Im nächsten Schritt werden alle Game-Instanzen geholt und mithilfe der Methode \lstinline[style=java]{createGroupTreeItem()} in Gruppenelemente umgewandelt.
-\lstinputlisting[firstline=58, lastline=60, style=java,caption=createGroupTreeItem(),label=createGroupTreeItem]{src/gui/controller/StatsController.java}
+\lstinputlisting[firstline=58, lastline=60, style=java,caption=Methode createGroupTreeItem(),label=createGroupTreeItem]{src/gui/controller/StatsController.java}
 Innerhalb dieser Schleife, welche diese genannten Gruppen erstellt, befindet sich eine weitere Schleife, welche zu den jeweiligen Gruppen die einzelnen Spieler in Form von Instanzen vom Typ \lstinline[style=java]{TreeItem<PlayerModel>} hinzufügt werden.
 Diese werden als sogenannte \lstinline[style=java]{children} betitelt.\\\\
 Im letzten Schritt muss nun nur mehr das Data Binding umgesetzt werden.
@@ -1437,7 +1464,7 @@ Die nebensächlichen Tabs namens \textit{About} und \textit{Help} stellen ledigl
 Diese wird in Form von Pfeilen und Texten beschriebenen Bildern dargestellt.
 Im \textit{About-Tab} findet sich jedoch ein kleines Feature.
 Mithilfe einer ComBox kann hier die gewünschte Systemsprache gewählt werden.
-Die  wird im \autoref{sssec:internationalization} näher beschrieben.\\
+Die  wird im \autoref{sssec:internationalization} näher beschrieben.
 So bieten diese beiden Tabs im Großen und Ganzen eine Schnittstelle zur Informationsbeschaffung für den Benutzer an.
 \subsection{Alerts}\label{sssec:alert}
 Um wie in JavaFX die Möglichkeit zu haben, Abfragen vorzunehmen, wurden in diesem Projekt sogenannte Dialoge implementiert.
@@ -1484,16 +1511,17 @@ Sobald diese nun standardmäßig eingelesen wurden, kann aus diesen Daten ein Lo
 Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
 Sollte dies der Fall sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
 Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuelle Locale zu schreiben, um dann beim nächsten Start dieses zu verwenden.
+\newpage
 \section{Hardwarenahe-Programmierung}
 Um nun die gesendeten Daten über der seriellen Schnittstelle auf der Ansteuerplatine zu erhalten ist es notwendig, diese genannte Platine einzurichten und zu programmieren.
 Im folgenden Abschnitt wird nun dieser Prozess näher erklärt.
 \subsection{Konfiguration des Mikrocontrollers}
 \footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtung des Mikrocontrollers.
-Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.\\
+Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.
 Bei einem neuen µC ist es grundsätzlich notwendig im Datenblatt genau dieses µCs den Auslieferungszustand der Fuses zu ermitteln.
 So werden beispielsweise die ATmega Prozessoren mit aktiviertem internen Oszillator ausgeliefert und man darf sich nicht wunden, wieso des Mikrocontroller nicht funktioniert.
 Aufgrund der Verfügbarkeit eines Programmiersteckers ist es nun einfach, diese Fuse-Bits, also die Bits, welche für die Konfiguration des Mikrocontrollers dienen zu setzten.
-Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.\\
+Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.
 \footfullcite{Haemmerling2020}Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
 \begin{figure}[H]
 \centering
@@ -1509,14 +1537,14 @@ avrdude -c usbasp -P /dev/ttyUSB0 -p atmega324pa -e -U hfuse:w:0xd0:m
 avrdude -c usbasp -P /dev/ttyUSB0 -p atmega324pa -e -U efuse:w:0xfe:m
 \end{lstlisting}
 % @formatter:on
-Werden unterdessen diese Fuse-Bits gesetzt, kann nun mithilfe von AVR-Dude ein Bootloader auf den Microcontroller gespielt werden.
-So steht nun der volle Umfang des Mikrocontrollers zu Verfügung.\\\\
+Werden diese Fuse-Bits gesetzt, kann nun mithilfe von AVR-Dude ein Bootloader auf den Microcontroller gespielt werden.
+So steht nun der volle Umfang des Mikrocontrollers zur Verfügung.
 \subsection{Umsetzung Kommunikation} \label{ssec:konzeptCardDeal}
 Sobald jetzt der Mikrocontroller programmierbar gemacht wurde, kann mit dem programmatischen Teil gestartet werden.
 Ziel ist es, die serielle Kommunikation am Mikrocontroller zu realisieren.
 Umgesetzt wurde dies mit verfügbaren Vorlagen welche aus dem Unterricht bekannt waren.
 In diesen Vorlagen sind etwaige Dinge, wie die Implementierung von Tasks oder UART schon vorkonfiguriert.
-Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Umsetzung der Ziele.\\\\
+Dies erleichtert den Programmiervorgang enorm und führt zu einer schnelleren Umsetzung der Ziele.\\
 Grundlegend muss jetzt die Verarbeitung der Daten und das Senden einer Antwort realisiert werden.
 Das bedeutet, diese sollten in einem Buffer gespeichert und anschließend geprüft werden.
 Wird ein Zeichen von der serielle Schnittstelle empfangen, wird die Funktion \lstinline[style=C]{app_handleUartByte()} aufgerufen.
@@ -1536,19 +1564,20 @@ Die Aufgaben der Funktion sind folgende:
 \item Senden eines Response
 \end{enumerate}
 Mithilfe dieser beiden Funktionen ist es nun möglich, Requests zu Empfangen und eine Response zu schicken.
+\newpage
 \section{Teilaufbau}
 Der letzte Schritt dieses Projekts ist es, einen Teil der Maschine aufzubauen.
-Der Teilaufbau der Maschine gliedert sich in Display, Ansteuerplatine und Raspberry PI.
+Der Teilaufbau der Maschine gliedert sich in Display, Ansteuerplatine und Raspberry Pi.
 Auch soll gezeigt werden, wie die Konfiguration des Display und das aufsetzten des Betriebssystems vonstatten ging.
 \subsection{Konfiguration des Zielsystems}
 \subsubsection{Betriebssystem}
 Als Betriebssystem wurde Raspbian ausgewählt.
-Das offizielle Betriebssystem für den Raspberry PI basiert auf einem Debian-System mit Linux-Kernel.
+Das offizielle Betriebssystem für den Raspberry Pi basiert auf einem Debian-System mit Linux-Kernel.
 Außerdem bringt es die aktuellste Unterstützung von Hardware mit und ist zudem noch außerordentlich schlank.
 So wird auch der verwendete Display optimal Unterstützt.\\
 Installiert werden kann Raspbian nach dem Download von der offiziellen Website.
 Diese Installation startet mit dem erstellen einer Bootfähigen SD-Karte.
-Ist nun die SD-Karte bootfähig, muss lediglich der Raspberry PI gestartet werden.
+Ist nun die SD-Karte bootfähig, muss lediglich der Raspberry Pi gestartet werden.
 Anschließend folgt eine Systemkonfiguration.
 \subsubsection{Integration des Touchpanels}
 Die Integration des Touchpanels ist spielt eine elementare Rolle bei der Inbetriebnahme der Maschine.
@@ -1558,7 +1587,7 @@ Das ausgewählte Touchpanel besitzt folgende Eigenschaften:
 \item  1024×600 Auflösung
 \item Mit kapazitiven Touchcontrol
 \item Einfache Konfiguration\\
-Nach dem Anschließen muss nur mehr die \textit{config.txt}, welche sich im Root-Verzeichnis des Betriebssystems vom Raspberry PI befindet, ergänzt werden.
+Nach dem Anschließen muss nur mehr die \textit{config.txt}, welche sich im Root-Verzeichnis des Betriebssystems vom Raspberry Pi befindet, ergänzt werden.
 Folgende Zeilen werden vorausgesetzt:
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Display-Parameter,label=resource]
@@ -1575,8 +1604,8 @@ Ab diesem Zeitpunkt ist eine Verwendung des Displays möglich.
 \subsubsection{Aufbau}
 Das Ziel des letzten Schritts ist es, alle Komponenten miteinander zu verbinden.
 Das bedeutet es muss noch die ausständige Verbindung der Ansteuerplatine und des Raspberry gemacht werden.
-Diese wurde über einen 40 Pin Stecker realisiert, welcher alle Pins des Raspberry PIs auf die Ansteuerplatine führt.
-So ist nun die serielle Verbindung sowie die Spannungsversorgung des Raspberry PIs sichergestellt.
+Diese wurde über einen 40 Pin Stecker realisiert, welcher alle Pins des Raspberry Pi auf die Ansteuerplatine führt.
+So ist nun die serielle Verbindung sowie die Spannungsversorgung des Raspberry Pi sichergestellt.
 \end{enumerate}
 \begin{figure}[H]
 \centering
@@ -1586,8 +1615,8 @@ So ist nun die serielle Verbindung sowie die Spannungsversorgung des Raspberry P
 \end{figure}
 Um nun das gesamte System in Betrieb zu nehmen ist es lediglich notwendig, eine Spannungsversorgung an die Ansteuerplatine anzuschließen.\\
 Anhand dieses Stadiums können jetzt alle Komponenten in das Gehäuse eingebaut und verwendet werden.
+\newpage
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
-
 Im folgenden Abschnitt soll auf die entstandenen Probleme während der Arbeiten eingegangen werden.
 Auch soll ein Resümee gefasst werden sowie
 \subsection{Probleme}

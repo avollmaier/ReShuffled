@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Serial">
+  <ClassDiagramComponents>
+    <Class name="Serial" package="serial" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="LOG" type="Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="instance" type="Serial" visibility="private" isStatic="true"/>
+        <Field name="config" type="ConfigSerialModel" visibility="private" isFinal="true"/>
+        <Field name="inputStream" type="InputStream" visibility="private"/>
+        <Field name="outputStream" type="OutputStream" visibility="private"/>
+        <Field name="toSim" type="SimInputStreamBuffer" visibility="private"/>
+        <Field name="fromSim" type="SimOutputStreamBuffer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private">
+          <Argument type="ConfigSerialModel" name="config"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="createInstance" returnType="Serial" visibility="public" isStatic="true">
+          <Argument type="ConfigSerialModel" name="config"/>
+        </Method>
+        <Method name="getInstance" returnType="Serial" visibility="public" isStatic="true"/>
+        <Method name="getInputStream" returnType="InputStream" visibility="public"/>
+        <Method name="getOutputStream" returnType="OutputStream" visibility="public"/>
+        <Method name="initSimulation" returnType="void" visibility="private"/>
+        <Method name="initSerialDevice" returnType="void" visibility="private"/>
+        <Method name="writeString" returnType="void" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="instance" source="serial.Serial" target="serial.Serial" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="serial.Serial" target="serial.Serial" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
