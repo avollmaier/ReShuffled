@@ -4,7 +4,7 @@
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
 Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
-Die Aufteilung dieses \pageref{LastPage} seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Die Aufteilung dieses 55 seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Auch wird gezeigt, wie Teile der \textbf{hardwarenahen Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 \section{Zeitplan}\label{sec:zeitplan}
@@ -1507,7 +1507,7 @@ txt_msg_finishGame=Wollen Sie wirklich das Spiel beenden?
 Die folgende Methode filtert nun genau nach dem oben genannte Pattern und es werden infolgedessen die Daten eingelesen.
 \lstinputlisting[firstline=17, lastline=20, style=java,caption=Methode getMatchingFiles(),label=readBundle]{src/util/FileUtil.java}
 Sobald diese nun standardmäßig eingelesen wurden, kann aus diesen Daten ein Local erstellt werden welches anschließend mit der Methode \lstinline[style=java]{Methode activateLocale()} aktiviert werden kann.
-\lstinputlisting[firstline=90, lastline=101, style=java,caption=activateLocale(),label=multiLang]{src/gui/multilanguage/ResourceManager.java}
+\lstinputlisting[firstline=90, lastline=101, style=java,caption=Methode activateLocale(),label=multiLang]{src/gui/multilanguage/ResourceManager.java}
 Diese Methode prüft zuerst mit \lstinline[style=java]{supportsLocale()}, ob das gewünschte Objekt überhaupt im Speicher vorhanden ist.
 Sollte dies der Fall sein wird das Attribut \lstinline[style=java]{currentResourceBundle}, welches das aktuelle Bundle darstellt, gesetzt.
 Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuelle Locale zu schreiben, um dann beim nächsten Start dieses zu verwenden.
@@ -1617,12 +1617,79 @@ Um nun das gesamte System in Betrieb zu nehmen ist es lediglich notwendig, eine 
 Anhand dieses Stadiums können jetzt alle Komponenten in das Gehäuse eingebaut und verwendet werden.
 \newpage
 \section{Probleme - Verbesserungsmöglichkeiten - Zusammenfassung}
-Im folgenden Abschnitt soll auf die entstandenen Probleme während der Arbeiten eingegangen werden.
-Auch soll ein Resümee gefasst werden sowie
+Im folgenden Abschnitt soll auf die entstandenen Probleme, welche während den Arbeiten aufgetreten sind sowie den zukünftigen Verbesserungsmöglichkeiten eingegangen werden.
+Schlussendlich soll eine kurze Zusammenfassung das Projekt abrunden.
 \subsection{Probleme}
 \subsubsection{Probleme bei der Implementierung von JavaFX}
+Als Erstes soll auf das Problem der Implementierung von JavaFX eingegangen  werden.
+So ist es zu Beginn der Arbeiten nicht möglich gewesen, die Oberfläche der JavaFX-Applikation korrekt auf dem Interface, welches an den Raspberry Pi angeschlossen ist, anzeigen zu lassen.
+Grund dafür ist die fehlende Unterstützung des JavaFX-Paketes innerhalb der offiziellen Java-Bibliothek.
+Deswegen muss, laut der OpenJFX-Dokumentation (https://openjfx.io/openjfx-docs/), eine externe SDK für JavaFX heruntergeladen und als sogenanntes Module in die IDE implementiert werden.
+Auch ist es nötig, diese SDK innerhalb der generierten \lstinline[style=C]{*.jar}-Datei zu implementieren.
+Dies erfolgt in der Datei \lstinline[style=C]{build.xml} welche sich im root-Ordner befindet.
+% @formatter:off
+\begin{lstlisting}[style=xml,caption=Teilabschnitt build.xml,label=build]
+<target name="-post-jar">
+    <jar jarfile="dist/ReShuffled_PI-withLibs.jar">
+        <zipfileset src="${dist.jar}" excludes="META-INF/*" />
+        <zipfileset src="lib/jssc-2.8.0.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/gson-2.8.6.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/jfoenix-9.0.8.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/javafx.base.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/javafx.controls.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/javafx.fxml.jar" excludes="META-INF/*" />
+        <manifest>
+            <attribute name="Main-Class" value="main.Main"/>
+        </manifest>
+    </jar>
+    <move file="dist/ReShuffled_PI-withLibs.jar" tofile="dist/ReShuffled_PI.jar" />
+</target>
+\end{lstlisting}
+% @formatter:ongenannt
+Nun ist es mithilfe dieser wenigen Zeilen möglich, alle Abhängigkeiten in diese jar-Datei zu implementieren und diese Datei am Raspberry Pi nach Installation einer JVM zu starten..
 \subsubsection{Kommunikation zwischen Controllern}
+Ein weiteres Problem trat bei der Kommunikation zwischen den Controllern auf.
+Diese genannte Kommunikation ist bei gegebenen Umständen des jeweiligen Controllers nötig.
+\begin{figure}[H]
+\begin{center}
+\begin{forest}
+[Controller 1
+[fx:include
+[Controller 2
+]
+]
+[fx:include
+[Controller 3
+]
+]
+]
+]
+]
+\end{forest}
+\end{center}
+\caption{Schematische Darstellung Controllerbaum}
+\label{controllertree}
+\end{figure}
+Zu sehen ist die Implementierung einer FXML-Datei innerhalb einer weiteren FXML-Datei, vollzogen mit dem Befehl \lstinline[style=C]{fx:include}.\\
+Nun besteht jedoch das Problem darin, zwischen den Controllern 1 und 2 zu kommunizieren.
+Nach unzähligen Versuchen kristallisierte sich eine funktionierende Lösung mit einer statischen Zugriffsmethode heraus.
+% @formatter:off
+\begin{lstlisting}[style=java,caption=Codebeispiel Kommunikation Controller,label=build]
+public class MainController extends Controller {
+    @FXML private HomeController homeController;
+    ...
+    private static Controller getController(){
+        return this.homeController;
+    }
+}
+\end{lstlisting}
+% @formatter:on
 \subsection{Verbesserungsmöglichkeiten}
 \subsubsection{Online Update-Möglichkeit der Software}
 \subsubsection{Smartphone-Interface zum Zählen der Punkte}
 \subsection{Zusammenfassung}
+Nach der Einarbeitungsphase der in der projektspezifischen Voruntersuchung erkennbaren Elemente, konnte direkt mit der Konfiguration des Projekts gestartet werden.
+So wurde anschließend die Backend-Programmierung abgeschlossen und es konnte sich ab Mitte des Projektzeitfensters voll und ganz auf die Frontend-Programmierung konzentriert werden.
+Auch wurden nach dem Fertigstellen der Maschine, wichtige Teilgebiete akribisch auf Fehler überprüft.\\\\
+So ist nach Abschluss der Arbeiten festzustellen, das der gesamte Projektteil ein umfangreiches Spektrum an Informationen mit sich bringt.
+Dieses erlangte Fachwissen soll auch nach der Abgabe der Arbeit innerhalb des Projekts Platz finden.
