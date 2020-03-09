@@ -1,30 +1,28 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'main.blg'
-[107] biber-MSWIN64:322> INFO - === 
-[138] Biber.pm:415> INFO - Reading 'main.bcf'
-[401] Biber.pm:940> INFO - Using all citekeys in bib section 0
-[439] Biber.pm:4256> INFO - Processing section 0
-[439] Utils.pm:75> INFO - Globbing data source 'Literaturverzeichnis.bib'
-[451] Utils.pm:91> INFO - Globbed data source 'Literaturverzeichnis.bib' to Literaturverzeichnis.bib
-[473] Biber.pm:4455> INFO - Looking for bibtex format file 'Literaturverzeichnis.bib' for section 0
-[487] bibtex.pm:1653> INFO - LaTeX decoding ...
-[559] bibtex.pm:1471> INFO - Found BibTeX data source 'C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib'
-[639] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009'
-[651] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Grund-Wissen.de2018'
-[656] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Inden2018'
-[708] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'scream3r2020'
-[713] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013'
-[733] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Rudolph2018'
-[742] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Alexander2018'
-[753] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'trestre2020'
-[762] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Gamma2000'
-[816] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'kulturbanause2016'
-[830] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'
-[857] Utils.pm:304> WARN - Entry 'Haemmerling2020' (C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib): Invalid format '15.02.2020' of date field 'date' - ignoring
-[972] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[972] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[972] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de_DE'
-[972] Biber.pm:4090> INFO - No sort tailoring available for locale 'de_DE'
-[1066] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1106] bbl.pm:755> INFO - Output to main.bbl
-[1114] Biber.pm:128> INFO - WARNINGS: 12
+[124] biber-MSWIN64:322> INFO - === 
+[165] Biber.pm:415> INFO - Reading 'main.bcf'
+[409] Biber.pm:943> INFO - Found 30 citekeys in bib section 0
+[451] Biber.pm:4256> INFO - Processing section 0
+[452] Utils.pm:75> INFO - Globbing data source 'Literaturverzeichnis.bib'
+[478] Utils.pm:91> INFO - Globbed data source 'Literaturverzeichnis.bib' to Literaturverzeichnis.bib
+[507] Biber.pm:4455> INFO - Looking for bibtex format file 'Literaturverzeichnis.bib' for section 0
+[521] bibtex.pm:1653> INFO - LaTeX decoding ...
+[601] bibtex.pm:1471> INFO - Found BibTeX data source 'C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib'
+[650] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009a'
+[662] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Grund-Wissen.de2018'
+[685] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013'
+[698] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013Tab'
+[729] Utils.pm:304> WARN - ISBN '978-3-628-02326-3' in entry 'Wittel2013Tab' is invalid - run biber with '--validate_datamodel' for details.
+[738] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009'
+[864] Utils.pm:304> WARN - I didn't find a database entry for 'A4988-Stepper-Motor-Driver-Carrier' (section 0)
+[864] Utils.pm:304> WARN - I didn't find a database entry for 'Datasheet-ATmega324PA' (section 0)
+[865] Utils.pm:304> WARN - I didn't find a database entry for 'MF-MSMF250-Datasheet' (section 0)
+[865] Utils.pm:304> WARN - I didn't find a database entry for 'SMBJ5.A-Datasheet' (section 0)
+[954] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[954] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[954] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de_DE'
+[954] Biber.pm:4090> INFO - No sort tailoring available for locale 'de_DE'
+[1000] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1033] bbl.pm:755> INFO - Output to main.bbl
+[1039] Biber.pm:128> INFO - WARNINGS: 10
