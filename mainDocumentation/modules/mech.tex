@@ -485,6 +485,7 @@ Da bei der 3. Variante, Lagerrad mit Saugnäpfe, Saugnäpfe zum Einsatz kommen, 
         \item teuer
         \item komplizierter Einbau
     \end{itemize}
+    \pagebreak
     \item \textbf{Vergleich der Saunäpfe}
 
 
@@ -617,7 +618,7 @@ mit einer Gewindebohrung am äußeren Ende der Welle. Diese dient dazu, die Well
 Am anderen Ende ist die Welle über die Kupplung mit dem Motor verbunden.
 Die Welle wurde an der Drehbank gefertigt und anschließend an der Fräsmaschine die Gewindebohrung gebohrt.
 
-\newpage
+\pagebreak
 \subsubsection{Lagerwelle}
 \begin{wrapfigure}{r}{8 cm}
     \includegraphics[width=8 cm]{fig/mech/Lagerwelle.png}
@@ -773,7 +774,7 @@ Die Kartenführung wird nicht mit dem Kartenhalterungsmodul verschraubt, sondern
 verklebt. Bei dieser Verbindung kann ohne Probleme eine Klebverbindung angewendet werden, da keine großen Kräfte auftreten, außerdem
 ist sie platzsparender und einfacher zu realisieren. Die Berechnungen zu den Klebestellen finden sie unter \autoref{subsubsec:KlebMod1}.
 
-\newpage
+\pagebreak
 \textbf{Kartenführung Modul 2 oben:}
 
 \begin{wrapfigure}{r}{7 cm}
@@ -802,7 +803,7 @@ wird durch ihre Größe und Postion nicht an dem Modul befestigt, sondern wird �
 verbunden. Durch die lange Bauform und die geringe Stärke des Bauteils, sollten Querstreben in die Konstruktion eingeplant werden,
 da die Kartenführungen sich sonst bei leichtem Berührungskontakt schon stark bewegen.
 
-\newpage
+\pagebreak
 \subsection{Konstruktion der Kartenentnahme}
 
 Die Kartenentnahme, die in  zu erkennen ist, befindet sich am unteren Ende der Maschine, sie dient dazu die Karten zwischenzulagern bis der Spieler
@@ -881,7 +882,7 @@ den Referenzpunkt anfahren möchte.
 \end{figure}
 
 \subsection{Konstruktion des Gehäuses}
-\footfullcite{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
+\footfullcite[vgl.][]{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
 des Gehäusematerials kamen diverse Materialien infrage:
 
 \begin{table}[H]
@@ -1060,21 +1061,21 @@ beträgt 1,8 m/s²,
 daher wird für die Beschleunigung a = 1,8 m/s² eingesetzt. Da ein geringer Unterdruck zur nächsten Karte herrscht, wird eine Sicherheit von 20 gewählt.
 Setzt man die Werte in die Formel ein, bekommt man folgendes Ergebnis: \\
 \begin{align*}
-F_{TH}=0,002kg\cdot (9,81\frac{m}{s^{2}}+1,8\frac{m}{s^{2}})\cdot 20\\
-F_{TH}= 0,4644N\\
+F_{TH} &= 0,002kg\cdot (9,81\frac{m}{s^{2}}+1,8\frac{m}{s^{2}})\cdot 20\\
+F_{TH} &= 0,4644N\\
 \end{align*}
 Um die Druckdifferenz zu berechnen muss als Erstes die Fläche des Saugers berechnet werden.
 Mit einem Durchmesser des Saugers von 20 mm ergibt sich eine Fläche von:
 \begin{align*}
-A=r^{2}\cdot \pi\\
-A=0,02^{2}\cdot \pi\\
-A=0,001257m^{2}\\
+A &= r^{2}\cdot \pi\\
+A &= 0,02^{2}\cdot \pi\\
+A &= 0,001257m^{2}\\
 \end{align*}
 Setzt man die Werte in die Formel ein, bekommt man folgende Druckdifferenz:
 \begin{align*}
-\triangle P=\frac{F_{TH}}{A}\\
-\triangle P=\frac{0,4644N}{0,001257m^{2}}\\
-\triangle P=369,4511Pa\\
+\triangle P &= \frac{F_{TH}}{A}\\
+\triangle P &= \frac{0,4644N}{0,001257m^{2}}\\
+\triangle P &= 369,4511Pa\\
 \end{align*}
 Da der berechnete Wert unbeachtlich klein ist, kann eine möglichst kleine Pumpe ausgewählt werden. Diese beansprucht
 wenig Platz, braucht wenig Strom und ist leise. Schlussendlich wurde eine Pumpe mit einer Leistung von 2,15W und einer
@@ -1300,7 +1301,7 @@ drucken kann. Da das 3D-Drucken billig, schnell und eine hohe Genauigkeit hat, n
 Sie unter Kapitel 1.7.2 3D-Druck.
 
 \subsection{3D-Druck}
-Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner Schnelligkeit und der Tatsache
+\footfullcite{3DRUCK.com2020} Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner Schnelligkeit und der Tatsache
 ausgewählt, dass uns der 3D-Drucker der HTBLA Kaindorf zur Verfügung stand.
 \subsubsection{Grundlagen}
 Der 3D-Druck fungiert im Prinzip der additiven Fertigung, das heißt, er fertigt Objekte aus 3D-Modelldaten Schicht für Schicht
@@ -1311,8 +1312,8 @@ Pressen. Beim additiven  Verfahren jedoch wird die gewünschte Form durch Erzeug
 hinzugefügt oder aufgetragen. Als hybrides Verfahren bezeichnet man jene, die sich nicht in eine dieser Kategorien
 Unterbringen lassen oder jene die mehrere dieser Verfahren miteinander verbinden.
 
-\textbf{Produktionsverfahren}
-Produktionsverfahren lassen sich in 4 Kategorien einteilen:
+\textbf{Produktionsverfahren:}\\
+\footfullcite{3DRUCK.com2020a} Produktionsverfahren lassen sich in 4 Kategorien einteilen:
 \begin{itemize}
     \item \textbf{manuelle Verfahren}: Dieses Verfahren beschreibt vereinfacht gesagt die klassische  Handarbeit, wie zum Beispiel das Biegen eines Drahtes (formend), das Hobeln von Holz (subtraktiv) oder das Auftragen von einem Guss (Additiv).
     \item \textbf{mechanische Verfahren}: Das mechanische Verfahren entwickelte sich aus dem manuellen, die Kraftwirkung wird dadurch von Hebeln, Seilzügen oder anderen Systemen erzeugt.
@@ -1354,7 +1355,8 @@ Da uns in der HTLA Kaindorf ein 3D-Drucker zur Verfügung steht, der mit dem Pri
 arbeitet, entschieden wir uns für dieses Verfahren.
 
 \subsubsection{Auswahl des 3D-Druck Materials}
-
+\ffotfullcite{3DRUCK.com2020} Beim 3D-Druck gibt es eine Vielzahl an Materialien mit der man arbeiten kann, im folgenden Abschnitt werden die
+meist benutzten Kunststoffarten des 3D-Drucks beschrieben un miteinander verglichen.
 \textbf{ABS}
 ABS (Acrylnitril-Butadien-Styrol) der in der Industrie am häufigsten verwendete Kunststoff. Er ist robust, kann sehr
 niedrige und hohe Temperaturen vertagen und hat eine hohe Oberflächenhärte. Auch besitzt dieses Material eine polierte Oberfläche,
