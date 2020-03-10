@@ -1,33 +1,33 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'main.blg'
-[134] biber-MSWIN64:322> INFO - === 
-[178] Biber.pm:415> INFO - Reading 'main.bcf'
-[422] Biber.pm:940> INFO - Using all citekeys in bib section 0
-[461] Biber.pm:4256> INFO - Processing section 0
-[461] Utils.pm:75> INFO - Globbing data source 'Literaturverzeichnis.bib'
-[475] Utils.pm:91> INFO - Globbed data source 'Literaturverzeichnis.bib' to Literaturverzeichnis.bib
-[499] Biber.pm:4455> INFO - Looking for bibtex format file 'Literaturverzeichnis.bib' for section 0
-[540] bibtex.pm:1653> INFO - LaTeX decoding ...
-[672] bibtex.pm:1471> INFO - Found BibTeX data source 'C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib'
-[750] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Gamma2000'
-[777] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'kulturbanause2016'
-[791] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Alexander2018'
-[859] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Grund-Wissen.de2018'
-[867] Utils.pm:304> WARN - Entry 'Haemmerling2020' (C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib): Invalid format '15.02.2020' of date field 'date' - ignoring
-[885] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'scream3r2020'
-[904] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Rudolph2018'
-[949] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Inden2018'
-[1020] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013Tab'
-[1020] Utils.pm:304> WARN - ISBN '978-3-628-02326-3' in entry 'Wittel2013Tab' is invalid - run biber with '--validate_datamodel' for details.
-[1027] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'
-[1047] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009'
-[1061] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013'
-[1093] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009a'
-[1117] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'trestre2020'
-[1293] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1293] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1293] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de_DE'
-[1293] Biber.pm:4090> INFO - No sort tailoring available for locale 'de_DE'
-[1388] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1435] bbl.pm:755> INFO - Output to main.bbl
-[1441] Biber.pm:128> INFO - WARNINGS: 15
+[96] biber-MSWIN64:322> INFO - === 
+[121] Biber.pm:415> INFO - Reading 'main.bcf'
+[329] Biber.pm:940> INFO - Using all citekeys in bib section 0
+[357] Biber.pm:4256> INFO - Processing section 0
+[358] Utils.pm:75> INFO - Globbing data source 'Literaturverzeichnis.bib'
+[380] Utils.pm:91> INFO - Globbed data source 'Literaturverzeichnis.bib' to Literaturverzeichnis.bib
+[418] Biber.pm:4455> INFO - Looking for bibtex format file 'Literaturverzeichnis.bib' for section 0
+[437] bibtex.pm:1653> INFO - LaTeX decoding ...
+[562] bibtex.pm:1471> INFO - Found BibTeX data source 'C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib'
+[648] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'trestre2020'
+[685] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'scream3r2020'
+[715] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009a'
+[752] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013Tab'
+[780] Utils.pm:304> WARN - ISBN '978-3-628-02326-3' in entry 'Wittel2013Tab' is invalid - run biber with '--validate_datamodel' for details.
+[807] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Gamma2000'
+[821] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'
+[832] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Rudolph2018'
+[841] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Wittel2013'
+[859] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'kulturbanause2016'
+[876] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Grund-Wissen.de2018'
+[924] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Alexander2018'
+[928] Utils.pm:304> WARN - Entry 'Haemmerling2020' (C:\Users\stefa\Desktop\ReShuffledNew\mainDocumentation\Literaturverzeichnis.bib): Invalid format '15.02.2020' of date field 'date' - ignoring
+[948] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009'
+[956] Utils.pm:304> WARN - Overwriting field 'year' with year value from field 'date' for entry 'Inden2018'
+[1085] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1085] UCollate.pm:68> INFO - Overriding locale 'de_DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1085] Biber.pm:4084> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'de_DE'
+[1085] Biber.pm:4090> INFO - No sort tailoring available for locale 'de_DE'
+[1157] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1192] bbl.pm:755> INFO - Output to main.bbl
+[1198] Biber.pm:128> INFO - WARNINGS: 15

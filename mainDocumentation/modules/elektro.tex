@@ -76,7 +76,7 @@ Wir stellten die Anforderungen einer \acs{SPI}-Programmierschnittstelle sowie di
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 
 \subsubsection{ATmega162}
-\footfullcite{AVR-Typen}Dieser Mikrochip besitzt einen Flash-Speicher von 16KiB, einen \acs{SRAM} in einer Größe von 1KiB und einen \acs{EEPROM}-Speicher mit 512 Bytes.
+\footfullcite[Vgl.][]{AVR-Typen}Dieser Mikrochip besitzt einen Flash-Speicher von 16KiB, einen \acs{SRAM} in einer Größe von 1KiB und einen \acs{EEPROM}-Speicher mit 512 Bytes.
 Der ATmega162 verfügt über eine SPI und zwei UART Schnittstellen sowie 35 \acs{I/O} Pins und zwei Timer.
 Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.
 
@@ -327,7 +327,7 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 \end{itemize}
 
 \subsubsection{A4988}
-\footfullcite{A4988-Stepper-Motor-Driver-Carrier}Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
+\footfullcite[Vgl.][]{A4988-Stepper-Motor-Driver-Carrier}Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer,
 wodurch Spannungen über der Nennspannung des Schrittmotors verwendet werden können, um höhere Schrittgeschwindigkeiten erreichen zu können.
@@ -336,7 +336,7 @@ Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll
 Die Ansteuerlogik dieses Moduls gestaltet sich über binäre Spannungspegel.
 
 \subsubsection{DRV8825}
-\footfullcite{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8.2V bis 45V zu arbeiten.
+\footfullcite[Vgl.][]{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8.2V bis 45V zu arbeiten.
 Er kann ohne eine bestimmte Kühlung bis zu 1.5 A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2.5A, welcher mit zugeführter Kühlung auch getrieben werden kann.
 Der DRV8825 arbeitet mit einem Logikpegel von 3.3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
@@ -346,7 +346,7 @@ Der DRV8825-Treiber verfügt über eine Pinbelegung und eine Ansteuerung, welche
 sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden kann.
 
 \subsubsection{TB6600}
-\footfullcite{TB6600-Arduino-Stepper-Motor-Driver}Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
+\footfullcite[Vgl.][]{TB6600-Arduino-Stepper-Motor-Driver}Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0.7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Überhitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
 Der Ausgangsstrom ist mittels \acs{DIP}-Schalter in acht Schritten wählbar.
@@ -385,7 +385,7 @@ Auf eine H-Brücke wurde nicht zurückgegriffen, da ihre Versorgungsspannung und
 \subsection{Detektion der Kartenposition}
 
 \subsubsection{Optische Sensoren}
-\footfullcite{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus.
+\footfullcite[Vgl.][]{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}Ein optischer Sensor sendet über seine eigene Lichtquelle einen Lichtstrahl aus.
 Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
 
 \begin{itemize}
@@ -400,7 +400,7 @@ Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werd
 Es sind große Erkennungsabstände möglich.
 
 \subsubsection{Ultraschall-Sensoren}
-\footfullcite{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
+\footfullcite[Vgl.][]{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}Die meisten Ultraschall-Sensoren arbeiten nach dem Prinzip der Laufzeitmessung von hochfrequenten Schallimpulsen.
 Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
 Das Echo wird vom Sensor wieder aufgenommen.
 Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
@@ -410,7 +410,7 @@ Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ih
 Ein fast wartungsfreier Betrieb ist möglich.
 
 \subsubsection{Kapazitive Sensoren}
-\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
+\footfullcite[Vgl.][]{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
 Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisches Feld.
 Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
@@ -552,7 +552,7 @@ Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA.
 Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V, erhält man eine Leistung von 198mW.
 Dieser Wert liegt unter der maximalen Leistung des µC von 660mW und ist somit zulässig.
 
-\footfullcite{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
+\footfullcite[Vgl.][]{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
 Auf dem Raspberry Pi 3B+ befindet sich ein Linearregler, welcher aus der 5V Versorgungsspannung eine 3.3V Spannung erzeugt.
 
 \newpage
@@ -623,7 +623,7 @@ Da die Versorgungsspannung der elektrischen Baugruppen über eine Klemme eingesp
 vermag es einen Verpolungsschutz zu verwenden, um die dahinter gelegene Elektronik zu schützen.
 
 \subsubsection{Verpolungsschutz mit einer Schottky-Diode}
-\footfullcite{Verpolschutz}Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Schottkydiode.
+\footfullcite[Vgl.][]{Verpolschutz}Die einfachste Methode diesen Schutz zu gewährleisten, ist über eine Schottkydiode.
 Jedoch bringt diese Methode einen erheblichen Nachteil von einem dauerhaften Spannungsabfall von bis zu 0.3V im korrekten Betrieb mit sich.
 
 \begin{figure}[ht]
@@ -932,7 +932,7 @@ Die Berechnung zeigt, dass nach einer Zeit von 7 Sekunden, die Spannung anliegen
 
 \newpage
 \subsubsection{Andere Variante}
-\footfullcite{EEVblog-262-Worlds-Simplest-Soft-Latching-Power-Switch-Circuit}Die folgende Variante kam ebenfalls im Laufe der Diplomarbeit auf.
+\footfullcite[Vgl.][]{EEVblog-262-Worlds-Simplest-Soft-Latching-Power-Switch-Circuit}Die folgende Variante kam ebenfalls im Laufe der Diplomarbeit auf.
 
 Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, wodurch der Bipolartransistor Q\textsubscript{2}
 die am Collector anliegende Leitung auf Masse schaltet.
@@ -987,7 +987,7 @@ Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein,
 
 \subsection{DC/DC Wandler}
 
-\footfullcite{LM2576-Datasheet}Als Buck-Converter wählten wir den LM2576-5.0 aus.
+\footfullcite[Vgl.][]{LM2576-Datasheet}Als Buck-Converter wählten wir den LM2576-5.0 aus.
 Mit diesem ist es möglich eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
 Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizienz.
 
@@ -1076,7 +1076,7 @@ So kann bei einem Ausfall dennoch eine sicheres Herunterfahren sowie ein sichere
 
 \subsection{Beschaltung des ATmega324PA}
 
-\footfullcite{Datasheet-ATmega324PA}Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbindung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
+\footfullcite[Vgl.][]{Datasheet-ATmega324PA}Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbindung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
 Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspins je ein Kondensator mit 100nF vorgesehen.
 An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
 
@@ -1185,7 +1185,7 @@ Parallel zum Taster wurde ein Kondensator vorgesehen, welcher als Prevention geg
 
 \subsection{DRV8825-Schrittmotortreiber}
 
-\footfullcite{DRV8825-Datasheet}Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern.
+\footfullcite[Vgl.][]{DRV8825-Datasheet}Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern.
 Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
 Um die Motorwindungen anzusteuern, sind die Ausgangsblöcke des Treibers als volle N-Kanal Leistung-MOSFET H-Brücken realisiert.
 Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
@@ -1274,7 +1274,7 @@ Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter K
     \label{fig:Treiberchip}
 \end{figure}
 
-\footfullcite{DRV8825-Datasheet}Der DRV8825 besitzt 16 Anschlüsse.
+\footfullcite[Vgl.][]{DRV8825-Datasheet}Der DRV8825 besitzt 16 Anschlüsse.
 Drei dieser Anschlüsse fungieren zur Spannungsversorgung: VMOT und die beiden GND Anschlüsse. \\
 
 An dem Anschluss VMOT werden in unserem Fall 12V angelegt.
@@ -1319,7 +1319,7 @@ Ein HIGH-Pegel am Anschluss bewirkt eine Drehrichtung des Motors im Uhrzeigersin
 
 \newpage
 \subsubsection{Schrittauflösung}
-\footfullcite{DRV8825-Datasheet}In der folgend zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
+\footfullcite[Vgl.][]{DRV8825-Datasheet}In der folgend zu sehenden Tabelle sind die alle Pegelkombinationen der Modus-Anschlüsse dargestellt.
 Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Anschlüsse M2, M1 und M0 mit dem entsprechenden Spannungspegel versorgt werden.
 
 \begin{table}[h]
@@ -1596,7 +1596,7 @@ Um Debugging effektiv betreiben zu könnnen, ist eine Verbindung von Mini-USB zu
 So können Vorgänge leicht über einen Computer via Kabel überwacht werden oder etwa ein neues Programm herübergespielt werden.
 
 Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine geringen Kosten, die kleine Gehäusebauform sowie ein Treiber im Linux-Kernel sprach.\\
-\footfullcite{Datasheet-CH340G}Dieser Treiberbaustein ist wie folgt zu beschalten:
+\footfullcite[Vgl.][]{Datasheet-CH340G}Dieser Treiberbaustein ist wie folgt zu beschalten:
 
 \begin{figure}[ht]
     \centering
@@ -1811,7 +1811,7 @@ war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu d
 \subsection{Auswahl der Transistoren}
 \subsubsection{P-Kanal MOSFET}
 
-\footfullcite{FDD6637-Datasheet}Als P-Kanal MOSFET traf unsere Wahl auf den FDD6637.
+\footfullcite[Vgl.][]{FDD6637-Datasheet}Als P-Kanal MOSFET traf unsere Wahl auf den FDD6637.
 Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source  von maximal 0.19m$\Omega$ mit sich.
 Außerdem ist dieser dazu in der Lage, eine Spannung von maximal -35V zu schalten und gleichzeitig einen Strom von bis -55A treiben zu können.
 Die maximale Gate-Source-Spannung beträgt -25V und die maximale Thresholdvoltage beträgt -3V .
@@ -1819,7 +1819,7 @@ Der FDD6637 besitzt ein TO-252-Gehäuse.
 
 \subsubsection{N-Kanal MOSFET}
 
-\footfullcite{FDN337N-Datasheet}Als N-Kanal MOSFET wählten wir den FDN337N aus, welcher in der Lage ist, Ströme von bis zu 2.2A treiben zu können.
+\footfullcite[Vgl.][]{FDN337N-Datasheet}Als N-Kanal MOSFET wählten wir den FDN337N aus, welcher in der Lage ist, Ströme von bis zu 2.2A treiben zu können.
 Außerdem ist es diesem möglich, Drain-Source-Spannungen von bis zu 30V zu schalten, was für unsere Anwendung weitaus genügt.
 Hinzu kommt noch die wesentliche Tatsache, dass dieser eine niedrige Gate Treshold Voltage von nur max.1V mit sich bringt.
 Über Kennlinienwerte im Datenblatt lässt sich erkennen, dass sich der von uns benötigte Strom von 350mA bereits bei 1.25V und 25°C Umgebungstemperatur schalten lässt.
@@ -1828,7 +1828,7 @@ Der FDN337N besitzt eine Gate-Source-Maximalspannung von 8V und ist mit einem SO
 \subsection{Auswahl der Gleichspannungswandler-Peripherie}
 
 \subsubsection{Spule}
-\footfullcite{DR127-101-R-Datasheet}Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf dessen Datenblatt zurückgegriffen.
+\footfullcite[Vgl.][]{DR127-101-R-Datasheet}Um eine geeignete Spule für den Step-Down Wandler auszuwählen, wurde auf dessen Datenblatt zurückgegriffen.
 Über die von uns verwendete Eingangsspannung des Gleichspannungswandlers und den maximal fließenden Strom von 2A
 traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf eine Spule mit einem Wert von 100µH .
 Über die Bedingung einen derartig hohen Strom treiben zu können, fiel unsere Wahl auf die DR127-101-R,
@@ -1837,20 +1837,20 @@ einen niedrigen Widerstandswert, magnetische Schirmung und ein \acs{SMD}-Gehäus
 
 \newpage
 \subsubsection{Schottky-Diode}
-\footfullcite{MBRD340-Datasheet}Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
+\footfullcite[Vgl.][]{MBRD340-Datasheet}Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
 Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
 Eine leichte Montage ist über ihr TO-252 gegeben.
 
 \subsection{Auswahl der Gleichrichter-Dioden}
 
-\footfullcite{RR264M-Datasheet}Als diese Dioden selektierten wir die RR264M, welche einem Strom von 1A standhalten können, was wichtig für die Implementierung an den induktiven Lasten ist.
+\footfullcite[Vgl.][]{RR264M-Datasheet}Als diese Dioden selektierten wir die RR264M, welche einem Strom von 1A standhalten können, was wichtig für die Implementierung an den induktiven Lasten ist.
 Zusätzlich besitzt sie die Eigenschaft, einen Spannungsabfall von 0.7V bei einem Strom von 0.01A bei 25°C zu verursachen.
 Dies ist essenziell für die Implementierung an jenen Spannungspegelüberwachungspunkten.
 Die RR264M besitzen ein SOD-123 Gehäuse.
 
 \subsection{Auswahl der Schottky-Dioden}
 
-\footfullcite{MBR130-Datasheet}Als Schottky-Diode wählten wir die MBR130, welche die Maximalwerte von 1A und 30V mit sich bringt.
+\footfullcite[Vgl.][]{MBR130-Datasheet}Als Schottky-Diode wählten wir die MBR130, welche die Maximalwerte von 1A und 30V mit sich bringt.
 Ihr wesentliches Attribut ist der niedrige an ihr abfallende Spannungsabfall von nur 0.25V bei 25°C und 0.1A .
 Bei 1A und 25°C beträgt der an ihr vorzufindende Spannungsabfall 0.35V .
 Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schaltung und der Beschaltung des USB-UART-Converters befürworteten ihren Einsatz.
@@ -1858,7 +1858,7 @@ Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schal
 
 \subsection{Auswahl der Zener-Diode}
 
-\footfullcite[Vgl.]{BZX84-series-Datasheet}Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
+\footfullcite[Vgl.][][Vgl.]{BZX84-series-Datasheet}Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
 Sie bringt eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0.9V und ein SOT-23 Gehäuse mit sich.
 
 \subsection{Auswahl sonstiger Bauelemente}
@@ -2032,11 +2032,11 @@ Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Kompone
     \item D1 als SMBJ5.A/CA
 \end{itemize}
 
-\footfullcite{MF-MSMF250-Datasheet}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
+\footfullcite[Vgl.][]{MF-MSMF250-Datasheet}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
 \newpage
-\footfullcite{SMBJ5.A-Datasheet}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
+\footfullcite[Vgl.][]{SMBJ5.A-Datasheet}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
 Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand.
 
 \subsubsection{Einzelne weitere Verbessungsmöglichkeiten}

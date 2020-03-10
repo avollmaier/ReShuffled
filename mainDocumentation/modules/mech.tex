@@ -355,6 +355,35 @@ haftende Karten getrennt werden.
         \caption{Tabelle Haftzeit der Karten}
         \label{tab:my-table}
     \end{table}
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+            title={Zeitkorrelation bis zur Kartendispersion},
+            xlabel={Karten im Kartendeck},
+            ylabel={Zeit t in Sekunden},
+            xmin=20, xmax=2,
+            ymin=4, ymax=12,
+            xtick={20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2},
+            ytick={8.2,9.47,11.826,6.862,9.24839.784,7.44,7.546,10.736,6.786,8.788,7.254,5.71,8.74,6.666,6.118,7.876,7.544,4.128},
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+            ]
+
+                \addplot[
+                color=blue,
+                mark=square,
+                ]
+                coordinates {
+                (1,23.1)(2,27.5)(3,32)(4,37.8)(5,44.6)(6,61.8)(7,83.8)(8,114)(9,83.8)(10,114)(11,83.8)(12,114)(13,83.8)(14,114)(15,83.8)(16,114)(17,83.8)(18,114)(19,83.8)(20,114)
+                };
+                \legend{CuSO$_4\cdot$5H$_2$O}
+
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
 
     \begin{figure}[H]
         \centering
@@ -885,7 +914,7 @@ den Referenzpunkt anfahren möchte.
 \end{figure}
 
 \subsection{Konstruktion des Gehäuses}
-\footfullcite[vgl.][]{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
+\footfullcite[Vgl.][]{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
 des Gehäusematerials kamen diverse Materialien infrage:
 
 \begin{table}[H]
@@ -992,7 +1021,7 @@ der um die Iyy Achse.
     \label{fig:iProperties}
 \end{figure}
 
-\textbf{Satz von Steiner:\footfullcite{Maschinenbau-Wissen.de2009a}}\\
+\textbf{Satz von Steiner:\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009a}}\\
 Im nächsten Schritt muss das Trägheitsmoment vom Schwerpunkt auf die tatsächliche Drehachse verschoben werden.
 Dazu wird der Satz von Steiner benötigt:\\
 \begin{align*}
@@ -1007,7 +1036,7 @@ Als nächstes wird die Formel für die Summe aller Momente aufgestellt:
     \sum M &= 0 = -M_{motor}+ J\cdot \alpha\\
 \end{align*}
 
-\footfullcite{Grund-Wissen.de2018}Um die Winkelbeschleunigung $\alpha$ zu berechnen, wird die Winkelgeschwindigkeit $\omega$ benötigt.
+\footfullcite[Vgl.][]{Grund-Wissen.de2018}Um die Winkelbeschleunigung $\alpha$ zu berechnen, wird die Winkelgeschwindigkeit $\omega$ benötigt.
 
 \begin{align*}
     \omega &= 2 \cdot \pi \cdot\\
@@ -1047,7 +1076,7 @@ Um die Vakuumpumpe auszuwählen, muss zuerst die erforderliche Druckdifferenz be
 Da die Karten liegend angehoben werden kommt für die Berechnung der theoretischen Haltekraft der typische Lastfall 1
 zum Einsatz. Zwar wird dieser für eine vertikale Kraftrichtung eingesetzt, und nicht wie bei dem Beispiel in einem
 60° Winkel, dennoch ist er der Lastfall der den am nächsten kommt.
-\footfullcite{schmalz.com2020}Die theoretische Haltekraft wird mit folgender Formel berechnet:
+\footfullcite[Vgl.][]{schmalz.com2020}Die theoretische Haltekraft wird mit folgender Formel berechnet:
 \begin{align*}
     F_{TH} &= m \cdot (g + a) \cdot S
 \end{align*}
@@ -1112,7 +1141,7 @@ Für die Klebeverbindungen verwenden wir einen 2-Komponenten-Epoxy-Kleber, diese
 Kleben von harten Kunststoffen, wie gedrucktes PLA.
 
 \subsubsection{Klebeverbindung Kartenhalterunsmodul 1} \label{subsubsec:KlebMod1}
-\footfullcite{Wittel2013}Beim Kartenhalterunsmodul-oben wird die Kartenführung Modul 1 oben mit dem Kartenhalterunsmodul 1 verklebt.
+\footfullcite[Vgl.][]{Wittel2013}Beim Kartenhalterunsmodul-oben wird die Kartenführung Modul 1 oben mit dem Kartenhalterunsmodul 1 verklebt.
 Die Formel zum Berechnen der Klebefläche lautet:
 \[\sigma _{K} &= \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
 
@@ -1128,7 +1157,7 @@ Für die Kraft werden 50 N angenommen, dies entspricht in etwa der Gewichtskraft
 und simuliert somit ein kraftvolles Ankommen des Spielers an der Trichtervorrichtung.
 Die Fläche der Klebefläche A\textsubscript{K} ergibt sich durch die Breite und der Tiefe der Klebefläche, wobei
 die Breite der Klebefläche  40 mm beträgt und dessen Länge 20 mm.
-Der Wert $\sigma_{K}$ ist aus der Tabelle 5-3 im Tabellenbuch \footfullcite{Wittel2013Tab} auszulesen.
+Der Wert $\sigma_{K}$ ist aus der Tabelle 5-3 im Tabellenbuch \footfullcite[Vgl.][]{Wittel2013Tab} auszulesen.
 Um die 3-Fache Sicherheit zu gewähreisten, wurde dr Sicherheitsfaktor 3 gewählt.
 
 \begin{align*}
@@ -1158,7 +1187,7 @@ A_{K} &= b_{1}\cdot t_{1}+b_{2}\cdot t_{2}\\
 A_{K} &=3 mm\cdot 5 mm+7 mm\cdot 5 mm\\
 A_{K} &= 50 mm^{2}\\
 \end{align*}
-\footfullcite{Grund-Wissen.de2018}Die Größte zu übertragende Kraft tritt dann ein, wenn dar ganze Kartenstapel mit 20 Karten aus dem
+\footfullcite[Vgl.][]{Grund-Wissen.de2018}Die Größte zu übertragende Kraft tritt dann ein, wenn dar ganze Kartenstapel mit 20 Karten aus dem
 Lagerrad und auf den Punkt mit der Größten Hebelkraft fällt. Somit müssen wir als erstes die
 Bahngeschwindigkeit des Lagerrades ausrechnen:
 \begin{align*}
@@ -1217,7 +1246,7 @@ keine Probleme berreiten würde.
 \newpage
 \section{Fertigung der Bauteile}
 \subsection{Werkstoffwahl}
-\footfullcite{Maschinenbau-Wissen.de2009} \footfullcite{ Lernhelfer.de2020}Anfangs stellte sich die Frage mit welchem Werkstoff die Prototypen sowie die Fertigen Bauteile der
+\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009} \footfullcite[Vgl.][]{ Lernhelfer.de2020}Anfangs stellte sich die Frage mit welchem Werkstoff die Prototypen sowie die Fertigen Bauteile der
 Maschine produziert werden sollen. Da die Bauteile ein niedriges Gewicht haben sollen, billig und schnell produzierbar
 sein sollten wurde Kunststoff ausgewählt. Es wurden folgende Arten zur Verarbeitung von Kunststoff in Betracht gezogen:
 \subsubsection{Extrudieren}
@@ -1304,7 +1333,7 @@ drucken kann. Da das 3D-Drucken billig, schnell und eine hohe Genauigkeit hat, n
 Sie unter Kapitel 1.7.2 3D-Druck.
 
 \subsection{3D-Druck}
-\footfullcite{3DRUCK.com2020} Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner Schnelligkeit und der Tatsache
+\footfullcite[Vgl.][]{3DRUCK.com2020} Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner Schnelligkeit und der Tatsache
 ausgewählt, dass uns der 3D-Drucker der HTBLA Kaindorf zur Verfügung stand.
 \subsubsection{Grundlagen}
 Der 3D-Druck fungiert im Prinzip der additiven Fertigung, das heißt, er fertigt Objekte aus 3D-Modelldaten Schicht für Schicht
@@ -1316,7 +1345,7 @@ hinzugefügt oder aufgetragen. Als hybrides Verfahren bezeichnet man jene, die s
 Unterbringen lassen oder jene die mehrere dieser Verfahren miteinander verbinden.
 
 \textbf{Produktionsverfahren:}\\
-\footfullcite{3DRUCK.com2020a} Produktionsverfahren lassen sich in 4 Kategorien einteilen:
+\footfullcite[Vgl.][]{3DRUCK.com2020a} Produktionsverfahren lassen sich in 4 Kategorien einteilen:
 \begin{itemize}
     \item \textbf{manuelle Verfahren}: Dieses Verfahren beschreibt vereinfacht gesagt die klassische  Handarbeit, wie zum Beispiel das Biegen eines Drahtes (formend), das Hobeln von Holz (subtraktiv) oder das Auftragen von einem Guss (Additiv).
     \item \textbf{mechanische Verfahren}: Das mechanische Verfahren entwickelte sich aus dem manuellen, die Kraftwirkung wird dadurch von Hebeln, Seilzügen oder anderen Systemen erzeugt.
@@ -1420,6 +1449,13 @@ Geschwindigkeit oder die Dichte der Füllung getroffen. Ist dies geschehen, so k
 G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
 
 \section{Teilaufbau}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5,page=1]{fig/mech/ReShuffledCombined}
+    \caption{Modellfenster}
+    \label{fig:Gesamtsystem}
+\end{figure}
+
 
 \subsection{Aufgetretene Probleme, Lösungsansätzte und Lösungen}
 Beim Teilaufbau des Automatens sind verschiedene Probleme aufgetreten, diese werden in diesen Unterkapitel bearbeitet und beschrieben.
