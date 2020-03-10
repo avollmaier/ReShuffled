@@ -82,7 +82,7 @@ Er kann mit einer Gleichspannung von 2.7V bis 5.5V betrieben werden.
 
 \subsubsection{ATmega324PA}
 \footnotemark[1]Der ATmega324PA ist ein Mikrochip, welcher 32KiB an Flash-Speicher, 1KiB an EEPROM-Speicher sowie 1KiB an SRAM mit sich bringt.
-Er verfügt über 32 I/O Pins, eine SPI Schnittstelle, eine I²C\acused{I2C} Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
+Er verfügt über 32 I/O Pins, eine SPI Schnittstelle, eine I²C Schnittstelle, zwei UART Schnittstellen und drei flexible Timer.
 Außerdem lässt er sich mit einer Gleichspannung von 1.8V bis 5V betreiben.
 
 \subsubsection{ATmega128}
@@ -410,9 +410,9 @@ Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ih
 Ein fast wartungsfreier Betrieb ist möglich.
 
 \subsubsection{Kapazitive Sensoren}
-\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Die Funktion von kapazitiven Sensoren ist mit der eines Kondensators mit variabler Kapazität zu vergleichen.
-Zwischen der Messelektrode und der \acs{GND}-Elektrode bildet sich ein elektrisches Feld.
-Dringt ein Material mit einer Dielektrizitätszahl $\varepsilonup$r größer als Luft in das elektrische Feld ein, so vergrößert sich je nach dieser Zahl des Materials die Kapazität des Feldes.
+\footfullcite{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Das zu erfassende Objekt verändert das elektrische Feld vor der aktiven Fläche des Sensors.
+In Folge dessen wird damit die Kapazität eines RC-Oszillators verändert, der widerum das Schaltkriterium liefert.
+Auf leitfähige Objekte reagieren Kapazitive Sensoren stärker als auf nichtleitende.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
 \begin{figure}[htb]
@@ -551,11 +551,9 @@ Um die maximale Leistung des ATmega324PA zu berechnen, wird der maximal anfallen
 Dieser beträgt bei der Ansteuerung von zehn Ausgangspins etwa 60mA.
 Multipliziert man diesen Strom mit der Versorgungsspannung von 3.3V, erhält man eine Leistung von 198mW.
 Dieser Wert liegt unter der maximalen Leistung des µC von 660mW und ist somit zulässig.
-
+\newpage
 \footfullcite{NCP1117-Datasheet}Um zu überprüfen, ob das 3.3V-Netz des Raspberry Pi auch im Stande dazu ist, diese Leistung zur Verfügung zu stellen, wird dessen Datenblatt herangezogen.
 Auf dem Raspberry Pi 3B+ befindet sich ein Linearregler, welcher aus der 5V Versorgungsspannung eine 3.3V Spannung erzeugt.
-
-\newpage
 
 Die maximale Leistung ist somit von diesem abhängig und errechnet sich bei 50°C wie folgt:
 
