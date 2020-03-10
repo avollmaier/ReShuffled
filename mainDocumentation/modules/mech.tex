@@ -82,21 +82,20 @@ werden und das Konzept des optimalen Mischens zerstört.
     \item \textbf{Kosten}  \\
     Der Automat sollte möglichst kostengünstig produziert werden,
     da das vorhandene Budget gering ist. Dies hat zur Folge, dass keine teuren Motoren
-    oder ähnliche Bauteile zum Einsatz kommen können und keine teuren Bauteile produziert
-    werden können.
+    oder kostenspieligen Bauteile zum Einsatz kommen können.
     \item \textbf{Schnelligkeit} \\
     Um ein gutes Spielerlebnis zu garantieren, sollte der Automat keine
-    lange Mischzeit aufweisen. Die Dauer, in der man die Karten einführt und auf den
-    Mischen-Button klickt bis hin zur Ausgabe der ersten Karte, sollte möglichst gering sein.
+    lange Mischzeit aufweisen. Das Zeitfenster, in welchem man die Karten einführt und den
+    Mischen-Button betätigt, bis hin zur Ausgabe der ersten Karte, sollte möglichst gering sein.
     \item \textbf{Mischgenauigkeit} \\
     Die Mischgenauigkeit ist die am schwersten gewichtete Anforderung,
-    da es das Ziel ist ein optimales Mischen der Spielkarten zu erreichen, sollte
-    diese Anforderung mit größter Priorität erfüllt werden.
+    da es das Ziel ist, ein optimales Mischen der Spielkarten zu erreichen.
+    Diese Anforderung mit größter Priorität erfüllt werden.
     \item \textbf{Optik und Größe} \\
     Die Optik des Automaten soll schlicht gehalten werden. Der Automat sollte ein ansprechendes Design aufweisen und
-    auf Messen und andere Ausstellungen präsentierbar sein. Der Automat
+    auf Messen und andere Ausstellungen präsentierbar sein. Die Maschine
     sollte jedoch auch stabil konstruiert werden, muss aber dennoch mobil bleiben und
-    darf eine gewisse Größe nicht Überschreiten.
+    darf eine gewisse Größe nicht überschreiten.
 \end{enumerate}
 
 \subsection{Variantenvergleich}
@@ -114,36 +113,35 @@ Um alle oben angegebenen Anforderungen zu erfüllen, wurden mehrere Konzepte ent
 
 
 Das erste Konzept würde mit zwei Linearachsen realisiert werden, diese wären im rechten Winkel zueinander
-angeordnet. Die Senkrechte Linearachse ist mit einer Halterung versehen, diese Halterung ist in der Lage
+angeordnet. Die senkrechte Linearachse ist mit einer Halterung versehen, welche in der Lage ist,
 ein Kartendeck aufzunehmen und die unterste Karte mithilfe eines Ausgaberades weiterzubefördern. Die zweite
-Linearachse besitzt 4 Fächer, in der die Karten von der ersten Linearachsenausgabe zufällig befördert werden.
-Dies wird realisiert, indem die erste Linearachse bei jeder Ausgabe zufällig das Fach durch hinauf und
-hinabfahren wechselt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
-fährt die zweite Linearachse impulsiv nach links und bremst schlagartig ab, um die Karten aus dem Lager zu befördern. Diese fallen
-Senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereitliegen. \\
+Linearachse besitzt 4 Fächer, in welcher die Karten von der ersten Linearachsenausgabe befördert werden.
+Dies wird realisiert, indem die erste Linearachse zyklisch zufällige Fächer anfährt. Befinden sich alle Karten im Lager, so fährt die erste Linearachse nach unten, danach
+fährt die zweite Linearachse impulsiv nach links und bremst schlagartig ab, um die Karten aus dem Lager zu werfen. Diese fallen
+senkrecht in das Lager der ersten Linearachse, wo sie nun zum Ausgeben durch das Ausgaberad bereitliegen. \\
 
 
 
-Durch die schnelle Bewegung der Linearachsen ist es möglich einen schnellen Mischprozess zu erreichen,
-auch die Tatsache das es nur ein rotierendes Rad gibt und zwei Bewegliche Linearachsen führt dazu, das
-Fehler bei Bewegungen nur selten Auftreten. Jedoch besteht durch den hohen Aufbau der Maschine und durch die hohe
-Position der zweiten Linearachse die sich horizontal bewegt die Gefahr des Umkippens der Maschine, und somit ist
-keine Stabilität mehr gegeben. Der Preis der Linearachsen ist ein weiterer Nachteil dieses Konzeptes, eine Linearachse
-die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für unser Budget. \\
+Durch die schnelle Bewegung der Linearachsen ist es möglich, einen schnellen Mischprozess zu erreichen,
+auch die Tatsache, dass es nur ein rotierendes Rad sowie zwei bewegliche Linearachsen gibt, führt dazu, dass
+Fehler bei Bewegungen nur selten auftreten. Jedoch besteht durch den hohen Aufbau der Maschine und durch die hohe
+Position der zweiten Linearachse, die sich horizontal bewegt, die Gefahr des Umkippens der Maschine. Somit wäre
+keine Stabilität mehr gegeben. Der Preis der Linearachsen ist ein weiterer Nachteil dieses Konzepts. Eine Linearachse,
+die unseren Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für unser Budget. \\
 
 \textbf{Vorteile:}
 \begin{itemize}
-    \item schnelles Mischen
-    \item wenige Fehlerquellen
+    \item Schnelles Mischen
+    \item Wenige Fehlerquellen
 \end{itemize}
 \textbf{Nachteile:}
 \begin{itemize}
-    \item teuer
-    \item großer Aufbau %Genaueres Beschreiben der Vor und Nachteile?
-    \item instabil
+    \item Teuer
+    \item Großer Aufbau %Genaueres Beschreiben der Vor und Nachteile?
+    \item Instabil
 \end{itemize}
 
-\subsubsection{Variante 2 - Lagerrad mit Asugaberäder}
+\subsubsection{Variante 2 - Lagerrad mit Ausgaberäder}
 
 \begin{figure}[hb]
     \centering
@@ -153,30 +151,33 @@ die unsere Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer für
 
 Beim zweiten Konzept wird als Lager ein Viertel eines Zylinders benutzt. In diesem befinden
 sich verschiedene Fächer, in der die Karten eingelagert werden. Dieser wird mit einem Motor betrieben
-und dreht sich somit in die vorgegebenen Positionen um das Einlagern und das Ausgeben der Karten zu ermöglichen.
-Die Karteneingabe erfolgt über einen Schlitz in der Frontplatte der Maschine, dort befindet sich ein Hubmagnet, der die Karten
-zum weiterbefördern nach oben drückt. Ein Kapazitiver Sensor sorgt dafür, das sichergestellt werden kann, dass sich Karten auf dem Hubmagnet befinden.
-Um eine Karte in das Lager zu befördern wird der Hubmagnet eingeschaltet und drückt das Kartendeck auf das erste Ausgaberad, um die Kraft des Hubmagnetes zu minimieren sind Zugfedern angebracht.
-Das Ausgaberad befördert eine Karte weiter vor zum zweiten Ausgaberad, welches wiederum sicherstellt, das nur eine Karte in das Lagerrad transportiert wird.
-Danach dreht das Lagerrad auf eine andere zufällig ausgewählte Position. Dieser Prozess wird so lange wiederholt, bis alle Karten des Kartendecks sich im Lagerrad befinden.
-Befinden sich alle Karten im Lagerrad, so dreht sich dieses mit einer hohen Geschwindigkeit und wirft somit die Karten auf der Hinterseite der Maschine in eine Auffangführung. %Ist Geschwindigkeit der richtige Begriff? Eher Moment oder Drehzahl?
-Diese Auffangsführung befördert die Karten in einen gleichen Mechanismus wie bei der Vorderseite der Maschine, in der sie von einem Hubmagneten nach oben gedrückt werden und von zwei Ausgaberädern zur
-Kartenentnahme geschoben werden. Da die Karten zum Schluss nach einem Spielmodus und somit in einer bestimmten Anzahl ausgegeben werden, befindet sich ein Kapazitiver Sensor auch bei der Ausgabe der Karten,
-dieser soll überprüfen, ob die Karten von dem Spieler bereits genommen wurden oder nicht.\\
+und dreht sich somit in die vorgegebenen Positionen, um das Einlagern und das Ausgeben der Karten zu ermöglichen.
+Die Karteneingabe erfolgt über eine Öffnung in der Topplatte der Maschine. Dort befindet sich ein Hubmagnet, der die Karten
+zum Weiterbefördern nach oben drückt. Ein kapazitiver Sensor sorgt dafür, dass sichergestellt werden kann, dass sich Karten auf dem Hubmagnet befinden.
+Um eine Karte in das Lager zu befördern, wird der Hubmagnet eingeschaltet und drückt das Kartendeck auf das erste Ausgaberad. Um die Kraft des Hubmagnetes zu minimieren, sind Zugfedern angebracht.
+Das Ausgaberad befördert eine Karte weiter zum zweiten Ausgaberad, welches widerum sicherstellt, dass nur eine Karte in das Lagerrad transportiert wird.
+Danach dreht das Lagerrad auf eine andere, zufällig ausgewählte Position.
+Dieser Prozess wird so lange wiederholt, bis alle Karten im Lagerrad befinden.
+Infolgedessen dreht sich dieses, mit einer hohen Geschwindigkeit und wirft somit die Karten in eine Auffangführung.
+Diese Auffangführung befördert die Karten in einen gleichen Mechanismus wie bei der Vorderseite der Maschine, in dem sie von einem Hubmagneten nach oben gedrückt werden und von zwei Ausgaberädern zur
+Kartenentnahme geschoben werden.
+Da die Karten zum Schluss nach einem Spielmodus und somit in einer bestimmten Anzahl ausgegeben werden, befindet sich ein kapazitiver Sensor auch bei der Ausgabe der Karten,
+welcher überprüfen soll, ob die Karten von dem Spieler bereits genommen wurden oder nicht.\\
 
-Durch den niedrigen Aufbau der durch ein "Fließbandartiges" befördern der Karten erreicht wird, besitzt die Maschine ein hohes Maß an Stabilität, jedoch entsteht dadurch auch der Nachteil, dass die Maschine sehr lang wird. Da dieses
-Konzept 5 bewegliche Räder besitzt, sowie zwei Hubmagneten, ist es anfällig für Fehler beim Bewegungsablauf. Auch kann nicht garantiert werden, dass nur eine Karte in das Lagerrad befördert wird, dies würde das Konzept des optimalen
-Mischens zerstören. Die vielen Bauteile führen auch zu teureren Anschaffungskosten, die wir stark vermeiden möchten.\\
+Durch den niedrigen Aufbau, der durch ein "fließbandartiges" Befördern der Karten erreicht wird, besitzt die Maschine ein hohes Maß an Stabilität. Jedoch entsteht dadurch auch der Nachteil, dass die Maschine sehr lang wird. Da dieses
+Konzept fünf bewegliche Räder besitzt sowie zwei Hubmagneten, ist es anfällig für Fehler beim Bewegungsablauf.
+Außerdem kann nicht garantiert werden, dass nur eine Karte in das Lagerrad befördert wird. Dies würde das Konzept des optimalen
+Mischens negieren. Die vielen Bauteile führen auch zu teureren Anschaffungskosten, welche möglichst niedrig gehalten werden sollen.\\
 
 \textbf{Vorteile:}
 \begin{itemize}
-    \item stabil
-    \item niedriger Aufbau
+    \item Stabil
+    \item Niedriger Aufbau
 \end{itemize}
 \textbf{Nachteile:}
 \begin{itemize}
-    \item lange Gesamtgröße
-    \item viele bewegliche Bauteile / Fehlerquellen
+    \item Langes Gehäuse
+    \item Viele bewegliche Bauteile / Fehlerquellen
 \end{itemize}
 
 \subsubsection{Variante 3 - Lagerrad mit Saugnäpfe}
@@ -187,30 +188,36 @@ Mischens zerstören. Die vielen Bauteile führen auch zu teureren Anschaffungsko
     \caption{Variante 3}
 \end{figure}
 
-Das dritte Konzept besitzt ein identes Lagersystem wie das zweite Konzept, ein Lagerrad, das in Fächer unterteilt ist und über einen Motor diverse Positionen einnehmen kann.
-Das Kartendeck wird in den oberen / vorderen Anfang der Maschine eingeführt. Dort liegt, es schräg in einem Winkel von ca. 60°. Um sicherzustellen, dass sich Karten in dieser Halterung befinden
-ist ein Kapazitiver Sensor an der Unterseite angebracht. Ein Hubmagnet der im rechten Winkel zu den Karten über der Halterung angebracht ist, saugt jede Karte einzeln an, indem ein Saugnapf, der an einem Hubmagneten
-befestigt, ist heruntergedrückt wird. Ist die Karte angesaugt, so wird der Hubmagnet von einer Feder in seine Ausgangsstellung zurückgebracht, dabei wird die Spielkarte durch eine Platte abgestreift und fliegt somit in das Lager des
-Lagerrades hinein. Dieser Prozess wird so lange wiederholt, bis sich alle Spielkarten des Kartendecks im Lagerrad befinden. Sind alle Karten im Lagerrad, so dreht sich dieses und wirft die Karten auf der Rückseite der Maschine in eine Führung, die die Karten in eine zweite Halterung befördern. Diese zweite Halterung ist ident aufgebaut wie die erste. Die Karten werden nun wieder einzeln vom Saugnapf angesaugt und in ein Ausgabefach am Ende der Maschine befördert. Im Ausgabefach befindet sich
-ein Kapazitiver Sensor, dieser überprüft, ob die Karten vom Spieler bereits genommen wurden oder nicht.\\
+Das dritte Konzept besitzt ein identes Lagersystem wie das Zweite: ein Lagerrad, welches in Fächer unterteilt ist und über einen Motor diverse Positionen einnehmen kann.
+Das Kartendeck wird auf der Oberseite der Maschine eingeführt. Dort liegt es schräg in einem Winkel von ca. 60°. Um sicherzustellen, dass sich Karten in dieser Halterung befinden,
+ist ein kapazitiver Sensor an der Unterseite angebracht.
+Ein Hubmagnet, der orthogonal zu den Karten über der Halterung angebracht ist, saugt jede Karte einzeln an indem ein Saugnapf, der an einem Hubmagneten
+befestigt ist, heruntergedrückt wird. Ist die Karte angesaugt, so wird der Hubmagnet von einer Feder in seine Ausgangsstellung zurückgebracht.
+Dabei wird die Spielkarte durch eine Platte abgestreift und fliegt somit in ein Fach des
+Lagerrades hinein. Dieser Prozess wird so lange wiederholt, bis sich alle Spielkarten des Kartendecks im Lagerrad befinden.
+Sind alle Karten im Lagerrad, so dreht sich dieses und wirft die Karten auf der Rückseite der Maschine in eine Führung, welche die Karten in eine zweite Halterung befördert.
+Diese zweite Halterung ist ident aufgebaut wie die erste.
+Die Karten werden nun wieder einzeln vom Saugnapf angesaugt und in ein Ausgabefach am Ende der Maschine befördert. Im Ausgabefach befindet sich
+ein kapazitiver Sensor. Dieser überprüft, ob die Karten vom Spieler bereits genommen wurden.\\
 
-Durch die wenigen Bauteile die dieses Konzept besitzt, nämlich zwei Hubmagnete und einen Motor, ist das Konzept wenig fehleranfällig bei Bewegungsabläufe. Außerdem ist es
-durch die wenigen Bauteile im Vergleich billiger als die anderen Konzepte. Ein Problem dieses Konzeptes ist seine Höhe und dass das Lagerrad sich in der Mitte der Maschine befindet,
-jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend Stabilität vorhanden, auch wenn sich dieses mit voller Geschwindigkeit dreht. \\
+Durch die wenigen Bauteile, die dieses Konzept besitzt, ist das Konzept wenig fehleranfällig bei Bewegungsabläufen.
+Außerdem ist es durch die wenigen Bauteile im Vergleich billiger als die anderen Konzepte.
+Ein Problem dieses Konzepts ist seine Höhe und, dass das Lagerrad sich in der Mitte der Maschine befindet.
+Jedoch ist durch das geringe Gewicht des Lagerrades noch immer genügend Stabilität vorhanden, auch wenn sich dieses mit voller Geschwindigkeit dreht. \\
 
 \textbf{Vorteile:}
 \begin{itemize}
-    \item billig
-    \item wenig bewegliche Bauteile
+    \item Billig
+    \item Wenig bewegliche Bauteile
 \end{itemize}
 \textbf{Nachteile:}
 \begin{itemize}
-    \item hocher Aufbau
+    \item Hoher Aufbau
 \end{itemize}
 
 \subsection{Ausgaberäder}
-Um die Karten weiterzubefördern werden bei zwei Konzepten Ausgaberäder benutzt, für diese gibt es verschiedene Konzepte dies sich in Preis, Herstellung und Funktionalität unterscheiden.\\
-Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte von einem Kartendeck weiterbefördert wird.
+Um die Karten weiterzubefördern, werden bei zwei Konzepten Ausgaberäder benutzt, für diese gibt es verschiedene Konzepte, die sich in Preis, Herstellung und Funktionalität unterscheiden.\\
+Das Ausgaberad ist mit einem Motor verbunden, welcher dafür sorgt, dass eine Karte von dem Kartendeck weiterbefördert wird.
 \begin{itemize}
     \item \textbf{Rundes Ausgaberad}
 \end{itemize}
@@ -221,107 +228,118 @@ Das Ausgaberad ist mit einem Motor verbunden, dieses sorgt dafür das eine Karte
     \caption{Rundes Ausgaberad}
 \end{figure}
 
-Die einfachste Möglichkeit dieses Rad zu entwerfen, wäre ein einfaches rundes Ausgaberad. Dieses Rad wäre mit einer Schicht umhüllt, welche die Reibung
-dem Rad und der Karte erhöht. Das runde Rad wäre einfach zu fertigen und würde somit wenig kosten und nur einen geringen Zeitaufwand haben. Jedoch
-ist das Rad in der Lage mehr als nur eine Karte mit sich mitzuziehen, da es durchgehen Kontakt mit der Spielkartenoberfläche hat, dies hätte zur
-Folge, das mehrere Spielkarten zugleich weiterbefördert werden.
+Die einfachste Möglichkeit dieses Rad zu entwerfen, wäre ein einfaches rundes Ausgaberad.
+Dieses Rad wäre mit einer Schicht umhüllt, welche die Reibung zwischen dem Rad und der Karte erhöht.
+Das runde Rad wäre einfach zu fertigen und würde somit wenig Kosten verursachen und nur einen geringen Zeitaufwand haben.
+Jedoch ist das Rad in der Lage, mehr als nur eine Karte mit sich zu ziehen, da es durchgehen Kontakt mit der Spielkartenoberfläche hat.
+Dies hätte zur Folge, das mehrere Spielkarten zugleich weiterbefördert werden.
 \begin{itemize}
-    \item \textbf{Eliptisches Ausgaberad}
+    \item \textbf{Elliptisches Ausgaberad}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.9,page=1]{fig/mech/ElliptischesAusgaberad}
-    \caption{Eliptisches Ausgaberad}
+    \caption{Elliptisches Ausgaberad}
 \end{figure}
 
 
-Ein elliptisches Ausgaberad wäre das nächste Konzept, dieses Rad wird auch wie beim ersten Rad mit einem Motor verbunden, um somit Karten zu befördern.
-Durch die elliptische Form des Rades herrscht kein durchgehender Kontakt mit der Oberfläche der Spielkarte, aus diesem Grund ist die Chance das mehrere
-Karten zugleich befördert werden minimiert. Jedoch setzt dies auch einen Motor voraus der in kurzer Zeit ein hohes Drehmoment entwickelt, da die
-Karten schlagartig befördert werden. Das elliptische Rad würde in der Produktion auch mehr Kosten verursachen und wäre Zeitintensiver in der Herstellung. \\
+Ein elliptisches Ausgaberad wäre das nächste Konzept.
+Dieses Rad wird auch wie beim ersten Konzept mit einem Motor verbunden, um somit Karten zu befördern.
+Durch die elliptische Form des Rades herrscht kein durchgehender Kontakt mit der Oberfläche der Spielkarte, aus diesem Grund ist die Chance, das mehrere
+Karten zugleich befördert werden, minimiert.
+Jedoch setzt dies auch einen Motor voraus der in kurzer Zeit ein hohes Drehmoment entwickelt, da die
+Karten schlagartig befördert werden.
+Das elliptische Rad würde in der Produktion auch mehr Kosten verursachen und wäre zeitintensiver in der Herstellung. \\
 
 \begin{itemize}
     \item \textbf{Vergleich der Ausgaberäder}
 \end{itemize}
 
-Da das primäre Ziel unserer Arbeit das perfekte Mischen der Spielkarten ist, wäre es besser das elliptische Ausgaberad in Betracht zu ziehen. Die Kosten
-die durch die aufwendigere Herstellung entstehen wären überschaulich und somit wäre es von Vorteil dieses Konzept zu wählen. Durch die Tatsache, dass das elliptische Rad
-das Kartendeck nur jede halbe Umdrehung berührt und nicht konstant, muss ein Motor für die Räder eingesetzt werden, der sich schnell genug dreht, um eine Karte mit einer Berührung
-des Rades "herauszuschießen". Dies würde aber keine zusätzlichen Kosten verursachen. Aus diesen Gründen fällt die Wahl auf das \textbf{elliptisches Ausgaberad}. \\
+Da das primäre Ziel unserer Arbeit das perfekte Mischen der Spielkarten ist, wäre es besser, das elliptische Ausgaberad in Betracht zu ziehen.
+Die Kosten, die durch die aufwendigere Herstellung entstehen wären überschaulich und somit wäre es von Vorteil, dieses Konzept zu wählen.
+Durch die Tatsache, dass das elliptische Rad das Kartendeck nur jede halbe Umdrehung berührt und nicht dauerhaft, muss ein Motor für die Räder eingesetzt werden, der sich schnell genug dreht, um eine Karte mit einer Berührung
+des Rades "herauszuschießen".
+Dies würde aber keine zusätzlichen Kosten verursachen.
+Aus diesen Gründen fällt die Wahl auf das elliptisches Ausgaberad. \\
 
-\subsection{Klemmmechanissmen}
-Um beim Ausgeben und beim Weiterbefördern der Karten die Chance zu minimieren das mehrere Karten auf einmal weiterbefördert werden, wird ein
-Klemmmechanismus benutzt, dieser sorgt dafür das die Karten von außen Geklemmt werden, und somit nur die unterste Karte durch das Drehen des
+\subsection{Klemmmechanismen}
+Um beim Ausgeben und beim Weiterbefördern der Karten die Chance zu minimieren, dass mehrere Karten auf einmal weiterbefördert werden, wird ein
+Klemmmechanismus benutzt.
+Dieser sorgt dafür, dass die Karten von außen geklemmt werden und somit nur die unterste Karte durch das Drehen des
 Ausgaberades weiterbefördert wird.
 
 \begin{itemize}
-    \item \textbf{Primitiver Klemmmechanissmus}
+    \item \textbf{Primitiver Klemmmechanismus}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_1}
-    \caption{Primitiver Klemmmechanissmus}
+    \caption{Primitiver Klemmmechanismus}
 \end{figure}
 
-Dieser Klemmmechanismus ist der primitivste und einfachste, dadurch aber auch der billigste. Die Karten werden auf der einen Seite an eine feste Wand gedrückt
-auf der anderen Seite werden sie durch ein bewegliches Gelenk fixiert. Dieses Gelenk wird durch das Einschalten des Hubmagneten in die geschlossene Position bewegt,
-soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschaltet und eine Zugfeder zieht das Gelenk wieder in seine Ausgangsposition zurück.
+Dieser Klemmmechanismus ist der primitivste und einfachste, dadurch aber auch der billigste.
+Die Karten werden auf der einen Seite an eine feste Wand gedrückt, auf der anderen Seite werden sie durch ein bewegliches Gelenk fixiert.
+Dieses Gelenk wird durch das Einschalten des Hubmagneten in die geschlossene Position bewegt.
+Soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschaltet und eine Zugfeder zieht das Gelenk wieder in seine Ausgangsposition zurück.
 
 \begin{itemize}
-    \item \textbf{Komplexer Klemmmechanissmus}
+    \item \textbf{Komplexer Klemmmechanismus}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_2}
-    \caption{Komplexer Klemmmechanissmus}
+    \caption{Komplexer Klemmmechanismus}
 \end{figure}
 
-Bei diesem Mechanismus werden die Karten auf der einen Seite durch eine feste Wand geklemmt, auf der anderen werden sie durch ein Gelenk geklemmt, dieses Gelenk
-ist beweglich und gleicht somit verschiedene Kartengrößen aus. Um das Gelenk dieses Konzeptes zu schließen wird ein Hubmagnet benötigt, wird dieser eingeschalten
-so schließt das Gelenk und passt sich der Kartengröße an. Soll es wieder geöffnet werden, so wird der Hubmagnet ausgeschaltet und eine Zugfeder bringt den Mechanismus wieder in den
-Grundzustand. Dieses Konzept ist aufwendiger zu realisieren wie das erste, jedoch kann es verschiedene Kartengrößen klemmen und gleicht sich den Karten an. Das Konzept ist
-dafür aber auch aufwendiger in der Produktion.
+Bei diesem Mechanismus werden die Karten auf der einen Seite durch eine feste Wand geklemmt, auf der anderen werden sie durch ein Gelenk geklemmt.
+Dieses Gelenk ist beweglich und gleicht somit verschiedene Kartengrößen aus.
+Um das Gelenk dieses Konzeptes zu schließen, wird ein Hubmagnet benötigt.
+Wird dieser eingeschaltet, so schließt das Gelenk und passt sich der Kartengröße an.
+Soll es wieder geöffnet werden, so wird der Hubmagnet ausgeschaltet und eine Zugfeder bringt den Mechanismus wieder in den Grundzustand.
+Dieses Konzept ist aufwendiger zu realisieren wie das erste, jedoch ist es möglich verschiedene Kartengrößen zu klemmen.
 
 \begin{itemize}
-    \item \textbf{Gummi Klemmmechanissmus}
+    \item \textbf{Gummi Klemmmechanismus}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_3}
-    \caption{Gummi Klemmmechanissmus}
+    \caption{Gummi Klemmmechanismus}
 \end{figure}
 
 Der letzte Mechanismus ist funktionsmäßig gleich wie der primitive Klemmmechanismus, der einzige Unterschied besteht aus dem
-Gummi-ähnlichen Block, der auf der Klemmfläche sitzt. Dieser soll sich den Karten anpassen und sorgt dafür das alle Karten gleichmäßig
-geklemmt werden, auch erhöht es die Reibung zwischen den Karten und der Klemmoberfläche. Dieses Konzept wäre in der Herstellung vergleichsweise
-einfach zu realisieren und dadurch auch billig in der Herstellung.
+gummiartigen Block, der sich auf der Klemmfläche befindet.
+Dieser soll sich den Karten anpassen und sorgt dafür, dass alle Karten gleichmäßig geklemmt werden.
+Außerdem erhöht es die Reibung zwischen den Karten und der Klemmoberfläche.
+Dieses Konzept wäre in der Herstellung vergleichsweise einfach zu realisieren und dadurch auch billig.
 
 
 \begin{itemize}
-    \item \textbf{Vergleich der Klemmmechanissmen}
+    \item \textbf{Vergleich der Klemmmechanismen}
 \end{itemize}
 
-Da alle Mechanismen die gleiche Anzahl an Bauteile erfordern, spielt der Preis bei dieser Auswahl keine große Rolle. Aus diesem Grund
-sind die Kriterien Funktionalität und Aufwand in der Produktion. Der erst Mechanismus wäre der einfachste in der Produktion, jedoch
-hat er durch sein nicht anpassungsfähiges Klemmgelenk Probleme mit verschiedenen Kartengrößen, aus diesem Grund fällt er bei diesem Auswahlverfahren durch.
-Der zweite Mechanismus wäre der komplexe Klemmmechanismus, dieser würde sich zwar verschiedenen Kartengrößen anpassen, wäre aber etwas aufwendiger in der
-Produktion und ist somit auch nicht die bevorzugte Wahl. Da er einfach in der Produktion ist und sich verschiedenen Kartengrößen anpassen kann, fällt die Wahl jedoch auf den Gummiklemmmechanismus.
+Da alle Mechanismen die gleiche Anzahl an Bauteile erfordern, spielt der Preis bei dieser Auswahl keine große Rolle.
+Aus diesem Grund sind die Kriterien Funktionalität und Aufwand in der Produktion.
+Der erst Mechanismus wäre der einfachste in der Produktion, jedoch hat er durch sein nicht anpassungsfähiges Klemmgelenk Probleme mit verschiedenen Kartengrößen.
+Aus diesem Grund wird dieses Konzept ausgeschlossen.
+Der zweite Mechanismus wäre der komplexe Klemmmechanismus, welcher sich zwar verschiedenen Kartengrößen anpassen würde, aber etwas aufwendiger in der
+Produktion wäre und somit auch nicht die bevorzugte Wahl zu sein vermag.
+Da er einfach in der Produktion ist und sich verschiedenen Kartengrößen anpassen kann, fällt die Wahl jedoch auf den Gummiklemmmechanismus.
 
 \subsection{Seperation der Karten}
-Da bei "Variante 3 - Lagerrad mit Saugnäpfe" Saugnäpfe mit Unterdruckprinzip in Verwendung kommen würden, liegt das Problem vor,
-dass die Karten aneinander haften, dieses Problem entsteht durch den Unterdruck der beim Aufpressen des Saugnapfes entsteht.
-Um zu garantieren, das nur eine Karte in das Lager befördert wird oder ausgegeben wird, müssen diese aneinander
-haftende Karten getrennt werden.
+Da bei Variante 3 Saugnäpfe mit Unterdruckprinzip in Verwendung kommen würden, liegt das Problem vor,
+dass die Karten aneinander haften. Dieses Problem entsteht durch den Unterdruck, der beim Aufpressen des Saugnapfes entsteht.
+Um zu garantieren, dass nur eine Karte in das Lager befördert oder ausgegeben wird, müssen diese aneinander haftenden Karten getrennt werden.
 
 \begin{enumerate}
     \item \textbf{Selbständiges Loslösen der Karten}\\
-    Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten bis Luft zwischen den Karten von außen eindringt und alle Karten sich durch die Schwerkraft
-    von der eigentlich angesaugten Karte getrennt haben. Jedoch zeigten Versuche die durchgeführt wurden, dass dies zu lange
-    dauern würde und das Spielerlebnis somit beeinflussen würde.
+    Die billigste und primitivste Möglichkeit die Karten zu separieren wäre abzuwarten, bis Luft zwischen den Karten von außen eindringt und alle Karten sich durch die Schwerkraft
+    von der eigentlich angesaugten Karte getrennt haben.
+    Jedoch zeigten Versuche, welche durchgeführt wurden, dass dies zu lange dauern und das Spielerlebnis somit beeinflussen würde.
 
     % Please add the following required packages to your document preamble:
     % \usepackage{multirow}
@@ -353,10 +371,9 @@ haftende Karten getrennt werden.
             & 2  & 4.83         & 2.19         & 4.13         & 3.78         & 5.71                & 4.128            \\ \cline{2-8}
             &    &              &              &              &              & \multicolumn{2}{c|}{Mittelwert: 7.932} \\ \hline
         \end{tabular}}
-        \caption{Tabelle Haftzeit der Karten}
+        \caption{Haftzeit der Karten}
         \label{tab:my-table}
     \end{table}
-    \item
     %\begin{figure}
     %    \centering
     %    \begin{tikzpicture}
@@ -393,59 +410,63 @@ haftende Karten getrennt werden.
         \caption{Diagramm Haftzeit der Karten}
     \end{figure}
 
-    Wie man in Tabelle 1.1 und in Abbildung 1.9 erkennen kann dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
-    eigentlich angesaugte Karte am Saugnapf befindet. Der Versuch wurde mit 1Kg Ansaugdruck durchgeführt. Es gab insgesamt
-    5 Durchgänge, auch wurden alle Möglichkeiten der Kartenanzahl im Kartendeck berücksichtigt, so saugte der Saugnapf
-    bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt, bis hin zu einem Saugnapf, der
+    Wie man in \autoref{tab:my-table:} und in \autoref{} erkennen kann, dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
+    eigentlich angesaugte Karte am Saugnapf befindet.
+    Der Versuch wurde mit 1kg Ansaugdruck durchgeführt.
+    Es gab insgesamt fünf Durchgänge, bei denen alle Möglichkeiten der Kartenanzahlen im Kartendeck berücksichtigt wurden.
+    So saugte der Saugnapf bei der ersten Durchgangsreihe die erste Karte an, die auf 19 anderen Karten liegt, bis hin zu einem Saugnapf, der
     eine Karte ansaugt, die nur auf einer einzelnen anderen Karte liegt.
 
     \textbf{Vorteile:}
     \begin{itemize}
-        \item billig
-        \item keine zusätzlichen Bauteile benötigt
+        \item Billig
+        \item Keine zusätzlichen Bauteile benötigt
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
-        \item lange Wartezeit
-        \item unzuverlässig
+        \item Lange Wartezeit
+        \item Unzuverlässig
     \end{itemize}
 
     \item \textbf{Rütteln}\\\\
-    Ein weiteres Konzept um die angesaugte Karten von den anderen zu trennen wäre die Karten minimal zu rütteln.
-    Da die angesaugte Karte viel stärken an dem Saugnapf haftet als die Karten, die nur an der angesaugten Karten haften,
-    könnte der Hubmagnet oder der Ansaugmechanismus leicht gerüttelt werden, so würden die anderen Karten schneller den
-    Unterdruck untereinander verlieren und sich somit schon in kurzer Zeit separieren lassen. Jedoch müsste für dieses Konzept
-    ein Mechanismus entwickelt und produziert werden der nur einen ausgewählten Bereich rüttelt, dies wäre mit weiteren Bauteilkosten und
+    Ein weiteres Konzept, um die angesaugten Karten von den anderen zu trennen, wäre die Karten minimal zu rütteln.
+    Da die angesaugte Karte viel stärker an dem Saugnapf haftet als jene Karten, welche an der angesaugten Karte haften,
+    könnte der Hubmagnet oder der Ansaugmechanismus leicht gerüttelt werden.
+    So würden die anderen Karten schneller den Unterdruck untereinander verlieren und würden sich somit schon in kurzer Zeit separieren lassen.
+    Jedoch müsste für dieses Konzept ein Mechanismus entwickelt und produziert werden, der nur einen ausgewählten Bereich rüttelt. Dies wäre mit weiteren Bauteilkosten und
     Aufwand verbunden.
 
     \textbf{Vorteile:}
     \begin{itemize}
-        \item zuverlässig
+        \item Zuverlässig
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
-        \item teurer
-        \item zusätzliche Bauteile
-        \item zusätzliche Größe
+        \item Teurer
+        \item Zusätzliche Bauteile
+        \item Zusätzliche Größe
     \end{itemize}
 
 
 
     \item \textbf{Abstreifbürsten}\\
-    Bei diesem Konzept sind bürstenartige Abstreifvorrichtungen in der Kartenhalterung angebracht. Diese Bürsten sollen beim Aufheben der
-    angesaugten Karte die anderen Karten die mitgehoben wurden abstreifen. Dabei ist es wichtig, dass die Bürste den richtigen Widerstand aufbringt.
-    Ist der Widerstand zu hoch, wird auch die eigentlich angesaugt Karte mit abgestreift, ist er jedoch zu niedrig ist es möglich, dass die anderen Karten
-    die mitgehoben werden nicht abgestreift werden.
+    Bei diesem Konzept sind bürstenartige Abstreifvorrichtungen in der Kartenhalterung angebracht.
+    Diese Bürsten sollen beim Aufheben der
+    angesaugten Karte die anderen Karten, die mitgehoben wurden, abstreifen.
+    Dabei ist es wichtig, dass die Bürste den richtigen Widerstand aufbringt.
+    Ist der Widerstand zu hoch, wird auch die eigentlich angesaugt Karte mit abgestreift.
+    Ist er jedoch zu niedrig, ist es möglich, dass die anderen Karten,
+    die mitgehoben werden, nicht abgestreift werden.
 
     \textbf{Vorteile:}
     \begin{itemize}
-        \item zuverlässig
-        \item billig
+        \item Zuverlässig
+        \item Billig
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
         \item Karten werden seitlich abgenützt
-        \item komplizierter Einbau
+        \item Komplizierter Einbau
     \end{itemize}
 
     \begin{figure}[H]
@@ -454,9 +475,12 @@ haftende Karten getrennt werden.
     \end{figure}
 
     \item \textbf{Gummiabsstreifer}\\
-    Dieses Konzept funktioniert ähnlich wie das "Abstreifbürsten Konzept". Es besitzt seitlich Abstreifplatten die aus Gummi sind, diese
-    sollen der angesaugten Karte helfen, die mitgezogenen Karten abzustreifen. Wie beim vorherigen Konzept muss hierbei das Gummi auch so
-    dimensioniert werden, dass es einerseits nicht zu steif ist und die eigentlich angesaugt Karte abstreift, andererseits sollte es steif genug sein, um die Karten die mitgehoben werden abzustreifen. Man die Steifigkeit des Gummistreifens verändern, indem man die Breite der Einschnitte
+    Dieses Konzept funktioniert ähnlich wie das Abstreifbürsten-Konzept.
+    Es besitzt seitlich Abstreifplatten, die aus Gummi sind.
+    Diese sollen der angesaugten Karte helfen, die mitgezogenen Karten abzustreifen.
+    Wie beim vorherigen Konzept muss hierbei das Gummi auch so
+    dimensioniert werden, dass es einerseits nicht zu steif ist und die eigentlich angesaugte Karte abstreift, andererseits sollte es steif genug sein, um die Karten, die mitgehoben werden abzustreifen.
+    Man kann die Steifigkeit des Gummiastreifens verändern, indem man die Breite der Einschnitte
     erhöht oder vermindert.
 
     \begin{figure}[H]
@@ -467,8 +491,8 @@ haftende Karten getrennt werden.
 
     \textbf{Vorteile:}
     \begin{itemize}
-        \item zuverlässig
-        \item billig
+        \item Zuverlässig
+        \item Billig
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
@@ -478,31 +502,37 @@ haftende Karten getrennt werden.
 
 \subsection{Saugmechanismus}
 
-Da bei der 3. Variante, Lagerrad mit Saugnäpfe, Saugnäpfe zum Einsatz kommen, muss entschieden werden, welche Saugnäpfe angewandt werden.
+Da bei der 3. Variante Saugnäpfe zum Einsatz kommen, muss entschieden werden, welche Saugnäpfe angewandt werden.
 
 \begin{itemize}
-    \item \textbf{einfacher unterdruck Saugnapf} \\
-    Die erste Möglichkeit wäre einen einfachen Saugnapf zu nehmen, der durch Anpressen an einer Oberfläche einen Unterdruck erzeugt und somit haftet. Ein Vorteil dieses Saugnapfes ist es, dass es kostengünstig ist und keine weiteren Bauteile benötigt sowie die
-    unkomplizierte Befestigung an dem Hubmagneten über ein Gewinde.
-    Jedoch muss dieser Saugnapf mit einer gewissen Kraft auf das Kartendeck gepresst werden, um einen Unterdruck erzeugen zu können. Dies kann dazu führen, dass zwischen den Karten auch ein Unterdruck erzeugt wird und somit mehr als eine Karte vom Saugnapf
-    hochgehoben wird. Ein weiterer Nachteil wäre, das die Karte nicht steuerbar abwerfbar ist, da sie erst abfällt, wenn der Unterdruck verschwindet. Dies kann zu unerwarteten Wartezeiten führen. Wenn der Ansaugdruck durch den Hubmagneten nicht erreicht wird, kann
-    es auch dazu führen, dass keine Karte angesaugt wird. Dies kann die Wartezeiten wiederum verlängern und somit den Spielablauf stören.
+    \item \textbf{Einfacher Unterdruck-Saugnapf} \\
+    Die erste Möglichkeit wäre, einen einfachen Saugnapf zu nehmen, der durch Anpressen an eine Oberfläche einen Unterdruck erzeugt und somit haftet.
+    Ein Vorteil dieses Saugnapfes ist es, dass dieser kostengünstig ist, keine weiteren Bauteile benötigt sowie eine unkomplizierte Befestigung über ein Gewinde mit sich bringt.
+    Jedoch muss dieser Saugnapf mit einer gewissen Kraft auf das Kartendeck gepresst werden, um einen Unterdruck erzeugen zu können.
+    Dies kann dazu führen, dass zwischen den Karten auch ein Unterdruck erzeugt wird und somit mehr als eine Karte vom Saugnapf hochgehoben wird.
+    Ein weiterer Nachteil wäre, dass die Karte nicht kontrolliert abgeworfen werden kann, da sie erst abfällt, wenn der Unterdruck verschwindet.
+    Wenn der Ansaugdruck durch den Hubmagneten nicht erreicht wird, kann es auch dazu führen, dass keine Karte angesaugt wird.
+    Dies kann die Wartezeiten wiederum verlängern und somit den Spielablauf stören.
 
     \textbf{Vorteile:}
     \begin{itemize}
         \item Billig
-        \item unkomplizierter Einbau
+        \item Unkomplizierter Einbau
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
-        \item unzuverlässig
+        \item Unzuverlässig
     \end{itemize}
 
     \item \textbf{Vakuumsaugnapf}
 
-    Eine andere Möglichkeit wäre ein Vakuumsaugnapf, dieser erzeugt seinen Unterdruck über eine Vakuumpumpe und kann somit gesteuert werden. Der Vorteil dieses Saugnapfes ist es, dass die Karten zu einer gewünschten Zeit abgeworfen werden können, da man den
-    Unterdruck des Saugnapfes durch die Pumpe steuern kann. Ein anderer Vorteil ist, dass der Hubmagnet keine hohe Kraft aufweisen muss, da der Saugnapf nicht mehr auf die Karten aufgepresst werden muss, dies würde auch das Problem, dass mehrere Karten auf einmal
-    aufgehoben werden, lösen. Der Nachteil dieser Möglichkeit wäre jedoch der erhöhte Preis des Saugnapfes sowie die zusätzlichen Bauteile, wie zum Beispiel die Pumpe und die Valve. Außerdem ist der Einbau des Saugnapfes etwas komplizierter, da ein Luftdruckschlauch
+    Eine andere Möglichkeit wäre ein Vakuumsaugnapf.
+    Dieser erzeugt seinen Unterdruck über eine Vakuumpumpe und kann somit gesteuert werden.
+    Der Vorteil dieses Saugnapfes ist es, dass die Karten zu einer gewünschten Zeit abgeworfen werden können, da man den Unterdruck des Saugnapfes durch die Pumpe steuern kann.
+    Ein anderer Vorteil ist, dass der Hubmagnet keine hohe Kraft aufweisen muss, da der Saugnapf nicht mehr auf die Karten aufgepresst wird.
+    Dies würde auch das Problem, dass mehrere Karten auf einmal aufgehoben werden, lösen.
+    Der Nachteil dieser Möglichkeit wäre jedoch der erhöhte Preis des Saugnapfes sowie die zusätzlichen Bauteile, wie zum Beispiel die Pumpe und die Valve.
+    Außerdem ist der Einbau des Saugnapfes etwas komplizierter, da ein Luftdruckschlauch
     zum Saugnapf geführt werden muss.
 
     \textbf{Vorteile:}
@@ -512,16 +542,18 @@ Da bei der 3. Variante, Lagerrad mit Saugnäpfe, Saugnäpfe zum Einsatz kommen, 
     \end{itemize}
     \textbf{Nachteile:}
     \begin{itemize}
-        \item mehr Bauteile
-        \item teuer
-        \item komplizierter Einbau
+        \item Mehr Bauteile
+        \item Teuer
+        \item Komplizierter Einbau
     \end{itemize}
     \pagebreak
-    \item \textbf{Vergleich der Saunäpfe}
+    \item \textbf{Vergleich der Saugnäpfe}
 
 
-    Beide Saugnäpfe würden ihre individuellen Vorteile besitzen. Da wir zum einen ein begrenztes Budget haben wäre der einfache Unterdrucksaugnapf für uns attraktiv, zum anderen wäre der Vakuumsaugnapf durch seine Zuverlässigkeit von Vorteil.
-    Da der ausgewählte Hubmagnet jedoch nicht in der Lage ist, den erforderlichen Ansaugdruck zu erreichen, und das kontrollierte Abwerfen der Karten maßgeblich für die Funktion der Maschine ist, fällt unsere Auswahl auf den \textbf{Vakuumsaugnapf}.
+    Beide Saugnäpfe würden ihre individuellen Vorteile besitzen.
+    Da wir zum einen ein begrenztes Budget haben, wäre der einfache Unterdrucksaugnapf für uns attraktiv, zum anderen wäre der Vakuumsaugnapf durch seine Zuverlässigkeit von Vorteil.
+    Da der ausgewählte Hubmagnet jedoch nicht in der Lage ist, den erforderlichen Ansaugdruck zu erreichen,
+    und das kontrollierte Abwerfen der Karten maßgeblich für die Funktion der Maschine ist, fällt unsere Auswahl auf den Vakuumsaugnapf.
 \end{itemize}
 
 \subsection{Endauswahl der Varianten}
@@ -534,28 +566,30 @@ Da bei der 3. Variante, Lagerrad mit Saugnäpfe, Saugnäpfe zum Einsatz kommen, 
     \begin{tabular}{|c|c|c|ll}
         \cline{1-3}
         \textbf{Variante}             & \textbf{Vorteile}                                                                & \textbf{Nachteile}                                                                                    &  &  \\ \cline{1-3}
-        1 - Linearachsen              & \begin{tabular}[c]{@{}c@{}}schnelles Mischen\\ wenige Fehlerquellen\end{tabular} & \begin{tabular}[c]{@{}c@{}}teuer\\ großer Aufbau\\ instabil\end{tabular}                              &  &  \\ \cline{1-3}
-        2 - Lagerrad mit Ausgaberäder & \begin{tabular}[c]{@{}c@{}}stabil\\ niedriger Aufbau\end{tabular}                & \begin{tabular}[c]{@{}c@{}}lange Gesamtgröße\\ viele Bewegliche Bauteile / Fehlerquellen\end{tabular} &  &  \\ \cline{1-3}
-        3 - Lagerrad mit Saugnäpfe    & \begin{tabular}[c]{@{}c@{}}billig\\ wenig bewegliche Bauteile\end{tabular}       & hoher Aufbau                                                                                          &  &  \\ \cline{1-3}
+        1 - Linearachsen              & \begin{tabular}[c]{@{}c@{}}Schnelles Mischen\\ Wenige Fehlerquellen\end{tabular} & \begin{tabular}[c]{@{}c@{}}Teuer\\ Großer Aufbau\\ Instabil\end{tabular}                              &  &  \\ \cline{1-3}
+        2 - Lagerrad mit Ausgaberäder & \begin{tabular}[c]{@{}c@{}}Stabil\\ Niedriger Aufbau\end{tabular}                & \begin{tabular}[c]{@{}c@{}}Langes Gehäuse\\ Viele Bewegliche Bauteile / Fehlerquellen\end{tabular} &  &  \\ \cline{1-3}
+        3 - Lagerrad mit Saugnäpfe    & \begin{tabular}[c]{@{}c@{}}Billig\\ Wenig bewegliche Bauteile\end{tabular}       & hoher Aufbau                                                                                          &  &  \\ \cline{1-3}
     \end{tabular}}
     \caption{Vergleich der Varianten}
 \end{table}
 
 \textbf{\large{Begründung der Wahl}}\\
-Alle drei Varianten wurden durchdacht und bieten ihre individuellen Vorteile. Durch den enormen Preis von
-Variante 1 ist diese aber nicht für unser Projekt geeignet. Das optimale Konzept des Mischens wird am besten durch
-Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten auf einmal in das Lager zu befördern.
-Da Variante 3 im Vergleich zur Variante 2 weniger Bauteile besitzt, ist diese Variante sowohl Preislich ansprechender für uns
-sowie auch die Tatsache das Fehlerquellen durch bewegliche Bauteile minimiert werden. \\
-Somit fällt die finale Wahl auf \textbf{Variante 3}.
+Alle drei Varianten wurden durchdacht und bieten ihre individuellen Vorteile.
+Durch den enormen Preis von Variante 1 ist diese aber nicht für unser Projekt geeignet.
+Das optimale Konzept des Mischens wird am besten durch Variante 3 realisiert, da diese die niedrigste Wahrscheinlichkeit aufweist, mehrere Karten auf einmal in das Lager zu befördern.
+Da Variante 3 im Vergleich zur Variante 2 weniger Bauteile besitzt, ist diese Variante für uns preislich ansprechend.
+Außerdem werden Fehlerquellen durch wenige bewegliche Bauteile minimiert.\\
+Somit fällt die finale Wahl auf Variante 3.
 
 
 
 \pagebreak
 \section{Konstruktion}
 \subsection{Konstruktion des Lagerrades}
-Das Lagerrad soll durch das zufällige Rotieren das Mischen der Karten ermöglichen. Im Verlauf der Diplomarbeit wurde das Lagerrad mehrfach überarbeitet.
-Die grundsätzliche Form dieses Rades besteht aus einem Viertel eines Hohlzylinders, der in mehrere Fächer unterteilt ist. Die erste Version dieses Rades besaß 20 Unterteilungen.
+Das Lagerrad soll durch das zufällige Rotieren das Mischen der Karten ermöglichen.
+Im Verlauf der Diplomarbeit wurde das Lagerrad mehrfach überarbeitet.
+Die grundsätzliche Form dieses Rades besteht aus einem Viertel eines Hohlzylinders, der in mehrere Fächer unterteilt ist.
+Die erste Version dieses Rades besaß 20 Unterteilungen.
 
 \begin{figure}[H]
     \centering
@@ -564,9 +598,9 @@ Die grundsätzliche Form dieses Rades besteht aus einem Viertel eines Hohlzylind
     \label{fig:Lagerrad 20 Fächer}
 \end{figure}
 In der \autoref{fig:Lagerrad 20 Fächer} wurde die Außenwand entfernt, um eine bessere Einsicht in das Bauteil zu bekommen.
-Durch die 20 Unterteilungen muss der Schrittmotor genauere Positionen anfahren, außerdem wäre der Aufwand beim Produzieren groß. Aus diesem Grund
-entschieden wir uns die Unterteilungen zu minimieren und kamen zu dem Entschluss, dass 4 Unterteilungen für ein optimales Mischen ausreichen. Diese Konstruktion
-wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstellen kann und diese danach zusammenstecken und verkleben kann.
+Durch die 20 Unterteilungen muss der Schrittmotor genauere Positionen anfahren, außerdem wäre der Aufwand beim Produzieren groß.
+Aus diesem Grund entschieden wir uns, die Unterteilungen zu minimieren und kamen zu dem Entschluss, dass vier Unterteilungen für ein optimales Mischen ausreichen.
+Diese Konstruktion wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstellen kann und diese danach zusammenstecken und verkleben kann.
 
 \begin{figure}[H]
     \centering
@@ -576,28 +610,33 @@ wurde nach einem Stecksystem entworfen, sodass man die einzelnen Teile herstelle
 \end{figure}
 
 
-Auch in der \autoref{fig:Lagerrad 4 Fächer} wurde die Außenwand entfernt, um das Bauteil besser zu veranschaulichen.
+In der \autoref{fig:Lagerrad 4 Fächer} wurde die Außenwand entfernt, um das Bauteil besser zu veranschaulichen.
 Das Lagerrad besteht aus mehreren Einzelteilen:
 
 \subsubsection{Außenwände}
-Die Außenwände wurden in der Form eines Teiles eines Kreises konstruiert und geben somit die Form des Lagerrades vor. Sie besitzen jeweils 2 Laschen an der äußeren Seite, diese verbinden die Außenwände später mit den Seitenwänden des Lagerrades.
-Außerdem besitzen sie jeweils 3 Ausfräsungen auf ihrer Grundfläche, über die sie später mit den Trennplatten versteckt werden. Bei der Konstruktion der Ausfräsungen ist dabei zu achten, dass sie etwas größer als benötigt gezeichnet werden, da bei der
-Fertigungsart des 3D-Druckens Innenbohrungen und Innenfräsungen durch die Ungenauigkeit des Druckers kleiner gedruckt werden. Wie auch bei den Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese wiederum beim
+Die Außenwände wurden in der Form eines Teiles eines Kreises konstruiert und geben somit die Form des Lagerrades vor.
+Sie besitzen jeweils zwei Laschen an der äußeren Seite.
+Diese verbinden die Außenwände später mit den Seitenwänden des Lagerrades.
+Außerdem besitzen sie jeweils drei Ausfräsungen auf ihrer Grundfläche, über die sie später mit den Trennplatten versteckt werden.
+Bei der Konstruktion der Ausfräsungen ist dabei zu achten, dass sie etwas größer als benötigt gezeichnet werden, da bei der
+Fertigungsart des 3D-Druckens Innenbohrungen und Innenfräsungen durch die Ungenauigkeit des Druckers kleiner gedruckt werden.
+Wie auch bei Innenfräsungen müssen die Laschen auf der Außenseite etwas kleiner konstruiert werden, da diese widerum beim
 Drucken größer gedruckt werden, als sie ursprünglich gezeichnet wurden.
 
 \subsubsection{Seitenwände}
-Diese Bauteile verbinden das Lagerrad mit dem Lagerradhalterungsmodul. Sie besitzen auf der äußeren Seite der Grundfläche
-jeweils 2 Auskerbungen. Über diese werden sie mit den Laschen der Außenwände verbunden. Um einen Durchgang für die Welle zu schaffen,
-schließen die Bauteile auf der unteren Seite nicht im rechten Winkel ab, sondern sind nach innen radial abgerundet.
-Je Bauteil sind 2 Bohrungen vorhanden, über diese wird es mit dem Lagerradhalterungsmodul verbunden.
+Diese Bauteile verbinden das Lagerrad mit dem Lagerradhalterungsmodul.
+Sie besitzen auf der äußeren Seite der Grundfläche jeweils zwei Auskerbungen.
+Über diese werden sie mit den Laschen der Außenwände verbunden.
+Um einen Durchgang für die Welle zu schaffen, schließen die Bauteile auf der unteren Seite nicht im rechten Winkel ab, sondern sind nach innen radial abgerundet.
+Je Bauteil sind zwei Bohrungen vorhanden, über welche es mit dem Lagerradhalterungsmodul verbunden wird.
 Die Bohrungen sind als Senklochbohrungen ausgeführt, da somit die Schraube komplett in das Bauteil versenkt werden kann
 und das Hineinrutschen der Karten in das Lagerrad nicht behindert wird.
 
 \subsubsection{Trennplatte}
-Um die einzelnen Lagerfächer zu unterteilen, ist die Trennplatte konstruiert worden. Dieses Bauteil ist ein einfacher
-Quader mit je 2 Laschen an den Außenseiten. Diese Laschen werden mit den Ausfräsungen der Außenplatte versteckt.
-Hierbei ist wieder zu achten, dass die Laschen kleiner konstruiert werden, da sie durch den 3D-Druck an Größe zunehmen
-werden.
+Um die einzelnen Lagerfächer zu unterteilen, ist die Trennplatte konstruiert worden.
+Dieses Bauteil ist ein einfacher Quader mit je zwei Laschen an den Außenseiten.
+Diese Laschen werden mit den Ausfräsungen der Außenplatte versteckt.
+Hierbei ist wieder zu achten, dass die Laschen kleiner konstruiert werden, da sie durch den 3D-Druck an Größe zunehmen .
 
 \subsection{Konstruktion des Lagerradhalterungsmoduls}
 \begin{wrapfigure}{r}{8 cm}
@@ -605,10 +644,11 @@ werden.
     \caption{Lagerradhalterungsmodul}
     \label{fig:Lagerradhalterungsmoduls}
 \end{wrapfigure}
-Um das Moment der Welle effektiv von der Welle zum Rad zu übertragen, wurde ein Lagerradhalterungsmodul (\autoref{fig:Lagerradhalterungsmoduls}) entworfen. Dieses Modul wird
-benötigt, da das Wellenmoment nicht effektiv an einem 3D-gedruckten Bauteil angreifen kann, da das gedruckt PLA
+Um das Moment der Welle effektiv von der Welle zum Rad zu übertragen, wurde ein Lagerradhalterungsmodul (\autoref{fig:Lagerradhalterungsmoduls}) entworfen.
+Dieses Modul wird benötigt, da das Wellenmoment nicht effektiv an einem 3D-gedruckten Bauteil angreifen kann, weil das gedruckt PLA
 die kontinuierlichen Richtungswechsel sowie das abrupte Bremsens des Motors in Kombination mit der
-Trägheit des Lagerrades nicht standhalten würde. Dieses Modul besteht aus folgenden Einzelteilen:
+Trägheit des Lagerrades nicht standhalten würde.
+Dieses Modul besteht aus folgenden Einzelteilen:
 
 \subsubsection{L-Grundplatte}
 \begin{wrapfigure}{r}{8 cm}
@@ -617,12 +657,14 @@ Trägheit des Lagerrades nicht standhalten würde. Dieses Modul besteht aus folg
     \label{fig:L-Grundplatte}
 \end{wrapfigure}
 Dieses Bauteil, siehe \autoref{fig:L-Grundplatte}, verbindet die Motorwelle sowie die Lagerwelle mit der Verbindungsplatte und somit auch das Lagerrad.
-Es überträgt somit auch das Moment des Motors. Es besitzt je 4 Bohrungen mit Zylinderschraubensenkungen, über die sie mit
-der Verbindungsplatte verbunden wird. Außerdem besitzt sie eine Bohrung mit einer Querbohrung. Über diese werden die
-Wellen geführt und mit einer Schraube am Bauteil fixiert.
+Es überträgt zusätzlich auch das Moment des Motors.
+Das Bauteil besitzt je vier Bohrungen mit Zylinderschraubensenkungen, über die sie mit
+der Verbindungsplatte verbunden wird.
+Außerdem besitzt sie eine Bohrung mit einer Querbohrung.
+Über diese werden die Wellen geführt und mit einer Schraube am Bauteil fixiert.
 Dieses Bauteil wurde ursprünglich aus Aluminium gefertigt, durch Versuche mit einer 3D-gedruckten L-Grundplatte zeigte
-sich jedoch, dass diese sich genauso gut eignet und optisch ansprechender ist. Um nicht in Konflikt mit dem Lagerrad
-zu stehen, hat das Bauteil jeweils 2 Ausbuchtungen nahe der Welle.
+sich jedoch, dass diese sich genauso gut eignet und optisch ansprechender ist.
+Um nicht in Konflikt mit dem Lagerrad zu stehen, hat das Bauteil jeweils zwei Ausbuchtungen nahe der Welle.
 
 \subsubsection{Verbindungsplatte}
 \begin{wrapfigure}{r}{8 cm}
@@ -631,9 +673,10 @@ zu stehen, hat das Bauteil jeweils 2 Ausbuchtungen nahe der Welle.
     \label{fig:Verbindungsplatte}
 \end{wrapfigure}
 Die Verbindungsplatte, zu sehen in \autoref{fig:Verbindungsplatte}, nimmt das von der L-Grundplatte aufgenommene Moment des Motors und überträgt es an das Lagerrad weiter.
-Sie wurde als einfacher Aluminiumquader konstruiert und besitzt insgesamt 6 Bohrungen. Zwei Bohrungen sind auf der
-Grundfläche des Bauteils und besitzen ein Gewinde. Diese verbinden das Lagerradhalterungsmodul mit dem Lagerrad. Je 2
-Bohrungen sitzen auf der Unterseite sowie auf der Oberseite der Verbindungsplatte und sind ebenfalls mit Gewinde
+Sie wurde als einfacher Aluminiumquader konstruiert und besitzt insgesamt sechs Bohrungen.
+Zwei Bohrungen sind auf der Grundfläche des Bauteils und besitzen ein Gewinde.
+Diese verbinden das Lagerradhalterungsmodul mit dem Lagerrad.
+Je zwei Bohrungen sitzen auf der Unterseite sowie auf der Oberseite der Verbindungsplatte und sind ebenfalls mit Gewinde
 ausgeführt, durch diese Gewindebohrungen wird das L-Bauteil mit der Verbindungsplatte verbunden.
 Dieses Bauteil wurde aus Aluminium gefertigt, da es problematisch ist ein Gewinde in PLA zu schneiden, außerdem spielt
 das zusätzliche Gewicht des Aluminiums bei diesem Modul nur eine geringe Rolle.
@@ -644,8 +687,9 @@ das zusätzliche Gewicht des Aluminiums bei diesem Modul nur eine geringe Rolle.
     \caption{Motorwelle}
     \label{fig:Motorwelle}
 \end{wrapfigure}
-Um das Moment vom Motor auf die L-Grundplatte zu übertragen, wird die Motorwelle, die in \autoref{fig:Motorwelle} zu sehen ist, benötigt. Diese ist eine einfache Welle
-mit einer Gewindebohrung am äußeren Ende der Welle. Diese dient dazu, die Welle mit der L-Grundplatte zu verbinden.
+Um das Moment vom Motor auf die L-Grundplatte zu übertragen, wird die Motorwelle, die in \autoref{fig:Motorwelle} zu sehen ist, benötigt.
+Das Bauteil ist eine einfache Welle mit einer Gewindebohrung am äußeren Ende der Welle.
+Diese dient dazu, die Welle mit der L-Grundplatte zu verbinden.
 Am anderen Ende ist die Welle über die Kupplung mit dem Motor verbunden.
 Die Welle wurde an der Drehbank gefertigt und anschließend an der Fräsmaschine die Gewindebohrung gebohrt.
 
@@ -657,9 +701,10 @@ Die Welle wurde an der Drehbank gefertigt und anschließend an der Fräsmaschine
     \label{fig:Lagerwelle}
 \end{wrapfigure}
 
-Die Lagerwelle unterscheidet sich von der Motorwelle lediglich durch ihre Länge. Sie wird auf der einen Seite mit der
-L-Grundplatte verschraubt, auf der anderen Seite wird sie mit dem Zweiloch-Flanschlager auf der Vorderseite des Gehäuses über
-2 Wurmschrauben geklemmt. Abgebildet ist diese in \autoref{fig:Lagerwelle}.\\
+Die Lagerwelle unterscheidet sich von der Motorwelle lediglich durch ihre Länge.
+Sie wird auf der einen Seite mit der L-Grundplatte verschraubt, auf der anderen Seite wird sie mit dem Zweiloch-Flanschlager auf der Vorderseite des Gehäuses über
+zwei Wurmschrauben geklemmt.
+Abgebildet ist diese in \autoref{fig:Lagerwelle}.\\
 
 
 
@@ -667,10 +712,11 @@ L-Grundplatte verschraubt, auf der anderen Seite wird sie mit dem Zweiloch-Flans
 \subsection{Konstruktion der Motorhalterungsgruppe}
 
 
-Die Motorhalterung, siehe \autoref{fig:SchrittmotorCombinedWinkel}, hat den Zweck den Motor an das Gehäuse zu befestigen und ihn somit für die Welle auszurichten. Der ausgewählte Schrittmotor
-besitzt eine mitgelieferte Montagehalterung die mit 4 Schrauben an den Motor geschraubt wird. Die Motorhalterung entspricht dem Nema 17
-Standard und ist somit universal für Motoren dieser Norm anwendbar. Die Motorhalterung wird mittels 2 Schrauben an einen verzinkten Edelstahlwinkel angeschraubt, ist aber
-in der Position noch Einrichtbar. Der Winkel wird über 4 Schrauben mit dem Gehäuse aus Polycarbonat verschraubt. \\
+Die Motorhalterung, siehe \autoref{fig:SchrittmotorCombinedWinkel}, hat den Zweck, den Motor an das Gehäuse zu befestigen und ihn somit für die Welle auszurichten.
+Der ausgewählte Schrittmotor besitzt eine mitgelieferte Montagehalterung, die mit vier Schrauben an den Motor geschraubt wird.
+Die Motorhalterung entspricht dem Nema 17 Standard und ist somit universal für Motoren dieser Norm anwendbar.
+Die Motorhalterung wird mittels 2 Schrauben an einen verzinkten Edelstahlwinkel angeschraubt, ist aber in der Position noch einrichtbar.
+Der Winkel wird über vier Schrauben mit dem Gehäuse aus Polycarbonat verschraubt. \\
 
 \begin{figure}[H]
     \centering
@@ -686,18 +732,19 @@ in der Position noch Einrichtbar. Der Winkel wird über 4 Schrauben mit dem Geh�
     \caption{Kartenhalterungsmodul}
     \label{fig:Kartenhalterungsmodul}
 \end{figure}
-Die Karten müssen nach dem Einführen in die Maschine und nach dem Auswerfen aus dem Lagerrad zwischengelagert werden, da sie
-von dem Hubmagneten und dem Saugnapf einzeln aufgehoben und ausgegeben werden. Für diese Aufgabe kommt das Modul der
-Kartenhalterung, siehe \autoref{fig:Kartenhalterungsmodul}, zum Einsatz. Dieses Modul muss sicherstellen, dass genug Platz für mindestens 20 gewöhnliche Spielkarten  mit den Maßen 100 x 66
-vorhanden ist. Das Modul besteht aus mehreren einzelnen Bauteilen:
+Die Karten müssen nach dem Einführen in die Maschine und nach dem Auswerfen aus dem Lagerrad zwischengelagert werden, da sie von dem Hubmagneten und dem Saugnapf einzeln aufgehoben und ausgegeben werden.
+Für diese Aufgabe kommt das Modul der Kartenhalterung, siehe \autoref{fig:Kartenhalterungsmodul}, zum Einsatz.
+Dieses Modul muss sicherstellen, dass genug Platz für mindestens 20 gewöhnliche Spielkarten  mit den Maßen 100 x 66 vorhanden ist.
+Das Modul besteht aus mehreren einzelnen Bauteilen:
 
 
 
 \subsubsection{Sensorhalterung}
 
-Die Sensorhalterung, siehe \autoref{fig:Sensorhalterung}, dient dazu den kapazitiven Sensor zu befestigen. Dieser wird mithilfe zwei Muttern und zwei Sicherungsringen
-über das Gewinde des Sensors befestigt. Durch diese spezielle Befestigungsart kann man den Sensor in der Höhe einrichten und ihn so
-auf andere Bauteile abstimmen. Die Sensorhalterung wird über 4 Bohrungen mit dem Kartenlager verschraubt.
+Die Sensorhalterung, siehe \autoref{fig:Sensorhalterung}, dient dazu, den kapazitiven Sensor zu befestigen.
+Dieser wird mithilfe von zwei Muttern und zwei Sicherungsringen über das Gewinde des Sensors befestigt.
+Durch diese spezielle Befestigungsart kann man den Sensor in der Höhe einrichten und ihn so auf andere Bauteile abstimmen.
+Die Sensorhalterung wird über vier Bohrungen mit dem Kartenlager verschraubt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=8 cm]{fig/mech/SensorhalterungNeu.png}
@@ -708,22 +755,23 @@ auf andere Bauteile abstimmen. Die Sensorhalterung wird über 4 Bohrungen mit de
 
 \subsubsection{Kartenlager}
 
-Um 20 Karten zwischenzulagern wird ein Kartenlager, dass in \autoref{fig:Kartenlager} zu sehen ist, benötigt. Dieses Lager hat eine Ausnehmung auf der oberen Seite in der die Karten
-eingeführt werden, auf der unteren Seite besitzt es eine Öffnung, die Platz für eine Karte zum Herausfallen bietet. Diese Öffnung ist auf
-einer Höhe von 11 mm, sodass die eingelagerten Karten nicht selbständig  herausfallen, sondern erst durch das Heben des Hubmagnetes.\\
+Um 20 Karten zwischenzulagern wird ein Kartenlager, das in \autoref{fig:Kartenlager} zu sehen ist, benötigt.
+Dieses Lager hat eine Öffnung auf der oberen Seite in der die Karten eingeführt werden.
+Auf der unteren Seite liegt es eine Öffnung, die Platz für eine Karte zum Herausfallen bietet.
+Diese Öffnung ist auf einer Höhe von 11 mm, sodass die eingelagerten Karten nicht selbständig herausfallen, sondern erst durch das Heben des Hubmagnetes.\\
 \begin{wrapfigure}{r}{8 cm}
     \includegraphics[width=8 cm]{fig/mech/Kartenhalterung}
     \caption{Kartenhalterung}
     \label{fig:Kartenlager}
 \end{wrapfigure}
-Das Kartenlager besitzt außerdem zwei Einkerbungen in einer Höhe von 11 mm auf den Seiten, diese bieten Platz für einen Gummiabstreifer,
-dessen Funktion ist es mehrerer auf einmal aufgehobene Karten zu trennen und somit sicherzustellen das nur eine Karte ausgegeben wird.
+Das Kartenlager besitzt außerdem zwei Einkerbungen in einer Höhe von 11 mm auf den Seiten.
+Diese bieten Platz für einen Gummiabstreifer, dessen Funktion ist es, mehrerer auf einmal aufgehobene Karten zu trennen und somit sicherzustellen, dass nur eine Karte ausgegeben wird.
 Der Gummiabstreifer stellt auch sicher, dass die Karte aus der Kartenhalterung herausgeworfen wird und nicht wieder zurück auf den Kartenstapel
 fällt. \\
-Das Lager besitzt außerdem eine Ausnehmung auf der Unterseite, durch diese Ausnehmung wird der Sensor geführt und so eingestellt,
-dass er plan mit der Grundfläche des Lagers ist. Die Ausnehmung ist auch so konstruiert, dass sie groß genug ist um vom Sensor
-nicht erkennt zu werden, wenn dieser auf seiner maximalen Sensibilität konfiguriert ist.\\
-Verbunden ist das Kartenlager über 4 Schrauben mit dem Abstreifer und der Sensorhalterung.
+Das Lager besitzt außerdem eine runde Ausnehmung auf der Unterseite, durch diese Ausnehmung wird der Sensor geführt und so eingestellt,
+dass er plan mit der Grundfläche des Lagers ist.
+Die Ausnehmung ist auch so konstruiert, dass sie groß genug ist um vom Sensor nicht erkennt zu werden, wenn dieser auf seiner maximalen Sensibilität konfiguriert ist.\\
+Verbunden ist das Kartenlager über vier Schrauben mit dem Abstreifer und der Sensorhalterung.
 
 
 
@@ -733,12 +781,14 @@ Verbunden ist das Kartenlager über 4 Schrauben mit dem Abstreifer und der Senso
     \caption{Abstreifer}
     \label{fig:Abstreifer}
 \end{wrapfigure}
-Der Abstreifer, siehe \autoref{fig:Abstreifer}, dient dazu, Karten die nicht durch das Lösen des Unterdrucks vom Saugnapf fallen und noch an ihn Haften
-abzuwerfen. Er ist so konstruiert, dass er beim Einfahren des Hubmagnetes die Karten leicht berührt und diese somit vom
-Saugnapf löst. Er besitzt eine Öffnung auf seiner Grundfläche, die groß genug für unseren ausgewählten Saugnapf ist.\\
-Seitlich besitzt es zwei Erhebungen mit jeweils zwei Durchbohrungen, über diese wird das gesamte Modul über jeweils 2 Aufhänger
+Der Abstreifer, siehe \autoref{fig:Abstreifer}, dient dazu, Karten die nicht durch das Lösen des Unterdrucks vom Saugnapf fallen und noch an ihn haften,
+abzuwerfen.
+Er ist so konstruiert, dass er beim Einfahren des Hubmagnetes die Karten leicht berührt und diese somit vom
+Saugnapf löst.
+Er besitzt eine Öffnung auf der Grundfläche, die groß genug für unseren ausgewählten Saugnapf ist.\\
+Seitlich besitzt das Bauteil zwei Erhebungen mit jeweils zwei Durchbohrungen, über diese wird das gesamte Modul über jeweils 2 Aufhänger
 mit dem Gehäuse verschraubt. \\
-Der Abstreifer wird durch 4 Schrauben mit dem Kartenlager und mit der Hubmagnetaufhängung  verbunden.
+Der Abstreifer wird durch vier Schrauben mit dem Kartenlager und mit der Hubmagnetaufhängung verbunden.
 
 
 
@@ -748,17 +798,17 @@ Der Abstreifer wird durch 4 Schrauben mit dem Kartenlager und mit der Hubmagneta
     \caption{Hubmagnetaufhängung}
     \label{fig:Hubmagnetaufhängung}
 \end{wrapfigure}
-Die Hubmagnetaufhängung, siehe \autoref{fig:Hubmagnetaufhängung}, besteht aus 2 symmetrischen Bauteilen. Diese Bauteile, die die Form eines Trapezes besitzen, fixieren den
-Hubmagneten mit jeweils 4 Schrauben pro Seite auf seiner Position. Das Bauteil ist so konstruiert, dass der Hubmagnet, wenn er
-vollkommen Ausgefahren ist, mit dem montierten Saugnapf die Grundfläche des Kartenlagers erreicht, und somit in der Lage ist,
+Die Hubmagnetaufhängung, siehe \autoref{fig:Hubmagnetaufhängung}, besteht aus zwei symmetrischen Bauteilen.
+Diese Bauteile, welche die Form eines Trapezes besitzen, fixieren den Hubmagneten mit jeweils vier Schrauben pro Seite auf seiner Position.
+Das Bauteil ist so konstruiert, dass der ausgefahrene Hubmagnet mit dem montierten Saugnapf die Grundfläche des Kartenlagers erreicht, und somit in der Lage ist,
 alle Karten anzusaugen.\\
-Die Aufhängung ist mit jeweils 2 Bohrungen mit dem Abstreifer verschraubt und somit an dem gesamten Modul befestigt.
+Die Aufhängung ist mit jeweils zwei Bohrungen mit dem Abstreifer verschraubt und somit an dem gesamten Modul befestigt.
 
 
 
 \subsubsection{Aufhänger}
 Um das Modul in die gewünschte Position zu bringen werden Aufhänger benötigt, diese sind mit dem Polycarbonatsgehäuse verschraubt.
-Da die Aufhänger keine Krafteinwirkungen ausgesetzt sind, können diese dünn und Materialsparend konstruiert werden.
+Da die Aufhänger keinen Krafteinwirkungen ausgesetzt sind, können diese dünn und materialsparend konstruiert werden.
 Da das Kartenhalterungsmodul zweimal an verschiedenen Position zum Einsatz kommt, wurden zwei unterschiedliche
 Aufhänger konstruiert.\\\\
 \textbf{Aufhänger Oben:} \\
@@ -768,10 +818,10 @@ Aufhänger konstruiert.\\\\
     \caption{Aufhänger Oben}
     \label{fig:Aufhänger Oben}
 \end{figure}
-Dieser Aufhänger, siehe \autoref{fig:Aufhänger Oben}, wird über jeweils zwei Schrauben an der TopPlatte des Gehäuses befestigt und hält das obere Kartenhalterungsmodul in Position.
-Das Modul wird über zwei versetzte Bohrungen mit dem Aufhänger verschraubt, diese sind so konstruiert, dass das Modul in einem
-Winkel von 60° befestigt wird.
-Durch die niedrige Höhe des Aufhängers ist auch durch die dünne Bauweise genug Stabilität gegeben.\\\\
+Dieser Aufhänger, siehe \autoref{fig:Aufhänger Oben}, wird über jeweils zwei Schrauben an der Topplatte des Gehäuses befestigt und hält das obere Kartenhalterungsmodul in Position.
+Das Modul wird über zwei versetzte Bohrungen mit dem Aufhänger verschraubt.
+Diese sind so konstruiert, dass das Modul in einem Winkel von 60° befestigt wird.
+Durch die niedrige Höhe des Aufhängers ist auch trotz der dünnen Bauweise genug Stabilität gegeben.\\\\
 
 
 \textbf{Aufhänger Unten:}
@@ -782,16 +832,16 @@ Durch die niedrige Höhe des Aufhängers ist auch durch die dünne Bauweise genu
     \label{fig:Aufhänger Unten}
 \end{wrapfigure}
 
-Das zweite Modul, welches in \autoref{fig:Aufhänger Unten} zu sehen ist, befindet sich nach dem Lagerrad und wird vom unteren Aufhänger in Position gehalten. Der untere Aufhänger
-wird mit 2 Schrauben mit der Grundplatte des Gehäuses verschraubt. Durch die dünne Bauweise des Aufhängers und die
-große Höhe führt dies zu einer Instabilität des Moduls und des Aufhängers in Querrichtung, dieses Problem ist jedoch irrelevant, da es
-zu keiner Krafteinwirkung auf das Modul auf dieser Achse kommt. Um das Problem dennoch zu beheben, kann die Breite des
-Aufhängers variiert werden oder eine Querstrebe bei der Konstruktion hinzugefügt werden, da somit der Materialaufwand beim 3D-Drucken gering bleibt.\\
+Das zweite Modul, welches in \autoref{fig:Aufhänger Unten} zu sehen ist, befindet sich nach dem Lagerrad und wird vom unteren Aufhänger in Position gehalten.
+Der untere Aufhänger wird mit zwei Schrauben mit der Grundplatte des Gehäuses verschraubt.
+Durch die dünne Bauweise und die Höhe des Aufhängers führt dies zu einer Instabilität des Moduls und des Aufhängers in Querrichtung, dieses Problem ist jedoch irrelevant, da es
+zu keiner Krafteinwirkung auf dieser Achse kommt.
+Um das Problem dennoch zu beheben, kann die Breite des Aufhängers variiert werden oder eine Querstrebe bei der Konstruktion hinzugefügt werden, da somit der Materialaufwand beim 3D-Drucken gering bleibt.\\
 Der Aufhänger wird wie der andere Aufhänger über jeweils 2 Schrauben mit dem Kartenhalterungsmodul verschraubt.
 
 
 \subsubsection{Kartenführung}
-Um das Einführen der Karten zu erleichtern und ohne Probleme zu ermöglichen besitzten die Module Kartenführungen.
+Um das Einführen der Karten zu erleichtern besitzen die Module Kartenführungen.
 
 \textbf{Kartenführung Modul 1 oben:}
 
@@ -800,10 +850,11 @@ Um das Einführen der Karten zu erleichtern und ohne Probleme zu ermöglichen be
     \caption{Kartenführung Modul 1 oben}
     \label{fig:Kartenführung Modul 1 oben}
 \end{wrapfigure}
-Das erste Modul besitzt eine Kartenführung, siehe \autoref{fig:Kartenführung Modul 1 oben}, diese fungiert wie ein Trichter, der die Karten in die richtige Position bringt.
-Die Kartenführung wird nicht mit dem Kartenhalterungsmodul verschraubt, sondern
-verklebt. Bei dieser Verbindung kann ohne Probleme eine Klebverbindung angewendet werden, da keine großen Kräfte auftreten, außerdem
-ist sie platzsparender und einfacher zu realisieren. Die Berechnungen zu den Klebestellen finden sie unter \autoref{subsubsec:KlebMod1}.
+Das erste Modul besitzt eine Kartenführung, siehe \autoref{fig:Kartenführung Modul 1 oben}, welche wie ein Trichter fungiert , der die Karten in die richtige Position bringt.
+Die Kartenführung wird nicht mit dem Kartenhalterungsmodul verschraubt, sondern mit diesem verklebt.
+Bei dieser Verbindung kann ohne Probleme eine Klebverbindung angewendet werden, da keine großen Kräfte auftreten.
+Außerdem ist sie platzsparender und einfacher zu realisieren.
+Die Berechnungen zu den Klebestellen findet man unter \autoref{subsubsec:KlebMod1}.
 
 \pagebreak
 \textbf{Kartenführung Modul 2 oben:}
@@ -813,10 +864,11 @@ ist sie platzsparender und einfacher zu realisieren. Die Berechnungen zu den Kle
     \caption{Kartenführung Modul 2 oben}
     \label{fig:Kartenführung Modul 2 oben}
 \end{wrapfigure}
-Diese Kartenführung, siehe \autoref{fig:Kartenführung Modul 2 oben}, sorgt dafür, das die Karten, die aus dem Lagerrad geworfen werden nicht zu früh herausfallen,
-sondern erst genau über der Öffnung des Kartenhalterungsmodul. Sie sind so entworfen, dass die Krümmung der Führungsfläche einen leicht
-größeren Radius besitzt wie der Maximalradius des Lagerrades. Diese zwei Kartenführungen sind mittels Klebeverbindungen
-an das Kartenhalterungsmodul befestigt, da keine großen Kräfte diese Bauteile angreifen. Die Berechnungen dieser Klebestellen finden sie unter \autoref{subsubsec:KlebMod2}. \\
+Diese Kartenführung, siehe \autoref{fig:Kartenführung Modul 2 oben}, sorgt dafür, dass die Karten, welche aus dem Lagerrad geworfen werden, nicht zu früh herausfallen,
+sondern erst über der Öffnung des Kartenhalterungsmodul.
+Sie sind so entworfen, dass die Krümmung der Führungsfläche einen leicht größeren Radius besitzt wie der Maximalradius des Lagerrades.
+Die zwei Kartenführungen sind mittels Klebeverbindungen an das Kartenhalterungsmodul befestigt, da keine großen Kräfte diese Bauteile angreifen.
+Die Berechnungen dieser Klebestellen findet man unter \autoref{subsubsec:KlebMod2}. \\
 
 
 
@@ -829,10 +881,11 @@ an das Kartenhalterungsmodul befestigt, da keine großen Kräfte diese Bauteile 
     \label{fig:Kartenführung Modul 2 unten}
 \end{figure}
 
-Die untere Kartenführung, die in \autoref{fig:Kartenführung Modul 2 unten} zu sehen ist, sorgt dafür, das Karten, die nicht rechtzeitig aus dem Lagerrad fallen und somit erst später
-herausfallen nicht auf dem Boden der Maschine gelangen, sondern durch die Kartenführung weiter im Lagerrad bleiben. Diese Führung
-wird durch ihre Größe und Postion nicht an dem Modul befestigt, sondern wird über jeweils 2 Schrauben mit dem Gehäuse
-verbunden. Durch die lange Bauform und die geringe Stärke des Bauteils, sollten Querstreben in die Konstruktion eingeplant werden,
+Die untere Kartenführung, die in \autoref{fig:Kartenführung Modul 2 unten} zu sehen ist, sorgt dafür, dass Karten, die nicht rechtzeitig aus dem Lagerrad fallen, nicht auf dem Boden der Maschine gelangen,
+sondern durch die Kartenführung weiter im Lagerrad bleiben.
+Diese Führung wird durch ihre Größe und Position nicht an dem Modul befestigt, sondern wird über jeweils zwei Schrauben mit dem Gehäuse
+verbunden.
+Durch die lange Bauform und die geringe Wandstärke des Bauteils, sollten Querstreben in die Konstruktion eingeplant werden,
 da die Kartenführungen sich sonst bei leichtem Berührungskontakt schon stark bewegen.
 
 \pagebreak
@@ -843,7 +896,7 @@ da die Kartenführungen sich sonst bei leichtem Berührungskontakt schon stark b
     \caption{Entnahmeplatte}
     \label{fig:GKartenentGes}
 \end{figure}
-Die Kartenentnahme, die in \autoref{fig:GKartenentGes} zu erkennen ist, befindet sich am unteren Ende der Maschine, sie dient dazu die Karten zwischenzulagern bis der Spieler
+Die Kartenentnahme, die in \autoref{fig:GKartenentGes} zu erkennen ist, befindet sich am unteren Ende der Maschine. Sie dient dazu, die Karten zwischenzulagern, bis der Spieler
 sie entnimmt. Sie besteht aus folgenden Einzelbauteilen:\\
 
 \begin{wrapfigure}{r}{6 cm}
@@ -851,20 +904,24 @@ sie entnimmt. Sie besteht aus folgenden Einzelbauteilen:\\
     \caption{Entnahmeplatte}
     \label{fig:Entnehmeplatte}
 \end{wrapfigure}
-\subsubsection{Entnehmeplatte}
+\subsubsection{Entnehmplatte}
 
-Dies ist das Grundbauteil, siehe \autoref{fig:Entnehmeplatte}, dieses Moduls, es fängt die Karten die vom Kartenhalterungsmodul ausgeworfen werden und lagert diese zwischen bis
-der Spieler diese manuell entnimmt. Das Bauteil liegt in einem 45° Winkel und besitzt einen halbkreisförmigen Ausschnitt
-an der Unterseite, der dazu dient, das Entnehmen der Karten zu vereinfachen. Der rechteckige Ausschnitt in der Mitte des
+Dies ist das Grundbauteil, siehe \autoref{fig:Entnehmeplatte}, dieses Moduls.
+Es fängt die Karten, welche vom Kartenhalterungsmodul ausgeworfen werden und lagert diese, bis
+der Spieler diese manuell entnimmt. D
+as Bauteil liegt in einem 45° Winkel und besitzt einen halbkreisförmigen Ausschnitt
+an der Unterseite, welcher dazu dient, das Entnehmen der Karten zu vereinfachen.
+Die rechteckige Ausnehmung in der Mitte des
 Bauteils dient als Ausschnitt für den Sensor, sodass dieser überprüfen kann, ob sich Karten in dem Bauteil befinden.
 
 
 \subsubsection{Sensorhalterung}
 
-Da bei der Kartenentnahme auch geprüft wird, ob noch Karten in der Entnehmeplatte liegen, wird eine Halterung für den
-Sensor benötigt. Dieses Bauteil, siehe \autoref{fig:Sensorhalterung2}, besitzt eine Bohrung, in der der Sensor durchgeführt wird und danach über zwei Muttern und
-zwei Sicherungsringen befestigt wird. Die rechteckige Ausfräsung auf der unteren Seite der Sensorhalterung dient lediglich
-für optische Zwecke und zur Materialverbrauchsminderung.
+Da bei der Kartenentnahme auch geprüft wird, ob noch Karten in der Entnehmplatte liegen, wird eine Halterung für den
+Sensor benötigt.
+Dieses Bauteil, siehe \autoref{fig:Sensorhalterung2}, besitzt eine Bohrung, in welcher der Sensor durchgeführt wird und danach über zwei Muttern und
+zwei Sicherungsringen befestigt wird.
+Die rechteckige Ausfräsung auf der unteren Seite der Sensorhalterung dient lediglich für optische Zwecke und zur Materialverbrauchsminderung.
 
 \begin{figure}[H]
     \centering
@@ -876,8 +933,8 @@ für optische Zwecke und zur Materialverbrauchsminderung.
 \subsubsection{Befestigungswinkel}
 
 
-Da die Entnahmeplatte  in einen 45° zum Gehäuse montiert werden muss, wurden dafür einfache Winkel, die in \autoref{fig:Befestigungswinkel} zu sehen sind, konstruiert und gefertigt.
-Diese werden auf der einen Seite mit der Unterseite des Gehäuses verklebt, auf der anderen Seite mit der Entnahmeplatte.
+Da die Entnahmeplatte in einem 45° Winkel zum Gehäuse montiert werden muss, wurden dafür einfache Winkel, die in \autoref{fig:Befestigungswinkel} zu sehen sind, konstruiert und gefertigt.
+Diese werden auf der einen Seite mit der Unterseite des Gehäuses verklebt, auf der anderen Seite mit der Entnehmplatte.
 Auch hier können wieder Klebeverbindungen genutzt werden, da keine großen Kräfte auf die Bauteile angreifen.
 
 \begin{figure} [H]
@@ -890,8 +947,9 @@ Auch hier können wieder Klebeverbindungen genutzt werden, da keine großen Krä
 \subsubsection{Sensorhalterungswinkel}
 
 
-Die beiden Sensorhalterungswinkel, die in \autoref{fig:Sensorhalterungswinkel} zusehen sind, ermöglichen das fixieren der Sensorhalterung in einem Winkel von 45°, parallel zur
-Entnahmeplatte. Sie werden jeweils mit der Unterseite des Gehäuses und mit der Sensorhalterung verklebt.
+Die beiden Sensorhalterungswinkel, die in \autoref{fig:Sensorhalterungswinkel} zu sehen sind, ermöglichen das Fixieren der Sensorhalterung in einem Winkel von 45°, parallel zur
+Entnehmplatte.
+Sie werden jeweils mit der Unterseite des Gehäuses und mit der Sensorhalterung verklebt.
 
 \begin{figure}[H]
     \centering
@@ -901,11 +959,12 @@ Entnahmeplatte. Sie werden jeweils mit der Unterseite des Gehäuses und mit der 
 \end{figure}
 
 \subsection{Konstruktion der Endschalterhalterung}
-Dieses Bauteil, dass in \autoref{fig:Enschalterhalterung} zu sehen ist, hat die Funktion den Endschalter, der als Referenzpunkt für den Motor und das darauf montierte
-Lagerrad gilt, zu befestigen. Es besitzt zwei diagonale Bohrungen, über die der Endschalter verschraubt wird.
+Dieses Bauteil, das in \autoref{fig:Enschalterhalterung} zu sehen ist, hat die Funktion, den Endschalter, der als Referenzpunkt für den Motor und das darauf montierte
+Lagerrad gilt, zu befestigen.
+Es besitzt zwei diagonale Bohrungen, über die der Endschalter verschraubt wird.
 Die Endschalterhalterung wird auf der Rückseite über zwei Bohrungen mit dem Polycarbonatgehäuse verschraubt.
 Das Bauteil muss so stabil gebaut sein, dass es einen leichten Zusammenstoß mit dem Lagerrad aushält, falls dieses
-den Referenzpunkt anfahren möchte.
+den Referenzpunkt anfährt.
 
 \subsubsection{Enschalterhalterung}
 \begin{figure}[H]
@@ -916,8 +975,8 @@ den Referenzpunkt anfahren möchte.
 \end{figure}
 
 \subsection{Konstruktion des Gehäuses}
-\footfullcite[Vgl.][]{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden. Für die Auswahl
-des Gehäusematerials kamen diverse Materialien infrage:
+\footfullcite[Vgl.][]{fibox.ch2020}Das Gehäuse soll bei dieser Maschine optisch ansprechen und so klein wie möglich gehalten werden.
+Für die Auswahl des Gehäusematerials kamen diverse Materialien in Frage:
 
 \begin{table}[H]
     \centering
@@ -925,56 +984,64 @@ des Gehäusematerials kamen diverse Materialien infrage:
     \begin{tabular}{|c|c|c|}
         \hline
         & \textbf{Vorteile}                                                                                                                                  & \textbf{Nachteile}                                                                                    \\ \hline
-        \textbf{POLYCARBONAT (PC)}                    & \begin{tabular}[c]{@{}c@{}}sehr hohe Schlagfestigkeit\\ Transparent\\ leicht zu bearbeiten\\ geringes Gewicht\\ gute UV-Beständigkeit\end{tabular} & vergleichsweise teurer                                                                                \\ \hline
-        \textbf{ACRYLNITRIL-BUTADIEN-STYROL (ABS)}    & \begin{tabular}[c]{@{}c@{}}geringes Gewicht\\ günstiger als PC\end{tabular}                                                                        & \begin{tabular}[c]{@{}c@{}}nicht für die Verwendung im Freien\\ nicht transparent\end{tabular}        \\ \hline
-        \textbf{GLASFASERVERSTÄRKTES POLYESTER (GRP)} & \begin{tabular}[c]{@{}c@{}}Wetterbeständig\\ Stabil\\ Schlagfestig\end{tabular}                                                                    & \begin{tabular}[c]{@{}c@{}}teurer als PC\\ schwer zu bearbeiten\\ beträchtliches Gewicht\end{tabular} \\ \hline
+        \textbf{POLYCARBONAT (PC)}                    & \begin{tabular}[c]{@{}c@{}}Sehr hohe Schlagfestigkeit\\ Transparent\\ Leicht zu bearbeiten\\ Geringes Gewicht\\ Gute UV-Beständigkeit\end{tabular} & Vergleichsweise teurer                                                                                \\ \hline
+        \textbf{ACRYLNITRIL-BUTADIEN-STYROL (ABS)}    & \begin{tabular}[c]{@{}c@{}}Geringes Gewicht\\ Günstiger als PC\end{tabular}                                                                        & \begin{tabular}[c]{@{}c@{}}Nicht für die Verwendung im Freien\\ nicht transparent\end{tabular}        \\ \hline
+        \textbf{GLASFASERVERSTÄRKTES POLYESTER (GRP)} & \begin{tabular}[c]{@{}c@{}}Wetterbeständig\\ Stabil\\ Schlagfestig\end{tabular}                                                                    & \begin{tabular}[c]{@{}c@{}}Teurer als PC\\ schwer zu bearbeiten\\ beträchtliches Gewicht\end{tabular} \\ \hline
     \end{tabular}}
     \caption{Vergleich der Gehäusematerialien}
 \end{table}
 
-Da wir unser Material bearbeiten müssen, es portabel gestalten wollen und kein großes Budget haben können wir
-GRP als Gehäusematerial ausschließen. Unser Gehäuse sollte auch optisch ansprechend sein und den Innenaufbau unserer
-Maschine zeigen, somit ist ABS auch ausgeschlossen, da es nicht transparent ist. Somit entschieden wir uns für
+Da wir unser Material bearbeiten müssen, es portabel gestalten wollen und kein großes Budget haben, können wir
+GRP als Gehäusematerial ausschließen.
+Unser Gehäuse sollte auch optisch ansprechend sein und den Innenaufbau unserer
+Maschine zeigen, somit ist ABS auch ausgeschlossen, da es nicht transparent ist.
+Somit entschieden wir uns für
 Polycarbonat als finales Gehäusematerial.
 
 \subsubsection{Grundplatte}
 Die Grundplatte ist die einzige Platte des Gehäuses, die nicht aus Polycarbonat besteht, sondern aus einem 12 mm dicken
-Acrylglas, da uns dieses kostenlos zur Verfügung stand.\\
-Um den unteren Aufhänger des Kartenhalterungsmoduls und die Kartenführung Modul 2 unten zu befestigen befinden sich 8
-Bohrungen in der Mitte der Grundplatte. Diese Bohrungen sind mit einer Boden-seitigen Senkung versehen, somit kann die
-Senkkopfschraube ganz in die Grundplatte gesenkt werden und behindert nicht die Stabilität der Maschine.
-Des Weiteren befindet sich in jeder Ecke eine weitere Bohrung mit Boden-seitiger Senkung. Über diese Bohrung werden die
-Winkel verschraubt, die die Grundplatte mit den restlichen Platten des Gehäuses verbindet.
+Acrylglas.
+Da uns dieses kostenlos zur Verfügung stand.\\
+Um den unteren Aufhänger des Kartenhalterungsmoduls und die Kartenführung-Modul-2-Unten zu befestigen, befinden sich acht
+Bohrungen in der Mitte der Grundplatte.
+Diese Bohrungen sind mit einer Boden-seitigen Senkung versehen.
+Somit kann die Senkkopfschraube ganz in die Grundplatte gesenkt werden und behindert nicht die Stabilität der Maschine.
+Des Weiteren befindet sich in jeder Ecke eine weitere Bohrung mit Boden-seitiger Senkung.
+Über diese Bohrung werden die Winkel verschraubt, welche die Grundplatte mit den restlichen Platten des Gehäuses verbindet.
 
 \subsubsection{Seitenplatte Motor}
-Diese Gehäuseplatte besitzt, genauso wie die Grundplatte, 4 Bohrungen an den Ecken der Platte um sie über Winkel
-mit den anderen Platten zu verbinden. Weiters hat sie 4 Bohrungen im mittleren Bereich, über diese Bohrungen wird
-der Winkel der Motorhalterungsgruppe verschraubt. Darüber hinaus besitzt sie eine innenseitige Einfräsung in der sich
-zwei weitere Bohrungen befinden. Diese Bohrungen werden für den Netzteilstecker sowie für den Taster benötigt.
-Die Einfräsung ist notwendig, da diese beiden Bauteile ein Gewinde besitzen, über die sie mit dem Gehäuse verbunden werden,
-jedoch ist das Gewinde zu kurz für die dicke des Polycarbonats.
+Diese Gehäuseplatte besitzt, genauso wie die Grundplatte, 4 Bohrungen an den Ecken der Platte, um sie über Winkel
+mit den anderen Platten zu verbinden.
+Weiters hat sie 4 Bohrungen im mittleren Bereich.
+Über diese Bohrungen wird der Winkel der Motorhalterungsgruppe verschraubt.
+Darüber hinaus besitzt sie eine innenseitige Einfräsung in der sich
+zwei weitere Bohrungen befinden.
+Diese Bohrungen werden für den Netzteilstecker sowie für den Taster benötigt.
+Die Einfräsung ist notwendig, da diese beiden Bauteile ein Gewinde besitzen, über die sie mit dem Gehäuse verbunden werden.
+Jedoch ist das Gewinde zu kurz für die dicke des Polycarbonats.
 
 \subsubsection{Seitenplatte Lager}
-Da diese Platte die Vorderseite des Gehäuses ist, ist auf ihr auch das Liquid-Crystal-Display montiert. Um diesen zu montieren
-hat die Platte eine rechteckige Ausfräsung im oberen Mittelbereich. Seitlich ober und unter der Ausfräsung befinden sich
-je Seite 2 Langlöcher, über diese wird das Display mit dem Gehäuse verschraubt.
-Unter dem Display besitzt diese Platte zusätzlich 2 Senklochbohrungen, über diese wird das Flanschlager verschraubt.
-Zuletzt besitzt diese Platte auch 4 Bohrungen an den Ecken, über die sie mit den anderen Platten verschraubt wird.
+Da diese Platte die Vorderseite des Gehäuses ist, befindetsich auf ihr auch das Liquid-Crystal-Display.
+Um diesen zu montieren, hat die Platte eine rechteckige Ausfräsung im oberen Mittelbereich.
+Seitlich, ober und unter der Ausfräsung, befinden sich je Seite zwei Langlöcher, über welche das Display mit dem Gehäuse verschraubt wird.
+Unter dem Display besitzt diese Platte zusätzlich zwei Senklochbohrungen, über diese das Flanschlager verschraubt wird.
+Zuletzt besitzt diese Platte auch vier Bohrungen an den Ecken, über die sie mit den anderen Platten verschraubt wird.
 
 \subsubsection{Frontplatte}
-Wie die vorherigen Platten wird auch diese Platte über 4 Bohrungen mit den Winkeln verschraubt.
-Ansonsten hat diese Platte des Gehäuses nur 2 weitere Bohrungen, über die die Endschalterhalterung verschraubt wird.
+Wie die vorherigen Platten, wird auch diese Platte über vier Bohrungen mit den Winkeln verschraubt.
+Ansonsten hat diese Platte des Gehäuses nur zwei weitere Bohrungen, über welche die Endschalterhalterung verschraubt wird.
 
 \subsubsection{Ausgabenplatte}
 Da über diese Platte die Karten entnommen werden, besitzt die Ausgabenplatte eine rechteckige Einfräsung auf der unteren
 Seite.
-Weiters besitzt sie wie die anderen Platten 4 Bohrungen an den Ecken.
+Weiters besitzt sie, wie die anderen Platten, vier Bohrungen an den Ecken.
 
 \subsubsection{Topplatte}
-Die Topplatte oder auch der "Deckel" des Gehäuses hat eine rechteckige Einfräsung in der die Kartenführung Modul 1 oben
-gesteckt wird. Nach der Einfräsung besitzt diese Platte noch 4 Bohrungen, über die der Aufhänger des Kartenhalterungsmodul
+Die Topplatte des Gehäuses hat eine rechteckige Einfräsung in der die Kartenführung-Modul-1-Oben
+gesteckt wird.
+Nach der Einfräsung besitzt diese Platte noch vier Bohrungen, über die der Aufhänger des Kartenhalterungsmodul
 befestigt wird.
-Wie auch bei allen anderen Platten besitzt diese Platte auch 4 Bohrungen an ihren Eckpunkten.
+Wie auch bei allen anderen Platten, besitzt diese Platte auch vier Bohrungen an ihren Eckpunkten.
 
 \begin{figure}[H]
     \centering
@@ -985,23 +1052,27 @@ Wie auch bei allen anderen Platten besitzt diese Platte auch 4 Bohrungen an ihre
 \section{Berechnungen und Dimensionierungen}
 \subsection{Auswahl des Motors}
 
-Der Motor  besitzt die Aufgabe das Lagerrad zu drehen, daher muss der Motor so ausgelegt werden, dass
-er das Lagerrad drehen kann und dessen Drehrichtung schlagartig wechseln kann. Das Gewicht und die Trägheit des
-Lagerrades wird im leeren Zustand angenommen, zwar könnten sich bis zu 20 Karten in dem Lagerrad befinden,
-jedoch ist das Gewicht das diese Karten erzeugen und die dazukommende Träheit im Vergleich zum Lagerrad
-so gering, das sie vernachlässicht werden kann.
+Der Motor besitzt die Aufgabe, das Lagerrad zu drehen, daher muss der Motor so ausgelegt werden, dass
+er das Lagerrad drehen und dessen Drehrichtung impulsartig wechseln kann.
+Das Gewicht und die Trägheit des Lagerrades wird im leeren Zustand angenommen.
+Zwar könnten sich bis zu 20 Karten in dem Lagerrad befinden,
+jedoch ist das Gewicht, dass diese Karten erzeugen und die dazukommende Trägheit im Vergleich zum Lagerrad
+so gering, das sie vernachlässigt werden kann.
 
 \subsubsection{Bestimmung des Trägheitsmoment}
 
-Als erstes muss das Trägheitsmoment besimmt werden. Dies kann über zwei Möglichkeiten geschehen:
+Als erstes muss das Trägheitsmoment bestimmt werden.
+Dies kann über zwei Möglichkeiten erfolgen:
 \begin{enumerate}
     \item Berechnung
     \item Analyse durch Inventor
 \end{enumerate}
 
-Es wurde die zweite Methode "Analyse durch Inventor" gewählt. Zwar könnte das Trägheitsmoment händisch ausgerechnet werden,
-dazu müsste man jedoch durch die komplezität des Bauteils alle Einzelteile extra berechnen und diese dann zusammenfügen.
-Dies wäre zeitaufwändig und fehlerbehaftet, aus diesem Grund entschieden wir uns gegen diese Methode. \\
+Es wurde die zweite Methode Analyse durch Inventor gewählt.
+Zwar könnte das Trägheitsmoment händisch ausgerechnet werden,
+dazu müsste man jedoch durch die komplexität des Bauteils alle Einzelteile extra berechnen und diese danach zusammenfügen.
+Dies wäre zeitaufwändig und fehlerbehaftet.
+Aus diesem Grund entschieden wir uns gegen diese Methode. \\
 
 Um das Trägheitsmoment um den Schwerpunkt herauszufinden müssen in inventor folgende Schritte
 angewandt werden.\\
@@ -1024,14 +1095,14 @@ der um die Iyy Achse.
     \label{fig:iProperties}
 \end{figure}
 
-\textbf{Satz von Steiner:\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009a}}\\
-Im nächsten Schritt muss das Trägheitsmoment vom Schwerpunkt auf die tatsächliche Drehachse verschoben werden.
+\textbf{Satz von Steiner:}\\
+\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009a}Im nächsten Schritt muss das Trägheitsmoment vom Schwerpunkt auf die tatsächliche Drehachse verschoben werden.
 Dazu wird der Satz von Steiner benötigt:\\
 \begin{align*}
     J_{2} &= J_{1}+m\cdot d^{2} \\
-    J_{2} &= 1373,115 kg\cdot mm^{2}+0,561kg\cdot \sqrt{45,493^{2}mm^{2}+45,493^{2}mm^{2}}^{2} \\
-    J_{2} &= 1373,115 kg\cdot mm^{2}+0,561kg\cdot 64,3368mm^{2} \\
-    J_{2} &= 3695,2208 kg\cdot mm^{2} \\
+    J_{2} &= 1373,115 kgmm^{2}+0,561kg\cdot \sqrt{45,493^{2}mm^{2}+45,493^{2}mm^{2}}^{2} \\
+    J_{2} &= 1373,115 kgmm^{2}+0,561kg\cdot 64,3368mm^{2} \\
+    J_{2} &= 3695,2208 kgmm^{2} \\
 \end{align*}
 
 Als nächstes wird die Formel für die Summe aller Momente aufgestellt:
@@ -1054,7 +1125,7 @@ Nun kann über die Winkelgeschwindigkeit und über die Zeit die Winkelbeschleuni
     \alpha &= \frac{\pi }{0,25} \tfrac{rad}{s^{2}}\\
 \end{align*}
 
-Setzt man nun die Winkelbeschleunigung in die Formel der Summe aller Momente ein, bekommt man das mindest notwendige
+Setzt man nun die Winkelbeschleunigung in die Formel der Summe aller Momente ein, bekommt man das notwendige
 Haltemoment des Motors.
 \begin{align*}
     M_{Motor} &= 0,003696kgm^{2} \cdot \frac{\pi }{0,25}\tfrac{rad}{s^{2}}\\
@@ -1076,9 +1147,10 @@ Haltemoment des Motors.
 \subsection{Auswahl der Vakuumaktorik}
 \subsubsection{Auswahl der Vakuumpumpe}
 Um die Vakuumpumpe auszuwählen, muss zuerst die erforderliche Druckdifferenz berechnet werden.
-Da die Karten liegend angehoben werden kommt für die Berechnung der theoretischen Haltekraft der typische Lastfall 1
-zum Einsatz. Zwar wird dieser für eine vertikale Kraftrichtung eingesetzt, und nicht wie bei dem Beispiel in einem
-60° Winkel, dennoch ist er der Lastfall der den am nächsten kommt.
+Da die Karten liegend angehoben werden, kommt für die Berechnung der theoretischen Haltekraft der typische Lastfall 1
+zum Einsatz.
+Zwar wird dieser für eine vertikale Kraftrichtung eingesetzt, und nicht wie bei dem Beispiel in einem
+60° Winkel, dennoch ist er der Lastfall, der unserem Beispiel am nächsten kommt.
 \footfullcite[Vgl.][]{schmalz.com2020}Die theoretische Haltekraft wird mit folgender Formel berechnet:
 \begin{align*}
     F_{TH} &= m \cdot (g + a) \cdot S
@@ -1090,20 +1162,21 @@ g.... Erdbeschleunigung [9,81 m/s²]\\
 a.... Beschleunigung der Anlage [m/s²]\\
 S.... Sicherheitsfaktor \\
 
-Die Masse einer standardmäßigen  Spielkarte liegt bei 2 Gramm, darum wird mit einem Wert von m = 2 g gerechnet.
+Die Masse einer standardmäßigen  Spielkarte liegt bei 2 Gramm, darum wird mit einem Wert von m = 2g gerechnet.
 Die maximale Wegbeschleunigung des Saugnapfes wird beim Einziehen des Hubmagnetes erreicht und
-beträgt 1,8 m/s²,
-daher wird für die Beschleunigung a = 1,8 m/s² eingesetzt. Da ein geringer Unterdruck zur nächsten Karte herrscht, wird eine Sicherheit von 20 gewählt.
+beträgt 1,8m/s²,
+daher wird für die Beschleunigung a = 1,8m/s² eingesetzt.
+Da ein geringer Unterdruck zur nächsten Karte herrscht, wird eine Sicherheit von 20 gewählt.
 Setzt man die Werte in die Formel ein, bekommt man folgendes Ergebnis: \\
 \begin{align*}
 F_{TH} &= 0,002kg\cdot (9,81\frac{m}{s^{2}}+1,8\frac{m}{s^{2}})\cdot 20\\
 F_{TH} &= 0,4644N\\
 \end{align*}
-Um die Druckdifferenz zu berechnen muss als Erstes die Fläche des Saugers berechnet werden.
-Mit einem Durchmesser des Saugers von 20 mm ergibt sich eine Fläche von:
+Um die Druckdifferenz zu berechnen, muss als erstes die Fläche des Saugers berechnet werden.
+Mit einem Durchmesser des Saugers von 20mm ergibt sich eine Fläche von:
 \begin{align*}
 A &= r^{2}\cdot \pi\\
-A &= 0,02^{2}\cdot \pi\\
+A &= 0,02m^{2}\cdot \pi\\
 A &= 0,001257m^{2}\\
 \end{align*}
 Setzt man die Werte in die Formel ein, bekommt man folgende Druckdifferenz:
@@ -1112,9 +1185,9 @@ Setzt man die Werte in die Formel ein, bekommt man folgende Druckdifferenz:
 \triangle P &= \frac{0,4644N}{0,001257m^{2}}\\
 \triangle P &= 369,4511Pa\\
 \end{align*}
-Da der berechnete Wert unbeachtlich klein ist, kann eine möglichst kleine Pumpe ausgewählt werden. Diese beansprucht
-wenig Platz, braucht wenig Strom und ist leise. Schlussendlich wurde eine Pumpe mit einer Leistung von 2,15W und einer
-Spannung von 5V DC ausgewählt.\\
+Da der berechnete Wert unbeachtlich klein ist, kann eine möglichst schwache Pumpe ausgewählt werden.
+Diese beansprucht wenig Platz, braucht wenig Strom und ist leise.
+Schlussendlich wurde eine Pumpe mit einer Leistung von 2,15W und einer Spannung von 5V DC ausgewählt.\\
 \textbf{Daten der Pumpe}
 \begin{itemize}
     \item Spannung 5V (max 6V)
@@ -1126,10 +1199,10 @@ Spannung von 5V DC ausgewählt.\\
 
 
 
-\subsubsection{Auswahl der Valve}
-Da der Saugnapf nicht immer einen Unterdruck haben darf, wird eine Valve benötigt, dieses Bauteil fungiert wie ein
-Schalter, der dafür sorgt ob, der Saugnapf einen Unterdruck bekommt oder nicht. Die einzige Voraussetzung  der Valve war es, nicht zu viel Spannung zu verbrauchen, daher entschieden
-wir uns für eine Valve mit 5 V Spannung. \\
+\subsubsection{Auswahl des Ventils}
+Da der Saugnapf nicht immer einen Unterdruck haben darf, wird eine Ventil benötigt.
+Die beiden Voraussetzungen waren es, dass das Ventil einerseits mit einem niedrigen Spannungspegel betrieben werden kann.
+Andererseits muss es dazu im Stande sein, zwei verschiedene Pneumatikleitungen zu schalten.\\
 \textbf{Eckdaten der ausgewählten Valve}
 \begin{itemize}
     \item Nennspannung: DC 6V
@@ -1140,11 +1213,11 @@ wir uns für eine Valve mit 5 V Spannung. \\
 \end{itemize}
 
 \subsection{Berechnung der Klebeverbindungen}
-Für die Klebeverbindungen verwenden wir einen 2-Komponenten-Epoxy-Kleber, dieser Eignet sich hervorragend für das
-Kleben von harten Kunststoffen, wie gedrucktes PLA.
+Für die Klebeverbindungen verwenden wir einen 2-Komponenten-Epoxy-Kleber, welcher sich hervorragend für das
+Kleben von harten Kunststoffen, wie gedrucktes PLA, eignet.
 
 \subsubsection{Klebeverbindung Kartenhalterunsmodul 1} \label{subsubsec:KlebMod1}
-\footfullcite[Vgl.][]{Wittel2013}Beim Kartenhalterunsmodul-oben wird die Kartenführung Modul 1 oben mit dem Kartenhalterunsmodul 1 verklebt.
+\footfullcite[Vgl.][]{Wittel2013}Beim Kartenhalterunsmodul-Oben wird die Kartenführung-Modul-1-Oben mit dem Kartenhalterunsmodul 1 verklebt.
 Die Formel zum Berechnen der Klebefläche lautet:
 \[\sigma _{K} &= \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\]
 
@@ -1156,22 +1229,22 @@ b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
 S.... Sicherheitsfaktor\\
 
-Für die Kraft werden 50 N angenommen, dies entspricht in etwa der Gewichtskraft von 5,1 Kg
+Für die Kraft werden 50 N angenommen, dies entspricht in etwa der Gewichtskraft von 5,1kg
 und simuliert somit ein kraftvolles Ankommen des Spielers an der Trichtervorrichtung.
 Die Fläche der Klebefläche A\textsubscript{K} ergibt sich durch die Breite und der Tiefe der Klebefläche, wobei
-die Breite der Klebefläche  40 mm beträgt und dessen Länge 20 mm.
+die Breite der Klebefläche  40mm beträgt und dessen Länge 20mm.
 Der Wert $\sigma_{K}$ ist aus der Tabelle 5-3 im Tabellenbuch \footfullcite[Vgl.][]{Wittel2013Tab} auszulesen.
-Um die 3-Fache Sicherheit zu gewähreisten, wurde dr Sicherheitsfaktor 3 gewählt.
+Um die 3-Fache Sicherheit zu gewährleisten, wurde der Sicherheitsfaktor 3 gewählt.
 
 \begin{align*}
 \sigma _{K} &= \frac{50}{40\cdot 20}\leq \frac{21}{3}\\
 \sigma _{K} &= 0,0625\leq 7\\
 \end{align*}
-Da die Gleichung sich als Wahr erweist und die Klebefläche sichtlich überdimensioniert ist, lässt sich erschließen,
-dass das Bauteil auch einen Zusammenstoß mit höherer Kraft überstehen, ohne das sich die Klebeverbindung löst.
+Da die Gleichung sich als wahr erweist und die Klebefläche sichtlich überdimensioniert ist, lässt sich erschließen,
+dass das Bauteil auch einen Zusammenstoß mit höherer Kraft überstehen, ohne dass sich die Klebeverbindung löst.
 
 \subsubsection{Klebeverbindung Kartenhalterunsmodul 2} \label{subsubsec:KlebMod2}
-Hierbei werden die Kartenführungen Modul 2 oben mit dem unteren Kartenhalterunsmodul verklebt.
+Hierbei werden die Kartenführungen-Modul-2-Oben mit dem unteren Kartenhalterunsmodul verklebt.
 Für die Berechnung der Klebefläche wird wieder folgende Formel benötigt.
 \begin{align*}
 \sigma _{K} &= \frac{F}{A_{K}} = \frac{F}{b\cdot t}\leq \frac{\sigma _{KB}}{S}\\
@@ -1184,15 +1257,15 @@ b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
 S.... Sicherheitsfaktor\\
 
-Die Klebefläche schließt sich aus 2 Teilen zusammmen, da das Bauteil 2 dieser Klebeflächen besitzt.
+Die Klebefläche schließt sich aus 2 Teilen zusammen, da das Bauteil zwei dieser Klebeflächen besitzt.
 \begin{align*}
 A_{K} &= b_{1}\cdot t_{1}+b_{2}\cdot t_{2}\\
 A_{K} &=3 mm\cdot 5 mm+7 mm\cdot 5 mm\\
 A_{K} &= 50 mm^{2}\\
 \end{align*}
-\footfullcite[Vgl.][]{Grund-Wissen.de2018}Die Größte zu übertragende Kraft tritt dann ein, wenn dar ganze Kartenstapel mit 20 Karten aus dem
-Lagerrad und auf den Punkt mit der Größten Hebelkraft fällt. Somit müssen wir als erstes die
-Bahngeschwindigkeit des Lagerrades ausrechnen:
+\footfullcite[Vgl.][]{Grund-Wissen.de2018}Die größte zu übertragende Kraft tritt dann ein, wenn der ganze Kartenstapel mit 20 Karten aus dem
+Lagerrad und auf den Punkt mit der Größten Hebelkraft geworfen wird.
+Somit müssen wir als erstes die Bahngeschwindigkeit des Lagerrades ausrechnen:
 \begin{align*}
 v &= \omega \cdot r\\
 v &= 2 \cdot \pi \cdot f \cdot \cdot r\\
@@ -1228,7 +1301,7 @@ a.... Beschleunigung[m/s²]\\
 F &= 0,04 kg \cdot 1,59672\tfrac{m}{s^{2}}\\
 F &= 0,0638N\\
 \end{align*}
-Das Maximalmoment wird nun über die erechnete Kraft F und der maximalen Hebellänge l ausgerechnet.
+Das Maximalmoment wird nun über die errechnete Kraft F und der maximalen Hebellänge l ausgerechnet.
 \begin{align*}
 M_{max} &= F\cdot l\\
 M_{max} &= 0,06386N\cdot 55mm\\
@@ -1242,9 +1315,10 @@ l.... Abstand[mm]\\
 \sigma _{K}= \frac{\frac{3,4862\tfrac{N}{m}}{2}}{50m^{2}} &\leq  \frac{21 \tfrac{N}{mm^{2}}}{3}\\
 \sigma _{K} = 0,034862 \tfrac{N}{mm^{2}} &\leq 7 \tfrac{N}{mm^{2}}\\
 \end{align*}
-Da die Gleichung sich als Wahr erweist, halten die Führungen die Kraft der herausfallenden Karten
-aus. Auch durch die enorme überdimensionierung ist zu erkennen, das auch eine größere Kraft für
-keine Probleme berreiten würde.
+Da die Gleichung sich als wahr erweist, halten die Führungen die Kraft der herausfallenden Karten
+aus.
+Durch die enorme Überdimensionierung ist zu erkennen, das auch eine größere Kraft
+keine Probleme bereiten würde.
 
 \newpage
 \section{Fertigung der Bauteile}
@@ -1459,27 +1533,28 @@ G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
     \label{fig:Gesamtsystem}
 \end{figure}
 
-Im \autoref{fig:Gesamtsystem} wird ein Rendering des Gesamtsystems gezeigt. Bei dem
-Rendering die beiden vorderen Polycarbonatplatte entfernt, um eine bessere Einsicht und
-das Gesamtsystem zu erlangen. Das Redndering besitzt die gleichen Farbtöne wie das gebaute
-Gesamtsystem, sowie die gleichen dimensionen.
+Im \autoref{fig:Gesamtsystem} wird ein Rendering des Gesamtsystems gezeigt.
+Bei dem Rendering wurden die beiden vorderen Polycarbonatplatte entfernt, um eine bessere Einsicht
+das Gesamtsystem zu erlangen.
+Das Rendering besitzt die gleichen Farbtöne wie das gebaute Gesamtsystem sowie die gleichen Dimensionen.
 
 \subsection{Aufgetretene Probleme, Lösungsansätzte und Lösungen}
-Beim Teilaufbau des Automatens sind verschiedene Probleme aufgetreten, diese werden in diesen Unterkapitel bearbeitet und beschrieben.
+Beim Teilaufbau des Automaten sind verschiedene Probleme aufgetreten, diese werden in diesen Unterkapiteln bearbeitet und beschrieben.
 
 \subsubsection{Verschließen des Gehäuses}
-Da wir unser Gehäuse mit jeweils 3 Schrauben und 3 Muttern über 8 Winkel verschrauben, benötigen
-wir eine Lösung um die letzte Platte des Gehäuses anzuschrauben, da bei dieser die Muttern
-auf der Unterseite nicht mehr erreichbar sind. Der billigste und schnellste Lösungsweg wäre,
-die jeweilige Muttern an den 4 Winkel der TopPlatte zu verschweißen oder zu kleben, sodass sie genau über der
+Da wir unser Gehäuse mit jeweils drei Schrauben und drei Muttern über acht Winkel verschrauben, benötigen
+wir eine Lösung, um die letzte Platte des Gehäuses anzuschrauben, da bei dieser die Muttern
+auf der Unterseite nicht mehr erreichbar sind.
+Der billigste und schnellste Lösungsweg wäre,
+die jeweilige Muttern an den vier Winkel der TopPlatte zu verschweißen oder zu kleben, sodass sie genau über der
 Bohrung sitzen und zum Anschrauben nicht mehr erreichbar sein müssen.
 
 \subsubsection{Durchhängen des Lagerradmoduls}
 Weil sich bei dem Lagerradmodul eine Kupplung befindet, kam es dazu, dass ein leichter Knick
-auf der Höhe der Kupplung entstand. Dies führte zwar zu keinem Problem, da der Abstand zwischen
-den Baugruppen groß genug dimensioniert ist um gewisse Abweichungen der Bauteile und somit im
-vorgegeben Bewegungsablauf auszugleichen. Falls dies aber dennoch ein Problem darstellen würde,
-könnte eine andere Kupplung ausgewählt werden, die aktuelle benutzte Kupplung versteift werden oder
+auf der Höhe der Kupplung entstand.
+Dies führte zwar zu keinem Problem, da der Abstand zwischen den Baugruppen groß genug dimensioniert ist um gewisse Abweichungen der Bauteile und somit im
+vorgegeben Bewegungsablauf auszugleichen.
+Falls dies aber dennoch ein Problem darstellen würde, könnte eine andere Kupplung ausgewählt werden, die aktuelle benutzte Kupplung versteift werden oder
 man könnte die beiden Wellen des Lagerradmoduls so befestigen, das sie unter
 Zugspannung stehen und somit das Knicken der Kupplung minimieren.
 
