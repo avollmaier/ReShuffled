@@ -143,9 +143,9 @@ die unseren Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer fü
 
 \subsubsection{Variante 2 - Lagerrad mit Ausgaberäder}
 
-\begin{figure}[hb]
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9,page=1]{fig/mech/Version2}
+    \includegraphics[scale=0.6,page=1]{fig/mech/V1904-Page-2.png}
     \caption{Variante 2}
 \end{figure}
 
@@ -184,7 +184,7 @@ Mischens negieren. Die vielen Bauteile führen auch zu teureren Anschaffungskost
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9,page=1]{fig/mech/Version3}
+    \includegraphics[scale=0.6,page=1]{fig/mech/AufbauReshuffledV3}
     \caption{Variante 3}
 \end{figure}
 
@@ -275,7 +275,7 @@ Ausgaberades weiterbefördert wird.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_1}
+    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus-Page-1.png}
     \caption{Primitiver Klemmmechanismus}
 \end{figure}
 
@@ -290,7 +290,7 @@ Soll das Gelenk wieder öffnen, so wird der Hubmagnet ausgeschaltet und eine Zug
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_2}
+    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus-Page-2.png}
     \caption{Komplexer Klemmmechanismus}
 \end{figure}
 
@@ -307,7 +307,7 @@ Dieses Konzept ist aufwendiger zu realisieren wie das erste, jedoch ist es mögl
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5,page=1]{fig/mech/Kartenausgabe_3}
+    \includegraphics[scale=0.5,page=1]{fig/mech/Klemmmechanissmus-Page-3.png}
     \caption{Gummi Klemmmechanismus}
 \end{figure}
 
@@ -374,43 +374,15 @@ Um zu garantieren, dass nur eine Karte in das Lager befördert oder ausgegeben w
         \caption{Haftzeit der Karten}
         \label{tab:my-table}
     \end{table}
-    %\begin{figure}
-    %    \centering
-    %    \begin{tikzpicture}
-    %        \begin{axis}[
-   %         title={Zeitkorrelation bis zur Kartendispersion},
-   %         xlabel={Karten im Kartendeck},
-    %        ylabel={Zeit t in Sekunden},
-     %       xmin=20, xmax=2,
-      %      ymin=4, ymax=12,
-       %     xtick={20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2},
-       %     ytick={8.2,9.47,11.826,6.862,9.24839.784,7.44,7.546,10.736,6.786,8.788,7.254,5.71,8.74,6.666,6.118,7.876,7.544,4.128},
-       %     legend pos=north west,
-       %     ymajorgrids=true,
-       %     grid style=dashed,
-       %     ]5
-%
-%                \addplot[
-%                color=blue,
-%                mark=square,
-%                ]
-%                coordinates {
-%                (1,23.1)(2,27.5)(3,32)(4,37.8)(5,44.6)(6,61.8)(7,83.8)(8,114)(9,83.8)(10,114)(11,83.8)(12,114)(13,83.8)(14,114)(15,83.8)(16,114)(17,83.8)(18,114)(19,83.8)(20,114)
-%                };
-%                \legend{CuSO$_4\cdot$5H$_2$O}
-    %
-    %         \end{axis}
-    %     \end{tikzpicture}
-    % \end{figure}
-    %
 
     \begin{figure}[H]
         \centering
         \includegraphics[scale=1,page=1]{fig/mech/Haftzeit}
         \caption{Diagramm Haftzeit der Karten}
+        \label{fig:Haftzeit}
     \end{figure}
 
-    Wie man in \autoref{tab:my-table:} und in \autoref{} erkennen kann, dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
+    Wie man in \autoref{tab:my-table} und in \autoref{fig:Haftzeit} erkennen kann, dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
     eigentlich angesaugte Karte am Saugnapf befindet.
     Der Versuch wurde mit 1kg Ansaugdruck durchgeführt.
     Es gab insgesamt fünf Durchgänge, bei denen alle Möglichkeiten der Kartenanzahlen im Kartendeck berücksichtigt wurden.
@@ -485,7 +457,7 @@ Um zu garantieren, dass nur eine Karte in das Lager befördert oder ausgegeben w
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4,page=1]{fig/mech/AusgabeMitGummiabstreifer}
+        \includegraphics[scale=0.4,page=1]{fig/mech/AsugabeMitGummiabstreifer.png}
         \caption{Ausgabe mit Gummiabsstreifer}
     \end{figure}
 
@@ -1323,34 +1295,36 @@ keine Probleme bereiten würde.
 \newpage
 \section{Fertigung der Bauteile}
 \subsection{Werkstoffwahl}
-\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009} \footfullcite[Vgl.][]{ Lernhelfer.de2020}Anfangs stellte sich die Frage mit welchem Werkstoff die Prototypen sowie die Fertigen Bauteile der
-Maschine produziert werden sollen. Da die Bauteile ein niedriges Gewicht haben sollen, billig und schnell produzierbar
-sein sollten wurde Kunststoff ausgewählt. Es wurden folgende Arten zur Verarbeitung von Kunststoff in Betracht gezogen:
+\footfullcite[Vgl.][]{Maschinenbau-Wissen.de2009} \footfullcite[Vgl.][]{ Lernhelfer.de2020}Anfangs stellte sich die Frage, mit welchem Werkstoff die Prototypen sowie die fertigen Bauteile der
+Maschine produziert werden sollen.
+Da die Bauteile ein niedriges Gewicht haben sollen sowie billig und schnell produzierbar
+sein sollten, wurde Kunststoff ausgewählt.
+Es wurden folgende Arten zur Verarbeitung von Kunststoff in Betracht gezogen:
 \subsubsection{Extrudieren}
-Das geschmolzene Material wird beim Extrudieren über Düsen gepresst. Über Ringförmige Düsen können Rohre entstehen,
-über Schlitzförmige können Platten entstehen, somit entspricht der Querschnitt der Düse immer auch den Querschnitt
-des erzeugten Profils. Der Vorteil dabei ist, dass sogar Formen mit Hohlräumen an einem Tag herstellbar sind.
+Das geschmolzene Material wird beim Extrudieren über Düsen gepresst.
+Über Ringförmige Düsen können Rohre entstehen, über Schlitzförmige können Platten entstehen, somit entspricht der Querschnitt der Düse immer auch den Querschnitt des erzeugten Profils.
+Der Vorteil dabei ist, dass sogar Formen mit Hohlräumen an einem Tag herstellbar sind.
 Die erzeugten Platten werden oftmals noch weiterverarbeitet, indem man sie erwärmt und über eine Form zieht, oder durch
 Vakuum und Druck in die gewünschte Form bringt.
-Es gibt noch diverse andere Arten von Extrudern, wie den Schneckenextruder, dieser lässt sich weiter unterteilen in den
-Einschnecken-, gegenlauf Doppelschnecken- und gleichläufige Doppelschneckenextruder. Der Vorteil der Doppelschneckenextruder
-liegt dabei in ihrem guten Mischungsverhältnis, jedoch sind Einschneckenextruder um vieles günstiger.
+Es gibt noch diverse andere Arten von Extrudern, wie den Schneckenextruder.
+Dieser lässt sich weiter unterteilen in den Einschnecken-, gegenlauf Doppelschnecken- und gleichläufige Doppelschneckenextruder.
+Der Vorteil der Doppelschneckenextruder liegt dabei in ihrem guten Mischungsverhältnis, jedoch sind Einschneckenextruder um vieles günstiger.
 Andere Bauformen des Extruders wären der Kolbenextruder sowie der Planetwalzenextruder.
 Für Keramikmaterialien werden in der Regel Kolbenextruder eingesetz.
 Um PVC-Folien Herzustellen werden am häufigsten Planetwalzenextruder benutzt.
 
 \subsubsection{Spritzgießen}
-Über das Spritzgießen können komplexe Bauteile mit einer hohen Qualität hergestellt werden. Die Maschine besteht dabei aus
-einer sogenannten Spritzeinheit und einer Schließeinheit. Die Spritzeinheit besteht aus einem Extruder mit einer
-beweglichen Schnecke, diese stößt die Polymerschmelze durch die Vorwärtsbewegung der Schnecke in das Werkzeug aus.
+Über das Spritzgießen können komplexe Bauteile mit einer hohen Qualität hergestellt werden.
+Die Maschine besteht dabei aus einer sogenannten Spritzeinheit und einer Schließeinheit.
+Die Spritzeinheit besteht aus einem Extruder mit einer beweglichen Schnecke, diese stößt die Polymerschmelze durch die Vorwärtsbewegung der Schnecke in das Werkzeug aus.
 Um das Werkzeug zu öffnen und zu schließen und somit den Ausstoß des Polymeres zu ermöglichen wird die Schließeinheit
 benötigt.
-Bei Beginn des Spritzgusses wird eine rotierende Schnecke mit einem Granulat oder einem Pulver befüllt. Das Material
-wird danach durch die rotierende Bewegung der Schnecke geschmolzen und nach vorne befördert. Das geschmolzene Material
-staut sich an der Spitze, da das Werkzeug durch die Schließeinheit noch nicht geöffnet wurde und somit entsteht ein
-hoher Druck. Da die Schnecke beweglich gelagert ist, dreht sich diese selbst aus dem verdichteten Polymere heraus.
+Bei Beginn des Spritzgusses wird eine rotierende Schnecke mit einem Granulat oder einem Pulver befüllt.
+Das Material wird danach durch die rotierende Bewegung der Schnecke geschmolzen und nach vorne befördert.
+Das geschmolzene Material staut sich an der Spitze, da das Werkzeug durch die Schließeinheit noch nicht geöffnet wurde und somit entsteht ein hoher Druck.
+Da die Schnecke beweglich gelagert ist, dreht sich diese selbst aus dem verdichteten Polymere heraus.
 Wird das Material dann eingespritzt, öffnet sich das Werkzeug und die Schnecke wird unter Druck gesetzt, sodass das
-Material in die gewünschte Form gespritzt  werden kann.
+Material in die gewünschte Form gespritzt werden kann.
 Beim Spritzgießen wird immer mehr Material mitgedruckt, da sich beim Abkühlen des Spritzgusses das Volumen leicht
 verringert.
 Da das Werkzeug des Spritzgusses sehr teuer ist, müssten einige tausend Stück unserer Bauteile hergestellt werden,
@@ -1358,7 +1332,8 @@ sodass sich der Spritzguss rentiert.
 
 \subsubsection{Blasformen}
 Bei dieser Form der Kunststoffverarbeitung wird Druckluft in ein Schlauchstück eingeblasen, das zuvor über ein Werkzeug
-extrudiert wurde. Über dieses Verfahren können somit Hohlkörper wie Flaschen oder Kanister hergestellt werden.
+extrudiert wurde.
+Über dieses Verfahren können somit Hohlkörper, wie Flaschen oder Kanister, hergestellt werden.
 Über ringförmige Düsen können auch Folien hergestellt werden, dieses Verfahren wird dann auch als Folienblasen bezeichnet.
 
 \subsubsection{Kalandrieren}
@@ -1368,23 +1343,23 @@ Weitere Walzen werden für die benötigte Dicke der Folie dazugeschaltet und sor
 oder Gummi verwenden.
 
 \subsubsection{Rotationsformen}
-Bei diesem Produktionsverfahren werden größere, hohle und nahtlose Kunststoffteile hergestellt. Es befindet sich
-ein geschmolzenes Kunststoffgranulat in einer rotierenden Form, dieses Granulat setzt sich beim Auskühlen an den
+Bei diesem Produktionsverfahren werden größere, hohle und nahtlose Kunststoffteile hergestellt.
+Es befindet sich ein geschmolzenes Kunststoffgranulat in einer rotierenden Form, dieses Granulat setzt sich beim Auskühlen an den
 Rand der rotierenden Form ab und erzeugt somit eine hohle Kunststoffform.
-Der Vorteil hierbei liegt bei den niedrigeren Kosten, jedoch ist man nur in der Lage primitivere Formen herzustellen,
-die hohl sind.
+Der Vorteil hierbei liegt bei den niedrigeren Kosten, jedoch ist man nur in der Lage primitivere hohle Formen herzustellen.
 
-\subsubsection{Verarbeitung von duroplastischer Kunstoffe}
+\subsubsection{Verarbeitung von duroplastischer Kunststoffe}
 Um duroplastische Kunststoffe zu verarbeiten, müssen sie mittels Synthese in die gewünschte Form gebracht werden, da sie
-nicht wärmeformbar sind. Dazu werden meist pulverförmige Vorprodukte direkt in eine Form gebracht, und nach Bedarf
-Farb- oder Zusatzstoffe beigefügt. Danach werden sie unter Katalysator- und Wärmeeinfluss zum Endprodukt ausgehärtet.
+nicht wärmeformbar sind.
+Dazu werden meist pulverförmige Vorprodukte direkt in eine Form gebracht, und nach Bedarf Farb- oder Zusatzstoffe beigefügt.
+Danach werden sie unter Katalysator- und Wärmeeinfluss zum Endprodukt ausgehärtet.
 Durch dieses Verfahren können auch metallische Werkstoffe mit Duroplasten verbunden werden, wie zum Beispiel
-Glas-verstärkte Kunststoffe (GFK) die vielfältig in der Luft- und Wasserfahrt zum Einsatz kommen.
+Glas-verstärkte Kunststoffe (GFK), die vielfältig in der Luft- und Wasserfahrt zum Einsatz kommen.
 
 \subsubsection{Kleben}
 Kleben ist ein Fügeverfahren von Kunststoffen, bei dem meist Duroplasten und Elastomere zusammengefügt werden.
-Jedoch benötigt man dazu Kunststoffe mit polaren Egenschaften, um eine erfolgreiche Klebeverbindung zu garantieren.
-Um diese Eigenschaften zu erschaffen müssen viele Kunststoffe mit Korona- oder Plasmabehandlung vorbereitet werden,
+Jedoch benötigt man dazu Kunststoffe mit polaren Eigenschaften, um eine erfolgreiche Klebeverbindung zu garantieren.
+Um diese Eigenschaften zu erschaffen, müssen viele Kunststoffe mit Korona- oder Plasmabehandlung vorbereitet werden,
 um die notwendige Benetzbarkeit aufzuweisen.\\
 Physikalische Kleber können in drei Kategorien eingeteilt werden:
 \begin{itemize}
@@ -1394,94 +1369,95 @@ Physikalische Kleber können in drei Kategorien eingeteilt werden:
 \end{itemize}
 
 \subsubsection{Schweißen}
-Schweißen ist das zweite Fügeverfahren für Kunststoffe, bei diesem Verfahren muss das Material in erster Linie die
-Fähigkeit zum Schmelzen verfügen. Da nur Thermoplaste diese Eigenschaft besitzt, ist es der einzige Kunststoff, der sich gut
-zum Schweißen eignet. Für das Erwärmen und Aufschmelzen des Materials können unterschiedliche Techniken angewendet werden:
+Schweißen ist das zweite Fügeverfahren für Kunststoff.
+Bei diesem Verfahren muss das Material in erster Linie die Fähigkeit zum Schmelzen verfügen.
+Da nur Thermoplaste diese Eigenschaft besitzen, ist es die einzige Kunststoffart, die sich gut zum Schweißen eignet.
+Für das Erwärmen und Aufschmelzen des Materials können unterschiedliche Techniken angewendet werden:
 \begin{itemize}
-    \item elektrische Induktionsheizung (Heizelementschweißen)
-    \item heiße Druckluft (Warmgasschweißen)
+    \item Elektrische Induktionsheizung (Heizelementschweißen)
+    \item Heiße Druckluft (Warmgasschweißen)
     \item Licht- oder Laserstrahlung (Strahlungsschweißen)
     \item Reibung (Reibungsschweißen)
 \end{itemize}
 
 \subsubsection{3D-Druck}
-Der 3D-Druck ist zwar kein Umformverfahren oder Fügeverfahren, sondern ein Urformverfahren mit dem man schnell und mit hoher Genauigkeit Kunststoffteile
-drucken kann. Da das 3D-Drucken billig, schnell und eine hohe Genauigkeit hat, nahmen wir es zum Bau unserer Prototypen. Genaueres zum 3D-Druck finden
-Sie unter Kapitel 1.7.2 3D-Druck.
+Der 3D-Druck ist kein Umformverfahren oder Fügeverfahren, sondern ein Urformverfahren mit dem man in kurzer Zeit präzise Kunststoffteile
+drucken kann.
+Da das 3D-Drucken billig, schnell und eine hohe Genauigkeit aufweist, nahmen wir es zum Bau unserer Prototypen.
+Genaueres zum 3D-Druck finden Sie unter \autoref{subsec:3DDruck} 3D-Druck.
 
-\subsection{3D-Druck}
+\subsection{3D-Druck} \label{subsec:3DDruck}
 \footfullcite[Vgl.][]{3DRUCK.com2020} Das Verfahren des 3D-Drucks wurde aufgrund seiner preisgünstigen Fertigung, seiner Schnelligkeit und der Tatsache
 ausgewählt, dass uns der 3D-Drucker der HTBLA Kaindorf zur Verfügung stand.
 \subsubsection{Grundlagen}
-Der 3D-Druck fungiert im Prinzip der additiven Fertigung, das heißt, er fertigt Objekte aus 3D-Modelldaten Schicht für Schicht
-durch das Verbinden von Materialien. Es unterscheidet sich von dem traditionellen subtraktiven Verfahren dadurch,
-das bei ihnen eine abtragende Kraftwirkung herrscht, wie zum Beispiel Fräßen oder Bohren. Formende Verfahren
-erreichen die gewünschte Form durch Einfluss von mechanischen oder thermischen Kräften, wie zum Beispiel das Biegen oder
-Pressen. Beim additiven  Verfahren jedoch wird die gewünschte Form durch Erzeugen von Geometrie erreicht, so werden Schichten
-hinzugefügt oder aufgetragen. Als hybrides Verfahren bezeichnet man jene, die sich nicht in eine dieser Kategorien
-Unterbringen lassen oder jene die mehrere dieser Verfahren miteinander verbinden.
+Der 3D-Druck fungiert im Prinzip der additiven Fertigung, dass heißt, er fertigt Objekte aus 3D-Modelldaten Schicht für Schicht
+durch das Verbinden von Materialien.
+Es unterscheidet sich von dem traditionellen subtraktiven Verfahren dadurch, dass bei ihnen eine abtragende Kraftwirkung herrscht, wie zum Beispiel Fräßen oder Bohren.
+Formende Verfahren erreichen die gewünschte Form durch Einfluss von mechanischen oder thermischen Kräften, wie zum Beispiel das Biegen oder Pressen.
+Beim additiven Verfahren jedoch, wird die gewünschte Form durch Erzeugen von Geometrie erreicht, so werden Schichten hinzugefügt oder aufgetragen.
+Als hybrides Verfahren bezeichnet man jene, die sich nicht in eine dieser Kategorien unterbringen lassen oder jene, die mehrere dieser Verfahren miteinander verbinden.
 
 \textbf{Produktionsverfahren:}\\
-\footfullcite[Vgl.][]{3DRUCK.com2020a} Produktionsverfahren lassen sich in 4 Kategorien einteilen:
+\footfullcite[Vgl.][]{3DRUCK.com2020a} Produktionsverfahren lassen sich in vier Kategorien einteilen:
 \begin{itemize}
-    \item \textbf{manuelle Verfahren}: Dieses Verfahren beschreibt vereinfacht gesagt die klassische  Handarbeit, wie zum Beispiel das Biegen eines Drahtes (formend), das Hobeln von Holz (subtraktiv) oder das Auftragen von einem Guss (Additiv).
+    \item \textbf{manuelle Verfahren}: Dieses Verfahren beschreibt, vereinfacht gesagt, die klassische Handarbeit, wie zum Beispiel das Biegen eines Drahtes (formend), das Hobeln von Holz (subtraktiv) oder das Auftragen von einem Guss (Additiv).
     \item \textbf{mechanische Verfahren}: Das mechanische Verfahren entwickelte sich aus dem manuellen, die Kraftwirkung wird dadurch von Hebeln, Seilzügen oder anderen Systemen erzeugt.
-    \item \textbf{elektrische Verfahren}: Beim elektrischen Verfahren wird die Kraftwirkung mithilfe von elektrischem Strom erzeugt. Ein Beispiel dafür wäre der Schmelzuguss, da die Schmelztemperatur dabei von einem elektrisch angetriebenen Heizsystem generiert wird.
+    \item \textbf{elektrische Verfahren}: Beim elektrischen Verfahren wird die Kraftwirkung mithilfe von elektrischem Strom erzeugt. Ein Beispiel dafür wäre der Schmelzguss, da die Schmelztemperatur dabei von einem elektrisch angetriebenen Heizsystem generiert wird.
     \item \textbf{digitale Verfahren}: Das digitale Verfahren ist eine Erweiterung des elektrischen Verfahrens, wird aber zusätzlich noch mit einem Computersystem angesteuert. Ein Biegeroboter wäre ein Beispiel für ein digital formendes Verfahren, ein 3D-Drucker wäre dadurch ein digital additives Verfahren.
 \end{itemize}
 
 \subsubsection{Arten des 3D-Drucks}
 \textbf{3D-Druck mit Pulver}
-Dieses Verfahren ist ein fortgeschrittenes Verfahren aus dem "Additive Layer Manufacturing" Bereich, Pulver wird dabei
-als Grundlage für den 3D-Druck verwendet. Ein solcher Drucker besitzt mehrerer Druckköpfe, diese fungieren ähnlich wie
-die eines normalen Druckers, jedoch wird statt Tinte flüssiges Bindemittel extrudiert. Zur Vorlage des Drucks wird daher das
-3D-Modell in vielen 2D-Layers aufgeteilt, diese 2D-Layers dienen auch als Datengrundlage.
-Als Erstes wird beim Verfahren das unterste Layer über den Druckkopf mit einem flüssigen Bindemittel auf die Pulverschicht
-aufgetragen. Danach wird eine dünne Schicht Pulver über das erste Layer gezogen. Anschließend fährt
-das Pulverbett nach jedem Layer um die Höhe einer Pulverschicht nach unten und der Vorgang wiederholt sich mit dem
-zweiten Layer. Dies geschieht so lange, bis das Bauteil fertig gedruckt worden ist.\\
+Dieses Verfahren ist ein fortgeschrittenes Verfahren aus dem Additive Layer Manufacturing Bereich, Pulver wird dabei
+als Grundlage für den 3D-Druck verwendet.
+Ein solcher Drucker besitzt mehrerer Druckköpfe, diese fungieren ähnlich wie die eines normalen Druckers, jedoch wird statt Tinte flüssiges Bindemittel extrudiert.
+Zur Vorlage des Drucks wird daher das 3D-Modell in vielen 2D-Layers aufgeteilt, diese 2D-Layers dienen auch als Datengrundlage.
+Als erstes wird beim Verfahren das unterste Layer über den Druckkopf mit einem flüssigen Bindemittel auf die Pulverschicht aufgetragen.
+Danach wird eine dünne Schicht Pulver über das erste Layer gezogen.
+Anschließend fährt das Pulverbett nach jedem Layer um die Höhe einer Pulverschicht nach unten und der Vorgang wiederholt sich mit dem zweiten Layer.
+Dies geschieht so lange, bis das Bauteil fertig gedruckt worden ist.\\
 
 \textbf{3D-Druck mittels geschmolzenen Material}
-Dies ist einer der populärsten und günstigsten Methoden ein 3-dimensionales Objekt zu erschaffen, hierbei werden vor allem PLA und
-ABS eingesetzt. Dieser Druck funktioniert wie eine Heißklebepistole, der Druckkopf ist dabei ein beheizter Extruder, der
-das eingeführte Material schmilzt und an der Düse ausgibt. Je nach Druckerausführung wird die Düse selbst und das Bett
-darunter bewegt, die Geschwindigkeit ist dabei abhängig von der Zeit, die das gedruckte Material zum Abkühlen braucht,
-denn erst, wenn die darunterliegende Schicht erstarrt ist kann die nächste aufgetragen werden. Die Genauigkeit des Drucks
-ist von vielen Parametern abhängig, wie zum Beispiel die Feinheit der Düse, die Qualität des Materials oder die Präzision
-der Bewegungen. Durch das Hinzufügen weiterer Extruder können sogar mehrfarbige Objekte erzeugt werden. Durch den
-weiteren Extruder ist auch die Möglichkeit gegeben, spezielles wasserlösliches Material, zum Beispiel bei einem Überhang
-oder einem Hohlraum zu wählen, das nach dem Fertigen ausgewaschen werden kann.
+Dies ist einer der populärsten und günstigsten Methoden ein 3-dimensionales Objekt zu erschaffen, hierbei werden vor allem PLA und ABS eingesetzt.
+Dieser Druck funktioniert wie eine Heißklebepistole, der Druckkopf ist dabei ein beheizter Extruder, der das eingeführte Material schmilzt und an der Düse ausgibt.
+Je nach Druckerausführung wird die Düse selbst und das Bett darunter bewegt, die Geschwindigkeit ist dabei abhängig von der Zeit, die das gedruckte Material zum Abkühlen braucht.
+Erst, wenn die darunterliegende Schicht erstarrt ist, kann die nächste aufgetragen werden.
+Die Genauigkeit des Drucks ist von vielen Parametern abhängig, wie zum Beispiel die Feinheit der Düse, die Qualität des Materials oder die Präzision der Bewegungen.
+Durch das Hinzufügen weiterer Extruder können sogar mehrfarbige Objekte erzeugt werden.
+Durch den weiteren Extruder ist auch die Möglichkeit gegeben, spezielles wasserlösliches Material, zum Beispiel bei einem Überhang
+oder einem Hohlraum, zu wählen, das nach dem Fertigen ausgewaschen werden kann.
 
 \textbf{3D-Druck mittels flüssigen Material}
 Dieses Verfahren arbeitet mit UV-empfindlichen Kunststoffen (Photopolymere) und wird auch als Stereolithografie bezeichnet.
-Hierbei ist die Ausgangsbasis ein mit einem lichtaushärteten, flüssigen Kunststoff gefülltes Becken, dieses wird mit
-einem Laser bestrahlt, dass die gewünschten Positionen aushärtet. Nach jedem Vorgang wird das Bett um einen Layer nach
-unten gezogen und somit kann der Prozess für das nächste Layer wiederholt werden. Zum vollständigen Aushärten wird
-das fertige Objekt oftmals noch in eine Belichtungskammer nachbelichtet. Dieses Verfahren ist im Vergleich zu anderen
-zwar teurer, kann aber unter Umständen eine höhere Qualität erzeugen. \\
+Hierbei ist die Ausgangsbasis ein mit einem lichtaushärteten, flüssigen Kunststoff gefülltes Becken.
+Dieses wird mit einem Laser bestrahlt, sodass die gewünschten Positionen aushärtet.
+Nach jedem Vorgang wird das Bett um einen Layer nach unten gezogen und somit kann der Prozess für das nächste Layer wiederholt werden.
+Zum vollständigen Aushärten wird das fertige Objekt oftmals noch in eine Belichtungskammer nachbelichtet.
+Dieses Verfahren ist im Vergleich zu anderen zwar teurer, kann aber unter Umständen eine höhere Qualität erzeugen. \\
 
 Da uns in der HTLA Kaindorf ein 3D-Drucker zur Verfügung steht, der mit dem Prinzip des 3D-Drucks mittels geschmolzenen Materials
 arbeitet, entschieden wir uns für dieses Verfahren.
 
 \subsubsection{Auswahl des 3D-Druck Materials}
-\ffotfullcite{3DRUCK.com2020} Beim 3D-Druck gibt es eine Vielzahl an Materialien mit der man arbeiten kann, im folgenden Abschnitt werden die
+\footfullcite{3DRUCK.com2020} Beim 3D-Druck gibt es eine Vielzahl an Materialien, mit der man arbeiten kann, im folgenden Abschnitt werden die
 meist benutzten Kunststoffarten des 3D-Drucks beschrieben un miteinander verglichen.
-\textbf{ABS}
-ABS (Acrylnitril-Butadien-Styrol) der in der Industrie am häufigsten verwendete Kunststoff. Er ist robust, kann sehr
-niedrige und hohe Temperaturen vertagen und hat eine hohe Oberflächenhärte. Auch besitzt dieses Material eine polierte Oberfläche,
-ist wiederverwendbar und kann über chemische Prozesse geschweißt werden, jedoch schrumpft es im Kontakt mit Luft und benötigt somit ein beheiztes Druckbett und ist
+\textbf{ABS}\\
+ABS (Acrylnitril-Butadien-Styrol) ist der in der Industrie am häufigsten verwendete Kunststoff.
+Er ist robust, kann sehr niedrige sowie hohe Temperaturen vertagen und hat eine hohe Oberflächenhärte.
+ Das Material besitzt außerdem eine polierte Oberfläche, ist wiederverwendbar und kann über chemische Prozesse geschweißt werden, jedoch schrumpft es im Kontakt mit Luft.
+Aus diesem Grund benötigt man somit ein beheiztes Druckbett, außerdem ist ABS
 nicht biologisch Abbaubar.
 
-\textbf{PLA}
+\textbf{PLA}\\
 PLA (Polyactide) ist biologisch abbaubar, da es aus nachwachsenden Rohstoffen, zum Beispiel Maisstärke, hergestellt wird.
-Eine der wichtigen Eigenschaften von PLA ist, das es im Kontakt mit Sauerstoff nicht schrumpft, daher benötigt man kein beheiztes
-Druckbett. Das Material kann jedoch durch Kontakt mit Wasser verfärbt werden oder gar beschädigt werden, außerdem besitzt
-es eine enorm schnelle Abkühl- und Aushärtegeschwindigkeit. Dennoch wird es von den meisten Druckern verwendet und ist
-in vielen Farben erhältlich.
+Eine der wichtigen Eigenschaften von PLA ist, dass es im Kontakt mit Sauerstoff nicht schrumpft, daher benötigt man kein beheiztes Druckbett.
+Das Material kann jedoch durch Kontakt mit Wasser verfärbt werden oder gar beschädigt werden, außerdem besitzt
+es eine enorm schnelle Abkühl- und Aushärtegeschwindigkeit.
+Dennoch wird es von den meisten Druckern verwendet und ist in vielen Farben erhältlich.
 
 \textbf{ASA}
 ASA (Acrylnitril-Styrolacrylat) besitzt ähnliche Eigenschaften wie ABS, jedoch hat es eine besser UV-Beständigkeit.
-Beim Drucken mit ASA wird empfohlen ein beheiztes Druckbett zu haben, außerdem sollte man durch die Styrolemissionen
+Beim Drucken mit ASA wird empfohlen, ein beheiztes Druckbett zu haben, außerdem sollte man durch die Styrolemissionen
 ein geschlossenes 3D-Druck Gehäuse haben.
 
 \textbf{PET}
@@ -1489,9 +1465,9 @@ PET (Polyethylenterephthalat) wird hauptsächlich für Kunststoffprodukte die Ko
 Es ist außerdem zu 100 Prozent recycelbar und gibt beim Drucken keine Gerüche ab.
 
 \textbf{PC}
-PC (Polycarbonat) wird meist für technische Zwecke verwendet. Das sehr widerständige Material ist in der Lage hohe
-Temperaturen ohne sich zu verformen zu überstehen. Da es Feuchtigkeit aus der Luft absorbiert, sollte es in luftdichten
-Boxen gelagert werden, da dies sonst die Druckfestigkeit beeinflussen kann.
+PC (Polycarbonat) wird meist für technische Zwecke verwendet.
+Das sehr widerständige Material ist in der Lage, hohe Temperaturen, ohne sich zu verformen, zu überstehen.
+Da es Feuchtigkeit aus der Luft absorbiert, sollte es in luftdichten Boxen gelagert werden, da dies sonst die Druckfestigkeit beeinflussen kann.
 
 \textbf{Zusammenfassung der Materialien}
 
@@ -1518,12 +1494,12 @@ Jedoch wurde schnell sichtbar, dass die gedruckten Teile nicht der gewünschte Q
 druckten wir alle Teile mit dem Ultimaker 3 der HTBLA Kaindorf.
 
 \subsubsection{Software}
-Zum 3D-Drucken wird eine Software benötigt, die die 3D-Modelle des Konstruktionsprogramms, in diesem Fall Inventor,
+Zum 3D-Drucken wird eine Software benötigt, welche die 3D-Modelle des Konstruktionsprogramms, in diesem Fall von Inventor,
 in für den 3D-Drucker geeignete Daten umwandelt.
-Zuerst werden dabei die Konstruktionsdateien über Inventor in .STL Dateien umgewandelt. Diese werden anschließen in das
-Programm "Ultimaker Cura" geladen, dort wird das 3D-Modell dem 3D-Drucker angepasst und diverse Einstellungen wie
-Geschwindigkeit oder die Dichte der Füllung getroffen. Ist dies geschehen, so kann die ausgewählte Datei nun in einen
-G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
+Zuerst werden dabei die Konstruktionsdaten über Inventor in .STL Dateien umgewandelt.
+Diese werden anschließend in das Programm Ultimaker Cura geladen, dort wird das 3D-Modell dem 3D-Drucker angepasst und diverse Einstellungen, wie
+Geschwindigkeit oder die Dichte der Füllung, getroffen.
+Ist dies geschehen, kann die ausgewählte Datei nun in einen G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
 
 \section{Teilaufbau}
 \begin{figure}[H]
@@ -1534,8 +1510,7 @@ G-Code umgewandelt werden, dieser ist für den 3D-Drucker lesbar.
 \end{figure}
 
 Im \autoref{fig:Gesamtsystem} wird ein Rendering des Gesamtsystems gezeigt.
-Bei dem Rendering wurden die beiden vorderen Polycarbonatplatte entfernt, um eine bessere Einsicht
-das Gesamtsystem zu erlangen.
+Bei dem Rendering wurden die beiden vorderen Polycarbonatplatte entfernt, um eine bessere Einsicht in das Gesamtsystem zu erlangen.
 Das Rendering besitzt die gleichen Farbtöne wie das gebaute Gesamtsystem sowie die gleichen Dimensionen.
 
 \subsection{Aufgetretene Probleme, Lösungsansätzte und Lösungen}
@@ -1543,8 +1518,7 @@ Beim Teilaufbau des Automaten sind verschiedene Probleme aufgetreten, diese werd
 
 \subsubsection{Verschließen des Gehäuses}
 Da wir unser Gehäuse mit jeweils drei Schrauben und drei Muttern über acht Winkel verschrauben, benötigen
-wir eine Lösung, um die letzte Platte des Gehäuses anzuschrauben, da bei dieser die Muttern
-auf der Unterseite nicht mehr erreichbar sind.
+wir eine Lösung, um die letzte Platte des Gehäuses anzuschrauben, da bei dieser die Muttern auf der Unterseite nicht mehr erreichbar sind.
 Der billigste und schnellste Lösungsweg wäre,
 die jeweilige Muttern an den vier Winkel der TopPlatte zu verschweißen oder zu kleben, sodass sie genau über der
 Bohrung sitzen und zum Anschrauben nicht mehr erreichbar sein müssen.
@@ -1552,19 +1526,20 @@ Bohrung sitzen und zum Anschrauben nicht mehr erreichbar sein müssen.
 \subsubsection{Durchhängen des Lagerradmoduls}
 Weil sich bei dem Lagerradmodul eine Kupplung befindet, kam es dazu, dass ein leichter Knick
 auf der Höhe der Kupplung entstand.
-Dies führte zwar zu keinem Problem, da der Abstand zwischen den Baugruppen groß genug dimensioniert ist um gewisse Abweichungen der Bauteile und somit im
+Dies führte zwar zu keinem Problem, da der Abstand zwischen den Baugruppen groß genug dimensioniert ist, um gewisse Abweichungen der Bauteile und somit im
 vorgegeben Bewegungsablauf auszugleichen.
 Falls dies aber dennoch ein Problem darstellen würde, könnte eine andere Kupplung ausgewählt werden, die aktuelle benutzte Kupplung versteift werden oder
-man könnte die beiden Wellen des Lagerradmoduls so befestigen, das sie unter
+man könnte die beiden Wellen des Lagerradmoduls so befestigen, dass sie unter
 Zugspannung stehen und somit das Knicken der Kupplung minimieren.
 
 \subsubsection{Verschrauben des Displays}
-Da das Display über 4 Bohrungen mit der Seitenplatte-Motor verschraubt wird, mussten diese
-beim Bearbeiten des Polycarbonats eingezeichnet und gebohrt werden. Jedoch wurden
-die Maße des Displays falsch vermessen, und somit stimmten die Bohrungen und der Ausschnitt
-der Fräsung nicht mit dem Display überein. Um dieses Problem zu lösen, und die
-Vorderseite des Gehäuses dennoch optisch ansprechend zu gestalten, wurden die Bohrungen
-des Gehäuses auf Langlochbohrungen erweitert, dies löst einerseits das Problem, andererseits
+Da das Display über vier Bohrungen mit der Seitenplatte-Motor verschraubt wird, mussten diese
+beim Bearbeiten des Polycarbonats eingezeichnet und gebohrt werden.
+Jedoch wurden die Maße des Displays falsch vermessen, und somit stimmten die Bohrungen und der Ausschnitt
+der Fräsung nicht mit dem Display überein.
+Um dieses Problem zu lösen, und die Vorderseite des Gehäuses dennoch optisch ansprechend zu gestalten, wurden die Bohrungen
+des Gehäuses auf Langlochbohrungen erweitert.
+Dies löst einerseits das Problem, andererseits
 bleibt das Gehäuse durch die bleibende Symmetrie dennoch optisch ansprechend.
 
 \begin{figure}[H]
@@ -1575,34 +1550,39 @@ bleibt das Gehäuse durch die bleibende Symmetrie dennoch optisch ansprechend.
 \end{figure}
 
 In \autoref{fig:GesamtsystemEcht} ist das aufgebaute Gesamtsystem zu sehen.
-Bei der Grafik wurden die Kartenentnahme noch nicht an der Maschine befestigt, außerdem befinden
-sich noch keine Platinen in der Maschine. Um die Maschine optisch ansprechender zu machen,
-werden die Kabeln noch über Kabelführungen in der Maschine verlegt.
+Bei der Grafik wurden die Kartenentnahme noch nicht an der Maschine befestigt.
+Außerdem befinden sich noch keine Platinen in der Maschine.
+Um die Maschine optisch ansprechender zu machen, werden die Kabel noch über Kabelführungen in der Maschine verlegt.
 
 \section{Selbstkritische Analyse, Resümee und Ausblick}
 \subsection{Verbesserungen}
 
-\subsubsection{Vorrausschauen konstruieren}
+\subsubsection{Vorausschauend konstruieren}
 Viele Konstruktionen wurden schnell gezeichnet und nicht sehr lange durchdacht, daher mussten die Prototypen mehrmals überarbeitet werden.
-Dies hätte sich durch genaueres durchdenken der Konstruktion verhindern lassen können, auch die Positionierung
-einiger Bauteile hätten anders gestaltet werden können, sodass zum Beispiel Schrauben leichter zugänglich sind.
+Dies hätte sich durch genaueres Durchdenken der Konstruktion verhindern lassen können.
+Zusätzlich hätte auch die Positionierung einiger Bauteile anders gestaltet werden können, sodass zum Beispiel Schrauben leichter zugänglich sind.
 
 \subsubsection{Fertigungsmethoden}
 Anfangs bestanden mehrere Teile noch aus Aluminium und wurden gefräst, jedoch wurden sie später durch 3D-gedruckte
-Bauteile ersetzt. Wäre dies von Anfang an klar gewesen, hätten wir uns Zeit beim Fertigen der Aluminiumteile eingespart.
+Bauteile ersetzt.
+Wäre dies von Anfang an klar gewesen, hätten wir uns Zeit beim Fertigen der Aluminiumteile eingespart.
 \subsubsection{Ansaugen der Karten}
 Beim Ansaugen der Karten gab es diverse Probleme, da die erste Version nicht mit einem Vakuumsauger funktionierte, sondern
-mit einem Sauger der seinen Unterdruck durch Anpressen erzeugt. Dieser konnte den erforderlichen Anpressdruck über
-den Hubmagneten nicht erreichen. Das Problem löste sich später jedoch mit dem Wechsel zum Vakuumsauger.
+mit einem Sauger, der seinen Unterdruck durch Anpressen erzeugt.
+Dieser konnte den erforderlichen Anpressdruck über den Hubmagneten nicht erreichen.
+Das Problem löste sich später jedoch mit dem Wechsel zu einem Vakuumsauger.
 
 \subsection{Resümee}
-Abschließend ist zu sagen, das trotz allen erfüllten Bedingungen die Arbeit etwas besser gestaltet hätte werden können.
-Aus technischer Sicht hätte mehr Wert auf die Funktion und auf der Stabilität der Bauteile gelegt werden müssen, anstatt
-auf die Optik. Diverse Bauteile hätten einfacher konstruiert werden können und um somit Material und Zeit einzusparen.
-Die Kommunikation mit dem Team bereitete keine Komplikationen, jedoch wurde die Zeit, die für das Konstruieren benötigt wurde, unterschätzt. Auch die Zeit, die für das Produzieren der Teile benötigt wurde, wurde nicht richtig einberechnet, somit
-konnten wir uns nicht genau an den geplanten Terminplan halten. Dennoch wurde die Maschine fertig gebaut, zusammengesetzt
+Abschließend ist zu sagen, dass trotz allen erfüllten Bedingungen die Arbeit etwas besser gestaltet hätte werden können.
+Aus technischer Sicht hätte mehr Wert auf die Funktion und auf die Stabilität der Bauteile gelegt werden müssen, anstatt
+auf die Optik.
+Diverse Bauteile hätten einfacher konstruiert werden können, um somit Material und Zeit einzusparen.
+Die Kommunikation mit dem Team bereitete keine Komplikationen, jedoch wurde die Zeit, die für das Konstruieren benötigt wurde, unterschätzt.
+Auch die Zeit, die für das Produzieren der Teile benötigt wurde, wurde nicht richtig einberechnet, somit
+konnten wir uns nicht genau an den geplanten Terminplan halten.
+Dennoch wurde die Maschine fertig gebaut, zusammengesetzt
 und auf ihre Funktionstüchtigkeit geprüft.
 
 \subsection{Ausblick}
 Der funktionierende Automat könnte in Zukunft die Vielfältigkeit der Abteilung Mechatronik und der HTBLA Kaindorf auf
-Messen und Veranstaltungen wie den Tag der offenen Tür widerspiegeln.
+Messen und Veranstaltungen, wie den Tag der offenen Tür, widerspiegeln.

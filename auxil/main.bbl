@@ -113,16 +113,21 @@
       \strng{authorfullhash}{bed89e32bb03bc7e71ebbf7729f9d4ce}
       \field{sortinit}{A}
       \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 08.06.2019}
-      \field{title}{Complete Datasheet ATmega324P/V}
+      \field{day}{8}
+      \field{month}{6}
+      \field{title}{Complete Datasheet ATmega324PA}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
-      \verb http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42743-ATmega324P_Datasheet.pdf
+      \verb http://ww1.microchip.com/downloads/en/devicedoc/atmel-8272-8-bit-avr-microcontroller-atmega164a_pa-324a_pa-644a_pa-1284_p_datasheet.pdf
       \endverb
       \verb{url}
-      \verb http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42743-ATmega324P_Datasheet.pdf
+      \verb http://ww1.microchip.com/downloads/en/devicedoc/atmel-8272-8-bit-avr-microcontroller-atmega164a_pa-324a_pa-644a_pa-1284_p_datasheet.pdf
       \endverb
     \endentry
     \entry{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}{online}{}
@@ -139,16 +144,52 @@
       \strng{authorfullhash}{5a84a9d8f3c54e82d520730803cea181}
       \field{sortinit}{B}
       \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 22.12.2019}
+      \field{day}{22}
+      \field{month}{12}
       \field{title}{Funktionsweise und Technologie von kapazitiven SensorenFunktionsweise und Technologie von kapazitiven Sensoren}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.mikrocontroller.net/articles/AVR_Typen
       \endverb
       \verb{url}
       \verb https://www.mikrocontroller.net/articles/AVR_Typen
+      \endverb
+    \endentry
+    \entry{Bourns2017}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bac02fa12c54ec8e9f6e68b357676f14}{%
+           family={Bourns},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \strng{fullhash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \strng{bibnamehash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \strng{authorbibnamehash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \strng{authornamehash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \strng{authorfullhash}{bac02fa12c54ec8e9f6e68b357676f14}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{3}
+      \field{title}{MF-MSMF250-Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.farnell.com/datasheets/2264697.pdf?_ga=2.99109470.1385239420.1583830907-365254587.1556700062
+      \endverb
+      \verb{url}
+      \verb http://www.farnell.com/datasheets/2264697.pdf?_ga=2.99109470.1385239420.1583830907-365254587.1556700062
       \endverb
     \endentry
     \entry{TB6600-Arduino-Stepper-Motor-Driver}{online}{}
@@ -165,11 +206,16 @@
       \strng{authorfullhash}{c7ff2b6b5779cfabbdbe760c4fd6db92}
       \field{sortinit}{D}
       \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 22.12.2019}
+      \field{day}{22}
+      \field{month}{12}
       \field{title}{TB6600 arduino Stepper Motor Driver}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.dfrobot.com/product-1547.html
       \endverb
@@ -191,11 +237,16 @@
       \strng{authorfullhash}{cb00541ad4a66bb27ad7b328542b139e}
       \field{sortinit}{E}
       \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 13.01.2020}
+      \field{day}{13}
+      \field{month}{1}
       \field{title}{DR127-101-R Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://docs.rs-online.com/0512/0900766b8116a153.pdf
       \endverb
@@ -217,11 +268,16 @@
       \strng{authorfullhash}{9ec04c945c24baab3341a27361b0a062}
       \field{sortinit}{E}
       \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 15.09.2019}
+      \field{day}{15}
+      \field{month}{9}
       \field{title}{EEVblog #262 - World's Simplest Soft Latching Power Switch Circuit}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.youtube.com/watch?v=Foc9R0dC2iI
       \endverb
@@ -245,10 +301,15 @@
       \field{sortinit}{F}
       \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
       \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 24.01.2020}
+      \field{day}{24}
+      \field{month}{1}
       \field{title}{FDD6637 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://docs.rs-online.com/f1ee/0900766b810c960f.pdf
       \endverb
@@ -272,10 +333,15 @@
       \field{sortinit}{F}
       \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
       \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 24.01.2020}
+      \field{day}{24}
+      \field{month}{1}
       \field{title}{FDN337N Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://docs.rs-online.com/24f1/0900766b80d2310e.pdf
       \endverb
@@ -540,60 +606,35 @@
       \field{dateera}{ce}
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'Inden2018'}
     \endentry
-    \entry{DRV8825-Datasheet}{online}{}
+    \entry{MBRD340-Datasheet}{online}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=98891ef37ae74f3a00ae9a7c9c316e78}{%
-           family={Instruments},
-           familyi={I\bibinitperiod},
-           given={Texas},
-           giveni={T\bibinitperiod},
-           givenun=0}}%
+        {{un=0,uniquepart=base,hash=784b66cb030baba8664c0179a730c533}{%
+           family={InternationalRectifier},
+           familyi={I\bibinitperiod}}}%
       }
-      \strng{namehash}{98891ef37ae74f3a00ae9a7c9c316e78}
-      \strng{fullhash}{98891ef37ae74f3a00ae9a7c9c316e78}
-      \strng{bibnamehash}{98891ef37ae74f3a00ae9a7c9c316e78}
-      \strng{authorbibnamehash}{98891ef37ae74f3a00ae9a7c9c316e78}
-      \strng{authornamehash}{98891ef37ae74f3a00ae9a7c9c316e78}
-      \strng{authorfullhash}{98891ef37ae74f3a00ae9a7c9c316e78}
+      \strng{namehash}{784b66cb030baba8664c0179a730c533}
+      \strng{fullhash}{784b66cb030baba8664c0179a730c533}
+      \strng{bibnamehash}{784b66cb030baba8664c0179a730c533}
+      \strng{authorbibnamehash}{784b66cb030baba8664c0179a730c533}
+      \strng{authornamehash}{784b66cb030baba8664c0179a730c533}
+      \strng{authorfullhash}{784b66cb030baba8664c0179a730c533}
       \field{sortinit}{I}
       \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 09.01.2020}
-      \field{title}{DRV8825 Datasheet}
+      \field{day}{31}
+      \field{month}{1}
+      \field{title}{MBRD320/330/340 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
-      \verb http://www.ti.com/lit/ds/symlink/drv8825.pdf
+      \verb http://www.irf.com/product-info/datasheets/data/mbrd320.pdf
       \endverb
       \verb{url}
-      \verb http://www.ti.com/lit/ds/symlink/drv8825.pdf
-      \endverb
-    \endentry
-    \entry{Optischer-Sensor}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=aa1abaf29e5cc7a6da11653e470c780c}{%
-           family={Keyene},
-           familyi={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \strng{fullhash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \strng{bibnamehash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \strng{authorbibnamehash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \strng{authornamehash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \strng{authorfullhash}{aa1abaf29e5cc7a6da11653e470c780c}
-      \field{sortinit}{K}
-      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 22.12.2019}
-      \field{title}{Optische Sensoren}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.keyence.de/ss/products/sensor/sensorbasics/photoelectric/info/
-      \endverb
-      \verb{url}
-      \verb https://www.keyence.de/ss/products/sensor/sensorbasics/photoelectric/info/
+      \verb http://www.irf.com/product-info/datasheets/data/mbrd320.pdf
       \endverb
     \endentry
     \entry{kulturbanause2016}{online}{}
@@ -759,7 +800,7 @@
       \endverb
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'Maschinenbau-Wissen.de2009'}
     \endentry
-    \entry{A4988StepperMotorDriverCarrier}{online}{}
+    \entry{A4988-Stepper-Motor-Driver-Carrier}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=efc23af79c3f49f6016a84daf3abf6bb}{%
            family={Mikrocontroller.net},
@@ -775,11 +816,15 @@
       \field{sortinit}{M}
       \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
       \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 26.12.2019}
+      \field{day}{26}
+      \field{month}{12}
       \field{title}{A4988 Stepper Motor Driver Carrier}
-      \true{nocite}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.pololu.com/product/1182
       \endverb
@@ -803,10 +848,15 @@
       \field{sortinit}{M}
       \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
       \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 08.06.2019}
+      \field{day}{8}
+      \field{month}{6}
       \field{title}{AVR Typen}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.mikrocontroller.net/articles/AVR_Typen
       \endverb
@@ -870,16 +920,147 @@
       \strng{authorfullhash}{edfecd26acc49e2728758030df6ffdc4}
       \field{sortinit}{M}
       \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 08.01.2020}
+      \field{day}{8}
+      \field{month}{1}
       \field{title}{Verpolschutz}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb http://www.lothar-miller.de/s9y/categories/39-Verpolschutz
       \endverb
       \verb{url}
       \verb http://www.lothar-miller.de/s9y/categories/39-Verpolschutz
+      \endverb
+    \endentry
+    \entry{BZX84-series-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=70a107d58d4aa1203cc8cde04480d72c}{%
+           family={NXPSemiconductors},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{70a107d58d4aa1203cc8cde04480d72c}
+      \strng{fullhash}{70a107d58d4aa1203cc8cde04480d72c}
+      \strng{bibnamehash}{70a107d58d4aa1203cc8cde04480d72c}
+      \strng{authorbibnamehash}{70a107d58d4aa1203cc8cde04480d72c}
+      \strng{authornamehash}{70a107d58d4aa1203cc8cde04480d72c}
+      \strng{authorfullhash}{70a107d58d4aa1203cc8cde04480d72c}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{1}
+      \field{title}{BZX84 series Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
+      \endverb
+      \verb{url}
+      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
+      \endverb
+    \endentry
+    \entry{LM2576-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e53a96542e62222130baf6a1ffa923e2}{%
+           family={ONSemiconductor},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{fullhash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{bibnamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authorbibnamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authornamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authorfullhash}{e53a96542e62222130baf6a1ffa923e2}
+      \field{extraname}{1}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{1}
+      \field{title}{LM2576 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.rs-online.com/1bc3/0900766b812e2552.pdf
+      \endverb
+      \verb{url}
+      \verb https://docs.rs-online.com/1bc3/0900766b812e2552.pdf
+      \endverb
+    \endentry
+    \entry{MBR130-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e53a96542e62222130baf6a1ffa923e2}{%
+           family={ONSemiconductor},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{fullhash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{bibnamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authorbibnamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authornamehash}{e53a96542e62222130baf6a1ffa923e2}
+      \strng{authorfullhash}{e53a96542e62222130baf6a1ffa923e2}
+      \field{extraname}{2}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{1}
+      \field{title}{MBR130 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
+      \endverb
+      \verb{url}
+      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
+      \endverb
+    \endentry
+    \entry{NCP1117-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=003509771f7544b56e89cb98bbeb1ad8}{%
+           family={ONSemiconductors},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{003509771f7544b56e89cb98bbeb1ad8}
+      \strng{fullhash}{003509771f7544b56e89cb98bbeb1ad8}
+      \strng{bibnamehash}{003509771f7544b56e89cb98bbeb1ad8}
+      \strng{authorbibnamehash}{003509771f7544b56e89cb98bbeb1ad8}
+      \strng{authornamehash}{003509771f7544b56e89cb98bbeb1ad8}
+      \strng{authorfullhash}{003509771f7544b56e89cb98bbeb1ad8}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{2}
+      \field{month}{3}
+      \field{title}{NCP1117,NCV1117 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
+      \endverb
+      \verb{url}
+      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
       \endverb
     \endentry
     \entry{JavaFXCSSReferenceGuide}{online}{}
@@ -913,42 +1094,6 @@
       \verb https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#introscenegraph
       \endverb
     \endentry
-    \entry{TheArtOfElectronics-Kapitel-9.13.1-OvervoltageCrowbars}{book}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=5932235582612f0b2b8ea336b9357ec9}{%
-           family={Paul},
-           familyi={P\bibinitperiod},
-           given={Horowitz},
-           giveni={H\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=3835c9c94a240aaf8b23a8e08e5e7753}{%
-           family={Winfield},
-           familyi={W\bibinitperiod},
-           given={Hill},
-           giveni={H\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{bfe583b41a522030f8d21a9870e9c955}
-      \strng{fullhash}{bfe583b41a522030f8d21a9870e9c955}
-      \strng{bibnamehash}{bfe583b41a522030f8d21a9870e9c955}
-      \strng{authorbibnamehash}{bfe583b41a522030f8d21a9870e9c955}
-      \strng{authornamehash}{bfe583b41a522030f8d21a9870e9c955}
-      \strng{authorfullhash}{bfe583b41a522030f8d21a9870e9c955}
-      \field{sortinit}{P}
-      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
-      \field{extradatescope}{year}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{Third Edition}
-      \field{note}{S. 317–320 (Kapitel 6.06 Overvoltage Crowbars)}
-      \field{title}{The Art Of Electronics}
-      \field{year}{2015}
-      \true{nocite}
-    \endentry
     \entry{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=a94add26ebbb93e6f62cd6c06c9b80e0}{%
@@ -963,45 +1108,21 @@
       \strng{authorfullhash}{a94add26ebbb93e6f62cd6c06c9b80e0}
       \field{sortinit}{P}
       \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 26.12.2019}
+      \field{day}{26}
+      \field{month}{12}
       \field{title}{DRV8825 Stepper Motor Driver Carrier, High Current}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://www.pololu.com/product/2133
       \endverb
       \verb{url}
       \verb https://www.pololu.com/product/2133
-      \endverb
-    \endentry
-    \entry{MBRD340-Datasheet}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=5745774cc9fc64cc054d1af58afa7c87}{%
-           family={Rectifier},
-           familyi={R\bibinitperiod},
-           given={International},
-           giveni={I\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{5745774cc9fc64cc054d1af58afa7c87}
-      \strng{fullhash}{5745774cc9fc64cc054d1af58afa7c87}
-      \strng{bibnamehash}{5745774cc9fc64cc054d1af58afa7c87}
-      \strng{authorbibnamehash}{5745774cc9fc64cc054d1af58afa7c87}
-      \strng{authornamehash}{5745774cc9fc64cc054d1af58afa7c87}
-      \strng{authorfullhash}{5745774cc9fc64cc054d1af58afa7c87}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 13.01.2020}
-      \field{title}{MBRD320/330/340 Datasheet}
-      \verb{urlraw}
-      \verb http://www.irf.com/product-info/datasheets/data/mbrd320.pdf
-      \endverb
-      \verb{url}
-      \verb http://www.irf.com/product-info/datasheets/data/mbrd320.pdf
       \endverb
     \endentry
     \entry{RR264M-Datasheet}{online}{}
@@ -1018,11 +1139,16 @@
       \strng{authorfullhash}{2aa53837210fabf2ebde02946f4d4814}
       \field{sortinit}{R}
       \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 07.01.2020}
+      \field{day}{7}
+      \field{month}{1}
       \field{title}{RR264M Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://docs.rs-online.com/84b2/0900766b80dd2345.pdf
       \endverb
@@ -1154,123 +1280,6 @@
       \endverb
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'scream3r2020'}
     \endentry
-    \entry{LM2576-Datasheet}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=f50ffd6a590ec3946c122f340c694e54}{%
-           family={Semiconductor},
-           familyi={S\bibinitperiod},
-           given={ON},
-           giveni={O\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{fullhash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{bibnamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authorbibnamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authornamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authorfullhash}{f50ffd6a590ec3946c122f340c694e54}
-      \field{extraname}{1}
-      \field{sortinit}{S}
-      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
-      \field{extradate}{1}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 09.01.2020}
-      \field{title}{LM2576 Datasheet}
-      \verb{urlraw}
-      \verb https://docs.rs-online.com/1bc3/0900766b812e2552.pdf
-      \endverb
-      \verb{url}
-      \verb https://docs.rs-online.com/1bc3/0900766b812e2552.pdf
-      \endverb
-    \endentry
-    \entry{MBR130-Datasheet}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=f50ffd6a590ec3946c122f340c694e54}{%
-           family={Semiconductor},
-           familyi={S\bibinitperiod},
-           given={ON},
-           giveni={O\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{fullhash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{bibnamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authorbibnamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authornamehash}{f50ffd6a590ec3946c122f340c694e54}
-      \strng{authorfullhash}{f50ffd6a590ec3946c122f340c694e54}
-      \field{extraname}{2}
-      \field{sortinit}{S}
-      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
-      \field{extradate}{2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 07.01.2020}
-      \field{title}{MBR130 Datasheet}
-      \verb{urlraw}
-      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
-      \endverb
-      \verb{url}
-      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
-      \endverb
-    \endentry
-    \entry{BZX84-series-Datasheet}{online}{}
-      \name{author}{1}{}{%
-        {{un=1,uniquepart=given,hash=bdd95750033c6d1e71751acaf3c3d8de}{%
-           family={Semiconductors},
-           familyi={S\bibinitperiod},
-           given={NXP},
-           giveni={N\bibinitperiod},
-           givenun=1}}%
-      }
-      \strng{namehash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \strng{fullhash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \strng{bibnamehash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \strng{authorbibnamehash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \strng{authornamehash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \strng{authorfullhash}{bdd95750033c6d1e71751acaf3c3d8de}
-      \field{sortinit}{S}
-      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 09.01.2020}
-      \field{title}{BZX84 series Datasheet}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
-      \endverb
-      \verb{url}
-      \verb https://docs.rs-online.com/3d3e/0900766b811a6555.pdf
-      \endverb
-    \endentry
-    \entry{NCP1117-Datasheet}{online}{}
-      \name{author}{1}{}{%
-        {{un=1,uniquepart=given,hash=f244f35c03c7be1c0e8b6b500a0d8460}{%
-           family={Semiconductors},
-           familyi={S\bibinitperiod},
-           given={ON},
-           giveni={O\bibinitperiod},
-           givenun=1}}%
-      }
-      \strng{namehash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \strng{fullhash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \strng{bibnamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \strng{authorbibnamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \strng{authornamehash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \strng{authorfullhash}{f244f35c03c7be1c0e8b6b500a0d8460}
-      \field{sortinit}{S}
-      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 02.03.2020}
-      \field{title}{NCP1117,NCV1117 Datasheet}
-      \verb{urlraw}
-      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
-      \endverb
-      \verb{url}
-      \verb https://www.onsemi.com/pub/Collateral/NCP1117-D.PDF
-      \endverb
-    \endentry
     \entry{Simplify3D2020}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=3f74c68ffb08cce6ffe95d7e8b43dc7a}{%
@@ -1346,6 +1355,76 @@
       \endverb
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'Steiner2020'}
     \endentry
+    \entry{SMBJ5.A-Datasheet.}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c38884ab3cf908c2798725960369391b}{%
+           family={STMicroelectronics},
+           familyi={S\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=a38247eb85e51c7b53594e3222870641}{%
+           family={3DRUCK.com},
+           familyi={3\bibinitperiod}}}%
+      }
+      \strng{namehash}{c38884ab3cf908c2798725960369391b}
+      \strng{fullhash}{c38884ab3cf908c2798725960369391b}
+      \strng{bibnamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authorbibnamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authornamehash}{c38884ab3cf908c2798725960369391b}
+      \strng{authorfullhash}{c38884ab3cf908c2798725960369391b}
+      \strng{editorbibnamehash}{a38247eb85e51c7b53594e3222870641}
+      \strng{editornamehash}{a38247eb85e51c7b53594e3222870641}
+      \strng{editorfullhash}{a38247eb85e51c7b53594e3222870641}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{3}
+      \field{title}{SMBJ5.A-Datasheet.}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mouser.at/datasheet/2/389/smbj-955195.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.mouser.at/datasheet/2/389/smbj-955195.pdf
+      \endverb
+    \endentry
+    \entry{DRV8825-Datasheet}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=67e54b1ee931f3f4bddfefa5fbde5fd8}{%
+           family={TexasInstruments},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{fullhash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{bibnamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authorbibnamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authornamehash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \strng{authorfullhash}{67e54b1ee931f3f4bddfefa5fbde5fd8}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{1}
+      \field{title}{DRV8825 Datasheet}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.ti.com/lit/ds/symlink/drv8825.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.ti.com/lit/ds/symlink/drv8825.pdf
+      \endverb
+    \endentry
     \entry{trestre2020}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=b5374ffaf39e98606afd4bccc31031d5}{%
@@ -1387,33 +1466,6 @@
       \endverb
       \warn{\item Overwriting field 'year' with year value from field 'date' for entry 'trestre2020'}
     \endentry
-    \entry{Ultraschallsensoren-Messprinzip}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=0fef55ff4d8e3999c6ba6273bc880e90}{%
-           family={Waycon},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \strng{fullhash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \strng{bibnamehash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \strng{authorbibnamehash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \strng{authornamehash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \strng{authorfullhash}{0fef55ff4d8e3999c6ba6273bc880e90}
-      \field{sortinit}{W}
-      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 22.12.2019}
-      \field{title}{LM2576 Datasheet}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://www.waycon.de/produkte/ultraschallsensoren/messprinzip-ultraschallsensoren/
-      \endverb
-      \verb{url}
-      \verb https://www.waycon.de/produkte/ultraschallsensoren/messprinzip-ultraschallsensoren/
-      \endverb
-    \endentry
     \entry{Datasheet-CH340G}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=4b0ea3e363a89b389e2c7a62f728ae0e}{%
@@ -1428,11 +1480,16 @@
       \strng{authorfullhash}{4b0ea3e363a89b389e2c7a62f728ae0e}
       \field{sortinit}{w}
       \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 26.05.2019}
+      \field{day}{26}
+      \field{month}{5}
       \field{title}{USB to serial chip CH340}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://cdn.sparkfun.com/datasheets/Dev/Arduino/Other/CH340DS1.PDF
       \endverb
@@ -1488,11 +1545,16 @@
       \strng{authorfullhash}{d6e709c6da0d8a1143c2c504ce4fee16}
       \field{sortinit}{w}
       \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Eingesehen am 22.12.2019}
+      \field{day}{22}
+      \field{month}{12}
       \field{title}{Induktiv-Kapazitiv-Optisch-oder-Ultraschall}
+      \field{year}{2019}
+      \field{dateera}{ce}
       \verb{urlraw}
       \verb https://wirautomatisierer.industrie.de/allgemein/induktiv-kapazitiv-optisch-oder-ultraschall/
       \endverb
