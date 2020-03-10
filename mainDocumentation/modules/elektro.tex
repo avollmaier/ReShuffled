@@ -282,16 +282,16 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
     \caption{Anschluss einer H-Brücke an einen Mikroprozessor}
 \end{figure}
 
-In der obigen Abbildung 2.2 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
-Da sich die Ansteuerungen der beiden H-Brücken gleich gestalten, wird zur vereinfachten Funktionserklärung nur die obere behandelt. \\\\
-Mithilfe des Timer 0 wird am Ausgang OC1B des \acs{µC} ein PWM-Signal erzeugt, unter Verwendung dessen,
+In der Abbildung 2.3 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
+Da sich die Ansteuerungen der beiden H-Brücken gleich gestalten, wird zur vereinfachten Funktionserklärung nur die obere behandelt. \\
+Mithilfe des Timer 0 wird am Ausgang OC1B des Mikrocontrollers ein PWM-Signal erzeugt, unter Verwendung dessen,
 abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
-Dadurch befindet sich jeweils an einem Eingang der beiden UND-Gatter mit den Bezeichnung IC1 und IC2 ein Signal ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung). \\\\
+Dadurch befindet sich jeweils an einem Eingang der beiden UND-Gatter mit den Bezeichnungen IC1 und IC2 ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung).
 Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzusteuern:
 Um den Schrittmotor nach rechts drehen zu lassen, muss am Ausgang PD0 eine Spannung von 3.3V erzeugt werden.
 Am Ausgang PD1 muss ein 0V-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das 3.3V-Signal, ausgehend vom Ausgang OC1B, befindet sich ein 3.3V-Signal am unteren Eingang des UND-Gatters IC2.
-Wenn nun ein 3.3V-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein 3.3V-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt. \\
+Wenn nun ein 3.3V-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein 3.3V-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt.
 Um den Schrittmotor nach links drehen zu lassen, wird am Ausgang PD1 ein 3.3V-Signal gesetzt.
 Am Ausgang PD0 muss ein 0V-Signal zu Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das 3.3V-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein 3.3V-Signal am oberen Eingang des UND-Gatters.
@@ -1076,7 +1076,6 @@ So kann bei einem Ausfall dennoch eine sicheres Herunterfahren sowie ein sichere
 \footfullcite[Vgl.][]{Datasheet-ATmega324PA}Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbindung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
 Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspins je ein Kondensator mit 100nF vorgesehen.
 An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
-
 Um die interne Referenzspannung zu glätten, wurde wie im Datenblatt empfohlen, ein 100nF Kondensator am Pin AREF implementiert.
 Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Quarz mit einer Taktfrequenz von 0 bis 13.3MHz zu arbeiten.
 Aufgrund unserer Entscheidung, den Mikrocontroller mit einem 10MHz Quarz zu betreiben, waren zwei Kondensatoren mit einem Wert von 12 bis 22pF zu wählen.
@@ -1090,7 +1089,7 @@ Parallel zum Taster wurde ein Kondensator vorgesehen, welcher als Prevention geg
 
 \begin{figure}[ht]
     \centering
-    \begin{circuitikz}[european, scale = 1.1]
+    \begin{circuitikz}[european, scale = 1]
         \draw [line width=1.5pt](5,0) to (8.5,0) to (8.5,5) to (5,5) to (5,0);
 
         %AREF
@@ -1832,7 +1831,6 @@ traf unsere Entscheidung über eine Tabelle jener technischen Dokumentation auf 
 welche die Eigenschaften eines maximalen Gleichspannungsstroms von 3.64A, einen hohen Wirkungsgrad, einen niedrigen magnetischen Sättigungsstrom,
 einen niedrigen Widerstandswert, magnetische Schirmung und ein \acs{SMD}-Gehäuse mit sich bringt.
 
-\newpage
 \subsubsection{Schottky-Diode}
 \footfullcite[Vgl.][]{MBRD340-Datasheet}Bei der Wahl einer passenden Schottky-Diode wurde ebenfalls auf die technische Dokumentation des Gleichspannungswandlers zurückgegriffen.
 Als günstige Lösung wurde die MBRD340 gewählt, da diese einen maxmimalen Strom von 3A standhalten kann und für Spannungen von bis zu 40V geeignet ist.
@@ -1862,7 +1860,7 @@ Sie bringt eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0
 
 Bei den Bauformen jener Kondensatoren, dessen Wert 100nF oder 22pF beträgt, und aller Leuchtdioden und Widerstände wurde auf 0805er Chips zurückgegriffen,
 da sich diese bereits in unserem Besiz befanden und diese eine platzsparende, und dennoch einfach zu lötende Lösung bereitstellten.
-Bei der Auswahl der Kondensatoren im µF-Bereich wurde auf SMD-Elektrolytkondensatoren mit einem Diameter von 6 bis 8mm zurückgegriffen.
+Bei Kondensatoren im µF-Bereich wurde auf SMD-Elektrolytkondensatoren zurückgegriffen.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -2029,11 +2027,11 @@ Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Kompone
     \item D1 als SMBJ5.A/CA
 \end{itemize}
 
-\footfullcite[Vgl.][]{MF-MSMF250-Datasheet}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
+\footfullcite[Vgl.][]{Bourns2017}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
 \newpage
-\footfullcite[Vgl.][]{SMBJ5.A-Datasheet}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
+\footfullcite[Vgl.][]{SMBJ5.A-Datasheet.}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
 Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand.
 
 \subsubsection{Einzelne weitere Verbessungsmöglichkeiten}
