@@ -1646,7 +1646,7 @@ Dies erfolgt in der Datei \lstinline[style=C]{build.xml} welche sich im root-Ord
 </target>
 \end{lstlisting}
 % @formatter:ongenannt
-Nun ist es mithilfe dieser wenigen Zeilen möglich, alle Abhängigkeiten in diese jar-Datei zu implementieren und diese Datei am Raspberry Pi nach Installation einer JVM zu starten..
+Nun ist es mithilfe dieser wenigen Zeilen möglich, alle Abhängigkeiten in diese jar-Datei zu implementieren und diese Datei am Raspberry Pi nach Installation einer JVM zu starten.
 \subsubsection{Kommunikation zwischen Controllern}
 Ein weiteres Problem trat bei der Kommunikation zwischen den Controllern auf.
 Diese genannte Kommunikation ist bei gegebenen Umständen des jeweiligen Controllers nötig.
@@ -1685,11 +1685,16 @@ public class MainController extends Controller {
 \end{lstlisting}
 % @formatter:on
 \subsection{Verbesserungsmöglichkeiten}
-\subsubsection{Online Update-Möglichkeit der Software}
-\subsubsection{Smartphone-Interface zum Zählen der Punkte}
+\subsubsection{Verwendung von JSerialComm}
+Grundsätzlich wurde für die serielle Kommunikation die Bibliothek jSSC verwendet.
+Diese wird jedoch seit geraumer Zeit nicht mehr weiterentwickelt und bring einige Bugs mitsich.
+Abhilfe schafft dabei die Bibliothek JSerialComm.\\
+So kann nun der gesamte Projektteil, welcher mit der seriellen Kommunikation zusammenhängt, aktualisiert werden.
+Diese Umstellung würde in wenigen Minuten vollzogen werden und wäre in Zukunft denkbar.
 \subsection{Zusammenfassung}
-Nach der Einarbeitungsphase der in der projektspezifischen Voruntersuchung erkennbaren Elemente, konnte direkt mit der Konfiguration des Projekts gestartet werden.
+Nach der Einarbeitungsphase der in der projektspezifischen Voruntersuchung erkennbaren Teile, konnte direkt mit der Konfiguration des Projekts gestartet werden.
 So wurde anschließend die Backend-Programmierung abgeschlossen und es konnte sich ab Mitte des Projektzeitfensters voll und ganz auf die Frontend-Programmierung konzentriert werden.
 Auch wurden nach dem Fertigstellen der Maschine, wichtige Teilgebiete akribisch auf Fehler überprüft.\\\\
-So ist nach Abschluss der Arbeiten festzustellen, das der gesamte Projektteil ein umfangreiches Spektrum an Informationen mit sich bringt.
+\newpage
+So ist nach Abschluss der Arbeiten festzustellen, dass der gesamte Projektteil ein umfangreiches Spektrum an Informationen mit sich bringt.
 Dieses erlangte Fachwissen soll auch nach der Abgabe der Arbeit innerhalb des Projekts Platz finden.
