@@ -128,7 +128,7 @@ Diese Aufgaben umfassen die Kommunikation des Raspberry Pi mit der Ansteuerplati
 Auch soll im Hintergrund eine sogenannte Log-Datei, welche wichtige Aktionen protokolliert, automatisch vom Programm generiert werden.
 Diese Datei kann z.B.\ beim Debugging-Vorgang notwendig sein bzw.\ den Entwickler dabei unterstützen, was eine enorme Zeitersparnis mit sich bringt.\\
 Um etwaige Einstellungen der seriellen Schnittstelle sowie die Definition der Pfade für verschiedene Dateien außerhalb des Programmes vorzunehmen, ist es auch nötig, eine Konfigurationsdatei zu erstellen, welche nach jedem Start vom Programm eingelesen wird.
-Mit dieser sogenannten Config-Datei wird auch die Möglichkeit geschaffen, weitere Informationen der Anwendung auch nach einem Neustart der Maschine abzurufen.\\
+Mit dieser sogenannten \acs{Config}-Datei wird auch die Möglichkeit geschaffen, weitere Informationen der Anwendung auch nach einem Neustart der Maschine abzurufen.\\
 Diese hiermit geschaffene Datenpersistenz kommt dem Programm auch bei der zukünftigen Speicherung der Spielmodi oder etwaigen Statistik-Dateien zugute.
 Kernbestandteil einer zukünftigen Statistik-Datei sollte der Name des ausgewählten Spielmodus, dessen Hintergrundinformationen, Spielernamen und Punkteanzahl sein.\\
 Soll eine Software in verschiedenen Ländern eingesetzt werden, ist eine Internationalisierung ein wichtiger Bestandteil der User Experience.
@@ -159,10 +159,10 @@ Einer der wichtigsten Punkte dieser Aufzählung ist dabei jedoch die Möglichkei
 Debugging selbst hilft dem Entwickler bei der Fehlersuche.
 Mithilfe der Möglichkeit, das Programm schrittweise auszuführen, ist es auch möglich, die aktuelle Wertebelegung von Variablen zu überprüfen.
 Dadurch erspart dies enorme Zeit bei der Programmierung.
-In unserem Fall ist das Endgerät jedoch nicht der PC, sondern ein Raspberry Pi, welcher mit dem Netzwerk über TCP/IP verbunden ist.
+In unserem Fall ist das Endgerät jedoch nicht der \acs{PC}, sondern ein Raspberry Pi, welcher mit dem Netzwerk über \acs{TCP/IP} verbunden ist.
 Es erfordert also nun die Möglichkeit, das Gerät über das Netzwerk zu debuggen.
 \subsubsection{Apache-Netbeans}
-Die Netbeans-IDE, bereitgestellt von Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
+Die Netbeans-\acs{IDE}, bereitgestellt von Apache, ist eine Open-Source Entwicklungsumgebung, welche selbst in der Programmiersprache Java geschrieben wurde und damit plattformunabhängig ist.
 Primär wurde sie entwickelt, um Programme in der Programmiersprache Java zu erstellen.\\
 Große Vorteile bringt diese IDE im Bereich der Remote-Programmierung mit sich.
 Die Möglichkeit, eine Remote-Plattform einzurichten, wurde einfach gelöst und das Arbeiten verläuft meist ohne Probleme.
@@ -179,7 +179,7 @@ Jedoch bring Intellij auch einige Vorteile mit sich.
 \subsubsection{Fazit}
 Natürlich ist es einem Entwickler selbst überlassen, für welche IDE er sich entscheidet.
 Doch in Anbetracht der Vorteile von Netbeans gegenüber Intellij im Bereich der Remote-Programmierung, wurde auch diese IDE für den zukünftigen Arbeitsprozess gewählt.
-\subsection{Auswahl des GUI-Toolkits}\label{subsec:auswahl-des-gui-frameworks}
+\subsection{Auswahl des \acs{GUI}-Toolkits}\label{subsec:auswahl-des-gui-frameworks}
 Die Auswahl des für die Anwendung am besten geeigneten GUI-Frameworks spielt eine wesentliche Rolle in der Programmierung von grafischen Anwendungen.
 Toolkits sind Bibliotheken, welche alle Elemente zur Erstellung einer GUI bereitstellen.
 Diese sind z.B.\ Knöpfe, Listen und Textfelder mit denen der Benutzer interagieren kann.
@@ -192,7 +192,7 @@ Das etwas veraltete und lieblose Look and Feel von Java-Swing ist jedoch nicht i
 \subsubsection{Java-FX}\label{sssec: JavaFX}
 JavaFX ist ein GUI-Toolkit, welches oft als Java-Swing Nachfolger betitelt wird.
 Hierbei müssen im Vergleich zu Java-Swing, nicht alle GUI-Elemente in einer Datei beschrieben werden, sondern die Beschreibung geschieht nach Wahl, in externen FXML-Dateien.
-Die Basis dieser FXML-Dateien ist XML, ein Format zur Darstellung von Daten in einer von Menschen lesbaren Form.
+Die Basis dieser FXML-Dateien ist \acs{XML}, ein Format zur Darstellung von Daten in einer von Menschen lesbaren Form.
 Näher wird dieses Format im \autoref{subsec:datenformate-in-java-fx} erklärt.\\
 Der programmatische Quellcode hinter der GUI befindet sich hier jedoch nicht in diesen Dateien, sondern in eigenen Controller-Klassen, welche mit der GUI programmatisch verknüpft sind.
 Dies bringt enorme Vorteile mit sich, denn die strikte Trennung zwischen beschreibenden Elementen der GUI und dem dahinter stehenden Code ist dadurch möglich.
@@ -357,7 +357,7 @@ Natürlich wäre eine Umstellung in einem finalen Release denkbar.
 \section{Grundlagen}\label{sec:grundlagen}
 \subsection{Entwurfsmuster Singelton}\label{subsec:entwurdsmuster-singelton}
 \subsubsection{Beschreibung}
-\footfullcite{Gamma2000}Das Entwurfsmuster namens Singelton dient dazu, die Einzigartigkeit eines Objektes sicherzustellen.
+\footfullcite[Vgl.][]{Gamma2000}Das Entwurfsmuster namens Singelton dient dazu, die Einzigartigkeit eines Objektes sicherzustellen.
 Das bedeutet eine Instanz des Objektes ist nur genau einmal im Speicher vorhanden.
 Auch bietet eine Klasse, welche nach dem Singelton-Pattern erzeugt wurde, einen globalen Zugriffspunkt über das gesamte Programm.
 So ist Singelton vielseitig einsetzbar und wird in diesem Projekt häufig verwendet.
@@ -370,7 +370,7 @@ Wurde einmal eine Instanz erzeugt, also der private Konstruktor durch \lstinline
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{fig/ainf/Singelton.pdf}
-    \caption{UML-Diagramm Singelton}
+    \caption{\acs{UML}-Diagramm Singelton}
 \end{figure}
 Natürlich wird auch ein Zugriffspunkt auf dieses Attribut benötigt.
 Implementiert wird dieser durch eine weitere statische Methode namens \lstinline{getInstance()}.
@@ -408,7 +408,7 @@ public static Config createInstance(String configPath) {
 % @formatter:on
 \subsection{Verhaltensmuster Command}\label{subsec:verhaltensmuster-command}
 \subsubsection{Beschreibung}
-\footfullcite{Gamma2000}Ziel des Verhaltensmusters Command ist es, den jeweiligen Teilnehmer, welcher einen Befehl erzeugt, von dem Teilnehmer der für die Ausführung zuständig ist, zu entkoppeln.
+\footfullcite[Vgl.][]{Gamma2000}Ziel des Verhaltensmusters Command ist es, den jeweiligen Teilnehmer, welcher einen Befehl erzeugt, von dem Teilnehmer der für die Ausführung zuständig ist, zu entkoppeln.
 Man kann auch sagen, dass der Teilnehmer, welcher den Befehlsaufruf erzeugt, nicht wissen muss, welcher Teilnehmer den Befehl empfängt oder wo bzw. wann dies geschieht.
 Auch kann das tatsächliche Ausführen eines Befehls, aus programmatischer Sicht in einem ganz anderen Thread geschehen, was eine elementare Rolle spielt.
 Dieses Verhalten führt zu einer Vereinfachung der Ausführung von komplexeren Tätigkeiten des Programmes.
@@ -422,9 +422,9 @@ Vor allem die Kapselung von Befehlswunsch und Ausführung steht an erster Stelle
     \caption{UML-Diagramm Command}
     \label{fig:UML-Diagramm Command}
 \end{figure}
-\subsection{Entwurfsmuster MVC}\label{subsec:entwurfsmuster-mvc}
+\subsection{Entwurfsmuster \acs{MVC}}\label{subsec:entwurfsmuster-mvc}
 \subsubsection{Beschreibung}
-\footfullcite{Inden2018}Das MVC-Design Pattern, auch Model-View-Controller Design-Pattern, ist eines der weit verbreitetsten Entwurfsmuster.
+\footfullcite[Vgl.][]{Inden2018}Das MVC-Design Pattern, auch Model-View-Controller Design-Pattern, ist eines der weit verbreitetsten Entwurfsmuster.
 Es dient zur Strukturierung von Anwendungen und teilt diese in 3 große Bereiche ab, welche strikt voneinander getrennt sind.
 Mithilfe dieser Strukturierung fällt es dem Programmierer wesentlich leichter, spätere Änderungen bzw. Erweiterungen am Projekt durchzuführen, da das System nun klar definiert und strukturiert ist.
 Auch ist es nun einfacher, parallel an dem Programm zu arbeiten, denn Ersteller von View und Ersteller des Controllers, also der Berechnungen dahinter, sind nun nicht mehr voneinander abhängig.
@@ -456,7 +456,7 @@ Die Verwendung von Tools wie dieses hat mehrere Vorteile.
 Einerseits verbessert sich die Übersichtlichkeit des GUI-Projekts deutlich, da es ab diesem Zeitpunkt möglich ist, den Code hinter der Oberfläche direkt grafisch darzustellen.
 Andererseits kann nun, nur mit wenigen Klicks, eine für den Endbenutzer ansprechende GUI gebaut werden.
 Im speziellen hat SceneBuilder weitere wichtige Vorteile, wie die direkte Verbindung mit JavaFX und dessen \lstinline{*.fxml} Dateien.
-Weiters ist es möglich CSS-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.
+Weiters ist es möglich \acs{CSS}-Dateien sowie Internationalisierungsdateien einzubinden und diese direkt in SceneBuilder zu erweitern.
 Im wesentlichen ist SceneBuilder, gezeigt in der \autoref{fig:Tool SceneBuilder}, ein performantes Tool und eignet sich optimal für große Projekte wie dieses.
 \begin{figure}[H]
     \centering
@@ -484,7 +484,7 @@ Angewendet werden die CSS-Attribute \lstinline{-fx-border-radius: 20pt;}  \lstin
 \end{figure}
 \subsection{Datenformate}\label{subsec:datenformate-in-java-fx}
 Im folgenden Kapitel soll auf die Datenpersistenz eingegangen werden.
-Speziell in diesem Projekt werden die Datenformate \textbf{XML/FXML}, \textbf{CSS} und \textbf{JSON} verwendet.
+Speziell in diesem Projekt werden die Datenformate \textbf{XML/FXML}, \textbf{CSS} und \textbf{\acs{JSON}} verwendet.
 Ziel ist es, grundlegende Dinge zu klären und einen kurzen Überblick zu erschaffen.\\
 Speziell bei JSON wird eine Bibliothek genannt, welche in diesem Projekt verwendet wurde.
 \subsubsection{XML}
@@ -533,7 +533,7 @@ Diese können mithilfe des Tags \lstinline{<?import ... ?>} ausgeführt werden.
 \subsubsection{CSS}\label{sssec:CSS}
 CSS ist eine Gestaltungs- und Formatierungssprache, mit welcher Gestaltungsanweisungen erstellt werden können.
 Es soll aber beachtet werden, dass CSS nichts mit dem eigentlichen Inhalt der Website oder dem Programm zu tun hat, sondern rein für Design und Stilaspekte verwendet wird.\\
-\footfullcite{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
+\footfullcite[Vgl.][]{JavaFXCSSReferenceGuide} Für unsere Anwendung bieten JavaFX Cascading Style Sheets (CSS) eine Möglichkeit, die Designziele aus dem \autoref{subsec:fronted-programmierung} umzusetzten und zu verfeinern.
 Diese genannte Designsprache stellt eine Erweiterung vom standartisierten CSS mit einigen zusätzlichen Features dar.\\
 Grundlegend besteht das Ziel von JavaFX CSS darin, Webprogrammierer, welche CSS bereits für Webanwendungen verwendet haben, die Möglichkeit zu geben, speziell für JavaFX zugeschnittene Themes zu bauen.
 Diese Themes können auf die jeweiligen Kontrollelemente angewendet werden.\\
@@ -541,7 +541,7 @@ Eine Besonderheit von JavaFX CSS besteht im Vergleich zur normalen CSS-Sprache d
 Dies lässt sofort auf die Beschreibung eines JavaFX Elements schließen.
 \subsubsection{JSON}\label{sssec:json}
 Der Name JSON (JavaScript Object Notation) beschreibt neben XML eines der wichtigsten Datenformate zur Sicherstellung der Datenpersistenz.
-Dieser Nachfolger von CSV und INI setzt sich vor allem in der heutigen Datentechnik durch.
+Dieser Nachfolger von \acs{CSV} und INI setzt sich vor allem in der heutigen Datentechnik durch.
 Grundlegend ist JSON wiederum ein textuelles Datenformat, welches kompakt und einfach lesbar ist.
 Ein weiterer Grund zur Verwendung ist ebenso eine effektive Umwandlung von Daten, also Objekten, Arrays und sonstigen Variablen, in das JSON-Dateiformat.\\
 All diese Merkmale sind essenziell wichtig und eröffnen ein breites Spektrum an Verwendungsmöglichkeiten.\\\\
@@ -589,7 +589,7 @@ Anforderungen an dieses Protokoll sollen sein:
 \end{enumerate}
 Neben standardisierten Protokollen wie Modbus, Feldbus oder CAN-Bus gibt es die Möglichkeit, selbst ein sogenanntes propretäres Übertragungsprotokoll zu definieren.
 Dies ist in unserem Fall möglich, um alle Anforderungen abzudecken.
-Basierend auf dem Master-Slave Prinzip, wobei der Raspberry Pi den Master und die Ansteuerplatine den Slave darstellt, soll ein an Modbus-ASCII angelehntes Protokoll umgesetzt werden.\\
+Basierend auf dem Master-Slave Prinzip, wobei der Raspberry Pi den Master und die Ansteuerplatine den Slave darstellt, soll ein an Modbus-\acs{ASCII} angelehntes Protokoll umgesetzt werden.\\
 Zusätzlich soll, um eine virtuelle Testumgebung zur Kommunikation zu schaffen, ein Simulator ausprogrammiert werden, welcher beim Start, auf Softwarebebene den Platz des Slaves bzw. der Ansteuerplatine einnimmt.
 Der Startvorgang des Simulators soll mit einer einfachen Modifizierung der Konfigurationsdatei vonstattengehen.
 Die folgende Grafik soll schematisch die Geräteauswahl darstellen.
@@ -636,7 +636,7 @@ Die wichtigsten Arten von Übertragungsfehlern sind:
     \item Burstfehler (ganze Folge von Bits verändert)
 \end{enumerate}
 Neben einfachen Verfahren wie z.B. dem Paritätsbit-Verfahren gibt es auch effizientere Vorgehensweisen.
-Die zyklische Redundanzprüfung, auch CRC genannt, ist eines davon.
+Die zyklische Redundanzprüfung, auch \acs{CRC} genannt, ist eines davon.
 Sie ist relativ einfach zu realisieren und dennoch wirkungsvoll.
 Wichtig beim CRC-Verfahren ist, dass beide Teilnehmer, also Sender und Empfänger, dasselbe Schema zur Berechnung bzw. Verarbeitung der Prüfsumme verwenden.
 Hierbei spielt der Grad des Generator-Polynoms sowie die mögliche Invertierung der Bits vor dem Sendevorgang eine wesentliche Rolle.
@@ -659,7 +659,7 @@ Jeder Request sowie Response basiert auf der Protokolldefinition aus dem \autore
         {\color[HTML]{333333} Shutdown}         & {\color[HTML]{333333} :XX\#560B1C65\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
         {\color[HTML]{333333} Shuffle}          & {\color[HTML]{333333} :SH\#A848D5CA\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
         {\color[HTML]{333333} Deal}             & {\color[HTML]{333333} :D1\#841298C4\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
-        {\color[HTML]{333333} AutoDeal}         & {\color[HTML]{333333} :A5\#FE08A898\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+        {\color[HTML]{333333} \acs{AutoDeal}}         & {\color[HTML]{333333} :A5\#FE08A898\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
     \end{tabular}
     \caption{Request-Response Beispiele}
 \end{table}
@@ -1010,7 +1010,7 @@ private void initSimulation() throws IOException {
 \\
 Wird nun angenommen, dass es sich bei dem Konfigurationseintrag nicht um die Zeichenkette \lstinline[style=json]{"sim"} handelt, springt das Programm in die Methode \lstinline{initSerialDevice()}.
 Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird der Port zum Endgerät geöffnet.\\
-Verwendet wurde hierbei die Open-Source-Bibliothek jSSC (Java Simple Serial Connector).
+Verwendet wurde hierbei die Open-Source-Bibliothek \acs{jSSC} (Java Simple Serial Connector).
 Erstellt wird eine Instanz des \lstinline[style=java]{jssc.SerialPort} mithilfe einer Objekterzeugung.
 Diese fordert als Parameter den Namen des Ports.
 Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\\\
@@ -1082,7 +1082,7 @@ Nun kann nach belieben ein Response erstellt und zurückgesendet werden.\\\\
 In den nächsten Zeilen soll ein näherer Blick auf den Weg der Daten zwischen dem Programm und dem Simulator gelegt werden.\\
 Grundlegend besteht das Konzept also darin, Daten zwischen 2 Threads auszutauschen.
 Einer davon schreibt und der andere liest etwas.
-\footfullcite{Wesley2020}Um diesen Fall von Datenaustausch in ein Programm zu implementieren, bietet Java eine Hilfe in Form von sogenannten Pipes an.
+\footfullcite[Vgl.][]{Wesley2020}Um diesen Fall von Datenaustausch in ein Programm zu implementieren, bietet Java eine Hilfe in Form von sogenannten Pipes an.
 Ziel dieser Pipe ist es, die beiden Threads zu synchronisieren.
 Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} aus dem Paket \lstinline[style=java]{java.io}.
 So werden diese 2 Klassen immer in unabhängigen Threads verwendet, wobei der eine Thread aus dem \lstinline[style=java]{PipedInputStream} etwas liest und der andere in den \lstinline[style=java]{PipedOutputStream} etwas schreibt.\\
@@ -1111,7 +1111,7 @@ Dies bedeutet, es kann nun sichergestellt werden, dass diese Einträge auf dem S
 Nutzt man diese Art von Protokollierung, kann man außerdem die Genauigkeit der Erfassung genau parametrisieren.\\
 Zusammengefasst bringt das Erstellen einer Log-Datei mithilfe eines Logging-Frameworks ein großes Feld an Möglichkeiten mit sich.\\\\
 \subsubsection{Integration in das Programm}
-\footfullcite{Steiner2020}Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
+\footfullcite[Vgl.][]{Steiner2020}Aufgrund der gegebenen Klassen, welche das Logging implementieren, ist die Integration in das Programm einfach umzusetzen.
 Es ist lediglich notwendig, diese genannten Klassen in ein Package des Programms einzufügen.
 Dazu soll in der \autoref{PackagestrukturLogging} die Struktur des Logging-Packages illustriert werden.
 \begin{figure}[H]
@@ -1282,7 +1282,7 @@ Realisiert wurde die Oberfläche mithilfe von 2 verschiedenen Fenstern auf welch
 Aufgrund des großen Spektrums an gebotenen Möglichkeiten, soll eine grafische Oberfläche gebaut werden, welche alle Anforderungen aus dem \autoref{subsec:fronted-programmierung} erfüllt.
 Sobald es aber jetzt, wie in den Anforderungen, um den Bereich der User-Experience geht, kommt man an der von Google entwickelten Designsprache namens Material-Design nicht vorbei.
 Folgend soll der Vergleich von Material-Design und Flat-Design gezeigt werden.\\\\
-\footfullcite{kulturbanause2016}
+\footfullcite[Vgl.][]{kulturbanause2016}
 Grundlegend besteht der Look von Material Design aus farbigen Flächen, einfachen Icons und großen Bildern, welche auf einer aufgeräumten Interaktionsoberfläche angezeigt werden.
 So wird dieses Design jedoch oft mit dem Flat-Design verwechselt aber
 es bestehen wesentliche Unterschiede.
@@ -1371,7 +1371,7 @@ private final ChangeListener<PlayerModel> playerListener
 };
 \end{lstlisting}
 % @formatter:on
-\footfullcite{Oracle2015}Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
+\footfullcite[Vgl.][]{Oracle2015}Folgend wird auf eine Besonderheit bei der Füllung der ComboBox und der Liste eingegangen.
 Wie schon in Java-Swing, kann auch in JavaFX die Darstellung der Daten einer Tabelle oder einer Liste flexibel angepasst werden.
 Grund für die Verwendung solcher Mechanismen ist das Problem der erheblichen Speicherverschwendung bei der Anzeige.
 So werden nicht alle Daten direkt verarbeitet, sondern nur Daten, welche wirklich auf dem Bildschirm dargestellt werden.
@@ -1436,7 +1436,7 @@ Das Programm deaktiviert nach dem Fehlen von vorhandenen Karten die Buttons und 
 Wird mit dem Button \textit{Spiel beenden} nun das Spiel beendet, wird vollautomatisch das Game-Objekt in die Statistik-Datei geschrieben.
 Auch gelangt der Spieler wieder in das Startup-Window zurück.
 So schließt sich der Zyklus eines Spieles wieder und es kann ein Neues gestartet werden.
-\subsection{Stats-Tab und Controller}\label{sssec:statsController}
+\subsection{\acs{Stats}-Tab und Controller}\label{sssec:statsController}
 Der Stats-Tab bietet die Möglichkeit , Statistiken aus der Statistik-Datei abzurufen.
 Diese genannten Daten werden innerhalb einer \lstinline[style=java]{TreeTableView<S,T>} angezeigt.
 Aufgrund der Tatsache, dass eine \lstinline[style=java]{TreeTableView<S,T>} eines der komplexesten Bedienelemente in JavaFX ist, soll nun darauf eingegangen werden.\\\\
@@ -1516,13 +1516,13 @@ Im letzten Schritt ist es noch notwendig, in die Konfigurationsdatei das aktuell
 Um nun die gesendeten Daten über der seriellen Schnittstelle auf der Ansteuerplatine zu erhalten ist es notwendig, diese genannte Platine einzurichten und zu programmieren.
 Im folgenden Abschnitt wird nun dieser Prozess näher erklärt.
 \subsection{Konfiguration des Mikrocontrollers}
-\footfullcite{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtung des Mikrocontrollers.
+\footfullcite[Vgl.][]{mikrocontroller.net2020}Nach der Bereitstellung der Platine beginnt der Prozess der Einrichtung des Mikrocontrollers.
 Dieser erwähnte Mikrocontroller benennt sich ATmega324PA.
 Bei einem neuen µC ist es grundsätzlich notwendig im Datenblatt genau dieses µCs den Auslieferungszustand der Fuses zu ermitteln.
 So werden beispielsweise die ATmega Prozessoren mit aktiviertem internen Oszillator ausgeliefert und man darf sich nicht wunden, wieso des Mikrocontroller nicht funktioniert.
 Aufgrund der Verfügbarkeit eines Programmiersteckers ist es nun einfach, diese Fuse-Bits, also die Bits, welche für die Konfiguration des Mikrocontrollers dienen zu setzten.
 Verwendet wurde hierbei das Konsolenprogramm AVR-Dude und ein handelsübliches Programmiergerät.
-\footfullcite{Haemmerling2020}Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
+\footfullcite[Vgl.][]{Haemmerling2020}Mithilfe eines Fuse-Calculators werden nun alle gewünschten Parameter, welche in der \autoref{fuses} verfügbar sind, angewählt und es wird eine Zeichenkette generiert.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{fig/ainf/Features.PNG}
@@ -1646,7 +1646,7 @@ Dies erfolgt in der Datei \lstinline[style=C]{build.xml} welche sich im root-Ord
 </target>
 \end{lstlisting}
 % @formatter:ongenannt
-Nun ist es mithilfe dieser wenigen Zeilen möglich, alle Abhängigkeiten in diese jar-Datei zu implementieren und diese Datei am Raspberry Pi nach Installation einer JVM zu starten.
+Nun ist es mithilfe dieser wenigen Zeilen möglich, alle Abhängigkeiten in diese jar-Datei zu implementieren und diese Datei am Raspberry Pi nach Installation einer \acs{JVM} zu starten.
 \subsubsection{Kommunikation zwischen Controllern}
 Ein weiteres Problem trat bei der Kommunikation zwischen den Controllern auf.
 Diese genannte Kommunikation ist bei gegebenen Umständen des jeweiligen Controllers nötig.
