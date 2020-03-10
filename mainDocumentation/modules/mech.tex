@@ -355,35 +355,36 @@ haftende Karten getrennt werden.
         \caption{Tabelle Haftzeit der Karten}
         \label{tab:my-table}
     \end{table}
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}
-            \begin{axis}[
-            title={Zeitkorrelation bis zur Kartendispersion},
-            xlabel={Karten im Kartendeck},
-            ylabel={Zeit t in Sekunden},
-            xmin=20, xmax=2,
-            ymin=4, ymax=12,
-            xtick={20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2},
-            ytick={8.2,9.47,11.826,6.862,9.24839.784,7.44,7.546,10.736,6.786,8.788,7.254,5.71,8.74,6.666,6.118,7.876,7.544,4.128},
-            legend pos=north west,
-            ymajorgrids=true,
-            grid style=dashed,
-            ]
-
-                \addplot[
-                color=blue,
-                mark=square,
-                ]
-                coordinates {
-                (1,23.1)(2,27.5)(3,32)(4,37.8)(5,44.6)(6,61.8)(7,83.8)(8,114)(9,83.8)(10,114)(11,83.8)(12,114)(13,83.8)(14,114)(15,83.8)(16,114)(17,83.8)(18,114)(19,83.8)(20,114)
-                };
-                \legend{CuSO$_4\cdot$5H$_2$O}
-
-            \end{axis}
-        \end{tikzpicture}
-    \end{figure}
-
+    \item
+    %\begin{figure}
+    %    \centering
+    %    \begin{tikzpicture}
+    %        \begin{axis}[
+   %         title={Zeitkorrelation bis zur Kartendispersion},
+   %         xlabel={Karten im Kartendeck},
+    %        ylabel={Zeit t in Sekunden},
+     %       xmin=20, xmax=2,
+      %      ymin=4, ymax=12,
+       %     xtick={20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2},
+       %     ytick={8.2,9.47,11.826,6.862,9.24839.784,7.44,7.546,10.736,6.786,8.788,7.254,5.71,8.74,6.666,6.118,7.876,7.544,4.128},
+       %     legend pos=north west,
+       %     ymajorgrids=true,
+       %     grid style=dashed,
+       %     ]5
+%
+%                \addplot[
+%                color=blue,
+%                mark=square,
+%                ]
+%                coordinates {
+%                (1,23.1)(2,27.5)(3,32)(4,37.8)(5,44.6)(6,61.8)(7,83.8)(8,114)(9,83.8)(10,114)(11,83.8)(12,114)(13,83.8)(14,114)(15,83.8)(16,114)(17,83.8)(18,114)(19,83.8)(20,114)
+%                };
+%                \legend{CuSO$_4\cdot$5H$_2$O}
+    %
+    %         \end{axis}
+    %     \end{tikzpicture}
+    % \end{figure}
+    %
 
     \begin{figure}[H]
         \centering
@@ -698,7 +699,7 @@ Die Sensorhalterung, siehe \autoref{fig:Sensorhalterung}, dient dazu den kapazit
 auf andere Bauteile abstimmen. Die Sensorhalterung wird über 4 Bohrungen mit dem Kartenlager verschraubt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=8 cm]{fig/mech/Sensorhalterung neu}
+    \includegraphics[width=8 cm]{fig/mech/SensorhalterungNeu.png}
     \caption{Sensorhalterung}
     \label{fig:Sensorhalterung}
 \end{figure}
