@@ -21,7 +21,7 @@ Die Arbeit des mechanischen Teiles besteht darin, eine Maschine,
 die Spielkarten mischen und ausgeben kann, zu entwerfen, zu konstruieren
 und einen Teilaufbau durchzuführen. Die Maschine sollte in der Lage
 sein, 20 Spielkarten zu mischen und diese nach einem Spielmodus, der
-zuvor am LCD gewählt wurde, auszugeben. Das Ziel ist es, die Spielkarten
+zuvor am \acs{LCD}gewählt wurde, auszugeben. Das Ziel ist es, die Spielkarten
 optimal zu mischen, aber die Maschine dennoch kompakt und optisch
 ansprechend zu entwerfen. Weiters sollte der Mischvorgang und die
 Ausgabe der Karten nicht zu lange dauern. Die Teile der Maschine
@@ -150,7 +150,7 @@ die unseren Anforderungen entspricht, wäre mit Motor und Schlitten zu teuer fü
 \textbf{Nachteile:}
 \begin{itemize}
     \item Teuer
-    \item Großer Aufbau %Genaueres Beschreiben der Vor und Nachteile?
+    \item Großer Aufbau
     \item Instabil
 \end{itemize}
 
@@ -396,9 +396,9 @@ Um zu garantieren, dass nur eine Karte in das Lager befördert oder ausgegeben w
             title={Dauer bis nur eine Karte am Saugnapf hängt},
             xlabel={Karten im Kartendeck},
             ylabel={Zeit in Sekunden},
-            xmin=1, xmax=20,
+            xmin=2, xmax=20,
             ymin=1, ymax=15,
-            xtick={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},
+            xtick={2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},
             ytick={0,2,4,6,8,10,12,14,16,18,20},
             legend pos=north west,
             ymajorgrids=true,
@@ -689,7 +689,7 @@ Zwei Bohrungen sind auf der Grundfläche des Bauteils und besitzen ein Gewinde.
 Diese verbinden das Lagerradhalterungsmodul mit dem Lagerrad.
 Je zwei Bohrungen sitzen auf der Unterseite sowie auf der Oberseite der Verbindungsplatte und sind ebenfalls mit Gewinde
 ausgeführt, durch diese Gewindebohrungen wird das L-Bauteil mit der Verbindungsplatte verbunden.
-Dieses Bauteil wurde aus Aluminium gefertigt, da es problematisch ist ein Gewinde in PLA zu schneiden, außerdem spielt
+Dieses Bauteil wurde aus Aluminium gefertigt, da es problematisch ist ein Gewinde in \acs{PLA} zu schneiden, außerdem spielt
 das zusätzliche Gewicht des Aluminiums bei diesem Modul nur eine geringe Rolle.
 
 \subsubsection{Motorwelle}
@@ -848,7 +848,7 @@ Der untere Aufhänger wird mit zwei Schrauben mit der Grundplatte des Gehäuses 
 Durch die dünne Bauweise und die Höhe des Aufhängers führt dies zu einer Instabilität des Moduls und des Aufhängers in Querrichtung, dieses Problem ist jedoch irrelevant, da es
 zu keiner Krafteinwirkung auf dieser Achse kommt.
 Um das Problem dennoch zu beheben, kann die Breite des Aufhängers variiert werden oder eine Querstrebe bei der Konstruktion hinzugefügt werden, da somit der Materialaufwand beim 3D-Drucken gering bleibt.\\
-Der Aufhänger wird wie der andere Aufhänger über jeweils 2 Schrauben mit dem Kartenhalterungsmodul verschraubt.
+Der Aufhänger wird wie der andere Aufhänger über jeweils zwei Schrauben mit dem Kartenhalterungsmodul verschraubt.
 
 
 \subsubsection{Kartenführung}
@@ -919,8 +919,8 @@ sie entnimmt. Sie besteht aus folgenden Einzelbauteilen:\\
 
 Dies ist das Grundbauteil, siehe \autoref{fig:Entnehmeplatte}, dieses Moduls.
 Es fängt die Karten, welche vom Kartenhalterungsmodul ausgeworfen werden und lagert diese, bis
-der Spieler diese manuell entnimmt. D
-as Bauteil liegt in einem 45° Winkel und besitzt einen halbkreisförmigen Ausschnitt
+der Spieler diese manuell entnimmt.
+Das Bauteil liegt in einem 45° Winkel und besitzt einen halbkreisförmigen Ausschnitt
 an der Unterseite, welcher dazu dient, das Entnehmen der Karten zu vereinfachen.
 Die rechteckige Ausnehmung in der Mitte des
 Bauteils dient als Ausschnitt für den Sensor, sodass dieser überprüfen kann, ob sich Karten in dem Bauteil befinden.
@@ -996,8 +996,8 @@ Für die Auswahl des Gehäusematerials kamen diverse Materialien in Frage:
         \hline
         & \textbf{Vorteile}                                                                                                                                  & \textbf{Nachteile}                                                                                    \\ \hline
         \textbf{POLYCARBONAT (PC)}                    & \begin{tabular}[c]{@{}c@{}}Sehr hohe Schlagfestigkeit\\ Transparent\\ Leicht zu bearbeiten\\ Geringes Gewicht\\ Gute UV-Beständigkeit\end{tabular} & Vergleichsweise teurer                                                                                \\ \hline
-        \textbf{ACRYLNITRIL-BUTADIEN-STYROL (ABS)}    & \begin{tabular}[c]{@{}c@{}}Geringes Gewicht\\ Günstiger als PC\end{tabular}                                                                        & \begin{tabular}[c]{@{}c@{}}Nicht für die Verwendung im Freien\\ nicht transparent\end{tabular}        \\ \hline
-        \textbf{GLASFASERVERSTÄRKTES POLYESTER (GRP)} & \begin{tabular}[c]{@{}c@{}}Wetterbeständig\\ Stabil\\ Schlagfestig\end{tabular}                                                                    & \begin{tabular}[c]{@{}c@{}}Teurer als PC\\ schwer zu bearbeiten\\ beträchtliches Gewicht\end{tabular} \\ \hline
+        \textbf{ACRYLNITRIL-BUTADIEN-STYROL (\acs{ABS})}    & \begin{tabular}[c]{@{}c@{}}Geringes Gewicht\\ Günstiger als PC\end{tabular}                                                                        & \begin{tabular}[c]{@{}c@{}}Nicht für die Verwendung im Freien\\ nicht transparent\end{tabular}        \\ \hline
+        \textbf{GLASFASERVERSTÄRKTES POLYESTER (\acs{GRP})} & \begin{tabular}[c]{@{}c@{}}Wetterbeständig\\ Stabil\\ Schlagfestig\end{tabular}                                                                    & \begin{tabular}[c]{@{}c@{}}Teurer als PC\\ schwer zu bearbeiten\\ beträchtliches Gewicht\end{tabular} \\ \hline
     \end{tabular}}
     \caption{Vergleich der Gehäusematerialien}
 \end{table}
@@ -1021,9 +1021,9 @@ Des Weiteren befindet sich in jeder Ecke eine weitere Bohrung mit Boden-seitiger
 Über diese Bohrung werden die Winkel verschraubt, welche die Grundplatte mit den restlichen Platten des Gehäuses verbindet.
 
 \subsubsection{Seitenplatte Motor}
-Diese Gehäuseplatte besitzt, genauso wie die Grundplatte, 4 Bohrungen an den Ecken der Platte, um sie über Winkel
+Diese Gehäuseplatte besitzt, genauso wie die Grundplatte, vier Bohrungen an den Ecken der Platte, um sie über Winkel
 mit den anderen Platten zu verbinden.
-Weiters hat sie 4 Bohrungen im mittleren Bereich.
+Weiters hat sie vier Bohrungen im mittleren Bereich.
 Über diese Bohrungen wird der Winkel der Motorhalterungsgruppe verschraubt.
 Darüber hinaus besitzt sie eine innenseitige Einfräsung in der sich
 zwei weitere Bohrungen befinden.
@@ -1032,7 +1032,7 @@ Die Einfräsung ist notwendig, da diese beiden Bauteile ein Gewinde besitzen, ü
 Jedoch ist das Gewinde zu kurz für die dicke des Polycarbonats.
 
 \subsubsection{Seitenplatte Lager}
-Da diese Platte die Vorderseite des Gehäuses ist, befindetsich auf ihr auch das Liquid-Crystal-Display.
+Da diese Platte die Vorderseite des Gehäuses ist, befindet sich auf ihr auch das LCD.
 Um diesen zu montieren, hat die Platte eine rechteckige Ausfräsung im oberen Mittelbereich.
 Seitlich, ober und unter der Ausfräsung, befinden sich je Seite zwei Langlöcher, über welche das Display mit dem Gehäuse verschraubt wird.
 Unter dem Display besitzt diese Platte zusätzlich zwei Senklochbohrungen, über diese das Flanschlager verschraubt wird.
@@ -1240,7 +1240,7 @@ b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
 S.... Sicherheitsfaktor\\
 
-Für die Kraft werden 50 N angenommen, dies entspricht in etwa der Gewichtskraft von 5,1kg
+Für die Kraft werden 50N angenommen, dies entspricht in etwa der Gewichtskraft von 5,1kg
 und simuliert somit ein kraftvolles Ankommen des Spielers an der Trichtervorrichtung.
 Die Fläche der Klebefläche A\textsubscript{K} ergibt sich durch die Breite und der Tiefe der Klebefläche, wobei
 die Breite der Klebefläche  40mm beträgt und dessen Länge 20mm.
@@ -1268,7 +1268,7 @@ b.... Breite der Klebefläche [mm]\\
 t.... Tiefe der Klebefläche [mm]\\
 S.... Sicherheitsfaktor\\
 
-Die Klebefläche schließt sich aus 2 Teilen zusammen, da das Bauteil zwei dieser Klebeflächen besitzt.
+Die Klebefläche schließt sich aus zwei Teilen zusammen, da das Bauteil zwei dieser Klebeflächen besitzt.
 \begin{align*}
 A_{K} &= b_{1}\cdot t_{1}+b_{2}\cdot t_{2}\\
 A_{K} &=3 mm\cdot 5 mm+7 mm\cdot 5 mm\\
@@ -1301,7 +1301,7 @@ t.... Zeit[s]\\
 a &= \frac{0,39918\tfrac{m}{s}}{0,25s}\\
 a &= 1,59672\tfrac{m}{s^{2}}\\
 \end{align*}
-Anschließend wird über die Masse und über die Beschleunigung die Kraft der herausfallenden Karten ausgerechnet:
+Anschließend wird, über die Masse und über die Beschleunigung, die Kraft der herausfallenden Karten ausgerechnet:
 \begin{align*}
 F &= m \cdot a
 \end{align*}
@@ -1312,7 +1312,7 @@ a.... Beschleunigung[m/s²]\\
 F &= 0,04 kg \cdot 1,59672\tfrac{m}{s^{2}}\\
 F &= 0,0638N\\
 \end{align*}
-Das Maximalmoment wird nun über die errechnete Kraft F und der maximalen Hebellänge l ausgerechnet.
+Das Maximalmoment wird nun, über die errechnete Kraft F und der maximalen Hebellänge l, ausgerechnet.
 \begin{align*}
 M_{max} &= F\cdot l\\
 M_{max} &= 0,06386N\cdot 55mm\\
@@ -1495,7 +1495,7 @@ es eine enorm schnelle Abkühl- und Aushärtegeschwindigkeit.
 Dennoch wird es von den meisten Druckern verwendet und ist in vielen Farben erhältlich.
 
 \textbf{ASA}
-ASA (Acrylnitril-Styrolacrylat) besitzt ähnliche Eigenschaften wie ABS, jedoch hat es eine besser UV-Beständigkeit.
+\acs{ASA} (Acrylnitril-Styrolacrylat) besitzt ähnliche Eigenschaften wie ABS, jedoch hat es eine besser UV-Beständigkeit.
 Beim Drucken mit ASA wird empfohlen, ein beheiztes Druckbett zu haben, außerdem sollte man durch die Styrolemissionen
 ein geschlossenes 3D-Druck Gehäuse haben.
 
