@@ -935,7 +935,7 @@ Die Berechnung zeigt, dass nach einer Zeit von 7 Sekunden, die Spannung anliegen
 Sobald S\textsubscript{1} betätigt wird fließt Strom durch den Widerstand R\textsubscript{2}, wodurch der Bipolartransistor Q\textsubscript{2}
 die am Collector anliegende Leitung auf Masse schaltet.
 Das dadurch auf Masse gezogene Gate des P-Kanal MOSFET lässt diesen durchschalten und eine Ausgangsspannung von 12V ist verfügbar.
-Der durch den Widerstand R\textsubscript{3} fließende Strom sorgt für ein Durchschalten des npn-Transistors, auch wenn der Taster S1 nicht mehr gedrückt ist.
+Der durch den Widerstand R\textsubscript{3} fließende Strom sorgt für ein Durchschalten des NPN-Transistors, auch wenn der Taster S1 nicht mehr gedrückt ist.
 
 Ein Betätigen des Tasters S\textsubscript{2} hat zur Folge, dass die Basis des Transistors Q\textsubscript{2} auf Masse gezogen wird.
 Dies hat zur Folge einen positiven Pegel am Gate des MOSFETs zu erzeugen, welcher diesen sperren lässt.
@@ -1404,7 +1404,7 @@ Um jedoch Gewissheit zu erlangen, ist die maximal erreichte Sperrschichttemperat
 \end{align*}
 \newpage
 Der Umstand einer Umgebungstemperatur von 50°C führt somit bewiesenerweise dennoch zu einem zulässigem Betrieb.
-Jedoch wird vom Hersteller ausdrücklich empfohlen einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch schlussendlich ein Kühlkörper auf dem Treiber platziert wurde.
+Jedoch wird vom Hersteller ausdrücklich empfohlen, einen Kühlkörper zu verwenden, sobald ein Strom größer als 1A getrieben wird, wodurch schlussendlich ein Kühlkörper auf dem Treiber platziert wurde.
 
 Für die Berechnung des Kühlkörperwärmewiderstandes R\textsubscript{thK} wird von folgender Formel Gebrauch gemacht:
 
@@ -1422,7 +1422,7 @@ Zu diesem sind keinerlei Werte bekannt, jedoch konnten wir durch einige Tests se
 Zu Beginn wird der Schrittmotor in eine Richtung angesteuert, bis er seinen Referenzpunkt erreicht, welcher als Mikroschalter implementiert ist.
 Der vom Mikrocontroller auf "HIGH" gesetzte Ausgang wird bei einer Betätigung des Mikroschalters gegen Masse geschalten.
 Der Zustand dieses Ausgangs wird über das zugehörige PIN-Register vom Mikrocontroller eingelesen und folgend mit Software über eine Led visuell dargestellt.
-So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen aufgetragen werden.
+So können, ausgehend vom Referenzpunkt, Schrittzahlen zu gewünschten Positionen aufgetragen werden.
 
 \begin{figure}[hpt]
     \centering
@@ -1446,7 +1446,7 @@ So können ausgehend vom Referenzpunkt Schrittzahlen zu gewünschten Positionen 
 Die von uns ausgewählten Sensoren LJC18A3-BZ/BX besitzen jeweils drei Anschlüsse:
 einen blauen, welcher mit Ground zu verbinden ist, einen braunen, der mit einer Versorgungsspannung von 6V bis 36V zu verbinden ist sowie einen schwarzen, über den das Signal vermittelt wird. \\
 
-\textbf{Eigenschaften:}
+\textbf{Eigenschaften}
 \begin{itemize}
     \item Schaltabstand 1 bis 10mm, einstellbar durch Stellschraube
     \item Betriebsspannung 6V-36V
@@ -1481,7 +1481,7 @@ Durch sukzessive Annäherung an die gewünschten 3.3V Ausgangsspannung wurden fo
     R_1 = 5.6k\Omega, R_2 = 4.7k\Omega
 \end{equation*}
 
-Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
+Durch diese Werte ergibt sich bei einer HIGH Signalausgangsspannung des Sensors von 6.92V eine Spannung am Ausgang des Spannungsteilers von 3.31V .
 Bei einem LOW-Pegel ist am Ausgang des Spannungsteilers eine Spannung von 0.29V zu messen.
 Da die Schaltschwelle der I/O Pins des ATmega324PA bei LOW-Pegeln maximal 0.99V und die bei HIGH-Pegeln mindestens 1.98V beträgt, wurden diese gemessenen Werte als zulässige bewertet.
 
@@ -1489,7 +1489,7 @@ Da die Schaltschwelle der I/O Pins des ATmega324PA bei LOW-Pegeln maximal 0.99V 
 \subsection{Ansteuerung der Hubmagneten}
 
 Als Ansteuerung der beiden Hubmagneten wird jeweils die unten zu sehende Schaltung angewandt.
-Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre Ströme von 350mA ohne Überhitzung zu schalten.
+Auf einen Bipolartransistor wurde nicht zurückgegriffen, da dieser nicht in der Lage dazu wäre, Ströme von 350mA ohne Überhitzung zu schalten.
 
 \subsubsection{Funktion}
 
@@ -1498,7 +1498,7 @@ Dieser ermöglich das Fließen des Drainstromes durch den Hubmagneten zum Massep
 Um den fließenden Gate-Strom zu verringern, wurde der Widerstand R1 implementiert.
 Der Widerstand R2 hingegen hat den Nutzen, parasitäre Kapazitäten des MOSFETs zu entladen.
 Um keinen Spannungsteiler und somit einen Spannungsabfall von rund 5 Prozent der Eingangsspannung zu verursachen, ist der Widerstand vor den Widerstand R1 zu schalten.
-Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich parallel eine sogenannte Fleilaufdiode zu schalten.
+Da es sich bei den Hubmagneten um eine induktive Last handelt, ist es erforderlich, parallel eine sogenannte Fleilaufdiode zu schalten.
 Diese hat die Aufgabe, den MOSFET vor einem selbsterzeugten, rückfließenden Strom des Hubmagneten zu schützen.
 
 
@@ -1694,7 +1694,7 @@ Als USB-zu-UART-Converter wählten wir den CH340G aus, für dessen Wahl seine ge
 \end{figure}
 
 Neben der vorgeschriebenen Beschaltung wurde zusätzlich die Schottkydiode D1 und ein Pull-Up Widerstand am \acs{RXD}-Pin implementiert.
-Die Schottkydiode hat die Aufgabe eine Rückspeisung von 5V zum eingesteckten Gerät zu verhindern.
+Die Schottkydiode hat die Aufgabe, eine Rückspeisung von 5V zum eingesteckten Gerät zu verhindern.
 Der Pull-Up Widerstand fungiert als Prävention einer floatenden Leitung.
 
 \newpage
@@ -1797,7 +1797,7 @@ Somit galt es, jene Schaltungen auf einem Steckbrett konkret aufzubauen und dies
 \end{figure}
 
 Sobald die Funktionstüchtigkeit einen praktischen Hintergrund angenommen hatte,
-war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu dimensionieren.
+war es an der Zeit, jegliche Bauteile für die Leiterplatte auszuwählen und zu dimensionieren.
 
 %/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\-/\
 
@@ -1811,7 +1811,7 @@ war es an der Zeit jegliche Bauteile für die Leiterplatte auszuwählen und zu d
 Dieser bringt einen niedrigen Übergangswiderstand vom Drain zur Source  von maximal 0.19m$\Omega$ mit sich.
 Außerdem ist dieser dazu in der Lage, eine Spannung von maximal -35V zu schalten und gleichzeitig einen Strom von bis -55A treiben zu können.
 Die maximale Gate-Source-Spannung beträgt -25V und die maximale Thresholdvoltage beträgt -3V .
-Der FDD6637 besitzt ein TO-252-Gehäuse.
+Der FDD6637 besitzt ein \acs{TO}-252-Gehäuse.
 
 \subsubsection{N-Kanal MOSFET}
 
@@ -1819,7 +1819,7 @@ Der FDD6637 besitzt ein TO-252-Gehäuse.
 Außerdem ist es diesem möglich, Drain-Source-Spannungen von bis zu 30V zu schalten, was für unsere Anwendung weitaus genügt.
 Hinzu kommt noch die wesentliche Tatsache, dass dieser eine niedrige Gate Treshold Voltage von nur max.1V mit sich bringt.
 Über Kennlinienwerte im Datenblatt lässt sich erkennen, dass sich der von uns benötigte Strom von 350mA bereits bei 1.25V und 25°C Umgebungstemperatur schalten lässt.
-Der FDN337N besitzt eine Gate-Source-Maximalspannung von 8V und ist mit einem SOT-23 Gehäuse erhältlich.
+Der FDN337N besitzt eine Gate-Source-Maximalspannung von 8V und ist mit einem \acs{SOD}-23 Gehäuse erhältlich.
 
 \subsection{Auswahl der Gleichspannungswandler-Peripherie}
 
@@ -1854,7 +1854,7 @@ Die Eigenschaften des niedrigen Spannungsabfalls in Anbetracht der UNLATCH-Schal
 \subsection{Auswahl der Zener-Diode}
 
 \footfullcite[Vgl.][]{BZX84-series-Datasheet}Als Zener-Diode selektierten wir die BZX84-C8V2, welche alle gewünschten Eigenschaften und eine Zenerspannung von 8.2V mit sich bringt.
-Sie bringt eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0.9V und ein SOT-23 Gehäuse mit sich.
+Sie verfügt über eine maximale Verlustleistung von 250mW, eine Durchlassspannung von 0.9V und ein \acs{SOT}-23 Gehäuse.
 
 \subsection{Auswahl sonstiger Bauelemente}
 
@@ -1867,7 +1867,7 @@ Bei Kondensatoren im µF-Bereich wurde auf SMD-Elektrolytkondensatoren zurückge
 \newpage
 \section{Leiterplattendesign}
 
-Sobald die Auswahl der Peripherie beendet war, war es an der Zeit ein Design für die geplante Platine in KiCad zu entwerfen.
+Sobald die Auswahl der Peripherie beendet war, galt es, ein Design für die geplante Platine in KiCad zu entwerfen.
 Als Anforderungen stellten wir uns ein möglichst kompaktes, strukturiertes sowie übersichtliches Design zu erstellen.
 Hierzu kamen noch spezifischere Anforderungen, da bei einem Fertigen der Leiterplatte in der schuleigenen Werkstätte nur eingeschränkte Fertigungsparameter gegeben sind.
 Zu diesen zählen ein Mindestbohrdurchmesser bei Durchkontaktierungen von 0.6 mm sowie die Tatsache, eine Mindestleiterbahnbreite von 0.2 mm zu verwenden.
