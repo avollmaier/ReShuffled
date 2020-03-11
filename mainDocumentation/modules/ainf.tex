@@ -4,7 +4,7 @@
 \section{Allgemeines}\label{sec:einleitung}
 Im folgenden Projektteil werden die Kernbestandteile sowie der nähere Aufbau des informatischen Bereichs dieser Arbeit gezeigt.
 Weiters werden wesentliche Elemente der Inbetriebnahme der Maschine dokumentiert und zusammengefasst.
-Die Aufteilung dieses 55 seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
+Die Aufteilung dieses 55-seitigen Kapitels überstreckt sich über alle signifikanten Teile der grafischen Oberfläche, bezeichnet als \textbf{Frontend}, bis hin zu den im Hintergrund arbeitenden Funktionen, welche als \textbf{Backend} zusammengefasst werden.
 Darüber hinaus wird gezeigt, wie Teile der \textbf{hardwarenahen Programmierung} funktionieren und wie diese mit der Steuerelektronik zusammenarbeiten.
 Am Schluss wird die Zusammensetzung des \textbf{Teilaufbaus} gezeigt.
 \section{Zeitplan}\label{sec:zeitplan}
@@ -297,7 +297,7 @@ Diese benennen sich in diesem Fall \lstinline{data}, \lstinline{exception}, \lst
 Oft werden externe Bibliotheken verwendet, welche im Ordner \lstinline{lib} gesammelt werden.
 Dabei erleichtert diese Verzeichnishirachie, zu sehen in \autoref{porjectstructure} die Übersichtlichkeit aller verwendeten Bibliotheken und dessen Versionen.
 Vorausgesetzt, diese werden richtig benannt.
-\\\\
+\newpage
 \textbf{Konfigurationsdateien}
 \\
 In unserem Fall ist es auch notwendig, einen Ordner explizit für Konfigurationsdateien vorzusehen.
@@ -649,21 +649,6 @@ Wichtig ist auch die Definition des Fehlerhandlings.
 So muss, wenn ein Response mit dem Fehler-Prefix (E) in den Nutzdaten ankommt, eine Ma"snahme getroffen werden.
 Diese soll in Form eines Log-Eintrags sowie einer Exception vonstattengehen, da es sich hierbei um gravierende Fehler beim Verarbeiten auf dem Endgerät handeln muss.
 \subsubsection{Request- und Responsebeispiele}
-Folgend wird anhand von tabellarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
-Jeder Request sowie Response basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
-\begin{table}[]
-    \centering
-    \begin{tabular}{|l|l|l|}
-        \hline
-        {\color[HTML]{333333} \textbf{Request}} & {\color[HTML]{333333} \textbf{Example Request Frame}} & {\color[HTML]{333333} \textbf{Example Response Frame}} \\ \hline
-        {\color[HTML]{333333} Init}             & {\color[HTML]{333333} :IN\#F1068A24\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
-        {\color[HTML]{333333} Shutdown}         & {\color[HTML]{333333} :XX\#560B1C65\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
-        {\color[HTML]{333333} Shuffle}          & {\color[HTML]{333333} :SH\#A848D5CA\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
-        {\color[HTML]{333333} Deal}             & {\color[HTML]{333333} :D1\#841298C4\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
-        {\color[HTML]{333333} \acs{AutoDeal}}         & {\color[HTML]{333333} :A5\#FE08A898\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
-    \end{tabular}
-    \caption{Request-Response Beispiele}
-\end{table}
 Aufgrund eines wohldurchdachten Systems bei der Request-Definition, ist es nun möglich, den Pool an verschiedenen Requests explizit zu minimieren.
 Dies bezieht sich auf den Vorgang der automatischen Kartenverteilung an jeden einzelnen Spieler, was mithilfe des Requests \textit{Deal} und \textit{AutoDeal} umgesetzt wird.\\
 Neben diesen genannten Requests, welche sich rein auf den Ablauf eines Kartenspiels konzentrieren, verfügt der Pool an Requests, welche allgemein zur Funktionalität der Maschine beitragen.
@@ -685,6 +670,21 @@ AutoDeal & A\textless{}Anzahl der Karten\textgreater{} & Automatische Kartenausg
 \end{tabular}%
 }
 \caption{Request-Response Pool}
+\end{table}
+Folgend wird anhand von tabellarisch aufgelisteten Beispielen gezeigt, wie ein Request mit dem jeweiligen Response zusammenhängt.
+Jeder Request sowie Response basiert auf der Protokolldefinition aus dem \autoref{sssec:uebertragungsprotokoll}.
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+{\color[HTML]{333333} \textbf{Request}} & {\color[HTML]{333333} \textbf{Example Request Frame}} & {\color[HTML]{333333} \textbf{Example Response Frame}} \\ \hline
+{\color[HTML]{333333} Init}             & {\color[HTML]{333333} :IN\#F1068A24\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+{\color[HTML]{333333} Shutdown}         & {\color[HTML]{333333} :XX\#560B1C65\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
+{\color[HTML]{333333} Shuffle}          & {\color[HTML]{333333} :SH\#A848D5CA\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+{\color[HTML]{333333} Deal}             & {\color[HTML]{333333} :D1\#841298C4\textbackslash{}n} & {\color[HTML]{333333} :OK\#D736D92D\textbackslash{}n}  \\ \hline
+{\color[HTML]{333333} \acs{AutoDeal}}         & {\color[HTML]{333333} :A5\#FE08A898\textbackslash{}n} & {\color[HTML]{333333} :E1\#9D09A985\textbackslash{}n}  \\ \hline
+\end{tabular}
+\caption{Request-Response Beispiele}
 \end{table}
 \subsubsection{Umsetzung-Datenaustausch}
 Zuallererst soll der Ablauf der Kommunikation zwischen dem Programm und dem Endgeräts, welches über die serielle Schnittstelle verbunden ist, betrachtet werden.
@@ -1013,7 +1013,7 @@ Erfolgt nun das Einlesen der im \autoref{jsonSerial} gezeigten Parameter, wird d
 Verwendet wurde hierbei die Open-Source-Bibliothek \acs{jSSC} (Java Simple Serial Connector).
 Erstellt wird eine Instanz des \lstinline[style=java]{jssc.SerialPort} mithilfe einer Objekterzeugung.
 Diese fordert als Parameter den Namen des Ports.
-Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\\\
+Nun kann mithilfe der Methode \lstinline{openPort()} der Port geöffnet werden.\\
 Dieses genannte Öffnen des Ports kann unter gewissen Umständen zu einer \lstinline[style=java]{SerialPortException}führen.
 Diese Umstände können vielseitige Ursachen haben und werden in der Javadoc von jSSC näher beschrieben.
 Im darauffolgenden Schritt muss nun der Port mithilfe von \lstinline[style=java]{setParams()} konfiguriert und die Input- und OutputStreams für das serielle Endgerät definiert werden.
@@ -1050,7 +1050,8 @@ Wiederum wird anschließend über die Verarbeitung von Daten innerhalb des Simul
 Ein weiteres Ziel ist es nun also, einen Simulator auszuprogrammieren.
 Nachdem dieser Simulator, wie im \autoref{sssec:deviceSelection} gezeigt, gestartet wurde, soll er nun die Aufgaben der Ansteuerplatine im Bereich der seriellen Kommunikation übernehmen.
 So muss er also Daten empfangen, diese verarbeiten und wieder andere Daten zurücksenden können.
-Des weiteren muss er die aktuellste Version des Übertragungsprotokolls unterstützen, denn nur so ist eine richtige Kommunikation möglich.\\\\
+Des weiteren muss er die aktuellste Version des Übertragungsprotokolls unterstützen, denn nur so ist eine richtige Kommunikation möglich.
+\newpage
 Übergeben wurden bei dieser Objekterzeugung des Simulators also die Streams, mit welchen er kommuniziert.
 Im Genaueren sieht der Konstuktor wie folgt aus:
 \lstinputlisting[firstline=14, lastline=18, style=java,caption=Konstruktor ReshuffledMainboardSimulator(),label=fdsafdsa]{src/serial/sim/ReshuffledMainboardSimulator.java}
@@ -1084,7 +1085,7 @@ Grundlegend besteht das Konzept also darin, Daten zwischen 2 Threads auszutausch
 Einer davon schreibt und der andere liest etwas.
 \footfullcite[Vgl.][]{Wesley2020}Um diesen Fall von Datenaustausch in ein Programm zu implementieren, bietet Java eine Hilfe in Form von sogenannten Pipes an.
 Ziel dieser Pipe ist es, die beiden Threads zu synchronisieren.
-Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} aus dem Paket \lstinline[style=java]{java.io}.
+\footfullcite[Vgl.][]{Piping}Umgesetzt wird diese mithilfe eines sogenannten \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} aus dem Paket \lstinline[style=java]{java.io}.
 So werden diese 2 Klassen immer in unabhängigen Threads verwendet, wobei der eine Thread aus dem \lstinline[style=java]{PipedInputStream} etwas liest und der andere in den \lstinline[style=java]{PipedOutputStream} etwas schreibt.\\
 Grundlegend kann man also sagen, dass das in der \autoref{ProducerConsumer} gezeigte Producer-Consumer Problem bzw. dessen Lösung, mithilfe eines \lstinline[style=java]{PipedInputStream} und \lstinline[style=java]{PipedOutputStream} vereinfacht werden kann.
 Der Grund dafür liegt in der automatischen Synchronisation der zur Verfügung gestellten Methoden \lstinline[style=java]{read()} und \lstinline[style=java]{write()}.\\
@@ -1103,7 +1104,8 @@ So ist nun die Verbindung zwischen beiden Threads hergestellt.
 \subsubsection{Konzept}\label{sssec:logOverview}
 Logging ist nach dem Debugging selbst, ein weiteres wichtiges Mittel um einzelne Programmbausteine oder das gesamte Programm auf Fehler zu untersuchen.
 Mithilfe einer Log-Datei können z.B aktuelle Wertebelegungen im Detail dargestellt werden.
-Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks aufgrund der Flexibilität im Einsatz immer sinnvoller.\\\\
+Natürlich kann dies auch mithilfe einer Konsolenausgabe über \lstinline[style=java]{System.out.println()} realisiert werden, jedoch ist eine Verwendung von Logging-Frameworks aufgrund der Flexibilität im Einsatz immer sinnvoller.
+
 \textbf{Gründe für die Verwendung von Logging-Frameworks}\\
 Als Beispiel kann mithilfe einer Log-Datei auch ein Benutzer, welcher nicht über die Möglichkeit verfügt, den Quellcode einzusehen, einzelne Fehler erkennen (vorausgesetzt diese Möglichkeit ist durch das Programm geschaffen).
 Außerdem ist nun die Persistenz der Logging-Einträge gegeben.
@@ -1151,8 +1153,8 @@ before computing xy={l=15pt},
 \caption{Packagestruktur-Logging}
 \label{PackagestrukturLogging}
 \end{figure}
-Um nun die Implementierung zu vervollständigen, muss nun in der Main-Methode, welche im Package \lstinline[style=java]{main} zu finden ist, der Logger parametrisiert werden.\\\\
-\newpage
+Um nun die Implementierung zu vervollständigen, muss nun in der Main-Methode, welche im Package \lstinline[style=java]{main} zu finden ist, der Logger parametrisiert werden.
+
 Im Gegensatz zu Javas Standard-Logger-Objekt sind alle Logger-Objekte automatisch an einen einzigen "übergeordneten" Logger gebunden.
 Nun ist es zuallererst nötig, das Binding eines Handlers an das "übergeordnete" Logger-Objekt durchzuführen.
 Dies erfolgt mithilfe der Zeile \lstinline[style=java]{private static final Logger LOGP = Logger.getParentLogger()}.\\
@@ -1164,9 +1166,11 @@ Der genannte Logger soll nun dessen Protokollierung auf zwei verschiedenen Ausga
 Um diese Anforderung zu erfüllen, ist es notwendig den Logger mithilfe der folgenden Zeilen im \autoref{loggerOutput} zu konfigurieren.
 % @formatter:off
 \begin{lstlisting}[style=java,caption=Logger Implementierung,label=loggerOutput]
-LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(System.out)));
+LOGP.addHandler(new LogBackgroundHandler(
+    new LogOutputStreamHandler(System.out)));
 try {
-    LOGP.addHandler(new LogBackgroundHandler(new LogOutputStreamHandler(new FileOutputStream(logPath))));
+    LOGP.addHandler(new LogBackgroundHandler(
+        new LogOutputStreamHandler(new FileOutputStream(logPath))));
 }
 catch (FileNotFoundException ex) {
     System.out.println("Should not see me :)");
@@ -1264,6 +1268,7 @@ Die Bestandteile dieser Datei sollten vor der Umsetzung klar definiert sein.
 \item Den gespielten Spielmodus mit dessen Hintergrundinformationen
 \end{enumerate}
 \end{enumerate}
+\newpage
 \subsubsection{Umsetzung}
 Wie schon genannt, erfolgt die Umsetzung genau nach dem gleichen Schema wie das der Konfigurationsdatei aus dem \autoref{subsec:konfiguration}.
 Dies bedeutet, dass hier anstatt des \lstinline[style=java]{ConfigModel}, das \lstinline[style=java]{StatisticModel} die Basis der Datei darstellt.
@@ -1321,7 +1326,8 @@ Nun muss nur noch der explizite Controller beim Starten definiert werden.
 @Override
 public void start(Stage stage) {
 try {
-    final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl, ResourceManager.getInstance().getCurrentRecourceBundle());
+    final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl,
+        ResourceManager.getInstance().getCurrentRecourceBundle());
     fxmlLoader.setController(new StartupController());
     final Parent root = fxmlLoader.load();
     stage.setScene(new Scene(root, Config.getInstance().getGuiWidth(),
@@ -1446,15 +1452,16 @@ Diese werden in einer Gruppe zusammengefasst, welche wiederum in einer Hauptgrup
 So besteht eine Baumstruktur.
 Dargestellt werden die Daten über Instanzen vom Typ \lstinline[style=java]{TreeItem<T>}.
 Erstellt werden diese TreeItems mithilfe der Methode \lstinline[style=java]{createTreeData())}.
+\newpage
 \lstinputlisting[firstline=43, lastline=56, style=java,caption=Methode createTreeData(),label=createTreeData]{src/gui/controller/StatsController.java}
 In dieser Methode wird zuerst die Hauptgruppe namens \lstinline[style=java]{root} erstellt.
 Im nächsten Schritt werden alle Game-Instanzen geholt und mithilfe der Methode \lstinline[style=java]{createGroupTreeItem()} in Gruppenelemente umgewandelt.
-\lstinputlisting[firstline=58, lastline=60, style=java,caption=Methode createGroupTreeItem(),label=createGroupTreeItem]{src/gui/controller/StatsController.java}
+\lstinputlisting[firstline=59, lastline=61, style=java,caption=Methode createGroupTreeItem(),label=createGroupTreeItem]{src/gui/controller/StatsController.java}
 Innerhalb dieser Schleife, welche diese genannten Gruppen erstellt, befindet sich eine weitere Schleife, welche zu den jeweiligen Gruppen die einzelnen Spieler in Form von Instanzen vom Typ \lstinline[style=java]{TreeItem<PlayerModel>} hinzufügt werden.
-Diese werden als sogenannte \lstinline[style=java]{children} betitelt.\\\\
+Diese werden als sogenannte \lstinline[style=java]{children} betitelt.
 Im letzten Schritt muss nun nur mehr das Data Binding umgesetzt werden.
 Dies erfolgt mithilfe des folgenden Listing.
-\lstinputlisting[firstline=62, lastline=73, style=java,caption=Methode createColumn(),label=dataBindinh]{src/gui/controller/StatsController.java}
+\lstinputlisting[firstline=63, lastline=74, style=java,caption=Methode createColumn(),label=dataBindinh]{src/gui/controller/StatsController.java}
 Hier wird mithilfe von Instanzen des Typs \lstinline[style=java]{TreeTableColumn<S,T>} die Verbindung zu den Spalten hergestellt.
 Dabei ist \lstinline[style=java]{S} der Typ der Elemente von {TreeItem<S>}.
 Zum Auslesen der Werte nutzt man Objekte vom Typ \lstinline[style=java]{TreeItemPropertyValueFactory}, welche man bei der Erstellung, den Namen des gewünschten Attributs übergibt.\\
