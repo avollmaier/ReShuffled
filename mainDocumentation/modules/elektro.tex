@@ -4,9 +4,9 @@
 
 \section{Anforderungen}
 
-Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
+Der elektrische Teil dieser Diplomarbeit umfasst das Entwerfen und das Entwickeln eines Schaltplans und einer dazugehörigen Leiterplatte sowie das Layouten dieser und deren Bestückung.
 Eine Inbetriebnahme und das Durchführen von Tests soll ebenfalls vorgenommen werden.
-Die Platine, gesteuert vom Mikroprozessor Atmega324P, hat die Aufgabe drei kapazitive Sensoren einzulesen,
+Die Platine, gesteuert vom Mikroprozessor Atmega324PA, hat die Aufgabe, drei kapazitive Sensoren einzulesen,
 zwei Hubmagneten in Bewegung zu versetzen, einen Endschalter einzulesen, eine Pumpe und ein Ventil anzusteuern und einen Schrittmotor anzusteuern.
 Zudem hat sie die Aufgabe, sämtliche elektrische Bauteile des Automaten mit Spannung zu versorgen.
 Außerdem soll der Mikroprozessor dazu im Stande sein, Befehle von einem Raspberry Pi 3B+ über \acs{UART} zu erhalten.
@@ -71,7 +71,7 @@ Ein Blockschaltbild hierzu ist in der \autoref{fig:Blockschaltbild} zu finden.
 \section{Variantenvergleiche und Konzeptionierungen}
 
 \subsection{Mikrocontroller}
-Da unser finales Konzept zahlreiche Logikansteuerungen benötigt, ist es sinnvoll die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
+Da unser finales Konzept zahlreiche Logikansteuerungen benötigt, ist es sinnvoll, die Ansteuerung der Peripherie auf einen Mikrocontroller auszulagern.
 Wir stellten die Anforderungen einer \acs{SPI}-Programmierschnittstelle sowie die einer doppelt vorhandenen UART Schnittstelle, eine zur Kommunikation mit dem Raspberry Pi und eine, welche als Debugging-Schnittstelle genutzt werden sollte.
 Außerdem schien es uns sinnvoll, einen Mikroprozessor der Atmega-Familie auszuwählen, da mit dieser bereits Erfahrung gesammelt wurde.
 
@@ -168,12 +168,12 @@ zwei digitale Signale sowie ein \acs{PWM}-Signal.
 Grundsätzlich ist zu sagen, dass eine H-Brücke aus vier Transistoren und vier Schutzdioden besteht. \\
 Ein konkreter Aufbau einer H-Brücke kann der \autoref{fig:H-Bridge} entnommen werden.
 Bei dieser Variante einer H-Brücke sind zwei NPN-Transistoren und zwei PNP-Transistoren vorhanden, von denen jeder einen Basisvorwiderstand besitzt.
-Wie in Abbildung 2.1 zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
+Wie in \autoref{fig:H-Bridge} zu erkennen ist, befindet sich vor jedem Basiswiderstand der NPN-Transistoren ein UND-Gatter, mit dem jeweils ein digitales Steuersignal und das PWM-Signal zusammengeführt werden.
 Zusätzlich befindet sich parallel zu jedem Bipolartransistor eine Schutzdiode.
 Diese haben folgende Aufgabe:\\\\
 Aufgrund der Induktivität der Motorspulen wird Energie gespeichert.
 Bei einem Deaktivieren der Transistoren um den Motor zu stoppen, muss diese gespeicherte Energie des Motors auf irgendeine Weise abgebaut werden können.
-Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, da diese dem Strom einen Pfad zu bieten, welcher die Energie freisetzt. \\
+Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, da diese dem Strom einen Pfad bieten, welcher die Energie freisetzt. \\
 
 \begin{figure}[ht]
     \centering
@@ -280,20 +280,21 @@ Um ein Beschädigen der Transistoren zu vermeiden, verwendet man diese Dioden, d
 
     \end{circuitikz}
     \caption{Anschluss einer H-Brücke an einen Mikroprozessor}
+    \label{fig:ZweiHBruecken}
 \end{figure}
-
-In der Abbildung 2.3 wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
+\newpage
+In der \autoref{fig:ZweiHBruecken} wird eine konkrete Verbindung von zwei H-Brücken in Kombination mit einem Mikrochip dargestellt.
 Da sich die Ansteuerungen der beiden H-Brücken gleich gestalten, wird zur vereinfachten Funktionserklärung nur die obere behandelt. \\
 Mithilfe des Timer 0 wird am Ausgang OC1B des Mikrocontrollers ein PWM-Signal erzeugt, unter Verwendung dessen,
 abhängig vom gewählten Duty-Cycle, Spannungssignale in gewissen Zeitabständen geschickt werden.
-Dadurch befindet sich jeweils an einem Eingang der beiden UND-Gatter mit den Bezeichnungen IC1 und IC2 ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung).
+Dadurch befindet sich jeweils an einem Eingang der beiden UND-Gatter, mit den Bezeichnungen IC1 und IC2, ein Signal mit einem HIGH-Pegel (Spannung) oder LOW-Pegel (keine Spannung).
 Je nach gewollter Drehrichtung, ist der Motor über die Transistoren anders anzusteuern:
 Um den Schrittmotor nach rechts drehen zu lassen, muss am Ausgang PD0 eine Spannung von 3.3V erzeugt werden.
 Am Ausgang PD1 muss ein 0V-Signal erzeugt werden, da ansonsten der PNP-Transistor Q1 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das 3.3V-Signal, ausgehend vom Ausgang OC1B, befindet sich ein 3.3V-Signal am unteren Eingang des UND-Gatters IC2.
 Wenn nun ein 3.3V-Pegel ausgehend vom Ausgang PD0 kommt, liefert das UND-Gatter IC2 ein 3.3V-Signal weiter an den NPN-Transistor Q4, welcher somit leitend wird und den Stromkreis schließt.
 Um den Schrittmotor nach links drehen zu lassen, wird am Ausgang PD1 ein 3.3V-Signal gesetzt.
-Am Ausgang PD0 muss ein 0V-Signal zu Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
+Am Ausgang PD0 muss ein 0V-Signal zur Verfügung gestellt werden, da ansonsten der PNP-Transistor Q2 sperrt und kein Stromfluss gewährleistet wäre.
 Durch das 3.3V-Signal, ausgehend vom Ausgang PD1, befindet sich ebenfalls ein 3.3V-Signal am oberen Eingang des UND-Gatters.
 Wenn nun ein 3.3V-Pegel vom Ausgang OC1B bereitgestellt wird, liefert das UND-Gatter IC1 ein 3.3V-Signal weiter an den NPN-Transistor Q3, welcher somit leitend wird und
 ein Fließen des Stromes durch die Motorwicklung bewirkt.
@@ -301,11 +302,11 @@ ein Fließen des Stromes durch die Motorwicklung bewirkt.
 \begin{itemize}
     \item \textbf{Vorteile}
     \begin{itemize}
-        \item geringe Kosten, 1€ bis 4€
+        \item Geringe Kosten, 1€ bis 4€
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
-        \item viele Bauteile
+        \item Viele Bauteile
         \item Kosten könnten sich aufgrund hoher Verlustleistung durch einen Kühlkörper erhöhen
         \item Motorspannung muss Versorgungsspannung des µC entsprechen
     \end{itemize}
@@ -317,12 +318,12 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 \begin{itemize}
     \item \textbf{Vorteile}
     \begin{itemize}
-        \item platzsparend
-        \item leicht zu verwenden und auszutauschen
+        \item Platzsparend
+        \item Leicht zu verwenden und auszutauschen
     \end{itemize}
     \item \textbf{Nachteile}
     \begin{itemize}
-        \item höhere Kosten (5 Stück für etwa 14€)
+        \item Höhere Kosten (5 Stück für etwa 14€)
     \end{itemize}
 \end{itemize}
 
@@ -330,14 +331,14 @@ Schrittmotor-Treiber sind Module, welche mithilfe von externen Signalen in der L
 \footfullcite[Vgl.][]{A4988-Stepper-Motor-Driver-Carrier}Das Modul kann mit einer Eingangsspannung von 8V bis 35V arbeiten und kann ohne den Einsatz eines Kühlkörpers bis zu 1A pro Phase liefern.
 Der Treiber ist jedoch darauf ausgelegt, einen Strom von 2A mit zusätzlicher Kühlung zur Verfügung stellen zu können.
 Zu nennen ist die Eigenschaft einer einstellbaren Begrenzung des abgegebenen Stroms über ein Potentiometer,
-wodurch Spannungen über der Nennspannung des Schrittmotors verwendet werden können, um höhere Schrittgeschwindigkeiten erreichen zu können.
+wodurch Spannungen über der Nennspannung des Schrittmotors verwendet werden können, um höhere Schrittgeschwindigkeiten zu erreichen.
 Zusätzlich werden die Eigenschaften eines Überstrom- und Übertemperaturschutzes, Kurzschlussschutzes sowie eine Überspannungsabschaltung vom Hersteller versprochen.
 Der Schrittmotortreiber bietet fünf verschiedene Mikroschrittauflösungen: Voll-, Halb-, Viertel-, Achtel- und Sechzehntel-Schrittmodus.
 Die Ansteuerlogik dieses Moduls gestaltet sich über binäre Spannungspegel.
 
 \subsubsection{DRV8825}
 \footfullcite[Vgl.][]{DRV8825-Stepper-Motor-Driver-Carrier-High-Current}Diesem Treiber-Board von Texas Instruments ist es möglich, mit einer Spannung von 8.2V bis 45V zu arbeiten.
-Er kann ohne eine bestimmte Kühlung bis zu 1.5 A pro Phase liefern.
+Er kann ohne eine bestimmte Kühlung bis zu 1.5A pro Phase liefern.
 Ausgelegt ist dieses Modul auf einen Strom von 2.5A, welcher mit zugeführter Kühlung auch getrieben werden kann.
 Der DRV8825 arbeitet mit einem Logikpegel von 3.3V bis 5V und bietet die Möglichkeit einer einstellbaren Strombegrenzung.
 Das Modul besitzt ebenfalls die Eigenschaften eines Überstrom- und Übertemperaturschutzes sowie sechs Mikroschrittauflösungen, welche bis zu einer Zweiunddreißigstel-Auflösung reichen.
@@ -349,7 +350,7 @@ sodass er in vielen Anwendungen als leistungsstärkerer Ersatz verwendet werden 
 \footfullcite[Vgl.][]{TB6600-Arduino-Stepper-Motor-Driver}Dieser Ein-Achsen-Schrittmotortreiber ist für hybride Schrittmotoren mit 2 oder 4 Phasen geeignet.
 Der TB6600 arbeitet mit einer Spannung von 9V bis 40V und ist für einen Ausgangsstrom von 0.7A bis 4A ausgelegt.
 Das Modul bringt die Eigenschaften eines Überhitzungs-, Kurzschluss- und Überstromschutzes sowie einen großflächigen Kühlkörper mit sich.
-Der Ausgangsstrom ist mittels \acs{DIP}-Schalter in acht Schritten wählbar.
+Der Ausgangsstrom ist mittels \acs{DIP}-Schalter über acht Schritte wählbar.
 Sechs verschieden wählbare Mikroschrittauflösungen, welche bis zu einer Auflösung von Zweiunddreißigstel reichen, werden zur Verfügung gestellt.
 Die Kontrolllogik dieses Treibers umfasst eine Spannung von 5V .
 Das Gewicht von 200g und eine Größe von 57mm x 96mm x 28mm unterscheiden sich wesentlich von den anderen Treibermodulen.
@@ -395,7 +396,7 @@ Zu unterscheiden sind hierbei Lichtschranken und Reflexionstypen.
     \item Sensoren des Reflexionstyps werden zur Erfassung eines vom Zielobjekt reflektierten Lichtstrahls eingesetzt.
 \end{itemize}
 
-Optische Sensoren besitzen eine fast wartungsfreien, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
+Optische Sensoren besitzen einen fast wartungsfreien, langfristigen Betrieb, da die Detektion kontaktlos erfolgt.
 Diese Art von Sensoren kann für nahezu jedes beliebige Material eingesetzt werden.
 Es sind große Erkennungsabstände möglich.
 
@@ -404,20 +405,20 @@ Es sind große Erkennungsabstände möglich.
 Ein Sensor sendet zyklisch einen kurzen, hochfrequenten Schallimpuls aus, welcher sich in der Luft fortpflanzt und am getroffenen Gegenstand reflektiert wird.
 Das Echo wird vom Sensor wieder aufgenommen.
 Über die Zeitspanne zwischen dem Zeitpunkt des Absendens und dem Zeitpunkt des Erfassens wird somit der Abstand vom Sensor berechnet.
-So ist es diesem Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
+So ist es dieser Art von Sensor möglich, unterschiedlichste Materialien wie Metall oder Holz aufzufassen.
 Lediglich schalldämpfende Materialien können nicht erfasst werden.
-Diese Art von Sensoren ist in der Lage berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
+Diese Art der Sensorik ist dazu in der Lage, berührungslos Objekte zu erkennen und ihre Entfernung zum Sensor zu messen.
 Ein fast wartungsfreier Betrieb ist möglich.
 
 \subsubsection{Kapazitive Sensoren}
-\footfullcite[Vgl.][]{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Dringt das zu erfassende Objekt in das Messfeld des Kapazitiven Sensors ein, verändert sich somit das elektrische Feld vor der aktiven Fläche des Sensors.
+\footfullcite[Vgl.][]{Funktionsweise-und-Technologie-von-kapazitiven-Sensoren}Dringt das zu erfassende Objekt in das Messfeld des kapazitiven Sensors ein, verändert sich somit das elektrische Feld vor der aktiven Fläche des Sensors.
 Dadurch ändert sich die Kapazitität eines internen RC-Oszillators, welcher folgend das Schaltkriterium liefert.
 Es wird zwischen zwei Arten von kapazitiven Sensoren unterschieden: \\
 
 \begin{figure}[htb]
     \centering
     \includegraphics[scale=0.5]{fig/elektro/KapSensor.png}
-    \caption{Arten von Kapazitiven Sensoren}
+    \caption{Arten von kapazitiven Sensoren}
 \end{figure}
 
 \textbf{Sensoren mit GND-Elektrode} \\
@@ -450,7 +451,7 @@ Für hohe Schaltabstände sind leitende und geerdete Gegenstände von Vorteil.
 \end{table}
 
 Unsere Wahl fiel auf einen kapazitiven Sensor, da dieser für uns bereits für einen erschwinglichen Preis alles Nötige mit sich bringt: einen hohen Grad an Genauigkeit sowie einen geringen Platzbedarf.
-Somit fiel unsere Wahl auf den LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische und nichtmetallische Gegenstände in einem Schaltabstand von 1 bis 10mm erfassen kann.
+Somit fiel unsere Wahl auf den LJC18A3, welcher mit einer Versorgungspannung von 6V bis 36V arbeitet und metallische sowie nichtmetallische Gegenstände in einem Schaltabstand von 1 bis 10mm erfassen kann.
 Dieser Sensor konnte mit einem sehr geringen Preis in unseren Besitz gebracht werden und zeigte schon bei den ersten Tests, dass er alle Anforderungen erfüllte.
 
 \subsection{Erfassung der Position des Motors}
@@ -542,7 +543,7 @@ Unsere Wahl fiel auf die Variante des 12V Schaltnetzteils mit 5V Schaltregler, d
 und einen ebenfalls geringen Bedarf an Platz und Bauteilen aufweist.
 Außerdem bringt dieser gegenüber dem Linearregler eine höhere Effizienz sowie eine geringe Wärmeabstrahlung mit sich.
 Den Mikrocontroller versorgen wir mit dem 3.3V Ausgang des Raspberry Pi 3B+.
-Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V mit einer Logik von 5V arbeiten würde und somit ein Pegelwandler zu 3.3V nötig wäre, verwarfen wir die Idee diesen mit 5V zu versorgen.
+Aufgrund der Tatsache, dass der Mikrocontroller mit einer Versorgung von 5V gleichzeitig mit einer Logik von 5V arbeiten würde und somit ein Pegelwandler zu 3.3V nötig wäre, verwarfen wir die Idee diesen mit 5V zu versorgen.
 
 \subsubsection{Leistungsbedarf}
 
@@ -717,7 +718,7 @@ Das deshalb auf Masse gezogene Gate des P-Kanal MOSFET Q\textsubscript{1} lässt
 Über den Ausgang 12V\textsubscript{OUT} werden somit sämtliche 12V Sensoren, Aktoren und Elektronikkomponenten versorgt.
 Das dadurch ebenfalls über R\textsubscript{3} versorgte Gate von Q\textsubscript{2} lässt die davon am Drain liegende Leitung auf Masse schalten,
 welche die Versorgung der 12V Komponenten auch nach der Betätigung des S\textsubscript{1} bereitstellt.
-Um diese Selbsthaltung wieder zu lösen, wird ein Signal über einen LCD eingelesen.
+Um diese Selbsthaltung wieder zu lösen, benötigt es eine Interaktion mit dem LCD.
 Der Raspberry wird heruntergefahren und über ein Watchdog-Signal erkennt dies der Mikrocontroller.
 Dieser stellt somit ein digitales „High“ von 3.3V am Eingang U\textsubscript{UNLATCH} zur Verfügung.
 Die Schottkydiode D\textsubscript{1} sorgt dafür, dass kein Strom zurück in den µC fließen kann und,
@@ -985,7 +986,7 @@ Außerdem soll ein sicheres Herunterfahren des Raspberry Pi gewährleistet sein,
 \subsection{DC/DC Wandler}
 
 \footfullcite[Vgl.][]{LM2576-Datasheet}Als Buck-Converter wählten wir den LM2576-5.0 aus.
-Mit diesem ist es möglich eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
+Mit diesem ist es möglich, eine Eingangsspannung von 7V bis 40V zu einer Spannung von 5V mit einem Strom von maximal 3A umzuwandeln.
 Weitere Kriterien, die unsere Wahl befürworteten, waren die niedrige Anzahl von nur vier zusätzlichen Bauteilen, der hohe maximale Ausgangsstrom sowie die hohe Effizienz.
 
 \subsubsection{Beschaltung}
@@ -1062,9 +1063,8 @@ In Anbetracht, dass derartige Hitze die Langlebigkeit begrenzen würde, ist es d
 
 \subsection{Raspberry Pi 3B+}
 
-Als Basis für unsere Human Machine Interface wählten wir einen Raspberry Pi 3B+ aus.
-Die Begründung dieser Wahl befindet sich im Infortmatik-Teil dieser Diplomarbeit.
-Dieser hat die Aufgabe den Mikroprozessor ATmega324PA mit 3.3V zu versorgen sowie über das Touchpanel eingelesene Information mit dem Mikroprozessor auszutauschen.
+Als Basis für unser Human Machine Interface wählten wir einen Raspberry Pi 3B+ aus.
+Dieser hat die Aufgabe, den Mikroprozessor ATmega324PA mit 3.3V zu versorgen sowie über das Touchpanel eingelesene Information mit dem Mikroprozessor auszutauschen.
 
 \subsubsection{Watchdog}
 
@@ -1076,7 +1076,7 @@ So kann bei einem Ausfall dennoch eine sicheres Herunterfahren sowie ein sichere
 \footfullcite[Vgl.][]{Datasheet-ATmega324PA}Um den Mikrocontroller zu versorgen, wurde an allen VCC-Pins und am AVCC-Pin eine Verbindung zum 3.3V Ausgang des Raspberry Pi vorgesehen.
 Um die Versorgungsspannung von 3.3V zu glätten, wurde an allen 4 Versorgungspins je ein Kondensator mit 100nF vorgesehen.
 An jeglichen GND Anschlüssen des Mikrocontrollers wurde eine Leitung gegen Masse implementiert.
-Um die interne Referenzspannung zu glätten, wurde wie im Datenblatt empfohlen, ein 100nF Kondensator am Pin AREF implementiert.
+Um die interne Referenzspannung zu glätten, wurde, wie im Datenblatt empfohlen, ein 100nF Kondensator am Pin AREF implementiert.
 Laut dem zugehörigen Datenblatt ist bei einer Versorgungspannung von 3.3V ein Quarz mit einer Taktfrequenz von 0 bis 13.3MHz zu arbeiten.
 Aufgrund unserer Entscheidung, den Mikrocontroller mit einem 10MHz Quarz zu betreiben, waren zwei Kondensatoren mit einem Wert von 12 bis 22pF zu wählen.
 Diese haben den Nutzen, den Quarzoszillator gut anschwingen und stabil schwingen zu lassen.
@@ -1184,7 +1184,7 @@ Parallel zum Taster wurde ein Kondensator vorgesehen, welcher als Prevention geg
 \footfullcite[Vgl.][]{DRV8825-Datasheet}Dieses Modul ist dafür ausgelegt, bipolare Schrittmotoren anzusteuern.
 Der DRV8825 besitzt zwei H-Brücken-Treiber und einen Microstepping Indexer.
 Um die Motorwindungen anzusteuern, sind die Ausgangsblöcke des Treibers als volle N-Kanal Leistung-MOSFET H-Brücken realisiert.
-Dem DRV8825 ist es möglich einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
+Dem DRV8825 ist es möglich, einen Ausgangsstrom von bis zu 2.5A bei geeigneter Kühlung zu treiben.
 
 \subsubsection{Datenblattwerte}
 
@@ -1295,10 +1295,10 @@ Die Treiberplatine verfügt 8 Logikanschlüsse, welche auf der linken Seite des 
 Der /EN Anschluss sorgt bei einem eingehenden HIGH-Signal dafür, dass die H-Brücken deaktiviert und das STEP Eingangssignal nicht berücksichtigt wird.
 Bei einem eingehenden LOW-Signal ist der Treiber aktiviert.
 Somit sind die H-Brücken aktiviert und steigende Flanken am STEP Anschluss werden eingelesen und verarbeitet.
-Durch einen internen Pull-down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\
+Durch einen internen Pull-Down Widerstand ist dieser Pin auch im nicht beschaltenen Zustand auf LOW. \\
 
 Über die Anschlüsse M0, M1 und M2 ist es möglich, die gewünschte Mikroschrittauflösung zu wählen.
-Lässt man diese unbeschalten, sorgen interne Pull-down Widerstände dafür, dass diese auf LOW gezogen werden.
+Lässt man diese unbeschalten, sorgen interne Pull-Down Widerstände dafür, dass diese auf LOW gezogen werden.
 Eine Übersicht der Mikroschrittauflösungen befindet sich im Kapitel 2.3.6.4 . \\
 
 Der Anschluss /RESET sorgt bei einem LOW-Signal für einen Reset der internen Logik und deaktiviert die H-Brücken Treiberbausteine. \\
@@ -1342,7 +1342,7 @@ Um die jeweilig gewünschte Mikroschrittauflösung zu erreichen, müssen die Ans
     I_{max} = \frac{V_{ref}} {5 \cdot R_{sense}}
 \end{equation}
 
-Der von uns ausgewählte Schrittmotor 17HS19-2004S1 braucht laut dessen Datenblatt einen Strom von 2A .
+Der von uns ausgewählte Schrittmotor 17HS19-2004S1 braucht laut dessen Datenblatt einen Strom von 2A.
 Durch einige Tests und Messungen fanden wir jedoch heraus, dass 1.6A bei gewöhnlichem Betrieb mehr als genug sind.
 Um nun die Stromlimitierung auf 1.6A einzustellen, muss die Referenzspannung adaptiert werden.
 
@@ -2024,15 +2024,15 @@ Es muss lediglich auf das Abkühlen des PTC gewartet werden.
 Diese Schaltung konkret auf unsere Anwendung nutzbar gemacht, wären die Komponenten wie folgt zu wählen:
 \begin{itemize}
     \item PTC als MF-MSMF250/16X
-    \item D1 als SMBJ5.A/CA
+    \item D1 als ACPDQC5V0USP-HF
 \end{itemize}
 
 \footfullcite[Vgl.][]{Bourns2017}Die wiederverwendbare Sicherung MF-MSMF200 hält eine maximale Spannung von 8V und einen Haltestrom von 2A bei 23°C Umgebungstemperatur aus.
 Im Grundzustand beträgt der Widerstand bei 23°C zwischen 0.02$\Omega$ und 0.08$\Omega$ .
 Die Auslösezeit bei einem Strom von 8A bei 23°C beträgt maximal 3 Sekunden.
 \newpage
-\footfullcite[Vgl.][]{SMBJ5.A-Datasheet.}Die als SMD ausgeführte Suppressordiode SMBJ5.A/CA bringt eine Breakdown Voltage von mindestens 6.4V bis maximal 6.74V mit sich.
-Sie verfügt über einen niedrigen Leakage-Strom von 0.2µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 600W stand.
+\footfullcite[Vgl.][]{ACPDQC5V0USP-HF}Die als SMD ausgeführte Suppressordiode ACPDQC5V0USP-HF bringt eine Breakdown Voltage von mindestens 5.4V mit sich.
+Sie verfügt über einen niedrigen Leakage-Strom von 1µA bei 25°C und hält einer Spitzenimpulsverlustleistung von 50W stand.
 
 \subsubsection{Einzelne weitere Verbessungsmöglichkeiten}
 
