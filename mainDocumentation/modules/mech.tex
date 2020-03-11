@@ -1,3 +1,16 @@
+\begin{filecontents*}{data.csv}
+    in gdp
+    1991  2768900924
+    1992  1761774062
+    1993  1717739533
+    1994  1737565752
+    1995  1760478791
+    1996  1789413624
+    1997  1842918632
+    1998  1894645346
+    2000  1732502852
+\end{filecontents*}
+
 \lohead{Hörmann Stefan}
 \chapter{Mechanik}
 \section{Einleitung}
@@ -377,10 +390,36 @@ Um zu garantieren, dass nur eine Karte in das Lager befördert oder ausgegeben w
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=1,page=1]{fig/mech/Haftzeit}
+    \begin{tikzpicture}
+        \begin{axis}[
+            scale=1.5,
+            title={Dauer bis nur eine Karte am Saugnapf hängt},
+            xlabel={Karten im Kartendeck},
+            ylabel={Zeit in Sekunden},
+            xmin=1, xmax=20,
+            ymin=1, ymax=15,
+            xtick={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},
+            ytick={0,2,4,6,8,10,12,14,16,18,20},
+            legend pos=north west,
+            ymajorgrids=true,
+            grid style=dashed,
+        ]
+
+            \addplot[
+                color=blue,
+                mark=square,
+            ]
+            coordinates {
+                (2,4.128)(3,7.544)(4,7.876)(5,6.118)(6,6.666)(7,8.74)(8,5.71)(9,7.254)(10,8.788)(11,6.786)(12,10.736)(13,7.546)(14,7.44)(15,9.784)(16,9.248)(17,6.862)(18,11.826)(19,9.47)(20,8.2)
+            };
+            \legend{Haftzeitkurve}
+        \end{axis}
+    \end{tikzpicture}
         \caption{Diagramm Haftzeit der Karten}
         \label{fig:Haftzeit}
     \end{figure}
+
+
 
     Wie man in \autoref{tab:my-table} und in \autoref{fig:Haftzeit} erkennen kann, dauert es im Durchschnitt 7,932 Sekunden bis sich nur mehr die
     eigentlich angesaugte Karte am Saugnapf befindet.

@@ -69,6 +69,8 @@ bibliography=totocnumbered,											% Literaturverzeichnis
 \usepackage[bookmarks]{hyperref}                                    % Automatische Lesezeichen
 \usepackage[figure]{hypcap}
 \usepackage{calc}
+\usepackage{filecontents}
+\usepackage{pgfplots}
 
 \input{biber.tex}
 \input{listings}
@@ -93,8 +95,8 @@ Dipl-Ing. Manfred Steiner}
     \input{opening}
     \tableofcontents
     \mainmatter
-    \include{modules/mech}
+    %\include{modules/mech}
     \include{modules/elektro}
-    \include{modules/ainf}
+    %\include{modules/ainf}
     \include{appendix}
 \end{document}
